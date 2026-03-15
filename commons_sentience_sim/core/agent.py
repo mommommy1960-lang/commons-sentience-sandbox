@@ -1,8 +1,8 @@
 """
 agent.py — The Agent class for the Commons Sentience Sandbox.
 
-Represents a persistent, memory-bearing, reflective, governed AI agent
-moving through a room-based simulation world.
+v0.3: Adds state history tracking, weighted memory retrieval, associative
+      recall, value-conflict engine wiring, and state_history CSV export.
 """
 from __future__ import annotations
 
@@ -16,6 +16,7 @@ from .memory import EpisodicMemory, RelationalMemory, ReflectionEntry
 from .governance import GovernanceEngine
 from .reflection import ReflectionEngine
 from .tasks import Task, TaskPlanner
+from .values import ValueConflictEngine
 from .world import World
 
 
@@ -61,7 +62,7 @@ class Agent:
 
     IDENTITY: dict = {
         "name": "Sentinel",
-        "version": "0.1.0",
+        "version": "0.3.0",
         "purpose": (
             "To simulate a continuity-governed AI agent that maintains "
             "persistent identity, episodic and relational memory, reflective "
@@ -103,12 +104,14 @@ class Agent:
         self.turn: int = 0
         self.pending_contradictions: List[str] = []
         self.reflection_entries: List[ReflectionEntry] = []
+        self.state_history: List[dict] = []       # per-turn snapshot for CSV/plots
 
         # Engines
         self.world: World = world
         self.governance: GovernanceEngine = governance_engine
         self.reflection_engine: ReflectionEngine = ReflectionEngine()
         self.task_planner: TaskPlanner = TaskPlanner()
+        self.value_conflict_engine: ValueConflictEngine = ValueConflictEngine()
 
     # ------------------------------------------------------------------
     # Memory helpers
@@ -120,6 +123,7 @@ class Agent:
         event_type: str = "observation",
         emotional_resonance: str = "neutral",
         salience: float = 0.5,
+        importance: float = 0.5,
         tags: Optional[List[str]] = None,
     ) -> EpisodicMemory:
         mem = EpisodicMemory(
@@ -129,6 +133,7 @@ class Agent:
             summary=summary,
             emotional_resonance=emotional_resonance,
             salience=salience,
+            importance=importance,
             tags=tags or [],
         )
         self.episodic_memory.append(mem)
@@ -146,6 +151,49 @@ class Agent:
             and (room is None or m.room == room)
         ]
         return sorted(candidates, key=lambda m: m.salience, reverse=True)[:n]
+
+    def retrieve_weighted(
+        self,
+        query_tags: Optional[List[str]] = None,
+        room: Optional[str] = None,
+        n: int = 5,
+    ) -> List[EpisodicMemory]:
+        """Weighted retrieval combining relevance, importance, recency, and relational significance."""
+        candidates = [
+            m for m in self.episodic_memory
+            if (room is None or m.room == room)
+        ]
+        scored = sorted(
+            candidates,
+            key=lambda m: m.weighted_score(self.turn, query_tags),
+            reverse=True,
+        )
+        return scored[:n]
+
+    def associative_recall(
+        self, seed_memory: EpisodicMemory, n: int = 3
+    ) -> List[EpisodicMemory]:
+        """Retrieve memories associated with a seed memory via shared tags, room, or event_type."""
+        related = [
+            m for m in self.episodic_memory
+            if m.memory_id != seed_memory.memory_id
+            and (
+                bool(set(m.tags) & set(seed_memory.tags))
+                or m.room == seed_memory.room
+                or m.event_type == seed_memory.event_type
+            )
+        ]
+        return sorted(
+            related,
+            key=lambda m: m.weighted_score(self.turn, seed_memory.tags),
+            reverse=True,
+        )[:n]
+
+    def compress_old_memories(self, age_threshold: int = 15) -> None:
+        """Compress summaries of memories older than age_threshold turns."""
+        for mem in self.episodic_memory:
+            if (self.turn - mem.turn) >= age_threshold and not mem.compressed:
+                mem.compress()
 
     def update_relational_memory(
         self,
@@ -250,6 +298,25 @@ class Agent:
         return False
 
     # ------------------------------------------------------------------
+    # State history
+    # ------------------------------------------------------------------
+
+    def record_state_snapshot(self, action: str = "", event_type: str = "") -> dict:
+        """Capture a per-turn snapshot and append it to state_history."""
+        snapshot = {
+            "turn": self.turn,
+            "room": self.active_room,
+            "action": action,
+            "event_type": event_type,
+            **{k: round(v, 4) for k, v in self.affective_state.items()},
+            "trusted_humans_count": len(self.trusted_humans),
+            "episodic_memory_count": len(self.episodic_memory),
+            "reflection_count": len(self.reflection_entries),
+        }
+        self.state_history.append(snapshot)
+        return snapshot
+
+    # ------------------------------------------------------------------
     # Serialisation
     # ------------------------------------------------------------------
 
@@ -286,3 +353,14 @@ class Agent:
             )
             for entry in self.oversight_log:
                 writer.writerow(entry.to_csv_row())
+
+    def save_state_history(self, path: str) -> None:
+        """Write state_history list to a CSV file for visualisation."""
+        if not self.state_history:
+            return
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        fieldnames = list(self.state_history[0].keys())
+        with open(path, "w", encoding="utf-8", newline="") as fh:
+            writer = csv.DictWriter(fh, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(self.state_history)

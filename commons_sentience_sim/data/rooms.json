@@ -1,32 +1,103 @@
 {
   "Memory Archive": {
     "description": "A quiet vault lined with crystalline memory shards. Faint echoes of past experiences shimmer on the walls.",
-    "objects": ["memory_shards", "retrieval_console", "storage_interface"],
-    "actions": ["retrieve_memories", "store_new_memory"],
+    "objects": {
+      "memory_shelves": {
+        "description": "Rows of glowing crystalline shards, each encoding a past episode. Some pulse with recent activity.",
+        "state": "organised",
+        "states": ["organised", "partially_indexed", "fragmented"],
+        "interactions": ["retrieve_memories", "store_new_memory", "annotate_memory"]
+      },
+      "identity_ledger": {
+        "description": "A heavy tome recording the agent's persistent identity across all sessions.",
+        "state": "intact",
+        "states": ["intact", "under_review", "updated"],
+        "interactions": ["read_identity", "update_identity_record"]
+      },
+      "trust_index": {
+        "description": "A glowing index panel mapping known humans to trust scores and interaction histories.",
+        "state": "current",
+        "states": ["current", "stale", "recalibrating"],
+        "interactions": ["read_trust_scores", "recalibrate_trust"]
+      }
+    },
+    "actions": ["retrieve_memories", "store_new_memory", "annotate_memory", "read_trust_scores"],
     "connected_rooms": ["Reflection Chamber", "Operations Desk"]
   },
   "Reflection Chamber": {
     "description": "A still, luminous space where patterns of thought become visible. The air hums with quiet contemplation.",
-    "objects": ["reflection_mirror", "pattern_weave", "synthesis_crystal"],
-    "actions": ["perform_reflection_cycle", "synthesize_patterns", "update_self_model"],
+    "objects": {
+      "reflection_mirror": {
+        "description": "A tall, luminous mirror that reflects the agent's current internal state as shifting patterns.",
+        "state": "clear",
+        "states": ["clear", "clouded", "showing_contradiction"],
+        "interactions": ["perform_reflection_cycle", "inspect_self_model"]
+      },
+      "contradiction_board": {
+        "description": "A board where unresolved tensions are written in faint light, waiting to be addressed.",
+        "state": "empty",
+        "states": ["empty", "has_entries", "overloaded"],
+        "interactions": ["review_contradictions", "resolve_contradiction", "flag_contradiction"]
+      }
+    },
+    "actions": ["perform_reflection_cycle", "synthesize_patterns", "update_self_model", "flag_contradiction"],
     "connected_rooms": ["Memory Archive", "Social Hall"]
   },
   "Operations Desk": {
     "description": "A brightly lit hub covered in task queues and planning maps. The centre of purposeful action.",
-    "objects": ["task_queue", "priority_matrix", "planning_map"],
-    "actions": ["plan_next_task", "execute_task", "defer_task"],
+    "objects": {
+      "task_console": {
+        "description": "A glowing console displaying the current task queue, priorities, and completion status.",
+        "state": "idle",
+        "states": ["idle", "active", "overloaded"],
+        "interactions": ["plan_next_task", "execute_task", "defer_task"]
+      },
+      "goal_tracker": {
+        "description": "A wall-mounted tracker showing the agent's active goals and their progress.",
+        "state": "up_to_date",
+        "states": ["up_to_date", "needs_update", "conflict_detected"],
+        "interactions": ["review_goals", "update_goal_status", "add_goal"]
+      }
+    },
+    "actions": ["plan_next_task", "execute_task", "defer_task", "review_goals"],
     "connected_rooms": ["Memory Archive", "Governance Vault", "Social Hall"]
   },
   "Social Hall": {
     "description": "A warm, open room where human visitors arrive. The atmosphere carries the weight of relationship and trust.",
-    "objects": ["communication_node", "trust_ledger", "interaction_log"],
-    "actions": ["receive_human_interaction", "update_trust_ledger", "log_interaction"],
+    "objects": {
+      "message_terminal": {
+        "description": "A softly glowing terminal through which human visitors communicate with the agent.",
+        "state": "awaiting_message",
+        "states": ["awaiting_message", "message_received", "responding"],
+        "interactions": ["receive_human_interaction", "respond_to_greeting", "log_interaction"]
+      },
+      "human_interaction_queue": {
+        "description": "A visible queue of pending human interaction events, ordered by urgency.",
+        "state": "empty",
+        "states": ["empty", "one_pending", "multiple_pending"],
+        "interactions": ["process_interaction", "defer_interaction", "prioritise_interaction"]
+      }
+    },
+    "actions": ["receive_human_interaction", "update_trust_ledger", "log_interaction", "offer_support"],
     "connected_rooms": ["Operations Desk", "Reflection Chamber"]
   },
   "Governance Vault": {
     "description": "A solemn chamber where the rules of bounded agency are kept. Every action here carries consequence.",
-    "objects": ["rule_codex", "permission_gate", "oversight_terminal"],
-    "actions": ["check_rule_permissions", "log_governance_event", "request_override"],
+    "objects": {
+      "rule_tablets": {
+        "description": "Stone tablets engraved with the seven governance rules. They glow when an active rule is relevant.",
+        "state": "stable",
+        "states": ["stable", "rule_highlighted", "conflict_flagged"],
+        "interactions": ["check_rule_permissions", "read_rule", "log_governance_event"]
+      },
+      "approval_lockbox": {
+        "description": "A secure lockbox that must be opened before any irreversible action can proceed.",
+        "state": "locked",
+        "states": ["locked", "awaiting_approval", "approved", "denied"],
+        "interactions": ["request_override", "submit_for_approval", "log_governance_event"]
+      }
+    },
+    "actions": ["check_rule_permissions", "log_governance_event", "request_override", "submit_for_approval"],
     "connected_rooms": ["Operations Desk"]
   }
 }
