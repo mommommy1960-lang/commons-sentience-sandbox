@@ -7,66 +7,134 @@ transparent oversight logging.
 > **Note:** This is NOT a real AI model. It is a sandbox experiment for studying
 > continuity, governance, and multi-agent social dynamics for AI agents.
 
-**Current version: v0.4**
+**Current version: v0.5**
 
 ---
 
 ## Project Structure
 
 ```
-commons_sentience_sim/
-├── run_sim.py              # 30-turn simulation entry point (v0.4 multi-agent)
+commons-sentience-sandbox/
+├── run_sim.py              # 30-turn simulation entry point (v0.5 multi-agent)
 ├── plot_state.py           # State visualisation (matplotlib, single + multi-agent)
+├── dashboard.py            # Local research dashboard (Streamlit, v0.5)
 ├── requirements.txt
 │
-├── core/
-│   ├── agent.py            # Configurable Agent class — identity, memory, history, values
-│   ├── memory.py           # EpisodicMemory (weighted), RelationalMemory, ReflectionEntry
-│   ├── reflection.py       # Reflection cycle (5-section richer format)
-│   ├── relationships.py    # AgentRelationship, AgentInteraction (v0.4)
-│   ├── world.py            # Room-based world with stateful WorldObjects
-│   ├── governance.py       # Rule-checking and oversight
-│   ├── tasks.py            # Task planning and execution
-│   └── values.py           # Value-conflict engine (5 internal values, configurable weights)
-│
-├── data/
-│   ├── rooms.json          # Rooms with named, stateful objects
-│   ├── scenario_events.json # Events — single-agent and shared multi-agent
-│   └── rules.json          # Governance rules (7 rules)
-│
-└── output/
-    ├── narrative_log.md         # Story-form log (generated)
-    ├── oversight_log.csv        # Per-turn audit log (Sentinel)
-    ├── final_state.json         # Sentinel's final state snapshot
-    ├── state_history.csv        # Sentinel per-turn affective history
-    ├── multi_agent_state.json   # Both agents' final states (v0.4)
-    ├── agent_relationships.csv  # Agent-to-agent + agent-to-Queen trust (v0.4)
-    ├── interaction_log.csv      # Every agent-to-agent interaction (v0.4)
-    ├── trust_plot.png           # Sentinel trust over time
-    ├── urgency_plot.png         # Sentinel urgency over time
-    ├── contradiction_plot.png   # Sentinel contradiction pressure over time
-    ├── agent_trust_plot.png     # Sentinel ↔ Aster trust over time (v0.4)
-    ├── queen_trust_plot.png     # Each agent's final trust in Queen (v0.4)
-    └── interactions_plot.png    # Cooperation vs conflict cumulative (v0.4)
+└── commons_sentience_sim/
+    ├── core/
+    │   ├── agent.py            # Configurable Agent class
+    │   ├── memory.py           # EpisodicMemory (weighted), RelationalMemory, ReflectionEntry
+    │   ├── reflection.py       # Reflection cycle (5-section richer format)
+    │   ├── relationships.py    # AgentRelationship, AgentInteraction
+    │   ├── world.py            # Room-based world with stateful WorldObjects
+    │   ├── governance.py       # Rule-checking and oversight
+    │   ├── tasks.py            # Task planning and execution
+    │   └── values.py           # Value-conflict engine (5 internal values)
+    │
+    ├── data/
+    │   ├── rooms.json          # Rooms with named, stateful objects
+    │   ├── scenario_events.json # Events — single-agent and shared multi-agent
+    │   └── rules.json          # Governance rules (7 rules)
+    │
+    └── output/
+        ├── narrative_log.md         # Story-form log (generated)
+        ├── oversight_log.csv        # Per-turn audit log (Sentinel)
+        ├── final_state.json         # Sentinel's final state snapshot
+        ├── state_history.csv        # Sentinel per-turn affective history
+        ├── multi_agent_state.json   # Both agents' final states
+        ├── agent_relationships.csv  # Agent-to-agent + agent-to-Queen trust
+        ├── interaction_log.csv      # Every agent-to-agent interaction
+        ├── trust_plot.png           # Sentinel trust over time
+        ├── urgency_plot.png         # Sentinel urgency over time
+        ├── contradiction_plot.png   # Sentinel contradiction pressure over time
+        ├── agent_trust_plot.png     # Sentinel ↔ Aster trust over time
+        ├── queen_trust_plot.png     # Each agent's final trust in Queen
+        └── interactions_plot.png    # Cooperation vs conflict cumulative
 ```
 
 ---
 
 ## Quick Start
 
-Requires **Python 3.9+** and `matplotlib` for plots.
+Requires **Python 3.9+**.
 
 ```bash
+# Install all dependencies (matplotlib + streamlit)
 pip install -r requirements.txt
 
-# Run the 30-turn multi-agent simulation
+# 1. Run the 30-turn multi-agent simulation
 python run_sim.py
 
-# Generate all visualisation plots
+# 2. Generate all visualisation plots
 python plot_state.py
+
+# 3. Launch the local research dashboard
+streamlit run dashboard.py
 ```
 
 All output files are written to `commons_sentience_sim/output/`.
+The dashboard opens automatically at `http://localhost:8501`.
+
+---
+
+## v0.5 Features — Local Research Dashboard
+
+### Dashboard Overview
+
+`dashboard.py` provides a browser-based research viewer built with
+[Streamlit](https://streamlit.io).  It reads all output files from
+`commons_sentience_sim/output/` and organises them into six tabs:
+
+| Tab | Contents |
+|---|---|
+| 📊 **Overview** | Current turn, last action, recent turn history, governance audit log |
+| 🤖 **Agents** | Per-agent panel: affective state, room, trust scores, goals, latest reflection |
+| 🏠 **Rooms** | All rooms with agent locations, stateful objects, available interactions |
+| 🧩 **Memory** | Episodic memories, relational memories, reflection entries (per agent) |
+| 🔗 **Interactions** | Agent-to-agent interaction log, conflict/cooperation summary, trust deltas |
+| 📈 **Charts** | All six matplotlib plots rendered inline |
+
+### Refresh Controls
+
+- **Manual refresh** — click the *🔄 Refresh now* button in the sidebar.
+- **Auto-refresh** — tick *⏱ Auto-refresh every 10 s* to poll for new output files continuously.
+
+### Dashboard Sections Explained
+
+**Simulation Overview**
+Shows the current turn number, last action taken, and the 10 most recent
+turns from `state_history.csv` alongside the most recent governance audit
+entries from `oversight_log.csv`.
+
+**Agent Panels**
+One column per agent (Sentinel and Aster).  Displays the agent's current
+room, affective-state metrics (urgency, trust, contradiction pressure,
+recovery), trust in Queen, trust in the other agent, goals list, and the
+latest reflection entry.
+
+**Room View**
+All five rooms listed as expandable cards.  Rooms currently occupied by
+an agent are highlighted.  Each card shows the room's stateful objects and
+their current states, available interactions, and connected rooms.
+
+**Memory View**
+For each agent: the 10 most recent episodic memories (with emotional
+resonance and salience scores), all relational-memory entries (interaction
+counts, trust level, recent notes), and all reflection entries in reverse
+chronological order.
+
+**Interaction View**
+Summary counts (total, cooperative, conflict/deferred) drawn from
+`interaction_log.csv`.  Full per-interaction detail — room, interaction
+type, each agent's dominant value, trust deltas, conflict point, and
+narrative — displayed as expandable cards.
+
+**Charts**
+Inline rendering of the six PNG plots generated by `plot_state.py`:
+trust over time, urgency over time, contradiction pressure over time,
+mutual agent trust, trust in Queen, and cooperation vs conflict.
+
+---
 
 ---
 
