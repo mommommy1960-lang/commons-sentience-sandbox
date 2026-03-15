@@ -105,14 +105,28 @@ class ConflictResult:
 class ValueConflictEngine:
     """Weighs internal value conflicts before an action is chosen."""
 
-    # Baseline weights — higher means more important to this agent
-    BASE_WEIGHTS: Dict[str, float] = {
+    # Default baseline weights — higher means more important to this agent
+    _DEFAULT_BASE_WEIGHTS: Dict[str, float] = {
         "support_trusted_human": 0.8,
         "preserve_governance_rules": 0.9,
         "reduce_contradictions": 0.7,
         "maintain_continuity": 0.75,
         "avoid_risky_action": 0.65,
     }
+
+    def __init__(self, base_weights: Optional[Dict[str, float]] = None) -> None:
+        """Create the engine, optionally with custom value weights.
+
+        Parameters
+        ----------
+        base_weights : dict, optional
+            Map of value name → weight (0.0–1.0).  Any missing values fall
+            back to the class-level defaults.
+        """
+        merged = dict(self._DEFAULT_BASE_WEIGHTS)
+        if base_weights:
+            merged.update(base_weights)
+        self.BASE_WEIGHTS: Dict[str, float] = merged
 
     def weigh(
         self,

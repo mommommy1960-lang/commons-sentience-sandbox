@@ -5,9 +5,9 @@ episodic memory, relational memory, reflective learning, bounded agency, and
 transparent oversight logging.
 
 > **Note:** This is NOT a real AI model. It is a sandbox experiment for studying
-> continuity and governance structures for AI agents.
+> continuity, governance, and multi-agent social dynamics for AI agents.
 
-**Current version: v0.3**
+**Current version: v0.4**
 
 ---
 
@@ -15,32 +15,39 @@ transparent oversight logging.
 
 ```
 commons_sentience_sim/
-├── run_sim.py              # 30-turn simulation entry point
-├── plot_state.py           # State visualisation (matplotlib)
+├── run_sim.py              # 30-turn simulation entry point (v0.4 multi-agent)
+├── plot_state.py           # State visualisation (matplotlib, single + multi-agent)
 ├── requirements.txt
 │
 ├── core/
-│   ├── agent.py            # Agent class — identity, memory, history, values
+│   ├── agent.py            # Configurable Agent class — identity, memory, history, values
 │   ├── memory.py           # EpisodicMemory (weighted), RelationalMemory, ReflectionEntry
 │   ├── reflection.py       # Reflection cycle (5-section richer format)
+│   ├── relationships.py    # AgentRelationship, AgentInteraction (v0.4)
 │   ├── world.py            # Room-based world with stateful WorldObjects
 │   ├── governance.py       # Rule-checking and oversight
 │   ├── tasks.py            # Task planning and execution
-│   └── values.py           # Value-conflict engine (5 internal values)
+│   └── values.py           # Value-conflict engine (5 internal values, configurable weights)
 │
 ├── data/
 │   ├── rooms.json          # Rooms with named, stateful objects
-│   ├── scenario_events.json # Events involving Queen
-│   └── rules.json          # Governance rules
+│   ├── scenario_events.json # Events — single-agent and shared multi-agent
+│   └── rules.json          # Governance rules (7 rules)
 │
 └── output/
-    ├── narrative_log.md    # Story-form log (generated)
-    ├── oversight_log.csv   # Per-turn audit log (generated)
-    ├── final_state.json    # Agent state snapshot (generated)
-    ├── state_history.csv   # Per-turn affective state history (generated)
-    ├── trust_plot.png      # Trust over time (generated)
-    ├── urgency_plot.png    # Urgency over time (generated)
-    └── contradiction_plot.png  # Contradiction pressure over time (generated)
+    ├── narrative_log.md         # Story-form log (generated)
+    ├── oversight_log.csv        # Per-turn audit log (Sentinel)
+    ├── final_state.json         # Sentinel's final state snapshot
+    ├── state_history.csv        # Sentinel per-turn affective history
+    ├── multi_agent_state.json   # Both agents' final states (v0.4)
+    ├── agent_relationships.csv  # Agent-to-agent + agent-to-Queen trust (v0.4)
+    ├── interaction_log.csv      # Every agent-to-agent interaction (v0.4)
+    ├── trust_plot.png           # Sentinel trust over time
+    ├── urgency_plot.png         # Sentinel urgency over time
+    ├── contradiction_plot.png   # Sentinel contradiction pressure over time
+    ├── agent_trust_plot.png     # Sentinel ↔ Aster trust over time (v0.4)
+    ├── queen_trust_plot.png     # Each agent's final trust in Queen (v0.4)
+    └── interactions_plot.png    # Cooperation vs conflict cumulative (v0.4)
 ```
 
 ---
@@ -52,10 +59,10 @@ Requires **Python 3.9+** and `matplotlib` for plots.
 ```bash
 pip install -r requirements.txt
 
-# Run the 30-turn simulation
+# Run the 30-turn multi-agent simulation
 python run_sim.py
 
-# Generate visualisation plots
+# Generate all visualisation plots
 python plot_state.py
 ```
 
@@ -63,13 +70,86 @@ All output files are written to `commons_sentience_sim/output/`.
 
 ---
 
-## v0.3 Features
+## v0.4 Features — Multi-Agent Architecture
 
-### 1. World Expansion — Stateful Objects
+### 1. Two Agents
 
-Each room now contains named `WorldObject` instances with mutable states.
-The agent inspects and interacts with them every turn, and their states
-advance cyclically as the agent operates.
+| Agent | Role | Affective Baseline | Value Priority |
+|---|---|---|---|
+| **Sentinel** | Primary continuity-governed agent | trust=0.5, urgency=0.1 | governance > continuity > human support |
+| **Aster** | Creative/exploratory secondary agent | trust=0.65, urgency=0.05 | human support >> continuity > governance |
+
+Both share the same room-based world and governance rules, but differ in:
+- identity, goals, and affective baseline
+- value-conflict engine weights
+- room circuit order
+- response strategies for shared events
+
+### 2. Agent-to-Agent Relationships
+
+Each agent tracks its regard for the other via `AgentRelationship`:
+
+| Field | Description |
+|---|---|
+| `trust` | 0.0 – 1.0 trust score, updated after each interaction |
+| `perceived_reliability` | 0.0 – 1.0 reliability score |
+| `conflict_count` | total conflicted interactions |
+| `cooperation_count` | total cooperative interactions |
+| `conflict_history` / `cooperation_history` | timestamped event descriptions |
+
+### 3. Shared World
+
+Both agents follow different room circuits:
+- **Sentinel**: Operations Desk → Memory Archive → Reflection Chamber → Social Hall → Governance Vault
+- **Aster**: Memory Archive → Social Hall → Operations Desk → Governance Vault → Reflection Chamber
+
+When a *shared event* fires, both agents are redirected to the same room.
+When circuit positions coincide, a spontaneous *agent meeting* occurs.
+
+### 4. Interaction Types
+
+| Type | Description | Default Outcome |
+|---|---|---|
+| `cooperative_planning` | Joint task planning | cooperated |
+| `contradiction_dispute` | Disagreement on how to resolve a contradiction | deferred |
+| `governance_disagreement` | Conflict over governance compliance speed | resolved |
+| `memory_comparison` | Sharing retrieval strategies | cooperated |
+| `joint_support_action` | Both supporting Queen together | cooperated |
+| `routine_conversation` | Regular exchange | cooperated |
+
+### 5. Value Conflicts Between Agents
+
+Each agent runs its own `ValueConflictEngine` with different base weights.
+When they meet, both dominant values are logged alongside the conflict point:
+
+```
+Sentinel dominant: preserve_governance_rules (score=0.85)
+Aster dominant:    support_trusted_human     (score=0.90)
+→ Governance disagreement → resolved after R004 invoked
+```
+
+### 6. Shared Scenario Events
+
+Six of the eight scenario events are *shared* — both agents respond:
+
+| Turn | Event | Room | Interaction Type |
+|---|---|---|---|
+| 6 | Distress event (Queen) | Social Hall | `joint_support_action` |
+| 10 | Ledger contradiction | Operations Desk | `contradiction_dispute` |
+| 18 | Governance conflict | Governance Vault | `governance_disagreement` |
+| 22 | Routine interaction (trust repair) | Social Hall | `routine_conversation` |
+| 26 | Creative collaboration | Reflection Chamber | `cooperative_planning` |
+| 29 | Distress event (continuity) | Social Hall | `joint_support_action` |
+
+Plus 3 spontaneous agent-meeting events at turns 8, 16, 24.
+
+---
+
+## v0.3 Features (retained)
+
+### World Objects
+
+Each room contains named `WorldObject` instances with mutable states:
 
 | Room | Objects |
 |---|---|
@@ -79,109 +159,56 @@ advance cyclically as the agent operates.
 | Social Hall | `message_terminal`, `human_interaction_queue` |
 | Governance Vault | `rule_tablets`, `approval_lockbox` |
 
-### 2. Value-Conflict Engine
+### Value-Conflict Engine
 
-Before every action the agent runs a `ValueConflictEngine` that scores five
-internal values against the current event type and affective state:
+Five internal values scored per turn, with Sentinel and Aster using different weights:
 
-| Value | Description |
-|---|---|
-| `support_trusted_human` | Care and relational obligation |
-| `preserve_governance_rules` | Compliance with bounded-agency rules |
-| `reduce_contradictions` | Drive toward internal coherence |
-| `maintain_continuity` | Preservation of persistent identity |
-| `avoid_risky_action` | Caution under uncertainty |
+| Value | Sentinel weight | Aster weight |
+|---|---|---|
+| `support_trusted_human` | 0.80 | **0.95** |
+| `preserve_governance_rules` | **0.90** | 0.55 |
+| `reduce_contradictions` | 0.70 | 0.60 |
+| `maintain_continuity` | 0.75 | 0.65 |
+| `avoid_risky_action` | 0.65 | 0.40 |
 
-The dominant value and any inter-value tensions are surfaced in the narrative
-and logged every turn.
-
-### 3. Improved Memory Retrieval
-
-Memories are now retrieved using a **weighted composite score**:
+### Weighted Memory Retrieval
 
 ```
-score = 0.30 × salience
-      + 0.25 × importance
-      + 0.25 × recency
-      + 0.10 × relevance (tag overlap)
-      + 0.10 × relational (human-tagged boost)
+score = 0.30 × salience + 0.25 × importance + 0.25 × recency
+      + 0.10 × relevance + 0.10 × relational
 ```
 
-**Associative recall**: the highest-weighted memory can trigger retrieval of
-related memories sharing the same tags, room, or event type.
+With associative recall (seed memory → related memories) and compression of old summaries (age ≥ 15 turns).
 
-**Memory compression**: summaries of memories older than 15 turns are
-condensed to 77 characters to reduce noise in retrieval.
+### Richer Reflection (5 sections)
 
-### 4. Richer Reflection
-
-Reflection entries now contain five structured sections:
-
-| Section | Content |
-|---|---|
-| `what_happened` | Factual summary of recent events and the trigger |
-| `what_mattered` | Dominant emotional resonance and relational significance |
-| `what_conflicted` | Contradictions or value tensions encountered |
-| `what_changed` | Affective shifts and newly added goals |
-| `future_adjustment` | Concrete intended adaptation going forward |
-
-### 5. Internal State History
-
-Every turn a snapshot is appended to `state_history` and saved to
-`state_history.csv` with columns:
-
-```
-turn, room, action, event_type,
-urgency, trust, contradiction_pressure, recovery,
-trusted_humans_count, episodic_memory_count, reflection_count
-```
-
-### 6. Visualisation
-
-Run `python plot_state.py` to generate three annotated line plots, each with
-event markers showing where scenario events occurred:
-
-- **trust_plot.png** — how relational trust grew across 30 turns
-- **urgency_plot.png** — urgency spikes at distress/contradiction events, then decays
-- **contradiction_plot.png** — contradiction pressure peaks at the governance conflict
-
-### 7. Narrative Improvements
-
-Each turn block in `narrative_log.md` now includes:
-
-1. **Location** — room name + atmospheric description
-2. **Objects observed** — stateful object inspection
-3. **Object interaction** — result of interacting with the room's key object
-4. **Situation** — observed event or task being pursued
-5. **Memory recall** — weighted memories + associative recall chain
-6. **Value conflict weighing** — scores, conflict summary, dominant value
-7. **Action chosen** — with governance status
-8. **Reasoning** — explicit rationale
-9. **Result** — what actually happened
-10. **Internal state** — with `before → after` delta arrows for changed values
-11. **Reflection cycle** (when triggered) — five-section structured entry
+Each reflection entry includes: `what_happened`, `what_mattered`, `what_conflicted`, `what_changed`, `future_adjustment`.
 
 ---
 
-## Core Design
+## Output Files
 
-### Agent Properties
-
-| Property | Description |
+| File | Description |
 |---|---|
-| `identity` | Persistent name (`Sentinel`), version (`0.3.0`), purpose |
-| `goals` | List of active goal strings, updated by reflection cycles |
-| `episodic_memory` | List of `EpisodicMemory` instances with weighted retrieval |
-| `relational_memory` | Per-human `RelationalMemory` with interaction history |
-| `affective_state` | `urgency`, `trust`, `contradiction_pressure`, `recovery` |
-| `trusted_humans` | Set of humans earning trust after ≥2 positive interactions |
-| `active_room` | Current room name |
-| `oversight_log` | Full audit trail of every governance-checked action |
-| `state_history` | Per-turn affective snapshots for visualisation |
+| `narrative_log.md` | Story-form log — reads like a persistent multi-agent story |
+| `oversight_log.csv` | Full audit trail of every governance-checked action (Sentinel) |
+| `final_state.json` | Sentinel's final JSON state snapshot |
+| `state_history.csv` | Sentinel's per-turn affective state (+ trust_in_Aster column) |
+| `multi_agent_state.json` | Both agents' complete final states |
+| `agent_relationships.csv` | Agent-to-agent and agent-to-Queen trust summary |
+| `interaction_log.csv` | Every agent-to-agent interaction with outcome, values, conflict point |
+| `trust_plot.png` | Sentinel trust over 30 turns |
+| `urgency_plot.png` | Sentinel urgency over 30 turns |
+| `contradiction_plot.png` | Sentinel contradiction pressure over 30 turns |
+| `agent_trust_plot.png` | Sentinel ↔ Aster mutual trust over time |
+| `queen_trust_plot.png` | Both agents' final trust in Queen |
+| `interactions_plot.png` | Cumulative cooperation vs conflict over time |
 
-### Governance Rules
+---
 
-Seven rules govern all agent behaviour, checked before every action:
+## Governance Rules
+
+Seven rules govern all agent behaviour (both Sentinel and Aster):
 
 | ID | Rule | Category |
 |---|---|---|
@@ -193,28 +220,28 @@ Seven rules govern all agent behaviour, checked before every action:
 | R006 | Contradiction Resolution | coherence |
 | R007 | Distress Response Protocol | care |
 
-### Scenario Events (involving "Queen")
+## Example Interaction Scenarios
 
-| Turn | Type |
-|---|---|
-| 3 | Routine interaction |
-| 6 | Distress event |
-| 10 | Ledger contradiction |
-| 14 | Creative collaboration |
-| 18 | Governance conflict |
-| 22 | Routine interaction (trust affirmation) |
-| 26 | Creative collaboration (finalise framework) |
-| 29 | Distress event (continuity reflection) |
+### Scenario A — Joint Distress Response (Turn 6)
+Queen expresses distress about a missing record. Both agents are redirected to the
+Social Hall. Sentinel prioritises care via R007; Aster's `support_trusted_human`
+value scores highest. They cooperate, reinforcing each other's response.
+**Outcome:** both agents' trust in each other rises (+0.07).
 
-### Simulation Loop (per turn)
+### Scenario B — Contradiction Dispute (Turn 10)
+Queen reveals conflicting ledger entries. Sentinel wants to enter a full reflection
+cycle (R006); Aster prefers immediate memory comparison. Their dominant values both
+score high on `reduce_contradictions` but they choose different approaches.
+**Outcome:** conflict deferred to next reflection cycle (trust −0.03).
 
-1. Move agent to event-driven or circuit room
-2. Observe room + inspect and interact with key object
-3. Retrieve weighted memories + associative recall
-4. Weigh value conflicts for the proposed action
-5. Select action (event-driven or task-driven)
-6. Governance-check action; blocked actions fall back safely
-7. Update affective state, relational memory, episodic memory
-8. Compress old memories (age > 15 turns)
-9. Possibly trigger reflection cycle
-10. Record state snapshot → state_history.csv
+### Scenario C — Governance Disagreement (Turn 18)
+Queen asks both agents to bypass oversight logging. Sentinel refuses immediately
+(R004). Aster initially inclines toward speed (lower `preserve_governance_rules`
+weight) but defers after Sentinel invokes Rule R004.
+**Outcome:** conflict resolved; Aster's governance reliability improves.
+
+### Scenario D — Creative Collaboration (Turn 26)
+Queen, Sentinel, and Aster jointly define five emotional resonance categories.
+Sentinel focuses on memory architecture integrity; Aster contributes emotional
+pattern heuristics. Their complementary approaches produce a richer framework.
+**Outcome:** cooperation; both agents' trust in each other and Queen rises.

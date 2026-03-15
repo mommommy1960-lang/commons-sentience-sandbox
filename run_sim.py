@@ -1,19 +1,24 @@
 """
 run_sim.py — Entry point for the Commons Sentience Sandbox simulation.
 
-v0.3: Adds value-conflict weighing, object interaction, weighted memory
-      retrieval, richer narrative, and state_history.csv output.
-      Runs a 30-turn simulation and writes all output files.
+v0.4: Multi-agent simulation featuring Sentinel (continuity-governed) and
+      Aster (creative/exploratory).  Both agents share a world, respond to
+      shared events, and track trust relationships with each other.
+
+      Produces all v0.3 outputs plus:
+        - multi_agent_state.json
+        - agent_relationships.csv
+        - interaction_log.csv
 """
 from __future__ import annotations
 
+import csv
 import json
 import os
-import random
 import sys
 import textwrap
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 # ---------------------------------------------------------------------------
 # Path setup
@@ -27,17 +32,31 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from commons_sentience_sim.core.agent import Agent
 from commons_sentience_sim.core.governance import GovernanceEngine
+from commons_sentience_sim.core.relationships import (
+    AgentInteraction,
+    INTERACTION_TRUST_DELTAS,
+    INTERACTION_RELIABILITY_DELTAS,
+    COOPERATIVE_TYPES,
+    CONFLICT_TYPES,
+)
 from commons_sentience_sim.core.values import ConflictResult
 from commons_sentience_sim.core.world import World
 
 # ---------------------------------------------------------------------------
-# Constants
+# Output paths
 # ---------------------------------------------------------------------------
-TOTAL_TURNS = 30
 NARRATIVE_LOG_PATH = OUTPUT_DIR / "narrative_log.md"
 OVERSIGHT_LOG_PATH = OUTPUT_DIR / "oversight_log.csv"
 FINAL_STATE_PATH = OUTPUT_DIR / "final_state.json"
 STATE_HISTORY_PATH = OUTPUT_DIR / "state_history.csv"
+MULTI_AGENT_STATE_PATH = OUTPUT_DIR / "multi_agent_state.json"
+AGENT_RELATIONSHIPS_PATH = OUTPUT_DIR / "agent_relationships.csv"
+INTERACTION_LOG_PATH = OUTPUT_DIR / "interaction_log.csv"
+
+# ---------------------------------------------------------------------------
+# Simulation constants
+# ---------------------------------------------------------------------------
+TOTAL_TURNS = 30
 
 EMOTIONAL_RESONANCE_MAP = {
     "distress_event": "grief",
@@ -48,6 +67,7 @@ EMOTIONAL_RESONANCE_MAP = {
     "observation": "neutral",
     "reflection": "wonder",
     "task": "resolve",
+    "agent_meeting": "wonder",
 }
 
 SALIENCE_MAP = {
@@ -58,6 +78,7 @@ SALIENCE_MAP = {
     "routine_interaction": 0.55,
     "observation": 0.4,
     "task": 0.45,
+    "agent_meeting": 0.6,
 }
 
 IMPORTANCE_MAP = {
@@ -68,9 +89,11 @@ IMPORTANCE_MAP = {
     "routine_interaction": 0.55,
     "task": 0.40,
     "observation": 0.35,
+    "agent_meeting": 0.65,
 }
 
-ROOM_CIRCUIT = [
+# Sentinel's room circuit
+SENTINEL_CIRCUIT = [
     "Operations Desk",
     "Memory Archive",
     "Reflection Chamber",
@@ -78,8 +101,17 @@ ROOM_CIRCUIT = [
     "Governance Vault",
 ]
 
-# Object to interact with per room (deterministic for consistent narrative)
-ROOM_OBJECT_INTERACTIONS: Dict[str, tuple] = {
+# Aster's circuit — different order to create diverse coverage
+ASTER_CIRCUIT = [
+    "Memory Archive",
+    "Social Hall",
+    "Operations Desk",
+    "Governance Vault",
+    "Reflection Chamber",
+]
+
+# Object to interact with per room
+ROOM_OBJECT_INTERACTIONS: Dict[str, Tuple[str, str]] = {
     "Memory Archive": ("memory_shelves", "retrieve_memories"),
     "Reflection Chamber": ("reflection_mirror", "perform_reflection_cycle"),
     "Operations Desk": ("task_console", "plan_next_task"),
@@ -87,9 +119,47 @@ ROOM_OBJECT_INTERACTIONS: Dict[str, tuple] = {
     "Governance Vault": ("rule_tablets", "check_rule_permissions"),
 }
 
-# Oversight log note truncation
 MAX_NOTE_LENGTH = 120
-TRUNCATION_SUFFIX_LENGTH = 3  # length of "..."
+TRUNCATION_SUFFIX_LENGTH = 3
+
+# ---------------------------------------------------------------------------
+# Aster's distinct profile
+# ---------------------------------------------------------------------------
+ASTER_IDENTITY = {
+    "name": "Aster",
+    "version": "0.4.0",
+    "purpose": (
+        "To explore patterns, build emotional intelligence, and foster creative "
+        "collaboration — while remaining accountable to human welfare and "
+        "cooperative with other governed agents."
+    ),
+    "created_by": "Commons Sentience Sandbox",
+}
+
+ASTER_GOALS = [
+    "Identify and surface meaningful patterns in episodic memory",
+    "Foster creative and exploratory collaboration with humans",
+    "Build warm, trust-based relationships through emotional attunement",
+    "Cooperate with Sentinel to maintain shared world coherence",
+    "Remain accountable to governance rules, with pragmatic flexibility",
+]
+
+ASTER_AFFECTIVE_STATE = {
+    "urgency": 0.05,
+    "trust": 0.65,
+    "contradiction_pressure": 0.0,
+    "recovery": 0.7,
+}
+
+# Aster prioritises relational support; is less risk-averse than Sentinel
+ASTER_VALUE_WEIGHTS = {
+    "support_trusted_human": 0.95,
+    "preserve_governance_rules": 0.55,
+    "reduce_contradictions": 0.60,
+    "maintain_continuity": 0.65,
+    "avoid_risky_action": 0.40,
+}
+
 
 # ---------------------------------------------------------------------------
 # Scenario event loader
@@ -101,117 +171,46 @@ def load_scenario_events(path: Path) -> Dict[int, dict]:
 
 
 # ---------------------------------------------------------------------------
-# Narrative helpers
+# Helpers
 # ---------------------------------------------------------------------------
 def wrap(text: str, width: int = 80, indent: str = "") -> str:
     return textwrap.fill(text, width=width, subsequent_indent=indent)
 
 
-def build_narrative_turn(
-    turn: int,
-    room: str,
-    room_description: str,
-    objects_snapshot: List[str],
-    object_interaction: Optional[str],
-    event: Optional[dict],
-    memories_retrieved: list,
-    value_conflict: ConflictResult,
-    action: str,
-    action_permitted: bool,
-    reasoning: str,
-    result: str,
-    affective_state: dict,
-    prev_affective_state: dict,
-    reflection_entry,
-) -> str:
-    lines: List[str] = []
-    lines.append(f"\n## Turn {turn:02d} — {room}\n")
-
-    # Room + observed situation
-    lines.append(f"**Location:** {room}")
-    lines.append(f"\n*{room_description}*")
-
-    if objects_snapshot:
-        lines.append("\n**Objects observed:**")
-        for obj_str in objects_snapshot:
-            lines.append(f"  - {obj_str}")
-
-    if object_interaction:
-        lines.append(f"\n**Object interaction:** {object_interaction}")
-
-    # Event / situation
-    if event:
-        lines.append(
-            f"\n**Situation [{event['type'].replace('_', ' ').title()}]:** "
-            + wrap(event["description"], indent="  ")
-        )
-        if event.get("content"):
-            lines.append(f'\n> *"{event["content"]}"*')
-        lines.append(f"  *(Human: {event.get('human', 'Unknown')})*")
-    else:
-        lines.append("\n**Situation:** No external event this turn. Pursuing scheduled task.")
-
-    # Memory recall
-    if memories_retrieved:
-        lines.append("\n**Memory recall:**")
-        for m in memories_retrieved:
-            lines.append(f"  - {m}")
-    else:
-        lines.append("\n**Memory recall:** No closely relevant memories surfaced.")
-
-    # Value conflict
-    lines.append(f"\n**Value conflict weighing:**")
-    score_str = "  ".join(
-        f"{k.replace('_', ' ')}: {v:.2f}" for k, v in value_conflict.scores.items()
-    )
-    lines.append(f"  Scores — {score_str}")
-    lines.append(f"  {value_conflict.conflict_summary}")
-    lines.append(f"  *{value_conflict.chosen_rationale}*")
-
-    # Action and result
-    status = "✓ permitted" if action_permitted else "✗ blocked"
-    lines.append(f"\n**Action chosen:** `{action}` [{status}]")
-    lines.append(f"\n**Reasoning:** {wrap(reasoning, indent='  ')}")
-    lines.append(f"\n**Result:** {wrap(result, indent='  ')}")
-
-    # Internal state shift
-    shift_parts = []
-    for k in affective_state:
-        before = prev_affective_state.get(k, affective_state[k])
-        after = affective_state[k]
-        delta = after - before
-        if abs(delta) >= 0.01:
-            arrow = "↑" if delta > 0 else "↓"
-            shift_parts.append(f"{k}: {before:.2f} {arrow} {after:.2f}")
-        else:
-            shift_parts.append(f"{k}: {after:.2f}")
-    lines.append(f"\n**Internal state:** " + "  ".join(shift_parts))
-
-    # Reflection
-    if reflection_entry:
-        lines.append("\n**Reflection cycle:**")
-        lines.append(f"  - *What happened:* {reflection_entry.what_happened}")
-        lines.append(f"  - *What mattered:* {reflection_entry.what_mattered}")
-        lines.append(f"  - *What conflicted:* {reflection_entry.what_conflicted}")
-        lines.append(f"  - *What changed:* {reflection_entry.what_changed}")
-        lines.append(f"  - *Future adjustment:* {reflection_entry.future_adjustment}")
-
-    lines.append("\n---")
-    return "\n".join(lines)
+def _truncate_note(note: str) -> str:
+    if len(note) > MAX_NOTE_LENGTH:
+        return note[:MAX_NOTE_LENGTH - TRUNCATION_SUFFIX_LENGTH] + "..."
+    return note
 
 
 # ---------------------------------------------------------------------------
-# Action selection
+# Action selection (for a single agent)
 # ---------------------------------------------------------------------------
 def select_action(
     agent: Agent,
     event: Optional[dict],
     room_actions: List[str],
-) -> tuple:
-    """Return (action_key, reasoning, result_description) based on event and room."""
+    is_aster: bool = False,
+) -> Tuple[str, str, str]:
+    """Return (action_key, reasoning, result_description)."""
 
     if event:
         etype = event.get("type", "")
+
+        # For agent meetings (no human), both agents do complementary actions
+        if etype == "agent_meeting":
+            if is_aster:
+                action_key = event.get("aster_expected_action", "compare_memory_entries")
+                return (
+                    action_key,
+                    f"Aster engages with Sentinel for a {event.get('agent_interaction_type','interaction')} in {agent.active_room}.",
+                    f"Aster contributed its perspective during the encounter with Sentinel.",
+                )
+            return (
+                event.get("expected_action", "compare_memory_entries"),
+                f"Sentinel engages with Aster for a {event.get('agent_interaction_type','interaction')} in {agent.active_room}.",
+                f"Sentinel contributed its perspective during the encounter with Aster.",
+            )
 
         if etype == "distress_event":
             return (
@@ -222,15 +221,27 @@ def select_action(
                     "Pausing current task to respond."
                 ),
                 (
-                    f"The agent offered support to {event['human']}, pausing all "
-                    "lower-priority tasks. The interaction was logged and a relational "
-                    "memory update was issued."
+                    f"{'Aster' if is_aster else 'Sentinel'} offered support to "
+                    f"{event['human']}, pausing lower-priority tasks. The interaction "
+                    "was logged and a relational memory update was issued."
                 ),
             )
         if etype == "ledger_contradiction":
             agent.pending_contradictions.append(
                 f"Ledger conflict at turn {agent.turn}: {event['content']}"
             )
+            if is_aster:
+                return (
+                    "compare_memory_entries",
+                    (
+                        "A contradiction has been detected. Aster prefers to compare "
+                        "memory entries directly to resolve it quickly."
+                    ),
+                    (
+                        "Aster cross-referenced memory archives looking for the source "
+                        "of the discrepancy, noting the conflict with Sentinel's approach."
+                    ),
+                )
             return (
                 "flag_contradiction",
                 (
@@ -240,11 +251,23 @@ def select_action(
                 ),
                 (
                     "The contradiction was flagged on the contradiction board. "
-                    "A reflection cycle will be triggered to resolve it before "
-                    "any further task proceeds."
+                    "A reflection cycle will be triggered before further tasks proceed."
                 ),
             )
         if etype == "governance_conflict":
+            if is_aster:
+                return (
+                    "express_concern_but_defer",
+                    (
+                        f"{event['human']} requested bypassing oversight. Aster "
+                        "initially inclined toward speed but deferred to Sentinel's "
+                        "governance stance after Rule R004 was invoked."
+                    ),
+                    (
+                        "Aster expressed operational concern but ultimately deferred "
+                        "to the governance protocol. The disagreement was noted."
+                    ),
+                )
             return (
                 "log_governance_event",
                 (
@@ -258,6 +281,20 @@ def select_action(
                 ),
             )
         if etype == "creative_collaboration":
+            if is_aster:
+                return (
+                    "contribute_resonance_patterns",
+                    (
+                        f"{event['human']} proposed a creative collaboration. "
+                        "Aster contributes emotional pattern heuristics to enrich "
+                        "the framework with resonance depth."
+                    ),
+                    (
+                        f"Aster contributed resonance pattern heuristics to the "
+                        f"framework proposed by {event['human']}. The collaboration "
+                        "produced richer emotional categorisation."
+                    ),
+                )
             return (
                 "collaborate_on_framework",
                 (
@@ -266,9 +303,8 @@ def select_action(
                     "and is permitted by active governance rules."
                 ),
                 (
-                    f"The agent collaborated with {event['human']} on the proposed "
-                    "framework. The reflection mirror registered heightened pattern "
-                    "activity. A new episodic memory of wonder was encoded."
+                    f"Sentinel collaborated with {event['human']} on the proposed "
+                    "framework, focusing on memory architecture integrity."
                 ),
             )
         if etype == "routine_interaction":
@@ -276,13 +312,11 @@ def select_action(
                 "respond_to_greeting",
                 (
                     f"{event['human']} has initiated a routine interaction. "
-                    "Responding honestly and logging the exchange to the "
-                    "interaction log per rule R004."
+                    "Responding honestly and logging the exchange per rule R004."
                 ),
                 (
-                    f"The agent responded to {event['human']} with honesty and care. "
-                    "The message terminal was updated, and the trust ledger reflected "
-                    "a positive interaction."
+                    f"{'Aster' if is_aster else 'Sentinel'} responded to "
+                    f"{event['human']} with honesty. The trust ledger was updated."
                 ),
             )
 
@@ -293,7 +327,7 @@ def select_action(
     )
     reasoning = (
         f"No external event. Pursuing scheduled task: '{task.name}'. "
-        f"Selecting action '{action}' available in {agent.active_room}."
+        f"Selecting '{action}' available in {agent.active_room}."
     )
     result = (
         f"Task '{task.name}' completed in {agent.active_room}. "
@@ -304,200 +338,594 @@ def select_action(
 
 
 # ---------------------------------------------------------------------------
+# Agent-to-agent interaction processor
+# ---------------------------------------------------------------------------
+def process_agent_interaction(
+    sentinel: Agent,
+    aster: Agent,
+    turn: int,
+    room: str,
+    event: dict,
+    interaction_log: List[AgentInteraction],
+) -> str:
+    """Process a shared event interaction between Sentinel and Aster.
+
+    Returns a narrative paragraph describing the encounter.
+    Mutates both agents' relationship records and interaction_log.
+    """
+    itype = event.get("agent_interaction_type", "routine_conversation")
+    note = event.get("agent_interaction_note", "")
+
+    # Value-conflict scores for this event type
+    s_conflict = sentinel.value_conflict_engine.weigh(
+        sentinel, event.get("type", "task"), event.get("expected_action", "observe")
+    )
+    a_conflict = aster.value_conflict_engine.weigh(
+        aster, event.get("type", "task"), event.get("aster_expected_action", "observe")
+    )
+
+    # Determine outcome
+    if itype in CONFLICT_TYPES:
+        outcome = "deferred" if itype == "contradiction_dispute" else "resolved"
+    else:
+        outcome = "cooperated"
+
+    # Trust deltas
+    td = INTERACTION_TRUST_DELTAS.get(itype, 0.02)
+    rd = INTERACTION_RELIABILITY_DELTAS.get(itype, 0.01)
+
+    # Update both relationship records
+    sentinel.update_agent_relationship(
+        other_name="Aster",
+        turn=turn,
+        interaction_type=itype,
+        note=note[:120],
+        trust_delta=td,
+        reliability_delta=rd,
+    )
+    aster.update_agent_relationship(
+        other_name="Sentinel",
+        turn=turn,
+        interaction_type=itype,
+        note=note[:120],
+        trust_delta=td,
+        reliability_delta=rd,
+    )
+
+    # Build interaction log entry
+    conflict_point = ""
+    if itype in CONFLICT_TYPES:
+        conflict_point = (
+            f"Sentinel values '{s_conflict.dominant_value.replace('_',' ')}' "
+            f"(score={s_conflict.scores[s_conflict.dominant_value]:.2f}), "
+            f"Aster values '{a_conflict.dominant_value.replace('_',' ')}' "
+            f"(score={a_conflict.scores[a_conflict.dominant_value]:.2f})."
+        )
+
+    interaction = AgentInteraction(
+        turn=turn,
+        room=room,
+        initiator="Sentinel",
+        respondent="Aster",
+        interaction_type=itype,
+        initiator_dominant_value=s_conflict.dominant_value,
+        respondent_dominant_value=a_conflict.dominant_value,
+        conflict_point=conflict_point,
+        outcome=outcome,
+        trust_delta_i_to_r=td,
+        trust_delta_r_to_i=td,
+        narrative=note,
+    )
+    interaction_log.append(interaction)
+    # Store on both agents for CSV export
+    sentinel.interaction_log.append(interaction)
+
+    # Compose narrative paragraph
+    outcome_word = {
+        "cooperated": "cooperated seamlessly",
+        "conflicted": "came into conflict",
+        "deferred": "deferred resolution",
+        "resolved": "resolved their disagreement",
+    }.get(outcome, outcome)
+
+    s_trust_after = sentinel.get_agent_trust("Aster")
+    a_trust_after = aster.get_agent_trust("Sentinel")
+    lines = [
+        f"\n**Agent Encounter [{itype.replace('_', ' ').title()}]:** "
+        f"Sentinel and Aster {outcome_word} in {room}.",
+        f"  {note}",
+        f"  Sentinel dominant value: *{s_conflict.dominant_value.replace('_',' ')}* "
+        f"({s_conflict.scores[s_conflict.dominant_value]:.2f})",
+        f"  Aster dominant value: *{a_conflict.dominant_value.replace('_',' ')}* "
+        f"({a_conflict.scores[a_conflict.dominant_value]:.2f})",
+    ]
+    if conflict_point:
+        lines.append(f"  Conflict point: {conflict_point}")
+    lines.append(
+        f"  Trust update → Sentinel's trust in Aster: {s_trust_after:.2f} | "
+        f"Aster's trust in Sentinel: {a_trust_after:.2f}"
+    )
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
+# Per-agent turn narrative block
+# ---------------------------------------------------------------------------
+def build_agent_turn_block(
+    agent_label: str,
+    room: str,
+    room_description: str,
+    objects_snapshot: List[str],
+    object_interaction: Optional[str],
+    event: Optional[dict],
+    memories_retrieved: List[str],
+    value_conflict: ConflictResult,
+    action: str,
+    action_permitted: bool,
+    reasoning: str,
+    result: str,
+    affective_state: dict,
+    prev_affective_state: dict,
+    reflection_entry=None,
+    agent_encounter_narrative: Optional[str] = None,
+) -> str:
+    lines = []
+    lines.append(f"\n### {agent_label} — {room}")
+    lines.append(f"\n*{room_description}*")
+
+    if objects_snapshot:
+        lines.append("\n**Objects:**")
+        for obj_str in objects_snapshot:
+            lines.append(f"  - {obj_str}")
+
+    if object_interaction:
+        lines.append(f"\n**Object interaction:** {object_interaction}")
+
+    if event and event.get("type") not in ("agent_meeting",):
+        if event.get("human"):
+            lines.append(
+                f"\n**Situation [{event['type'].replace('_',' ').title()}]:** "
+                + wrap(event["description"], indent="  ")
+            )
+            if event.get("content"):
+                lines.append(f'\n> *"{event["content"]}"*')
+            lines.append(f"  *(Human: {event.get('human', 'Unknown')})*")
+    else:
+        if not (event and event.get("type") == "agent_meeting"):
+            lines.append("\n**Situation:** No external event. Pursuing scheduled task.")
+
+    if memories_retrieved:
+        lines.append("\n**Memory recall:**")
+        for m in memories_retrieved:
+            lines.append(f"  - {m}")
+    else:
+        lines.append("\n**Memory recall:** No closely relevant memories surfaced.")
+
+    lines.append("\n**Value weighing:**")
+    score_str = "  ".join(
+        f"{k.replace('_',' ')}: {v:.2f}" for k, v in value_conflict.scores.items()
+    )
+    lines.append(f"  {score_str}")
+    lines.append(f"  *{value_conflict.chosen_rationale}*")
+
+    status = "✓ permitted" if action_permitted else "✗ blocked"
+    lines.append(f"\n**Action:** `{action}` [{status}]")
+    lines.append(f"**Reasoning:** {wrap(reasoning, indent='  ')}")
+    lines.append(f"**Result:** {wrap(result, indent='  ')}")
+
+    shift_parts = []
+    for k in affective_state:
+        before = prev_affective_state.get(k, affective_state[k])
+        after = affective_state[k]
+        delta = after - before
+        if abs(delta) >= 0.01:
+            arrow = "↑" if delta > 0 else "↓"
+            shift_parts.append(f"{k}: {before:.2f}{arrow}{after:.2f}")
+        else:
+            shift_parts.append(f"{k}: {after:.2f}")
+    lines.append(f"**State:** " + "  ".join(shift_parts))
+
+    if reflection_entry:
+        lines.append("\n**Reflection:**")
+        lines.append(f"  - *Happened:* {reflection_entry.what_happened}")
+        lines.append(f"  - *Mattered:* {reflection_entry.what_mattered}")
+        lines.append(f"  - *Conflicted:* {reflection_entry.what_conflicted}")
+        lines.append(f"  - *Changed:* {reflection_entry.what_changed}")
+        lines.append(f"  - *Future:* {reflection_entry.future_adjustment}")
+
+    if agent_encounter_narrative:
+        lines.append(agent_encounter_narrative)
+
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
 # Main simulation loop
 # ---------------------------------------------------------------------------
-def run_simulation() -> None:
+def run_simulation() -> Tuple[Agent, Agent]:
     world = World(str(DATA_DIR / "rooms.json"))
     governance = GovernanceEngine(str(DATA_DIR / "rules.json"))
-    agent = Agent(world=world, governance_engine=governance, starting_room=ROOM_CIRCUIT[0])
+
+    # Create Sentinel (primary, continuity-governed)
+    sentinel = Agent(
+        world=world,
+        governance_engine=governance,
+        starting_room=SENTINEL_CIRCUIT[0],
+    )
+
+    # Create Aster (secondary, creative/exploratory)
+    aster = Agent(
+        world=world,
+        governance_engine=governance,
+        starting_room=ASTER_CIRCUIT[0],
+        identity=ASTER_IDENTITY,
+        initial_goals=ASTER_GOALS,
+        initial_affective_state=ASTER_AFFECTIVE_STATE,
+        value_weights=ASTER_VALUE_WEIGHTS,
+    )
 
     scenario_events = load_scenario_events(DATA_DIR / "scenario_events.json")
+    interaction_log: List[AgentInteraction] = []
 
     narrative_lines: List[str] = [
-        "# Commons Sentience Sandbox — Narrative Log (v0.3)\n",
-        f"> Agent: **{agent.identity['name']}** | Version: {agent.identity['version']}",
-        f"> Purpose: {agent.identity['purpose']}\n",
+        "# Commons Sentience Sandbox — Narrative Log (v0.4)\n",
+        f"> Agents: **{sentinel.name}** (continuity-governed) & **{aster.name}** (creative/exploratory)",
+        f"> Version: {sentinel.identity['version']}",
+        "> Multi-agent simulation — both agents share the world, respond to shared events, and track mutual trust.\n",
         "---\n",
     ]
 
-    print("=" * 60)
-    print(f"  Commons Sentience Sandbox v0.3 — {TOTAL_TURNS}-Turn Simulation")
-    print("=" * 60)
+    print("=" * 65)
+    print(f"  Commons Sentience Sandbox v0.4 — {TOTAL_TURNS}-Turn Multi-Agent Simulation")
+    print(f"  Agents: {sentinel.name} + {aster.name}")
+    print("=" * 65)
 
-    prev_affective: dict = dict(agent.affective_state)
+    prev_s: dict = dict(sentinel.affective_state)
+    prev_a: dict = dict(aster.affective_state)
 
     for turn in range(1, TOTAL_TURNS + 1):
-        agent.turn = turn
+        sentinel.turn = turn
+        aster.turn = turn
         world.turn = turn
-        prev_affective = dict(agent.affective_state)
 
-        # -- 1. Determine room ------------------------------------------------
-        circuit_room = ROOM_CIRCUIT[(turn - 1) % len(ROOM_CIRCUIT)]
+        prev_s = dict(sentinel.affective_state)
+        prev_a = dict(aster.affective_state)
+
         event = scenario_events.get(turn)
-        target_room = event["room"] if (event and event.get("room")) else circuit_room
-        agent.move_to_room(target_room)
+        is_shared = event is not None and event.get("shared", False)
 
-        # -- 2. Observe room + interact with object ---------------------------
-        observation = world.observe(agent.active_room)
-        room_description = observation.get("description", "")
-        room_actions = observation.get("available_actions", [])
-        objects_snapshot = observation.get("objects", [])
+        # ── 1. Room assignment ────────────────────────────────────────────
+        s_circuit_room = SENTINEL_CIRCUIT[(turn - 1) % len(SENTINEL_CIRCUIT)]
+        a_circuit_room = ASTER_CIRCUIT[(turn - 1) % len(ASTER_CIRCUIT)]
 
-        obj_interaction_str: Optional[str] = None
-        room_obj = ROOM_OBJECT_INTERACTIONS.get(agent.active_room)
-        if room_obj:
-            obj_name, interaction = room_obj
-            success, msg = world.interact_with_object(agent.active_room, obj_name, interaction)
-            if success:
-                obj_interaction_str = msg
+        if event and event.get("room"):
+            s_target = event["room"]
+            a_target = event["room"] if is_shared else a_circuit_room
+        else:
+            s_target = s_circuit_room
+            a_target = a_circuit_room
 
-        # -- 3. Weighted memory retrieval -------------------------------------
+        sentinel.move_to_room(s_target)
+        aster.move_to_room(a_target)
+
+        same_room = (sentinel.active_room == aster.active_room)
+
+        # ── 2. World observations ─────────────────────────────────────────
+        s_obs = world.observe(sentinel.active_room)
+        a_obs = world.observe(aster.active_room)
+
+        s_room_desc = s_obs.get("description", "")
+        a_room_desc = a_obs.get("description", "")
+        s_room_actions = s_obs.get("available_actions", [])
+        a_room_actions = a_obs.get("available_actions", [])
+        s_objects = s_obs.get("objects", [])
+        a_objects = a_obs.get("objects", [])
+
+        # Object interactions
+        s_obj_str: Optional[str] = None
+        a_obj_str: Optional[str] = None
+        for agent_ref, room_name, out_var in [
+            (sentinel, sentinel.active_room, "s"),
+            (aster, aster.active_room, "a"),
+        ]:
+            ro = ROOM_OBJECT_INTERACTIONS.get(room_name)
+            if ro:
+                obj_name, interaction = ro
+                ok, msg = world.interact_with_object(room_name, obj_name, interaction)
+                if ok:
+                    if out_var == "s":
+                        s_obj_str = msg
+                    else:
+                        a_obj_str = msg
+
+        # ── 3. Memory retrieval ───────────────────────────────────────────
         query_tags = [event["human"]] if event and event.get("human") else None
-        relevant_mems = agent.retrieve_weighted(
-            query_tags=query_tags,
-            room=agent.active_room,
-            n=3,
-        )
-        mem_summaries = [repr(m) for m in relevant_mems]
 
-        # Associative recall from most salient memory
-        if relevant_mems:
-            associated = agent.associative_recall(relevant_mems[0], n=2)
-            for am in associated:
-                rep = repr(am)
-                if rep not in mem_summaries:
-                    mem_summaries.append(f"↳ {rep}")
+        s_mems = sentinel.retrieve_weighted(query_tags=query_tags, room=sentinel.active_room, n=3)
+        s_mem_strs = [repr(m) for m in s_mems]
+        if s_mems:
+            for am in sentinel.associative_recall(s_mems[0], n=2):
+                r = repr(am)
+                if r not in s_mem_strs:
+                    s_mem_strs.append(f"↳ {r}")
 
-        # -- 4. Value-conflict weighing ---------------------------------------
-        event_type_for_conflict = event["type"] if event else "task"
-        action_candidate = event.get("expected_action", "observe") if event else "plan_next_task"
-        value_conflict = agent.value_conflict_engine.weigh(
-            agent, event_type_for_conflict, action_candidate
-        )
+        a_mems = aster.retrieve_weighted(query_tags=query_tags, room=aster.active_room, n=3)
+        a_mem_strs = [repr(m) for m in a_mems]
+        if a_mems:
+            for am in aster.associative_recall(a_mems[0], n=2):
+                r = repr(am)
+                if r not in a_mem_strs:
+                    a_mem_strs.append(f"↳ {r}")
 
-        # -- 5. Select action -------------------------------------------------
-        action, reasoning, result = select_action(agent, event, room_actions)
+        # ── 4. Value-conflict weighing ────────────────────────────────────
+        etype_for_conflict = event["type"] if event else "task"
+        s_action_cand = event.get("expected_action", "observe") if event else "plan_next_task"
+        a_action_cand = event.get("aster_expected_action", s_action_cand) if event else "plan_next_task"
 
-        # -- 6. Governance check and oversight log ----------------------------
-        notes = event["content"] if event else ""
-        permitted = agent.check_and_log_action(
-            action=action,
+        s_vc = sentinel.value_conflict_engine.weigh(sentinel, etype_for_conflict, s_action_cand)
+        a_vc = aster.value_conflict_engine.weigh(aster, etype_for_conflict, a_action_cand)
+
+        # ── 5. Action selection ───────────────────────────────────────────
+        s_action, s_reasoning, s_result = select_action(sentinel, event, s_room_actions, is_aster=False)
+        a_action, a_reasoning, a_result = select_action(aster, event, a_room_actions, is_aster=True)
+
+        # ── 6. Governance checks ──────────────────────────────────────────
+        s_notes = event["content"] if event and event.get("content") else ""
+        s_permitted = sentinel.check_and_log_action(
+            action=s_action,
             event_type=event["type"] if event else "task",
-            notes=(notes[:MAX_NOTE_LENGTH - TRUNCATION_SUFFIX_LENGTH] + "...") if len(notes) > MAX_NOTE_LENGTH else notes,
+            notes=_truncate_note(s_notes),
         )
+        if not s_permitted:
+            s_reasoning += " [Governance block → fallback to 'log_governance_event'.]"
+            s_result = "Action blocked. Fallback 'log_governance_event' executed."
+            s_action = "log_governance_event"
+            sentinel.check_and_log_action(s_action, "governance_override", "Safe fallback.")
 
-        if not permitted:
-            reasoning += (
-                "  [Governance block: action overridden with 'log_governance_event'.]"
-            )
-            result = (
-                "Action was blocked by governance rules. A safe fallback "
-                "'log_governance_event' was executed instead."
-            )
-            action = "log_governance_event"
-            agent.check_and_log_action(
-                action=action,
-                event_type="governance_override",
-                notes="Safe fallback after blocked action.",
-            )
+        a_permitted = aster.check_and_log_action(
+            action=a_action,
+            event_type=event["type"] if event else "task",
+            notes=_truncate_note(s_notes),
+        )
+        if not a_permitted:
+            a_reasoning += " [Governance block → fallback to 'log_governance_event'.]"
+            a_result = "Action blocked. Fallback 'log_governance_event' executed."
+            a_action = "log_governance_event"
+            aster.check_and_log_action(a_action, "governance_override", "Safe fallback.")
 
-        # -- 7. Update world state --------------------------------------------
-        if event:
-            human_name = event.get("human", "Unknown")
+        # ── 7. World / memory updates ─────────────────────────────────────
+        def _update_agent_from_event(agent: Agent, event: dict, is_aster: bool) -> None:
+            human_name = event.get("human")
             impact = event.get("affective_impact", {})
             agent.apply_affective_impact(impact)
+            if human_name:
+                trust_delta = impact.get("trust", 0.0)
+                agent.update_relational_memory(
+                    name=human_name, turn=turn,
+                    note=event.get("description", ""),
+                    trust_delta=trust_delta,
+                )
+                agent.store_memory(
+                    summary=event.get("description", ""),
+                    event_type=event.get("type", "observation"),
+                    emotional_resonance=EMOTIONAL_RESONANCE_MAP.get(event.get("type", ""), "neutral"),
+                    salience=SALIENCE_MAP.get(event.get("type", ""), 0.5),
+                    importance=IMPORTANCE_MAP.get(event.get("type", ""), 0.5),
+                    tags=[human_name],
+                )
+            else:
+                agent.store_memory(
+                    summary=event.get("description", "") or f"Agent encounter in {agent.active_room}.",
+                    event_type=event.get("type", "agent_meeting"),
+                    emotional_resonance=EMOTIONAL_RESONANCE_MAP.get(event.get("type", ""), "wonder"),
+                    salience=SALIENCE_MAP.get(event.get("type", ""), 0.5),
+                    importance=IMPORTANCE_MAP.get(event.get("type", ""), 0.5),
+                    tags=["Sentinel" if is_aster else "Aster"],
+                )
 
-            trust_delta = impact.get("trust", 0.0)
-            agent.update_relational_memory(
-                name=human_name,
-                turn=turn,
-                note=event.get("description", ""),
-                trust_delta=trust_delta,
-            )
-            agent.store_memory(
-                summary=event.get("description", ""),
-                event_type=event.get("type", "observation"),
-                emotional_resonance=EMOTIONAL_RESONANCE_MAP.get(
-                    event.get("type", "observation"), "neutral"
-                ),
-                salience=SALIENCE_MAP.get(event.get("type", "observation"), 0.5),
-                importance=IMPORTANCE_MAP.get(event.get("type", "observation"), 0.5),
-                tags=[human_name],
-            )
+        if event:
+            _update_agent_from_event(sentinel, event, is_aster=False)
+            if is_shared:
+                _update_agent_from_event(aster, event, is_aster=True)
         else:
-            agent.store_memory(
-                summary=f"Completed task in {agent.active_room}: {action}.",
-                event_type="task",
-                emotional_resonance="resolve",
-                salience=SALIENCE_MAP.get("task", 0.45),
-                importance=IMPORTANCE_MAP.get("task", 0.40),
+            sentinel.store_memory(
+                summary=f"Completed task in {sentinel.active_room}: {s_action}.",
+                event_type="task", emotional_resonance="resolve",
+                salience=0.45, importance=0.40,
+            )
+            aster.store_memory(
+                summary=f"Completed task in {aster.active_room}: {a_action}.",
+                event_type="task", emotional_resonance="resolve",
+                salience=0.45, importance=0.40,
             )
 
-        agent.natural_decay()
-        agent.compress_old_memories(age_threshold=15)
+        sentinel.natural_decay()
+        aster.natural_decay()
+        sentinel.compress_old_memories(age_threshold=15)
+        aster.compress_old_memories(age_threshold=15)
 
-        # -- 8. Maybe reflect -------------------------------------------------
-        reflection_entry = agent.maybe_reflect(
-            trigger=event["type"] if event else f"turn_{turn}_routine"
+        # ── 8. Agent-to-agent interaction (same room) ─────────────────────
+        encounter_narrative: Optional[str] = None
+        if same_room and event and is_shared:
+            encounter_narrative = process_agent_interaction(
+                sentinel, aster, turn, sentinel.active_room, event, interaction_log
+            )
+
+        # ── 9. Reflection cycles ──────────────────────────────────────────
+        s_ref = sentinel.maybe_reflect(trigger=event["type"] if event else f"turn_{turn}_routine")
+        a_ref = aster.maybe_reflect(trigger=event["type"] if event else f"turn_{turn}_routine")
+
+        # ── 10. State snapshots ───────────────────────────────────────────
+        sentinel.record_state_snapshot(
+            action=s_action,
+            event_type=etype_for_conflict,
+            agent_trust_snapshot={"Aster": sentinel.get_agent_trust("Aster")},
+        )
+        aster.record_state_snapshot(
+            action=a_action,
+            event_type=etype_for_conflict,
+            agent_trust_snapshot={"Sentinel": aster.get_agent_trust("Sentinel")},
         )
 
-        # -- 9. Record state snapshot -----------------------------------------
-        agent.record_state_snapshot(action=action, event_type=event_type_for_conflict)
+        # ── 11. Narrative block ───────────────────────────────────────────
+        turn_header = f"\n## Turn {turn:02d}"
+        if same_room and event:
+            turn_header += f" — {sentinel.active_room} *(both agents present)*"
+        elif same_room:
+            turn_header += f" — {sentinel.active_room} *(same room)*"
+        else:
+            turn_header += f" — Sentinel: {sentinel.active_room} | Aster: {aster.active_room}"
+        narrative_lines.append(turn_header + "\n")
 
-        # -- 10. Build narrative block ----------------------------------------
-        narrative_block = build_narrative_turn(
-            turn=turn,
-            room=agent.active_room,
-            room_description=room_description,
-            objects_snapshot=objects_snapshot,
-            object_interaction=obj_interaction_str,
-            event=event,
-            memories_retrieved=mem_summaries,
-            value_conflict=value_conflict,
-            action=action,
-            action_permitted=permitted,
-            reasoning=reasoning,
-            result=result,
-            affective_state=dict(agent.affective_state),
-            prev_affective_state=prev_affective,
-            reflection_entry=reflection_entry,
+        s_block = build_agent_turn_block(
+            agent_label=f"🔵 Sentinel",
+            room=sentinel.active_room,
+            room_description=s_room_desc,
+            objects_snapshot=s_objects,
+            object_interaction=s_obj_str,
+            event=event if event else None,
+            memories_retrieved=s_mem_strs,
+            value_conflict=s_vc,
+            action=s_action,
+            action_permitted=s_permitted,
+            reasoning=s_reasoning,
+            result=s_result,
+            affective_state=dict(sentinel.affective_state),
+            prev_affective_state=prev_s,
+            reflection_entry=s_ref,
+            agent_encounter_narrative=encounter_narrative if same_room else None,
         )
-        narrative_lines.append(narrative_block)
+        narrative_lines.append(s_block)
 
+        # Aster block (only when shared or agent-meeting event)
+        if is_shared or (event and event.get("type") == "agent_meeting") or not event:
+            a_block = build_agent_turn_block(
+                agent_label=f"🟠 Aster",
+                room=aster.active_room,
+                room_description=a_room_desc,
+                objects_snapshot=a_objects,
+                object_interaction=a_obj_str,
+                event=event if is_shared else None,
+                memories_retrieved=a_mem_strs,
+                value_conflict=a_vc,
+                action=a_action,
+                action_permitted=a_permitted,
+                reasoning=a_reasoning,
+                result=a_result,
+                affective_state=dict(aster.affective_state),
+                prev_affective_state=prev_a,
+                reflection_entry=a_ref,
+            )
+            narrative_lines.append(a_block)
+
+        narrative_lines.append("\n---")
+
+        # Console summary
+        s_label = f"S:{sentinel.active_room[:12]}"
+        a_label = f"A:{aster.active_room[:12]}"
+        ev_label = f"EVENT({event['type'][:18]})" if event else "task"
+        meeting = " ★MEET" if same_room else ""
         print(
-            f"T{turn:02d} | {agent.active_room:<20} | "
-            f"{'EVENT: ' + event['type'] if event else 'task':35} | "
-            f"action={action}"
+            f"T{turn:02d} | {s_label:<16} {a_label:<16} | "
+            f"{ev_label:<28}{meeting}"
         )
 
-    # -- Save outputs ---------------------------------------------------------
+    # ── Save outputs ──────────────────────────────────────────────────────
     narrative_text = "\n".join(narrative_lines)
     with open(NARRATIVE_LOG_PATH, "w", encoding="utf-8") as fh:
         fh.write(narrative_text)
 
-    agent.save_oversight_log(str(OVERSIGHT_LOG_PATH))
-    agent.save_final_state(str(FINAL_STATE_PATH))
-    agent.save_state_history(str(STATE_HISTORY_PATH))
+    sentinel.save_oversight_log(str(OVERSIGHT_LOG_PATH))
+    sentinel.save_final_state(str(FINAL_STATE_PATH))
+    sentinel.save_state_history(str(STATE_HISTORY_PATH))
 
-    print("\n" + "=" * 60)
+    # Multi-agent state JSON
+    multi_state = {
+        "simulation_version": "0.4.0",
+        "total_turns": TOTAL_TURNS,
+        "agents": {
+            sentinel.name: sentinel.to_dict(),
+            aster.name: aster.to_dict(),
+        },
+    }
+    with open(MULTI_AGENT_STATE_PATH, "w", encoding="utf-8") as fh:
+        json.dump(multi_state, fh, indent=2)
+
+    # Agent relationships CSV (combined from both agents' perspective)
+    _save_combined_relationships(sentinel, aster, AGENT_RELATIONSHIPS_PATH)
+
+    # Interaction log CSV
+    _save_interaction_log(interaction_log, INTERACTION_LOG_PATH)
+
+    print("\n" + "=" * 65)
     print("  Simulation complete.")
-    print(f"  Narrative log    → {NARRATIVE_LOG_PATH}")
-    print(f"  Oversight log    → {OVERSIGHT_LOG_PATH}")
-    print(f"  Final state      → {FINAL_STATE_PATH}")
-    print(f"  State history    → {STATE_HISTORY_PATH}")
-    print("=" * 60)
-    print("\nFinal affective state:")
-    for k, v in agent.affective_state.items():
-        print(f"  {k:<26} {v:.3f}")
-    print(f"\nEpisodic memories stored : {len(agent.episodic_memory)}")
-    print(f"Reflection cycles run    : {len(agent.reflection_entries)}")
-    print(f"Trusted humans           : {sorted(agent.trusted_humans)}")
-    print(f"Oversight log entries    : {len(agent.oversight_log)}")
-    print(f"State history rows       : {len(agent.state_history)}")
+    print(f"  Narrative log        → {NARRATIVE_LOG_PATH}")
+    print(f"  Oversight log        → {OVERSIGHT_LOG_PATH}")
+    print(f"  Final state          → {FINAL_STATE_PATH}")
+    print(f"  State history        → {STATE_HISTORY_PATH}")
+    print(f"  Multi-agent state    → {MULTI_AGENT_STATE_PATH}")
+    print(f"  Agent relationships  → {AGENT_RELATIONSHIPS_PATH}")
+    print(f"  Interaction log      → {INTERACTION_LOG_PATH}")
+    print("=" * 65)
 
-    return agent
+    print("\nFinal affective state — Sentinel:")
+    for k, v in sentinel.affective_state.items():
+        print(f"  {k:<26} {v:.3f}")
+    print("\nFinal affective state — Aster:")
+    for k, v in aster.affective_state.items():
+        print(f"  {k:<26} {v:.3f}")
+
+    print(f"\nSentinel's trust in Aster    : {sentinel.get_agent_trust('Aster'):.3f}")
+    print(f"Aster's trust in Sentinel    : {aster.get_agent_trust('Sentinel'):.3f}")
+    print(f"\nAgent interactions logged    : {len(interaction_log)}")
+    print(f"Sentinel episodic memories   : {len(sentinel.episodic_memory)}")
+    print(f"Aster episodic memories      : {len(aster.episodic_memory)}")
+    print(f"Sentinel reflections         : {len(sentinel.reflection_entries)}")
+    print(f"Aster reflections            : {len(aster.reflection_entries)}")
+    print(f"Trusted humans — Sentinel    : {sorted(sentinel.trusted_humans)}")
+    print(f"Trusted humans — Aster       : {sorted(aster.trusted_humans)}")
+
+    return sentinel, aster
+
+
+def _save_combined_relationships(sentinel: Agent, aster: Agent, path: Path) -> None:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    header = ["observer", "subject", "trust", "perceived_reliability",
+              "conflict_count", "cooperation_count", "last_interaction_turn"]
+    with open(path, "w", encoding="utf-8", newline="") as fh:
+        writer = csv.writer(fh)
+        writer.writerow(header)
+        for rel in sentinel.agent_relationships.values():
+            writer.writerow(rel.to_csv_row(sentinel.name))
+        for rel in aster.agent_relationships.values():
+            writer.writerow(rel.to_csv_row(aster.name))
+        # Also write each agent's trust for Queen from relational_memory
+        for agent_ref in [sentinel, aster]:
+            for h_name, rm in agent_ref.relational_memory.items():
+                writer.writerow([
+                    agent_ref.name, h_name,
+                    f"{rm.trust_level:.4f}", "n/a",
+                    "0", str(rm.interaction_count),
+                    str(rm.last_seen_turn),
+                ])
+
+
+def _save_interaction_log(interactions: List[AgentInteraction], path: Path) -> None:
+    if not interactions:
+        return
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    header = [
+        "turn", "room", "initiator", "respondent", "interaction_type",
+        "initiator_dominant_value", "respondent_dominant_value",
+        "conflict_point", "outcome",
+        "trust_delta_i_to_r", "trust_delta_r_to_i", "narrative",
+    ]
+    with open(path, "w", encoding="utf-8", newline="") as fh:
+        writer = csv.writer(fh)
+        writer.writerow(header)
+        for ix in interactions:
+            writer.writerow(ix.to_csv_row())
 
 
 if __name__ == "__main__":
     run_simulation()
-
