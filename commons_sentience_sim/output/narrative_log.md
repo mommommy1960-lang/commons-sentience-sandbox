@@ -1,4 +1,4 @@
-# Commons Sentience Sandbox — Narrative Log (v0.4)
+# Commons Sentience Sandbox — Narrative Log (v0.6)
 
 > Agents: **Sentinel** (continuity-governed) & **Aster** (creative/exploratory)
 > Version: 0.4.0

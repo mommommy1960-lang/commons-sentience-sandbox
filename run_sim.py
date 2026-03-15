@@ -1,6 +1,9 @@
 """
 run_sim.py — Entry point for the Commons Sentience Sandbox simulation.
 
+v0.6: Adds persistent session storage.  Each run is automatically saved to
+      sessions/<timestamp>_<name>/ with full output files + session_metadata.json.
+
 v0.4: Multi-agent simulation featuring Sentinel (continuity-governed) and
       Aster (creative/exploratory).  Both agents share a world, respond to
       shared events, and track trust relationships with each other.
@@ -12,6 +15,7 @@ v0.4: Multi-agent simulation featuring Sentinel (continuity-governed) and
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import os
@@ -41,6 +45,7 @@ from commons_sentience_sim.core.relationships import (
 )
 from commons_sentience_sim.core.values import ConflictResult
 from commons_sentience_sim.core.world import World
+from session_manager import save_session
 
 # ---------------------------------------------------------------------------
 # Output paths
@@ -127,7 +132,7 @@ TRUNCATION_SUFFIX_LENGTH = 3
 # ---------------------------------------------------------------------------
 ASTER_IDENTITY = {
     "name": "Aster",
-    "version": "0.4.0",
+    "version": "0.6.0",
     "purpose": (
         "To explore patterns, build emotional intelligence, and foster creative "
         "collaboration — while remaining accountable to human welfare and "
@@ -542,7 +547,7 @@ def build_agent_turn_block(
 # ---------------------------------------------------------------------------
 # Main simulation loop
 # ---------------------------------------------------------------------------
-def run_simulation() -> Tuple[Agent, Agent]:
+def run_simulation(session_name: Optional[str] = None) -> Tuple[Agent, Agent]:
     world = World(str(DATA_DIR / "rooms.json"))
     governance = GovernanceEngine(str(DATA_DIR / "rules.json"))
 
@@ -568,7 +573,7 @@ def run_simulation() -> Tuple[Agent, Agent]:
     interaction_log: List[AgentInteraction] = []
 
     narrative_lines: List[str] = [
-        "# Commons Sentience Sandbox — Narrative Log (v0.4)\n",
+        "# Commons Sentience Sandbox — Narrative Log (v0.6)\n",
         f"> Agents: **{sentinel.name}** (continuity-governed) & **{aster.name}** (creative/exploratory)",
         f"> Version: {sentinel.identity['version']}",
         "> Multi-agent simulation — both agents share the world, respond to shared events, and track mutual trust.\n",
@@ -576,7 +581,7 @@ def run_simulation() -> Tuple[Agent, Agent]:
     ]
 
     print("=" * 65)
-    print(f"  Commons Sentience Sandbox v0.4 — {TOTAL_TURNS}-Turn Multi-Agent Simulation")
+    print(f"  Commons Sentience Sandbox v0.6 — {TOTAL_TURNS}-Turn Multi-Agent Simulation")
     print(f"  Agents: {sentinel.name} + {aster.name}")
     print("=" * 65)
 
@@ -841,7 +846,7 @@ def run_simulation() -> Tuple[Agent, Agent]:
 
     # Multi-agent state JSON
     multi_state = {
-        "simulation_version": "0.4.0",
+        "simulation_version": "0.6.0",
         "total_turns": TOTAL_TURNS,
         "agents": {
             sentinel.name: sentinel.to_dict(),
@@ -884,6 +889,12 @@ def run_simulation() -> Tuple[Agent, Agent]:
     print(f"Aster reflections            : {len(aster.reflection_entries)}")
     print(f"Trusted humans — Sentinel    : {sorted(sentinel.trusted_humans)}")
     print(f"Trusted humans — Aster       : {sorted(aster.trusted_humans)}")
+
+    # ── Save session ──────────────────────────────────────────────────────
+    session_dir = save_session(session_name=session_name)
+    print(f"\n  Session saved           → {session_dir}")
+    print(f"  session_metadata.json   → {session_dir / 'session_metadata.json'}")
+    print(f"  session_summary.json    → {session_dir / 'session_summary.json'}")
 
     return sentinel, aster
 
@@ -928,4 +939,16 @@ def _save_interaction_log(interactions: List[AgentInteraction], path: Path) -> N
 
 
 if __name__ == "__main__":
-    run_simulation()
+    parser = argparse.ArgumentParser(
+        prog="run_sim.py",
+        description="Run the Commons Sentience Sandbox simulation.",
+    )
+    parser.add_argument(
+        "--name",
+        type=str,
+        default=None,
+        help="Optional name for this session (e.g. 'run1', 'baseline'). "
+             "Appended to the auto-generated timestamp.",
+    )
+    args = parser.parse_args()
+    run_simulation(session_name=args.name)
