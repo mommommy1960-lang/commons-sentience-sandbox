@@ -1,5 +1,5 @@
 """
-Commons Sentience Sandbox — Local Research Dashboard (v0.7)
+Commons Sentience Sandbox — Local Research Dashboard (v0.8)
 
 A lightweight Streamlit dashboard for observing simulation state.
 Supports:
@@ -7,6 +7,7 @@ Supports:
   - turn-by-turn replay
   - side-by-side session comparison
   - evaluation scores per session
+  - experiment config browser and aggregate scores
   - auto-refresh
 
 Run with:
@@ -21,6 +22,7 @@ from pathlib import Path
 
 import streamlit as st
 from evaluation import _interpret as eval_interpret
+from experiment_config import list_available_configs
 from session_manager import (
     SESSIONS_DIR,
     compare_sessions,
@@ -164,7 +166,7 @@ st.set_page_config(
 # ---------------------------------------------------------------------------
 
 st.sidebar.title("\U0001f9e0 Commons Sentience Sandbox")
-st.sidebar.markdown("**Local Research Dashboard \u2014 v0.7**")
+st.sidebar.markdown("**Local Research Dashboard \u2014 v0.8**")
 st.sidebar.divider()
 
 # Session selector
@@ -201,7 +203,11 @@ st.sidebar.markdown(
     "```\n"
     "# Simulation\n"
     "python run_sim.py\n"
-    "python run_sim.py --name baseline\n\n"
+    "python run_sim.py --name baseline\n"
+    "python run_sim.py --config high_trust\n\n"
+    "# Batch experiments\n"
+    "python run_experiments.py\n"
+    "python run_experiments.py --configs baseline high_trust\n\n"
     "# Plots\n"
     "python plot_state.py\n\n"
     "# Dashboard\n"
@@ -266,6 +272,7 @@ if not state_data:
     tab_replay,
     tab_compare,
     tab_eval,
+    tab_exp,
 ) = st.tabs(
     [
         "Overview",
@@ -277,6 +284,7 @@ if not state_data:
         "Replay",
         "Compare",
         "Evaluation",
+        "Experiments",
     ]
 )
 
@@ -1144,6 +1152,155 @@ with tab_eval:
                         })
                     if raw_rows:
                         st.table(raw_rows)
+
+# ===========================================================================
+# TAB J — Experiments
+# ===========================================================================
+
+with tab_exp:
+    st.header("Experiments")
+    st.caption(
+        "Browse available experiment configurations, view recent experiment runs, "
+        "and compare evaluation scores across configs. "
+        "Run `python run_experiments.py` or `python run_sim.py --config <name>` to add runs."
+    )
+
+    EXPERIMENTS_RESULTS_DIR = ROOT / "experiments" / "results"
+
+    # ── Section 1: Available Configs ──────────────────────────────────────
+    st.subheader("Available Experiment Configs")
+    available_cfgs = list_available_configs()
+    if available_cfgs:
+        cfg_rows = []
+        for c in available_cfgs:
+            cfg_rows.append({
+                "Name": c["name"],
+                "Description": c["description"],
+                "Turns": c["total_turns"],
+                "Gov. Strictness": c["governance_strictness"],
+                "Coop. Bias": c["cooperation_bias"],
+                "Init. Trust": c["initial_agent_trust"],
+            })
+        st.table(cfg_rows)
+    else:
+        st.info("No experiment configs found in `experiments/`.")
+
+    st.divider()
+
+    # ── Section 2: Recent Experiment Runs ─────────────────────────────────
+    st.subheader("Recent Experiment Sessions")
+    all_sessions = list_sessions()
+    exp_sessions = [
+        s for s in all_sessions
+        if s.get("experiment") and s["experiment"].get("experiment_name")
+    ]
+    if exp_sessions:
+        exp_rows = []
+        for s in exp_sessions[:20]:
+            ev = s.get("evaluation", {})
+            exp = s.get("experiment", {})
+            exp_rows.append({
+                "Session ID": s["session_id"],
+                "Config": exp.get("experiment_name", "\u2014"),
+                "Created": s.get("created_at", "")[:19],
+                "Overall Score": f"{ev.get('overall_score', 0):.1f}" if ev else "\u2014",
+                "Rating": ev.get("overall_interpretation", "").upper() if ev else "\u2014",
+                "Turns": s.get("total_turns", ""),
+                "Version": s.get("simulation_version", ""),
+            })
+        st.table(exp_rows)
+    else:
+        st.info(
+            "No experiment sessions found. "
+            "Run `python run_experiments.py --configs baseline high_trust` to create some."
+        )
+
+    st.divider()
+
+    # ── Section 3: Aggregate Scores Table ─────────────────────────────────
+    st.subheader("Experiment Score Comparison")
+    exp_report_path = EXPERIMENTS_RESULTS_DIR / "experiment_report.json"
+    exp_csv_path = EXPERIMENTS_RESULTS_DIR / "experiment_scores.csv"
+
+    if exp_report_path.exists():
+        try:
+            with open(exp_report_path, encoding="utf-8") as fh:
+                exp_report = json.load(fh)
+
+            best_overall = exp_report.get("best_overall", {})
+            if best_overall:
+                st.success(
+                    f"**Best overall:** {best_overall.get('config', '')} "
+                    f"— {best_overall.get('score', 0):.1f} / 100 "
+                    f"(session `{best_overall.get('session_id', '')}`)"
+                )
+
+            runs = exp_report.get("runs", [])
+            if runs:
+                cats = list(runs[0].get("category_scores", {}).keys())
+                score_rows = []
+                for r in runs:
+                    row = {
+                        "Config": r["config_name"],
+                        "Session": r["session_id"][-14:],
+                        "Overall": f"{r['overall_score']:.1f}",
+                        "Rating": r["overall_interpretation"].upper(),
+                    }
+                    for cat in cats:
+                        row[cat.replace("_", " ").title()] = f"{r['category_scores'].get(cat, 0):.1f}"
+                    score_rows.append(row)
+                st.table(score_rows)
+
+            # Per-category best
+            cat_best = exp_report.get("per_category_best", {})
+            if cat_best:
+                st.markdown("**Best config per category:**")
+                best_rows = []
+                for cat, info in cat_best.items():
+                    best_rows.append({
+                        "Category": cat.replace("_", " ").title(),
+                        "Best Config": info.get("config", ""),
+                        "Score": f"{info.get('score', 0):.1f}",
+                    })
+                st.table(best_rows)
+
+        except (json.JSONDecodeError, OSError):
+            st.warning("Could not parse experiment_report.json.")
+    else:
+        st.info(
+            "No aggregate experiment report found. "
+            "Run `python run_experiments.py` to generate one."
+        )
+
+    if exp_csv_path.exists():
+        st.caption(f"CSV scores: `{exp_csv_path}`")
+
+    st.divider()
+
+    # ── Section 4: Active session experiment metadata ──────────────────────
+    st.subheader("Active Session — Experiment Metadata")
+    if active_session_id:
+        active_meta = load_session_metadata(active_session_id)
+        exp_in_meta = active_meta.get("experiment") or {}
+        eval_in_meta = load_json(active_dir / "evaluation_report.json")
+        exp_in_eval = eval_in_meta.get("experiment") if eval_in_meta else {}
+        combined_exp = exp_in_eval or exp_in_meta
+    else:
+        # Use evaluation_report from output/
+        eval_in_meta = load_json(active_dir / "evaluation_report.json")
+        combined_exp = eval_in_meta.get("experiment", {}) if eval_in_meta else {}
+
+    if combined_exp:
+        exp_meta_rows = []
+        for k, v in combined_exp.items():
+            if isinstance(v, dict):
+                for sk, sv in v.items():
+                    exp_meta_rows.append({"Parameter": f"{k} → {sk}", "Value": str(sv)})
+            else:
+                exp_meta_rows.append({"Parameter": k, "Value": str(v)})
+        st.table(exp_meta_rows)
+    else:
+        st.info("No experiment metadata for the active session.")
 
 # ---------------------------------------------------------------------------
 # Auto-refresh (must be last)

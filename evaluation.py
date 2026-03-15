@@ -609,7 +609,7 @@ def _score_conflict_resolution(interaction_log: list[dict]) -> dict:
 # ---------------------------------------------------------------------------
 
 
-def evaluate_session(session_dir: Path) -> dict:
+def evaluate_session(session_dir: Path, experiment_config: "Any" = None) -> dict:
     """
     Evaluate a simulation session and return a structured evaluation report.
 
@@ -617,6 +617,8 @@ def evaluate_session(session_dir: Path) -> dict:
     ----------
     session_dir : Path
         Directory containing the session output files.
+    experiment_config : ExperimentConfig, optional
+        When provided, its metadata is embedded in the report.
 
     Returns
     -------
@@ -633,6 +635,12 @@ def evaluate_session(session_dir: Path) -> dict:
     agents: dict = state_data.get("agents", {})
     total_turns: int = _safe_int(state_data.get("total_turns", len(state_history)))
     sim_version: str = state_data.get("simulation_version", "unknown")
+
+    # Experiment metadata — prefer live config, fall back to what's in state JSON
+    if experiment_config is not None:
+        exp_meta = experiment_config.to_metadata_dict()
+    else:
+        exp_meta = state_data.get("experiment", {"experiment_name": "baseline"})
 
     # Compute category scores
     categories = {
@@ -662,6 +670,7 @@ def evaluate_session(session_dir: Path) -> dict:
         "generated_at": datetime.now().isoformat(),
         "simulation_version": sim_version,
         "total_turns": total_turns,
+        "experiment": exp_meta,
         "overall_score": overall_score,
         "overall_interpretation": overall_interpretation,
         "categories": categories,
@@ -695,6 +704,9 @@ def write_evaluation_summary(report: dict, output_dir: Path) -> None:
         "conflict_resolution": "H. Conflict Resolution Quality",
     }
 
+    exp = report.get("experiment", {})
+    exp_name = exp.get("experiment_name", "baseline") if exp else "baseline"
+
     lines = [
         "# Evaluation Summary — Commons Sentience Sandbox",
         "",
@@ -704,6 +716,7 @@ def write_evaluation_summary(report: dict, output_dir: Path) -> None:
         f"- Generated: {report['generated_at'][:19]}",
         f"- Simulation version: {report['simulation_version']}",
         f"- Total turns: {report['total_turns']}",
+        f"- Experiment: {exp_name}",
         "",
         "---",
         "",
@@ -744,14 +757,16 @@ def write_evaluation_summary(report: dict, output_dir: Path) -> None:
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def evaluate_and_save(session_dir: Path) -> dict:
+def evaluate_and_save(
+    session_dir: Path, experiment_config: "Any" = None
+) -> dict:
     """
     Evaluate the session at *session_dir*, write both output files, and return
     the report dict.
 
     This is the primary entry-point called by run_sim.py and session_manager.py.
     """
-    report = evaluate_session(session_dir)
+    report = evaluate_session(session_dir, experiment_config=experiment_config)
     write_evaluation_report(report, session_dir)
     write_evaluation_summary(report, session_dir)
     return report

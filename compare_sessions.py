@@ -36,6 +36,28 @@ def _print_comparison(report: dict) -> None:
 
     comp = report.get("comparison", {})
 
+    # Config comparison
+    cfg_cmp = comp.get("config", {})
+    if cfg_cmp:
+        exp_a = cfg_cmp.get("session_a_experiment", "—")
+        exp_b = cfg_cmp.get("session_b_experiment", "—")
+        same = cfg_cmp.get("same_config", False)
+        print(f"\n  EXPERIMENT CONFIGS")
+        print(f"  {'Session A config':<50} {exp_a}")
+        print(f"  {'Session B config':<50} {exp_b}")
+        if same:
+            print(f"  {'Same config':<50} Yes — differences are run-to-run variation")
+        else:
+            print(f"  {'Same config':<50} No — score differences may reflect config changes")
+        param_diffs = cfg_cmp.get("parameter_differences", {})
+        if param_diffs:
+            print(f"\n  Parameter differences:")
+            print(f"  {'Parameter':<50} {'Session A':>12} {'Session B':>12}")
+            print(f"  {'-' * 76}")
+            for k, v in param_diffs.items():
+                label = k.replace("_", " ").title()
+                print(f"  {label:<50} {str(v['session_a']):>12} {str(v['session_b']):>12}")
+
     def _section(title: str, data: dict, fmt: str = ".4f") -> None:
         print(f"\n  {title}")
         print(f"  {'Metric':<50} {'Session A':>10} {'Session B':>10} {'Δ':>10}")
@@ -144,6 +166,33 @@ def _write_markdown(report: dict, output_path: Path) -> None:
         "",
         "---",
         "",
+    ]
+
+    # Config comparison section
+    cfg_cmp = comp.get("config", {})
+    if cfg_cmp:
+        lines += [
+            "## Experiment Configs",
+            "",
+            f"- Session A: **{cfg_cmp.get('session_a_experiment', '—')}**",
+            f"- Session B: **{cfg_cmp.get('session_b_experiment', '—')}**",
+            f"- Same config: {'Yes' if cfg_cmp.get('same_config') else 'No'}",
+        ]
+        param_diffs = cfg_cmp.get("parameter_differences", {})
+        if param_diffs:
+            lines += [
+                "",
+                "**Parameter differences:**",
+                "",
+                "| Parameter | Session A | Session B |",
+                "|---|---|---|",
+            ]
+            for k, v in param_diffs.items():
+                label = k.replace("_", " ").title()
+                lines.append(f"| {label} | {v['session_a']} | {v['session_b']} |")
+        lines += ["", "---", ""]
+
+    lines += [
         "## Final Trust Values",
         "",
     ]

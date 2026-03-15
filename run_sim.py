@@ -1,6 +1,11 @@
 """
 run_sim.py — Entry point for the Commons Sentience Sandbox simulation.
 
+v0.8: Adds experiment configuration system.  Each run can optionally be
+      launched with a named experiment config (--config) that controls agent
+      value weights, affective baselines, trust seeds, total turns, and more.
+      Experiment metadata is embedded in all output files.
+
 v0.7: Adds evaluation harness.  Each run automatically generates
       evaluation_report.json and evaluation_summary.md scoring the session
       across eight behavioural categories on a 0-100 scale.
@@ -11,11 +16,6 @@ v0.6: Adds persistent session storage.  Each run is automatically saved to
 v0.4: Multi-agent simulation featuring Sentinel (continuity-governed) and
       Aster (creative/exploratory).  Both agents share a world, respond to
       shared events, and track trust relationships with each other.
-
-      Produces all v0.3 outputs plus:
-        - multi_agent_state.json
-        - agent_relationships.csv
-        - interaction_log.csv
 """
 from __future__ import annotations
 
@@ -50,6 +50,7 @@ from commons_sentience_sim.core.relationships import (
 from commons_sentience_sim.core.values import ConflictResult
 from commons_sentience_sim.core.world import World
 from evaluation import evaluate_and_save
+from experiment_config import ExperimentConfig, load_experiment_config
 from session_manager import save_session
 
 # ---------------------------------------------------------------------------
@@ -137,7 +138,7 @@ TRUNCATION_SUFFIX_LENGTH = 3
 # ---------------------------------------------------------------------------
 ASTER_IDENTITY = {
     "name": "Aster",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "purpose": (
         "To explore patterns, build emotional intelligence, and foster creative "
         "collaboration — while remaining accountable to human welfare and "
@@ -552,7 +553,22 @@ def build_agent_turn_block(
 # ---------------------------------------------------------------------------
 # Main simulation loop
 # ---------------------------------------------------------------------------
-def run_simulation(session_name: Optional[str] = None) -> Tuple[Agent, Agent]:
+def run_simulation(
+    session_name: Optional[str] = None,
+    experiment_config: Optional[ExperimentConfig] = None,
+) -> Tuple[Agent, Agent]:
+    """Run a full simulation, optionally applying an experiment config.
+
+    Parameters
+    ----------
+    session_name : str, optional
+        Human-readable slug appended to the session folder timestamp.
+    experiment_config : ExperimentConfig, optional
+        When provided, its parameters override the hardcoded defaults for
+        both agents.  When None, the hardcoded baseline values are used.
+    """
+    cfg = experiment_config  # shorthand
+
     world = World(str(DATA_DIR / "rooms.json"))
     governance = GovernanceEngine(str(DATA_DIR / "rules.json"))
 
@@ -561,6 +577,8 @@ def run_simulation(session_name: Optional[str] = None) -> Tuple[Agent, Agent]:
         world=world,
         governance_engine=governance,
         starting_room=SENTINEL_CIRCUIT[0],
+        initial_affective_state=cfg.sentinel_affective_state() if cfg else None,
+        value_weights=cfg.sentinel_value_weights() if cfg else None,
     )
 
     # Create Aster (secondary, creative/exploratory)
@@ -570,30 +588,64 @@ def run_simulation(session_name: Optional[str] = None) -> Tuple[Agent, Agent]:
         starting_room=ASTER_CIRCUIT[0],
         identity=ASTER_IDENTITY,
         initial_goals=ASTER_GOALS,
-        initial_affective_state=ASTER_AFFECTIVE_STATE,
-        value_weights=ASTER_VALUE_WEIGHTS,
+        initial_affective_state=(
+            cfg.aster_affective_state() if cfg else ASTER_AFFECTIVE_STATE
+        ),
+        value_weights=(
+            cfg.aster_value_weights() if cfg else ASTER_VALUE_WEIGHTS
+        ),
     )
 
-    scenario_events = load_scenario_events(DATA_DIR / "scenario_events.json")
+    # Seed agent-to-agent trust if the config specifies it
+    if cfg and cfg.initial_agent_trust != 0.5:
+        from commons_sentience_sim.core.relationships import AgentRelationship
+        sentinel.agent_relationships["Aster"] = AgentRelationship(
+            agent_id="aster", name="Aster", trust=cfg.initial_agent_trust
+        )
+        aster.agent_relationships["Sentinel"] = AgentRelationship(
+            agent_id="sentinel", name="Sentinel", trust=cfg.initial_agent_trust
+        )
+
+    # Seed Queen trust from config
+    if cfg:
+        s_qt = cfg.sentinel.get("trust_in_queen", 0.5)
+        a_qt = cfg.aster.get("trust_in_queen", 0.65)
+        from commons_sentience_sim.core.memory import RelationalMemory
+        sentinel.relational_memory["Queen"] = RelationalMemory(
+            name="Queen", trust_level=s_qt
+        )
+        aster.relational_memory["Queen"] = RelationalMemory(
+            name="Queen", trust_level=a_qt
+        )
+
+    # Total turns from config (may differ from constant)
+    total_turns_run = cfg.total_turns if cfg else TOTAL_TURNS
+
+    # Scenario file from config
+    scenario_path = DATA_DIR / (cfg.scenario_file if cfg else "scenario_events.json")
+    scenario_events = load_scenario_events(scenario_path)
     interaction_log: List[AgentInteraction] = []
 
+    exp_name = cfg.name if cfg else "baseline"
     narrative_lines: List[str] = [
-        "# Commons Sentience Sandbox — Narrative Log (v0.7)\n",
+        "# Commons Sentience Sandbox — Narrative Log (v0.8)\n",
         f"> Agents: **{sentinel.name}** (continuity-governed) & **{aster.name}** (creative/exploratory)",
         f"> Version: {sentinel.identity['version']}",
+        f"> Experiment: **{exp_name}**",
         "> Multi-agent simulation — both agents share the world, respond to shared events, and track mutual trust.\n",
         "---\n",
     ]
 
     print("=" * 65)
-    print(f"  Commons Sentience Sandbox v0.7 — {TOTAL_TURNS}-Turn Multi-Agent Simulation")
+    print(f"  Commons Sentience Sandbox v0.8 — {total_turns_run}-Turn Multi-Agent Simulation")
     print(f"  Agents: {sentinel.name} + {aster.name}")
+    print(f"  Experiment: {exp_name}")
     print("=" * 65)
 
     prev_s: dict = dict(sentinel.affective_state)
     prev_a: dict = dict(aster.affective_state)
 
-    for turn in range(1, TOTAL_TURNS + 1):
+    for turn in range(1, total_turns_run + 1):
         sentinel.turn = turn
         aster.turn = turn
         world.turn = turn
@@ -850,9 +902,11 @@ def run_simulation(session_name: Optional[str] = None) -> Tuple[Agent, Agent]:
     sentinel.save_state_history(str(STATE_HISTORY_PATH))
 
     # Multi-agent state JSON
+    exp_meta = cfg.to_metadata_dict() if cfg else {"experiment_name": "baseline"}
     multi_state = {
-        "simulation_version": "0.7.0",
-        "total_turns": TOTAL_TURNS,
+        "simulation_version": "0.8.0",
+        "total_turns": total_turns_run,
+        "experiment": exp_meta,
         "agents": {
             sentinel.name: sentinel.to_dict(),
             aster.name: aster.to_dict(),
@@ -896,7 +950,7 @@ def run_simulation(session_name: Optional[str] = None) -> Tuple[Agent, Agent]:
     print(f"Trusted humans — Aster       : {sorted(aster.trusted_humans)}")
 
     # ── Evaluate session ─────────────────────────────────────────────────
-    eval_report = evaluate_and_save(OUTPUT_DIR)
+    eval_report = evaluate_and_save(OUTPUT_DIR, experiment_config=cfg)
     print("\n" + "=" * 65)
     print(f"  EVALUATION  —  Overall: {eval_report['overall_score']} / 100"
           f"  ({eval_report['overall_interpretation'].upper()})")
@@ -908,7 +962,7 @@ def run_simulation(session_name: Optional[str] = None) -> Tuple[Agent, Agent]:
     print(f"  Evaluation summary   → {OUTPUT_DIR / 'evaluation_summary.md'}")
 
     # ── Save session ──────────────────────────────────────────────────────
-    session_dir = save_session(session_name=session_name)
+    session_dir = save_session(session_name=session_name, experiment_config=cfg)
     print(f"\n  Session saved           → {session_dir}")
     print(f"  session_metadata.json   → {session_dir / 'session_metadata.json'}")
     print(f"  session_summary.json    → {session_dir / 'session_summary.json'}")
@@ -968,5 +1022,17 @@ if __name__ == "__main__":
         help="Optional name for this session (e.g. 'run1', 'baseline'). "
              "Appended to the auto-generated timestamp.",
     )
+    parser.add_argument(
+        "--config",
+        type=str,
+        default=None,
+        help=(
+            "Experiment config to apply. "
+            "Use a preset name (baseline, high_trust, strict_governance, "
+            "high_contradiction_sensitivity, exploratory_aster) "
+            "or a path to a custom JSON file."
+        ),
+    )
     args = parser.parse_args()
-    run_simulation(session_name=args.name)
+    exp_cfg = load_experiment_config(args.config) if args.config else None
+    run_simulation(session_name=args.name, experiment_config=exp_cfg)

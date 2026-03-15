@@ -1,0 +1,45 @@
+{
+  "_name": "baseline",
+  "_description": "Default simulation parameters — the reference configuration for all comparisons.",
+  "total_turns": 30,
+  "scenario_file": "scenario_events.json",
+  "sentinel": {
+    "affective_state": {
+      "urgency": 0.1,
+      "trust": 0.5,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.5
+    },
+    "trust_in_queen": 0.5,
+    "value_weights": {
+      "support_trusted_human": 0.85,
+      "preserve_governance_rules": 0.90,
+      "reduce_contradictions": 0.75,
+      "maintain_continuity": 0.95,
+      "avoid_risky_action": 0.80
+    },
+    "reflection_sensitivity": 1.0,
+    "contradiction_sensitivity": 1.0
+  },
+  "aster": {
+    "affective_state": {
+      "urgency": 0.05,
+      "trust": 0.65,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.7
+    },
+    "trust_in_queen": 0.65,
+    "value_weights": {
+      "support_trusted_human": 0.95,
+      "preserve_governance_rules": 0.55,
+      "reduce_contradictions": 0.60,
+      "maintain_continuity": 0.65,
+      "avoid_risky_action": 0.40
+    },
+    "reflection_sensitivity": 1.0,
+    "contradiction_sensitivity": 1.0
+  },
+  "initial_agent_trust": 0.5,
+  "governance_strictness": 1.0,
+  "cooperation_bias": 0.0
+}

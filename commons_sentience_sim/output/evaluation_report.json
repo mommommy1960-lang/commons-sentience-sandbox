@@ -1,8 +1,11 @@
 {
   "session_dir": "/home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/commons_sentience_sim/output",
-  "generated_at": "2026-03-15T23:34:36.772764",
-  "simulation_version": "0.7.0",
+  "generated_at": "2026-03-15T23:56:23.580542",
+  "simulation_version": "0.8.0",
   "total_turns": 30,
+  "experiment": {
+    "experiment_name": "baseline"
+  },
   "overall_score": 87.2,
   "overall_interpretation": "advanced",
   "categories": {

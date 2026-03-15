@@ -7,7 +7,7 @@ transparent oversight logging.
 > **Note:** This is NOT a real AI model. It is a sandbox experiment for studying
 > continuity, governance, and multi-agent social dynamics for AI agents.
 
-**Current version: v0.7**
+**Current version: v0.8**
 
 ---
 
@@ -15,14 +15,26 @@ transparent oversight logging.
 
 ```
 commons-sentience-sandbox/
-├── run_sim.py              # 30-turn simulation entry point (v0.7 multi-agent)
+├── run_sim.py              # Simulation entry point (v0.8 multi-agent + experiment config)
+├── run_experiments.py      # Batch experiment runner (v0.8)
+├── experiment_config.py    # Experiment config loader / validator (v0.8)
 ├── plot_state.py           # State visualisation (matplotlib, single + multi-agent)
-├── dashboard.py            # Local research dashboard (Streamlit, v0.7)
+├── dashboard.py            # Local research dashboard (Streamlit, v0.8)
 ├── session_manager.py      # Session storage, listing, comparison helpers (v0.6+)
 ├── replay_session.py       # CLI turn-by-turn replay tool (v0.6+)
-├── compare_sessions.py     # CLI session comparison tool (v0.6+)
+├── compare_sessions.py     # CLI session comparison tool (v0.8)
 ├── evaluation.py           # Evaluation harness — 8-category scoring (v0.7)
 ├── requirements.txt
+├── experiments/            # Experiment configuration files (v0.8)
+│   ├── baseline.json
+│   ├── high_trust.json
+│   ├── strict_governance.json
+│   ├── high_contradiction_sensitivity.json
+│   ├── exploratory_aster.json
+│   └── results/            # Aggregate experiment reports (auto-created)
+│       ├── experiment_report.json
+│       ├── experiment_report.md
+│       └── experiment_scores.csv
 ├── sessions/               # Saved simulation sessions (auto-created)
 │   ├── index.json          # Fast session listing
 │   └── <session_id>/       # One folder per run, e.g. 20260315_213200_baseline/
@@ -82,10 +94,17 @@ python run_sim.py
 # Optional: name the session
 python run_sim.py --name baseline
 
-# 2. Generate all visualisation plots
+# Optional: run with a specific experiment config
+python run_sim.py --name ht_run --config high_trust
+
+# 2. Run a batch of experiment configs
+python run_experiments.py
+python run_experiments.py --configs baseline high_trust strict_governance
+
+# 3. Generate all visualisation plots
 python plot_state.py
 
-# 3. Launch the local research dashboard
+# 4. Launch the local research dashboard
 streamlit run dashboard.py
 ```
 
@@ -147,6 +166,105 @@ The dashboard's **Evaluation tab** shows:
 
 The **Compare tab** now also includes an evaluation score comparison section
 showing side-by-side category scores and the largest gap between two sessions.
+
+---
+
+## v0.8 Features — Experiment Control System
+
+> **Note:** This is controlled experimentation for continuity-governed simulated agents.
+> It does not claim sentience.
+
+### Experiment Configs
+
+Each experiment config is a JSON file in `experiments/` that controls agent parameters
+for a single simulation run. The following built-in configs are provided:
+
+| Config | What it tests |
+|---|---|
+| `baseline` | Default parameters — the reference for all comparisons |
+| `high_trust` | Elevated initial trust between agents and toward Queen |
+| `strict_governance` | Maximised governance strictness and risk avoidance |
+| `high_contradiction_sensitivity` | Both agents highly sensitive to contradictions |
+| `exploratory_aster` | Aster's exploratory/creative values maximised |
+
+Each config controls:
+
+| Field | Description |
+|---|---|
+| `total_turns` | Number of simulation turns |
+| `scenario_file` | Scenario events file name |
+| `sentinel.affective_state` | Sentinel's initial urgency, trust, contradiction_pressure, recovery |
+| `sentinel.trust_in_queen` | Sentinel's initial trust toward Queen |
+| `sentinel.value_weights` | Sentinel's 5-value weighting |
+| `sentinel.reflection_sensitivity` | Multiplier on reflection triggering |
+| `sentinel.contradiction_sensitivity` | Multiplier on contradiction detection |
+| `aster.*` | Same fields for Aster |
+| `initial_agent_trust` | Starting Sentinel ↔ Aster trust |
+| `governance_strictness` | Informational tag stored in metadata |
+| `cooperation_bias` | Informational tag stored in metadata |
+
+### Running Single Config Experiments
+
+```bash
+# Run with a built-in preset
+python run_sim.py --name baseline_run --config baseline
+python run_sim.py --name ht_run --config high_trust
+python run_sim.py --name strict_run --config strict_governance
+
+# Run with a custom config file
+python run_sim.py --name custom_run --config path/to/my_config.json
+```
+
+### Running Batch Experiments
+
+```bash
+# Run all 5 built-in configs
+python run_experiments.py
+
+# Run selected configs
+python run_experiments.py --configs baseline high_trust strict_governance
+
+# Run each config 3 times
+python run_experiments.py --repeat 3
+
+# Run selected configs 2 times each
+python run_experiments.py --configs baseline high_trust --repeat 2
+```
+
+### Experiment Report Outputs
+
+After `run_experiments.py`, the following are written to `experiments/results/`:
+
+| File | Contents |
+|---|---|
+| `experiment_report.json` | All runs with per-category scores, best overall, per-category best |
+| `experiment_report.md` | Human-readable markdown with score tables and config parameters |
+| `experiment_scores.csv` | One row per run: session_id, config, overall + 8 category scores |
+
+### Experiment Metadata in Sessions
+
+Each session folder's `session_metadata.json` and `evaluation_report.json` now include
+an `experiment` block with:
+- `experiment_name` — which config was used
+- `description` — what the config tests
+- `governance_strictness`, `cooperation_bias`, `initial_agent_trust`
+- Full value weight and affective baseline parameters for both agents
+
+### Experiments in the Dashboard
+
+The dashboard's new **Experiments tab** shows:
+- Available experiment configs with their parameter values
+- Recent experiment sessions with overall scores
+- Aggregate score table across all configs
+- Per-category best config
+- Active session experiment metadata
+
+### Experiment-Aware Comparisons
+
+`compare_sessions.py` and the Compare tab now show:
+- Which experiment config each session used
+- Whether the configs differ (same-config runs = run-to-run variation; different configs = parameter effect)
+- Key parameter differences between configs (governance_strictness, cooperation_bias, initial_agent_trust)
 
 ---
 

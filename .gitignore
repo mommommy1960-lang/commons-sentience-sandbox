@@ -38,3 +38,8 @@ sessions/*/
 sessions/index.json
 sessions/comparison_*.json
 sessions/comparison_*.md
+
+# Experiment results — generated data
+experiments/results/
+experiments/results/*
+!experiments/results/.gitkeep

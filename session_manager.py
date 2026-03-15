@@ -147,6 +147,9 @@ def _update_sessions_index(session_id: str, metadata: dict) -> None:
         "agent_names": metadata["agent_names"],
         "summary": metadata["summary"],
     }
+    # Include experiment metadata if present
+    if "experiment" in metadata and metadata["experiment"]:
+        entry["experiment"] = metadata["experiment"]
     # Include evaluation scores if present
     if "evaluation" in metadata:
         entry["evaluation"] = metadata["evaluation"]
@@ -169,6 +172,7 @@ def _update_sessions_index(session_id: str, metadata: dict) -> None:
 def save_session(
     session_name: Optional[str] = None,
     source_dir: Optional[Path] = None,
+    experiment_config: Optional[object] = None,
 ) -> Path:
     """
     Copy all output files into a timestamped session folder under sessions/.
@@ -180,6 +184,8 @@ def save_session(
         Defaults to "default".
     source_dir : Path, optional
         Directory to copy outputs from.  Defaults to OUTPUT_DIR.
+    experiment_config : ExperimentConfig, optional
+        When provided, its metadata dict is stored in session_metadata.json.
 
     Returns
     -------
@@ -207,7 +213,9 @@ def save_session(
     eval_report_path = session_dir / "evaluation_report.json"
     if not eval_report_path.exists():
         try:
-            eval_report = evaluate_and_save(session_dir)
+            eval_report = evaluate_and_save(
+                session_dir, experiment_config=experiment_config
+            )
         except Exception:
             eval_report = {}
     else:
@@ -229,6 +237,27 @@ def save_session(
             },
         }
 
+    # Experiment metadata for the index
+    exp_meta_compact: dict = {}
+    if experiment_config is not None:
+        try:
+            exp_meta_compact = {
+                "experiment_name": experiment_config.name,
+                "description": experiment_config.description,
+                "governance_strictness": experiment_config.governance_strictness,
+                "cooperation_bias": experiment_config.cooperation_bias,
+                "initial_agent_trust": experiment_config.initial_agent_trust,
+            }
+        except AttributeError:
+            pass
+    else:
+        # Fall back to whatever is stored in the state JSON
+        exp_in_state = state_data.get("experiment", {})
+        if exp_in_state:
+            exp_meta_compact = {
+                "experiment_name": exp_in_state.get("experiment_name", "baseline"),
+            }
+
     metadata = {
         "session_id": session_id,
         "created_at": datetime.now().isoformat(),
@@ -236,6 +265,7 @@ def save_session(
         "total_turns": state_data.get("total_turns", 0),
         "agent_names": list(state_data.get("agents", {}).keys()),
         "scenario_events_file": "scenario_events.json",
+        "experiment": exp_meta_compact,
         "summary": _compute_summary(session_dir, state_data, interaction_log),
         "evaluation": eval_scores,
     }
@@ -391,6 +421,28 @@ def compare_sessions(session_a_id: str, session_b_id: str) -> dict:
                     "delta"
                 ]
 
+    # Experiment config comparison
+    exp_a = meta_a.get("experiment", {})
+    exp_b = meta_b.get("experiment", {})
+    config_comparison: dict = {
+        "session_a_experiment": exp_a.get("experiment_name", "baseline") if exp_a else "baseline",
+        "session_b_experiment": exp_b.get("experiment_name", "baseline") if exp_b else "baseline",
+        "same_config": (
+            exp_a.get("experiment_name") == exp_b.get("experiment_name")
+            if exp_a and exp_b else False
+        ),
+    }
+    # Note key parameter differences
+    param_diffs = {}
+    if exp_a and exp_b:
+        for key in ("governance_strictness", "cooperation_bias", "initial_agent_trust"):
+            va = exp_a.get(key)
+            vb = exp_b.get(key)
+            if va is not None and vb is not None and va != vb:
+                param_diffs[key] = {"session_a": va, "session_b": vb}
+    if param_diffs:
+        config_comparison["parameter_differences"] = param_diffs
+
     report = {
         "session_a": session_a_id,
         "session_b": session_b_id,
@@ -398,6 +450,7 @@ def compare_sessions(session_a_id: str, session_b_id: str) -> dict:
         "session_a_version": meta_a.get("simulation_version", "unknown"),
         "session_b_version": meta_b.get("simulation_version", "unknown"),
         "comparison": {
+            "config": config_comparison,
             "trust_final": trust_final,
             "reflections": reflections,
             "interactions": interactions,
