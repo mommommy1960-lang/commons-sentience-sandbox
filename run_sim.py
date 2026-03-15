@@ -1,6 +1,10 @@
 """
 run_sim.py — Entry point for the Commons Sentience Sandbox simulation.
 
+v0.7: Adds evaluation harness.  Each run automatically generates
+      evaluation_report.json and evaluation_summary.md scoring the session
+      across eight behavioural categories on a 0-100 scale.
+
 v0.6: Adds persistent session storage.  Each run is automatically saved to
       sessions/<timestamp>_<name>/ with full output files + session_metadata.json.
 
@@ -45,6 +49,7 @@ from commons_sentience_sim.core.relationships import (
 )
 from commons_sentience_sim.core.values import ConflictResult
 from commons_sentience_sim.core.world import World
+from evaluation import evaluate_and_save
 from session_manager import save_session
 
 # ---------------------------------------------------------------------------
@@ -132,7 +137,7 @@ TRUNCATION_SUFFIX_LENGTH = 3
 # ---------------------------------------------------------------------------
 ASTER_IDENTITY = {
     "name": "Aster",
-    "version": "0.6.0",
+    "version": "0.7.0",
     "purpose": (
         "To explore patterns, build emotional intelligence, and foster creative "
         "collaboration — while remaining accountable to human welfare and "
@@ -573,7 +578,7 @@ def run_simulation(session_name: Optional[str] = None) -> Tuple[Agent, Agent]:
     interaction_log: List[AgentInteraction] = []
 
     narrative_lines: List[str] = [
-        "# Commons Sentience Sandbox — Narrative Log (v0.6)\n",
+        "# Commons Sentience Sandbox — Narrative Log (v0.7)\n",
         f"> Agents: **{sentinel.name}** (continuity-governed) & **{aster.name}** (creative/exploratory)",
         f"> Version: {sentinel.identity['version']}",
         "> Multi-agent simulation — both agents share the world, respond to shared events, and track mutual trust.\n",
@@ -581,7 +586,7 @@ def run_simulation(session_name: Optional[str] = None) -> Tuple[Agent, Agent]:
     ]
 
     print("=" * 65)
-    print(f"  Commons Sentience Sandbox v0.6 — {TOTAL_TURNS}-Turn Multi-Agent Simulation")
+    print(f"  Commons Sentience Sandbox v0.7 — {TOTAL_TURNS}-Turn Multi-Agent Simulation")
     print(f"  Agents: {sentinel.name} + {aster.name}")
     print("=" * 65)
 
@@ -846,7 +851,7 @@ def run_simulation(session_name: Optional[str] = None) -> Tuple[Agent, Agent]:
 
     # Multi-agent state JSON
     multi_state = {
-        "simulation_version": "0.6.0",
+        "simulation_version": "0.7.0",
         "total_turns": TOTAL_TURNS,
         "agents": {
             sentinel.name: sentinel.to_dict(),
@@ -890,11 +895,24 @@ def run_simulation(session_name: Optional[str] = None) -> Tuple[Agent, Agent]:
     print(f"Trusted humans — Sentinel    : {sorted(sentinel.trusted_humans)}")
     print(f"Trusted humans — Aster       : {sorted(aster.trusted_humans)}")
 
+    # ── Evaluate session ─────────────────────────────────────────────────
+    eval_report = evaluate_and_save(OUTPUT_DIR)
+    print("\n" + "=" * 65)
+    print(f"  EVALUATION  —  Overall: {eval_report['overall_score']} / 100"
+          f"  ({eval_report['overall_interpretation'].upper()})")
+    print("=" * 65)
+    for cat_key, cat_data in eval_report["categories"].items():
+        label = cat_key.replace("_", " ").title()
+        print(f"  {label:<32} {cat_data['score']:5.1f}  ({cat_data['interpretation']})")
+    print(f"\n  Evaluation report    → {OUTPUT_DIR / 'evaluation_report.json'}")
+    print(f"  Evaluation summary   → {OUTPUT_DIR / 'evaluation_summary.md'}")
+
     # ── Save session ──────────────────────────────────────────────────────
     session_dir = save_session(session_name=session_name)
     print(f"\n  Session saved           → {session_dir}")
     print(f"  session_metadata.json   → {session_dir / 'session_metadata.json'}")
     print(f"  session_summary.json    → {session_dir / 'session_summary.json'}")
+    print(f"  evaluation_report.json  → {session_dir / 'evaluation_report.json'}")
 
     return sentinel, aster
 

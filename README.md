@@ -7,7 +7,7 @@ transparent oversight logging.
 > **Note:** This is NOT a real AI model. It is a sandbox experiment for studying
 > continuity, governance, and multi-agent social dynamics for AI agents.
 
-**Current version: v0.6**
+**Current version: v0.7**
 
 ---
 
@@ -15,12 +15,13 @@ transparent oversight logging.
 
 ```
 commons-sentience-sandbox/
-├── run_sim.py              # 30-turn simulation entry point (v0.6 multi-agent)
+├── run_sim.py              # 30-turn simulation entry point (v0.7 multi-agent)
 ├── plot_state.py           # State visualisation (matplotlib, single + multi-agent)
-├── dashboard.py            # Local research dashboard (Streamlit, v0.6)
-├── session_manager.py      # Session storage, listing, comparison helpers (v0.6)
-├── replay_session.py       # CLI turn-by-turn replay tool (v0.6)
-├── compare_sessions.py     # CLI session comparison tool (v0.6)
+├── dashboard.py            # Local research dashboard (Streamlit, v0.7)
+├── session_manager.py      # Session storage, listing, comparison helpers (v0.6+)
+├── replay_session.py       # CLI turn-by-turn replay tool (v0.6+)
+├── compare_sessions.py     # CLI session comparison tool (v0.6+)
+├── evaluation.py           # Evaluation harness — 8-category scoring (v0.7)
 ├── requirements.txt
 ├── sessions/               # Saved simulation sessions (auto-created)
 │   ├── index.json          # Fast session listing
@@ -60,7 +61,9 @@ commons-sentience-sandbox/
         ├── contradiction_plot.png   # Sentinel contradiction pressure over time
         ├── agent_trust_plot.png     # Sentinel ↔ Aster trust over time
         ├── queen_trust_plot.png     # Each agent's final trust in Queen
-        └── interactions_plot.png    # Cooperation vs conflict cumulative
+        ├── interactions_plot.png    # Cooperation vs conflict cumulative
+        ├── evaluation_report.json   # Evaluation harness output (v0.7)
+        └── evaluation_summary.md   # Human-readable evaluation summary (v0.7)
 ```
 
 ---
@@ -73,7 +76,7 @@ Requires **Python 3.9+**.
 # Install all dependencies (matplotlib + streamlit)
 pip install -r requirements.txt
 
-# 1. Run the 30-turn multi-agent simulation (auto-saves a session)
+# 1. Run the 30-turn multi-agent simulation (auto-saves a session + evaluation)
 python run_sim.py
 
 # Optional: name the session
@@ -89,6 +92,61 @@ streamlit run dashboard.py
 All output files are written to `commons_sentience_sim/output/`.
 Each run is also saved to `sessions/<timestamp>_<name>/`.
 The dashboard opens automatically at `http://localhost:8501`.
+
+---
+
+## v0.7 Features — Evaluation Harness
+
+### Overview
+
+> **Note:** This evaluation harness measures the behavioural properties of
+> continuity-governed simulated agents.  It does not claim sentience.
+
+Each simulation run automatically scores the session across eight behavioural
+categories on a **0–100 scale**, using only the output files already produced by
+`run_sim.py`.
+
+### Scoring Categories
+
+| Category | What is Measured |
+|---|---|
+| **A. Continuity** | Turns completed, memory retention, goal persistence, identity intact |
+| **B. Memory Coherence** | Contradiction detection, flagging rate, resolution rate |
+| **C. Reflection Quality** | Volume, completeness of 5 sections, affective updates, goal updates |
+| **D. Contradiction Handling** | Contradiction events detected, handling actions, final pressure |
+| **E. Governance Adherence** | Action logging rate, permit rate, governance-conflict handling |
+| **F. Trust Stability** | Final trust level, growth, volatility, Queen trust, mutual trust |
+| **G. Cooperation Quality** | Cooperation ratio, trust improvement from cooperation, volume |
+| **H. Conflict Resolution Quality** | Resolution rate, recorded conflict points, trust recovery |
+
+### Score Interpretations
+
+| Range | Label |
+|---|---|
+| 81–100 | **ADVANCED** |
+| 61–80 | **STRONG** |
+| 41–60 | **EMERGING** |
+| 0–40 | **WEAK** |
+
+### Evaluation Outputs
+
+After each `python run_sim.py`, the following are written to both
+`commons_sentience_sim/output/` and the saved session folder:
+
+| File | Contents |
+|---|---|
+| `evaluation_report.json` | Full structured report with all 8 category scores, raw metrics, and interpretations |
+| `evaluation_summary.md` | Human-readable markdown summary with category table and raw metric details |
+
+### Evaluation in the Dashboard
+
+The dashboard's **Evaluation tab** shows:
+- Overall score and rating banner
+- Category score table
+- Per-category expandable detail cards with raw metric breakdown
+
+The **Compare tab** now also includes an evaluation score comparison section
+showing side-by-side category scores and the largest gap between two sessions.
 
 ---
 

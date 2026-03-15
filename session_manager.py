@@ -6,6 +6,7 @@ Provides helpers to:
 - List all saved sessions
 - Load a session's output directory
 - Compute session summary metrics
+- Run the evaluation harness and store evaluation outputs
 - Compare two sessions and generate comparison_report.json / markdown
 """
 from __future__ import annotations
@@ -17,6 +18,8 @@ import shutil
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
+
+from evaluation import evaluate_and_save, _load_json as _eval_load_json  # noqa: F401
 
 ROOT = Path(__file__).parent
 SESSIONS_DIR = ROOT / "sessions"
@@ -37,6 +40,8 @@ OUTPUT_FILES = [
     "agent_trust_plot.png",
     "queen_trust_plot.png",
     "interactions_plot.png",
+    "evaluation_report.json",
+    "evaluation_summary.md",
 ]
 
 
@@ -134,16 +139,19 @@ def _update_sessions_index(session_id: str, metadata: dict) -> None:
     ]
 
     # Lightweight entry (no full episodic memory, etc.)
-    index["sessions"].append(
-        {
-            "session_id": session_id,
-            "created_at": metadata["created_at"],
-            "simulation_version": metadata["simulation_version"],
-            "total_turns": metadata["total_turns"],
-            "agent_names": metadata["agent_names"],
-            "summary": metadata["summary"],
-        }
-    )
+    entry = {
+        "session_id": session_id,
+        "created_at": metadata["created_at"],
+        "simulation_version": metadata["simulation_version"],
+        "total_turns": metadata["total_turns"],
+        "agent_names": metadata["agent_names"],
+        "summary": metadata["summary"],
+    }
+    # Include evaluation scores if present
+    if "evaluation" in metadata:
+        entry["evaluation"] = metadata["evaluation"]
+
+    index["sessions"].append(entry)
 
     # Most recent first
     index["sessions"].sort(
@@ -189,15 +197,37 @@ def save_session(
     session_dir = SESSIONS_DIR / session_id
     session_dir.mkdir(parents=True, exist_ok=True)
 
-    # Copy output files
+    # Copy output files (includes evaluation_report.json if already generated)
     for fname in OUTPUT_FILES:
         src = source_dir / fname
         if src.exists():
             shutil.copy2(src, session_dir / fname)
 
+    # If evaluation_report.json was not in source_dir, generate it now
+    eval_report_path = session_dir / "evaluation_report.json"
+    if not eval_report_path.exists():
+        try:
+            eval_report = evaluate_and_save(session_dir)
+        except Exception:
+            eval_report = {}
+    else:
+        eval_report = _load_json(eval_report_path)
+
     # Compute summary from copied files
     state_data = _load_json(session_dir / "multi_agent_state.json")
     interaction_log = _load_csv(session_dir / "interaction_log.csv")
+
+    # Build compact evaluation summary for the index (scores only)
+    eval_scores: dict = {}
+    if eval_report:
+        eval_scores = {
+            "overall_score": eval_report.get("overall_score", 0),
+            "overall_interpretation": eval_report.get("overall_interpretation", ""),
+            "category_scores": {
+                k: v.get("score", 0)
+                for k, v in eval_report.get("categories", {}).items()
+            },
+        }
 
     metadata = {
         "session_id": session_id,
@@ -207,12 +237,13 @@ def save_session(
         "agent_names": list(state_data.get("agents", {}).keys()),
         "scenario_events_file": "scenario_events.json",
         "summary": _compute_summary(session_dir, state_data, interaction_log),
+        "evaluation": eval_scores,
     }
 
     with open(session_dir / "session_metadata.json", "w", encoding="utf-8") as fh:
         json.dump(metadata, fh, indent=2)
 
-    # Write per-session session_summary.json (requirement §6)
+    # Write per-session session_summary.json
     with open(session_dir / "session_summary.json", "w", encoding="utf-8") as fh:
         json.dump(metadata["summary"], fh, indent=2)
 
@@ -321,6 +352,45 @@ def compare_sessions(session_a_id: str, session_b_id: str) -> dict:
                 except (ValueError, TypeError):
                     pass
 
+    # Evaluation score comparison
+    eval_comparison: dict = {}
+    if dir_a and dir_b:
+        eval_a = _load_json(dir_a / "evaluation_report.json")
+        eval_b = _load_json(dir_b / "evaluation_report.json")
+        if eval_a and eval_b:
+            oa = float(eval_a.get("overall_score", 0))
+            ob = float(eval_b.get("overall_score", 0))
+            eval_comparison["overall"] = {
+                "session_a": oa,
+                "session_b": ob,
+                "delta": round(ob - oa, 1),
+                "better": "session_b" if ob > oa else ("session_a" if oa > ob else "tie"),
+            }
+            cats_a = eval_a.get("categories", {})
+            cats_b = eval_b.get("categories", {})
+            category_diffs = {}
+            for cat in cats_a:
+                sa = float(cats_a[cat].get("score", 0))
+                sb = float(cats_b.get(cat, {}).get("score", 0))
+                category_diffs[cat] = {
+                    "session_a": sa,
+                    "session_b": sb,
+                    "delta": round(sb - sa, 1),
+                    "better": (
+                        "session_b" if sb > sa else ("session_a" if sa > sb else "tie")
+                    ),
+                }
+            eval_comparison["categories"] = category_diffs
+            # Largest gap
+            if category_diffs:
+                largest_gap_cat = max(
+                    category_diffs, key=lambda k: abs(category_diffs[k]["delta"])
+                )
+                eval_comparison["largest_gap_category"] = largest_gap_cat
+                eval_comparison["largest_gap_delta"] = category_diffs[largest_gap_cat][
+                    "delta"
+                ]
+
     report = {
         "session_a": session_a_id,
         "session_b": session_b_id,
@@ -333,6 +403,7 @@ def compare_sessions(session_a_id: str, session_b_id: str) -> dict:
             "interactions": interactions,
             "contradiction_pressure": contradiction_pressure,
             "state_history": state_history,
+            "evaluation": eval_comparison,
         },
     }
 

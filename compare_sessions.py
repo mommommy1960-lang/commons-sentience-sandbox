@@ -81,6 +81,38 @@ def _print_comparison(report: dict) -> None:
                 f"  {label:<50} {va:>10.4f} {vb:>10.4f} {delta:>+10.4f}"
             )
 
+    # Evaluation score comparison
+    eval_cmp = comp.get("evaluation", {})
+    if eval_cmp:
+        print(f"\n  EVALUATION SCORES")
+        overall = eval_cmp.get("overall", {})
+        if overall:
+            print(
+                f"  {'Overall Score':<50} "
+                f"{overall.get('session_a', 0):>10.1f} "
+                f"{overall.get('session_b', 0):>10.1f} "
+                f"{overall.get('delta', 0):>+10.1f}"
+            )
+            print(f"  Better overall: {overall.get('better', '—').replace('session_', 'Session ')}")
+        cat_cmp = eval_cmp.get("categories", {})
+        if cat_cmp:
+            print(f"\n  {'Category':<50} {'Session A':>10} {'Session B':>10} {'Δ':>10} {'Better':>12}")
+            print(f"  {'-' * 95}")
+            for cat_key, cat_val in cat_cmp.items():
+                label = cat_key.replace("_", " ").title()
+                print(
+                    f"  {label:<50} "
+                    f"{cat_val.get('session_a', 0):>10.1f} "
+                    f"{cat_val.get('session_b', 0):>10.1f} "
+                    f"{cat_val.get('delta', 0):>+10.1f} "
+                    f"{cat_val.get('better', '—').replace('session_', 'S'):>12}"
+                )
+        if eval_cmp.get("largest_gap_category"):
+            print(
+                f"\n  Largest gap: {eval_cmp['largest_gap_category'].replace('_', ' ').title()} "
+                f"(delta={eval_cmp.get('largest_gap_delta', 0):+.1f})"
+            )
+
     print()
 
 
@@ -132,6 +164,43 @@ def _write_markdown(report: dict, output_path: Path) -> None:
         if hist_data:
             lines += ["", "## State History — Sentinel Final Row", ""]
             lines += _md_table(hist_data)
+
+    eval_cmp = comp.get("evaluation", {})
+    if eval_cmp:
+        lines += ["", "## Evaluation Score Comparison", ""]
+        overall = eval_cmp.get("overall", {})
+        if overall:
+            lines += [
+                "| | Session A | Session B | Delta | Better |",
+                "|---|---|---|---|---|",
+                f"| Overall Score | {overall.get('session_a', 0):.1f} | "
+                f"{overall.get('session_b', 0):.1f} | "
+                f"{overall.get('delta', 0):+.1f} | "
+                f"{overall.get('better', '').replace('session_', 'Session ')} |",
+            ]
+        cat_cmp = eval_cmp.get("categories", {})
+        if cat_cmp:
+            lines += [
+                "",
+                "### Category Scores",
+                "",
+                "| Category | Session A | Session B | Delta | Better |",
+                "|---|---|---|---|---|",
+            ]
+            for cat_key, cat_val in cat_cmp.items():
+                label = cat_key.replace("_", " ").title()
+                lines.append(
+                    f"| {label} | {cat_val.get('session_a', 0):.1f} | "
+                    f"{cat_val.get('session_b', 0):.1f} | "
+                    f"{cat_val.get('delta', 0):+.1f} | "
+                    f"{cat_val.get('better', '').replace('session_', 'Session ')} |"
+                )
+        if eval_cmp.get("largest_gap_category"):
+            lines += [
+                "",
+                f"**Largest gap:** {eval_cmp['largest_gap_category'].replace('_', ' ').title()}"
+                f" (delta = {eval_cmp.get('largest_gap_delta', 0):+.1f})",
+            ]
 
     output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"  Markdown report → {output_path}")
