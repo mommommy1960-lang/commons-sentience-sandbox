@@ -1,0 +1,34 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Test and coverage artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor artifacts
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Simulation output (generated files — kept in repo as placeholders only)
+# Uncomment the lines below to exclude generated output from version control:
+# commons_sentience_sim/output/narrative_log.md
+# commons_sentience_sim/output/oversight_log.csv
+# commons_sentience_sim/output/final_state.json

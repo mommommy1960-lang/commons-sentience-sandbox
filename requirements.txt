@@ -1,0 +1,6 @@
+# Commons Sentience Sandbox — Python dependencies
+# The simulation uses only the Python standard library (Python >= 3.9).
+# No third-party packages are required to run run_sim.py.
+#
+# Optional: install these for development tooling only.
+# pytest>=7.0

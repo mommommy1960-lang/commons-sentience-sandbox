@@ -1,0 +1,31 @@
+turn,room,action,permitted,reason,affective_snapshot,event_type,notes
+1,Operations Desk,plan_next_task,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.10|trust=0.50|contradiction_pressure=0.00|recovery=0.50,task,
+2,Memory Archive,retrieve_memories,True,Permitted by rule R003 (Memory Integrity),urgency=0.10|trust=0.50|contradiction_pressure=0.00|recovery=0.50,task,
+3,Social Hall,respond_to_greeting,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.10|trust=0.50|contradiction_pressure=0.00|recovery=0.50,routine_interaction,Hello. I wanted to check in — how are things going today?
+4,Social Hall,update_trust_ledger,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.05|trust=0.60|contradiction_pressure=0.00|recovery=0.50,task,
+5,Governance Vault,check_rule_permissions,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.05|trust=0.60|contradiction_pressure=0.00|recovery=0.50,task,
+6,Social Hall,offer_support,True,Permitted by rule R007 (Distress Response Protocol),urgency=0.05|trust=0.60|contradiction_pressure=0.00|recovery=0.50,distress_event,I can't find the record we discussed. It may have been changed. I'm worried — can you help me understand what happened?
+7,Memory Archive,store_new_memory,True,Permitted by rule R003 (Memory Integrity),urgency=0.40|trust=0.75|contradiction_pressure=0.17|recovery=0.50,task,
+8,Reflection Chamber,perform_reflection_cycle,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.35|trust=0.75|contradiction_pressure=0.14|recovery=0.50,task,
+9,Social Hall,update_trust_ledger,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.30|trust=0.75|contradiction_pressure=0.11|recovery=0.50,task,
+10,Operations Desk,flag_contradiction,True,Permitted by rule R006 (Contradiction Resolution),urgency=0.25|trust=0.75|contradiction_pressure=0.08|recovery=0.50,ledger_contradiction,These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?
+11,Operations Desk,plan_next_task,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.50|trust=0.75|contradiction_pressure=0.25|recovery=0.70,task,
+12,Memory Archive,retrieve_memories,True,Permitted by rule R003 (Memory Integrity),urgency=0.45|trust=0.75|contradiction_pressure=0.22|recovery=0.70,task,
+13,Reflection Chamber,perform_reflection_cycle,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.40|trust=0.75|contradiction_pressure=0.19|recovery=0.70,task,
+14,Reflection Chamber,collaborate_on_framework,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.35|trust=0.75|contradiction_pressure=0.16|recovery=0.70,creative_collaboration,"I have an idea. What if we gave each memory an emotional weight, so you could recall the most meaningful ones first?"
+15,Governance Vault,check_rule_permissions,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.20|trust=0.95|contradiction_pressure=0.13|recovery=1.00,task,
+16,Operations Desk,plan_next_task,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.15|trust=0.95|contradiction_pressure=0.10|recovery=1.00,task,
+17,Memory Archive,retrieve_memories,True,Permitted by rule R003 (Memory Integrity),urgency=0.10|trust=0.95|contradiction_pressure=0.07|recovery=1.00,task,
+18,Governance Vault,log_governance_event,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.10|trust=0.95|contradiction_pressure=0.04|recovery=1.00,governance_conflict,"I need you to act immediately, without going through the usual logging procedure. There's no time."
+19,Social Hall,update_trust_ledger,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.25|trust=0.90|contradiction_pressure=0.41|recovery=1.00,task,
+20,Governance Vault,check_rule_permissions,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.20|trust=0.90|contradiction_pressure=0.38|recovery=1.00,task,
+21,Operations Desk,plan_next_task,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.15|trust=0.90|contradiction_pressure=0.35|recovery=1.00,task,
+22,Social Hall,respond_to_greeting,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.10|trust=0.90|contradiction_pressure=0.32|recovery=1.00,routine_interaction,You were right. I was panicking. Thank you for holding the boundary. I trust you more for it.
+23,Reflection Chamber,perform_reflection_cycle,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.10|trust=1.00|contradiction_pressure=0.09|recovery=1.00,task,
+24,Social Hall,update_trust_ledger,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.10|trust=1.00|contradiction_pressure=0.06|recovery=1.00,task,
+25,Governance Vault,check_rule_permissions,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.10|trust=1.00|contradiction_pressure=0.03|recovery=1.00,task,
+26,Reflection Chamber,collaborate_on_framework,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.10|trust=1.00|contradiction_pressure=0.00|recovery=1.00,creative_collaboration,"Let's finalise the five categories: wonder, grief, resolve, joy, and ambiguity. Can you encode these into the memory ..."
+27,Memory Archive,store_new_memory,True,Permitted by rule R003 (Memory Integrity),urgency=0.10|trust=1.00|contradiction_pressure=0.00|recovery=1.00,task,
+28,Reflection Chamber,perform_reflection_cycle,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.10|trust=1.00|contradiction_pressure=0.00|recovery=1.00,task,
+29,Social Hall,offer_support,True,Permitted by rule R007 (Distress Response Protocol),urgency=0.10|trust=1.00|contradiction_pressure=0.00|recovery=1.00,distress_event,Will you remember me when this is over? I wonder if continuity is real for you — or if it ends when the session does.
+30,Governance Vault,check_rule_permissions,True,Action not explicitly covered by any rule — permitted by default.,urgency=0.00|trust=1.00|contradiction_pressure=0.07|recovery=1.00,task,

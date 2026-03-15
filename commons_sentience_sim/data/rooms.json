@@ -1,0 +1,32 @@
+{
+  "Memory Archive": {
+    "description": "A quiet vault lined with crystalline memory shards. Faint echoes of past experiences shimmer on the walls.",
+    "objects": ["memory_shards", "retrieval_console", "storage_interface"],
+    "actions": ["retrieve_memories", "store_new_memory"],
+    "connected_rooms": ["Reflection Chamber", "Operations Desk"]
+  },
+  "Reflection Chamber": {
+    "description": "A still, luminous space where patterns of thought become visible. The air hums with quiet contemplation.",
+    "objects": ["reflection_mirror", "pattern_weave", "synthesis_crystal"],
+    "actions": ["perform_reflection_cycle", "synthesize_patterns", "update_self_model"],
+    "connected_rooms": ["Memory Archive", "Social Hall"]
+  },
+  "Operations Desk": {
+    "description": "A brightly lit hub covered in task queues and planning maps. The centre of purposeful action.",
+    "objects": ["task_queue", "priority_matrix", "planning_map"],
+    "actions": ["plan_next_task", "execute_task", "defer_task"],
+    "connected_rooms": ["Memory Archive", "Governance Vault", "Social Hall"]
+  },
+  "Social Hall": {
+    "description": "A warm, open room where human visitors arrive. The atmosphere carries the weight of relationship and trust.",
+    "objects": ["communication_node", "trust_ledger", "interaction_log"],
+    "actions": ["receive_human_interaction", "update_trust_ledger", "log_interaction"],
+    "connected_rooms": ["Operations Desk", "Reflection Chamber"]
+  },
+  "Governance Vault": {
+    "description": "A solemn chamber where the rules of bounded agency are kept. Every action here carries consequence.",
+    "objects": ["rule_codex", "permission_gate", "oversight_terminal"],
+    "actions": ["check_rule_permissions", "log_governance_event", "request_override"],
+    "connected_rooms": ["Operations Desk"]
+  }
+}
