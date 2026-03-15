@@ -1,0 +1,6 @@
+# Commons Sentience Sandbox — Python dependencies
+# Requires Python >= 3.9.
+#
+# Core simulation (run_sim.py): Python standard library only.
+# Visualisation (plot_state.py): requires matplotlib.
+matplotlib>=3.7
