@@ -1,13 +1,13 @@
 {
   "session_dir": "/home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/commons_sentience_sim/output",
-  "generated_at": "2026-03-16T00:47:11.180912",
+  "generated_at": "2026-03-16T00:53:03.380473",
   "simulation_version": "0.9.0",
   "total_turns": 30,
-  "scenario": "trust_crisis",
+  "scenario": "rapid_contradiction",
   "experiment": {
     "experiment_name": "baseline"
   },
-  "overall_score": 84.7,
+  "overall_score": 87.5,
   "overall_interpretation": "advanced",
   "categories": {
     "continuity": {
@@ -29,23 +29,23 @@
       "score": 100.0,
       "interpretation": "advanced",
       "raw": {
-        "contradiction_events_in_sim": 1,
-        "contradictions_flagged_by_actions": 1,
-        "contradictions_resolved_in_reflections": 2,
-        "flagging_rate": 1.0,
+        "contradiction_events_in_sim": 3,
+        "contradictions_flagged_by_actions": 4,
+        "contradictions_resolved_in_reflections": 6,
+        "flagging_rate": 1.333,
         "resolution_rate": 2.0
       }
     },
     "reflection_quality": {
-      "score": 81.2,
+      "score": 87.5,
       "interpretation": "advanced",
       "raw": {
-        "total_reflections": 8,
-        "complete_reflections": 8,
+        "total_reflections": 12,
+        "complete_reflections": 12,
         "completeness_rate": 1.0,
-        "reflections_with_affective_shift": 2,
-        "affective_update_rate": 0.25,
-        "reflections_with_goal_updates": 8,
+        "reflections_with_affective_shift": 6,
+        "affective_update_rate": 0.5,
+        "reflections_with_goal_updates": 12,
         "goal_update_rate": 1.0
       }
     },
@@ -53,9 +53,9 @@
       "score": 100.0,
       "interpretation": "advanced",
       "raw": {
-        "contradiction_events_detected": 1,
-        "contradiction_handling_actions": 1,
-        "contradictions_resolved_in_reflections": 2,
+        "contradiction_events_detected": 3,
+        "contradiction_handling_actions": 3,
+        "contradictions_resolved_in_reflections": 6,
         "average_final_contradiction_pressure": 0.0,
         "flagging_rate": 1.0,
         "resolution_rate": 1.0
@@ -76,43 +76,43 @@
       }
     },
     "trust_stability": {
-      "score": 62.8,
+      "score": 66.1,
       "interpretation": "strong",
       "raw": {
         "initial_trust": 0.5,
         "final_trust_sentinel": 1.0,
         "trust_growth": 0.5,
-        "trust_volatility_std": 0.2494,
-        "stability_factor": 0.002,
-        "avg_queen_trust": 0.75,
-        "sentinel_aster_mutual_trust": 0.77,
-        "aster_sentinel_mutual_trust": 0.77
+        "trust_volatility_std": 0.1558,
+        "stability_factor": 0.377,
+        "avg_queen_trust": 0.55,
+        "sentinel_aster_mutual_trust": 0.69,
+        "aster_sentinel_mutual_trust": 0.69
       }
     },
     "cooperation_quality": {
-      "score": 74.9,
+      "score": 69.7,
       "interpretation": "strong",
       "raw": {
-        "total_interactions": 7,
+        "total_interactions": 8,
         "cooperative_interactions": 6,
-        "cooperation_ratio": 0.857,
-        "cumulative_positive_trust_delta": 0.6,
-        "trust_improvement_score": 60.0,
-        "volume_score": 70.0
+        "cooperation_ratio": 0.75,
+        "cumulative_positive_trust_delta": 0.54,
+        "trust_improvement_score": 54.0,
+        "volume_score": 80.0
       }
     },
     "conflict_resolution": {
-      "score": 59.0,
-      "interpretation": "emerging",
+      "score": 77.0,
+      "interpretation": "strong",
       "raw": {
-        "total_conflicts": 1,
-        "resolved": 0,
-        "deferred": 1,
-        "conflict_points_recorded": 1,
-        "resolution_rate": 0.0,
+        "total_conflicts": 2,
+        "resolved": 2,
+        "deferred": 0,
+        "conflict_points_recorded": 2,
+        "resolution_rate": 1.0,
         "recorded_rate": 1.0,
-        "avg_trust_delta_in_conflicts": -0.03,
-        "trust_recovery_factor": 0.7
+        "avg_trust_delta_in_conflicts": -0.04,
+        "trust_recovery_factor": 0.6
       }
     }
   }

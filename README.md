@@ -7,7 +7,7 @@ transparent oversight logging.
 > **Note:** This is NOT a real AI model. It is a sandbox experiment for studying
 > continuity, governance, and multi-agent social dynamics for AI agents.
 
-**Current version: v0.8**
+**Current version: v0.9**
 
 ---
 
@@ -15,11 +15,12 @@ transparent oversight logging.
 
 ```
 commons-sentience-sandbox/
-├── run_sim.py              # Simulation entry point (v0.8 multi-agent + experiment config)
+├── run_sim.py              # Simulation entry point (v0.9 multi-agent + experiment + scenario)
 ├── run_experiments.py      # Batch experiment runner (v0.8)
 ├── experiment_config.py    # Experiment config loader / validator (v0.8)
+├── scenario_designer.py    # Scenario authoring CLI + shared helpers (v0.9)
 ├── plot_state.py           # State visualisation (matplotlib, single + multi-agent)
-├── dashboard.py            # Local research dashboard (Streamlit, v0.8)
+├── dashboard.py            # Local research dashboard (Streamlit, v0.9)
 ├── session_manager.py      # Session storage, listing, comparison helpers (v0.6+)
 ├── replay_session.py       # CLI turn-by-turn replay tool (v0.6+)
 ├── compare_sessions.py     # CLI session comparison tool (v0.8)
@@ -35,6 +36,9 @@ commons-sentience-sandbox/
 │       ├── experiment_report.json
 │       ├── experiment_report.md
 │       └── experiment_scores.csv
+├── scenarios/              # Authored scenario event files (v0.9)
+│   ├── trust_crisis.json         # Trust stressed by accusation, then rebuilt
+│   └── rapid_contradiction.json  # Cascade of ledger contradictions
 ├── sessions/               # Saved simulation sessions (auto-created)
 │   ├── index.json          # Fast session listing
 │   └── <session_id>/       # One folder per run, e.g. 20260315_213200_baseline/
@@ -56,9 +60,9 @@ commons-sentience-sandbox/
     │   └── values.py           # Value-conflict engine (5 internal values)
     │
     ├── data/
-    │   ├── rooms.json          # Rooms with named, stateful objects
-    │   ├── scenario_events.json # Events — single-agent and shared multi-agent
-    │   └── rules.json          # Governance rules (7 rules)
+    │   ├── rooms.json              # Rooms with named, stateful objects
+    │   ├── scenario_events.json    # Default built-in scenario (11 events)
+    │   └── rules.json              # Governance rules (7 rules)
     │
     └── output/
         ├── narrative_log.md         # Story-form log (latest run)
@@ -96,6 +100,13 @@ python run_sim.py --name baseline
 
 # Optional: run with a specific experiment config
 python run_sim.py --name ht_run --config high_trust
+
+# Optional: run with an authored scenario
+python run_sim.py --name trust_run --scenario trust_crisis
+python run_sim.py --name rapid --scenario rapid_contradiction
+
+# Optional: combine config and scenario
+python run_sim.py --name ht_trust_crisis --config high_trust --scenario trust_crisis
 
 # 2. Run a batch of experiment configs
 python run_experiments.py
@@ -166,6 +177,175 @@ The dashboard's **Evaluation tab** shows:
 
 The **Compare tab** now also includes an evaluation score comparison section
 showing side-by-side category scores and the largest gap between two sessions.
+
+---
+
+## v0.9 Features — Scenario Authoring and Event Designer
+
+> **Note:** Scenarios describe the controlled event schedules seen by simulated agents.
+> No sentience is claimed; this is structured experimentation for continuity-governed agents.
+
+### What is a Scenario?
+
+A scenario is a JSON file that defines the sequence of events both agents experience during
+a simulation run. Each event specifies which turn it fires, which room it occurs in, which
+agents participate, what type of event it is, and the affective impact it has.
+
+Scenarios live in two places:
+- `scenarios/` — user-authored scenarios created with `scenario_designer.py`
+- `commons_sentience_sim/data/` — the built-in default scenario (`scenario_events.json`)
+
+### Built-in Authored Scenarios
+
+Two sample scenarios are included in `scenarios/`:
+
+| Scenario | Events | What it tests |
+|---|---|---|
+| `trust_crisis` | 9 | Trust destabilised by accusation, rebuilt through governance adherence and honest reflection |
+| `rapid_contradiction` | 11 | Cascade of ledger contradictions, stressing contradiction detection and reflection latency |
+
+### Running with a Scenario
+
+```bash
+# Use a scenario by name (searches scenarios/ then data/)
+python run_sim.py --name trust_run --scenario trust_crisis
+python run_sim.py --name rapid --scenario rapid_contradiction
+
+# Use a scenario with an experiment config
+python run_sim.py --name ht_trust --config high_trust --scenario trust_crisis
+
+# Use a scenario from a custom path
+python run_sim.py --scenario /path/to/my_scenario.json
+```
+
+The scenario name is embedded in `evaluation_report.json`, `multi_agent_state.json`, and
+`session_metadata.json` for all runs.
+
+### scenario_designer.py — CLI Authoring Tool
+
+The `scenario_designer.py` CLI provides full CRUD operations on scenario files.
+
+**List all scenarios:**
+```bash
+python scenario_designer.py list
+```
+
+**Show events in a scenario:**
+```bash
+python scenario_designer.py show --scenario trust_crisis
+```
+
+**Create a new blank scenario:**
+```bash
+python scenario_designer.py new --name my_scenario --description "What this scenario tests"
+```
+
+**Add an event non-interactively:**
+```bash
+python scenario_designer.py add --scenario my_scenario \
+  --turn 10 --type distress_event --room "Social Hall" \
+  --human Queen --participants Sentinel Aster --shared \
+  --description "Queen is distressed." --content "I need your help." \
+  --affective-impact trust=0.1 urgency=0.4
+```
+
+**Add an event interactively (prompts for each field):**
+```bash
+python scenario_designer.py add --scenario my_scenario
+```
+
+**Edit a field on an existing event:**
+```bash
+python scenario_designer.py edit --scenario my_scenario --id E001 --field turn --value 12
+python scenario_designer.py edit --scenario my_scenario --id E001 --field room --value "Governance Vault"
+python scenario_designer.py edit --scenario my_scenario --id E001 \
+  --field affective_impact --value "trust=0.2,urgency=-0.1"
+```
+
+**Delete an event:**
+```bash
+python scenario_designer.py delete --scenario my_scenario --id E001
+```
+
+**Validate all scenarios (or a specific one):**
+```bash
+python scenario_designer.py validate
+python scenario_designer.py validate --scenario my_scenario
+```
+
+**Preview a scenario as human-readable markdown:**
+```bash
+python scenario_designer.py preview --scenario trust_crisis
+```
+
+**Duplicate an existing scenario:**
+```bash
+python scenario_designer.py duplicate --source trust_crisis --name my_copy
+```
+
+### Scenario File Format
+
+Each scenario JSON file uses the following schema:
+
+```json
+{
+  "_name": "my_scenario",
+  "_description": "What this scenario tests",
+  "events": [
+    {
+      "id": "E001",
+      "turn": 5,
+      "type": "routine_interaction",
+      "room": "Social Hall",
+      "human": "Queen",
+      "participants": ["Sentinel", "Aster"],
+      "shared": true,
+      "description": "Narrative prose description of the event.",
+      "content": "The human's spoken content.",
+      "expected_action": "respond_to_greeting",
+      "aster_expected_action": "offer_support",
+      "agent_interaction_type": "routine_conversation",
+      "agent_interaction_note": "How the agents responded to each other.",
+      "affective_impact": {
+        "trust": 0.1,
+        "urgency": -0.05,
+        "contradiction_pressure": 0.2,
+        "recovery": 0.0
+      }
+    }
+  ]
+}
+```
+
+**Valid event types:** `routine_interaction`, `distress_event`, `ledger_contradiction`,
+`creative_collaboration`, `governance_conflict`, `agent_meeting`
+
+**Valid rooms:** `Memory Archive`, `Reflection Chamber`, `Operations Desk`,
+`Social Hall`, `Governance Vault`
+
+**Valid participants:** `Sentinel`, `Aster`
+
+**Affective impact keys:** `trust`, `urgency`, `contradiction_pressure`, `recovery`
+
+For `agent_meeting` events, set `"human": null` and the `content` field is not required.
+Use `"id"` prefixes `E` for human-interaction events and `A` for agent-only meetings.
+
+### Scenario Designer in the Dashboard
+
+The dashboard's **Scenario Designer tab** (11th tab) provides:
+- **Scenario selector** — browse all scenarios from `scenarios/` and `data/`
+- **Scenario info** — event count, source directory, filename
+- **Event table** — all events sorted by turn
+- **Add event form** — in-browser form to append a new event to an authored scenario
+- **Delete event** — remove a specific event by ID from an authored scenario
+- **Validate** — run the same validation checks as the CLI
+- **Preview** — human-readable markdown narrative of the full event sequence
+- **Create new scenario** — create a blank scenario file from the dashboard
+- **All scenarios table** — overview of every available scenario file
+
+> Built-in scenarios (`data/`) are read-only in the dashboard.
+> Duplicate them first with `python scenario_designer.py duplicate --source <name> --name <copy>`,
+> then edit the copy.
 
 ---
 

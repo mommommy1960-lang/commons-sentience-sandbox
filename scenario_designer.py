@@ -244,7 +244,9 @@ def validate_scenario(data: dict) -> List[str]:
             if turn in seen_turns:
                 issues.append(
                     f"{prefix}: multiple events scheduled at turn {turn}. "
-                    "Only the last will be used by the simulator."
+                    "The simulator uses a dict keyed by turn, so only the last "
+                    "event with this turn number will fire. Assign each event a "
+                    "unique turn to ensure all events are processed."
                 )
             seen_turns.add(turn)
 

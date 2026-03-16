@@ -1409,9 +1409,7 @@ with tab_scenario:
         st.info(
             "ℹ️  This is a built-in scenario from `data/`. "
             "To edit it, first duplicate it: "
-            "`python scenario_designer.py duplicate --source "
-            + selected_scenario_name
-            + " --name my_copy`"
+            f"`python scenario_designer.py duplicate --source {selected_scenario_name} --name my_copy`"
         )
 
     with st.expander("➕ Add New Event", expanded=False):

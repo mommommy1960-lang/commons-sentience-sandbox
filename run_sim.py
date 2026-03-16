@@ -639,7 +639,16 @@ def run_simulation(
         try:
             scenario_path = _resolve_scenario_path(cfg.scenario_file)
         except FileNotFoundError:
-            scenario_path = DATA_DIR / cfg.scenario_file
+            fallback = DATA_DIR / cfg.scenario_file
+            if not fallback.exists():
+                raise FileNotFoundError(
+                    f"Scenario file '{cfg.scenario_file}' not found.\n"
+                    f"  Searched via scenario_designer resolver and: {fallback}\n"
+                    "  Add the file to scenarios/ or use its full path."
+                ) from None
+            print(f"  Warning: scenario '{cfg.scenario_file}' not found via resolver; "
+                  f"falling back to {fallback}")
+            scenario_path = fallback
     else:
         scenario_path = DATA_DIR / "scenario_events.json"
     scenario_events = load_scenario_events(scenario_path)
