@@ -1,5 +1,5 @@
 """
-Commons Sentience Sandbox — Local Research Dashboard (v0.9)
+Commons Sentience Sandbox — Local Research Dashboard (v1.0)
 
 A lightweight Streamlit dashboard for observing simulation state.
 Supports:
@@ -181,7 +181,11 @@ st.set_page_config(
 # ---------------------------------------------------------------------------
 
 st.sidebar.title("\U0001f9e0 Commons Sentience Sandbox")
-st.sidebar.markdown("**Local Research Dashboard \u2014 v0.9**")
+st.sidebar.markdown("**Local Research Dashboard \u2014 v1.0**")
+st.sidebar.caption(
+    "A research platform for continuity-governed simulated agents. "
+    "Not a real AI \u2014 no sentience is claimed."
+)
 st.sidebar.divider()
 
 # Session selector
@@ -257,7 +261,8 @@ agents_data: dict = state_data.get("agents", {})
 # Header
 # ---------------------------------------------------------------------------
 
-st.title("Commons Sentience Sandbox \u2014 Research Dashboard")
+st.title("\U0001f9e0 Commons Sentience Sandbox")
+st.markdown("**Local Research Dashboard \u2014 v1.0** \u00b7 Research platform for continuity-governed simulated agents")
 if active_session_id:
     st.caption(
         f"v{simulation_version}  \u00b7  Session: `{active_session_id}`  \u00b7  "

@@ -1,7 +1,7 @@
-# Commons Sentience Sandbox — Narrative Log (v0.9)
+# Commons Sentience Sandbox — Narrative Log (v1.0)
 
 > Agents: **Sentinel** (continuity-governed) & **Aster** (creative/exploratory)
-> Version: 0.8.0
+> Version: 1.0.0
 > Experiment: **baseline**
 > Scenario: **trust_crisis**
 > Multi-agent simulation — both agents share the world, respond to shared events, and track mutual trust.

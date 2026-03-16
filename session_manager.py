@@ -288,9 +288,22 @@ def save_session(
     with open(session_dir / "session_metadata.json", "w", encoding="utf-8") as fh:
         json.dump(metadata, fh, indent=2)
 
-    # Write per-session session_summary.json
+    # Write per-session session_summary.json with consistent schema
+    session_summary = {
+        "session_id": session_id,
+        "created_at": metadata["created_at"],
+        "simulation_version": metadata["simulation_version"],
+        "scenario": resolved_scenario,
+        "experiment": exp_meta_compact.get("experiment_name", "baseline") if exp_meta_compact else "baseline",
+        "agents": metadata["agent_names"],
+        "metrics": metadata["summary"],
+        "evaluation": {
+            "overall_score": eval_scores.get("overall_score", 0),
+            "overall_interpretation": eval_scores.get("overall_interpretation", ""),
+        } if eval_scores else {},
+    }
     with open(session_dir / "session_summary.json", "w", encoding="utf-8") as fh:
-        json.dump(metadata["summary"], fh, indent=2)
+        json.dump(session_summary, fh, indent=2)
 
     _update_sessions_index(session_id, metadata)
 

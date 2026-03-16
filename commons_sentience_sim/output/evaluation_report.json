@@ -1,7 +1,7 @@
 {
   "session_dir": "/home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/commons_sentience_sim/output",
-  "generated_at": "2026-03-16T14:42:20.086214",
-  "simulation_version": "0.9.0",
+  "generated_at": "2026-03-16T15:05:24.042775",
+  "simulation_version": "1.0.0",
   "total_turns": 30,
   "scenario": "trust_crisis",
   "experiment": {

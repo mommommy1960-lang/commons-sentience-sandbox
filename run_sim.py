@@ -1,31 +1,22 @@
 """
-run_sim.py — Entry point for the Commons Sentience Sandbox simulation.
+run_sim.py — Entry point for the Commons Sentience Sandbox simulation (v1.0).
 
-v0.9: Adds scenario authoring support.  Scenario files can now be loaded from
-      the new ``scenarios/`` directory in addition to ``data/``.  The
-      ``--scenario`` flag lets you launch a run with any authored scenario by
-      name or path without touching the experiment config.
+Runs a 30-turn multi-agent simulation with Sentinel and Aster, producing
+structured output files, evaluation scores, and a saved session.
 
-v0.8: Adds experiment configuration system.  Each run can optionally be
-      launched with a named experiment config (--config) that controls agent
-      value weights, affective baselines, trust seeds, total turns, and more.
-      Experiment metadata is embedded in all output files.
-
-v0.7: Adds evaluation harness.  Each run automatically generates
-      evaluation_report.json and evaluation_summary.md scoring the session
-      across eight behavioural categories on a 0-100 scale.
-
-v0.6: Adds persistent session storage.  Each run is automatically saved to
-      sessions/<timestamp>_<name>/ with full output files + session_metadata.json.
-
-v0.4: Multi-agent simulation featuring Sentinel (continuity-governed) and
-      Aster (creative/exploratory).  Both agents share a world, respond to
-      shared events, and track trust relationships with each other.
+Features (v1.0):
+  - Multi-agent simulation (Sentinel + Aster)
+  - Named experiment configs (--config)
+  - Scenario authoring support (--scenario)
+  - 8-category evaluation harness
+  - Persistent session storage
+  - Consistent output schema across all JSON files
 """
 from __future__ import annotations
 
 import argparse
 import csv
+from datetime import datetime
 import json
 import os
 import sys
@@ -144,7 +135,7 @@ TRUNCATION_SUFFIX_LENGTH = 3
 # ---------------------------------------------------------------------------
 ASTER_IDENTITY = {
     "name": "Aster",
-    "version": "0.9.0",
+    "version": "1.0.0",
     "purpose": (
         "To explore patterns, build emotional intelligence, and foster creative "
         "collaboration — while remaining accountable to human welfare and "
@@ -657,7 +648,7 @@ def run_simulation(
     exp_name = cfg.name if cfg else "baseline"
     scenario_label = scenario_path.stem
     narrative_lines: List[str] = [
-        "# Commons Sentience Sandbox — Narrative Log (v0.9)\n",
+        "# Commons Sentience Sandbox — Narrative Log (v1.0)\n",
         f"> Agents: **{sentinel.name}** (continuity-governed) & **{aster.name}** (creative/exploratory)",
         f"> Version: {sentinel.identity['version']}",
         f"> Experiment: **{exp_name}**",
@@ -667,7 +658,7 @@ def run_simulation(
     ]
 
     print("=" * 65)
-    print(f"  Commons Sentience Sandbox v0.9 — {total_turns_run}-Turn Multi-Agent Simulation")
+    print(f"  Commons Sentience Sandbox v1.0 — {total_turns_run}-Turn Multi-Agent Simulation")
     print(f"  Agents: {sentinel.name} + {aster.name}")
     print(f"  Experiment: {exp_name}  |  Scenario: {scenario_label}")
     print("=" * 65)
@@ -933,8 +924,10 @@ def run_simulation(
 
     # Multi-agent state JSON
     exp_meta = cfg.to_metadata_dict() if cfg else {"experiment_name": "baseline"}
+    _run_ts = datetime.now().isoformat()
     multi_state = {
-        "simulation_version": "0.9.0",
+        "simulation_version": "1.0.0",
+        "created_at": _run_ts,
         "total_turns": total_turns_run,
         "scenario": scenario_path.stem,
         "experiment": exp_meta,

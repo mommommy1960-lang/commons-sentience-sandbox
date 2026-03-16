@@ -1,7 +1,5 @@
 """
-scenario_designer.py — Command-line scenario authoring tool for Commons Sentience Sandbox.
-
-v0.9: Introduced as part of the scenario authoring and event designer tooling.
+scenario_designer.py — Command-line scenario authoring tool for Commons Sentience Sandbox (v1.0).
 
 Provides CRUD operations on scenario JSON files used by the simulation.
 Scenarios define the event schedule seen by both agents each run.
