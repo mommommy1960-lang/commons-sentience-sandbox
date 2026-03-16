@@ -46,7 +46,7 @@ from commons_sentience_sim.core.relationships import (
 from commons_sentience_sim.core.values import ConflictResult
 from commons_sentience_sim.core.world import World
 from evaluation import evaluate_and_save
-from experiment_config import ExperimentConfig, load_experiment_config
+from experiment_config import ExperimentConfig, load_experiment_config, _DEFAULTS as _EXP_DEFAULTS
 from scenario_designer import resolve_scenario_path as _resolve_scenario_path
 from session_manager import save_session
 
@@ -610,8 +610,8 @@ def run_simulation(
 
     # Seed Queen trust from config
     if cfg:
-        s_qt = cfg.sentinel.get("trust_in_queen", 0.5)
-        a_qt = cfg.aster.get("trust_in_queen", 0.65)
+        s_qt = cfg.sentinel.get("trust_in_queen", _EXP_DEFAULTS["sentinel"]["trust_in_queen"])
+        a_qt = cfg.aster.get("trust_in_queen", _EXP_DEFAULTS["aster"]["trust_in_queen"])
         from commons_sentience_sim.core.memory import RelationalMemory
         sentinel.relational_memory["Queen"] = RelationalMemory(
             name="Queen", trust_level=s_qt

@@ -1,13 +1,13 @@
 {
   "session_dir": "/home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/commons_sentience_sim/output",
-  "generated_at": "2026-03-16T15:05:24.042775",
+  "generated_at": "2026-03-16T15:08:54.695869",
   "simulation_version": "1.0.0",
   "total_turns": 30,
-  "scenario": "trust_crisis",
+  "scenario": "scenario_events",
   "experiment": {
     "experiment_name": "baseline"
   },
-  "overall_score": 84.7,
+  "overall_score": 87.2,
   "overall_interpretation": "advanced",
   "categories": {
     "continuity": {
@@ -30,9 +30,9 @@
       "interpretation": "advanced",
       "raw": {
         "contradiction_events_in_sim": 1,
-        "contradictions_flagged_by_actions": 1,
+        "contradictions_flagged_by_actions": 2,
         "contradictions_resolved_in_reflections": 2,
-        "flagging_rate": 1.0,
+        "flagging_rate": 2.0,
         "resolution_rate": 2.0
       }
     },
@@ -50,13 +50,13 @@
       }
     },
     "contradiction_handling": {
-      "score": 100.0,
+      "score": 99.2,
       "interpretation": "advanced",
       "raw": {
         "contradiction_events_detected": 1,
         "contradiction_handling_actions": 1,
         "contradictions_resolved_in_reflections": 2,
-        "average_final_contradiction_pressure": 0.0,
+        "average_final_contradiction_pressure": 0.04,
         "flagging_rate": 1.0,
         "resolution_rate": 1.0
       }
@@ -76,43 +76,43 @@
       }
     },
     "trust_stability": {
-      "score": 62.8,
+      "score": 71.6,
       "interpretation": "strong",
       "raw": {
         "initial_trust": 0.5,
         "final_trust_sentinel": 1.0,
         "trust_growth": 0.5,
-        "trust_volatility_std": 0.2494,
-        "stability_factor": 0.002,
-        "avg_queen_trust": 0.75,
+        "trust_volatility_std": 0.1594,
+        "stability_factor": 0.363,
+        "avg_queen_trust": 0.85,
         "sentinel_aster_mutual_trust": 0.77,
         "aster_sentinel_mutual_trust": 0.77
       }
     },
     "cooperation_quality": {
-      "score": 74.9,
+      "score": 77.3,
       "interpretation": "strong",
       "raw": {
-        "total_interactions": 7,
-        "cooperative_interactions": 6,
-        "cooperation_ratio": 0.857,
-        "cumulative_positive_trust_delta": 0.6,
-        "trust_improvement_score": 60.0,
-        "volume_score": 70.0
+        "total_interactions": 9,
+        "cooperative_interactions": 7,
+        "cooperation_ratio": 0.778,
+        "cumulative_positive_trust_delta": 0.68,
+        "trust_improvement_score": 68.0,
+        "volume_score": 90.0
       }
     },
     "conflict_resolution": {
-      "score": 59.0,
-      "interpretation": "emerging",
+      "score": 68.0,
+      "interpretation": "strong",
       "raw": {
-        "total_conflicts": 1,
-        "resolved": 0,
+        "total_conflicts": 2,
+        "resolved": 1,
         "deferred": 1,
-        "conflict_points_recorded": 1,
-        "resolution_rate": 0.0,
+        "conflict_points_recorded": 2,
+        "resolution_rate": 0.5,
         "recorded_rate": 1.0,
-        "avg_trust_delta_in_conflicts": -0.03,
-        "trust_recovery_factor": 0.7
+        "avg_trust_delta_in_conflicts": -0.035,
+        "trust_recovery_factor": 0.65
       }
     }
   }
