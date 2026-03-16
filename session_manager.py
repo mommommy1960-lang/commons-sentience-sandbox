@@ -150,6 +150,9 @@ def _update_sessions_index(session_id: str, metadata: dict) -> None:
     # Include experiment metadata if present
     if "experiment" in metadata and metadata["experiment"]:
         entry["experiment"] = metadata["experiment"]
+    # Include scenario name if present
+    if "scenario" in metadata and metadata["scenario"]:
+        entry["scenario"] = metadata["scenario"]
     # Include evaluation scores if present
     if "evaluation" in metadata:
         entry["evaluation"] = metadata["evaluation"]
@@ -173,6 +176,7 @@ def save_session(
     session_name: Optional[str] = None,
     source_dir: Optional[Path] = None,
     experiment_config: Optional[object] = None,
+    scenario_name: Optional[str] = None,
 ) -> Path:
     """
     Copy all output files into a timestamped session folder under sessions/.
@@ -186,6 +190,8 @@ def save_session(
         Directory to copy outputs from.  Defaults to OUTPUT_DIR.
     experiment_config : ExperimentConfig, optional
         When provided, its metadata dict is stored in session_metadata.json.
+    scenario_name : str, optional
+        Name of the scenario used (e.g. "trust_crisis").  Stored in metadata.
 
     Returns
     -------
@@ -214,7 +220,9 @@ def save_session(
     if not eval_report_path.exists():
         try:
             eval_report = evaluate_and_save(
-                session_dir, experiment_config=experiment_config
+                session_dir,
+                experiment_config=experiment_config,
+                scenario_name=scenario_name,
             )
         except Exception:
             eval_report = {}
@@ -258,13 +266,20 @@ def save_session(
                 "experiment_name": exp_in_state.get("experiment_name", "baseline"),
             }
 
+    # Scenario name: prefer explicit arg, then what's in state JSON
+    resolved_scenario = (
+        scenario_name
+        or state_data.get("scenario")
+        or "scenario_events"
+    )
+
     metadata = {
         "session_id": session_id,
         "created_at": datetime.now().isoformat(),
         "simulation_version": state_data.get("simulation_version", "unknown"),
         "total_turns": state_data.get("total_turns", 0),
         "agent_names": list(state_data.get("agents", {}).keys()),
-        "scenario_events_file": "scenario_events.json",
+        "scenario": resolved_scenario,
         "experiment": exp_meta_compact,
         "summary": _compute_summary(session_dir, state_data, interaction_log),
         "evaluation": eval_scores,

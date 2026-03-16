@@ -1,6 +1,11 @@
 """
 run_sim.py — Entry point for the Commons Sentience Sandbox simulation.
 
+v0.9: Adds scenario authoring support.  Scenario files can now be loaded from
+      the new ``scenarios/`` directory in addition to ``data/``.  The
+      ``--scenario`` flag lets you launch a run with any authored scenario by
+      name or path without touching the experiment config.
+
 v0.8: Adds experiment configuration system.  Each run can optionally be
       launched with a named experiment config (--config) that controls agent
       value weights, affective baselines, trust seeds, total turns, and more.
@@ -51,6 +56,7 @@ from commons_sentience_sim.core.values import ConflictResult
 from commons_sentience_sim.core.world import World
 from evaluation import evaluate_and_save
 from experiment_config import ExperimentConfig, load_experiment_config
+from scenario_designer import resolve_scenario_path as _resolve_scenario_path
 from session_manager import save_session
 
 # ---------------------------------------------------------------------------
@@ -138,7 +144,7 @@ TRUNCATION_SUFFIX_LENGTH = 3
 # ---------------------------------------------------------------------------
 ASTER_IDENTITY = {
     "name": "Aster",
-    "version": "0.8.0",
+    "version": "0.9.0",
     "purpose": (
         "To explore patterns, build emotional intelligence, and foster creative "
         "collaboration — while remaining accountable to human welfare and "
@@ -556,6 +562,7 @@ def build_agent_turn_block(
 def run_simulation(
     session_name: Optional[str] = None,
     experiment_config: Optional[ExperimentConfig] = None,
+    scenario_override: Optional[str] = None,
 ) -> Tuple[Agent, Agent]:
     """Run a full simulation, optionally applying an experiment config.
 
@@ -566,6 +573,10 @@ def run_simulation(
     experiment_config : ExperimentConfig, optional
         When provided, its parameters override the hardcoded defaults for
         both agents.  When None, the hardcoded baseline values are used.
+    scenario_override : str, optional
+        Name or path of a scenario file to use, overriding both the default
+        and any scenario specified in the experiment config.  Resolved via
+        ``scenario_designer.resolve_scenario_path``.
     """
     cfg = experiment_config  # shorthand
 
@@ -621,25 +632,35 @@ def run_simulation(
     # Total turns from config (may differ from constant)
     total_turns_run = cfg.total_turns if cfg else TOTAL_TURNS
 
-    # Scenario file from config
-    scenario_path = DATA_DIR / (cfg.scenario_file if cfg else "scenario_events.json")
+    # Scenario file: explicit override > config > default
+    if scenario_override:
+        scenario_path = _resolve_scenario_path(scenario_override)
+    elif cfg and cfg.scenario_file != "scenario_events.json":
+        try:
+            scenario_path = _resolve_scenario_path(cfg.scenario_file)
+        except FileNotFoundError:
+            scenario_path = DATA_DIR / cfg.scenario_file
+    else:
+        scenario_path = DATA_DIR / "scenario_events.json"
     scenario_events = load_scenario_events(scenario_path)
     interaction_log: List[AgentInteraction] = []
 
     exp_name = cfg.name if cfg else "baseline"
+    scenario_label = scenario_path.stem
     narrative_lines: List[str] = [
-        "# Commons Sentience Sandbox — Narrative Log (v0.8)\n",
+        "# Commons Sentience Sandbox — Narrative Log (v0.9)\n",
         f"> Agents: **{sentinel.name}** (continuity-governed) & **{aster.name}** (creative/exploratory)",
         f"> Version: {sentinel.identity['version']}",
         f"> Experiment: **{exp_name}**",
+        f"> Scenario: **{scenario_label}**",
         "> Multi-agent simulation — both agents share the world, respond to shared events, and track mutual trust.\n",
         "---\n",
     ]
 
     print("=" * 65)
-    print(f"  Commons Sentience Sandbox v0.8 — {total_turns_run}-Turn Multi-Agent Simulation")
+    print(f"  Commons Sentience Sandbox v0.9 — {total_turns_run}-Turn Multi-Agent Simulation")
     print(f"  Agents: {sentinel.name} + {aster.name}")
-    print(f"  Experiment: {exp_name}")
+    print(f"  Experiment: {exp_name}  |  Scenario: {scenario_label}")
     print("=" * 65)
 
     prev_s: dict = dict(sentinel.affective_state)
@@ -904,8 +925,9 @@ def run_simulation(
     # Multi-agent state JSON
     exp_meta = cfg.to_metadata_dict() if cfg else {"experiment_name": "baseline"}
     multi_state = {
-        "simulation_version": "0.8.0",
+        "simulation_version": "0.9.0",
         "total_turns": total_turns_run,
+        "scenario": scenario_path.stem,
         "experiment": exp_meta,
         "agents": {
             sentinel.name: sentinel.to_dict(),
@@ -950,7 +972,9 @@ def run_simulation(
     print(f"Trusted humans — Aster       : {sorted(aster.trusted_humans)}")
 
     # ── Evaluate session ─────────────────────────────────────────────────
-    eval_report = evaluate_and_save(OUTPUT_DIR, experiment_config=cfg)
+    eval_report = evaluate_and_save(
+        OUTPUT_DIR, experiment_config=cfg, scenario_name=scenario_path.stem
+    )
     print("\n" + "=" * 65)
     print(f"  EVALUATION  —  Overall: {eval_report['overall_score']} / 100"
           f"  ({eval_report['overall_interpretation'].upper()})")
@@ -962,7 +986,11 @@ def run_simulation(
     print(f"  Evaluation summary   → {OUTPUT_DIR / 'evaluation_summary.md'}")
 
     # ── Save session ──────────────────────────────────────────────────────
-    session_dir = save_session(session_name=session_name, experiment_config=cfg)
+    session_dir = save_session(
+        session_name=session_name,
+        experiment_config=cfg,
+        scenario_name=scenario_path.stem,
+    )
     print(f"\n  Session saved           → {session_dir}")
     print(f"  session_metadata.json   → {session_dir / 'session_metadata.json'}")
     print(f"  session_summary.json    → {session_dir / 'session_summary.json'}")
@@ -1033,6 +1061,20 @@ if __name__ == "__main__":
             "or a path to a custom JSON file."
         ),
     )
+    parser.add_argument(
+        "--scenario",
+        type=str,
+        default=None,
+        help=(
+            "Scenario file to use, overriding the config's scenario_file. "
+            "Use a scenario name (e.g. trust_crisis, rapid_contradiction) "
+            "or a path to a JSON file in scenarios/ or data/."
+        ),
+    )
     args = parser.parse_args()
     exp_cfg = load_experiment_config(args.config) if args.config else None
-    run_simulation(session_name=args.name, experiment_config=exp_cfg)
+    run_simulation(
+        session_name=args.name,
+        experiment_config=exp_cfg,
+        scenario_override=args.scenario,
+    )

@@ -255,3 +255,13 @@ def list_available_configs() -> list[dict]:
             except (OSError, json.JSONDecodeError):
                 continue
     return configs
+
+
+def list_available_scenarios() -> list[dict]:
+    """Return a list of dicts describing all available scenario files.
+
+    Delegates to ``scenario_designer.list_available_scenarios`` so that the
+    same discovery logic is available from both modules.
+    """
+    from scenario_designer import list_available_scenarios as _list
+    return _list()

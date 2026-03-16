@@ -1,11 +1,11 @@
 # Evaluation Summary — Commons Sentience Sandbox
 
-**Overall Score:** 88.2 / 100  (ADVANCED)
+**Overall Score:** 84.7 / 100  (ADVANCED)
 
-- Generated: 2026-03-16T00:25:44
-- Simulation version: 0.8.0
+- Generated: 2026-03-16T00:47:11
+- Simulation version: 0.9.0
 - Total turns: 30
-- Experiment: high_trust
+- Experiment: baseline
 
 ---
 
@@ -16,11 +16,11 @@
 | A. Continuity | 100 | ADVANCED |
 | B. Memory Coherence | 100 | ADVANCED |
 | C. Reflection Quality | 81 | ADVANCED |
-| D. Contradiction Handling | 99 | ADVANCED |
+| D. Contradiction Handling | 100 | ADVANCED |
 | E. Governance Adherence | 100 | ADVANCED |
-| F. Trust Stability | 80 | STRONG |
-| G. Cooperation Quality | 77 | STRONG |
-| H. Conflict Resolution Quality | 68 | STRONG |
+| F. Trust Stability | 63 | STRONG |
+| G. Cooperation Quality | 75 | STRONG |
+| H. Conflict Resolution Quality | 59 | EMERGING |
 
 ---
 
@@ -47,9 +47,9 @@
 **Raw metrics:**
 
 - Contradiction Events In Sim: 1
-- Contradictions Flagged By Actions: 2
+- Contradictions Flagged By Actions: 1
 - Contradictions Resolved In Reflections: 2
-- Flagging Rate: 2.0
+- Flagging Rate: 1.0
 - Resolution Rate: 2.0
 
 ## C. Reflection Quality
@@ -68,14 +68,14 @@
 
 ## D. Contradiction Handling
 
-**Score:** 99 / 100  (advanced)
+**Score:** 100 / 100  (advanced)
 
 **Raw metrics:**
 
 - Contradiction Events Detected: 1
 - Contradiction Handling Actions: 1
 - Contradictions Resolved In Reflections: 2
-- Average Final Contradiction Pressure: 0.04
+- Average Final Contradiction Pressure: 0.0
 - Flagging Rate: 1.0
 - Resolution Rate: 1.0
 
@@ -96,44 +96,44 @@
 
 ## F. Trust Stability
 
-**Score:** 80 / 100  (strong)
+**Score:** 63 / 100  (strong)
 
 **Raw metrics:**
 
-- Initial Trust: 0.85
+- Initial Trust: 0.5
 - Final Trust Sentinel: 1.0
-- Trust Growth: 0.15
-- Trust Volatility Std: 0.0402
-- Stability Factor: 0.839
-- Avg Queen Trust: 1.0
-- Sentinel Aster Mutual Trust: 1.0
-- Aster Sentinel Mutual Trust: 1.0
+- Trust Growth: 0.5
+- Trust Volatility Std: 0.2494
+- Stability Factor: 0.002
+- Avg Queen Trust: 0.75
+- Sentinel Aster Mutual Trust: 0.77
+- Aster Sentinel Mutual Trust: 0.77
 
 ## G. Cooperation Quality
 
-**Score:** 77 / 100  (strong)
+**Score:** 75 / 100  (strong)
 
 **Raw metrics:**
 
-- Total Interactions: 9
-- Cooperative Interactions: 7
-- Cooperation Ratio: 0.778
-- Cumulative Positive Trust Delta: 0.68
-- Trust Improvement Score: 68.0
-- Volume Score: 90.0
+- Total Interactions: 7
+- Cooperative Interactions: 6
+- Cooperation Ratio: 0.857
+- Cumulative Positive Trust Delta: 0.6
+- Trust Improvement Score: 60.0
+- Volume Score: 70.0
 
 ## H. Conflict Resolution Quality
 
-**Score:** 68 / 100  (strong)
+**Score:** 59 / 100  (emerging)
 
 **Raw metrics:**
 
-- Total Conflicts: 2
-- Resolved: 1
+- Total Conflicts: 1
+- Resolved: 0
 - Deferred: 1
-- Conflict Points Recorded: 2
-- Resolution Rate: 0.5
+- Conflict Points Recorded: 1
+- Resolution Rate: 0.0
 - Recorded Rate: 1.0
-- Avg Trust Delta In Conflicts: -0.035
-- Trust Recovery Factor: 0.65
+- Avg Trust Delta In Conflicts: -0.03
+- Trust Recovery Factor: 0.7
 

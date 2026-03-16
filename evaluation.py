@@ -29,7 +29,7 @@ import math
 import textwrap
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 # ---------------------------------------------------------------------------
 # Internal I/O helpers
@@ -609,7 +609,11 @@ def _score_conflict_resolution(interaction_log: list[dict]) -> dict:
 # ---------------------------------------------------------------------------
 
 
-def evaluate_session(session_dir: Path, experiment_config: "Any" = None) -> dict:
+def evaluate_session(
+    session_dir: Path,
+    experiment_config: "Any" = None,
+    scenario_name: "Optional[str]" = None,
+) -> dict:
     """
     Evaluate a simulation session and return a structured evaluation report.
 
@@ -619,6 +623,9 @@ def evaluate_session(session_dir: Path, experiment_config: "Any" = None) -> dict
         Directory containing the session output files.
     experiment_config : ExperimentConfig, optional
         When provided, its metadata is embedded in the report.
+    scenario_name : str, optional
+        Name of the scenario used for this session.  Embedded in the report if
+        not already present in the state JSON.
 
     Returns
     -------
@@ -641,6 +648,13 @@ def evaluate_session(session_dir: Path, experiment_config: "Any" = None) -> dict
         exp_meta = experiment_config.to_metadata_dict()
     else:
         exp_meta = state_data.get("experiment", {"experiment_name": "baseline"})
+
+    # Scenario name — prefer explicit arg, then state JSON, then "unknown"
+    resolved_scenario = (
+        scenario_name
+        or state_data.get("scenario")
+        or "unknown"
+    )
 
     # Compute category scores
     categories = {
@@ -670,6 +684,7 @@ def evaluate_session(session_dir: Path, experiment_config: "Any" = None) -> dict
         "generated_at": datetime.now().isoformat(),
         "simulation_version": sim_version,
         "total_turns": total_turns,
+        "scenario": resolved_scenario,
         "experiment": exp_meta,
         "overall_score": overall_score,
         "overall_interpretation": overall_interpretation,
@@ -758,7 +773,9 @@ def write_evaluation_summary(report: dict, output_dir: Path) -> None:
 
 
 def evaluate_and_save(
-    session_dir: Path, experiment_config: "Any" = None
+    session_dir: Path,
+    experiment_config: "Any" = None,
+    scenario_name: "Optional[str]" = None,
 ) -> dict:
     """
     Evaluate the session at *session_dir*, write both output files, and return
@@ -766,7 +783,11 @@ def evaluate_and_save(
 
     This is the primary entry-point called by run_sim.py and session_manager.py.
     """
-    report = evaluate_session(session_dir, experiment_config=experiment_config)
+    report = evaluate_session(
+        session_dir,
+        experiment_config=experiment_config,
+        scenario_name=scenario_name,
+    )
     write_evaluation_report(report, session_dir)
     write_evaluation_summary(report, session_dir)
     return report

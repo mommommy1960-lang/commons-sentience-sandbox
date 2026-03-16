@@ -1,5 +1,5 @@
 """
-Commons Sentience Sandbox — Local Research Dashboard (v0.8)
+Commons Sentience Sandbox — Local Research Dashboard (v0.9)
 
 A lightweight Streamlit dashboard for observing simulation state.
 Supports:
@@ -8,6 +8,7 @@ Supports:
   - side-by-side session comparison
   - evaluation scores per session
   - experiment config browser and aggregate scores
+  - scenario browser and event designer
   - auto-refresh
 
 Run with:
@@ -23,6 +24,20 @@ from pathlib import Path
 import streamlit as st
 from evaluation import _interpret as eval_interpret
 from experiment_config import list_available_configs
+from scenario_designer import (
+    EVENT_TYPES,
+    ROOMS,
+    AGENTS,
+    AGENT_INTERACTION_TYPES,
+    AFFECTIVE_KEYS,
+    list_available_scenarios,
+    load_scenario,
+    save_scenario,
+    validate_scenario,
+    preview_scenario,
+    _next_id,
+    _default_save_path,
+)
 from session_manager import (
     SESSIONS_DIR,
     compare_sessions,
@@ -166,7 +181,7 @@ st.set_page_config(
 # ---------------------------------------------------------------------------
 
 st.sidebar.title("\U0001f9e0 Commons Sentience Sandbox")
-st.sidebar.markdown("**Local Research Dashboard \u2014 v0.8**")
+st.sidebar.markdown("**Local Research Dashboard \u2014 v0.9**")
 st.sidebar.divider()
 
 # Session selector
@@ -273,6 +288,7 @@ if not state_data:
     tab_compare,
     tab_eval,
     tab_exp,
+    tab_scenario,
 ) = st.tabs(
     [
         "Overview",
@@ -285,6 +301,7 @@ if not state_data:
         "Compare",
         "Evaluation",
         "Experiments",
+        "Scenario Designer",
     ]
 )
 
@@ -1301,6 +1318,261 @@ with tab_exp:
         st.table(exp_meta_rows)
     else:
         st.info("No experiment metadata for the active session.")
+
+# ===========================================================================
+# TAB K — Scenario Designer
+# ===========================================================================
+
+with tab_scenario:
+    st.header("Scenario Designer")
+    st.caption(
+        "Browse, preview, and author scenario event files for the simulation. "
+        "Each scenario defines the event schedule both agents experience during a run. "
+        "Scenarios live in `scenarios/` (authored) and `data/` (built-in). "
+        "Use `python scenario_designer.py` for full CLI authoring support."
+    )
+
+    # ── Scenario Selector ──────────────────────────────────────────────────
+    all_scenarios = list_available_scenarios()
+    scenario_names = [s["name"] for s in all_scenarios]
+
+    if not scenario_names:
+        st.warning(
+            "No scenario files found. "
+            "Run `python scenario_designer.py new --name my_scenario` to create one."
+        )
+        st.stop()
+
+    sc_col1, sc_col2 = st.columns([4, 2])
+    with sc_col1:
+        selected_scenario_name = st.selectbox(
+            "Select scenario", scenario_names, key="sd_scenario_select"
+        )
+    with sc_col2:
+        st.markdown("&nbsp;", unsafe_allow_html=True)
+        refresh_btn = st.button("↺ Refresh list", key="sd_refresh")
+
+    # Find metadata for the selected scenario
+    selected_meta = next(
+        (s for s in all_scenarios if s["name"] == selected_scenario_name), {}
+    )
+    scenario_file_path = Path(selected_meta.get("path", "")) if selected_meta else None
+
+    if scenario_file_path and scenario_file_path.exists():
+        raw_data = load_scenario(scenario_file_path)
+    else:
+        raw_data = {"_name": selected_scenario_name, "_description": "", "events": []}
+
+    # ── Scenario Metadata ──────────────────────────────────────────────────
+    st.subheader("Scenario Info")
+    meta_c1, meta_c2, meta_c3 = st.columns(3)
+    meta_c1.metric("Events", len(raw_data.get("events", [])))
+    meta_c2.metric("Source", selected_meta.get("source", "—").title())
+    meta_c3.metric("File", selected_meta.get("file", "—"))
+
+    desc = raw_data.get("_description", "")
+    if desc:
+        st.info(desc)
+
+    st.divider()
+
+    # ── Event Table ────────────────────────────────────────────────────────
+    st.subheader("Events")
+    events = raw_data.get("events", [])
+    if events:
+        event_rows = []
+        for ev in sorted(events, key=lambda e: (e.get("turn", 0), e.get("id", ""))):
+            parts = ", ".join(ev.get("participants", []))
+            human = ev.get("human") or "—"
+            ai_impact = ev.get("affective_impact", {})
+            impact_str = ", ".join(f"{k}: {v:+.2f}" for k, v in ai_impact.items()) if ai_impact else "—"
+            event_rows.append({
+                "ID": ev.get("id", "?"),
+                "Turn": ev.get("turn", "?"),
+                "Type": ev.get("type", "?"),
+                "Room": ev.get("room", "?"),
+                "Human": human,
+                "Participants": parts,
+                "Shared": "✓" if ev.get("shared") else "—",
+                "Affective Impact": impact_str,
+            })
+        st.table(event_rows)
+    else:
+        st.info("This scenario has no events yet. Add one below.")
+
+    st.divider()
+
+    # ── Add New Event Form ─────────────────────────────────────────────────
+    is_authored = selected_meta.get("source") == "scenarios"
+
+    if not is_authored:
+        st.info(
+            "ℹ️  This is a built-in scenario from `data/`. "
+            "To edit it, first duplicate it: "
+            "`python scenario_designer.py duplicate --source "
+            + selected_scenario_name
+            + " --name my_copy`"
+        )
+
+    with st.expander("➕ Add New Event", expanded=False):
+        if not is_authored:
+            st.warning(
+                "This scenario is read-only (built-in). "
+                "Duplicate it first to author a custom version."
+            )
+        else:
+            with st.form("sd_add_event_form"):
+                fc1, fc2 = st.columns(2)
+                ev_type = fc1.selectbox("Event type", EVENT_TYPES, key="sd_ev_type")
+                ev_room = fc2.selectbox("Room", ROOMS, key="sd_ev_room")
+
+                fd1, fd2, fd3 = st.columns(3)
+                ev_turn = fd1.number_input("Turn", min_value=1, max_value=200, value=1, step=1, key="sd_ev_turn")
+                is_agent_meeting = ev_type == "agent_meeting"
+                ev_human = fd2.text_input(
+                    "Human participant", value="" if is_agent_meeting else "Queen", key="sd_ev_human",
+                    disabled=is_agent_meeting,
+                )
+                ev_shared = fd3.checkbox("Shared (both agents)", value=True, key="sd_ev_shared")
+
+                ev_participants = st.multiselect(
+                    "Participants", AGENTS, default=AGENTS, key="sd_ev_participants"
+                )
+                ev_description = st.text_area("Description", key="sd_ev_desc")
+                ev_content = st.text_area(
+                    "Human's spoken content (optional)", key="sd_ev_content",
+                    disabled=is_agent_meeting,
+                )
+
+                fe1, fe2 = st.columns(2)
+                ev_expected = fe1.text_input("Sentinel expected action (optional)", key="sd_ev_exp")
+                ev_aster_exp = fe2.text_input("Aster expected action (optional)", key="sd_ev_aster")
+
+                st.markdown("**Affective impact** (deltas, leave at 0 to skip):")
+                ai_cols = st.columns(len(AFFECTIVE_KEYS))
+                ai_vals = {}
+                for i, k in enumerate(AFFECTIVE_KEYS):
+                    ai_vals[k] = ai_cols[i].number_input(
+                        k, min_value=-1.0, max_value=1.0, value=0.0, step=0.05, key=f"sd_ai_{k}"
+                    )
+
+                add_submitted = st.form_submit_button("Add Event")
+
+            if add_submitted:
+                # Build event dict
+                id_prefix = "A" if is_agent_meeting else "E"
+                new_id = _next_id(raw_data.get("events", []), id_prefix)
+                new_ev = {
+                    "id": new_id,
+                    "turn": int(ev_turn),
+                    "type": ev_type,
+                    "room": ev_room,
+                    "human": None if is_agent_meeting else (ev_human or "Queen"),
+                    "participants": ev_participants or list(AGENTS),
+                    "shared": bool(ev_shared),
+                    "description": ev_description,
+                }
+                if ev_content and not is_agent_meeting:
+                    new_ev["content"] = ev_content
+                if ev_expected:
+                    new_ev["expected_action"] = ev_expected
+                if ev_aster_exp:
+                    new_ev["aster_expected_action"] = ev_aster_exp
+                ai_clean = {k: v for k, v in ai_vals.items() if v != 0.0}
+                if ai_clean:
+                    new_ev["affective_impact"] = ai_clean
+
+                raw_data["events"].append(new_ev)
+                save_scenario(raw_data, scenario_file_path)
+                st.success(f"Event {new_id} added at turn {int(ev_turn)}.")
+                st.rerun()
+
+    st.divider()
+
+    # ── Delete Event ───────────────────────────────────────────────────────
+    if is_authored and events:
+        with st.expander("🗑️ Delete Event", expanded=False):
+            event_ids = [ev.get("id", "?") for ev in events]
+            del_id = st.selectbox("Select event ID to delete", event_ids, key="sd_del_id")
+            if st.button("Delete selected event", type="primary", key="sd_del_btn"):
+                raw_data["events"] = [
+                    ev for ev in raw_data["events"] if ev.get("id") != del_id
+                ]
+                save_scenario(raw_data, scenario_file_path)
+                st.success(f"Event '{del_id}' deleted.")
+                st.rerun()
+
+    st.divider()
+
+    # ── Validate ───────────────────────────────────────────────────────────
+    st.subheader("Validate")
+    if st.button("Validate scenario", key="sd_validate"):
+        issues = validate_scenario(raw_data)
+        if issues:
+            st.warning(f"Found {len(issues)} issue(s):")
+            for issue in issues:
+                st.markdown(f"- {issue}")
+        else:
+            st.success(f"✓ Scenario '{selected_scenario_name}' is valid ({len(events)} events).")
+
+    st.divider()
+
+    # ── Preview ────────────────────────────────────────────────────────────
+    with st.expander("📄 Preview scenario (narrative)", expanded=False):
+        st.markdown(preview_scenario(raw_data))
+
+    st.divider()
+
+    # ── New Scenario ────────────────────────────────────────────────────────
+    st.subheader("Create New Scenario")
+    with st.form("sd_new_scenario_form"):
+        ns_col1, ns_col2 = st.columns(2)
+        new_name = ns_col1.text_input("Scenario name (slug)", key="sd_new_name",
+                                      placeholder="my_scenario")
+        new_desc = ns_col2.text_input("Description", key="sd_new_desc",
+                                      placeholder="What does this scenario test?")
+        ns_submit = st.form_submit_button("Create")
+
+    if ns_submit:
+        if not new_name:
+            st.error("Please enter a scenario name.")
+        else:
+            import re as _re
+            safe_name = _re.sub(r"[^\w\-]", "_", new_name).lower()
+            out_path = _default_save_path(safe_name)
+            if out_path.exists():
+                st.warning(f"File already exists: `{out_path}`. Choose a different name.")
+            else:
+                new_data = {"_name": safe_name, "_description": new_desc, "events": []}
+                save_scenario(new_data, out_path)
+                st.success(f"Created `{out_path}`. Refresh the list to see it.")
+
+    st.divider()
+
+    # ── Available scenarios table ──────────────────────────────────────────
+    st.subheader("All Available Scenarios")
+    if all_scenarios:
+        sc_rows = [
+            {
+                "Name": s["name"],
+                "Events": s["event_count"],
+                "Source": s["source"].title(),
+                "Description": s["description"],
+                "File": s["file"],
+            }
+            for s in all_scenarios
+        ]
+        st.table(sc_rows)
+    else:
+        st.info("No scenario files found.")
+
+    st.caption(
+        "CLI commands: `python scenario_designer.py list` · "
+        "`python scenario_designer.py new --name <name>` · "
+        "`python scenario_designer.py add --scenario <name>` · "
+        "`python scenario_designer.py validate` · "
+        "`python scenario_designer.py preview --scenario <name>`"
+    )
 
 # ---------------------------------------------------------------------------
 # Auto-refresh (must be last)
