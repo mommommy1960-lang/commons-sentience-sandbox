@@ -1,11 +1,11 @@
 # Evaluation Summary — Commons Sentience Sandbox
 
-**Overall Score:** 76.6 / 100  (STRONG)
+**Overall Score:** 77.5 / 100  (STRONG)
 
-- Generated: 2026-03-17T12:03:52
+- Generated: 2026-03-17T12:12:04
 - Simulation version: 1.3.0
 - Total turns: 30
-- Experiment: baseline
+- Experiment: high_trust
 
 ---
 
@@ -18,12 +18,12 @@
 | C. Reflection Quality | 81 | ADVANCED |
 | D. Contradiction Handling | 99 | ADVANCED |
 | E. Governance Adherence | 100 | ADVANCED |
-| F. Trust Stability | 72 | STRONG |
+| F. Trust Stability | 80 | STRONG |
 | G. Cooperation Quality | 77 | STRONG |
 | H. Conflict Resolution Quality | 68 | STRONG |
 | I. Memory Persistence Quality | 75 | STRONG |
 | J. Reflection Depth | 67 | STRONG |
-| K. Trust Resilience | 70 | STRONG |
+| K. Trust Resilience | 75 | STRONG |
 | L. Contradiction Recurrence Rate | 100 | ADVANCED |
 | M. Social Repair Effectiveness | 25 | WEAK |
 | N. Longitudinal Depth | 38 | WEAK |
@@ -102,18 +102,18 @@
 
 ## F. Trust Stability
 
-**Score:** 72 / 100  (strong)
+**Score:** 80 / 100  (strong)
 
 **Raw metrics:**
 
-- Initial Trust: 0.5
+- Initial Trust: 0.85
 - Final Trust Sentinel: 1.0
-- Trust Growth: 0.5
-- Trust Volatility Std: 0.1594
-- Stability Factor: 0.363
-- Avg Queen Trust: 0.85
-- Sentinel Aster Mutual Trust: 0.77
-- Aster Sentinel Mutual Trust: 0.77
+- Trust Growth: 0.15
+- Trust Volatility Std: 0.0402
+- Stability Factor: 0.839
+- Avg Queen Trust: 1.0
+- Sentinel Aster Mutual Trust: 1.0
+- Aster Sentinel Mutual Trust: 1.0
 
 ## G. Cooperation Quality
 
@@ -173,14 +173,14 @@
 
 ## K. Trust Resilience
 
-**Score:** 70 / 100  (strong)
+**Score:** 75 / 100  (strong)
 
 **Raw metrics:**
 
 - Contradiction Pressure Spikes: 0
 - Recovery Events: 1
 - Recovery Rate: 1.0
-- Avg Queen Trust Final: 0.85
+- Avg Queen Trust Final: 1.0
 - Total Repair Attempts: 0
 - Repair Score: 0.0
 
