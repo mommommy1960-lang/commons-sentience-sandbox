@@ -453,9 +453,11 @@ def write_study_json(study: dict, output_dir: Path) -> Path:
     output_dir.mkdir(parents=True, exist_ok=True)
     path = output_dir / "continuity_study.json"
     with open(path, "w", encoding="utf-8") as fh:
-        # Exclude large trajectory lists from JSON for readability
+        # Exclude internal-only trajectory lists from JSON (cp_trajectory is only used
+        # in-memory for stability index computation; trust_trajectory is kept so the
+        # dashboard can render the per-session trust chart).
         def _slim(s: dict) -> dict:
-            slim = {k: v for k, v in s.items() if k not in ("trust_trajectory", "cp_trajectory")}
+            slim = {k: v for k, v in s.items() if k not in ("cp_trajectory",)}
             return slim
 
         slim_study = dict(study)
