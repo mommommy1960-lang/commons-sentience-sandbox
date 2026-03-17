@@ -1,7 +1,7 @@
 # Agent Profile Study — Commons Sentience Sandbox
 
 **Version:** 1.3.0  
-**Generated:** 2026-03-17T12:12:10  
+**Generated:** 2026-03-17T12:25:56  
 **Sessions loaded:** 4  
 
 > This study compares the longitudinal behaviour profiles of Sentinel and Aster
