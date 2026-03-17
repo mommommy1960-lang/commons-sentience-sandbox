@@ -42,6 +42,8 @@ OUTPUT_FILES = [
     "interactions_plot.png",
     "evaluation_report.json",
     "evaluation_summary.md",
+    # v1.6 persistent world state
+    "world_state.json",
 ]
 
 # Continuity study outputs included in bundles when present

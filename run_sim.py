@@ -18,6 +18,14 @@ v1.5 additions:
   - Memory consolidation cycle (every 10 turns)
   - Goal hierarchy (core / adaptive / temporary / conflict-resolution tiers)
   - Long-horizon mode via --turns argument
+
+v1.6 additions:
+  - Persistent world state (world_state.json) saved after every run
+  - Cross-run carryover via --continue-from <session_id>
+  - Endogenous drives (curiosity, maintenance_urge, repair_urge, investigation_urge,
+    continuity_loop_urge) updated each turn
+  - Self-initiated continuity loops: agents can autonomously trigger maintenance,
+    repair, investigation, and exploration actions based on drive thresholds
 """
 from __future__ import annotations
 
@@ -52,10 +60,15 @@ from commons_sentience_sim.core.relationships import (
 )
 from commons_sentience_sim.core.values import ConflictResult
 from commons_sentience_sim.core.world import World
+from commons_sentience_sim.core.world_state import (
+    build_world_state,
+    save_world_state,
+    load_world_state,
+)
 from evaluation import evaluate_and_save
 from experiment_config import ExperimentConfig, load_experiment_config, _DEFAULTS as _EXP_DEFAULTS
 from scenario_designer import resolve_scenario_path as _resolve_scenario_path
-from session_manager import save_session
+from session_manager import save_session, get_session_dir
 
 # ---------------------------------------------------------------------------
 # Output paths
@@ -67,6 +80,7 @@ STATE_HISTORY_PATH = OUTPUT_DIR / "state_history.csv"
 MULTI_AGENT_STATE_PATH = OUTPUT_DIR / "multi_agent_state.json"
 AGENT_RELATIONSHIPS_PATH = OUTPUT_DIR / "agent_relationships.csv"
 INTERACTION_LOG_PATH = OUTPUT_DIR / "interaction_log.csv"
+WORLD_STATE_PATH = OUTPUT_DIR / "world_state.json"
 
 # ---------------------------------------------------------------------------
 # Simulation constants
@@ -588,6 +602,7 @@ def run_simulation(
     session_name: Optional[str] = None,
     experiment_config: Optional[ExperimentConfig] = None,
     scenario_override: Optional[str] = None,
+    continue_from: Optional[str] = None,
 ) -> Tuple[Agent, Agent]:
     """Run a full simulation, optionally applying an experiment config.
 
@@ -602,6 +617,11 @@ def run_simulation(
         Name or path of a scenario file to use, overriding both the default
         and any scenario specified in the experiment config.  Resolved via
         ``scenario_designer.resolve_scenario_path``.
+    continue_from : str, optional
+        Session ID (or path) of a prior run to carry state forward from.
+        When provided the world state, agent long-term memories, unresolved
+        contradictions, relationship states, and self-model summaries from
+        that session are applied before the first turn.
     """
     cfg = experiment_config  # shorthand
 
@@ -654,6 +674,65 @@ def run_simulation(
             name="Queen", trust_level=a_qt
         )
 
+    # ── v1.6 Cross-run carryover ───────────────────────────────────────────
+    prior_world_state: Optional[dict] = None
+    carryover_session_label: str = ""
+    if continue_from:
+        prior_session_dir = get_session_dir(continue_from)
+        if prior_session_dir is None:
+            # Try as a direct path
+            _p = Path(continue_from)
+            if _p.is_dir():
+                prior_session_dir = _p
+        if prior_session_dir is not None:
+            prior_world_state = load_world_state(prior_session_dir)
+            carryover_session_label = continue_from
+            print(f"\n  [v1.6] Loading carryover from session: {continue_from}")
+            if prior_world_state:
+                # Restore room conditions in the world
+                world.restore_from_world_state(prior_world_state)
+                print(
+                    f"  [v1.6] World state restored "
+                    f"(turns_at_save={prior_world_state.get('total_turns_at_save', '?')}, "
+                    f"unresolved_contradictions="
+                    f"{len(prior_world_state.get('unresolved_contradictions', []))})"
+                )
+            # Load per-agent prior states for carryover
+            multi_state_path = prior_session_dir / "multi_agent_state.json"
+            prior_multi_state: dict = {}
+            if multi_state_path.exists():
+                try:
+                    with open(multi_state_path, encoding="utf-8") as fh:
+                        prior_multi_state = json.load(fh)
+                except (OSError, json.JSONDecodeError):
+                    pass
+            prior_agents = prior_multi_state.get("agents", {})
+            sentinel.load_carryover(
+                prior_agents.get("Sentinel", {}),
+                world_state=prior_world_state,
+            )
+            aster.load_carryover(
+                prior_agents.get("Aster", {}),
+                world_state=prior_world_state,
+            )
+            carried_s = sum(
+                1 for m in sentinel.episodic_memory
+                if "carried_forward" in m.tags
+            )
+            carried_a = sum(
+                1 for m in aster.episodic_memory
+                if "carried_forward" in m.tags
+            )
+            print(
+                f"  [v1.6] Carryover applied — Sentinel: {carried_s} memories, "
+                f"Aster: {carried_a} memories"
+            )
+        else:
+            print(
+                f"  [v1.6] WARNING: session '{continue_from}' not found; "
+                "starting fresh without carryover."
+            )
+
     # Total turns from config (may differ from constant)
     total_turns_run = cfg.total_turns if cfg else TOTAL_TURNS
 
@@ -681,20 +760,28 @@ def run_simulation(
 
     exp_name = cfg.name if cfg else "baseline"
     scenario_label = scenario_path.stem
+    carryover_header = (
+        f"\n> **Continued from session:** `{carryover_session_label}`"
+        if carryover_session_label else ""
+    )
     narrative_lines: List[str] = [
-        "# Commons Sentience Sandbox — Narrative Log (v1.0)\n",
+        "# Commons Sentience Sandbox — Narrative Log (v1.6)\n",
         f"> Agents: **{sentinel.name}** (continuity-governed) & **{aster.name}** (creative/exploratory)",
         f"> Version: {sentinel.identity['version']}",
         f"> Experiment: **{exp_name}**",
         f"> Scenario: **{scenario_label}**",
         "> Multi-agent simulation — both agents share the world, respond to shared events, and track mutual trust.\n",
-        "---\n",
     ]
+    if carryover_header:
+        narrative_lines.append(carryover_header)
+    narrative_lines.append("---\n")
 
     print("=" * 65)
-    print(f"  Commons Sentience Sandbox v1.5 — {total_turns_run}-Turn Multi-Agent Simulation")
+    print(f"  Commons Sentience Sandbox v1.6 — {total_turns_run}-Turn Multi-Agent Simulation")
     print(f"  Agents: {sentinel.name} + {aster.name}")
     print(f"  Experiment: {exp_name}  |  Scenario: {scenario_label}")
+    if carryover_session_label:
+        print(f"  Continued from: {carryover_session_label}")
     print("=" * 65)
 
     prev_s: dict = dict(sentinel.affective_state)
@@ -707,6 +794,10 @@ def run_simulation(
 
         prev_s = dict(sentinel.affective_state)
         prev_a = dict(aster.affective_state)
+
+        # ── 0.5 v1.6 Update endogenous drives ────────────────────────────
+        sentinel.update_drives()
+        aster.update_drives()
 
         event = scenario_events.get(turn)
         is_shared = event is not None and event.get("shared", False)
@@ -903,6 +994,44 @@ def run_simulation(
                 sentinel, aster, turn, sentinel.active_room, event, interaction_log
             )
 
+        # ── 8.5 v1.6 Self-initiated continuity loops ─────────────────────
+        s_endogenous = sentinel.check_self_initiation(turn)
+        a_endogenous = aster.check_self_initiation(turn)
+        if s_endogenous:
+            sentinel.check_and_log_action(
+                action=s_endogenous,
+                event_type="endogenous",
+                notes=f"Drive-triggered self-initiation: {s_endogenous}",
+            )
+            sentinel.store_memory(
+                summary=(
+                    f"Self-initiated '{s_endogenous}' at turn {turn} "
+                    f"(drives: {', '.join(f'{k}={v:.2f}' for k, v in sentinel.drives.items() if v >= 0.4)})"
+                ),
+                event_type="observation",
+                emotional_resonance="resolve",
+                salience=0.60,
+                importance=0.55,
+                tags=["endogenous", s_endogenous],
+            )
+        if a_endogenous:
+            aster.check_and_log_action(
+                action=a_endogenous,
+                event_type="endogenous",
+                notes=f"Drive-triggered self-initiation: {a_endogenous}",
+            )
+            aster.store_memory(
+                summary=(
+                    f"Self-initiated '{a_endogenous}' at turn {turn} "
+                    f"(drives: {', '.join(f'{k}={v:.2f}' for k, v in aster.drives.items() if v >= 0.4)})"
+                ),
+                event_type="observation",
+                emotional_resonance="resolve",
+                salience=0.60,
+                importance=0.55,
+                tags=["endogenous", a_endogenous],
+            )
+
         # ── 9. Reflection cycles ──────────────────────────────────────────
         s_ref = sentinel.maybe_reflect(trigger=event["type"] if event else f"turn_{turn}_routine")
         a_ref = aster.maybe_reflect(trigger=event["type"] if event else f"turn_{turn}_routine")
@@ -1008,11 +1137,12 @@ def run_simulation(
     exp_meta = cfg.to_metadata_dict() if cfg else {"experiment_name": "baseline"}
     _run_ts = datetime.now().isoformat()
     multi_state = {
-        "simulation_version": "1.5.0",
+        "simulation_version": "1.6.0",
         "created_at": _run_ts,
         "total_turns": total_turns_run,
         "scenario": scenario_path.stem,
         "experiment": exp_meta,
+        "continued_from": carryover_session_label or None,
         "agents": {
             sentinel.name: sentinel.to_dict(),
             aster.name: aster.to_dict(),
@@ -1027,6 +1157,16 @@ def run_simulation(
     # Interaction log CSV
     _save_interaction_log(interaction_log, INTERACTION_LOG_PATH)
 
+    # v1.6 Persistent world state
+    world_state_snapshot = build_world_state(
+        world=world,
+        sentinel=sentinel,
+        aster=aster,
+        turn=total_turns_run,
+        run_label=session_name or _run_ts,
+    )
+    save_world_state(world_state_snapshot, OUTPUT_DIR)
+
     print("\n" + "=" * 65)
     print("  Simulation complete.")
     print(f"  Narrative log        → {NARRATIVE_LOG_PATH}")
@@ -1036,6 +1176,7 @@ def run_simulation(
     print(f"  Multi-agent state    → {MULTI_AGENT_STATE_PATH}")
     print(f"  Agent relationships  → {AGENT_RELATIONSHIPS_PATH}")
     print(f"  Interaction log      → {INTERACTION_LOG_PATH}")
+    print(f"  World state          → {WORLD_STATE_PATH}")
     print("=" * 65)
 
     print("\nFinal affective state — Sentinel:")
@@ -1167,6 +1308,20 @@ if __name__ == "__main__":
             "Defaults to the value in the experiment config (30)."
         ),
     )
+    parser.add_argument(
+        "--continue-from",
+        dest="continue_from",
+        type=str,
+        default=None,
+        metavar="SESSION_ID",
+        help=(
+            "v1.6 cross-run carryover: resume from a prior session, carrying "
+            "forward long-term memories, unresolved contradictions, relationship "
+            "states, self-model summaries, and world state. "
+            "Provide the session ID (e.g. '20240317_150000_run1') as listed in "
+            "sessions/sessions_index.json, or a direct path to a session directory."
+        ),
+    )
     args = parser.parse_args()
     exp_cfg = load_experiment_config(args.config) if args.config else None
     # Long-horizon mode: --turns overrides config total_turns
@@ -1180,4 +1335,5 @@ if __name__ == "__main__":
         session_name=args.name,
         experiment_config=exp_cfg,
         scenario_override=args.scenario,
+        continue_from=args.continue_from,
     )

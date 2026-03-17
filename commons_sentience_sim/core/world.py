@@ -49,6 +49,9 @@ class Room:
         self.description: str = data.get("description", "")
         self.actions: List[str] = data.get("actions", [])
         self.connected_rooms: List[str] = data.get("connected_rooms", [])
+        # v1.6 persistent room state
+        self.condition: str = data.get("condition", "normal")
+        self.tension_level: float = float(data.get("tension_level", 0.0))
 
         # Build WorldObject instances from the objects dict
         raw_objects = data.get("objects", {})
@@ -179,4 +182,47 @@ class World:
         if preferred_room and preferred_room in adjacent:
             return preferred_room
         return random.choice(adjacent)
+
+    # ------------------------------------------------------------------
+    # v1.6 Persistent room-condition helpers
+    # ------------------------------------------------------------------
+
+    def set_room_condition(self, room_name: str, condition: str) -> None:
+        """Set the named condition on a room (e.g. 'high_tension')."""
+        room = self.get_room(room_name)
+        if room is not None:
+            room.condition = condition
+
+    def set_room_tension(self, room_name: str, tension: float) -> None:
+        """Update the tension level of a room (clamped to 0.0–1.0)."""
+        room = self.get_room(room_name)
+        if room is not None:
+            room.tension_level = max(0.0, min(1.0, tension))
+
+    def restore_from_world_state(self, world_state: dict) -> None:
+        """Apply persisted room conditions from a prior-run world_state dict.
+
+        Only fields that are present in *world_state* are updated; rooms not
+        mentioned retain their default values.
+
+        Parameters
+        ----------
+        world_state :
+            Dict as produced by
+            ``commons_sentience_sim.core.world_state.build_world_state``.
+        """
+        room_conditions = world_state.get("room_conditions", {})
+        for room_name, cond_data in room_conditions.items():
+            room = self.get_room(room_name)
+            if room is None:
+                continue
+            if isinstance(cond_data, dict):
+                room.condition = cond_data.get("condition", "normal")
+                room.tension_level = float(cond_data.get("tension_level", 0.0))
+                # Restore individual object states if present
+                objects_snapshot = cond_data.get("objects", {})
+                for obj_name, obj_state in objects_snapshot.items():
+                    obj = room.objects.get(obj_name)
+                    if obj is not None and obj_state in obj.states:
+                        obj.state = obj_state
 
