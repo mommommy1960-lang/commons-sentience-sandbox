@@ -34,7 +34,45 @@ Commons Sentience Sandbox is a **local research platform for studying continuity
 
 ## Release History
 
-### v1.3.0 (current)
+### v1.4.0 (current)
+
+#### v1.4 Benchmark Suite
+- `_DEFAULT_SUITE_V14` — 6-entry canonical benchmark suite (v1.4)
+- Suite entries: `baseline_v14`, `trust_crisis_v14`, `rapid_contradiction_v14`, `high_trust_v14`, `adversarial_governance_v14`, `cooperative_resource_v14`
+- `_DEFAULT_SUITE` now points to `_DEFAULT_SUITE_V14` (v1.4 is the default)
+- v1.3 suite (`_DEFAULT_SUITE_V13`) retained for backward compatibility
+
+#### Two New Scenarios
+- `delayed_repair.json` — trust repair delay scenario; tests slow trust recovery arcs over 30 turns with deliberate avoidance, failed repair attempts, and final reconciliation
+- `cascading_memory_conflict.json` — contradiction lineage scenario; multiple memory contradictions form a chain, testing genealogy depth tracking and bulk resolution
+
+#### Enhanced benchmark_suite.py
+- `identify_strongest_weakest(results)` — returns name and score of best and worst run
+- `identify_largest_deltas(results)` — returns score deltas between consecutive runs sorted by magnitude
+- `identify_scenario_impact(results)` — maps focus areas (trust, contradiction, reflection, longitudinal) to the most strongly impacted run
+- `_write_summary_md(...)` — writes `benchmark_summary.md` answering key research questions
+- `benchmark_report.json` now includes `strongest_weakest`, `deltas`, and `scenario_impact` fields
+- Version bumped to `1.4` / `1.4.0`
+
+#### New findings_report.py
+- New script: `findings_report.py` — converts raw benchmark output into classified research findings
+- Classifies findings into: stable, scenario-sensitive, config-sensitive, unresolved, and likely next experiments
+- Produces `findings_report.json` and `findings_report.md`
+
+#### Dashboard — Benchmark v1.4 Tab
+- New "📊 Benchmark v1.4" tab (14th tab) in the Streamlit dashboard
+- Shows benchmark run table, category statistics, trust/contradiction/reflection comparisons
+- Displays strongest/weakest runs, largest score deltas, and research findings
+- Gracefully handles missing data (shows instructions to run benchmark suite)
+
+#### Version bump
+- `benchmark_version` in benchmark outputs updated to `1.4`
+- `platform_version` updated to `1.4.0`
+- README updated to v1.4.0
+
+---
+
+### v1.3.0
 
 #### Identity History Model
 - `Agent.identity_history` — per-turn identity snapshots stored in `multi_agent_state.json`

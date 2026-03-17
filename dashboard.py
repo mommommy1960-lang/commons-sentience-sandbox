@@ -308,6 +308,7 @@ if not state_data:
     tab_scenario,
     tab_continuity,
     tab_profiles,
+    tab_benchmark,
 ) = st.tabs(
     [
         "Overview",
@@ -323,6 +324,7 @@ if not state_data:
         "Scenario Designer",
         "Continuity Study",
         "Agent Profiles",
+        "📊 Benchmark v1.4",
     ]
 )
 
@@ -1985,6 +1987,195 @@ with tab_profiles:
             "Include specific sessions: `python agent_profile_study.py --sessions <id1> <id2>`"
         )
 
+
+# ===========================================================================
+# TAB O — Benchmark v1.4
+# ===========================================================================
+
+with tab_benchmark:
+    st.header("Benchmark v1.4 — Results")
+
+    _bench_report_path = ROOT / "benchmark_results" / "benchmark_report.json"
+    _findings_path = ROOT / "benchmark_results" / "findings_report.json"
+
+    _bench_data: dict = {}
+    _findings_data: dict = {}
+
+    if _bench_report_path.exists():
+        try:
+            with open(_bench_report_path, encoding="utf-8") as _fh:
+                _bench_data = json.load(_fh)
+        except (OSError, json.JSONDecodeError):
+            _bench_data = {}
+
+    if _findings_path.exists():
+        try:
+            with open(_findings_path, encoding="utf-8") as _fh:
+                _findings_data = json.load(_fh)
+        except (OSError, json.JSONDecodeError):
+            _findings_data = {}
+
+    if not _bench_data:
+        st.info(
+            "No benchmark data found. "
+            "Run `python benchmark_suite.py` to generate benchmark results, "
+            "then `python findings_report.py` to generate research findings."
+        )
+    else:
+        _runs = _bench_data.get("runs", [])
+        _stats = _bench_data.get("statistics", {})
+        _sw = _bench_data.get("strongest_weakest", {})
+        _deltas = _bench_data.get("deltas", [])
+
+        _bcol1, _bcol2, _bcol3 = st.columns(3)
+        _bcol1.metric("Total Runs", _bench_data.get("total_runs", len(_runs)))
+        _bcol2.metric("Suite Size", _bench_data.get("suite_size", "—"))
+        _bcol3.metric("Generated", (_bench_data.get("generated_at") or "—")[:19])
+
+        if _sw:
+            st.divider()
+            st.subheader("Strongest / Weakest Run")
+            _sw_col1, _sw_col2 = st.columns(2)
+            _sw_col1.metric("Strongest Run", _sw.get("strongest_run", "—"), f"{_sw.get('strongest_score', 0):.1f}")
+            _sw_col2.metric("Weakest Run", _sw.get("weakest_run", "—"), f"{_sw.get('weakest_score', 0):.1f}")
+
+        st.divider()
+        st.subheader("Per-Run Scores")
+        _run_rows = []
+        for _r in _runs:
+            _s = _r.get("scores", {})
+            _run_rows.append({
+                "Run": _r["name"],
+                "Config": _r.get("config", "default"),
+                "Scenario": _r.get("scenario", "default"),
+                "Overall": _r.get("overall_score"),
+                "Trust Stability": _s.get("trust_stability"),
+                "Contradiction Handling": _s.get("contradiction_handling"),
+                "Reflection Depth": _s.get("reflection_depth"),
+                "Longitudinal Depth": _s.get("longitudinal_depth"),
+            })
+        if _run_rows:
+            st.dataframe(_run_rows, use_container_width=True)
+
+        st.divider()
+        st.subheader("Category Statistics")
+        _stat_rows = []
+        _stat_rows.append({
+            "Category": "Overall",
+            "Mean": _stats.get("overall", {}).get("mean"),
+            "Min": _stats.get("overall", {}).get("min"),
+            "Max": _stats.get("overall", {}).get("max"),
+            "Std Dev": _stats.get("overall", {}).get("stdev"),
+        })
+        _cat_keys = [
+            ("continuity", "A. Continuity"),
+            ("memory_coherence", "B. Memory Coherence"),
+            ("reflection_quality", "C. Reflection Quality"),
+            ("contradiction_handling", "D. Contradiction Handling"),
+            ("governance_adherence", "E. Governance Adherence"),
+            ("trust_stability", "F. Trust Stability"),
+            ("cooperation_quality", "G. Cooperation Quality"),
+            ("conflict_resolution", "H. Conflict Resolution"),
+            ("memory_persistence_quality", "I. Memory Persistence Quality"),
+            ("reflection_depth", "J. Reflection Depth"),
+            ("trust_resilience", "K. Trust Resilience"),
+            ("contradiction_recurrence_rate", "L. Contradiction Recurrence Rate"),
+            ("social_repair_effectiveness", "M. Social Repair Effectiveness"),
+            ("longitudinal_depth", "N. Longitudinal Depth"),
+        ]
+        for _ck, _cl in _cat_keys:
+            _cs = _stats.get(_ck, {})
+            _stat_rows.append({
+                "Category": _cl,
+                "Mean": _cs.get("mean"),
+                "Min": _cs.get("min"),
+                "Max": _cs.get("max"),
+                "Std Dev": _cs.get("stdev"),
+            })
+        st.dataframe(_stat_rows, use_container_width=True)
+
+        st.divider()
+        st.subheader("Trust-Focused Comparison")
+        _trust_rows = [
+            {
+                "Run": _r["name"],
+                "Trust Stability": _r.get("scores", {}).get("trust_stability"),
+                "Trust Resilience": _r.get("scores", {}).get("trust_resilience"),
+            }
+            for _r in _runs
+        ]
+        if _trust_rows:
+            st.dataframe(_trust_rows, use_container_width=True)
+            _trust_chart_data = {_row["Run"]: _row["Trust Stability"] for _row in _trust_rows if _row["Trust Stability"] is not None}
+            if _trust_chart_data:
+                st.bar_chart(_trust_chart_data)
+
+        st.divider()
+        st.subheader("Contradiction-Focused Comparison")
+        _contra_rows = [
+            {
+                "Run": _r["name"],
+                "Contradiction Handling": _r.get("scores", {}).get("contradiction_handling"),
+                "Contradiction Recurrence Rate": _r.get("scores", {}).get("contradiction_recurrence_rate"),
+            }
+            for _r in _runs
+        ]
+        if _contra_rows:
+            st.dataframe(_contra_rows, use_container_width=True)
+
+        st.divider()
+        st.subheader("Reflection-Focused Comparison")
+        _refl_rows = [
+            {
+                "Run": _r["name"],
+                "Reflection Quality": _r.get("scores", {}).get("reflection_quality"),
+                "Reflection Depth": _r.get("scores", {}).get("reflection_depth"),
+            }
+            for _r in _runs
+        ]
+        if _refl_rows:
+            st.dataframe(_refl_rows, use_container_width=True)
+
+        st.divider()
+        st.subheader("Longitudinal Depth Comparison")
+        _long_rows = [
+            {
+                "Run": _r["name"],
+                "Longitudinal Depth": _r.get("scores", {}).get("longitudinal_depth"),
+            }
+            for _r in _runs
+        ]
+        if _long_rows:
+            st.dataframe(_long_rows, use_container_width=True)
+
+        if _deltas:
+            st.divider()
+            st.subheader("Largest Score Deltas (Consecutive Runs)")
+            st.dataframe(_deltas, use_container_width=True)
+
+        if _findings_data:
+            st.divider()
+            st.subheader("Research Findings")
+            _stable = _findings_data.get("stable_findings", [])
+            _scen_sens = _findings_data.get("scenario_sensitive_findings", [])
+            if _stable:
+                with st.expander(f"Stable Findings ({len(_stable)})"):
+                    for _item in _stable:
+                        st.markdown(f"- {_item}")
+            if _scen_sens:
+                with st.expander(f"Scenario-Sensitive Findings ({len(_scen_sens)})"):
+                    for _item in _scen_sens:
+                        st.markdown(f"- {_item.get('note', str(_item))}")
+
+        st.divider()
+        st.caption(
+            f"JSON: `{_bench_report_path}` · "
+            f"Findings: `{_findings_path}`"
+        )
+        st.caption(
+            "Regenerate: `python benchmark_suite.py` · "
+            "Generate findings: `python findings_report.py`"
+        )
 
 
 if auto_refresh:

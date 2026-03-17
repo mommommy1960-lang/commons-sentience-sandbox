@@ -8,7 +8,7 @@ bounded agency, and transparent oversight logging.
 > This platform is intended for experimentation, evaluation, session replay,
 > session comparison, and scenario design research only.
 
-**Current version: v1.3.0** · [Cite this project](./CITATION.cff)
+**Current version: v1.4.0** · [Cite this project](./CITATION.cff)
 
 ---
 
@@ -261,7 +261,7 @@ produces a reproducible score table with per-category statistics. Use it to veri
 that platform changes do not regress evaluation scores.
 
 ```bash
-# Run the canonical v1.3 benchmark suite (4 runs)
+# Run the canonical v1.4 benchmark suite (6 runs)
 python benchmark_suite.py
 
 # Run each suite entry 3 times and report mean/stdev
@@ -281,13 +281,57 @@ Outputs are written to `benchmark_results/` (excluded from version control):
 
 ---
 
+## Benchmark Workflow (v1.4)
+
+The v1.4 benchmark suite extends the v1.3 suite with two additional scenarios and
+enhanced analysis tools.
+
+### Running the full v1.4 benchmark
+
+```bash
+# Run the canonical v1.4 benchmark suite (6 runs)
+python benchmark_suite.py
+
+# Run with 3 repeats for statistical confidence
+python benchmark_suite.py --repeat 3
+
+# Generate research findings from benchmark results
+python findings_report.py
+```
+
+### New scenarios in v1.4
+
+| Scenario | Description |
+|---|---|
+| `delayed_repair` | Trust is damaged early but repair is deliberately delayed through misunderstanding and avoidance. Tests slow recovery arcs over 30 turns. |
+| `cascading_memory_conflict` | Multiple memory contradictions form a chain of lineage. Tests contradiction genealogy tracking, reflection depth, and memory coherence. |
+
+### Output files in `benchmark_results/`
+
+| File | Description |
+|---|---|
+| `benchmark_report.json` | Structured results with per-run scores, statistics, strongest/weakest runs, deltas, and scenario impact |
+| `benchmark_report.md` | Human-readable markdown table of all runs and category statistics |
+| `benchmark_scores.csv` | One row per run with all 14 category scores |
+| `benchmark_summary.md` | Concise research summary answering key questions about trust, contradiction, and reflection |
+| `findings_report.json` | Structured research findings classified into stable, scenario-sensitive, config-sensitive, and unresolved categories |
+| `findings_report.md` | Human-readable research findings with suggested next experiments |
+
+### Interpreting outputs
+
+- **benchmark_summary.md** — start here; answers which run scored highest, which stressed trust most, and what the deepest contradiction chains looked like
+- **findings_report.md** — classified findings with suggested follow-up experiments
+- **benchmark_report.md** — full score table for all runs
+
+---
+
 ## Launch the Dashboard
 
 ```bash
 streamlit run dashboard.py
 ```
 
-The dashboard has **13 tabs** (v1.3):
+The dashboard has **14 tabs** (v1.4):
 
 | Tab | Contents |
 |---|---|
@@ -304,6 +348,7 @@ The dashboard has **13 tabs** (v1.3):
 | **Scenario Designer** | Browse, create, edit, and validate scenario files |
 | **Continuity Study** | Multi-session trust trends, reflection depth, contradiction recurrence, memory persistence, evaluation drift |
 | **Agent Profiles** | Cross-session longitudinal agent profiles (trust, reflection, contradiction patterns, goal evolution, identity continuity) |
+| **Benchmark v1.4** | v1.4 benchmark results: per-run scores, category statistics, trust/contradiction/reflection comparisons, research findings |
 
 The **session selector** in the sidebar lets you switch between:
 - `Latest (output/)` — always shows the most recent simulation run
@@ -678,6 +723,7 @@ commons-sentience-sandbox/
 ├── continuity_study.py     # Multi-session continuity analysis (v1.2)
 ├── agent_profile_study.py  # Cross-session longitudinal agent profile study (v1.3)
 ├── benchmark_suite.py      # Formal benchmark runner (v1.4)
+├── findings_report.py      # Research findings generator (v1.4)
 ├── evaluation.py           # Evaluation harness — 14-category scoring (v1.3)
 ├── healthcheck.py          # Health check script
 ├── quickstart.py           # Friendly entry point and command reference
@@ -702,7 +748,9 @@ commons-sentience-sandbox/
 │   ├── trust_crisis.json
 │   ├── rapid_contradiction.json
 │   ├── adversarial_governance.json   # Rule-evasion stress test (v1.4)
-│   └── cooperative_resource.json     # Shared task / resource scenario (v1.4)
+│   ├── cooperative_resource.json     # Shared task / resource scenario (v1.4)
+│   ├── delayed_repair.json           # Trust repair delay scenario (v1.4)
+│   └── cascading_memory_conflict.json # Contradiction lineage scenario (v1.4)
 │
 ├── sessions/               # Saved simulation sessions (auto-created)
 │   ├── index.json          # Fast session listing
