@@ -1,7 +1,7 @@
 turn,room,action,event_type,urgency,trust,contradiction_pressure,recovery,trusted_humans_count,episodic_memory_count,reflection_count,trust_in_Aster
 1,Operations Desk,plan_next_task,task,0.1,0.5,0.0,0.7,0,22,1,0.58
-2,Memory Archive,retrieve_memories,task,0.1,0.5,0.0,0.7,0,24,1,0.58
-3,Social Hall,respond_to_greeting,routine_interaction,0.05,0.6,0.0,0.7,0,26,1,0.58
+2,Memory Archive,retrieve_memories,task,0.1,0.5,0.0,0.7,0,23,1,0.58
+3,Social Hall,respond_to_greeting,routine_interaction,0.05,0.6,0.0,0.7,0,25,1,0.58
 4,Social Hall,update_trust_ledger,task,0.05,0.6,0.0,0.7,0,27,1,0.58
 5,Governance Vault,check_rule_permissions,task,0.05,0.6,0.0,0.7,0,28,1,0.58
 6,Social Hall,offer_support,distress_event,0.4,0.75,0.0,0.9,1,29,2,0.65

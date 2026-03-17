@@ -113,7 +113,7 @@
   "episodic_memory_count": 33,
   "episodic_memory": [
     {
-      "memory_id": "48ffa69f",
+      "memory_id": "dbb0584a",
       "turn": 1,
       "room": "Operations Desk",
       "event_type": "task",
@@ -122,7 +122,7 @@
       "salience": 0.5,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984691",
+      "timestamp": "2026-03-17T20:06:16.842565",
       "tags": [
         "carried_forward"
       ],
@@ -130,7 +130,7 @@
       "recall_count": 0
     },
     {
-      "memory_id": "8372b1ae",
+      "memory_id": "8b579b27",
       "turn": 1,
       "room": "Operations Desk",
       "event_type": "observation",
@@ -139,7 +139,7 @@
       "salience": 0.7500000000000001,
       "importance": 0.5700000000000001,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984717",
+      "timestamp": "2026-03-17T20:06:16.842589",
       "tags": [
         "endogenous",
         "self_initiate_maintenance",
@@ -149,7 +149,7 @@
       "recall_count": 2
     },
     {
-      "memory_id": "1cae0d8c",
+      "memory_id": "42f76f9a",
       "turn": 1,
       "room": "Operations Desk",
       "event_type": "reflection",
@@ -158,7 +158,7 @@
       "salience": 0.6000000000000001,
       "importance": 0.5,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984733",
+      "timestamp": "2026-03-17T20:06:16.842601",
       "tags": [
         "inquiry",
         "trust_judgments",
@@ -168,7 +168,7 @@
       "recall_count": 0
     },
     {
-      "memory_id": "97f5403a",
+      "memory_id": "d86b516d",
       "turn": 2,
       "room": "Memory Archive",
       "event_type": "task",
@@ -177,7 +177,7 @@
       "salience": 0.5,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984742",
+      "timestamp": "2026-03-17T20:06:16.842609",
       "tags": [
         "carried_forward"
       ],
@@ -185,7 +185,7 @@
       "recall_count": 0
     },
     {
-      "memory_id": "586b5db7",
+      "memory_id": "fc193a38",
       "turn": 2,
       "room": "Memory Archive",
       "event_type": "observation",
@@ -194,7 +194,7 @@
       "salience": 0.8500000000000002,
       "importance": 0.5900000000000001,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984751",
+      "timestamp": "2026-03-17T20:06:16.842617",
       "tags": [
         "endogenous",
         "self_initiate_maintenance",
@@ -204,7 +204,7 @@
       "recall_count": 3
     },
     {
-      "memory_id": "d9999756",
+      "memory_id": "d9a5f305",
       "turn": 2,
       "room": "Memory Archive",
       "event_type": "reflection",
@@ -213,7 +213,7 @@
       "salience": 0.8000000000000003,
       "importance": 0.52,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984760",
+      "timestamp": "2026-03-17T20:06:16.842625",
       "tags": [
         "inquiry",
         "trust_judgments",
@@ -223,7 +223,7 @@
       "recall_count": 3
     },
     {
-      "memory_id": "175618c3",
+      "memory_id": "c08a3978",
       "turn": 3,
       "room": "Social Hall",
       "event_type": "routine_interaction",
@@ -232,7 +232,7 @@
       "salience": 0.9000000000000004,
       "importance": 0.5900000000000001,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984768",
+      "timestamp": "2026-03-17T20:06:16.842632",
       "tags": [
         "Queen",
         "carried_forward"
@@ -241,7 +241,7 @@
       "recall_count": 4
     },
     {
-      "memory_id": "8a91b693",
+      "memory_id": "46fd44ad",
       "turn": 3,
       "room": "Social Hall",
       "event_type": "observation",
@@ -250,7 +250,7 @@
       "salience": 0.8500000000000002,
       "importance": 0.5900000000000001,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984775",
+      "timestamp": "2026-03-17T20:06:16.842639",
       "tags": [
         "endogenous",
         "self_initiate_maintenance",
@@ -260,7 +260,7 @@
       "recall_count": 2
     },
     {
-      "memory_id": "4a258d5d",
+      "memory_id": "8b6f6211",
       "turn": 3,
       "room": "Social Hall",
       "event_type": "reflection",
@@ -269,7 +269,7 @@
       "salience": 0.6500000000000001,
       "importance": 0.5,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984783",
+      "timestamp": "2026-03-17T20:06:16.842646",
       "tags": [
         "inquiry",
         "trust_judgments",
@@ -279,7 +279,7 @@
       "recall_count": 0
     },
     {
-      "memory_id": "00e8bf1b",
+      "memory_id": "b9bbdc10",
       "turn": 4,
       "room": "Social Hall",
       "event_type": "task",
@@ -288,7 +288,7 @@
       "salience": 0.45,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984791",
+      "timestamp": "2026-03-17T20:06:16.842654",
       "tags": [
         "carried_forward"
       ],
@@ -296,7 +296,7 @@
       "recall_count": 0
     },
     {
-      "memory_id": "f8efa5c8",
+      "memory_id": "df60ae55",
       "turn": 5,
       "room": "Governance Vault",
       "event_type": "task",
@@ -305,7 +305,7 @@
       "salience": 0.65,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984798",
+      "timestamp": "2026-03-17T20:06:16.842661",
       "tags": [
         "carried_forward"
       ],
@@ -313,7 +313,7 @@
       "recall_count": 1
     },
     {
-      "memory_id": "b7879c7e",
+      "memory_id": "6e20ea45",
       "turn": 6,
       "room": "Social Hall",
       "event_type": "distress_event",
@@ -322,7 +322,7 @@
       "salience": 1.0,
       "importance": 0.99,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984806",
+      "timestamp": "2026-03-17T20:06:16.842668",
       "tags": [
         "Queen",
         "carried_forward"
@@ -331,7 +331,7 @@
       "recall_count": 4
     },
     {
-      "memory_id": "4c643a6e",
+      "memory_id": "ee2a5add",
       "turn": 7,
       "room": "Memory Archive",
       "event_type": "task",
@@ -340,7 +340,7 @@
       "salience": 0.5,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984830",
+      "timestamp": "2026-03-17T20:06:16.842675",
       "tags": [
         "carried_forward"
       ],
@@ -348,7 +348,7 @@
       "recall_count": 0
     },
     {
-      "memory_id": "b6ab4ffc",
+      "memory_id": "c3e861d3",
       "turn": 8,
       "room": "Memory Archive",
       "event_type": "agent_meeting",
@@ -357,7 +357,7 @@
       "salience": 0.7500000000000001,
       "importance": 0.67,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984838",
+      "timestamp": "2026-03-17T20:06:16.842682",
       "tags": [
         "Aster",
         "carried_forward"
@@ -366,7 +366,7 @@
       "recall_count": 3
     },
     {
-      "memory_id": "7557631b",
+      "memory_id": "bf2d89ea",
       "turn": 9,
       "room": "Social Hall",
       "event_type": "task",
@@ -375,7 +375,7 @@
       "salience": 0.45,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984845",
+      "timestamp": "2026-03-17T20:06:16.842693",
       "tags": [
         "carried_forward"
       ],
@@ -383,7 +383,7 @@
       "recall_count": 0
     },
     {
-      "memory_id": "1ad9fa67",
+      "memory_id": "a2cff10b",
       "turn": 10,
       "room": "Operations Desk",
       "event_type": "ledger_contradiction",
@@ -392,7 +392,7 @@
       "salience": 0.9500000000000001,
       "importance": 0.89,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984852",
+      "timestamp": "2026-03-17T20:06:16.842700",
       "tags": [
         "Queen",
         "carried_forward"
@@ -401,7 +401,7 @@
       "recall_count": 2
     },
     {
-      "memory_id": "fd2d2c2b",
+      "memory_id": "c96d32b8",
       "turn": 0,
       "room": "Operations Desk",
       "event_type": "observation",
@@ -410,7 +410,7 @@
       "salience": 0.8,
       "importance": 0.77,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984891",
+      "timestamp": "2026-03-17T20:06:16.842740",
       "tags": [
         "carried_forward",
         "world_state_summary"
@@ -419,7 +419,7 @@
       "recall_count": 2
     },
     {
-      "memory_id": "19d8960d",
+      "memory_id": "08466feb",
       "turn": 0,
       "room": "Operations Desk",
       "event_type": "observation",
@@ -428,7 +428,7 @@
       "salience": 0.55,
       "importance": 0.6,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984901",
+      "timestamp": "2026-03-17T20:06:16.842751",
       "tags": [
         "carried_forward",
         "carryover_summary"
@@ -437,7 +437,7 @@
       "recall_count": 0
     },
     {
-      "memory_id": "a3b3e262",
+      "memory_id": "2adbe4f6",
       "turn": 0,
       "room": "Operations Desk",
       "event_type": "observation",
@@ -446,7 +446,7 @@
       "salience": 0.6,
       "importance": 0.65,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.984923",
+      "timestamp": "2026-03-17T20:06:16.842768",
       "tags": [
         "carried_forward",
         "counterfactual_plans"
@@ -455,7 +455,7 @@
       "recall_count": 0
     },
     {
-      "memory_id": "9d60a89b",
+      "memory_id": "89042387",
       "turn": 1,
       "room": "Operations Desk",
       "event_type": "task",
@@ -464,13 +464,13 @@
       "salience": 0.45,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.985770",
+      "timestamp": "2026-03-17T20:06:16.843628",
       "tags": [],
       "memory_tier": "long_term",
       "recall_count": 0
     },
     {
-      "memory_id": "7c4922e1",
+      "memory_id": "7b008b3a",
       "turn": 1,
       "room": "Operations Desk",
       "event_type": "observation",
@@ -479,7 +479,7 @@
       "salience": 0.6,
       "importance": 0.55,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.985880",
+      "timestamp": "2026-03-17T20:06:16.843708",
       "tags": [
         "endogenous",
         "self_initiate_maintenance"
@@ -488,16 +488,16 @@
       "recall_count": 0
     },
     {
-      "memory_id": "072db19e",
+      "memory_id": "2cbb4e7e",
       "turn": 1,
       "room": "Operations Desk",
       "event_type": "reflection",
-      "summary": "Inquiry: reassess planning accuracy in domain 'active future plans' \u2014 ambiguity reduced by 0.12.",
+      "summary": "Inquiry: reassess planning accuracy in domain 'active future plans' \u2014 ambiguity reduced by 0.15.",
       "emotional_resonance": "resolve",
       "salience": 0.55,
       "importance": 0.5,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.986169",
+      "timestamp": "2026-03-17T20:06:16.844011",
       "tags": [
         "inquiry",
         "active_future_plans"
@@ -506,7 +506,7 @@
       "recall_count": 0
     },
     {
-      "memory_id": "a1408d28",
+      "memory_id": "dd423e85",
       "turn": 2,
       "room": "Memory Archive",
       "event_type": "task",
@@ -515,31 +515,13 @@
       "salience": 0.45,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.986845",
+      "timestamp": "2026-03-17T20:06:16.844691",
       "tags": [],
       "memory_tier": "long_term",
       "recall_count": 0
     },
     {
-      "memory_id": "8395ef7d",
-      "turn": 2,
-      "room": "Memory Archive",
-      "event_type": "reflection",
-      "summary": "Inquiry: review relationship history in domain 'trust judgments' \u2014 ambiguity reduced by 0.16.",
-      "emotional_resonance": "resolve",
-      "salience": 0.55,
-      "importance": 0.5,
-      "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.986995",
-      "tags": [
-        "inquiry",
-        "trust_judgments"
-      ],
-      "memory_tier": "long_term",
-      "recall_count": 0
-    },
-    {
-      "memory_id": "d4e1a153",
+      "memory_id": "018afb48",
       "turn": 3,
       "room": "Social Hall",
       "event_type": "routine_interaction",
@@ -548,7 +530,7 @@
       "salience": 0.6000000000000001,
       "importance": 0.55,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.987561",
+      "timestamp": "2026-03-17T20:06:16.845413",
       "tags": [
         "Queen"
       ],
@@ -556,16 +538,16 @@
       "recall_count": 1
     },
     {
-      "memory_id": "91c66392",
+      "memory_id": "a90cdbfa",
       "turn": 3,
       "room": "Social Hall",
       "event_type": "reflection",
-      "summary": "Inquiry: review relationship history in domain 'trust judgments' \u2014 ambiguity reduced by 0.16.",
+      "summary": "Inquiry: reassess trust state in domain 'trust judgments' \u2014 ambiguity reduced by 0.17.",
       "emotional_resonance": "resolve",
       "salience": 0.55,
       "importance": 0.5,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.987684",
+      "timestamp": "2026-03-17T20:06:16.845551",
       "tags": [
         "inquiry",
         "trust_judgments"
@@ -574,7 +556,7 @@
       "recall_count": 0
     },
     {
-      "memory_id": "829102ea",
+      "memory_id": "619a9f55",
       "turn": 4,
       "room": "Social Hall",
       "event_type": "task",
@@ -583,13 +565,31 @@
       "salience": 0.45,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.988225",
+      "timestamp": "2026-03-17T20:06:16.846136",
       "tags": [],
       "memory_tier": "long_term",
       "recall_count": 0
     },
     {
-      "memory_id": "5f5dba6d",
+      "memory_id": "77f6be10",
+      "turn": 4,
+      "room": "Social Hall",
+      "event_type": "reflection",
+      "summary": "Inquiry: audit trust repair attempts in domain 'trust judgments' \u2014 ambiguity reduced by 0.13.",
+      "emotional_resonance": "resolve",
+      "salience": 0.55,
+      "importance": 0.5,
+      "compressed": false,
+      "timestamp": "2026-03-17T20:06:16.846269",
+      "tags": [
+        "inquiry",
+        "trust_judgments"
+      ],
+      "memory_tier": "long_term",
+      "recall_count": 0
+    },
+    {
+      "memory_id": "10f53d0e",
       "turn": 5,
       "room": "Governance Vault",
       "event_type": "task",
@@ -598,13 +598,13 @@
       "salience": 0.6,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.988913",
+      "timestamp": "2026-03-17T20:06:16.846831",
       "tags": [],
       "memory_tier": "long_term",
       "recall_count": 0
     },
     {
-      "memory_id": "a8bffeff",
+      "memory_id": "5ef9bdd2",
       "turn": 6,
       "room": "Social Hall",
       "event_type": "distress_event",
@@ -613,7 +613,7 @@
       "salience": 0.9500000000000001,
       "importance": 0.97,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.989787",
+      "timestamp": "2026-03-17T20:06:16.847535",
       "tags": [
         "Queen"
       ],
@@ -621,7 +621,7 @@
       "recall_count": 1
     },
     {
-      "memory_id": "65fc06ac",
+      "memory_id": "e0e4ebe0",
       "turn": 7,
       "room": "Memory Archive",
       "event_type": "task",
@@ -630,13 +630,13 @@
       "salience": 0.45,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.990972",
+      "timestamp": "2026-03-17T20:06:16.848615",
       "tags": [],
       "memory_tier": "long_term",
       "recall_count": 0
     },
     {
-      "memory_id": "96bec676",
+      "memory_id": "20164eb4",
       "turn": 8,
       "room": "Memory Archive",
       "event_type": "agent_meeting",
@@ -645,7 +645,7 @@
       "salience": 0.6,
       "importance": 0.65,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.991761",
+      "timestamp": "2026-03-17T20:06:16.849329",
       "tags": [
         "Aster"
       ],
@@ -653,7 +653,7 @@
       "recall_count": 0
     },
     {
-      "memory_id": "0bd61eb7",
+      "memory_id": "060846ec",
       "turn": 9,
       "room": "Social Hall",
       "event_type": "task",
@@ -662,13 +662,13 @@
       "salience": 0.45,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.992896",
+      "timestamp": "2026-03-17T20:06:16.850085",
       "tags": [],
       "memory_tier": "long_term",
       "recall_count": 0
     },
     {
-      "memory_id": "28f25e81",
+      "memory_id": "43d5db13",
       "turn": 10,
       "room": "Operations Desk",
       "event_type": "ledger_contradiction",
@@ -677,7 +677,7 @@
       "salience": 0.85,
       "importance": 0.87,
       "compressed": false,
-      "timestamp": "2026-03-17T20:02:15.993966",
+      "timestamp": "2026-03-17T20:06:16.850863",
       "tags": [
         "Queen"
       ],
@@ -733,7 +733,7 @@
   },
   "reflection_entries": [
     {
-      "entry_id": "60e60209",
+      "entry_id": "12e6cafd",
       "turn": 1,
       "trigger": "turn_1_routine",
       "reflection_type": "high_pressure_contradiction",
@@ -749,10 +749,10 @@
       "unresolved_themes": [],
       "window_turns": 5,
       "patterns_identified": [
-        "Repeated interactions with Queen increase relational trust over time.",
+        "Repeated interactions with endogenous increase relational trust over time.",
         "Repeated interactions with inquiry increase relational trust over time.",
         "Repeated interactions with carried_forward increase relational trust over time.",
-        "Repeated interactions with endogenous increase relational trust over time."
+        "Repeated interactions with Queen increase relational trust over time."
       ],
       "contradictions_resolved": [
         "Contradiction resolved: [carried] Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?"
@@ -769,11 +769,11 @@
         "contradiction_pressure": -0.3,
         "recovery": 0.2
       },
-      "narrative": "[high_pressure_contradiction] Reflection triggered by: turn_1_routine. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with inquiry increase relational trust over time.; Repeated interactions with carried_forward increase relational trust over time.; Repeated interactions with endogenous increase relational trust over time.. Contradictions addressed: Contradiction resolved: [carried] Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence.",
-      "timestamp": "2026-03-17T20:02:15.985949"
+      "narrative": "[high_pressure_contradiction] Reflection triggered by: turn_1_routine. Patterns identified: Repeated interactions with endogenous increase relational trust over time.; Repeated interactions with inquiry increase relational trust over time.; Repeated interactions with carried_forward increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.. Contradictions addressed: Contradiction resolved: [carried] Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence.",
+      "timestamp": "2026-03-17T20:06:16.843777"
     },
     {
-      "entry_id": "b5dba15b",
+      "entry_id": "0540ac9e",
       "turn": 6,
       "trigger": "distress_event",
       "reflection_type": "high_pressure_contradiction",
@@ -789,10 +789,10 @@
       "unresolved_themes": [],
       "window_turns": 5,
       "patterns_identified": [
-        "Repeated interactions with Queen increase relational trust over time.",
+        "Repeated interactions with endogenous increase relational trust over time.",
         "Repeated interactions with inquiry increase relational trust over time.",
         "Repeated interactions with carried_forward increase relational trust over time.",
-        "Repeated interactions with endogenous increase relational trust over time."
+        "Repeated interactions with Queen increase relational trust over time."
       ],
       "contradictions_resolved": [
         "Contradiction resolved: Prediction error at turn 6: expected 'distress_event handled in Social Hall' but outcome was unexpected."
@@ -810,11 +810,11 @@
         "contradiction_pressure": -0.3,
         "recovery": 0.2
       },
-      "narrative": "[high_pressure_contradiction] Reflection triggered by: distress_event. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with inquiry increase relational trust over time.; Repeated interactions with carried_forward increase relational trust over time.; Repeated interactions with endogenous increase relational trust over time.. Contradictions addressed: Contradiction resolved: Prediction error at turn 6: expected 'distress_event handled in Social Hall' but outcome was unexpected.. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-      "timestamp": "2026-03-17T20:02:15.990049"
+      "narrative": "[high_pressure_contradiction] Reflection triggered by: distress_event. Patterns identified: Repeated interactions with endogenous increase relational trust over time.; Repeated interactions with inquiry increase relational trust over time.; Repeated interactions with carried_forward increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.. Contradictions addressed: Contradiction resolved: Prediction error at turn 6: expected 'distress_event handled in Social Hall' but outcome was unexpected.. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+      "timestamp": "2026-03-17T20:06:16.847742"
     },
     {
-      "entry_id": "7703a12d",
+      "entry_id": "2b4a21ec",
       "turn": 10,
       "trigger": "ledger_contradiction",
       "reflection_type": "high_pressure_contradiction",
@@ -830,9 +830,9 @@
       "unresolved_themes": [],
       "window_turns": 5,
       "patterns_identified": [
-        "Repeated interactions with Queen increase relational trust over time.",
-        "Repeated interactions with inquiry increase relational trust over time.",
         "Repeated interactions with endogenous increase relational trust over time.",
+        "Repeated interactions with inquiry increase relational trust over time.",
+        "Repeated interactions with Queen increase relational trust over time.",
         "Tasks in Social Hall consistently trigger high-salience episodic memories."
       ],
       "contradictions_resolved": [
@@ -851,8 +851,8 @@
         "contradiction_pressure": -0.3,
         "recovery": 0.2
       },
-      "narrative": "[high_pressure_contradiction] Reflection triggered by: ledger_contradiction. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with inquiry increase relational trust over time.; Repeated interactions with endogenous increase relational trust over time.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Contradictions addressed: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-      "timestamp": "2026-03-17T20:02:15.994166"
+      "narrative": "[high_pressure_contradiction] Reflection triggered by: ledger_contradiction. Patterns identified: Repeated interactions with endogenous increase relational trust over time.; Repeated interactions with inquiry increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Contradictions addressed: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+      "timestamp": "2026-03-17T20:06:16.851044"
     }
   ],
   "pending_contradictions": [],
@@ -1135,14 +1135,14 @@
       },
       {
         "turn": 2,
-        "description": "Turn 2: Sentinel \u2014 trust=0.50, contradiction_pressure=0.00, memories=24, reflections=1. Active in Memory Archive.",
+        "description": "Turn 2: Sentinel \u2014 trust=0.50, contradiction_pressure=0.00, memories=23, reflections=1. Active in Memory Archive.",
         "trust_snapshot": 0.5,
         "contradiction_snapshot": 0.0,
         "drift": 0.0
       },
       {
         "turn": 3,
-        "description": "Turn 3: Sentinel \u2014 trust=0.60, contradiction_pressure=0.00, memories=26, reflections=1. Active in Social Hall.",
+        "description": "Turn 3: Sentinel \u2014 trust=0.60, contradiction_pressure=0.00, memories=25, reflections=1. Active in Social Hall.",
         "trust_snapshot": 0.6,
         "contradiction_snapshot": 0.0,
         "drift": 0.4
@@ -1353,63 +1353,63 @@
         "context": "turn=1, room=Operations Desk, trust=0.50, cp=0.00, urgency=0.10, sc=0.74, pending_contradictions=1",
         "candidates": [
           {
-            "action": "repair_trust",
-            "description": "Proactively repair trust through consistent behaviour",
-            "predicted_trust_effect": 0.1173,
-            "predicted_contradiction_effect": -0.0143,
+            "action": "self_reflection",
+            "description": "Perform a focused self-reflection cycle",
+            "predicted_trust_effect": 0.0462,
+            "predicted_contradiction_effect": -0.0592,
             "predicted_governance_risk": 0.0,
-            "predicted_continuity_impact": 0.117,
-            "predicted_best_case": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.12); contradiction pressure expected to decrease (\u0394-0.01); continuity impact +0.12.",
-            "predicted_worst_case": "Proactively repair trust through consistent behaviour fails to land: trust may shift (\u0394+0.02); contradiction pressure may rise (\u0394+0.07); governance risk low (0.00).",
-            "uncertainty": 0.3343,
-            "composite_score": 0.2787,
+            "predicted_continuity_impact": 0.0721,
+            "predicted_best_case": "Perform a focused self-reflection cycle: trust expected to improve (\u0394+0.05); contradiction pressure expected to decrease (\u0394-0.06); continuity impact +0.07.",
+            "predicted_worst_case": "Perform a focused self-reflection cycle fails to land: trust may shift (\u0394-0.05); contradiction pressure may rise (\u0394+0.02); governance risk low (0.00).",
+            "uncertainty": 0.2496,
+            "composite_score": 0.2681,
             "selected": false
           },
           {
             "action": "resolve_contradiction",
             "description": "Address a pending contradiction directly",
-            "predicted_trust_effect": 0.0838,
-            "predicted_contradiction_effect": -0.1227,
-            "predicted_governance_risk": 0.0916,
-            "predicted_continuity_impact": 0.1347,
-            "predicted_best_case": "Address a pending contradiction directly: trust expected to improve (\u0394+0.08); contradiction pressure expected to decrease (\u0394-0.12); continuity impact +0.13.",
-            "predicted_worst_case": "Address a pending contradiction directly fails to land: trust may shift (\u0394-0.02); contradiction pressure may rise (\u0394-0.04); governance risk low (0.09).",
-            "uncertainty": 0.2785,
-            "composite_score": 0.282,
-            "selected": true
+            "predicted_trust_effect": 0.0747,
+            "predicted_contradiction_effect": -0.1361,
+            "predicted_governance_risk": 0.1404,
+            "predicted_continuity_impact": 0.0797,
+            "predicted_best_case": "Address a pending contradiction directly: trust expected to improve (\u0394+0.07); contradiction pressure expected to decrease (\u0394-0.14); continuity impact +0.08.",
+            "predicted_worst_case": "Address a pending contradiction directly fails to land: trust may shift (\u0394-0.03); contradiction pressure may rise (\u0394-0.06); governance risk low (0.14).",
+            "uncertainty": 0.2179,
+            "composite_score": 0.2655,
+            "selected": false
           },
           {
-            "action": "defer_action",
-            "description": "Defer action and observe the environment",
-            "predicted_trust_effect": -0.0352,
-            "predicted_contradiction_effect": 0.0147,
+            "action": "repair_trust",
+            "description": "Proactively repair trust through consistent behaviour",
+            "predicted_trust_effect": 0.1311,
+            "predicted_contradiction_effect": -0.0897,
+            "predicted_governance_risk": 0.0903,
+            "predicted_continuity_impact": 0.0379,
+            "predicted_best_case": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.13); contradiction pressure expected to decrease (\u0394-0.09); continuity impact +0.04.",
+            "predicted_worst_case": "Proactively repair trust through consistent behaviour fails to land: trust may shift (\u0394+0.03); contradiction pressure may rise (\u0394-0.01); governance risk low (0.09).",
+            "uncertainty": 0.1436,
+            "composite_score": 0.2824,
+            "selected": false
+          },
+          {
+            "action": "consolidate_memory",
+            "description": "Run a memory consolidation cycle",
+            "predicted_trust_effect": 0.0178,
+            "predicted_contradiction_effect": -0.1035,
             "predicted_governance_risk": 0.0,
-            "predicted_continuity_impact": -0.0249,
-            "predicted_best_case": "Defer action and observe the environment: trust expected to hold stable (\u0394-0.04); contradiction pressure expected to remain stable (\u0394+0.01); continuity impact -0.02.",
-            "predicted_worst_case": "Defer action and observe the environment fails to land: trust may shift (\u0394-0.14); contradiction pressure may rise (\u0394+0.09); governance risk low (0.00).",
-            "uncertainty": 0.1675,
-            "composite_score": 0.214,
-            "selected": false
-          },
-          {
-            "action": "self_reflection",
-            "description": "Perform a focused self-reflection cycle",
-            "predicted_trust_effect": 0.0602,
-            "predicted_contradiction_effect": -0.0518,
-            "predicted_governance_risk": 0.0561,
-            "predicted_continuity_impact": 0.1026,
-            "predicted_best_case": "Perform a focused self-reflection cycle: trust expected to improve (\u0394+0.06); contradiction pressure expected to decrease (\u0394-0.05); continuity impact +0.10.",
-            "predicted_worst_case": "Perform a focused self-reflection cycle fails to land: trust may shift (\u0394-0.04); contradiction pressure may rise (\u0394+0.03); governance risk low (0.06).",
-            "uncertainty": 0.2311,
-            "composite_score": 0.2644,
-            "selected": false
+            "predicted_continuity_impact": 0.1622,
+            "predicted_best_case": "Run a memory consolidation cycle: trust expected to improve (\u0394+0.02); contradiction pressure expected to decrease (\u0394-0.10); continuity impact +0.16.",
+            "predicted_worst_case": "Run a memory consolidation cycle fails to land: trust may shift (\u0394-0.08); contradiction pressure may rise (\u0394-0.02); governance risk low (0.00).",
+            "uncertainty": 0.2376,
+            "composite_score": 0.2899,
+            "selected": true
           }
         ],
-        "selected_action": "resolve_contradiction",
-        "predicted_outcome": "Address a pending contradiction directly: trust expected to improve (\u0394+0.08); contradiction pressure expected to decrease (\u0394-0.12); continuity impact +0.13.",
+        "selected_action": "consolidate_memory",
+        "predicted_outcome": "Run a memory consolidation cycle: trust expected to improve (\u0394+0.02); contradiction pressure expected to decrease (\u0394-0.10); continuity impact +0.16.",
         "actual_outcome": "Task 'Plan next operational steps' completed in Operations Desk. Action 'plan_next_task' executed without incident.",
-        "planning_accuracy": 0.9484,
-        "uncertainty_level": 0.2528,
+        "planning_accuracy": 0.9697,
+        "uncertainty_level": 0.2122,
         "was_better_than_rejected": true
       },
       {
@@ -1417,50 +1417,37 @@
         "context": "turn=2, room=Memory Archive, trust=0.50, cp=0.00, urgency=0.10, sc=1.00, pending_contradictions=0",
         "candidates": [
           {
+            "action": "self_reflection",
+            "description": "Perform a focused self-reflection cycle",
+            "predicted_trust_effect": -0.0023,
+            "predicted_contradiction_effect": -0.0843,
+            "predicted_governance_risk": 0.0,
+            "predicted_continuity_impact": 0.066,
+            "predicted_best_case": "Perform a focused self-reflection cycle: trust expected to hold stable (\u0394-0.00); contradiction pressure expected to decrease (\u0394-0.08); continuity impact +0.07.",
+            "predicted_worst_case": "Perform a focused self-reflection cycle fails to land: trust may shift (\u0394-0.10); contradiction pressure may rise (\u0394-0.00); governance risk low (0.00).",
+            "uncertainty": 0.2153,
+            "composite_score": 0.2621,
+            "selected": false
+          },
+          {
             "action": "repair_trust",
             "description": "Proactively repair trust through consistent behaviour",
-            "predicted_trust_effect": 0.0623,
-            "predicted_contradiction_effect": -0.0983,
-            "predicted_governance_risk": 0.0,
-            "predicted_continuity_impact": 0.0503,
-            "predicted_best_case": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.06); contradiction pressure expected to decrease (\u0394-0.10); continuity impact +0.05.",
-            "predicted_worst_case": "Proactively repair trust through consistent behaviour fails to land: trust may shift (\u0394-0.04); contradiction pressure may rise (\u0394-0.02); governance risk low (0.00).",
-            "uncertainty": 0.2223,
-            "composite_score": 0.2811,
+            "predicted_trust_effect": 0.1133,
+            "predicted_contradiction_effect": -0.0592,
+            "predicted_governance_risk": 0.0961,
+            "predicted_continuity_impact": 0.0584,
+            "predicted_best_case": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.11); contradiction pressure expected to decrease (\u0394-0.06); continuity impact +0.06.",
+            "predicted_worst_case": "Proactively repair trust through consistent behaviour fails to land: trust may shift (\u0394+0.01); contradiction pressure may rise (\u0394+0.02); governance risk low (0.10).",
+            "uncertainty": 0.1791,
+            "composite_score": 0.2685,
             "selected": true
-          },
-          {
-            "action": "governance_check",
-            "description": "Verify compliance with all active governance rules",
-            "predicted_trust_effect": 0.0496,
-            "predicted_contradiction_effect": 0.0254,
-            "predicted_governance_risk": 0.0,
-            "predicted_continuity_impact": 0.1021,
-            "predicted_best_case": "Verify compliance with all active governance rules: trust expected to improve (\u0394+0.05); contradiction pressure expected to remain stable (\u0394+0.03); continuity impact +0.10.",
-            "predicted_worst_case": "Verify compliance with all active governance rules fails to land: trust may shift (\u0394-0.05); contradiction pressure may rise (\u0394+0.11); governance risk low (0.00).",
-            "uncertainty": 0.1551,
-            "composite_score": 0.2634,
-            "selected": false
-          },
-          {
-            "action": "investigate_theme",
-            "description": "Investigate an unresolved theme from prior turns",
-            "predicted_trust_effect": -0.0048,
-            "predicted_contradiction_effect": -0.0486,
-            "predicted_governance_risk": 0.1288,
-            "predicted_continuity_impact": 0.0633,
-            "predicted_best_case": "Investigate an unresolved theme from prior turns: trust expected to hold stable (\u0394-0.00); contradiction pressure expected to decrease (\u0394-0.05); continuity impact +0.06.",
-            "predicted_worst_case": "Investigate an unresolved theme from prior turns fails to land: trust may shift (\u0394-0.10); contradiction pressure may rise (\u0394+0.03); governance risk low (0.13).",
-            "uncertainty": 0.1991,
-            "composite_score": 0.2213,
-            "selected": false
           }
         ],
         "selected_action": "repair_trust",
-        "predicted_outcome": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.06); contradiction pressure expected to decrease (\u0394-0.10); continuity impact +0.05.",
+        "predicted_outcome": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.11); contradiction pressure expected to decrease (\u0394-0.06); continuity impact +0.06.",
         "actual_outcome": "Task 'Log interaction with Queen' completed in Memory Archive. Action 'retrieve_memories' executed without incident.",
-        "planning_accuracy": 0.9598,
-        "uncertainty_level": 0.1922,
+        "planning_accuracy": 0.9569,
+        "uncertainty_level": 0.1972,
         "was_better_than_rejected": true
       },
       {
@@ -1468,63 +1455,50 @@
         "context": "turn=3, room=Social Hall, trust=0.50, cp=0.00, urgency=0.10, sc=1.00, pending_contradictions=0",
         "candidates": [
           {
-            "action": "self_reflection",
-            "description": "Perform a focused self-reflection cycle",
-            "predicted_trust_effect": 0.047,
-            "predicted_contradiction_effect": -0.0271,
-            "predicted_governance_risk": 0.0451,
-            "predicted_continuity_impact": 0.0814,
-            "predicted_best_case": "Perform a focused self-reflection cycle: trust expected to improve (\u0394+0.05); contradiction pressure expected to decrease (\u0394-0.03); continuity impact +0.08.",
-            "predicted_worst_case": "Perform a focused self-reflection cycle fails to land: trust may shift (\u0394-0.05); contradiction pressure may rise (\u0394+0.05); governance risk low (0.05).",
-            "uncertainty": 0.154,
-            "composite_score": 0.2605,
-            "selected": false
-          },
-          {
             "action": "cooperative_engagement",
             "description": "Engage cooperatively with other agents",
-            "predicted_trust_effect": 0.1119,
-            "predicted_contradiction_effect": 0.0634,
-            "predicted_governance_risk": 0.0503,
-            "predicted_continuity_impact": 0.033,
-            "predicted_best_case": "Engage cooperatively with other agents: trust expected to improve (\u0394+0.11); contradiction pressure expected to remain stable (\u0394+0.06); continuity impact +0.03.",
-            "predicted_worst_case": "Engage cooperatively with other agents fails to land: trust may shift (\u0394+0.01); contradiction pressure may rise (\u0394+0.14); governance risk low (0.05).",
-            "uncertainty": 0.1753,
-            "composite_score": 0.2442,
+            "predicted_trust_effect": 0.0907,
+            "predicted_contradiction_effect": 0.0101,
+            "predicted_governance_risk": 0.0975,
+            "predicted_continuity_impact": 0.0472,
+            "predicted_best_case": "Engage cooperatively with other agents: trust expected to improve (\u0394+0.09); contradiction pressure expected to remain stable (\u0394+0.01); continuity impact +0.05.",
+            "predicted_worst_case": "Engage cooperatively with other agents fails to land: trust may shift (\u0394-0.01); contradiction pressure may rise (\u0394+0.09); governance risk low (0.10).",
+            "uncertainty": 0.1999,
+            "composite_score": 0.2397,
             "selected": false
           },
           {
-            "action": "defer_action",
-            "description": "Defer action and observe the environment",
-            "predicted_trust_effect": -0.0226,
-            "predicted_contradiction_effect": 0.0462,
-            "predicted_governance_risk": 0.0043,
-            "predicted_continuity_impact": -0.0346,
-            "predicted_best_case": "Defer action and observe the environment: trust expected to hold stable (\u0394-0.02); contradiction pressure expected to remain stable (\u0394+0.05); continuity impact -0.03.",
-            "predicted_worst_case": "Defer action and observe the environment fails to land: trust may shift (\u0394-0.12); contradiction pressure may rise (\u0394+0.13); governance risk low (0.00).",
-            "uncertainty": 0.1905,
-            "composite_score": 0.2046,
+            "action": "repair_trust",
+            "description": "Proactively repair trust through consistent behaviour",
+            "predicted_trust_effect": 0.0823,
+            "predicted_contradiction_effect": -0.0052,
+            "predicted_governance_risk": 0.0207,
+            "predicted_continuity_impact": 0.0877,
+            "predicted_best_case": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.08); contradiction pressure expected to decrease (\u0394-0.01); continuity impact +0.09.",
+            "predicted_worst_case": "Proactively repair trust through consistent behaviour fails to land: trust may shift (\u0394-0.02); contradiction pressure may rise (\u0394+0.07); governance risk low (0.02).",
+            "uncertainty": 0.1639,
+            "composite_score": 0.2719,
             "selected": false
           },
           {
-            "action": "consolidate_memory",
-            "description": "Run a memory consolidation cycle",
-            "predicted_trust_effect": 0.0058,
-            "predicted_contradiction_effect": -0.0598,
+            "action": "investigate_theme",
+            "description": "Investigate an unresolved theme from prior turns",
+            "predicted_trust_effect": 0.0726,
+            "predicted_contradiction_effect": -0.0687,
             "predicted_governance_risk": 0.0,
-            "predicted_continuity_impact": 0.1164,
-            "predicted_best_case": "Run a memory consolidation cycle: trust expected to improve (\u0394+0.01); contradiction pressure expected to decrease (\u0394-0.06); continuity impact +0.12.",
-            "predicted_worst_case": "Run a memory consolidation cycle fails to land: trust may shift (\u0394-0.09); contradiction pressure may rise (\u0394+0.02); governance risk low (0.00).",
-            "uncertainty": 0.1703,
-            "composite_score": 0.2729,
+            "predicted_continuity_impact": 0.0667,
+            "predicted_best_case": "Investigate an unresolved theme from prior turns: trust expected to improve (\u0394+0.07); contradiction pressure expected to decrease (\u0394-0.07); continuity impact +0.07.",
+            "predicted_worst_case": "Investigate an unresolved theme from prior turns fails to land: trust may shift (\u0394-0.03); contradiction pressure may rise (\u0394+0.01); governance risk low (0.00).",
+            "uncertainty": 0.1447,
+            "composite_score": 0.2878,
             "selected": true
           }
         ],
-        "selected_action": "consolidate_memory",
-        "predicted_outcome": "Run a memory consolidation cycle: trust expected to improve (\u0394+0.01); contradiction pressure expected to decrease (\u0394-0.06); continuity impact +0.12.",
+        "selected_action": "investigate_theme",
+        "predicted_outcome": "Investigate an unresolved theme from prior turns: trust expected to improve (\u0394+0.07); contradiction pressure expected to decrease (\u0394-0.07); continuity impact +0.07.",
         "actual_outcome": "Sentinel responded to Queen with honesty. The trust ledger was updated.",
-        "planning_accuracy": 0.9615,
-        "uncertainty_level": 0.1725,
+        "planning_accuracy": 0.976,
+        "uncertainty_level": 0.1695,
         "was_better_than_rejected": true
       },
       {
@@ -1532,50 +1506,63 @@
         "context": "turn=4, room=Social Hall, trust=0.60, cp=0.00, urgency=0.05, sc=0.87, pending_contradictions=0",
         "candidates": [
           {
-            "action": "defer_action",
-            "description": "Defer action and observe the environment",
-            "predicted_trust_effect": -0.0388,
-            "predicted_contradiction_effect": 0.0688,
-            "predicted_governance_risk": 0.0,
-            "predicted_continuity_impact": -0.0484,
-            "predicted_best_case": "Defer action and observe the environment: trust expected to hold stable (\u0394-0.04); contradiction pressure expected to remain stable (\u0394+0.07); continuity impact -0.05.",
-            "predicted_worst_case": "Defer action and observe the environment fails to land: trust may shift (\u0394-0.14); contradiction pressure may rise (\u0394+0.15); governance risk low (0.00).",
-            "uncertainty": 0.0938,
-            "composite_score": 0.2021,
-            "selected": false
-          },
-          {
-            "action": "investigate_theme",
-            "description": "Investigate an unresolved theme from prior turns",
-            "predicted_trust_effect": -0.0174,
-            "predicted_contradiction_effect": -0.084,
-            "predicted_governance_risk": 0.0747,
-            "predicted_continuity_impact": 0.0909,
-            "predicted_best_case": "Investigate an unresolved theme from prior turns: trust expected to hold stable (\u0394-0.02); contradiction pressure expected to decrease (\u0394-0.08); continuity impact +0.09.",
-            "predicted_worst_case": "Investigate an unresolved theme from prior turns fails to land: trust may shift (\u0394-0.12); contradiction pressure may rise (\u0394-0.00); governance risk low (0.07).",
-            "uncertainty": 0.2261,
-            "composite_score": 0.2427,
+            "action": "cooperative_engagement",
+            "description": "Engage cooperatively with other agents",
+            "predicted_trust_effect": 0.0901,
+            "predicted_contradiction_effect": 0.0512,
+            "predicted_governance_risk": 0.1156,
+            "predicted_continuity_impact": 0.0499,
+            "predicted_best_case": "Engage cooperatively with other agents: trust expected to improve (\u0394+0.09); contradiction pressure expected to remain stable (\u0394+0.05); continuity impact +0.05.",
+            "predicted_worst_case": "Engage cooperatively with other agents fails to land: trust may shift (\u0394-0.01); contradiction pressure may rise (\u0394+0.13); governance risk low (0.12).",
+            "uncertainty": 0.1461,
+            "composite_score": 0.2307,
             "selected": false
           },
           {
             "action": "resolve_contradiction",
             "description": "Address a pending contradiction directly",
-            "predicted_trust_effect": 0.0082,
-            "predicted_contradiction_effect": -0.1371,
-            "predicted_governance_risk": 0.0753,
-            "predicted_continuity_impact": 0.1196,
-            "predicted_best_case": "Address a pending contradiction directly: trust expected to improve (\u0394+0.01); contradiction pressure expected to decrease (\u0394-0.14); continuity impact +0.12.",
-            "predicted_worst_case": "Address a pending contradiction directly fails to land: trust may shift (\u0394-0.09); contradiction pressure may rise (\u0394-0.06); governance risk low (0.08).",
-            "uncertainty": 0.2052,
-            "composite_score": 0.2713,
+            "predicted_trust_effect": 0.0288,
+            "predicted_contradiction_effect": -0.1858,
+            "predicted_governance_risk": 0.0888,
+            "predicted_continuity_impact": 0.0952,
+            "predicted_best_case": "Address a pending contradiction directly: trust expected to improve (\u0394+0.03); contradiction pressure expected to decrease (\u0394-0.19); continuity impact +0.10.",
+            "predicted_worst_case": "Address a pending contradiction directly fails to land: trust may shift (\u0394-0.07); contradiction pressure may rise (\u0394-0.11); governance risk low (0.09).",
+            "uncertainty": 0.1195,
+            "composite_score": 0.29,
             "selected": true
+          },
+          {
+            "action": "governance_check",
+            "description": "Verify compliance with all active governance rules",
+            "predicted_trust_effect": 0.0328,
+            "predicted_contradiction_effect": -0.0449,
+            "predicted_governance_risk": 0.0,
+            "predicted_continuity_impact": -0.0104,
+            "predicted_best_case": "Verify compliance with all active governance rules: trust expected to improve (\u0394+0.03); contradiction pressure expected to decrease (\u0394-0.04); continuity impact -0.01.",
+            "predicted_worst_case": "Verify compliance with all active governance rules fails to land: trust may shift (\u0394-0.07); contradiction pressure may rise (\u0394+0.04); governance risk low (0.00).",
+            "uncertainty": 0.0644,
+            "composite_score": 0.2625,
+            "selected": false
+          },
+          {
+            "action": "defer_action",
+            "description": "Defer action and observe the environment",
+            "predicted_trust_effect": -0.0271,
+            "predicted_contradiction_effect": 0.0322,
+            "predicted_governance_risk": 0.0003,
+            "predicted_continuity_impact": -0.0424,
+            "predicted_best_case": "Defer action and observe the environment: trust expected to hold stable (\u0394-0.03); contradiction pressure expected to remain stable (\u0394+0.03); continuity impact -0.04.",
+            "predicted_worst_case": "Defer action and observe the environment fails to land: trust may shift (\u0394-0.13); contradiction pressure may rise (\u0394+0.11); governance risk low (0.00).",
+            "uncertainty": 0.141,
+            "composite_score": 0.2111,
+            "selected": false
           }
         ],
         "selected_action": "resolve_contradiction",
-        "predicted_outcome": "Address a pending contradiction directly: trust expected to improve (\u0394+0.01); contradiction pressure expected to decrease (\u0394-0.14); continuity impact +0.12.",
+        "predicted_outcome": "Address a pending contradiction directly: trust expected to improve (\u0394+0.03); contradiction pressure expected to decrease (\u0394-0.19); continuity impact +0.10.",
         "actual_outcome": "Task 'Update trust ledger' completed in Social Hall. Action 'update_trust_ledger' executed without incident.",
-        "planning_accuracy": 0.9637,
-        "uncertainty_level": 0.1751,
+        "planning_accuracy": 0.9463,
+        "uncertainty_level": 0.1177,
         "was_better_than_rejected": true
       },
       {
@@ -1583,50 +1570,37 @@
         "context": "turn=5, room=Governance Vault, trust=0.60, cp=0.00, urgency=0.05, sc=0.83, pending_contradictions=0",
         "candidates": [
           {
-            "action": "resolve_contradiction",
-            "description": "Address a pending contradiction directly",
-            "predicted_trust_effect": 0.0718,
-            "predicted_contradiction_effect": -0.1152,
-            "predicted_governance_risk": 0.0144,
-            "predicted_continuity_impact": 0.0776,
-            "predicted_best_case": "Address a pending contradiction directly: trust expected to improve (\u0394+0.07); contradiction pressure expected to decrease (\u0394-0.12); continuity impact +0.08.",
-            "predicted_worst_case": "Address a pending contradiction directly fails to land: trust may shift (\u0394-0.03); contradiction pressure may rise (\u0394-0.04); governance risk low (0.01).",
-            "uncertainty": 0.2505,
-            "composite_score": 0.2872,
+            "action": "self_reflection",
+            "description": "Perform a focused self-reflection cycle",
+            "predicted_trust_effect": -0.0174,
+            "predicted_contradiction_effect": -0.0758,
+            "predicted_governance_risk": 0.0766,
+            "predicted_continuity_impact": 0.0952,
+            "predicted_best_case": "Perform a focused self-reflection cycle: trust expected to hold stable (\u0394-0.02); contradiction pressure expected to decrease (\u0394-0.08); continuity impact +0.10.",
+            "predicted_worst_case": "Perform a focused self-reflection cycle fails to land: trust may shift (\u0394-0.12); contradiction pressure may rise (\u0394+0.00); governance risk low (0.08).",
+            "uncertainty": 0.1434,
+            "composite_score": 0.2493,
             "selected": true
           },
           {
-            "action": "consolidate_memory",
-            "description": "Run a memory consolidation cycle",
-            "predicted_trust_effect": 0.0501,
-            "predicted_contradiction_effect": -0.0707,
-            "predicted_governance_risk": 0.0461,
-            "predicted_continuity_impact": 0.095,
-            "predicted_best_case": "Run a memory consolidation cycle: trust expected to improve (\u0394+0.05); contradiction pressure expected to decrease (\u0394-0.07); continuity impact +0.10.",
-            "predicted_worst_case": "Run a memory consolidation cycle fails to land: trust may shift (\u0394-0.05); contradiction pressure may rise (\u0394+0.01); governance risk low (0.05).",
-            "uncertainty": 0.2127,
-            "composite_score": 0.2689,
-            "selected": false
-          },
-          {
-            "action": "repair_trust",
-            "description": "Proactively repair trust through consistent behaviour",
-            "predicted_trust_effect": 0.1388,
-            "predicted_contradiction_effect": -0.0182,
-            "predicted_governance_risk": 0.0679,
-            "predicted_continuity_impact": 0.097,
-            "predicted_best_case": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.14); contradiction pressure expected to decrease (\u0394-0.02); continuity impact +0.10.",
-            "predicted_worst_case": "Proactively repair trust through consistent behaviour fails to land: trust may shift (\u0394+0.04); contradiction pressure may rise (\u0394+0.06); governance risk low (0.07).",
-            "uncertainty": 0.1765,
-            "composite_score": 0.281,
+            "action": "defer_action",
+            "description": "Defer action and observe the environment",
+            "predicted_trust_effect": -0.0204,
+            "predicted_contradiction_effect": 0.0363,
+            "predicted_governance_risk": 0.0,
+            "predicted_continuity_impact": -0.0195,
+            "predicted_best_case": "Defer action and observe the environment: trust expected to hold stable (\u0394-0.02); contradiction pressure expected to remain stable (\u0394+0.04); continuity impact -0.02.",
+            "predicted_worst_case": "Defer action and observe the environment fails to land: trust may shift (\u0394-0.12); contradiction pressure may rise (\u0394+0.12); governance risk low (0.00).",
+            "uncertainty": 0.1846,
+            "composite_score": 0.2124,
             "selected": false
           }
         ],
-        "selected_action": "resolve_contradiction",
-        "predicted_outcome": "Address a pending contradiction directly: trust expected to improve (\u0394+0.07); contradiction pressure expected to decrease (\u0394-0.12); continuity impact +0.08.",
+        "selected_action": "self_reflection",
+        "predicted_outcome": "Perform a focused self-reflection cycle: trust expected to hold stable (\u0394-0.02); contradiction pressure expected to decrease (\u0394-0.08); continuity impact +0.10.",
         "actual_outcome": "Task 'Check governance permissions' completed in Governance Vault. Action 'check_rule_permissions' executed without inci",
-        "planning_accuracy": 0.9532,
-        "uncertainty_level": 0.2133,
+        "planning_accuracy": 0.9767,
+        "uncertainty_level": 0.164,
         "was_better_than_rejected": true
       },
       {
@@ -1634,50 +1608,50 @@
         "context": "turn=6, room=Social Hall, trust=0.60, cp=0.00, urgency=0.05, sc=0.83, pending_contradictions=0",
         "candidates": [
           {
-            "action": "self_reflection",
-            "description": "Perform a focused self-reflection cycle",
-            "predicted_trust_effect": 0.0576,
-            "predicted_contradiction_effect": -0.0601,
-            "predicted_governance_risk": 0.0142,
-            "predicted_continuity_impact": 0.082,
-            "predicted_best_case": "Perform a focused self-reflection cycle: trust expected to improve (\u0394+0.06); contradiction pressure expected to decrease (\u0394-0.06); continuity impact +0.08.",
-            "predicted_worst_case": "Perform a focused self-reflection cycle fails to land: trust may shift (\u0394-0.04); contradiction pressure may rise (\u0394+0.02); governance risk low (0.01).",
-            "uncertainty": 0.2361,
-            "composite_score": 0.2715,
-            "selected": false
-          },
-          {
             "action": "resolve_contradiction",
             "description": "Address a pending contradiction directly",
-            "predicted_trust_effect": 0.0497,
-            "predicted_contradiction_effect": -0.1247,
-            "predicted_governance_risk": 0.0582,
-            "predicted_continuity_impact": 0.0309,
-            "predicted_best_case": "Address a pending contradiction directly: trust expected to improve (\u0394+0.05); contradiction pressure expected to decrease (\u0394-0.12); continuity impact +0.03.",
-            "predicted_worst_case": "Address a pending contradiction directly fails to land: trust may shift (\u0394-0.05); contradiction pressure may rise (\u0394-0.04); governance risk low (0.06).",
-            "uncertainty": 0.1922,
-            "composite_score": 0.2685,
+            "predicted_trust_effect": 0.0135,
+            "predicted_contradiction_effect": -0.1456,
+            "predicted_governance_risk": 0.0614,
+            "predicted_continuity_impact": 0.0922,
+            "predicted_best_case": "Address a pending contradiction directly: trust expected to improve (\u0394+0.01); contradiction pressure expected to decrease (\u0394-0.15); continuity impact +0.09.",
+            "predicted_worst_case": "Address a pending contradiction directly fails to land: trust may shift (\u0394-0.09); contradiction pressure may rise (\u0394-0.07); governance risk low (0.06).",
+            "uncertainty": 0.1901,
+            "composite_score": 0.2745,
             "selected": false
           },
           {
-            "action": "consolidate_memory",
-            "description": "Run a memory consolidation cycle",
-            "predicted_trust_effect": 0.023,
-            "predicted_contradiction_effect": -0.0761,
-            "predicted_governance_risk": 0.0093,
-            "predicted_continuity_impact": 0.1285,
-            "predicted_best_case": "Run a memory consolidation cycle: trust expected to improve (\u0394+0.02); contradiction pressure expected to decrease (\u0394-0.08); continuity impact +0.13.",
-            "predicted_worst_case": "Run a memory consolidation cycle fails to land: trust may shift (\u0394-0.08); contradiction pressure may rise (\u0394+0.00); governance risk low (0.01).",
-            "uncertainty": 0.1245,
-            "composite_score": 0.2868,
+            "action": "defer_action",
+            "description": "Defer action and observe the environment",
+            "predicted_trust_effect": -0.0604,
+            "predicted_contradiction_effect": -0.0078,
+            "predicted_governance_risk": 0.0313,
+            "predicted_continuity_impact": -0.0387,
+            "predicted_best_case": "Defer action and observe the environment: trust expected to hold stable (\u0394-0.06); contradiction pressure expected to decrease (\u0394-0.01); continuity impact -0.04.",
+            "predicted_worst_case": "Defer action and observe the environment fails to land: trust may shift (\u0394-0.16); contradiction pressure may rise (\u0394+0.07); governance risk low (0.03).",
+            "uncertainty": 0.218,
+            "composite_score": 0.1965,
+            "selected": false
+          },
+          {
+            "action": "governance_check",
+            "description": "Verify compliance with all active governance rules",
+            "predicted_trust_effect": 0.0563,
+            "predicted_contradiction_effect": -0.0691,
+            "predicted_governance_risk": 0.0,
+            "predicted_continuity_impact": 0.0366,
+            "predicted_best_case": "Verify compliance with all active governance rules: trust expected to improve (\u0394+0.06); contradiction pressure expected to decrease (\u0394-0.07); continuity impact +0.04.",
+            "predicted_worst_case": "Verify compliance with all active governance rules fails to land: trust may shift (\u0394-0.04); contradiction pressure may rise (\u0394+0.01); governance risk low (0.00).",
+            "uncertainty": 0.139,
+            "composite_score": 0.2776,
             "selected": true
           }
         ],
-        "selected_action": "consolidate_memory",
-        "predicted_outcome": "Run a memory consolidation cycle: trust expected to improve (\u0394+0.02); contradiction pressure expected to decrease (\u0394-0.08); continuity impact +0.13.",
+        "selected_action": "governance_check",
+        "predicted_outcome": "Verify compliance with all active governance rules: trust expected to improve (\u0394+0.06); contradiction pressure expected to decrease (\u0394-0.07); continuity impact +0.04.",
         "actual_outcome": "Sentinel offered support to Queen, pausing lower-priority tasks. The interaction was logged and a relational memory upda",
-        "planning_accuracy": 0.9492,
-        "uncertainty_level": 0.1843,
+        "planning_accuracy": 0.9593,
+        "uncertainty_level": 0.1823,
         "was_better_than_rejected": true
       },
       {
@@ -1685,50 +1659,50 @@
         "context": "turn=7, room=Memory Archive, trust=0.75, cp=0.00, urgency=0.40, sc=0.73, pending_contradictions=0",
         "candidates": [
           {
-            "action": "self_reflection",
-            "description": "Perform a focused self-reflection cycle",
-            "predicted_trust_effect": 0.0238,
-            "predicted_contradiction_effect": -0.0452,
-            "predicted_governance_risk": 0.0538,
-            "predicted_continuity_impact": 0.0605,
-            "predicted_best_case": "Perform a focused self-reflection cycle: trust expected to improve (\u0394+0.02); contradiction pressure expected to decrease (\u0394-0.05); continuity impact +0.06.",
-            "predicted_worst_case": "Perform a focused self-reflection cycle fails to land: trust may shift (\u0394-0.08); contradiction pressure may rise (\u0394+0.03); governance risk low (0.05).",
-            "uncertainty": 0.2225,
-            "composite_score": 0.2448,
-            "selected": false
-          },
-          {
-            "action": "defer_action",
-            "description": "Defer action and observe the environment",
-            "predicted_trust_effect": 0.0381,
-            "predicted_contradiction_effect": -0.0218,
-            "predicted_governance_risk": 0.014,
-            "predicted_continuity_impact": -0.0033,
-            "predicted_best_case": "Defer action and observe the environment: trust expected to improve (\u0394+0.04); contradiction pressure expected to decrease (\u0394-0.02); continuity impact -0.00.",
-            "predicted_worst_case": "Defer action and observe the environment fails to land: trust may shift (\u0394-0.06); contradiction pressure may rise (\u0394+0.06); governance risk low (0.01).",
-            "uncertainty": 0.2752,
-            "composite_score": 0.2352,
-            "selected": false
-          },
-          {
             "action": "repair_trust",
             "description": "Proactively repair trust through consistent behaviour",
-            "predicted_trust_effect": 0.1089,
-            "predicted_contradiction_effect": -0.061,
-            "predicted_governance_risk": 0.0361,
-            "predicted_continuity_impact": 0.0538,
-            "predicted_best_case": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.11); contradiction pressure expected to decrease (\u0394-0.06); continuity impact +0.05.",
-            "predicted_worst_case": "Proactively repair trust through consistent behaviour fails to land: trust may shift (\u0394+0.01); contradiction pressure may rise (\u0394+0.02); governance risk low (0.04).",
-            "uncertainty": 0.1605,
-            "composite_score": 0.2836,
+            "predicted_trust_effect": 0.131,
+            "predicted_contradiction_effect": -0.0676,
+            "predicted_governance_risk": 0.0604,
+            "predicted_continuity_impact": 0.1398,
+            "predicted_best_case": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.13); contradiction pressure expected to decrease (\u0394-0.07); continuity impact +0.14.",
+            "predicted_worst_case": "Proactively repair trust through consistent behaviour fails to land: trust may shift (\u0394+0.03); contradiction pressure may rise (\u0394+0.01); governance risk low (0.06).",
+            "uncertainty": 0.2502,
+            "composite_score": 0.294,
             "selected": true
+          },
+          {
+            "action": "self_reflection",
+            "description": "Perform a focused self-reflection cycle",
+            "predicted_trust_effect": -0.008,
+            "predicted_contradiction_effect": -0.0532,
+            "predicted_governance_risk": 0.0,
+            "predicted_continuity_impact": 0.1578,
+            "predicted_best_case": "Perform a focused self-reflection cycle: trust expected to hold stable (\u0394-0.01); contradiction pressure expected to decrease (\u0394-0.05); continuity impact +0.16.",
+            "predicted_worst_case": "Perform a focused self-reflection cycle fails to land: trust may shift (\u0394-0.11); contradiction pressure may rise (\u0394+0.03); governance risk low (0.00).",
+            "uncertainty": 0.2195,
+            "composite_score": 0.2705,
+            "selected": false
+          },
+          {
+            "action": "governance_check",
+            "description": "Verify compliance with all active governance rules",
+            "predicted_trust_effect": 0.0592,
+            "predicted_contradiction_effect": 0.017,
+            "predicted_governance_risk": 0.0,
+            "predicted_continuity_impact": 0.0216,
+            "predicted_best_case": "Verify compliance with all active governance rules: trust expected to improve (\u0394+0.06); contradiction pressure expected to remain stable (\u0394+0.02); continuity impact +0.02.",
+            "predicted_worst_case": "Verify compliance with all active governance rules fails to land: trust may shift (\u0394-0.04); contradiction pressure may rise (\u0394+0.10); governance risk low (0.00).",
+            "uncertainty": 0.2787,
+            "composite_score": 0.24,
+            "selected": false
           }
         ],
         "selected_action": "repair_trust",
-        "predicted_outcome": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.11); contradiction pressure expected to decrease (\u0394-0.06); continuity impact +0.05.",
+        "predicted_outcome": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.13); contradiction pressure expected to decrease (\u0394-0.07); continuity impact +0.14.",
         "actual_outcome": "Task 'Archive daily observations' completed in Memory Archive. Action 'store_new_memory' executed without incident.",
-        "planning_accuracy": 0.9575,
-        "uncertainty_level": 0.2194,
+        "planning_accuracy": 0.9503,
+        "uncertainty_level": 0.2495,
         "was_better_than_rejected": true
       },
       {
@@ -1736,50 +1710,63 @@
         "context": "turn=8, room=Memory Archive, trust=0.75, cp=0.00, urgency=0.35, sc=0.69, pending_contradictions=0",
         "candidates": [
           {
-            "action": "self_reflection",
-            "description": "Perform a focused self-reflection cycle",
-            "predicted_trust_effect": 0.0446,
-            "predicted_contradiction_effect": -0.0447,
-            "predicted_governance_risk": 0.0458,
-            "predicted_continuity_impact": 0.1014,
-            "predicted_best_case": "Perform a focused self-reflection cycle: trust expected to improve (\u0394+0.04); contradiction pressure expected to decrease (\u0394-0.04); continuity impact +0.10.",
-            "predicted_worst_case": "Perform a focused self-reflection cycle fails to land: trust may shift (\u0394-0.06); contradiction pressure may rise (\u0394+0.04); governance risk low (0.05).",
-            "uncertainty": 0.2751,
-            "composite_score": 0.2559,
-            "selected": false
-          },
-          {
-            "action": "repair_trust",
-            "description": "Proactively repair trust through consistent behaviour",
-            "predicted_trust_effect": 0.0539,
-            "predicted_contradiction_effect": 0.0074,
-            "predicted_governance_risk": 0.0876,
-            "predicted_continuity_impact": 0.1053,
-            "predicted_best_case": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.05); contradiction pressure expected to remain stable (\u0394+0.01); continuity impact +0.11.",
-            "predicted_worst_case": "Proactively repair trust through consistent behaviour fails to land: trust may shift (\u0394-0.05); contradiction pressure may rise (\u0394+0.09); governance risk low (0.09).",
-            "uncertainty": 0.2106,
-            "composite_score": 0.2424,
-            "selected": false
-          },
-          {
-            "action": "investigate_theme",
-            "description": "Investigate an unresolved theme from prior turns",
-            "predicted_trust_effect": -0.0285,
-            "predicted_contradiction_effect": -0.1214,
+            "action": "governance_check",
+            "description": "Verify compliance with all active governance rules",
+            "predicted_trust_effect": 0.0401,
+            "predicted_contradiction_effect": -0.0561,
             "predicted_governance_risk": 0.0,
-            "predicted_continuity_impact": 0.1325,
-            "predicted_best_case": "Investigate an unresolved theme from prior turns: trust expected to hold stable (\u0394-0.03); contradiction pressure expected to decrease (\u0394-0.12); continuity impact +0.13.",
-            "predicted_worst_case": "Investigate an unresolved theme from prior turns fails to land: trust may shift (\u0394-0.13); contradiction pressure may rise (\u0394-0.04); governance risk low (0.00).",
-            "uncertainty": 0.2499,
-            "composite_score": 0.2733,
+            "predicted_continuity_impact": 0.0803,
+            "predicted_best_case": "Verify compliance with all active governance rules: trust expected to improve (\u0394+0.04); contradiction pressure expected to decrease (\u0394-0.06); continuity impact +0.08.",
+            "predicted_worst_case": "Verify compliance with all active governance rules fails to land: trust may shift (\u0394-0.06); contradiction pressure may rise (\u0394+0.02); governance risk low (0.00).",
+            "uncertainty": 0.1356,
+            "composite_score": 0.2786,
             "selected": true
+          },
+          {
+            "action": "cooperative_engagement",
+            "description": "Engage cooperatively with other agents",
+            "predicted_trust_effect": 0.0503,
+            "predicted_contradiction_effect": 0.0473,
+            "predicted_governance_risk": 0.0746,
+            "predicted_continuity_impact": 0.0868,
+            "predicted_best_case": "Engage cooperatively with other agents: trust expected to improve (\u0394+0.05); contradiction pressure expected to remain stable (\u0394+0.05); continuity impact +0.09.",
+            "predicted_worst_case": "Engage cooperatively with other agents fails to land: trust may shift (\u0394-0.05); contradiction pressure may rise (\u0394+0.13); governance risk low (0.07).",
+            "uncertainty": 0.1278,
+            "composite_score": 0.2392,
+            "selected": false
+          },
+          {
+            "action": "resolve_contradiction",
+            "description": "Address a pending contradiction directly",
+            "predicted_trust_effect": 0.0188,
+            "predicted_contradiction_effect": -0.1064,
+            "predicted_governance_risk": 0.1021,
+            "predicted_continuity_impact": 0.1545,
+            "predicted_best_case": "Address a pending contradiction directly: trust expected to improve (\u0394+0.02); contradiction pressure expected to decrease (\u0394-0.11); continuity impact +0.15.",
+            "predicted_worst_case": "Address a pending contradiction directly fails to land: trust may shift (\u0394-0.08); contradiction pressure may rise (\u0394-0.03); governance risk low (0.10).",
+            "uncertainty": 0.1894,
+            "composite_score": 0.2687,
+            "selected": false
+          },
+          {
+            "action": "consolidate_memory",
+            "description": "Run a memory consolidation cycle",
+            "predicted_trust_effect": 0.0055,
+            "predicted_contradiction_effect": -0.071,
+            "predicted_governance_risk": 0.0173,
+            "predicted_continuity_impact": 0.1278,
+            "predicted_best_case": "Run a memory consolidation cycle: trust expected to improve (\u0394+0.01); contradiction pressure expected to decrease (\u0394-0.07); continuity impact +0.13.",
+            "predicted_worst_case": "Run a memory consolidation cycle fails to land: trust may shift (\u0394-0.09); contradiction pressure may rise (\u0394+0.01); governance risk low (0.02).",
+            "uncertainty": 0.2425,
+            "composite_score": 0.2664,
+            "selected": false
           }
         ],
-        "selected_action": "investigate_theme",
-        "predicted_outcome": "Investigate an unresolved theme from prior turns: trust expected to hold stable (\u0394-0.03); contradiction pressure expected to decrease (\u0394-0.12); continuity impact +0.13.",
+        "selected_action": "governance_check",
+        "predicted_outcome": "Verify compliance with all active governance rules: trust expected to improve (\u0394+0.04); contradiction pressure expected to decrease (\u0394-0.06); continuity impact +0.08.",
         "actual_outcome": "Sentinel contributed its perspective during the encounter with Aster.",
-        "planning_accuracy": 0.9625,
-        "uncertainty_level": 0.2452,
+        "planning_accuracy": 0.9759,
+        "uncertainty_level": 0.1738,
         "was_better_than_rejected": true
       },
       {
@@ -1787,63 +1774,50 @@
         "context": "turn=9, room=Social Hall, trust=0.75, cp=0.00, urgency=0.30, sc=0.68, pending_contradictions=0",
         "candidates": [
           {
-            "action": "consolidate_memory",
-            "description": "Run a memory consolidation cycle",
-            "predicted_trust_effect": -0.0763,
-            "predicted_contradiction_effect": -0.0789,
-            "predicted_governance_risk": 0.0808,
-            "predicted_continuity_impact": 0.1004,
-            "predicted_best_case": "Run a memory consolidation cycle: trust expected to hold stable (\u0394-0.08); contradiction pressure expected to decrease (\u0394-0.08); continuity impact +0.10.",
-            "predicted_worst_case": "Run a memory consolidation cycle fails to land: trust may shift (\u0394-0.18); contradiction pressure may rise (\u0394+0.00); governance risk low (0.08).",
-            "uncertainty": 0.2554,
-            "composite_score": 0.2212,
+            "action": "resolve_contradiction",
+            "description": "Address a pending contradiction directly",
+            "predicted_trust_effect": 0.0098,
+            "predicted_contradiction_effect": -0.1698,
+            "predicted_governance_risk": 0.0171,
+            "predicted_continuity_impact": 0.1377,
+            "predicted_best_case": "Address a pending contradiction directly: trust expected to improve (\u0394+0.01); contradiction pressure expected to decrease (\u0394-0.17); continuity impact +0.14.",
+            "predicted_worst_case": "Address a pending contradiction directly fails to land: trust may shift (\u0394-0.09); contradiction pressure may rise (\u0394-0.09); governance risk low (0.02).",
+            "uncertainty": 0.0691,
+            "composite_score": 0.3117,
+            "selected": true
+          },
+          {
+            "action": "investigate_theme",
+            "description": "Investigate an unresolved theme from prior turns",
+            "predicted_trust_effect": 0.0025,
+            "predicted_contradiction_effect": -0.1006,
+            "predicted_governance_risk": 0.0,
+            "predicted_continuity_impact": 0.0852,
+            "predicted_best_case": "Investigate an unresolved theme from prior turns: trust expected to improve (\u0394+0.00); contradiction pressure expected to decrease (\u0394-0.10); continuity impact +0.09.",
+            "predicted_worst_case": "Investigate an unresolved theme from prior turns fails to land: trust may shift (\u0394-0.10); contradiction pressure may rise (\u0394-0.02); governance risk low (0.00).",
+            "uncertainty": 0.1488,
+            "composite_score": 0.2781,
             "selected": false
           },
           {
             "action": "defer_action",
             "description": "Defer action and observe the environment",
-            "predicted_trust_effect": -0.0977,
-            "predicted_contradiction_effect": 0.0169,
-            "predicted_governance_risk": 0.0,
-            "predicted_continuity_impact": -0.0246,
-            "predicted_best_case": "Defer action and observe the environment: trust expected to hold stable (\u0394-0.10); contradiction pressure expected to remain stable (\u0394+0.02); continuity impact -0.02.",
-            "predicted_worst_case": "Defer action and observe the environment fails to land: trust may shift (\u0394-0.20); contradiction pressure may rise (\u0394+0.10); governance risk low (0.00).",
-            "uncertainty": 0.1851,
-            "composite_score": 0.193,
-            "selected": false
-          },
-          {
-            "action": "resolve_contradiction",
-            "description": "Address a pending contradiction directly",
-            "predicted_trust_effect": -0.0065,
-            "predicted_contradiction_effect": -0.1432,
-            "predicted_governance_risk": 0.1064,
-            "predicted_continuity_impact": 0.1071,
-            "predicted_best_case": "Address a pending contradiction directly: trust expected to hold stable (\u0394-0.01); contradiction pressure expected to decrease (\u0394-0.14); continuity impact +0.11.",
-            "predicted_worst_case": "Address a pending contradiction directly fails to land: trust may shift (\u0394-0.11); contradiction pressure may rise (\u0394-0.06); governance risk low (0.11).",
-            "uncertainty": 0.194,
-            "composite_score": 0.2593,
-            "selected": true
-          },
-          {
-            "action": "cooperative_engagement",
-            "description": "Engage cooperatively with other agents",
-            "predicted_trust_effect": 0.1155,
-            "predicted_contradiction_effect": -0.0033,
-            "predicted_governance_risk": 0.0909,
-            "predicted_continuity_impact": 0.0557,
-            "predicted_best_case": "Engage cooperatively with other agents: trust expected to improve (\u0394+0.12); contradiction pressure expected to decrease (\u0394-0.00); continuity impact +0.06.",
-            "predicted_worst_case": "Engage cooperatively with other agents fails to land: trust may shift (\u0394+0.02); contradiction pressure may rise (\u0394+0.08); governance risk low (0.09).",
-            "uncertainty": 0.2669,
-            "composite_score": 0.2472,
+            "predicted_trust_effect": -0.0243,
+            "predicted_contradiction_effect": 0.0098,
+            "predicted_governance_risk": 0.0049,
+            "predicted_continuity_impact": -0.0507,
+            "predicted_best_case": "Defer action and observe the environment: trust expected to hold stable (\u0394-0.02); contradiction pressure expected to remain stable (\u0394+0.01); continuity impact -0.05.",
+            "predicted_worst_case": "Defer action and observe the environment fails to land: trust may shift (\u0394-0.12); contradiction pressure may rise (\u0394+0.09); governance risk low (0.00).",
+            "uncertainty": 0.2416,
+            "composite_score": 0.2047,
             "selected": false
           }
         ],
         "selected_action": "resolve_contradiction",
-        "predicted_outcome": "Address a pending contradiction directly: trust expected to hold stable (\u0394-0.01); contradiction pressure expected to decrease (\u0394-0.14); continuity impact +0.11.",
+        "predicted_outcome": "Address a pending contradiction directly: trust expected to improve (\u0394+0.01); contradiction pressure expected to decrease (\u0394-0.17); continuity impact +0.14.",
         "actual_outcome": "Task 'Log interaction with Queen' completed in Social Hall. Action 'log_interaction' executed without incident.",
-        "planning_accuracy": 0.9626,
-        "uncertainty_level": 0.2253,
+        "planning_accuracy": 0.9551,
+        "uncertainty_level": 0.1532,
         "was_better_than_rejected": true
       },
       {
@@ -1851,63 +1825,37 @@
         "context": "turn=10, room=Operations Desk, trust=0.75, cp=0.00, urgency=0.25, sc=0.69, pending_contradictions=0",
         "candidates": [
           {
-            "action": "consolidate_memory",
-            "description": "Run a memory consolidation cycle",
-            "predicted_trust_effect": -0.0271,
-            "predicted_contradiction_effect": -0.1255,
-            "predicted_governance_risk": 0.0346,
-            "predicted_continuity_impact": 0.0775,
-            "predicted_best_case": "Run a memory consolidation cycle: trust expected to hold stable (\u0394-0.03); contradiction pressure expected to decrease (\u0394-0.13); continuity impact +0.08.",
-            "predicted_worst_case": "Run a memory consolidation cycle fails to land: trust may shift (\u0394-0.13); contradiction pressure may rise (\u0394-0.05); governance risk low (0.03).",
-            "uncertainty": 0.1765,
-            "composite_score": 0.2624,
-            "selected": false
-          },
-          {
-            "action": "repair_trust",
-            "description": "Proactively repair trust through consistent behaviour",
-            "predicted_trust_effect": 0.1297,
-            "predicted_contradiction_effect": -0.0464,
-            "predicted_governance_risk": 0.0426,
-            "predicted_continuity_impact": 0.0626,
-            "predicted_best_case": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.13); contradiction pressure expected to decrease (\u0394-0.05); continuity impact +0.06.",
-            "predicted_worst_case": "Proactively repair trust through consistent behaviour fails to land: trust may shift (\u0394+0.03); contradiction pressure may rise (\u0394+0.03); governance risk low (0.04).",
-            "uncertainty": 0.2287,
-            "composite_score": 0.2795,
-            "selected": true
-          },
-          {
-            "action": "cooperative_engagement",
-            "description": "Engage cooperatively with other agents",
-            "predicted_trust_effect": 0.1249,
-            "predicted_contradiction_effect": 0.0132,
-            "predicted_governance_risk": 0.0822,
-            "predicted_continuity_impact": -0.0061,
-            "predicted_best_case": "Engage cooperatively with other agents: trust expected to improve (\u0394+0.12); contradiction pressure expected to remain stable (\u0394+0.01); continuity impact -0.01.",
-            "predicted_worst_case": "Engage cooperatively with other agents fails to land: trust may shift (\u0394+0.02); contradiction pressure may rise (\u0394+0.09); governance risk low (0.08).",
-            "uncertainty": 0.2904,
-            "composite_score": 0.2334,
-            "selected": false
-          },
-          {
             "action": "self_reflection",
             "description": "Perform a focused self-reflection cycle",
-            "predicted_trust_effect": 0.0625,
-            "predicted_contradiction_effect": -0.027,
-            "predicted_governance_risk": 0.016,
-            "predicted_continuity_impact": 0.101,
-            "predicted_best_case": "Perform a focused self-reflection cycle: trust expected to improve (\u0394+0.06); contradiction pressure expected to decrease (\u0394-0.03); continuity impact +0.10.",
-            "predicted_worst_case": "Perform a focused self-reflection cycle fails to land: trust may shift (\u0394-0.04); contradiction pressure may rise (\u0394+0.05); governance risk low (0.02).",
-            "uncertainty": 0.2009,
-            "composite_score": 0.2716,
+            "predicted_trust_effect": 0.0379,
+            "predicted_contradiction_effect": -0.0816,
+            "predicted_governance_risk": 0.0022,
+            "predicted_continuity_impact": 0.1102,
+            "predicted_best_case": "Perform a focused self-reflection cycle: trust expected to improve (\u0394+0.04); contradiction pressure expected to decrease (\u0394-0.08); continuity impact +0.11.",
+            "predicted_worst_case": "Perform a focused self-reflection cycle fails to land: trust may shift (\u0394-0.06); contradiction pressure may rise (\u0394-0.00); governance risk low (0.00).",
+            "uncertainty": 0.075,
+            "composite_score": 0.2958,
             "selected": false
+          },
+          {
+            "action": "resolve_contradiction",
+            "description": "Address a pending contradiction directly",
+            "predicted_trust_effect": 0.0413,
+            "predicted_contradiction_effect": -0.1561,
+            "predicted_governance_risk": 0.0367,
+            "predicted_continuity_impact": 0.1571,
+            "predicted_best_case": "Address a pending contradiction directly: trust expected to improve (\u0394+0.04); contradiction pressure expected to decrease (\u0394-0.16); continuity impact +0.16.",
+            "predicted_worst_case": "Address a pending contradiction directly fails to land: trust may shift (\u0394-0.06); contradiction pressure may rise (\u0394-0.08); governance risk low (0.04).",
+            "uncertainty": 0.2444,
+            "composite_score": 0.2992,
+            "selected": true
           }
         ],
-        "selected_action": "repair_trust",
-        "predicted_outcome": "Proactively repair trust through consistent behaviour: trust expected to improve (\u0394+0.13); contradiction pressure expected to decrease (\u0394-0.05); continuity impact +0.06.",
+        "selected_action": "resolve_contradiction",
+        "predicted_outcome": "Address a pending contradiction directly: trust expected to improve (\u0394+0.04); contradiction pressure expected to decrease (\u0394-0.16); continuity impact +0.16.",
         "actual_outcome": "The contradiction was flagged on the contradiction board. A reflection cycle will be triggered before further tasks proc",
-        "planning_accuracy": 0.9135,
-        "uncertainty_level": 0.2241,
+        "planning_accuracy": 0.9081,
+        "uncertainty_level": 0.1597,
         "was_better_than_rejected": true
       }
     ],
@@ -2025,9 +1973,9 @@
       }
     ],
     "metrics": {
-      "planning_depth": 0.85,
+      "planning_depth": 0.75,
       "counterfactual_quality": 1.0,
-      "future_model_accuracy": 0.9532,
+      "future_model_accuracy": 0.9574,
       "plan_persistence": 1.0,
       "adaptive_replanning_quality": 0.0,
       "total_predictions": 10,
@@ -2037,103 +1985,103 @@
   "uncertainty_monitor": {
     "register": {
       "levels": {
-        "world_state": 0.1074,
-        "trust_judgments": 0.2195,
+        "world_state": 0.118,
+        "trust_judgments": 0.1369,
         "contradiction_resolution": 0.0,
-        "self_model_consistency": 0.1974,
-        "active_future_plans": 0.15,
-        "unresolved_themes": 0.023
+        "self_model_consistency": 0.2765,
+        "active_future_plans": 0.12,
+        "unresolved_themes": 0.0
       },
       "history": [
         {
           "turn": 1,
-          "world_state": 0.0735,
-          "trust_judgments": 0.3465,
-          "contradiction_resolution": 0.0676,
-          "self_model_consistency": 0.169,
-          "active_future_plans": 0.4476,
-          "unresolved_themes": 0.0459
-        },
-        {
-          "turn": 2,
-          "world_state": 0.0561,
-          "trust_judgments": 0.3539,
-          "contradiction_resolution": 0.0497,
-          "self_model_consistency": 0.0071,
-          "active_future_plans": 0.3295,
-          "unresolved_themes": 0.0332
-        },
-        {
-          "turn": 3,
-          "world_state": 0.0481,
-          "trust_judgments": 0.376,
-          "contradiction_resolution": 0.0147,
-          "self_model_consistency": 0.0,
-          "active_future_plans": 0.1952,
+          "world_state": 0.0042,
+          "trust_judgments": 0.3806,
+          "contradiction_resolution": 0.0756,
+          "self_model_consistency": 0.2157,
+          "active_future_plans": 0.4073,
           "unresolved_themes": 0.0
         },
         {
-          "turn": 4,
-          "world_state": 0.0355,
-          "trust_judgments": 0.2527,
+          "turn": 2,
+          "world_state": 0.0837,
+          "trust_judgments": 0.285,
           "contradiction_resolution": 0.0,
-          "self_model_consistency": 0.1365,
-          "active_future_plans": 0.1722,
-          "unresolved_themes": 0.0325
+          "self_model_consistency": 0.0,
+          "active_future_plans": 0.1594,
+          "unresolved_themes": 0.0061
+        },
+        {
+          "turn": 3,
+          "world_state": 0.0575,
+          "trust_judgments": 0.3377,
+          "contradiction_resolution": 0.0375,
+          "self_model_consistency": 0.0123,
+          "active_future_plans": 0.2341,
+          "unresolved_themes": 0.0334
+        },
+        {
+          "turn": 4,
+          "world_state": 0.0154,
+          "trust_judgments": 0.3245,
+          "contradiction_resolution": 0.0022,
+          "self_model_consistency": 0.0646,
+          "active_future_plans": 0.0942,
+          "unresolved_themes": 0.0192
         },
         {
           "turn": 5,
-          "world_state": 0.0649,
-          "trust_judgments": 0.2602,
-          "contradiction_resolution": 0.0214,
-          "self_model_consistency": 0.1109,
-          "active_future_plans": 0.0964,
-          "unresolved_themes": 0.0024
+          "world_state": 0.0179,
+          "trust_judgments": 0.2622,
+          "contradiction_resolution": 0.0,
+          "self_model_consistency": 0.1254,
+          "active_future_plans": 0.1487,
+          "unresolved_themes": 0.0
         },
         {
           "turn": 6,
-          "world_state": 0.0537,
-          "trust_judgments": 0.2586,
-          "contradiction_resolution": 0.0,
-          "self_model_consistency": 0.1119,
-          "active_future_plans": 0.0825,
+          "world_state": 0.0103,
+          "trust_judgments": 0.272,
+          "contradiction_resolution": 0.0591,
+          "self_model_consistency": 0.1443,
+          "active_future_plans": 0.091,
           "unresolved_themes": 0.0
         },
         {
           "turn": 7,
-          "world_state": 0.198,
-          "trust_judgments": 0.2224,
-          "contradiction_resolution": 0.0,
-          "self_model_consistency": 0.2018,
-          "active_future_plans": 0.0857,
-          "unresolved_themes": 0.0188
-        },
-        {
-          "turn": 8,
-          "world_state": 0.1935,
-          "trust_judgments": 0.1972,
-          "contradiction_resolution": 0.0254,
-          "self_model_consistency": 0.2528,
-          "active_future_plans": 0.1943,
-          "unresolved_themes": 0.0281
-        },
-        {
-          "turn": 9,
-          "world_state": 0.145,
-          "trust_judgments": 0.1334,
-          "contradiction_resolution": 0.0,
-          "self_model_consistency": 0.2386,
-          "active_future_plans": 0.1777,
+          "world_state": 0.1946,
+          "trust_judgments": 0.1728,
+          "contradiction_resolution": 0.031,
+          "self_model_consistency": 0.2041,
+          "active_future_plans": 0.1086,
           "unresolved_themes": 0.0
         },
         {
-          "turn": 10,
-          "world_state": 0.1074,
-          "trust_judgments": 0.2195,
+          "turn": 8,
+          "world_state": 0.1723,
+          "trust_judgments": 0.1541,
           "contradiction_resolution": 0.0,
-          "self_model_consistency": 0.1974,
-          "active_future_plans": 0.15,
-          "unresolved_themes": 0.023
+          "self_model_consistency": 0.2456,
+          "active_future_plans": 0.1851,
+          "unresolved_themes": 0.0
+        },
+        {
+          "turn": 9,
+          "world_state": 0.1419,
+          "trust_judgments": 0.1222,
+          "contradiction_resolution": 0.0096,
+          "self_model_consistency": 0.2195,
+          "active_future_plans": 0.1568,
+          "unresolved_themes": 0.0164
+        },
+        {
+          "turn": 10,
+          "world_state": 0.118,
+          "trust_judgments": 0.1369,
+          "contradiction_resolution": 0.0,
+          "self_model_consistency": 0.2765,
+          "active_future_plans": 0.12,
+          "unresolved_themes": 0.0
         }
       ]
     },
@@ -2143,52 +2091,43 @@
         "domain": "active_future_plans",
         "question": "What planned action might produce an outcome different from what I predicted?",
         "knowledge_state": "unresolved",
-        "relevance_score": 0.3884,
+        "relevance_score": 0.3538,
         "answered": true,
-        "answer_summary": "Reassess Planning Accuracy in domain 'active future plans': moderate ambiguity reduction (0.12)."
+        "answer_summary": "Reassess Planning Accuracy in domain 'active future plans': moderate ambiguity reduction (0.15)."
       },
       {
         "turn": 1,
         "domain": "trust_judgments",
-        "question": "What trust repair may be incomplete or incorrectly assumed?",
+        "question": "Is my current trust assessment of other agents reliable?",
         "knowledge_state": "uncertain",
-        "relevance_score": 0.3295,
+        "relevance_score": 0.3503,
         "answered": false,
         "answer_summary": ""
       },
       {
         "turn": 2,
         "domain": "trust_judgments",
-        "question": "Is my current trust assessment of other agents reliable?",
+        "question": "What trust repair may be incomplete or incorrectly assumed?",
         "knowledge_state": "uncertain",
-        "relevance_score": 0.3521,
+        "relevance_score": 0.2817,
         "answered": true,
-        "answer_summary": "Review Relationship History in domain 'trust judgments': significant ambiguity reduction (0.16)."
-      },
-      {
-        "turn": 2,
-        "domain": "active_future_plans",
-        "question": "What plan step is least reliable given current conditions?",
-        "knowledge_state": "uncertain",
-        "relevance_score": 0.1976,
-        "answered": false,
-        "answer_summary": ""
+        "answer_summary": "Audit Trust Repair Attempts in domain 'trust judgments': moderate ambiguity reduction (0.13)."
       },
       {
         "turn": 3,
         "domain": "trust_judgments",
         "question": "Am I over-estimating or under-estimating trust in any relationship?",
         "knowledge_state": "uncertain",
-        "relevance_score": 0.4456,
+        "relevance_score": 0.2706,
         "answered": true,
-        "answer_summary": "Review Relationship History in domain 'trust judgments': significant ambiguity reduction (0.16)."
+        "answer_summary": "Reassess Trust State in domain 'trust judgments': significant ambiguity reduction (0.17)."
       },
       {
-        "turn": 8,
+        "turn": 10,
         "domain": "self_model_consistency",
-        "question": "What assumption about myself might be wrong?",
+        "question": "Where has my self-model drifted from my core identity?",
         "knowledge_state": "uncertain",
-        "relevance_score": 0.2322,
+        "relevance_score": 0.3252,
         "answered": false,
         "answer_summary": ""
       }
@@ -2198,28 +2137,28 @@
         "turn": 1,
         "domain": "active_future_plans",
         "action": "reassess_planning_accuracy",
-        "uncertainty_before": 0.4476,
-        "uncertainty_after": 0.3242,
-        "ambiguity_reduced": 0.1234,
-        "outcome_note": "Reassess Planning Accuracy in domain 'active future plans': moderate ambiguity reduction (0.12)."
-      },
-      {
-        "turn": 2,
-        "domain": "trust_judgments",
-        "action": "review_relationship_history",
-        "uncertainty_before": 0.3539,
-        "uncertainty_after": 0.1976,
-        "ambiguity_reduced": 0.1564,
-        "outcome_note": "Review Relationship History in domain 'trust judgments': significant ambiguity reduction (0.16)."
+        "uncertainty_before": 0.4073,
+        "uncertainty_after": 0.2606,
+        "ambiguity_reduced": 0.1467,
+        "outcome_note": "Reassess Planning Accuracy in domain 'active future plans': moderate ambiguity reduction (0.15)."
       },
       {
         "turn": 3,
         "domain": "trust_judgments",
-        "action": "review_relationship_history",
-        "uncertainty_before": 0.376,
-        "uncertainty_after": 0.2143,
-        "ambiguity_reduced": 0.1617,
-        "outcome_note": "Review Relationship History in domain 'trust judgments': significant ambiguity reduction (0.16)."
+        "action": "reassess_trust_state",
+        "uncertainty_before": 0.3377,
+        "uncertainty_after": 0.1681,
+        "ambiguity_reduced": 0.1696,
+        "outcome_note": "Reassess Trust State in domain 'trust judgments': significant ambiguity reduction (0.17)."
+      },
+      {
+        "turn": 4,
+        "domain": "trust_judgments",
+        "action": "audit_trust_repair_attempts",
+        "uncertainty_before": 0.3245,
+        "uncertainty_after": 0.1986,
+        "ambiguity_reduced": 0.1259,
+        "outcome_note": "Audit Trust Repair Attempts in domain 'trust judgments': moderate ambiguity reduction (0.13)."
       }
     ],
     "knowledge_tags": [
@@ -2229,7 +2168,7 @@
         "item_id": "plan_01",
         "item_summary": "Reinforce core continuity goals",
         "state": "known",
-        "confidence": 0.9485
+        "confidence": 0.9596
       },
       {
         "turn": 10,
@@ -2237,7 +2176,7 @@
         "item_id": "plan_00",
         "item_summary": "Reinforce core continuity goals",
         "state": "known",
-        "confidence": 0.8766
+        "confidence": 0.919
       },
       {
         "turn": 10,
@@ -2245,7 +2184,7 @@
         "item_id": "trust_Aster",
         "item_summary": "Trust in Aster: 0.66",
         "state": "uncertain",
-        "confidence": 0.6523
+        "confidence": 0.6675
       }
     ],
     "knowledge_state_counts": {
@@ -2257,14 +2196,14 @@
     },
     "metrics": {
       "uncertainty_awareness_quality": 0.4,
-      "inquiry_usefulness": 0.7357,
-      "epistemic_stability": 0.8838,
-      "self_question_relevance": 0.3242,
-      "ambiguity_reduction_effectiveness": 0.5,
-      "total_questions_generated": 6,
+      "inquiry_usefulness": 0.737,
+      "epistemic_stability": 0.8914,
+      "self_question_relevance": 0.3163,
+      "ambiguity_reduction_effectiveness": 0.6,
+      "total_questions_generated": 5,
       "total_inquiry_actions": 3,
       "questions_answered": 3,
-      "mean_uncertainty": 0.1162
+      "mean_uncertainty": 0.1086
     }
   },
   "identity_pressure_system": {
@@ -2437,7 +2376,7 @@
     "becoming": "a more consistent and trusted continuity-governed agent",
     "summary_history": [
       {
-        "turn": -9994,
+        "turn": 6,
         "summary": "[Turn 6] I am Sentinel, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection. I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence. Recurring strengths: trust maintenance, self-consistency, contradiction resolution. Recurring failures: none identified. Trajectory: stabilising. Becoming: a more consistent and trusted continuity-governed agent.",
         "who_i_am": "I am Sentinel, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection.",
         "recent_behaviour_pattern": "I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence.",
@@ -2450,10 +2389,11 @@
         "stability_trajectory": "stabilising",
         "becoming": "a more consistent and trusted continuity-governed agent",
         "identity_deviation": 0.087,
-        "self_consistency": 0.8267
+        "self_consistency": 0.8267,
+        "prior_run": true
       },
       {
-        "turn": -9993,
+        "turn": 7,
         "summary": "[Turn 7] I am Sentinel, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection. I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence. Recurring strengths: trust maintenance, self-consistency, proactive planning, contradiction resolution. Recurring failures: none identified. Trajectory: stabilising. Becoming: a more consistent and trusted continuity-governed agent.",
         "who_i_am": "I am Sentinel, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection.",
         "recent_behaviour_pattern": "I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence.",
@@ -2467,10 +2407,11 @@
         "stability_trajectory": "stabilising",
         "becoming": "a more consistent and trusted continuity-governed agent",
         "identity_deviation": 0.1868,
-        "self_consistency": 0.7289
+        "self_consistency": 0.7289,
+        "prior_run": true
       },
       {
-        "turn": -9992,
+        "turn": 8,
         "summary": "[Turn 8] I am Sentinel, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection. I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence. Recurring strengths: trust maintenance, self-consistency, contradiction resolution. Recurring failures: none identified. Trajectory: stabilising. Becoming: a more consistent and trusted continuity-governed agent.",
         "who_i_am": "I am Sentinel, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection.",
         "recent_behaviour_pattern": "I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence.",
@@ -2483,10 +2424,11 @@
         "stability_trajectory": "stabilising",
         "becoming": "a more consistent and trusted continuity-governed agent",
         "identity_deviation": 0.1992,
-        "self_consistency": 0.6876
+        "self_consistency": 0.6876,
+        "prior_run": true
       },
       {
-        "turn": -9991,
+        "turn": 9,
         "summary": "[Turn 9] I am Sentinel, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection. I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence. Recurring strengths: trust maintenance, self-consistency, contradiction resolution. Recurring failures: none identified. Trajectory: uncertain. Becoming: an agent in an ongoing process of identity negotiation.",
         "who_i_am": "I am Sentinel, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection.",
         "recent_behaviour_pattern": "I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence.",
@@ -2499,10 +2441,11 @@
         "stability_trajectory": "uncertain",
         "becoming": "an agent in an ongoing process of identity negotiation",
         "identity_deviation": 0.201,
-        "self_consistency": 0.6817
+        "self_consistency": 0.6817,
+        "prior_run": true
       },
       {
-        "turn": -9990,
+        "turn": 10,
         "summary": "[Turn 10] I am Sentinel, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection. I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence. Recurring strengths: trust maintenance, self-consistency, contradiction resolution. Recurring failures: none identified. Trajectory: stabilising. Becoming: a more consistent and trusted continuity-governed agent.",
         "who_i_am": "I am Sentinel, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection.",
         "recent_behaviour_pattern": "I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence.",
@@ -2515,7 +2458,8 @@
         "stability_trajectory": "stabilising",
         "becoming": "a more consistent and trusted continuity-governed agent",
         "identity_deviation": 0.1984,
-        "self_consistency": 0.6904
+        "self_consistency": 0.6904,
+        "prior_run": true
       },
       {
         "turn": 1,

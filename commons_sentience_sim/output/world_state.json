@@ -1,7 +1,7 @@
 {
   "schema_version": "1.9.0",
-  "run_label": "v19_continue",
-  "saved_at": "2026-03-17T20:02:16.005096",
+  "run_label": "v19_continue2",
+  "saved_at": "2026-03-17T20:06:16.861423",
   "total_turns_at_save": 10,
   "room_conditions": {
     "Memory Archive": {
@@ -414,42 +414,33 @@
   "uncertainty_summaries": {
     "Sentinel": {
       "uncertainty_levels": {
-        "world_state": 0.10738702994337021,
-        "trust_judgments": 0.2194529435701874,
+        "world_state": 0.11796095199946033,
+        "trust_judgments": 0.13693663304352494,
         "contradiction_resolution": 0.0,
-        "self_model_consistency": 0.1974025592124094,
-        "active_future_plans": 0.15004507878473872,
-        "unresolved_themes": 0.02303113012488507
+        "self_model_consistency": 0.27645404376450977,
+        "active_future_plans": 0.12001288008398876,
+        "unresolved_themes": 0.0
       },
-      "mean_uncertainty": 0.1162,
-      "highest_domain": "trust_judgments",
-      "epistemic_stability": 0.8838,
-      "total_questions_generated": 6,
+      "mean_uncertainty": 0.1086,
+      "highest_domain": "self_model_consistency",
+      "epistemic_stability": 0.8914,
+      "total_questions_generated": 5,
       "unanswered_questions": [
         {
           "turn": 1,
           "domain": "trust_judgments",
-          "question": "What trust repair may be incomplete or incorrectly assumed?",
+          "question": "Is my current trust assessment of other agents reliable?",
           "knowledge_state": "uncertain",
-          "relevance_score": 0.3295,
+          "relevance_score": 0.3503,
           "answered": false,
           "answer_summary": ""
         },
         {
-          "turn": 2,
-          "domain": "active_future_plans",
-          "question": "What plan step is least reliable given current conditions?",
-          "knowledge_state": "uncertain",
-          "relevance_score": 0.1976,
-          "answered": false,
-          "answer_summary": ""
-        },
-        {
-          "turn": 8,
+          "turn": 10,
           "domain": "self_model_consistency",
-          "question": "What assumption about myself might be wrong?",
+          "question": "Where has my self-model drifted from my core identity?",
           "knowledge_state": "uncertain",
-          "relevance_score": 0.2322,
+          "relevance_score": 0.3252,
           "answered": false,
           "answer_summary": ""
         }
@@ -457,17 +448,17 @@
     },
     "Aster": {
       "uncertainty_levels": {
-        "world_state": 0.1316626291074409,
-        "trust_judgments": 0.16187497772824244,
-        "contradiction_resolution": 0.003266805105769043,
-        "self_model_consistency": 0.20748331103580658,
-        "active_future_plans": 0.03785217786129668,
-        "unresolved_themes": 0.0
+        "world_state": 0.21851679454386924,
+        "trust_judgments": 0.148474549411069,
+        "contradiction_resolution": 0.0,
+        "self_model_consistency": 0.10892269716096586,
+        "active_future_plans": 0.021142848632779328,
+        "unresolved_themes": 0.02234234799778323
       },
-      "mean_uncertainty": 0.0904,
-      "highest_domain": "self_model_consistency",
-      "epistemic_stability": 0.9096,
-      "total_questions_generated": 4,
+      "mean_uncertainty": 0.0866,
+      "highest_domain": "world_state",
+      "epistemic_stability": 0.9134,
+      "total_questions_generated": 5,
       "unanswered_questions": [
         {
           "turn": 0,
@@ -493,15 +484,6 @@
           "question": "What trust repair may be incomplete or incorrectly assumed?",
           "knowledge_state": "uncertain",
           "relevance_score": 0.2668,
-          "answered": false,
-          "answer_summary": "[carried from prior run]"
-        },
-        {
-          "turn": 0,
-          "domain": "trust_judgments",
-          "question": "Is my current trust assessment of other agents reliable?",
-          "knowledge_state": "uncertain",
-          "relevance_score": 0.3405,
           "answered": false,
           "answer_summary": "[carried from prior run]"
         }

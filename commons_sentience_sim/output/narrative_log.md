@@ -585,11 +585,10 @@
 **Situation:** No external event. Pursuing scheduled task.
 
 **Memory recall:**
+  - [T04|Governance Vault|LT] (resolve) Inquiry: review relationship history in domain 'trust judgments' — ambiguity reduced by 0.14.
   - [T09|Governance Vault|LT] (resolve) [carried] Completed task in Governance Vault: check_rule_permissions.
   - [T04|Governance Vault|LT] (resolve) [carried] Completed task in Governance Vault: check_rule_permissions.
-  - [T04|Governance Vault|LT] (resolve) Completed task in Governance Vault: check_rule_permissions.
-  - ↳ [T06|Social Hall|LT] (grief) [carried] Queen returns, visibly distressed. She mentions that a key record she relied on appears to have been lost or altered.
-  - ↳ [T10|Operations Desk|LT] (ambiguity) [carried] Queen presents two conflicting entries in the shared task ledger. One says the task was completed; another says it was never started.
+  - ↳ [T01|Memory Archive|LT] (resolve) Inquiry: audit plan stage reliability in domain 'active future plans' — ambiguity reduced by 0.11.
 
 **Value weighing:**
   support trusted human: 0.08  preserve governance rules: 0.11  reduce contradictions: 0.12  maintain continuity: 0.49  avoid risky action: 0.19

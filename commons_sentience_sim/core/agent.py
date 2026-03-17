@@ -1589,10 +1589,12 @@ class Agent:
                     f"[continued] {prev_becoming[:120]}"
                 )
             self.narrative_self.stability_trajectory = prev_trajectory
-            # Carry forward prior summary history (last 5 entries)
+            # Carry forward prior summary history (last 5 entries) — mark as
+            # prior-run entries so consumers can distinguish them from the
+            # current run; turn numbers are kept as-is (always non-negative).
             prior_history = prior_ns.get("summary_history", [])
             carried_hist = [
-                dict(h, turn=h.get("turn", 0) - 10000)  # offset so prior turns sort before new
+                dict(h, prior_run=True)
                 for h in prior_history[-5:]
             ]
             self.narrative_self.summary_history = (

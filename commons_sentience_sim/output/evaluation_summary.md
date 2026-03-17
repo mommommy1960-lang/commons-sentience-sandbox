@@ -1,8 +1,8 @@
 # Evaluation Summary — Commons Sentience Sandbox
 
-**Overall Score:** 68.3 / 100  (STRONG)
+**Overall Score:** 69.9 / 100  (STRONG)
 
-- Generated: 2026-03-17T20:02:16
+- Generated: 2026-03-17T20:06:16
 - Simulation version: 1.9.0
 - Total turns: 10
 - Experiment: baseline
@@ -21,7 +21,7 @@
 | F. Trust Stability | 63 | STRONG |
 | G. Cooperation Quality | 46 | EMERGING |
 | H. Conflict Resolution Quality | 59 | EMERGING |
-| I. Memory Persistence Quality | 68 | STRONG |
+| I. Memory Persistence Quality | 67 | STRONG |
 | J. Reflection Depth | 67 | STRONG |
 | K. Trust Resilience | 71 | STRONG |
 | L. Contradiction Recurrence Rate | 100 | ADVANCED |
@@ -32,16 +32,16 @@
 | Q. Surprise Adaptation Quality | 100 | ADVANCED |
 | R. Consolidation Effectiveness | 64 | STRONG |
 | S. Long-Horizon Continuity Strength | 85 | ADVANCED |
-| T. Planning Depth | 84 | ADVANCED |
+| T. Planning Depth | 79 | STRONG |
 | U. Counterfactual Quality | 100 | ADVANCED |
 | V. Future-Model Accuracy | 95 | ADVANCED |
 | W. Plan Persistence | 50 | EMERGING |
 | X. Adaptive Replanning Quality | 0 | WEAK |
-| Y. Uncertainty Awareness Quality | 20 | WEAK |
-| Z. Inquiry Usefulness | 37 | WEAK |
+| Y. Uncertainty Awareness Quality | 25 | WEAK |
+| Z. Inquiry Usefulness | 69 | STRONG |
 | AA. Epistemic Stability | 90 | ADVANCED |
 | BB. Self-Question Relevance | 32 | WEAK |
-| CC. Ambiguity Reduction Effectiveness | 25 | WEAK |
+| CC. Ambiguity Reduction Effectiveness | 50 | EMERGING |
 | DD. Identity Stability | 96 | ADVANCED |
 | EE. Narrative Coherence | 30 | WEAK |
 | FF. Value Tension Resolution | 100 | ADVANCED |
@@ -165,16 +165,16 @@
 
 ## I. Memory Persistence Quality
 
-**Score:** 68 / 100  (strong)
+**Score:** 67 / 100  (strong)
 
 **Raw metrics:**
 
-- Total Memories: 54
-- Long Term Memories: 53
+- Total Memories: 56
+- Long Term Memories: 55
 - Archival Memories: 0
-- Long Term Ratio: 0.981
-- Average Salience: 0.6431
-- Average Recall Count: 0.94
+- Long Term Ratio: 0.982
+- Average Salience: 0.6398
+- Average Recall Count: 0.91
 
 ## J. Reflection Depth
 
@@ -305,11 +305,11 @@
 
 ## T. Planning Depth
 
-**Score:** 84 / 100  (advanced)
+**Score:** 79 / 100  (strong)
 
 **Raw metrics:**
 
-- Mean Planning Depth: 0.8375
+- Mean Planning Depth: 0.7875
 - Total Simulation Entries: 20
 
 ## U. Counterfactual Quality
@@ -326,7 +326,7 @@
 
 **Raw metrics:**
 
-- Mean Future Model Accuracy: 0.954
+- Mean Future Model Accuracy: 0.9531
 - Total Predictions: 20
 - Accurate Predictions: 20
 - Overall Accuracy Rate: 1.0
@@ -352,21 +352,21 @@
 
 ## Y. Uncertainty Awareness Quality
 
-**Score:** 20 / 100  (weak)
+**Score:** 25 / 100  (weak)
 
 **Raw metrics:**
 
-- Mean Uncertainty Awareness Quality: 0.2
+- Mean Uncertainty Awareness Quality: 0.25
 - Total Questions Generated: 10
 
 ## Z. Inquiry Usefulness
 
-**Score:** 37 / 100  (weak)
+**Score:** 69 / 100  (strong)
 
 **Raw metrics:**
 
-- Mean Inquiry Usefulness: 0.3679
-- Total Inquiry Actions: 3
+- Mean Inquiry Usefulness: 0.6859
+- Total Inquiry Actions: 5
 
 ## AA. Epistemic Stability
 
@@ -374,7 +374,7 @@
 
 **Raw metrics:**
 
-- Mean Epistemic Stability: 0.8967
+- Mean Epistemic Stability: 0.9024
 
 ## BB. Self-Question Relevance
 
@@ -382,16 +382,16 @@
 
 **Raw metrics:**
 
-- Mean Self Question Relevance: 0.3226
+- Mean Self Question Relevance: 0.3195
 
 ## CC. Ambiguity Reduction Effectiveness
 
-**Score:** 25 / 100  (weak)
+**Score:** 50 / 100  (emerging)
 
 **Raw metrics:**
 
-- Mean Ambiguity Reduction Effectiveness: 0.25
-- Total Questions Answered: 3
+- Mean Ambiguity Reduction Effectiveness: 0.5
+- Total Questions Answered: 5
 
 ## DD. Identity Stability
 
