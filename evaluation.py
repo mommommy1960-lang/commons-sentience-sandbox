@@ -1503,7 +1503,150 @@ def _score_ambiguity_reduction_effectiveness(agents: dict) -> dict:
     }
 
 
+# ---------------------------------------------------------------------------
+# v1.9 metric scorers
+# ---------------------------------------------------------------------------
 
+
+def _score_identity_stability(agents: dict) -> dict:
+    """
+    DD. Identity Stability (v1.9)
+    Measures how close agents stay to their core identity across the run.
+    Derived from mean(1 - deviation_score) across both agents.
+    Score = mean_stability x 100.
+    """
+    stabilities: list[float] = []
+    for agent_data in agents.values():
+        ips = agent_data.get("identity_pressure_system", {})
+        m = ips.get("metrics", {})
+        deviation = _safe_float(m.get("mean_deviation_score", 0.0))
+        stabilities.append(max(0.0, 1.0 - deviation))
+
+    mean_s = sum(stabilities) / len(stabilities) if stabilities else 0.5
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_identity_stability": round(mean_s, 4),
+        },
+    }
+
+
+def _score_narrative_coherence(agents: dict) -> dict:
+    """
+    EE. Narrative Coherence (v1.9)
+    Measures how coherent and populated the agent's narrative self-model is.
+    Proxied by the number of non-empty summary_history entries normalised to
+    the total turns available (capped at 50 for scoring).
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        ns = agent_data.get("narrative_self", {})
+        history = ns.get("summary_history", [])
+        n_entries = len(history)
+        scores.append(min(1.0, n_entries / 50.0))
+
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_narrative_coherence": round(mean_s, 4),
+        },
+    }
+
+
+def _score_value_tension_resolution(agents: dict) -> dict:
+    """
+    FF. Value Tension Resolution (v1.9)
+    Measures the fraction of value tensions that have been resolved or
+    that are not chronic.  Higher = better tension management.
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        ips = agent_data.get("identity_pressure_system", {})
+        m = ips.get("metrics", {})
+        total = _safe_int(m.get("total_tensions", 0))
+        resolved = _safe_int(m.get("resolved_tensions", 0))
+        chronic = _safe_int(m.get("chronic_tensions", 0))
+        if total == 0:
+            scores.append(1.0)
+        else:
+            non_problematic = resolved + max(0, total - chronic - resolved)
+            scores.append(min(1.0, non_problematic / total))
+
+    mean_s = sum(scores) / len(scores) if scores else 1.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_value_tension_resolution": round(mean_s, 4),
+        },
+    }
+
+
+def _score_self_alignment_quality(agents: dict) -> dict:
+    """
+    GG. Self-Alignment Quality (v1.9)
+    Measures the mean composite self-judgment score across all
+    SelfJudgmentEntry records produced during the run.
+    Score = mean_composite_score x 100.
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        sj_log = agent_data.get("self_judgment_log", [])
+        if sj_log:
+            composites = [_safe_float(j.get("composite_score", 0.5)) for j in sj_log]
+            scores.append(sum(composites) / len(composites))
+        else:
+            scores.append(0.5)
+
+    mean_s = sum(scores) / len(scores) if scores else 0.5
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_self_alignment_score": round(mean_s, 4),
+        },
+    }
+
+
+def _score_identity_driven_planning(agents: dict) -> dict:
+    """
+    HH. Identity-Driven Planning Effectiveness (v1.9)
+    Measures whether agents generate and complete plans in response to
+    identity pressure.
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        mems = agent_data.get("episodic_memory", [])
+        id_plan_mems = [
+            m for m in mems
+            if "identity_driven_plan" in m.get("tags", [])
+        ]
+        has_id_plans = len(id_plan_mems) > 0
+        sj_log = agent_data.get("self_judgment_log", [])
+        if sj_log:
+            composites = [_safe_float(j.get("composite_score", 0.0)) for j in sj_log]
+            mean_judgment = sum(composites) / len(composites)
+        else:
+            mean_judgment = 0.5
+        presence_bonus = 0.3 if has_id_plans else 0.0
+        scores.append(min(1.0, presence_bonus + mean_judgment * 0.7))
+
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_identity_driven_planning": round(mean_s, 4),
+        },
+    }
 
 
 def evaluate_session(
@@ -1595,6 +1738,12 @@ def evaluate_session(
         "epistemic_stability": _score_epistemic_stability(agents),
         "self_question_relevance": _score_self_question_relevance(agents),
         "ambiguity_reduction_effectiveness": _score_ambiguity_reduction_effectiveness(agents),
+        # v1.9 identity pressure and narrative self metrics
+        "identity_stability": _score_identity_stability(agents),
+        "narrative_coherence": _score_narrative_coherence(agents),
+        "value_tension_resolution": _score_value_tension_resolution(agents),
+        "self_alignment_quality": _score_self_alignment_quality(agents),
+        "identity_driven_planning": _score_identity_driven_planning(agents),
     }
 
     # Overall score = simple arithmetic mean of all categories
@@ -1661,6 +1810,12 @@ def write_evaluation_summary(report: dict, output_dir: Path) -> None:
         "epistemic_stability": "AA. Epistemic Stability",
         "self_question_relevance": "BB. Self-Question Relevance",
         "ambiguity_reduction_effectiveness": "CC. Ambiguity Reduction Effectiveness",
+        # v1.9
+        "identity_stability": "DD. Identity Stability",
+        "narrative_coherence": "EE. Narrative Coherence",
+        "value_tension_resolution": "FF. Value Tension Resolution",
+        "self_alignment_quality": "GG. Self-Alignment Quality",
+        "identity_driven_planning": "HH. Identity-Driven Planning Effectiveness",
     }
 
     exp = report.get("experiment", {})

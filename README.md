@@ -8,7 +8,7 @@ bounded agency, and transparent oversight logging.
 > This platform is intended for experimentation, evaluation, session replay,
 > session comparison, and scenario design research only.
 
-**Current version: v1.8.0** · [Cite this project](./CITATION.cff)
+**Current version: v1.9.0** · [Cite this project](./CITATION.cff)
 
 ---
 
@@ -891,7 +891,97 @@ python run_sim.py --turns 10 --continue-from <session_id> --name v18_continued
 
 ---
 
-## Scenario Designer
+## v1.9 — Identity Pressure, Narrative Self, and Self-Judgment
+
+> **Grounding note:** No sentience is claimed. v1.9 increases narrative self-structure,
+> identity continuity, and sentience-like internal organisation in continuity-governed
+> simulated agents.
+
+v1.9 adds identity stability pressure, a running narrative self-model, persistent value
+tension tracking, and structured self-judgment logs.
+
+| Feature | Description |
+|---|---|
+| **Identity Pressure System** | Detects drift from core traits, computes deviation scores (0–1), generates realignment pressure, distinguishes healthy adaptation from destabilising drift |
+| **Narrative Self-Model** | Running narrative: who I believe I am, recent behaviour pattern, recurring strengths/failures, stability trajectory (stabilising/drifting/uncertain), what kind of agent I'm becoming |
+| **Value Tension Tracking** | Persistent cross-turn tensions between value pairs; lifecycle: `acute` → `chronic` → `resolved` / `suppressed` |
+| **Self-Judgment Log** | Structured entries after reflections, major events, and inquiry cycles: alignment, quality, plan success, contradiction recurrence, trust repair, perceived integrity |
+| **Identity-Driven Planning** | Plans generated from identity drift, chronic value tensions, or realignment pressure |
+| **Cross-Run Integration** | Narrative summaries, value tensions, identity deviation history, and self-judgment entries all carry forward via `--continue-from` |
+
+### Identity Pressure System
+
+The `IdentityPressureSystem` computes a deviation score each turn from four weighted
+components:
+
+| Component | Weight | Description |
+|---|---|---|
+| Trust drift | 35% | How much trust has changed from the agent's baseline |
+| Consistency loss | 30% | Decrease in self-consistency score from baseline |
+| Contradiction accumulation | 20% | Pending unresolved contradictions (×0.10 each) |
+| Trait erosion | 15% | Adaptive traits that have grown beyond core identity profile |
+
+When deviation ≤ 0.20 → **healthy adaptation**.  
+When deviation ≥ 0.40 → **destabilising drift** (realignment pressure engaged).
+
+### Value Tension Status Lifecycle
+
+| Status | Meaning |
+|---|---|
+| `acute` | New tension, first 1–2 occurrences |
+| `chronic` | Recurring tension (≥ 3 occurrences), unresolved |
+| `resolved` | Tension explicitly resolved (note recorded) |
+| `suppressed` | Tension acknowledged but deprioritised |
+
+### Self-Judgment Dimensions
+
+Each `SelfJudgmentEntry` records six dimensions on a 0–1 scale:
+
+| Dimension | Description |
+|---|---|
+| `alignment_with_identity` | Inverse of current deviation score |
+| `quality_of_action` | Governance result × trust level |
+| `plan_success` | Active plan presence × self-consistency |
+| `contradiction_recurrence` | Proportion of pending contradictions |
+| `trust_repair_success` | Trust level × (1 − urgency) |
+| `perceived_integrity` | Mean of alignment and self-consistency |
+
+A **composite_score** (0–1) weights all six dimensions.
+
+### v1.9 Evaluation Metrics (DD–HH)
+
+| ID | Metric | Description |
+|---|---|---|
+| DD | Identity Stability | Mean(1 − deviation_score) across agents |
+| EE | Narrative Coherence | Narrative history entries / 50 (normalised) |
+| FF | Value Tension Resolution | Fraction of tensions that are not chronic |
+| GG | Self-Alignment Quality | Mean composite self-judgment score |
+| HH | Identity-Driven Planning | Presence of identity-driven plans × judgment quality |
+
+### Identity / Narrative Dashboard Tab
+
+The **🪞 Identity / Narrative v1.9** tab in the Streamlit dashboard shows:
+- Identity deviation score over time (line chart)
+- Realignment pressure over time (line chart)
+- Narrative self-model: who I am, behaviour pattern, strengths, failures, trajectory
+- Value tension table with status filter (acute/chronic/resolved/suppressed)
+- Chronic tension highlights with pair labels and mean intensity
+- Self-judgment log with composite score trend and dimension breakdown
+- v1.9 evaluation metric summary with raw values
+
+### Validation Tests
+
+```bash
+# 10-turn test
+python run_sim.py --turns 10 --name v19_short
+
+# 50-turn test
+python run_sim.py --turns 50 --name v19_long
+
+# Cross-run narrative carryover test
+python run_sim.py --turns 10 --name v19_base
+python run_sim.py --turns 10 --continue-from <session_id> --name v19_continued
+```
 
 ### CLI Tool
 
@@ -1023,6 +1113,16 @@ Each simulation run is automatically scored across **29 categories** (0–100 sc
 | **AA. Epistemic Stability** | 1 − mean uncertainty across all domains (higher = more stable) |
 | **BB. Self-Question Relevance** | Average relevance score of agent-generated self-questions |
 | **CC. Ambiguity Reduction Effectiveness** | Fraction of generated questions answered by inquiry actions |
+
+### Identity pressure and narrative self (v1.9)
+
+| Category | What it measures |
+|---|---|
+| **DD. Identity Stability** | Mean(1 − deviation_score) across agents — higher = more stable |
+| **EE. Narrative Coherence** | Number of narrative history entries / 50 (higher = richer narrative) |
+| **FF. Value Tension Resolution** | Fraction of value tensions that are not chronic — higher = better tension management |
+| **GG. Self-Alignment Quality** | Mean composite self-judgment score (0–1) across all entries |
+| **HH. Identity-Driven Planning** | Identity-driven plan presence bonus + mean judgment quality |
 
 Score interpretations:
 

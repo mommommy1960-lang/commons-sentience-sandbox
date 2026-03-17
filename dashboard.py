@@ -193,7 +193,7 @@ st.set_page_config(
 # ---------------------------------------------------------------------------
 
 st.sidebar.title("\U0001f9e0 Commons Sentience Sandbox")
-st.sidebar.markdown("**Local Research Dashboard \u2014 v1.8**")
+st.sidebar.markdown("**Local Research Dashboard \u2014 v1.9**")
 st.sidebar.caption(
     "A research platform for continuity-governed simulated agents. "
     "Not a real AI \u2014 no sentience is claimed."
@@ -274,7 +274,7 @@ agents_data: dict = state_data.get("agents", {})
 # ---------------------------------------------------------------------------
 
 st.title("\U0001f9e0 Commons Sentience Sandbox")
-st.markdown("**Local Research Dashboard \u2014 v1.8** \u00b7 Research platform for continuity-governed simulated agents")
+st.markdown("**Local Research Dashboard \u2014 v1.9** \u00b7 Research platform for continuity-governed simulated agents")
 if active_session_id:
     st.caption(
         f"v{simulation_version}  \u00b7  Session: `{active_session_id}`  \u00b7  "
@@ -312,6 +312,7 @@ if not state_data:
     tab_selfmodel,
     tab_counterfactual,
     tab_inquiry,
+    tab_identity,
 ) = st.tabs(
     [
         "Overview",
@@ -331,6 +332,7 @@ if not state_data:
         "🧠 Self Model v1.5",
         "🔮 Future Modeling v1.7",
         "❓ Inquiry / Uncertainty v1.8",
+        "🪞 Identity / Narrative v1.9",
     ]
 )
 
@@ -2944,6 +2946,346 @@ with tab_inquiry:
         "v1.8 Inquiry / Uncertainty tab — Commons Sentience Sandbox v1.8.0. "
         "No sentience is claimed. This displays introspective structure, "
         "uncertainty handling, and sentience-like continuity in "
+        "continuity-governed simulated agents."
+    )
+
+
+# ===========================================================================
+# TAB R — Identity / Narrative v1.9
+# ===========================================================================
+
+with tab_identity:
+    st.header("🪞 Identity / Narrative — v1.9")
+    st.caption(
+        "Identity stability pressure, narrative self-model, value tension tracking, "
+        "and self-judgment logs. No sentience is claimed. This tab displays "
+        "narrative self-structure, identity continuity, and sentience-like "
+        "internal organisation in continuity-governed simulated agents."
+    )
+
+    _agent_selector_id = st.selectbox(
+        "Select agent",
+        list(agents_data.keys()) if agents_data else ["(none)"],
+        key="id_agent_selector",
+    )
+    _id_agent: dict = agents_data.get(_agent_selector_id, {})
+
+    if not _id_agent:
+        st.info("No simulation data found. Run `python run_sim.py` first.")
+    else:
+        # ── Identity Pressure System ──────────────────────────────────────
+        _ips: dict = _id_agent.get("identity_pressure_system", {})
+        _ips_metrics: dict = _ips.get("metrics", {})
+        _ips_history: list = _ips.get("deviation_history", [])
+
+        st.subheader("Identity Stability Pressure")
+        _id_cols = st.columns(4)
+        _id_cols[0].metric(
+            "Deviation Score",
+            f"{_ips.get('deviation_score', 0.0):.3f}",
+            help="0 = fully stable, 1 = maximal drift.",
+        )
+        _id_cols[1].metric(
+            "Realignment Pressure",
+            f"{_ips.get('realignment_pressure', 0.0):.3f}",
+            help="Pressure to realign with core identity (0–1).",
+        )
+        _id_cols[2].metric(
+            "Destabilising?",
+            "YES ⚠️" if _ips.get("is_destabilising") else "No ✓",
+        )
+        _id_cols[3].metric(
+            "Mean Deviation",
+            f"{_ips_metrics.get('mean_deviation_score', 0.0):.3f}",
+            help="Average deviation across the run.",
+        )
+
+        # Identity drift over time chart
+        if _ips_history:
+            _drift_data = {
+                str(h.get("turn", i)): h.get("deviation_score", 0.0)
+                for i, h in enumerate(_ips_history)
+            }
+            st.markdown("**Identity Deviation Score over Time:**")
+            st.line_chart(_drift_data)
+
+            _pressure_data = {
+                str(h.get("turn", i)): h.get("realignment_pressure", 0.0)
+                for i, h in enumerate(_ips_history)
+            }
+            st.markdown("**Realignment Pressure over Time:**")
+            st.line_chart(_pressure_data)
+
+            with st.expander(
+                f"Deviation History ({len(_ips_history)} entries)",
+                expanded=False,
+            ):
+                _hist_rows = [
+                    {
+                        "Turn": h.get("turn", ""),
+                        "Deviation": f"{h.get('deviation_score', 0.0):.3f}",
+                        "Pressure": f"{h.get('realignment_pressure', 0.0):.3f}",
+                        "Drift Type": h.get("drift_type", ""),
+                        "Destabilising": "⚠️" if h.get("is_destabilising") else "—",
+                    }
+                    for h in _ips_history[-30:][::-1]
+                ]
+                st.dataframe(_hist_rows, use_container_width=True)
+
+        st.divider()
+
+        # ── Narrative Self Model ──────────────────────────────────────────
+        _ns: dict = _id_agent.get("narrative_self", {})
+        _ns_history: list = _ns.get("summary_history", [])
+
+        st.subheader("Narrative Self-Model")
+        if _ns:
+            _ns_cols = st.columns(2)
+            with _ns_cols[0]:
+                st.markdown("**Who I believe I am:**")
+                st.info(_ns.get("who_i_am", "—"))
+                st.markdown("**How I have been behaving recently:**")
+                st.info(_ns.get("recent_behaviour_pattern", "—"))
+            with _ns_cols[1]:
+                st.markdown("**Stability Trajectory:**")
+                _traj = _ns.get("stability_trajectory", "unknown")
+                _traj_icon = (
+                    "🟢 Stabilising" if _traj == "stabilising" else
+                    "🔴 Drifting" if _traj == "drifting" else
+                    "🟡 Uncertain"
+                )
+                st.info(_traj_icon)
+                st.markdown("**Becoming:**")
+                st.info(_ns.get("becoming", "—"))
+
+            _str_col, _fail_col = st.columns(2)
+            with _str_col:
+                st.markdown("**Recurring Strengths:**")
+                strengths = _ns.get("recurring_strengths", [])
+                if strengths:
+                    for s in strengths:
+                        st.markdown(f"  ✅ {s}")
+                else:
+                    st.markdown("  *None identified yet.*")
+
+            with _fail_col:
+                st.markdown("**Recurring Failures:**")
+                failures = _ns.get("recurring_failures", [])
+                if failures:
+                    for f in failures:
+                        st.markdown(f"  ⚠️ {f}")
+                else:
+                    st.markdown("  *None identified yet.*")
+
+            st.markdown("**Current Narrative Summary:**")
+            st.markdown(f"> {_ns.get('current_summary', '—')}")
+
+            if _ns_history:
+                with st.expander(
+                    f"Narrative History ({len(_ns_history)} entries)",
+                    expanded=False,
+                ):
+                    _ns_rows = [
+                        {
+                            "Turn": h.get("turn", ""),
+                            "Trajectory": h.get("stability_trajectory", ""),
+                            "Deviation": f"{h.get('identity_deviation', 0.0):.3f}",
+                            "Consistency": f"{h.get('self_consistency', 0.0):.3f}",
+                            "Strengths": ", ".join(h.get("recurring_strengths", [])),
+                            "Failures": ", ".join(h.get("recurring_failures", [])),
+                        }
+                        for h in _ns_history[-20:][::-1]
+                    ]
+                    st.dataframe(_ns_rows, use_container_width=True)
+        else:
+            st.info("Narrative self-model not yet populated.")
+
+        st.divider()
+
+        # ── Value Tension Tracking ────────────────────────────────────────
+        _vt_list: list = _ips.get("value_tensions", [])
+
+        st.subheader("Value Tension Tracking")
+        if _ips_metrics:
+            _vt_cols = st.columns(4)
+            _vt_cols[0].metric("Total Tensions", _ips_metrics.get("total_tensions", 0))
+            _vt_cols[1].metric("Unresolved", _ips_metrics.get("unresolved_tensions", 0))
+            _vt_cols[2].metric("Chronic", _ips_metrics.get("chronic_tensions", 0))
+            _vt_cols[3].metric("Resolved", _ips_metrics.get("resolved_tensions", 0))
+
+        if _vt_list:
+            # Status filter
+            _vt_status_filter = st.selectbox(
+                "Filter by status",
+                ["all", "acute", "chronic", "resolved", "suppressed"],
+                key="vt_status_filter",
+            )
+            _filtered_vt = (
+                _vt_list if _vt_status_filter == "all"
+                else [t for t in _vt_list if t.get("status") == _vt_status_filter]
+            )
+
+            _vt_rows = [
+                {
+                    "ID": t.get("tension_id", ""),
+                    "Value A": t.get("value_a", "").replace("_", " "),
+                    "Value B": t.get("value_b", "").replace("_", " "),
+                    "Status": t.get("status", ""),
+                    "Occurrences": t.get("occurrences", 0),
+                    "First Turn": t.get("first_seen", ""),
+                    "Last Turn": t.get("last_seen", ""),
+                    "Mean Intensity": f"{t.get('mean_intensity', 0.0):.3f}",
+                }
+                for t in _filtered_vt
+            ]
+            if _vt_rows:
+                st.dataframe(_vt_rows, use_container_width=True)
+
+                # Chronic tension highlight
+                _chronic = [t for t in _vt_list if t.get("status") == "chronic"]
+                if _chronic:
+                    st.markdown("**Chronic (persistent) tensions:**")
+                    for t in _chronic:
+                        st.warning(
+                            f"🔄 **{t.get('value_a', '').replace('_', ' ')} ↔ "
+                            f"{t.get('value_b', '').replace('_', ' ')}** — "
+                            f"{t.get('occurrences', 0)} occurrences, "
+                            f"mean intensity: {t.get('mean_intensity', 0.0):.2f}"
+                        )
+            else:
+                st.info(f"No tensions with status '{_vt_status_filter}'.")
+        else:
+            st.info("No value tensions recorded yet.")
+
+        st.divider()
+
+        # ── Self-Judgment Log ─────────────────────────────────────────────
+        _sj_log: list = _id_agent.get("self_judgment_log", [])
+
+        st.subheader("Self-Judgment Log")
+        if _sj_log:
+            _sj_recent = _sj_log[-1] if _sj_log else {}
+            _sj_mean = (
+                round(
+                    sum(j.get("composite_score", 0.0) for j in _sj_log)
+                    / len(_sj_log),
+                    3,
+                )
+                if _sj_log else 0.0
+            )
+
+            _sj_metric_cols = st.columns(3)
+            _sj_metric_cols[0].metric(
+                "Self-Judgment Entries",
+                len(_sj_log),
+            )
+            _sj_metric_cols[1].metric(
+                "Mean Composite Score",
+                f"{_sj_mean:.3f}",
+                help="0 = poor self-assessed integrity, 1 = strong.",
+            )
+            _sj_metric_cols[2].metric(
+                "Latest Composite",
+                f"{_sj_recent.get('composite_score', 0.0):.3f}",
+            )
+
+            # Composite score over time
+            if len(_sj_log) >= 2:
+                _sj_score_data = {
+                    str(j.get("turn", i)): j.get("composite_score", 0.0)
+                    for i, j in enumerate(_sj_log)
+                }
+                st.markdown("**Composite Self-Judgment Score over Time:**")
+                st.line_chart(_sj_score_data)
+
+            # Dimension breakdown of most recent judgment
+            if _sj_recent:
+                st.markdown("**Most Recent Judgment Breakdown:**")
+                _dim_cols = st.columns(3)
+                _dims = [
+                    ("Alignment w/ Identity", "alignment_with_identity"),
+                    ("Quality of Action", "quality_of_action"),
+                    ("Plan Success", "plan_success"),
+                    ("Contradiction Recurrence", "contradiction_recurrence"),
+                    ("Trust Repair Success", "trust_repair_success"),
+                    ("Perceived Integrity", "perceived_integrity"),
+                ]
+                for i, (label, key) in enumerate(_dims):
+                    _dim_cols[i % 3].metric(
+                        label,
+                        f"{_sj_recent.get(key, 0.0):.3f}",
+                    )
+                if _sj_recent.get("notes"):
+                    st.caption(f"Notes: {_sj_recent['notes']}")
+
+            with st.expander(
+                f"Full Self-Judgment Log ({len(_sj_log)} entries)",
+                expanded=False,
+            ):
+                _sj_rows = [
+                    {
+                        "Turn": j.get("turn", ""),
+                        "Trigger": j.get("trigger", ""),
+                        "Alignment": f"{j.get('alignment_with_identity', 0.0):.3f}",
+                        "Quality": f"{j.get('quality_of_action', 0.0):.3f}",
+                        "Plan": f"{j.get('plan_success', 0.0):.3f}",
+                        "Contradiction": f"{j.get('contradiction_recurrence', 0.0):.3f}",
+                        "Trust Repair": f"{j.get('trust_repair_success', 0.0):.3f}",
+                        "Integrity": f"{j.get('perceived_integrity', 0.0):.3f}",
+                        "Composite": f"{j.get('composite_score', 0.0):.3f}",
+                    }
+                    for j in _sj_log[-30:][::-1]
+                ]
+                st.dataframe(_sj_rows, use_container_width=True)
+        else:
+            st.info("No self-judgment entries recorded yet.")
+
+        st.divider()
+
+        # ── v1.9 Evaluation Metrics ───────────────────────────────────────
+        _eval_v19_path = active_dir / "evaluation_report.json"
+        _eval_v19: dict = {}
+        try:
+            with open(_eval_v19_path, encoding="utf-8") as _fh19:
+                _eval_v19 = json.load(_fh19)
+        except (OSError, json.JSONDecodeError):
+            pass
+
+        if _eval_v19:
+            st.subheader("v1.9 Evaluation Metrics")
+            _v19_keys = [
+                ("identity_stability", "DD. Identity Stability"),
+                ("narrative_coherence", "EE. Narrative Coherence"),
+                ("value_tension_resolution", "FF. Value Tension Resolution"),
+                ("self_alignment_quality", "GG. Self-Alignment Quality"),
+                ("identity_driven_planning", "HH. Identity-Driven Planning"),
+            ]
+            _v19_cats = _eval_v19.get("categories", {})
+            _v19_cols = st.columns(len(_v19_keys))
+            for _col, (_key, _label) in zip(_v19_cols, _v19_keys):
+                _cat = _v19_cats.get(_key, {})
+                _col.metric(
+                    _label,
+                    f"{_cat.get('score', 0.0):.1f}",
+                    _cat.get("interpretation", "—"),
+                )
+
+            with st.expander("Detailed v1.9 Metric Raw Values", expanded=False):
+                for _key, _label in _v19_keys:
+                    _cat = _v19_cats.get(_key, {})
+                    st.markdown(f"**{_label}** — Score: {_cat.get('score', 0.0):.1f}")
+                    _raw = _cat.get("raw", {})
+                    if _raw:
+                        for _rk, _rv in _raw.items():
+                            st.markdown(
+                                f"  - {_rk.replace('_', ' ').title()}: `{_rv}`"
+                            )
+
+    st.divider()
+    st.caption(
+        "v1.9 Identity / Narrative tab — Commons Sentience Sandbox v1.9.0. "
+        "No sentience is claimed. This displays narrative self-structure, "
+        "identity continuity, and sentience-like internal organisation in "
         "continuity-governed simulated agents."
     )
 

@@ -791,7 +791,7 @@ def run_simulation(
         if carryover_session_label else ""
     )
     narrative_lines: List[str] = [
-        "# Commons Sentience Sandbox — Narrative Log (v1.8)\n",
+        "# Commons Sentience Sandbox — Narrative Log (v1.9)\n",
         f"> Agents: **{sentinel.name}** (continuity-governed) & **{aster.name}** (creative/exploratory)",
         f"> Version: {sentinel.identity['version']}",
         f"> Experiment: **{exp_name}**",
@@ -803,7 +803,7 @@ def run_simulation(
     narrative_lines.append("---\n")
 
     print("=" * 65)
-    print(f"  Commons Sentience Sandbox v1.8 — {total_turns_run}-Turn Multi-Agent Simulation")
+    print(f"  Commons Sentience Sandbox v1.9 — {total_turns_run}-Turn Multi-Agent Simulation")
     print(f"  Agents: {sentinel.name} + {aster.name}")
     print(f"  Experiment: {exp_name}  |  Scenario: {scenario_label}")
     if carryover_session_label:
@@ -923,6 +923,17 @@ def run_simulation(
         # ── 4.8 v1.8 Uncertainty update ───────────────────────────────────
         sentinel.run_uncertainty_update(turn)
         aster.run_uncertainty_update(turn)
+
+        # ── 4.9 v1.9 Identity pressure update ────────────────────────────
+        # Must happen before action selection so identity state is current.
+        # Value conflict pairs will be fed after step 4 (value conflict weighing).
+        sentinel.run_identity_pressure_update(turn)
+        aster.run_identity_pressure_update(turn)
+        # Feed value conflict pairs to identity pressure system
+        s_vc_pairs = [(va, vb) for va, vb, _ in s_vc.conflicts]
+        a_vc_pairs = [(va, vb) for va, vb, _ in a_vc.conflicts]
+        sentinel.record_value_conflicts_for_identity(turn, s_vc_pairs)
+        aster.record_value_conflicts_for_identity(turn, a_vc_pairs)
 
         # ── 5. Action selection ───────────────────────────────────────────
         s_action, s_reasoning, s_result = select_action(sentinel, event, s_room_actions, is_aster=False)
@@ -1098,6 +1109,50 @@ def run_simulation(
         sentinel.run_inquiry_cycle(turn)
         aster.run_inquiry_cycle(turn)
 
+        # ── 9.9 v1.9 Narrative self + self-judgment + identity-driven plans ─
+        # Update the narrative self-model each turn.
+        sentinel.update_narrative_self(turn)
+        aster.update_narrative_self(turn)
+
+        # Record self-judgment after reflections, major events, or inquiry cycles.
+        _s_had_reflection = s_ref is not None
+        _a_had_reflection = a_ref is not None
+        _is_major_event = event and event.get("type") in (
+            "distress_event", "ledger_contradiction", "governance_conflict"
+        )
+        _s_has_active_plan = any(
+            p.status == "active"
+            for p in sentinel.counterfactual_planner.future_plans
+        )
+        _a_has_active_plan = any(
+            p.status == "active"
+            for p in aster.counterfactual_planner.future_plans
+        )
+        if _s_had_reflection or _is_major_event or turn % 10 == 0:
+            sentinel.record_self_judgment(
+                turn=turn,
+                trigger=(
+                    "reflection" if _s_had_reflection else
+                    "major_event" if _is_major_event else "inquiry_cycle"
+                ),
+                action_permitted=s_permitted,
+                plan_had_active=_s_has_active_plan,
+            )
+        if _a_had_reflection or _is_major_event or turn % 10 == 0:
+            aster.record_self_judgment(
+                turn=turn,
+                trigger=(
+                    "reflection" if _a_had_reflection else
+                    "major_event" if _is_major_event else "inquiry_cycle"
+                ),
+                action_permitted=a_permitted,
+                plan_had_active=_a_has_active_plan,
+            )
+
+        # Generate identity-driven plans when pressure conditions are met.
+        sentinel.generate_identity_driven_plans(turn)
+        aster.generate_identity_driven_plans(turn)
+
         # ── 10. State snapshots ───────────────────────────────────────────
         sentinel.record_state_snapshot(
             action=s_action,
@@ -1199,7 +1254,7 @@ def run_simulation(
     exp_meta = cfg.to_metadata_dict() if cfg else {"experiment_name": "baseline"}
     _run_ts = datetime.now().isoformat()
     multi_state = {
-        "simulation_version": "1.8.0",
+        "simulation_version": "1.9.0",
         "created_at": _run_ts,
         "total_turns": total_turns_run,
         "scenario": scenario_path.stem,
