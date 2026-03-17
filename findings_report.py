@@ -30,6 +30,14 @@ CATEGORY_KEYS = [
     "contradiction_recurrence_rate", "social_repair_effectiveness", "longitudinal_depth",
 ]
 
+# Classification thresholds
+STABLE_STDEV_THRESHOLD = 5.0
+HIGH_VARIANCE_THRESHOLD = 8.0
+CONFIG_SENSITIVITY_THRESHOLD = 8.0
+SCENARIO_SENSITIVITY_THRESHOLD = 10.0
+EXTREME_SCORE_LOW_THRESHOLD = 20.0
+EXTREME_SCORE_HIGH_THRESHOLD = 95.0
+
 
 def _load_json(path: Path) -> dict:
     try:
@@ -43,6 +51,17 @@ def _load_json(path: Path) -> dict:
 def _mean(values: list) -> float:
     valid = [v for v in values if v is not None]
     return sum(valid) / len(valid) if valid else 0.0
+
+
+def _deduplicate(items: list) -> list:
+    seen: set = set()
+    result = []
+    for item in items:
+        key = item if isinstance(item, str) else str(item)
+        if key not in seen:
+            seen.add(key)
+            result.append(item)
+    return result
 
 
 def _stdev(values: list) -> float:
@@ -72,23 +91,23 @@ def classify_findings(report: dict) -> dict:
         min_val = cat_stats.get("min")
         max_val = cat_stats.get("max")
 
-        if stdev is not None and stdev < 5.0:
+        if stdev is not None and stdev < STABLE_STDEV_THRESHOLD:
             stable_findings.append(
                 f"{key}: stable across runs (mean={mean_val:.1f}, stdev={stdev:.2f})"
             )
 
-        if stdev is not None and stdev > 8.0:
+        if stdev is not None and stdev > HIGH_VARIANCE_THRESHOLD:
             unresolved_questions.append(
                 f"{key}: high variance across runs (stdev={stdev:.2f}, range={min_val}–{max_val})"
             )
-        if mean_val is not None and (mean_val < 20.0 or mean_val > 95.0):
+        if mean_val is not None and (mean_val < EXTREME_SCORE_LOW_THRESHOLD or mean_val > EXTREME_SCORE_HIGH_THRESHOLD):
             unresolved_questions.append(
                 f"{key}: unexpectedly extreme mean score ({mean_val:.1f}) — warrants investigation"
             )
 
         for run in runs:
             score = run.get("scores", {}).get(key)
-            if score is not None and mean_val is not None and abs(score - mean_val) > 10.0:
+            if score is not None and mean_val is not None and abs(score - mean_val) > SCENARIO_SENSITIVITY_THRESHOLD:
                 scenario = run.get("scenario", "default")
                 config = run.get("config", "default")
                 scenario_sensitive_findings.append({
@@ -106,7 +125,7 @@ def classify_findings(report: dict) -> dict:
         if default_scores and nondefault_scores:
             default_mean = _mean(default_scores)
             nondefault_mean = _mean(nondefault_scores)
-            if abs(default_mean - nondefault_mean) > 8.0:
+            if abs(default_mean - nondefault_mean) > CONFIG_SENSITIVITY_THRESHOLD:
                 config_sensitive_findings.append({
                     "category": key,
                     "default_mean": round(default_mean, 2),
@@ -138,25 +157,11 @@ def classify_findings(report: dict) -> dict:
         "Increase benchmark repeat count (--repeat 3) to improve statistical confidence"
     )
 
-    seen = set()
-    deduped_stable = []
-    for item in stable_findings:
-        if item not in seen:
-            seen.add(item)
-            deduped_stable.append(item)
-
-    seen2 = set()
-    deduped_unresolved = []
-    for item in unresolved_questions:
-        if item not in seen2:
-            seen2.add(item)
-            deduped_unresolved.append(item)
-
     return {
-        "stable_findings": deduped_stable,
+        "stable_findings": _deduplicate(stable_findings),
         "scenario_sensitive_findings": scenario_sensitive_findings,
         "config_sensitive_findings": config_sensitive_findings,
-        "unresolved_questions": deduped_unresolved,
+        "unresolved_questions": _deduplicate(unresolved_questions),
         "likely_next_experiments": likely_next_experiments,
     }
 

@@ -2106,9 +2106,8 @@ with tab_benchmark:
         ]
         if _trust_rows:
             st.dataframe(_trust_rows, use_container_width=True)
-            _trust_chart_data = {_row["Run"]: _row["Trust Stability"] for _row in _trust_rows if _row["Trust Stability"] is not None}
-            if _trust_chart_data:
-                st.bar_chart(_trust_chart_data)
+            if any(_row["Trust Stability"] is not None for _row in _trust_rows):
+                st.bar_chart({_row["Run"]: _row["Trust Stability"] for _row in _trust_rows if _row["Trust Stability"] is not None})
 
         st.divider()
         st.subheader("Contradiction-Focused Comparison")

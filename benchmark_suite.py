@@ -337,17 +337,17 @@ def identify_scenario_impact(results: List[Dict]) -> Dict:
     """Return which run most strongly affected each focus area."""
     scored = [r for r in results if r.get("scores")]
 
-    def _run_with(key: str, fn) -> Optional[str]:
+    def _get_extreme_run(key: str, fn) -> Optional[str]:
         valid = [r for r in scored if r["scores"].get(key) is not None]
         if not valid:
             return None
         return fn(valid, key=lambda r: r["scores"][key])["name"]
 
     return {
-        "trust_impact": _run_with("trust_stability", min),
-        "contradiction_impact": _run_with("contradiction_handling", max),
-        "reflection_impact": _run_with("reflection_depth", max),
-        "longitudinal_impact": _run_with("longitudinal_depth", max),
+        "trust_impact": _get_extreme_run("trust_stability", min),
+        "contradiction_impact": _get_extreme_run("contradiction_handling", max),
+        "reflection_impact": _get_extreme_run("reflection_depth", max),
+        "longitudinal_impact": _get_extreme_run("longitudinal_depth", max),
     }
 
 
