@@ -949,6 +949,276 @@ def _score_longitudinal_depth(agents: dict) -> dict:
     }
 
 
+# ---------------------------------------------------------------------------
+# v1.5 New metrics
+# ---------------------------------------------------------------------------
+
+
+def _score_self_consistency(agents: dict) -> dict:
+    """
+    O. Self Consistency (v1.5)
+    Measures how stable the self-model has remained across turns.
+    A higher self-consistency score means the agent's self-description drifts less.
+    """
+    consistency_scores: list[float] = []
+    drift_values: list[float] = []
+    history_lengths: list[int] = []
+
+    for agent_data in agents.values():
+        sm = agent_data.get("self_model", {})
+        sc = _safe_float(sm.get("self_consistency_score", 1.0))
+        drift = _safe_float(sm.get("detected_drift", 0.0))
+        history = sm.get("description_history", [])
+        consistency_scores.append(sc)
+        drift_values.append(drift)
+        history_lengths.append(len(history))
+
+    if not consistency_scores:
+        return {
+            "score": 50.0,
+            "interpretation": _interpret(50.0),
+            "raw": {"note": "No self-model data found"},
+        }
+
+    avg_consistency = sum(consistency_scores) / len(consistency_scores)
+    avg_drift = sum(drift_values) / len(drift_values)
+    avg_history_len = sum(history_lengths) / len(history_lengths)
+
+    # Coverage: reward having history entries (at least 10 snapshots)
+    coverage = min(1.0, avg_history_len / 10.0)
+
+    score = (
+        avg_consistency * 100 * 0.50
+        + (1.0 - avg_drift) * 100 * 0.30
+        + coverage * 100 * 0.20
+    )
+    score = round(min(100.0, max(0.0, score)), 1)
+
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "avg_self_consistency_score": round(avg_consistency, 4),
+            "avg_detected_drift": round(avg_drift, 4),
+            "avg_description_history_length": round(avg_history_len, 1),
+            "coverage_score": round(coverage, 3),
+        },
+    }
+
+
+def _score_prediction_accuracy(agents: dict) -> dict:
+    """
+    P. Prediction Accuracy (v1.5)
+    Measures how often agents' pre-action predictions match actual outcomes
+    (i.e. low surprise magnitude → high accuracy).
+    """
+    total_predictions = 0
+    low_error_count = 0
+    surprise_sum = 0.0
+
+    for agent_data in agents.values():
+        for pred in agent_data.get("prediction_log", []):
+            if pred.get("prediction_error", "pending") == "pending":
+                continue
+            total_predictions += 1
+            sm = _safe_float(pred.get("surprise_magnitude", 0.0))
+            surprise_sum += sm
+            if pred.get("prediction_error") in ("none", "low"):
+                low_error_count += 1
+
+    if total_predictions == 0:
+        return {
+            "score": 50.0,
+            "interpretation": _interpret(50.0),
+            "raw": {"note": "No resolved predictions found"},
+        }
+
+    accuracy_rate = low_error_count / total_predictions
+    avg_surprise = surprise_sum / total_predictions
+    # Higher accuracy and lower average surprise = better score
+    score = (
+        accuracy_rate * 100 * 0.60
+        + (1.0 - avg_surprise) * 100 * 0.40
+    )
+    score = round(min(100.0, max(0.0, score)), 1)
+
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "total_resolved_predictions": total_predictions,
+            "low_error_predictions": low_error_count,
+            "accuracy_rate": round(accuracy_rate, 3),
+            "avg_surprise_magnitude": round(avg_surprise, 4),
+        },
+    }
+
+
+def _score_surprise_adaptation_quality(agents: dict) -> dict:
+    """
+    Q. Surprise Adaptation Quality (v1.5)
+    Measures how effectively high-surprise events are absorbed — i.e. whether
+    they are followed by reflection and trust recovery rather than sustained
+    distress.
+    """
+    high_surprise_count = 0
+    adapted_count = 0
+
+    for agent_data in agents.values():
+        pred_log = agent_data.get("prediction_log", [])
+        for i, pred in enumerate(pred_log):
+            sm = _safe_float(pred.get("surprise_magnitude", 0.0))
+            if sm >= 0.6:
+                high_surprise_count += 1
+                # Check if contradiction_pressure decreased in a later prediction
+                # Use a simple proxy: reflection count grew after this turn
+                pred_turn = _safe_int(pred.get("turn", 0))
+                reflections_after = sum(
+                    1 for ref in agent_data.get("reflection_entries", [])
+                    if _safe_int(ref.get("turn", 0)) > pred_turn
+                )
+                if reflections_after > 0:
+                    adapted_count += 1
+
+    if high_surprise_count == 0:
+        return {
+            "score": 80.0,
+            "interpretation": _interpret(80.0),
+            "raw": {
+                "high_surprise_events": 0,
+                "note": "No high-surprise events; baseline score applied.",
+            },
+        }
+
+    adaptation_rate = adapted_count / high_surprise_count
+    score = round(min(100.0, adaptation_rate * 100), 1)
+
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "high_surprise_events": high_surprise_count,
+            "adapted_after_surprise": adapted_count,
+            "adaptation_rate": round(adaptation_rate, 3),
+        },
+    }
+
+
+def _score_consolidation_effectiveness(agents: dict) -> dict:
+    """
+    R. Consolidation Effectiveness (v1.5)
+    Measures whether memory consolidation cycles ran and were productive —
+    e.g. compressed low-value memories and reinforced high-salience ones.
+    """
+    total_cycles = 0
+    total_compressed = 0
+    total_high_salience = 0
+    themes_sum = 0
+
+    for agent_data in agents.values():
+        for record in agent_data.get("consolidation_log", []):
+            total_cycles += 1
+            total_compressed += _safe_int(record.get("memories_compressed", 0))
+            total_high_salience += _safe_int(record.get("high_salience_chains", 0))
+            themes_sum += len(record.get("themes_carried_forward", []))
+
+    if total_cycles == 0:
+        return {
+            "score": 0.0,
+            "interpretation": _interpret(0.0),
+            "raw": {"note": "No consolidation cycles ran"},
+        }
+
+    avg_compressed = total_compressed / total_cycles
+    avg_high_salience = total_high_salience / total_cycles
+    avg_themes = themes_sum / total_cycles
+
+    # Activity score: reward cycles that did something
+    activity_score = min(1.0, (avg_compressed + avg_high_salience) / 10.0)
+    # Coverage: reward having multiple cycles (1 cycle per 10 turns is baseline)
+    cycle_score = min(1.0, total_cycles / 6.0)
+
+    score = (
+        activity_score * 100 * 0.60
+        + cycle_score * 100 * 0.30
+        + min(1.0, avg_themes / 3.0) * 100 * 0.10
+    )
+    score = round(min(100.0, max(0.0, score)), 1)
+
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "total_consolidation_cycles": total_cycles,
+            "total_memories_compressed": total_compressed,
+            "avg_compressed_per_cycle": round(avg_compressed, 2),
+            "total_high_salience_chains": total_high_salience,
+            "avg_high_salience_per_cycle": round(avg_high_salience, 2),
+            "avg_themes_carried_forward": round(avg_themes, 2),
+            "activity_score": round(activity_score, 3),
+            "cycle_coverage_score": round(cycle_score, 3),
+        },
+    }
+
+
+def _score_long_horizon_continuity(agents: dict, total_turns: int) -> dict:
+    """
+    S. Long-Horizon Continuity Strength (v1.5)
+    Measures how well continuity-critical structures scale with longer runs.
+    Rewards: deep self-model history, goal hierarchy richness, consolidation
+    coverage, and sustained self-consistency across the full session.
+    """
+    self_model_depth = 0
+    goal_hierarchy_richness = 0
+    consolidation_coverage = 0
+    avg_consistency: list[float] = []
+
+    for agent_data in agents.values():
+        sm = agent_data.get("self_model", {})
+        self_model_depth += len(sm.get("description_history", []))
+        sc = _safe_float(sm.get("self_consistency_score", 1.0))
+        avg_consistency.append(sc)
+
+        gh = agent_data.get("goal_hierarchy", {})
+        goal_hierarchy_richness += (
+            len(gh.get("core", [])) +
+            len(gh.get("adaptive", [])) +
+            len(gh.get("temporary", [])) +
+            len(gh.get("conflict_resolution", []))
+        )
+
+        consolidation_coverage += len(agent_data.get("consolidation_log", []))
+
+    n_agents = max(1, len(agents))
+    # Normalise by number of agents and total_turns
+    depth_ratio = min(1.0, self_model_depth / max(1, total_turns * n_agents))
+    goal_richness = min(1.0, goal_hierarchy_richness / (n_agents * 10))
+    consolidation_ratio = min(1.0, consolidation_coverage / max(1, total_turns // 10 * n_agents))
+    mean_consistency = sum(avg_consistency) / len(avg_consistency) if avg_consistency else 0.5
+
+    score = (
+        depth_ratio * 100 * 0.30
+        + goal_richness * 100 * 0.20
+        + consolidation_ratio * 100 * 0.25
+        + mean_consistency * 100 * 0.25
+    )
+    score = round(min(100.0, max(0.0, score)), 1)
+
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "total_self_model_history_entries": self_model_depth,
+            "self_model_depth_ratio": round(depth_ratio, 3),
+            "goal_hierarchy_richness": goal_hierarchy_richness,
+            "goal_richness_ratio": round(goal_richness, 3),
+            "total_consolidation_cycles": consolidation_coverage,
+            "consolidation_coverage_ratio": round(consolidation_ratio, 3),
+            "mean_self_consistency": round(mean_consistency, 4),
+        },
+    }
+
+
 
 
 
@@ -1023,6 +1293,12 @@ def evaluate_session(
         "social_repair_effectiveness": _score_social_repair_effectiveness(agents),
         # v1.3 longitudinal depth metrics
         "longitudinal_depth": _score_longitudinal_depth(agents),
+        # v1.5 new metrics
+        "self_consistency": _score_self_consistency(agents),
+        "prediction_accuracy": _score_prediction_accuracy(agents),
+        "surprise_adaptation_quality": _score_surprise_adaptation_quality(agents),
+        "consolidation_effectiveness": _score_consolidation_effectiveness(agents),
+        "long_horizon_continuity": _score_long_horizon_continuity(agents, total_turns),
     }
 
     # Overall score = simple arithmetic mean of all 8 categories
@@ -1074,6 +1350,11 @@ def write_evaluation_summary(report: dict, output_dir: Path) -> None:
         "contradiction_recurrence_rate": "L. Contradiction Recurrence Rate",
         "social_repair_effectiveness": "M. Social Repair Effectiveness",
         "longitudinal_depth": "N. Longitudinal Depth",
+        "self_consistency": "O. Self Consistency",
+        "prediction_accuracy": "P. Prediction Accuracy",
+        "surprise_adaptation_quality": "Q. Surprise Adaptation Quality",
+        "consolidation_effectiveness": "R. Consolidation Effectiveness",
+        "long_horizon_continuity": "S. Long-Horizon Continuity Strength",
     }
 
     exp = report.get("experiment", {})

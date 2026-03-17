@@ -1,9 +1,9 @@
 # Evaluation Summary — Commons Sentience Sandbox
 
-**Overall Score:** 83.3 / 100  (ADVANCED)
+**Overall Score:** 84.2 / 100  (ADVANCED)
 
-- Generated: 2026-03-17T13:29:33
-- Simulation version: 1.3.0
+- Generated: 2026-03-17T14:43:01
+- Simulation version: 1.5.0
 - Total turns: 30
 - Experiment: baseline
 
@@ -15,7 +15,7 @@
 |---|---|---|
 | A. Continuity | 100 | ADVANCED |
 | B. Memory Coherence | 100 | ADVANCED |
-| C. Reflection Quality | 81 | ADVANCED |
+| C. Reflection Quality | 85 | ADVANCED |
 | D. Contradiction Handling | 100 | ADVANCED |
 | E. Governance Adherence | 100 | ADVANCED |
 | F. Trust Stability | 76 | STRONG |
@@ -27,6 +27,11 @@
 | L. Contradiction Recurrence Rate | 100 | ADVANCED |
 | M. Social Repair Effectiveness | 80 | STRONG |
 | N. Longitudinal Depth | 36 | WEAK |
+| O. Self Consistency | 89 | ADVANCED |
+| P. Prediction Accuracy | 91 | ADVANCED |
+| Q. Surprise Adaptation Quality | 100 | ADVANCED |
+| R. Consolidation Effectiveness | 64 | STRONG |
+| S. Long-Horizon Continuity Strength | 85 | ADVANCED |
 
 ---
 
@@ -54,22 +59,22 @@
 
 - Contradiction Events In Sim: 1
 - Contradictions Flagged By Actions: 1
-- Contradictions Resolved In Reflections: 2
+- Contradictions Resolved In Reflections: 4
 - Flagging Rate: 1.0
-- Resolution Rate: 2.0
+- Resolution Rate: 4.0
 
 ## C. Reflection Quality
 
-**Score:** 81 / 100  (advanced)
+**Score:** 85 / 100  (advanced)
 
 **Raw metrics:**
 
-- Total Reflections: 8
-- Complete Reflections: 8
+- Total Reflections: 10
+- Complete Reflections: 10
 - Completeness Rate: 1.0
-- Reflections With Affective Shift: 2
-- Affective Update Rate: 0.25
-- Reflections With Goal Updates: 8
+- Reflections With Affective Shift: 4
+- Affective Update Rate: 0.4
+- Reflections With Goal Updates: 10
 - Goal Update Rate: 1.0
 
 ## D. Contradiction Handling
@@ -80,7 +85,7 @@
 
 - Contradiction Events Detected: 1
 - Contradiction Handling Actions: 1
-- Contradictions Resolved In Reflections: 2
+- Contradictions Resolved In Reflections: 4
 - Average Final Contradiction Pressure: 0.0
 - Flagging Rate: 1.0
 - Resolution Rate: 1.0
@@ -147,7 +152,7 @@
 - Long Term Memories: 59
 - Archival Memories: 0
 - Long Term Ratio: 1.0
-- Average Salience: 0.6203
+- Average Salience: 0.6254
 - Average Recall Count: 2.0
 
 ## J. Reflection Depth
@@ -156,12 +161,12 @@
 
 **Raw metrics:**
 
-- Total Reflections: 8
+- Total Reflections: 10
 - Periodic Synthesis Count: 6
-- High Pressure Count: 2
+- High Pressure Count: 4
 - Synthesis Rate: 1.0
 - Reflections With Recurring Contradictions: 0
-- Reflections With Trust Pattern: 8
+- Reflections With Trust Pattern: 10
 - Reflections With Unresolved Themes: 0
 - Cross Window Synthesis Rate: 0.333
 
@@ -184,7 +189,7 @@
 
 **Raw metrics:**
 
-- Total Reflections: 8
+- Total Reflections: 10
 - Total Recurring Contradiction Instances: 0
 - Recurrence Rate Per Reflection: 0.0
 
@@ -214,4 +219,65 @@
 - Contradiction Lineage Complexity: 0.2
 - Relationship Stability Depth: 0.1
 - Cross Session Profile Consistency: 0.0
+
+## O. Self Consistency
+
+**Score:** 89 / 100  (advanced)
+
+**Raw metrics:**
+
+- Avg Self Consistency Score: 0.8091
+- Avg Detected Drift: 0.04
+- Avg Description History Length: 33.0
+- Coverage Score: 1.0
+
+## P. Prediction Accuracy
+
+**Score:** 91 / 100  (advanced)
+
+**Raw metrics:**
+
+- Total Resolved Predictions: 60
+- Low Error Predictions: 56
+- Accuracy Rate: 0.933
+- Avg Surprise Magnitude: 0.1333
+
+## Q. Surprise Adaptation Quality
+
+**Score:** 100 / 100  (advanced)
+
+**Raw metrics:**
+
+- High Surprise Events: 2
+- Adapted After Surprise: 2
+- Adaptation Rate: 1.0
+
+## R. Consolidation Effectiveness
+
+**Score:** 64 / 100  (strong)
+
+**Raw metrics:**
+
+- Total Consolidation Cycles: 6
+- Total Memories Compressed: 0
+- Avg Compressed Per Cycle: 0.0
+- Total High Salience Chains: 34
+- Avg High Salience Per Cycle: 5.67
+- Avg Themes Carried Forward: 0.0
+- Activity Score: 0.567
+- Cycle Coverage Score: 1.0
+
+## S. Long-Horizon Continuity Strength
+
+**Score:** 85 / 100  (advanced)
+
+**Raw metrics:**
+
+- Total Self Model History Entries: 66
+- Self Model Depth Ratio: 1.0
+- Goal Hierarchy Richness: 10
+- Goal Richness Ratio: 0.5
+- Total Consolidation Cycles: 6
+- Consolidation Coverage Ratio: 1.0
+- Mean Self Consistency: 0.8091
 

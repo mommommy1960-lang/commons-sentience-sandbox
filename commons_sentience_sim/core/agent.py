@@ -139,6 +139,20 @@ class Agent:
         self.contradiction_genealogy: List[dict] = []
         self.relationship_timelines: Dict[str, List[dict]] = {}
 
+        # v1.5 self-model subsystem
+        self.self_model: dict = self._init_self_model()
+
+        # v1.5 prediction / surprise loop
+        self.prediction_log: List[dict] = []
+
+        # v1.5 memory consolidation log
+        self.consolidation_log: List[dict] = []
+
+        # v1.5 goal hierarchy
+        self.goal_hierarchy: dict = self._init_goal_hierarchy(
+            initial_goals or self._DEFAULT_GOALS
+        )
+
         # Engines
         self.world: World = world
         self.governance: GovernanceEngine = governance_engine
@@ -535,10 +549,215 @@ class Agent:
         }
         self.relationship_timelines[relationship_key].append(event)
 
+    # ------------------------------------------------------------------
+    # v1.5 Self-model helpers
+    # ------------------------------------------------------------------
+
+    def _init_self_model(self) -> dict:
+        """Initialise the self-model subsystem."""
+        purpose = self.identity.get("purpose", "")
+        name = self.identity.get("name", "Agent")
+        return {
+            "current_description": (
+                purpose[:200] if purpose
+                else f"I am {name}, a continuity-governed simulated agent."
+            ),
+            "description_history": [],
+            "core_traits": ["continuity", "governance", "memory", "reflection"],
+            "adaptive_traits": [],
+            "detected_drift": 0.0,
+            "self_consistency_score": 1.0,
+            "last_updated_turn": 0,
+        }
+
+    def update_self_model(self, turn: int) -> None:
+        """Recompute and persist the self-model snapshot for *turn*."""
+        trust = self.affective_state.get("trust", 0.5)
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        mem_count = len(self.episodic_memory)
+        ref_count = len(self.reflection_entries)
+
+        desc = (
+            f"Turn {turn}: {self.name} — "
+            f"trust={trust:.2f}, contradiction_pressure={cp:.2f}, "
+            f"memories={mem_count}, reflections={ref_count}. "
+            f"Active in {self.active_room}."
+        )
+
+        # Update adaptive traits
+        adaptive: List[str] = list(self.self_model.get("adaptive_traits", []))
+        if cp > 0.5 and "contradiction-sensitive" not in adaptive:
+            adaptive.append("contradiction-sensitive")
+        if trust > 0.7 and "high-trust" not in adaptive:
+            adaptive.append("high-trust")
+        elif trust < 0.3 and "trust-recovering" not in adaptive:
+            adaptive.append("trust-recovering")
+        if ref_count > 5 and "reflective" not in adaptive:
+            adaptive.append("reflective")
+        adaptive = adaptive[-5:]  # keep recent 5
+
+        # Compute drift vs recent history
+        history = self.self_model.get("description_history", [])
+        prev_trusts = [
+            float(h.get("trust_snapshot", trust))
+            for h in history[-5:]
+            if h.get("trust_snapshot") is not None
+        ]
+        drift = min(1.0, abs(trust - (sum(prev_trusts) / len(prev_trusts))) * 4.0) if prev_trusts else 0.0
+
+        all_drifts = [h.get("drift", 0.0) for h in history[-10:]] + [drift]
+        consistency = max(0.0, 1.0 - sum(all_drifts) / len(all_drifts))
+
+        history.append({
+            "turn": turn,
+            "description": desc,
+            "trust_snapshot": round(trust, 4),
+            "contradiction_snapshot": round(cp, 4),
+            "drift": round(drift, 4),
+        })
+
+        self.self_model.update({
+            "current_description": desc,
+            "description_history": history,
+            "adaptive_traits": adaptive,
+            "detected_drift": round(drift, 4),
+            "self_consistency_score": round(consistency, 4),
+            "last_updated_turn": turn,
+        })
+
+    # ------------------------------------------------------------------
+    # v1.5 Prediction / surprise loop helpers
+    # ------------------------------------------------------------------
+
+    def record_prediction(self, turn: int, context: str, expected_outcome: str) -> int:
+        """Record a pre-action prediction.  Returns the entry index."""
+        entry = {
+            "turn": turn,
+            "context": context,
+            "expected_outcome": expected_outcome,
+            "actual_outcome": None,
+            "surprise_magnitude": 0.0,
+            "prediction_error": "pending",
+        }
+        self.prediction_log.append(entry)
+        return len(self.prediction_log) - 1
+
+    def resolve_prediction(self, index: int, actual_outcome: str, surprise_magnitude: float) -> None:
+        """Fill in the actual outcome and classify the prediction error."""
+        if not (0 <= index < len(self.prediction_log)):
+            return
+        sm = min(1.0, max(0.0, surprise_magnitude))
+        entry = self.prediction_log[index]
+        entry["actual_outcome"] = actual_outcome
+        entry["surprise_magnitude"] = round(sm, 4)
+        if sm < 0.2:
+            entry["prediction_error"] = "none"
+        elif sm < 0.4:
+            entry["prediction_error"] = "low"
+        elif sm < 0.7:
+            entry["prediction_error"] = "medium"
+        else:
+            entry["prediction_error"] = "high"
+
+        # High surprise → boost salience of last stored memory
+        if sm > 0.5 and self.episodic_memory:
+            self.episodic_memory[-1].salience = min(
+                1.0, self.episodic_memory[-1].salience + 0.15
+            )
+
+        # Very high surprise → register a pending contradiction for reflection
+        if sm > 0.6:
+            expected = entry.get("expected_outcome", "")
+            self.pending_contradictions.append(
+                f"Prediction error at turn {entry['turn']}: "
+                f"expected '{expected[:60]}' but outcome was unexpected."
+            )
+
+    # ------------------------------------------------------------------
+    # v1.5 Memory consolidation helpers
+    # ------------------------------------------------------------------
+
+    def run_consolidation(self, turn: int) -> dict:
+        """Run a consolidation cycle:
+        - Compress memories with salience < 0.3 that are older than 5 turns.
+        - Reinforce importance of high-salience (≥ 0.7) memories.
+        - Carry unresolved themes from recent reflections forward.
+        - Refresh the self-model.
+        Returns the consolidation record.
+        """
+        low_value = [
+            m for m in self.episodic_memory
+            if m.salience < 0.3 and m.turn < turn - 5 and not m.compressed
+        ]
+        high_value = [m for m in self.episodic_memory if m.salience >= 0.7]
+
+        compressed_count = 0
+        for m in low_value:
+            m.compressed = True
+            compressed_count += 1
+
+        for m in high_value:
+            m.importance = min(1.0, m.importance + 0.02)
+
+        # Collect unresolved themes from recent reflections
+        unresolved_themes: List[str] = []
+        for ref in self.reflection_entries[-5:]:
+            themes = getattr(ref, "unresolved_themes", None)
+            if isinstance(themes, list):
+                unresolved_themes.extend(themes[:2])
+            elif isinstance(themes, str) and themes:
+                unresolved_themes.append(themes)
+
+        self.update_self_model(turn)
+
+        record = {
+            "turn": turn,
+            "memories_compressed": compressed_count,
+            "high_salience_chains": len(high_value),
+            "themes_carried_forward": list(dict.fromkeys(unresolved_themes))[:5],
+            "self_model_revised": True,
+            "consolidation_summary": (
+                f"Consolidated at turn {turn}: compressed {compressed_count} "
+                f"low-value memories, reinforced {len(high_value)} high-salience "
+                f"chains. Self-consistency: "
+                f"{self.self_model.get('self_consistency_score', 0.0):.2f}."
+            ),
+        }
+        self.consolidation_log.append(record)
+        return record
+
+    # ------------------------------------------------------------------
+    # v1.5 Goal hierarchy helpers
+    # ------------------------------------------------------------------
+
+    def _init_goal_hierarchy(self, goals: List[str]) -> dict:
+        """Classify *goals* into core / adaptive / temporary / conflict tiers."""
+        # First 3 goals are treated as core; remainder as adaptive
+        core = goals[:3] if len(goals) >= 3 else list(goals)
+        adaptive = goals[3:] if len(goals) > 3 else []
+        return {
+            "core": list(core),
+            "adaptive": list(adaptive),
+            "temporary": [],
+            "conflict_resolution": [],
+            "priority_history": [],
+        }
+
+    def record_goal_hierarchy_snapshot(self, turn: int) -> None:
+        """Append a snapshot of the current goal hierarchy to priority_history."""
+        self.goal_hierarchy["priority_history"].append({
+            "turn": turn,
+            "core_count": len(self.goal_hierarchy["core"]),
+            "adaptive_count": len(self.goal_hierarchy["adaptive"]),
+            "temporary_count": len(self.goal_hierarchy["temporary"]),
+            "conflict_resolution_count": len(self.goal_hierarchy["conflict_resolution"]),
+        })
+
     def to_dict(self) -> dict:
         return {
             "identity": self.identity,
             "goals": self.goals,
+            "goal_hierarchy": self.goal_hierarchy,
             "affective_state": self.affective_state,
             "trusted_humans": list(self.trusted_humans),
             "active_room": self.active_room,
@@ -559,6 +778,10 @@ class Agent:
             "goal_evolution": self.goal_evolution,
             "contradiction_genealogy": self.contradiction_genealogy,
             "relationship_timelines": self.relationship_timelines,
+            # v1.5 fields
+            "self_model": self.self_model,
+            "prediction_log": self.prediction_log,
+            "consolidation_log": self.consolidation_log,
         }
 
     def save_final_state(self, path: str) -> None:

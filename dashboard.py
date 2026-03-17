@@ -309,6 +309,7 @@ if not state_data:
     tab_continuity,
     tab_profiles,
     tab_benchmark,
+    tab_selfmodel,
 ) = st.tabs(
     [
         "Overview",
@@ -325,6 +326,7 @@ if not state_data:
         "Continuity Study",
         "Agent Profiles",
         "📊 Benchmark v1.4",
+        "🧠 Self Model v1.5",
     ]
 )
 
@@ -2174,6 +2176,214 @@ with tab_benchmark:
         st.caption(
             "Regenerate: `python benchmark_suite.py` · "
             "Generate findings: `python findings_report.py`"
+        )
+
+
+# ===========================================================================
+# TAB O — Self Model v1.5
+# ===========================================================================
+
+with tab_selfmodel:
+    st.header("🧠 Self Model v1.5 — Continuity Density Monitor")
+    st.caption(
+        "Tracks each agent's persistent self-model, prediction/surprise loop, "
+        "memory consolidation cycles, and long-horizon continuity. "
+        "No sentience is claimed — this measures continuity-governed simulated agent behaviour."
+    )
+
+    _sm_agents = state_data.get("agents", {})
+
+    if not _sm_agents:
+        st.info(
+            "No simulation data found. "
+            "Run `python run_sim.py` to generate output, then refresh."
+        )
+    else:
+        for _agent_name, _agent_data in _sm_agents.items():
+            st.subheader(f"Agent: {_agent_name}")
+
+            _sm = _agent_data.get("self_model", {})
+            _pred_log = _agent_data.get("prediction_log", [])
+            _consol_log = _agent_data.get("consolidation_log", [])
+            _gh = _agent_data.get("goal_hierarchy", {})
+
+            # ── Self-model summary metrics ────────────────────────────────
+            _sm_col1, _sm_col2, _sm_col3, _sm_col4 = st.columns(4)
+            _sm_col1.metric(
+                "Self-Consistency Score",
+                f"{_sm.get('self_consistency_score', 0.0):.3f}",
+            )
+            _sm_col2.metric(
+                "Detected Drift",
+                f"{_sm.get('detected_drift', 0.0):.3f}",
+            )
+            _sm_col3.metric(
+                "Self-Model History Entries",
+                len(_sm.get("description_history", [])),
+            )
+            _sm_col4.metric(
+                "Consolidation Cycles",
+                len(_consol_log),
+            )
+
+            # ── Current self-description ──────────────────────────────────
+            _desc = _sm.get("current_description", "—")
+            if _desc:
+                st.markdown("**Current Self-Description:**")
+                st.info(_desc)
+
+            # ── Traits ───────────────────────────────────────────────────
+            _core_traits = _sm.get("core_traits", [])
+            _adaptive_traits = _sm.get("adaptive_traits", [])
+            _t_col1, _t_col2 = st.columns(2)
+            with _t_col1:
+                st.markdown("**Core Traits:**")
+                st.markdown(" · ".join(f"`{t}`" for t in _core_traits) if _core_traits else "—")
+            with _t_col2:
+                st.markdown("**Adaptive Traits (recent):**")
+                st.markdown(" · ".join(f"`{t}`" for t in _adaptive_traits) if _adaptive_traits else "—")
+
+            # ── Self-description drift over time ──────────────────────────
+            _history = _sm.get("description_history", [])
+            if _history:
+                with st.expander(
+                    f"Self-Description History ({len(_history)} snapshots)",
+                    expanded=False,
+                ):
+                    _drift_rows = [
+                        {
+                            "Turn": h.get("turn", ""),
+                            "Trust": h.get("trust_snapshot", ""),
+                            "Contradiction P": h.get("contradiction_snapshot", ""),
+                            "Drift": h.get("drift", ""),
+                        }
+                        for h in _history
+                    ]
+                    st.dataframe(_drift_rows, use_container_width=True)
+
+                # Drift chart
+                _drift_data = {
+                    h["turn"]: h.get("drift", 0.0)
+                    for h in _history
+                    if "turn" in h
+                }
+                if _drift_data:
+                    st.markdown("**Drift over time:**")
+                    st.line_chart(_drift_data)
+
+            # ── Goal hierarchy ────────────────────────────────────────────
+            if _gh:
+                with st.expander("Goal Hierarchy", expanded=False):
+                    _gh_col1, _gh_col2 = st.columns(2)
+                    with _gh_col1:
+                        st.markdown("**Core Goals:**")
+                        for g in _gh.get("core", []):
+                            st.markdown(f"- {g}")
+                        st.markdown("**Adaptive Goals:**")
+                        for g in _gh.get("adaptive", []):
+                            st.markdown(f"- {g}")
+                    with _gh_col2:
+                        st.markdown("**Temporary Goals:**")
+                        _temp = _gh.get("temporary", [])
+                        st.markdown("\n".join(f"- {g}" for g in _temp) if _temp else "_none_")
+                        st.markdown("**Conflict-Resolution Goals:**")
+                        _conf = _gh.get("conflict_resolution", [])
+                        st.markdown("\n".join(f"- {g}" for g in _conf) if _conf else "_none_")
+
+            # ── Prediction / surprise log ─────────────────────────────────
+            if _pred_log:
+                _resolved = [p for p in _pred_log if p.get("prediction_error") != "pending"]
+                _high_surprise = [p for p in _resolved if p.get("surprise_magnitude", 0) >= 0.5]
+                _p_col1, _p_col2, _p_col3 = st.columns(3)
+                _p_col1.metric("Total Predictions", len(_resolved))
+                _acc = sum(
+                    1 for p in _resolved if p.get("prediction_error") in ("none", "low")
+                ) / max(1, len(_resolved))
+                _p_col2.metric("Accuracy Rate", f"{_acc:.1%}")
+                _p_col3.metric("High-Surprise Events", len(_high_surprise))
+
+                with st.expander("Prediction Error Log (last 10)", expanded=False):
+                    _pred_rows = [
+                        {
+                            "Turn": p.get("turn", ""),
+                            "Context": p.get("context", ""),
+                            "Expected": (p.get("expected_outcome") or "")[:50],
+                            "Surprise": p.get("surprise_magnitude", ""),
+                            "Error Level": p.get("prediction_error", ""),
+                        }
+                        for p in _pred_log[-10:][::-1]
+                    ]
+                    st.dataframe(_pred_rows, use_container_width=True)
+
+                if _high_surprise:
+                    with st.expander(
+                        f"Surprise Events (≥ 0.5 magnitude) — {len(_high_surprise)} events",
+                        expanded=False,
+                    ):
+                        for _p in _high_surprise:
+                            st.markdown(
+                                f"- **Turn {_p.get('turn')}** — `{_p.get('context')}` — "
+                                f"surprise={_p.get('surprise_magnitude'):.2f} "
+                                f"({_p.get('prediction_error')})"
+                            )
+
+            # ── Consolidation log ─────────────────────────────────────────
+            if _consol_log:
+                with st.expander(
+                    f"Consolidation Cycle Log ({len(_consol_log)} cycles)",
+                    expanded=False,
+                ):
+                    for _c in _consol_log:
+                        st.markdown(
+                            f"**Turn {_c.get('turn')}** — "
+                            f"compressed: {_c.get('memories_compressed')}, "
+                            f"high-salience chains: {_c.get('high_salience_chains')}, "
+                            f"self-model revised: {_c.get('self_model_revised')}"
+                        )
+                        themes = _c.get("themes_carried_forward", [])
+                        if themes:
+                            st.caption(f"  Themes carried forward: {', '.join(str(t)[:60] for t in themes)}")
+
+            st.divider()
+
+        # ── v1.5 Evaluation metric summary ───────────────────────────────
+        _eval_v15_path = active_dir / "evaluation_report.json"
+        _eval_v15: dict = {}
+        try:
+            with open(_eval_v15_path, encoding="utf-8") as _fh:
+                _eval_v15 = json.load(_fh)
+        except (OSError, json.JSONDecodeError):
+            pass
+
+        if _eval_v15:
+            st.subheader("v1.5 Evaluation Metrics")
+            _v15_keys = [
+                ("self_consistency", "O. Self Consistency"),
+                ("prediction_accuracy", "P. Prediction Accuracy"),
+                ("surprise_adaptation_quality", "Q. Surprise Adaptation"),
+                ("consolidation_effectiveness", "R. Consolidation Effectiveness"),
+                ("long_horizon_continuity", "S. Long-Horizon Continuity"),
+            ]
+            _v15_cats = _eval_v15.get("categories", {})
+            _v15_cols = st.columns(len(_v15_keys))
+            for _col, (_key, _label) in zip(_v15_cols, _v15_keys):
+                _cat = _v15_cats.get(_key, {})
+                _col.metric(_label, f"{_cat.get('score', 0.0):.1f}", _cat.get("interpretation", "—"))
+
+            with st.expander("Detailed v1.5 Metric Raw Values", expanded=False):
+                for _key, _label in _v15_keys:
+                    _cat = _v15_cats.get(_key, {})
+                    st.markdown(f"**{_label}** — Score: {_cat.get('score', 0.0):.1f}")
+                    _raw = _cat.get("raw", {})
+                    if _raw:
+                        for _rk, _rv in _raw.items():
+                            st.markdown(f"  - {_rk.replace('_', ' ').title()}: `{_rv}`")
+
+        st.divider()
+        st.caption(
+            "v1.5 Self Model tab — Commons Sentience Sandbox v1.5.0. "
+            "No sentience is claimed. This displays continuity density and "
+            "sentience-like structure in continuity-governed simulated agents."
         )
 
 

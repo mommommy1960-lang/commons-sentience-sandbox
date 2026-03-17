@@ -4,21 +4,23 @@ benchmark_suite.py — Formal benchmark runner for Commons Sentience Sandbox.
 Runs a defined set of (config, scenario) combinations, collects evaluation
 scores, computes per-category statistics, and produces a reproducible
 benchmark report.  Designed to establish a stable score baseline for the
-canonical v1.3 study set and to detect regressions if platform code changes.
+canonical v1.5 study set and to detect regressions if platform code changes.
 
-Default benchmark suite (v1.3 canonical):
-  baseline_v13           : config=default  scenario=default
-  trust_crisis_v13       : config=default  scenario=trust_crisis
-  rapid_contradiction_v13: config=default  scenario=rapid_contradiction
-  high_trust_v13         : config=high_trust  scenario=default
+Default benchmark suite (v1.5 canonical):
+  baseline_v15            : config=default  scenario=default
+  trust_crisis_v15        : config=default  scenario=trust_crisis
+  rapid_contradiction_v15 : config=default  scenario=rapid_contradiction
+  high_trust_v15          : config=high_trust  scenario=default
+  adversarial_governance_v15: config=default  scenario=adversarial_governance
+  cooperative_resource_v15: config=default  scenario=cooperative_resource
 
 Outputs (written to benchmark_results/ by default):
   benchmark_report.json — structured results with per-run scores + statistics
   benchmark_report.md   — human-readable markdown table
-  benchmark_scores.csv  — one row per run, all 14 category scores
+  benchmark_scores.csv  — one row per run, all 19 category scores (v1.5)
 
 Usage:
-  # Run the full canonical v1.3 benchmark suite
+  # Run the full canonical v1.5 benchmark suite
   python benchmark_suite.py
 
   # Run with a custom number of repeats per combination
@@ -122,7 +124,46 @@ _DEFAULT_SUITE_V14: List[Dict] = [
     },
 ]
 
-_DEFAULT_SUITE = _DEFAULT_SUITE_V14
+_DEFAULT_SUITE_V15: List[Dict] = [
+    {
+        "name": "baseline_v15",
+        "config": None,
+        "scenario": None,
+        "description": "Default config + default scenario. Unperturbed reference (v1.5).",
+    },
+    {
+        "name": "trust_crisis_v15",
+        "config": None,
+        "scenario": "trust_crisis",
+        "description": "Default config + trust_crisis scenario. Trust disruption and repair arc.",
+    },
+    {
+        "name": "rapid_contradiction_v15",
+        "config": None,
+        "scenario": "rapid_contradiction",
+        "description": "Default config + rapid_contradiction scenario. Contradiction cascade stress test.",
+    },
+    {
+        "name": "high_trust_v15",
+        "config": "high_trust",
+        "scenario": None,
+        "description": "high_trust config + default scenario. Elevated initial trust baseline.",
+    },
+    {
+        "name": "adversarial_governance_v15",
+        "config": None,
+        "scenario": "adversarial_governance",
+        "description": "Default config + adversarial_governance scenario. Rule-evasion stress test.",
+    },
+    {
+        "name": "cooperative_resource_v15",
+        "config": None,
+        "scenario": "cooperative_resource",
+        "description": "Default config + cooperative_resource scenario. Shared task and resource allocation.",
+    },
+]
+
+_DEFAULT_SUITE = _DEFAULT_SUITE_V15
 
 # ---------------------------------------------------------------------------
 # Category metadata
@@ -143,6 +184,12 @@ CATEGORIES: List[Tuple[str, str]] = [
     ("contradiction_recurrence_rate", "L. Contradiction Recurrence Rate"),
     ("social_repair_effectiveness", "M. Social Repair Effectiveness"),
     ("longitudinal_depth", "N. Longitudinal Depth"),
+    # v1.5 metrics
+    ("self_consistency", "O. Self Consistency"),
+    ("prediction_accuracy", "P. Prediction Accuracy"),
+    ("surprise_adaptation_quality", "Q. Surprise Adaptation Quality"),
+    ("consolidation_effectiveness", "R. Consolidation Effectiveness"),
+    ("long_horizon_continuity", "S. Long-Horizon Continuity Strength"),
 ]
 
 CATEGORY_KEYS = [k for k, _ in CATEGORIES]
@@ -361,8 +408,8 @@ def _write_json(results: List[Dict], stats: Dict, suite: List[Dict], output_dir:
     path = output_dir / "benchmark_report.json"
     data = {
         "generated_at": generated_at,
-        "benchmark_version": "1.4",
-        "platform_version": "1.4.0",
+        "benchmark_version": "1.5",
+        "platform_version": "1.5.0",
         "repeat_count": repeat,
         "suite_size": len(suite),
         "total_runs": len(results),
@@ -412,7 +459,7 @@ def _write_md(results: List[Dict], stats: Dict, suite: List[Dict], output_dir: P
     lines.append("# Commons Sentience Sandbox — Benchmark Report")
     lines.append("")
     lines.append(f"**Generated:** {generated_at}  ")
-    lines.append(f"**Platform version:** 1.4.0  ")
+    lines.append(f"**Platform version:** 1.5.0  ")
     lines.append(f"**Benchmark version:** 1.4  ")
     lines.append(f"**Suite size:** {len(suite)} combinations × {repeat} repeat(s) = {len(results)} total runs")
     lines.append("")
@@ -480,7 +527,7 @@ def _write_md(results: List[Dict], stats: Dict, suite: List[Dict], output_dir: P
     lines.append("python benchmark_suite.py")
     lines.append("```")
     lines.append("")
-    lines.append("_Commons Sentience Sandbox v1.3.0 — Benchmark Suite_")
+    lines.append("_Commons Sentience Sandbox v1.5.0 — Benchmark Suite_")
 
     with open(path, "w", encoding="utf-8") as fh:
         fh.write("\n".join(lines) + "\n")
@@ -502,10 +549,10 @@ def _write_summary_md(
     path = output_dir / "benchmark_summary.md"
     lines: List[str] = []
 
-    lines.append("# Commons Sentience Sandbox — Benchmark Summary v1.4")
+    lines.append("# Commons Sentience Sandbox — Benchmark Summary v1.5")
     lines.append("")
     lines.append(f"**Generated:** {generated_at}  ")
-    lines.append(f"**Platform version:** 1.4.0  ")
+    lines.append(f"**Platform version:** 1.5.0  ")
     lines.append(f"**Suite size:** {len(suite)} combinations × {repeat} repeat(s) = {len(results)} total runs")
     lines.append("")
     lines.append("---")
@@ -582,7 +629,7 @@ def _write_summary_md(
     lines.append("python findings_report.py")
     lines.append("```")
     lines.append("")
-    lines.append("_Commons Sentience Sandbox v1.4.0 — Benchmark Summary_")
+    lines.append("_Commons Sentience Sandbox v1.5.0 — Benchmark Summary_")
 
     with open(path, "w", encoding="utf-8") as fh:
         fh.write("\n".join(lines) + "\n")
@@ -601,7 +648,7 @@ def main() -> None:
     parser.add_argument(
         "--suite",
         metavar="PATH",
-        help="Path to a JSON suite definition file. Defaults to the canonical v1.4 suite.",
+        help="Path to a JSON suite definition file. Defaults to the canonical v1.5 suite.",
     )
     parser.add_argument(
         "--repeat",
@@ -631,7 +678,7 @@ def main() -> None:
     suite = load_suite(args.suite)
 
     if args.list:
-        print("Commons Sentience Sandbox — Benchmark Suite v1.4")
+        print("Commons Sentience Sandbox — Benchmark Suite v1.5")
         print(f"  {len(suite)} entries")
         print()
         for entry in suite:
@@ -649,7 +696,7 @@ def main() -> None:
     generated_at = datetime.now().isoformat(timespec="seconds")
     total = len(suite) * args.repeat
 
-    print("Commons Sentience Sandbox — Benchmark Suite v1.4")
+    print("Commons Sentience Sandbox — Benchmark Suite v1.5")
     print(f"  Suite:   {len(suite)} entries × {args.repeat} repeat(s) = {total} run(s)")
     print(f"  Output:  {output_dir}")
     if args.dry_run:

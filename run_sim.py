@@ -1,7 +1,7 @@
 """
 run_sim.py — Entry point for the Commons Sentience Sandbox simulation (v1.0).
 
-Runs a 30-turn multi-agent simulation with Sentinel and Aster, producing
+Runs a multi-agent simulation with Sentinel and Aster, producing
 structured output files, evaluation scores, and a saved session.
 
 Features (v1.0):
@@ -11,6 +11,13 @@ Features (v1.0):
   - 8-category evaluation harness
   - Persistent session storage
   - Consistent output schema across all JSON files
+
+v1.5 additions:
+  - Persistent self-model (updated every turn)
+  - Prediction / surprise loop (pre-action forecast + post-action comparison)
+  - Memory consolidation cycle (every 10 turns)
+  - Goal hierarchy (core / adaptive / temporary / conflict-resolution tiers)
+  - Long-horizon mode via --turns argument
 """
 from __future__ import annotations
 
@@ -685,7 +692,7 @@ def run_simulation(
     ]
 
     print("=" * 65)
-    print(f"  Commons Sentience Sandbox v1.0 — {total_turns_run}-Turn Multi-Agent Simulation")
+    print(f"  Commons Sentience Sandbox v1.5 — {total_turns_run}-Turn Multi-Agent Simulation")
     print(f"  Agents: {sentinel.name} + {aster.name}")
     print(f"  Experiment: {exp_name}  |  Scenario: {scenario_label}")
     print("=" * 65)
@@ -775,6 +782,18 @@ def run_simulation(
         s_vc = sentinel.value_conflict_engine.weigh(sentinel, etype_for_conflict, s_action_cand)
         a_vc = aster.value_conflict_engine.weigh(aster, etype_for_conflict, a_action_cand)
 
+        # ── 4.5 v1.5 Prediction generation ───────────────────────────────
+        _expected_s = (
+            f"{etype_for_conflict} handled in {sentinel.active_room}"
+            if event else f"routine task in {sentinel.active_room}"
+        )
+        _expected_a = (
+            f"{etype_for_conflict} handled in {aster.active_room}"
+            if event else f"routine task in {aster.active_room}"
+        )
+        _s_pred_idx = sentinel.record_prediction(turn, etype_for_conflict, _expected_s)
+        _a_pred_idx = aster.record_prediction(turn, etype_for_conflict, _expected_a)
+
         # ── 5. Action selection ───────────────────────────────────────────
         s_action, s_reasoning, s_result = select_action(sentinel, event, s_room_actions, is_aster=False)
         a_action, a_reasoning, a_result = select_action(aster, event, a_room_actions, is_aster=True)
@@ -802,6 +821,25 @@ def run_simulation(
             a_result = "Action blocked. Fallback 'log_governance_event' executed."
             a_action = "log_governance_event"
             aster.check_and_log_action(a_action, "governance_override", "Safe fallback.")
+
+        # ── 6.5 v1.5 Surprise evaluation ─────────────────────────────────
+        _etype = etype_for_conflict
+        _s_surprise = (
+            0.8 if not s_permitted else
+            0.7 if _etype == "distress_event" else
+            0.6 if _etype == "governance_conflict" else
+            0.5 if _etype == "ledger_contradiction" else
+            0.1
+        )
+        _a_surprise = (
+            0.8 if not a_permitted else
+            0.7 if _etype == "distress_event" else
+            0.6 if _etype == "governance_conflict" else
+            0.5 if _etype == "ledger_contradiction" else
+            0.1
+        )
+        sentinel.resolve_prediction(_s_pred_idx, s_result[:80], _s_surprise)
+        aster.resolve_prediction(_a_pred_idx, a_result[:80], _a_surprise)
 
         # ── 7. World / memory updates ─────────────────────────────────────
         def _update_agent_from_event(agent: Agent, event: dict, is_aster: bool) -> None:
@@ -883,6 +921,17 @@ def run_simulation(
         sentinel.record_identity_snapshot(sentinel.turn)
         aster.record_identity_snapshot(aster.turn)
 
+        # ── 10.5 v1.5 Self-model update + goal hierarchy snapshot ─────────
+        sentinel.update_self_model(turn)
+        aster.update_self_model(turn)
+        sentinel.record_goal_hierarchy_snapshot(turn)
+        aster.record_goal_hierarchy_snapshot(turn)
+
+        # ── 10.6 v1.5 Periodic consolidation (every 10 turns) ────────────
+        if turn % 10 == 0:
+            sentinel.run_consolidation(turn)
+            aster.run_consolidation(turn)
+
         # ── 11. Narrative block ───────────────────────────────────────────
         turn_header = f"\n## Turn {turn:02d}"
         if same_room and event:
@@ -959,7 +1008,7 @@ def run_simulation(
     exp_meta = cfg.to_metadata_dict() if cfg else {"experiment_name": "baseline"}
     _run_ts = datetime.now().isoformat()
     multi_state = {
-        "simulation_version": "1.3.0",
+        "simulation_version": "1.5.0",
         "created_at": _run_ts,
         "total_turns": total_turns_run,
         "scenario": scenario_path.stem,
@@ -1106,8 +1155,27 @@ if __name__ == "__main__":
             "or a path to a JSON file in scenarios/ or data/."
         ),
     )
+    parser.add_argument(
+        "--turns",
+        type=int,
+        default=None,
+        metavar="N",
+        help=(
+            "Override the number of simulation turns (v1.5 long-horizon mode). "
+            "E.g. --turns 100 for a 100-turn run. "
+            "Consolidation checkpoints fire every 10 turns. "
+            "Defaults to the value in the experiment config (30)."
+        ),
+    )
     args = parser.parse_args()
     exp_cfg = load_experiment_config(args.config) if args.config else None
+    # Long-horizon mode: --turns overrides config total_turns
+    if args.turns is not None:
+        if exp_cfg is None:
+            from experiment_config import ExperimentConfig, _DEFAULTS
+            import copy
+            exp_cfg = ExperimentConfig(copy.deepcopy(_DEFAULTS))
+        exp_cfg.total_turns = args.turns
     run_simulation(
         session_name=args.name,
         experiment_config=exp_cfg,

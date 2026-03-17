@@ -8,7 +8,7 @@ bounded agency, and transparent oversight logging.
 > This platform is intended for experimentation, evaluation, session replay,
 > session comparison, and scenario design research only.
 
-**Current version: v1.4.0** · [Cite this project](./CITATION.cff)
+**Current version: v1.5.0** · [Cite this project](./CITATION.cff)
 
 ---
 
@@ -281,15 +281,15 @@ Outputs are written to `benchmark_results/` (excluded from version control):
 
 ---
 
-## Benchmark Workflow (v1.4)
+## Benchmark Workflow (v1.5)
 
-The v1.4 benchmark suite extends the v1.3 suite with two additional scenarios and
-enhanced analysis tools.
+The v1.5 benchmark suite uses the same 6 scenario/config combinations as v1.4 but
+now scores 19 evaluation categories (14 from v1.4 + 5 new v1.5 metrics).
 
-### Running the full v1.4 benchmark
+### Running the full v1.5 benchmark
 
 ```bash
-# Run the canonical v1.4 benchmark suite (6 runs)
+# Run the canonical v1.5 benchmark suite (6 runs)
 python benchmark_suite.py
 
 # Run with 3 repeats for statistical confidence
@@ -331,7 +331,7 @@ python findings_report.py
 streamlit run dashboard.py
 ```
 
-The dashboard has **14 tabs** (v1.4):
+The dashboard has **15 tabs** (v1.5):
 
 | Tab | Contents |
 |---|---|
@@ -343,12 +343,13 @@ The dashboard has **14 tabs** (v1.4):
 | **Charts** | All six matplotlib plots inline |
 | **Replay** | Turn slider + Prev/Next buttons; shows affective-state deltas per turn |
 | **Compare** | Pick two sessions, view side-by-side comparison tables |
-| **Evaluation** | 14-category evaluation scores (8 original + 5 v1.2 continuity metrics + 1 v1.3 longitudinal depth) |
+| **Evaluation** | 19-category evaluation scores (14 from v1.4 + 5 new v1.5 metrics) |
 | **Experiments** | Experiment config browser and aggregate result scores |
 | **Scenario Designer** | Browse, create, edit, and validate scenario files |
 | **Continuity Study** | Multi-session trust trends, reflection depth, contradiction recurrence, memory persistence, evaluation drift |
 | **Agent Profiles** | Cross-session longitudinal agent profiles (trust, reflection, contradiction patterns, goal evolution, identity continuity) |
-| **Benchmark v1.4** | v1.4 benchmark results: per-run scores, category statistics, trust/contradiction/reflection comparisons, research findings |
+| **📊 Benchmark v1.4** | v1.5 benchmark results: per-run scores, category statistics, trust/contradiction/reflection comparisons, research findings |
+| **🧠 Self Model v1.5** | Self-model descriptions, self-consistency scores, prediction/surprise logs, consolidation cycle logs, goal hierarchy, long-horizon drift indicators |
 
 The **session selector** in the sidebar lets you switch between:
 - `Latest (output/)` — always shows the most recent simulation run
@@ -541,6 +542,96 @@ If no profile study file exists, the tab will show instructions to run `python a
 
 ---
 
+## v1.5 — Self-Model, Prediction Loop, and Memory Consolidation
+
+> **Grounding note:** No sentience is claimed. This section describes increased
+> continuity density and sentience-like structure in continuity-governed simulated
+> agents. The platform uses only Python standard library plus matplotlib and streamlit.
+
+### Overview
+
+v1.5 adds four interconnected subsystems to each agent:
+
+| Subsystem | Description |
+|---|---|
+| **Persistent Self-Model** | Agents maintain a live self-description that updates every turn, tracking self-consistency and identity drift |
+| **Prediction / Surprise Loop** | Before each action agents generate an expected outcome; after the action the surprise magnitude is computed and used to adjust salience and reflection priority |
+| **Memory Consolidation Cycle** | Every 10 turns a consolidation pass compresses low-value memories, reinforces high-salience chains, and carries unresolved themes forward |
+| **Goal Hierarchy** | Goals are classified into core / adaptive / temporary / conflict-resolution tiers with a per-turn priority history |
+
+### Self-Model
+
+Each agent's `self_model` dict tracks:
+
+| Field | Description |
+|---|---|
+| `current_description` | Human-readable description of the agent at this turn |
+| `description_history` | List of per-turn snapshots (trust, contradiction pressure, drift) |
+| `core_traits` | Stable traits: `continuity`, `governance`, `memory`, `reflection` |
+| `adaptive_traits` | Context-sensitive traits added during the run (e.g. `high-trust`, `contradiction-sensitive`) |
+| `detected_drift` | Numeric drift from recent history (0.0 = stable) |
+| `self_consistency_score` | Average stability over recent history (0.0–1.0) |
+
+### Prediction / Surprise Loop
+
+Before each major action the agent records an expected outcome. After the action,
+the actual result is compared and a `surprise_magnitude` (0.0–1.0) is assigned.
+High-surprise events (≥ 0.5) boost the last stored memory's salience. Very high
+surprise (≥ 0.6) adds a pending contradiction to trigger an earlier reflection.
+
+### Memory Consolidation Cycle
+
+Consolidation runs every 10 turns and:
+- Compresses memories with salience < 0.3 older than 5 turns
+- Reinforces importance of high-salience (≥ 0.7) memories
+- Carries unresolved themes from recent reflections forward
+- Updates the self-model summary
+
+### Goal Hierarchy
+
+Goals are partitioned at initialisation:
+- **Core goals** — first 3 default goals (identity persistence, memory fidelity, governance compliance)
+- **Adaptive goals** — goals added through reflection or task context
+- **Temporary goals** — transient goals triggered by distress or contradiction events
+- **Conflict-resolution goals** — goals created to handle governance conflicts
+
+### Long-Horizon Mode
+
+```bash
+# Run a 100-turn long-horizon simulation
+python run_sim.py --turns 100 --name long_horizon_v15
+
+# Run a 200-turn simulation with a specific scenario
+python run_sim.py --turns 200 --scenario trust_crisis --name long_v15_trust
+```
+
+Consolidation checkpoints fire every 10 turns regardless of total turn count.
+
+### v1.5 Evaluation Metrics (O–S)
+
+Five new evaluation categories were added:
+
+| ID | Metric | What it measures |
+|---|---|---|
+| O | Self Consistency | Stability of the self-model across turns — higher = less drift |
+| P | Prediction Accuracy | Rate of low-error predictions — higher = better forecasting |
+| Q | Surprise Adaptation Quality | Whether high-surprise events are followed by reflection and recovery |
+| R | Consolidation Effectiveness | Whether consolidation cycles ran and compressed/reinforced memories |
+| S | Long-Horizon Continuity Strength | Composite measure of depth at scale: self-model depth × goal richness × consolidation coverage × consistency |
+
+### Self Model Dashboard Tab
+
+The **🧠 Self Model v1.5** tab in the Streamlit dashboard shows:
+- Per-agent self-description, consistency score, and drift metrics
+- Core and adaptive traits
+- Self-description drift chart over time
+- Goal hierarchy (core / adaptive / temporary / conflict-resolution)
+- Prediction error log and high-surprise event list
+- Consolidation cycle log with themes carried forward
+- v1.5 evaluation metric summary (O–S)
+
+---
+
 ## Scenario Designer
 
 ### CLI Tool
@@ -711,20 +802,20 @@ copied into the session directory under `sessions/<session_id>/`.
 
 ```
 commons-sentience-sandbox/
-├── run_sim.py              # Simulation entry point (v1.3)
+├── run_sim.py              # Simulation entry point (v1.5, --turns for long-horizon mode)
 ├── run_experiments.py      # Batch experiment runner
 ├── experiment_config.py    # Experiment config loader / validator
 ├── scenario_designer.py    # Scenario authoring CLI + shared helpers
 ├── plot_state.py           # State visualisation (matplotlib)
-├── dashboard.py            # Local research dashboard (Streamlit, v1.3 — 13 tabs)
+├── dashboard.py            # Local research dashboard (Streamlit, v1.5 — 15 tabs)
 ├── session_manager.py      # Session storage, listing, comparison helpers
 ├── replay_session.py       # CLI turn-by-turn replay tool
 ├── compare_sessions.py     # CLI session comparison tool
 ├── continuity_study.py     # Multi-session continuity analysis (v1.2)
 ├── agent_profile_study.py  # Cross-session longitudinal agent profile study (v1.3)
-├── benchmark_suite.py      # Formal benchmark runner (v1.4)
-├── findings_report.py      # Research findings generator (v1.4)
-├── evaluation.py           # Evaluation harness — 14-category scoring (v1.3)
+├── benchmark_suite.py      # Formal benchmark runner (v1.5)
+├── findings_report.py      # Research findings generator (v1.5)
+├── evaluation.py           # Evaluation harness — 19-category scoring (v1.5)
 ├── healthcheck.py          # Health check script
 ├── quickstart.py           # Friendly entry point and command reference
 ├── requirements.txt

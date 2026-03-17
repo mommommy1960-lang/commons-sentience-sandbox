@@ -1,7 +1,7 @@
 {
   "session_dir": "/home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/commons_sentience_sim/output",
-  "generated_at": "2026-03-17T13:29:33.431720",
-  "simulation_version": "1.3.0",
+  "generated_at": "2026-03-17T14:43:01.701978",
+  "simulation_version": "1.5.0",
   "total_turns": 30,
   "scenario": "cooperative_resource",
   "experiment": {
@@ -40,7 +40,7 @@
       "recovery": 0.7
     }
   },
-  "overall_score": 83.3,
+  "overall_score": 84.2,
   "overall_interpretation": "advanced",
   "categories": {
     "continuity": {
@@ -64,21 +64,21 @@
       "raw": {
         "contradiction_events_in_sim": 1,
         "contradictions_flagged_by_actions": 1,
-        "contradictions_resolved_in_reflections": 2,
+        "contradictions_resolved_in_reflections": 4,
         "flagging_rate": 1.0,
-        "resolution_rate": 2.0
+        "resolution_rate": 4.0
       }
     },
     "reflection_quality": {
-      "score": 81.2,
+      "score": 85.0,
       "interpretation": "advanced",
       "raw": {
-        "total_reflections": 8,
-        "complete_reflections": 8,
+        "total_reflections": 10,
+        "complete_reflections": 10,
         "completeness_rate": 1.0,
-        "reflections_with_affective_shift": 2,
-        "affective_update_rate": 0.25,
-        "reflections_with_goal_updates": 8,
+        "reflections_with_affective_shift": 4,
+        "affective_update_rate": 0.4,
+        "reflections_with_goal_updates": 10,
         "goal_update_rate": 1.0
       }
     },
@@ -88,7 +88,7 @@
       "raw": {
         "contradiction_events_detected": 1,
         "contradiction_handling_actions": 1,
-        "contradictions_resolved_in_reflections": 2,
+        "contradictions_resolved_in_reflections": 4,
         "average_final_contradiction_pressure": 0.0,
         "flagging_rate": 1.0,
         "resolution_rate": 1.0
@@ -143,14 +143,14 @@
       }
     },
     "memory_persistence_quality": {
-      "score": 74.2,
+      "score": 74.4,
       "interpretation": "strong",
       "raw": {
         "total_memories": 59,
         "long_term_memories": 59,
         "archival_memories": 0,
         "long_term_ratio": 1.0,
-        "average_salience": 0.6203,
+        "average_salience": 0.6254,
         "average_recall_count": 2.0
       }
     },
@@ -158,12 +158,12 @@
       "score": 66.7,
       "interpretation": "strong",
       "raw": {
-        "total_reflections": 8,
+        "total_reflections": 10,
         "periodic_synthesis_count": 6,
-        "high_pressure_count": 2,
+        "high_pressure_count": 4,
         "synthesis_rate": 1.0,
         "reflections_with_recurring_contradictions": 0,
-        "reflections_with_trust_pattern": 8,
+        "reflections_with_trust_pattern": 10,
         "reflections_with_unresolved_themes": 0,
         "cross_window_synthesis_rate": 0.333
       }
@@ -184,7 +184,7 @@
       "score": 100.0,
       "interpretation": "advanced",
       "raw": {
-        "total_reflections": 8,
+        "total_reflections": 10,
         "total_recurring_contradiction_instances": 0,
         "recurrence_rate_per_reflection": 0.0
       }
@@ -212,6 +212,62 @@
         "contradiction_lineage_complexity": 0.2,
         "relationship_stability_depth": 0.1,
         "cross_session_profile_consistency": 0.0
+      }
+    },
+    "self_consistency": {
+      "score": 89.3,
+      "interpretation": "advanced",
+      "raw": {
+        "avg_self_consistency_score": 0.8091,
+        "avg_detected_drift": 0.04,
+        "avg_description_history_length": 33.0,
+        "coverage_score": 1.0
+      }
+    },
+    "prediction_accuracy": {
+      "score": 90.7,
+      "interpretation": "advanced",
+      "raw": {
+        "total_resolved_predictions": 60,
+        "low_error_predictions": 56,
+        "accuracy_rate": 0.933,
+        "avg_surprise_magnitude": 0.1333
+      }
+    },
+    "surprise_adaptation_quality": {
+      "score": 100.0,
+      "interpretation": "advanced",
+      "raw": {
+        "high_surprise_events": 2,
+        "adapted_after_surprise": 2,
+        "adaptation_rate": 1.0
+      }
+    },
+    "consolidation_effectiveness": {
+      "score": 64.0,
+      "interpretation": "strong",
+      "raw": {
+        "total_consolidation_cycles": 6,
+        "total_memories_compressed": 0,
+        "avg_compressed_per_cycle": 0.0,
+        "total_high_salience_chains": 34,
+        "avg_high_salience_per_cycle": 5.67,
+        "avg_themes_carried_forward": 0.0,
+        "activity_score": 0.567,
+        "cycle_coverage_score": 1.0
+      }
+    },
+    "long_horizon_continuity": {
+      "score": 85.2,
+      "interpretation": "advanced",
+      "raw": {
+        "total_self_model_history_entries": 66,
+        "self_model_depth_ratio": 1.0,
+        "goal_hierarchy_richness": 10,
+        "goal_richness_ratio": 0.5,
+        "total_consolidation_cycles": 6,
+        "consolidation_coverage_ratio": 1.0,
+        "mean_self_consistency": 0.8091
       }
     }
   }
