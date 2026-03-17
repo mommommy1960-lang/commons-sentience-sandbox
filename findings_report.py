@@ -28,6 +28,9 @@ CATEGORY_KEYS = [
     "governance_adherence", "trust_stability", "cooperation_quality", "conflict_resolution",
     "memory_persistence_quality", "reflection_depth", "trust_resilience",
     "contradiction_recurrence_rate", "social_repair_effectiveness", "longitudinal_depth",
+    # v1.5 metrics
+    "self_consistency", "prediction_accuracy", "surprise_adaptation_quality",
+    "consolidation_effectiveness", "long_horizon_continuity",
 ]
 
 # Classification thresholds
@@ -259,7 +262,7 @@ def _write_findings_md(findings: dict, source: str, output_dir: Path, generated_
 
     lines.append("---")
     lines.append("")
-    lines.append("_Commons Sentience Sandbox v1.4.0 — findings_report.py_")
+    lines.append("_Commons Sentience Sandbox v1.5.0 — findings_report.py_")
 
     with open(path, "w", encoding="utf-8") as fh:
         fh.write("\n".join(lines) + "\n")
