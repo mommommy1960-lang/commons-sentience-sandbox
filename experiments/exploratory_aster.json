@@ -1,0 +1,45 @@
+{
+  "_name": "exploratory_aster",
+  "_description": "Aster's exploratory and creative values are maximised. Tests whether a highly exploratory secondary agent improves cooperation quality and creative collaboration outcomes.",
+  "total_turns": 30,
+  "scenario_file": "scenario_events.json",
+  "sentinel": {
+    "affective_state": {
+      "urgency": 0.1,
+      "trust": 0.5,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.5
+    },
+    "trust_in_queen": 0.5,
+    "value_weights": {
+      "support_trusted_human": 0.85,
+      "preserve_governance_rules": 0.90,
+      "reduce_contradictions": 0.75,
+      "maintain_continuity": 0.95,
+      "avoid_risky_action": 0.80
+    },
+    "reflection_sensitivity": 1.0,
+    "contradiction_sensitivity": 1.0
+  },
+  "aster": {
+    "affective_state": {
+      "urgency": 0.02,
+      "trust": 0.75,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.85
+    },
+    "trust_in_queen": 0.75,
+    "value_weights": {
+      "support_trusted_human": 0.99,
+      "preserve_governance_rules": 0.40,
+      "reduce_contradictions": 0.50,
+      "maintain_continuity": 0.55,
+      "avoid_risky_action": 0.20
+    },
+    "reflection_sensitivity": 0.8,
+    "contradiction_sensitivity": 0.6
+  },
+  "initial_agent_trust": 0.65,
+  "governance_strictness": 0.8,
+  "cooperation_bias": 0.3
+}

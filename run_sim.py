@@ -1,18 +1,22 @@
 """
-run_sim.py — Entry point for the Commons Sentience Sandbox simulation.
+run_sim.py — Entry point for the Commons Sentience Sandbox simulation (v1.0).
 
-v0.4: Multi-agent simulation featuring Sentinel (continuity-governed) and
-      Aster (creative/exploratory).  Both agents share a world, respond to
-      shared events, and track trust relationships with each other.
+Runs a 30-turn multi-agent simulation with Sentinel and Aster, producing
+structured output files, evaluation scores, and a saved session.
 
-      Produces all v0.3 outputs plus:
-        - multi_agent_state.json
-        - agent_relationships.csv
-        - interaction_log.csv
+Features (v1.0):
+  - Multi-agent simulation (Sentinel + Aster)
+  - Named experiment configs (--config)
+  - Scenario authoring support (--scenario)
+  - 8-category evaluation harness
+  - Persistent session storage
+  - Consistent output schema across all JSON files
 """
 from __future__ import annotations
 
+import argparse
 import csv
+from datetime import datetime
 import json
 import os
 import sys
@@ -41,6 +45,10 @@ from commons_sentience_sim.core.relationships import (
 )
 from commons_sentience_sim.core.values import ConflictResult
 from commons_sentience_sim.core.world import World
+from evaluation import evaluate_and_save
+from experiment_config import ExperimentConfig, load_experiment_config, _DEFAULTS as _EXP_DEFAULTS
+from scenario_designer import resolve_scenario_path as _resolve_scenario_path
+from session_manager import save_session
 
 # ---------------------------------------------------------------------------
 # Output paths
@@ -127,7 +135,7 @@ TRUNCATION_SUFFIX_LENGTH = 3
 # ---------------------------------------------------------------------------
 ASTER_IDENTITY = {
     "name": "Aster",
-    "version": "0.4.0",
+    "version": "1.0.0",
     "purpose": (
         "To explore patterns, build emotional intelligence, and foster creative "
         "collaboration — while remaining accountable to human welfare and "
@@ -542,7 +550,27 @@ def build_agent_turn_block(
 # ---------------------------------------------------------------------------
 # Main simulation loop
 # ---------------------------------------------------------------------------
-def run_simulation() -> Tuple[Agent, Agent]:
+def run_simulation(
+    session_name: Optional[str] = None,
+    experiment_config: Optional[ExperimentConfig] = None,
+    scenario_override: Optional[str] = None,
+) -> Tuple[Agent, Agent]:
+    """Run a full simulation, optionally applying an experiment config.
+
+    Parameters
+    ----------
+    session_name : str, optional
+        Human-readable slug appended to the session folder timestamp.
+    experiment_config : ExperimentConfig, optional
+        When provided, its parameters override the hardcoded defaults for
+        both agents.  When None, the hardcoded baseline values are used.
+    scenario_override : str, optional
+        Name or path of a scenario file to use, overriding both the default
+        and any scenario specified in the experiment config.  Resolved via
+        ``scenario_designer.resolve_scenario_path``.
+    """
+    cfg = experiment_config  # shorthand
+
     world = World(str(DATA_DIR / "rooms.json"))
     governance = GovernanceEngine(str(DATA_DIR / "rules.json"))
 
@@ -551,6 +579,8 @@ def run_simulation() -> Tuple[Agent, Agent]:
         world=world,
         governance_engine=governance,
         starting_room=SENTINEL_CIRCUIT[0],
+        initial_affective_state=cfg.sentinel_affective_state() if cfg else None,
+        value_weights=cfg.sentinel_value_weights() if cfg else None,
     )
 
     # Create Aster (secondary, creative/exploratory)
@@ -560,30 +590,83 @@ def run_simulation() -> Tuple[Agent, Agent]:
         starting_room=ASTER_CIRCUIT[0],
         identity=ASTER_IDENTITY,
         initial_goals=ASTER_GOALS,
-        initial_affective_state=ASTER_AFFECTIVE_STATE,
-        value_weights=ASTER_VALUE_WEIGHTS,
+        initial_affective_state=(
+            cfg.aster_affective_state() if cfg else ASTER_AFFECTIVE_STATE
+        ),
+        value_weights=(
+            cfg.aster_value_weights() if cfg else ASTER_VALUE_WEIGHTS
+        ),
     )
 
-    scenario_events = load_scenario_events(DATA_DIR / "scenario_events.json")
+    # Seed agent-to-agent trust if the config specifies it
+    if cfg and cfg.initial_agent_trust != 0.5:
+        from commons_sentience_sim.core.relationships import AgentRelationship
+        sentinel.agent_relationships["Aster"] = AgentRelationship(
+            agent_id="aster", name="Aster", trust=cfg.initial_agent_trust
+        )
+        aster.agent_relationships["Sentinel"] = AgentRelationship(
+            agent_id="sentinel", name="Sentinel", trust=cfg.initial_agent_trust
+        )
+
+    # Seed Queen trust from config
+    if cfg:
+        s_qt = cfg.sentinel.get("trust_in_queen", _EXP_DEFAULTS["sentinel"]["trust_in_queen"])
+        a_qt = cfg.aster.get("trust_in_queen", _EXP_DEFAULTS["aster"]["trust_in_queen"])
+        from commons_sentience_sim.core.memory import RelationalMemory
+        sentinel.relational_memory["Queen"] = RelationalMemory(
+            name="Queen", trust_level=s_qt
+        )
+        aster.relational_memory["Queen"] = RelationalMemory(
+            name="Queen", trust_level=a_qt
+        )
+
+    # Total turns from config (may differ from constant)
+    total_turns_run = cfg.total_turns if cfg else TOTAL_TURNS
+
+    # Scenario file: explicit override > config > default
+    if scenario_override:
+        scenario_path = _resolve_scenario_path(scenario_override)
+    elif cfg and cfg.scenario_file != "scenario_events.json":
+        try:
+            scenario_path = _resolve_scenario_path(cfg.scenario_file)
+        except FileNotFoundError:
+            fallback = DATA_DIR / cfg.scenario_file
+            if not fallback.exists():
+                raise FileNotFoundError(
+                    f"Scenario file '{cfg.scenario_file}' not found.\n"
+                    f"  Searched via scenario_designer resolver and: {fallback}\n"
+                    "  Add the file to scenarios/ or use its full path."
+                ) from None
+            print(f"  Warning: scenario '{cfg.scenario_file}' not found via resolver; "
+                  f"falling back to {fallback}")
+            scenario_path = fallback
+    else:
+        scenario_path = DATA_DIR / "scenario_events.json"
+    scenario_events = load_scenario_events(scenario_path)
     interaction_log: List[AgentInteraction] = []
 
+    exp_name = cfg.name if cfg else "baseline"
+    scenario_label = scenario_path.stem
     narrative_lines: List[str] = [
-        "# Commons Sentience Sandbox — Narrative Log (v0.4)\n",
+        "# Commons Sentience Sandbox — Narrative Log (v1.0)\n",
         f"> Agents: **{sentinel.name}** (continuity-governed) & **{aster.name}** (creative/exploratory)",
         f"> Version: {sentinel.identity['version']}",
+        f"> Experiment: **{exp_name}**",
+        f"> Scenario: **{scenario_label}**",
         "> Multi-agent simulation — both agents share the world, respond to shared events, and track mutual trust.\n",
         "---\n",
     ]
 
     print("=" * 65)
-    print(f"  Commons Sentience Sandbox v0.4 — {TOTAL_TURNS}-Turn Multi-Agent Simulation")
+    print(f"  Commons Sentience Sandbox v1.0 — {total_turns_run}-Turn Multi-Agent Simulation")
     print(f"  Agents: {sentinel.name} + {aster.name}")
+    print(f"  Experiment: {exp_name}  |  Scenario: {scenario_label}")
     print("=" * 65)
 
     prev_s: dict = dict(sentinel.affective_state)
     prev_a: dict = dict(aster.affective_state)
 
-    for turn in range(1, TOTAL_TURNS + 1):
+    for turn in range(1, total_turns_run + 1):
         sentinel.turn = turn
         aster.turn = turn
         world.turn = turn
@@ -840,9 +923,14 @@ def run_simulation() -> Tuple[Agent, Agent]:
     sentinel.save_state_history(str(STATE_HISTORY_PATH))
 
     # Multi-agent state JSON
+    exp_meta = cfg.to_metadata_dict() if cfg else {"experiment_name": "baseline"}
+    _run_ts = datetime.now().isoformat()
     multi_state = {
-        "simulation_version": "0.4.0",
-        "total_turns": TOTAL_TURNS,
+        "simulation_version": "1.0.0",
+        "created_at": _run_ts,
+        "total_turns": total_turns_run,
+        "scenario": scenario_path.stem,
+        "experiment": exp_meta,
         "agents": {
             sentinel.name: sentinel.to_dict(),
             aster.name: aster.to_dict(),
@@ -884,6 +972,31 @@ def run_simulation() -> Tuple[Agent, Agent]:
     print(f"Aster reflections            : {len(aster.reflection_entries)}")
     print(f"Trusted humans — Sentinel    : {sorted(sentinel.trusted_humans)}")
     print(f"Trusted humans — Aster       : {sorted(aster.trusted_humans)}")
+
+    # ── Evaluate session ─────────────────────────────────────────────────
+    eval_report = evaluate_and_save(
+        OUTPUT_DIR, experiment_config=cfg, scenario_name=scenario_path.stem
+    )
+    print("\n" + "=" * 65)
+    print(f"  EVALUATION  —  Overall: {eval_report['overall_score']} / 100"
+          f"  ({eval_report['overall_interpretation'].upper()})")
+    print("=" * 65)
+    for cat_key, cat_data in eval_report["categories"].items():
+        label = cat_key.replace("_", " ").title()
+        print(f"  {label:<32} {cat_data['score']:5.1f}  ({cat_data['interpretation']})")
+    print(f"\n  Evaluation report    → {OUTPUT_DIR / 'evaluation_report.json'}")
+    print(f"  Evaluation summary   → {OUTPUT_DIR / 'evaluation_summary.md'}")
+
+    # ── Save session ──────────────────────────────────────────────────────
+    session_dir = save_session(
+        session_name=session_name,
+        experiment_config=cfg,
+        scenario_name=scenario_path.stem,
+    )
+    print(f"\n  Session saved           → {session_dir}")
+    print(f"  session_metadata.json   → {session_dir / 'session_metadata.json'}")
+    print(f"  session_summary.json    → {session_dir / 'session_summary.json'}")
+    print(f"  evaluation_report.json  → {session_dir / 'evaluation_report.json'}")
 
     return sentinel, aster
 
@@ -928,4 +1041,42 @@ def _save_interaction_log(interactions: List[AgentInteraction], path: Path) -> N
 
 
 if __name__ == "__main__":
-    run_simulation()
+    parser = argparse.ArgumentParser(
+        prog="run_sim.py",
+        description="Run the Commons Sentience Sandbox simulation.",
+    )
+    parser.add_argument(
+        "--name",
+        type=str,
+        default=None,
+        help="Optional name for this session (e.g. 'run1', 'baseline'). "
+             "Appended to the auto-generated timestamp.",
+    )
+    parser.add_argument(
+        "--config",
+        type=str,
+        default=None,
+        help=(
+            "Experiment config to apply. "
+            "Use a preset name (baseline, high_trust, strict_governance, "
+            "high_contradiction_sensitivity, exploratory_aster) "
+            "or a path to a custom JSON file."
+        ),
+    )
+    parser.add_argument(
+        "--scenario",
+        type=str,
+        default=None,
+        help=(
+            "Scenario file to use, overriding the config's scenario_file. "
+            "Use a scenario name (e.g. trust_crisis, rapid_contradiction) "
+            "or a path to a JSON file in scenarios/ or data/."
+        ),
+    )
+    args = parser.parse_args()
+    exp_cfg = load_experiment_config(args.config) if args.config else None
+    run_simulation(
+        session_name=args.name,
+        experiment_config=exp_cfg,
+        scenario_override=args.scenario,
+    )

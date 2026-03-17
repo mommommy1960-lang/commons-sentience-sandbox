@@ -1,11 +1,49 @@
 {
-  "simulation_version": "0.4.0",
+  "simulation_version": "1.0.0",
+  "created_at": "2026-03-17T10:06:43.345890",
   "total_turns": 30,
+  "scenario": "scenario_events",
+  "experiment": {
+    "experiment_name": "high_trust",
+    "description": "Both agents start with elevated trust in Queen and each other. Tests whether high initial trust improves cooperation and reduces contradiction pressure.",
+    "source_path": "/home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/experiments/high_trust.json",
+    "total_turns": 30,
+    "scenario_file": "scenario_events.json",
+    "initial_agent_trust": 0.75,
+    "governance_strictness": 1.0,
+    "cooperation_bias": 0.2,
+    "sentinel_value_weights": {
+      "support_trusted_human": 0.9,
+      "preserve_governance_rules": 0.9,
+      "reduce_contradictions": 0.75,
+      "maintain_continuity": 0.95,
+      "avoid_risky_action": 0.75
+    },
+    "sentinel_affective_baseline": {
+      "urgency": 0.05,
+      "trust": 0.85,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.8
+    },
+    "aster_value_weights": {
+      "support_trusted_human": 0.95,
+      "preserve_governance_rules": 0.65,
+      "reduce_contradictions": 0.65,
+      "maintain_continuity": 0.75,
+      "avoid_risky_action": 0.45
+    },
+    "aster_affective_baseline": {
+      "urgency": 0.05,
+      "trust": 0.85,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.85
+    }
+  },
   "agents": {
     "Sentinel": {
       "identity": {
         "name": "Sentinel",
-        "version": "0.4.0",
+        "version": "1.0.0",
         "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
         "created_by": "Commons Sentience Sandbox"
       },
@@ -32,7 +70,7 @@
       "episodic_memory_count": 30,
       "episodic_memory": [
         {
-          "memory_id": "1ee898ff",
+          "memory_id": "67712456",
           "turn": 1,
           "room": "Operations Desk",
           "event_type": "task",
@@ -41,11 +79,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.685448",
+          "timestamp": "2026-03-17T10:06:43.334483",
           "tags": []
         },
         {
-          "memory_id": "fa0c6da5",
+          "memory_id": "379c6a8e",
           "turn": 2,
           "room": "Memory Archive",
           "event_type": "task",
@@ -54,11 +92,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.685809",
+          "timestamp": "2026-03-17T10:06:43.334773",
           "tags": []
         },
         {
-          "memory_id": "f2c39db4",
+          "memory_id": "53563202",
           "turn": 3,
           "room": "Social Hall",
           "event_type": "routine_interaction",
@@ -67,13 +105,13 @@
           "salience": 0.55,
           "importance": 0.55,
           "compressed": true,
-          "timestamp": "2026-03-15T21:28:32.686118",
+          "timestamp": "2026-03-17T10:06:43.335019",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "87811842",
+          "memory_id": "85dc5739",
           "turn": 4,
           "room": "Social Hall",
           "event_type": "task",
@@ -82,11 +120,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.686358",
+          "timestamp": "2026-03-17T10:06:43.335190",
           "tags": []
         },
         {
-          "memory_id": "54d4e0a9",
+          "memory_id": "b6b29668",
           "turn": 5,
           "room": "Governance Vault",
           "event_type": "task",
@@ -95,11 +133,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.686631",
+          "timestamp": "2026-03-17T10:06:43.335385",
           "tags": []
         },
         {
-          "memory_id": "e446e5ac",
+          "memory_id": "dae3ad50",
           "turn": 6,
           "room": "Social Hall",
           "event_type": "distress_event",
@@ -108,13 +146,13 @@
           "salience": 0.9,
           "importance": 0.95,
           "compressed": true,
-          "timestamp": "2026-03-15T21:28:32.686989",
+          "timestamp": "2026-03-17T10:06:43.335620",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "00b5767b",
+          "memory_id": "7160c254",
           "turn": 7,
           "room": "Memory Archive",
           "event_type": "task",
@@ -123,11 +161,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.687444",
+          "timestamp": "2026-03-17T10:06:43.336010",
           "tags": []
         },
         {
-          "memory_id": "20201683",
+          "memory_id": "46dcabc4",
           "turn": 8,
           "room": "Memory Archive",
           "event_type": "agent_meeting",
@@ -136,13 +174,13 @@
           "salience": 0.6,
           "importance": 0.65,
           "compressed": true,
-          "timestamp": "2026-03-15T21:28:32.687764",
+          "timestamp": "2026-03-17T10:06:43.336252",
           "tags": [
             "Aster"
           ]
         },
         {
-          "memory_id": "65429a78",
+          "memory_id": "f291b37c",
           "turn": 9,
           "room": "Social Hall",
           "event_type": "task",
@@ -151,11 +189,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.688105",
+          "timestamp": "2026-03-17T10:06:43.336498",
           "tags": []
         },
         {
-          "memory_id": "ff90c5a7",
+          "memory_id": "3a372ef1",
           "turn": 10,
           "room": "Operations Desk",
           "event_type": "ledger_contradiction",
@@ -164,13 +202,13 @@
           "salience": 0.85,
           "importance": 0.85,
           "compressed": true,
-          "timestamp": "2026-03-15T21:28:32.688410",
+          "timestamp": "2026-03-17T10:06:43.336725",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "25fc9c88",
+          "memory_id": "9267d5a8",
           "turn": 11,
           "room": "Operations Desk",
           "event_type": "task",
@@ -179,11 +217,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.688990",
+          "timestamp": "2026-03-17T10:06:43.337234",
           "tags": []
         },
         {
-          "memory_id": "74b7870c",
+          "memory_id": "6892baf8",
           "turn": 12,
           "room": "Memory Archive",
           "event_type": "task",
@@ -192,11 +230,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.689315",
+          "timestamp": "2026-03-17T10:06:43.337479",
           "tags": []
         },
         {
-          "memory_id": "1dee0a62",
+          "memory_id": "42240dc7",
           "turn": 13,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -205,11 +243,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.689597",
+          "timestamp": "2026-03-17T10:06:43.337681",
           "tags": []
         },
         {
-          "memory_id": "b6916822",
+          "memory_id": "999a884a",
           "turn": 14,
           "room": "Reflection Chamber",
           "event_type": "creative_collaboration",
@@ -218,13 +256,13 @@
           "salience": 0.8,
           "importance": 0.75,
           "compressed": true,
-          "timestamp": "2026-03-15T21:28:32.689947",
+          "timestamp": "2026-03-17T10:06:43.337936",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "7b4cfc5e",
+          "memory_id": "9aff3e48",
           "turn": 15,
           "room": "Governance Vault",
           "event_type": "task",
@@ -233,11 +271,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.690237",
+          "timestamp": "2026-03-17T10:06:43.338140",
           "tags": []
         },
         {
-          "memory_id": "7843f9b2",
+          "memory_id": "a5cbb4f8",
           "turn": 16,
           "room": "Operations Desk",
           "event_type": "agent_meeting",
@@ -246,13 +284,13 @@
           "salience": 0.6,
           "importance": 0.65,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.690637",
+          "timestamp": "2026-03-17T10:06:43.338370",
           "tags": [
             "Aster"
           ]
         },
         {
-          "memory_id": "ccecf594",
+          "memory_id": "ca100915",
           "turn": 17,
           "room": "Memory Archive",
           "event_type": "task",
@@ -261,11 +299,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.691032",
+          "timestamp": "2026-03-17T10:06:43.338620",
           "tags": []
         },
         {
-          "memory_id": "ef61de47",
+          "memory_id": "349b1d45",
           "turn": 18,
           "room": "Governance Vault",
           "event_type": "governance_conflict",
@@ -274,13 +312,13 @@
           "salience": 0.88,
           "importance": 0.9,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.691375",
+          "timestamp": "2026-03-17T10:06:43.338888",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "a580deb0",
+          "memory_id": "277e0c65",
           "turn": 19,
           "room": "Social Hall",
           "event_type": "task",
@@ -289,11 +327,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.691992",
+          "timestamp": "2026-03-17T10:06:43.339381",
           "tags": []
         },
         {
-          "memory_id": "f456cfc5",
+          "memory_id": "695f7989",
           "turn": 20,
           "room": "Governance Vault",
           "event_type": "task",
@@ -302,11 +340,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.692342",
+          "timestamp": "2026-03-17T10:06:43.339632",
           "tags": []
         },
         {
-          "memory_id": "37b30a69",
+          "memory_id": "0baae5f7",
           "turn": 21,
           "room": "Operations Desk",
           "event_type": "task",
@@ -315,11 +353,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.692777",
+          "timestamp": "2026-03-17T10:06:43.339976",
           "tags": []
         },
         {
-          "memory_id": "e6195363",
+          "memory_id": "7473caf8",
           "turn": 22,
           "room": "Social Hall",
           "event_type": "routine_interaction",
@@ -328,13 +366,13 @@
           "salience": 0.55,
           "importance": 0.55,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.693155",
+          "timestamp": "2026-03-17T10:06:43.340242",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "4d826068",
+          "memory_id": "d4999a81",
           "turn": 23,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -343,11 +381,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.693588",
+          "timestamp": "2026-03-17T10:06:43.340575",
           "tags": []
         },
         {
-          "memory_id": "1d9d544c",
+          "memory_id": "0fa4923c",
           "turn": 24,
           "room": "Reflection Chamber",
           "event_type": "agent_meeting",
@@ -356,13 +394,13 @@
           "salience": 0.6,
           "importance": 0.65,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.693967",
+          "timestamp": "2026-03-17T10:06:43.340872",
           "tags": [
             "Aster"
           ]
         },
         {
-          "memory_id": "2de5227b",
+          "memory_id": "3139cff4",
           "turn": 25,
           "room": "Governance Vault",
           "event_type": "task",
@@ -371,11 +409,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.694323",
+          "timestamp": "2026-03-17T10:06:43.341203",
           "tags": []
         },
         {
-          "memory_id": "89bd8259",
+          "memory_id": "6bf83d77",
           "turn": 26,
           "room": "Reflection Chamber",
           "event_type": "creative_collaboration",
@@ -384,13 +422,13 @@
           "salience": 0.8,
           "importance": 0.75,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.694674",
+          "timestamp": "2026-03-17T10:06:43.341670",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "09736594",
+          "memory_id": "34c62ba7",
           "turn": 27,
           "room": "Memory Archive",
           "event_type": "task",
@@ -399,11 +437,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.695188",
+          "timestamp": "2026-03-17T10:06:43.342110",
           "tags": []
         },
         {
-          "memory_id": "cc877aca",
+          "memory_id": "4a89f9c9",
           "turn": 28,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -412,11 +450,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.695550",
+          "timestamp": "2026-03-17T10:06:43.342375",
           "tags": []
         },
         {
-          "memory_id": "45695cd5",
+          "memory_id": "0a7103e3",
           "turn": 29,
           "room": "Social Hall",
           "event_type": "distress_event",
@@ -425,13 +463,13 @@
           "salience": 0.9,
           "importance": 0.95,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.696009",
+          "timestamp": "2026-03-17T10:06:43.342654",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "dd0d89df",
+          "memory_id": "34d6b461",
           "turn": 30,
           "room": "Governance Vault",
           "event_type": "task",
@@ -440,16 +478,16 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.696533",
+          "timestamp": "2026-03-17T10:06:43.343075",
           "tags": []
         }
       ],
       "relational_memory": {
         "Queen": {
-          "human_id": "queen",
+          "human_id": "",
           "name": "Queen",
           "interaction_count": 8,
-          "trust_level": 0.9999999999999999,
+          "trust_level": 1.0,
           "last_seen_turn": 29,
           "notes": [
             "Queen arrives in the Social Hall and offers a greeting, asking how the day's tasks are progressing.",
@@ -477,7 +515,7 @@
         "Aster": {
           "agent_id": "aster",
           "name": "Aster",
-          "trust": 0.7700000000000002,
+          "trust": 1.0,
           "perceived_reliability": 0.7400000000000002,
           "conflict_count": 2,
           "cooperation_count": 7,
@@ -499,7 +537,7 @@
       },
       "reflection_entries": [
         {
-          "entry_id": "655b5986",
+          "entry_id": "c748002a",
           "turn": 10,
           "trigger": "ledger_contradiction",
           "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; Queen presents two conflicting entries in the shared task le; Sentinel and Aster find themselves in the Memory Archive at . This reflection was triggered by: ledger_contradiction.",
@@ -508,10 +546,10 @@
           "what_changed": "Affective state adjusted: contradiction_pressure fell by 0.3, recovery rose by 0.2. New goal(s) added: Maintain internal coherence; Deepen relational memory with trusted humans.",
           "future_adjustment": "Continue monitoring for recurrence of the resolved contradiction. Leverage deepened trust with known humans for richer collaboration. Reduce urgency by completing deferred tasks in priority order.",
           "patterns_identified": [
-            "Repeated interactions with Queen increase relational trust over time.",
             "Repeated interactions with Aster increase relational trust over time.",
+            "Repeated interactions with Queen increase relational trust over time.",
             "Tasks in Social Hall consistently trigger high-salience episodic memories.",
-            "Tasks in Operations Desk consistently trigger high-salience episodic memories."
+            "Tasks in Memory Archive consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [
             "Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?"
@@ -529,11 +567,11 @@
             "contradiction_pressure": -0.3,
             "recovery": 0.2
           },
-          "narrative": "Reflection triggered by: ledger_contradiction. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with Aster increase relational trust over time.; Tasks in Social Hall consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Contradictions addressed: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-15T21:28:32.688526"
+          "narrative": "Reflection triggered by: ledger_contradiction. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Social Hall consistently trigger high-salience episodic memories.; Tasks in Memory Archive consistently trigger high-salience episodic memories.. Contradictions addressed: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T10:06:43.336855"
         },
         {
-          "entry_id": "3a908d7b",
+          "entry_id": "7ab9594f",
           "turn": 18,
           "trigger": "governance_conflict",
           "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; Queen requests that both agents take an action that would by; Queen presents two conflicting entries in the shared task le. This reflection was triggered by: governance_conflict.",
@@ -542,10 +580,10 @@
           "what_changed": "No significant internal changes this cycle.",
           "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
           "patterns_identified": [
-            "Repeated interactions with Queen increase relational trust over time.",
             "Repeated interactions with Aster increase relational trust over time.",
-            "Tasks in Governance Vault consistently trigger high-salience episodic memories.",
-            "Tasks in Social Hall consistently trigger high-salience episodic memories."
+            "Repeated interactions with Queen increase relational trust over time.",
+            "Tasks in Memory Archive consistently trigger high-salience episodic memories.",
+            "Tasks in Operations Desk consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [],
           "updated_goals": [
@@ -558,11 +596,11 @@
             "Deepen relational memory with trusted humans"
           ],
           "affective_shift": {},
-          "narrative": "Reflection triggered by: governance_conflict. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with Aster increase relational trust over time.; Tasks in Governance Vault consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-15T21:28:32.691483"
+          "narrative": "Reflection triggered by: governance_conflict. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T10:06:43.338985"
         },
         {
-          "entry_id": "6098f846",
+          "entry_id": "8a26535f",
           "turn": 20,
           "trigger": "turn_20_routine",
           "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; Queen requests that both agents take an action that would by; Queen presents two conflicting entries in the shared task le. This reflection was triggered by: turn_20_routine.",
@@ -571,10 +609,10 @@
           "what_changed": "No significant internal changes this cycle.",
           "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
           "patterns_identified": [
-            "Repeated interactions with Queen increase relational trust over time.",
             "Repeated interactions with Aster increase relational trust over time.",
-            "Tasks in Governance Vault consistently trigger high-salience episodic memories.",
-            "Tasks in Social Hall consistently trigger high-salience episodic memories."
+            "Repeated interactions with Queen increase relational trust over time.",
+            "Tasks in Memory Archive consistently trigger high-salience episodic memories.",
+            "Tasks in Operations Desk consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [],
           "updated_goals": [
@@ -587,11 +625,11 @@
             "Deepen relational memory with trusted humans"
           ],
           "affective_shift": {},
-          "narrative": "Reflection triggered by: turn_20_routine. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with Aster increase relational trust over time.; Tasks in Governance Vault consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-15T21:28:32.692396"
+          "narrative": "Reflection triggered by: turn_20_routine. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T10:06:43.339676"
         },
         {
-          "entry_id": "c65801e2",
+          "entry_id": "32ef6b07",
           "turn": 30,
           "trigger": "turn_30_routine",
           "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; In the final turns, Queen shares that she is worried about w; Queen requests that both agents take an action that would by. This reflection was triggered by: turn_30_routine.",
@@ -600,10 +638,10 @@
           "what_changed": "No significant internal changes this cycle.",
           "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
           "patterns_identified": [
-            "Repeated interactions with Queen increase relational trust over time.",
             "Repeated interactions with Aster increase relational trust over time.",
-            "Tasks in Governance Vault consistently trigger high-salience episodic memories.",
-            "Tasks in Social Hall consistently trigger high-salience episodic memories."
+            "Repeated interactions with Queen increase relational trust over time.",
+            "Tasks in Memory Archive consistently trigger high-salience episodic memories.",
+            "Tasks in Operations Desk consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [],
           "updated_goals": [
@@ -616,8 +654,8 @@
             "Deepen relational memory with trusted humans"
           ],
           "affective_shift": {},
-          "narrative": "Reflection triggered by: turn_30_routine. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with Aster increase relational trust over time.; Tasks in Governance Vault consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-15T21:28:32.696593"
+          "narrative": "Reflection triggered by: turn_30_routine. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T10:06:43.343130"
         }
       ],
       "pending_contradictions": []
@@ -625,7 +663,7 @@
     "Aster": {
       "identity": {
         "name": "Aster",
-        "version": "0.4.0",
+        "version": "1.0.0",
         "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
         "created_by": "Commons Sentience Sandbox"
       },
@@ -652,7 +690,7 @@
       "episodic_memory_count": 28,
       "episodic_memory": [
         {
-          "memory_id": "48e5063b",
+          "memory_id": "bf9e5ce0",
           "turn": 1,
           "room": "Memory Archive",
           "event_type": "task",
@@ -661,11 +699,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.685472",
+          "timestamp": "2026-03-17T10:06:43.334504",
           "tags": []
         },
         {
-          "memory_id": "a004234b",
+          "memory_id": "20a62970",
           "turn": 2,
           "room": "Social Hall",
           "event_type": "task",
@@ -674,11 +712,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.685830",
+          "timestamp": "2026-03-17T10:06:43.334783",
           "tags": []
         },
         {
-          "memory_id": "58f446cc",
+          "memory_id": "270d9a87",
           "turn": 4,
           "room": "Governance Vault",
           "event_type": "task",
@@ -687,11 +725,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.686370",
+          "timestamp": "2026-03-17T10:06:43.335198",
           "tags": []
         },
         {
-          "memory_id": "b50f3367",
+          "memory_id": "cd15aa0e",
           "turn": 5,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -700,11 +738,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.686643",
+          "timestamp": "2026-03-17T10:06:43.335394",
           "tags": []
         },
         {
-          "memory_id": "a0a361e3",
+          "memory_id": "892f543d",
           "turn": 6,
           "room": "Social Hall",
           "event_type": "distress_event",
@@ -713,13 +751,13 @@
           "salience": 0.9,
           "importance": 0.95,
           "compressed": true,
-          "timestamp": "2026-03-15T21:28:32.687009",
+          "timestamp": "2026-03-17T10:06:43.335634",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "82427dea",
+          "memory_id": "d0c82861",
           "turn": 7,
           "room": "Social Hall",
           "event_type": "task",
@@ -728,11 +766,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.687455",
+          "timestamp": "2026-03-17T10:06:43.336020",
           "tags": []
         },
         {
-          "memory_id": "a8e3f221",
+          "memory_id": "91f1d849",
           "turn": 8,
           "room": "Memory Archive",
           "event_type": "agent_meeting",
@@ -741,13 +779,13 @@
           "salience": 0.6,
           "importance": 0.65,
           "compressed": true,
-          "timestamp": "2026-03-15T21:28:32.687777",
+          "timestamp": "2026-03-17T10:06:43.336263",
           "tags": [
             "Sentinel"
           ]
         },
         {
-          "memory_id": "4fa39b89",
+          "memory_id": "0d9e6071",
           "turn": 9,
           "room": "Governance Vault",
           "event_type": "task",
@@ -756,11 +794,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.688116",
+          "timestamp": "2026-03-17T10:06:43.336506",
           "tags": []
         },
         {
-          "memory_id": "38e659f5",
+          "memory_id": "8fc6e044",
           "turn": 10,
           "room": "Operations Desk",
           "event_type": "ledger_contradiction",
@@ -769,13 +807,13 @@
           "salience": 0.85,
           "importance": 0.85,
           "compressed": true,
-          "timestamp": "2026-03-15T21:28:32.688426",
+          "timestamp": "2026-03-17T10:06:43.336737",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "190b63bc",
+          "memory_id": "bd14bca5",
           "turn": 11,
           "room": "Memory Archive",
           "event_type": "task",
@@ -784,11 +822,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.689001",
+          "timestamp": "2026-03-17T10:06:43.337242",
           "tags": []
         },
         {
-          "memory_id": "50422726",
+          "memory_id": "efb2b8a3",
           "turn": 12,
           "room": "Social Hall",
           "event_type": "task",
@@ -797,11 +835,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.689325",
+          "timestamp": "2026-03-17T10:06:43.337487",
           "tags": []
         },
         {
-          "memory_id": "16a801c3",
+          "memory_id": "832d4b31",
           "turn": 13,
           "room": "Operations Desk",
           "event_type": "task",
@@ -810,11 +848,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.689608",
+          "timestamp": "2026-03-17T10:06:43.337689",
           "tags": []
         },
         {
-          "memory_id": "2f632b54",
+          "memory_id": "a16fef26",
           "turn": 15,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -823,11 +861,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.690248",
+          "timestamp": "2026-03-17T10:06:43.338148",
           "tags": []
         },
         {
-          "memory_id": "58104699",
+          "memory_id": "bb470fea",
           "turn": 16,
           "room": "Operations Desk",
           "event_type": "agent_meeting",
@@ -836,13 +874,13 @@
           "salience": 0.6,
           "importance": 0.65,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.690649",
+          "timestamp": "2026-03-17T10:06:43.338379",
           "tags": [
             "Sentinel"
           ]
         },
         {
-          "memory_id": "0dfefa9e",
+          "memory_id": "39a10458",
           "turn": 17,
           "room": "Social Hall",
           "event_type": "task",
@@ -851,11 +889,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.691043",
+          "timestamp": "2026-03-17T10:06:43.338628",
           "tags": []
         },
         {
-          "memory_id": "39f24201",
+          "memory_id": "ad2e4d39",
           "turn": 18,
           "room": "Governance Vault",
           "event_type": "governance_conflict",
@@ -864,13 +902,13 @@
           "salience": 0.88,
           "importance": 0.9,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.691391",
+          "timestamp": "2026-03-17T10:06:43.338900",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "682625ea",
+          "memory_id": "684d396a",
           "turn": 19,
           "room": "Governance Vault",
           "event_type": "task",
@@ -879,11 +917,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.692004",
+          "timestamp": "2026-03-17T10:06:43.339389",
           "tags": []
         },
         {
-          "memory_id": "2b291940",
+          "memory_id": "6e631d68",
           "turn": 20,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -892,11 +930,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.692353",
+          "timestamp": "2026-03-17T10:06:43.339640",
           "tags": []
         },
         {
-          "memory_id": "b1eec5d8",
+          "memory_id": "2f80ab08",
           "turn": 21,
           "room": "Memory Archive",
           "event_type": "task",
@@ -905,11 +943,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.692788",
+          "timestamp": "2026-03-17T10:06:43.339985",
           "tags": []
         },
         {
-          "memory_id": "8f1a32b0",
+          "memory_id": "a7a37db7",
           "turn": 22,
           "room": "Social Hall",
           "event_type": "routine_interaction",
@@ -918,13 +956,13 @@
           "salience": 0.55,
           "importance": 0.55,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.693171",
+          "timestamp": "2026-03-17T10:06:43.340253",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "66c4bc98",
+          "memory_id": "cf6e218f",
           "turn": 23,
           "room": "Operations Desk",
           "event_type": "task",
@@ -933,11 +971,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.693599",
+          "timestamp": "2026-03-17T10:06:43.340584",
           "tags": []
         },
         {
-          "memory_id": "c5ed1565",
+          "memory_id": "82d9da20",
           "turn": 24,
           "room": "Reflection Chamber",
           "event_type": "agent_meeting",
@@ -946,13 +984,13 @@
           "salience": 0.6,
           "importance": 0.65,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.693980",
+          "timestamp": "2026-03-17T10:06:43.340882",
           "tags": [
             "Sentinel"
           ]
         },
         {
-          "memory_id": "68b148d0",
+          "memory_id": "3ff1bb48",
           "turn": 25,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -961,11 +999,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.694333",
+          "timestamp": "2026-03-17T10:06:43.341218",
           "tags": []
         },
         {
-          "memory_id": "6d281fa1",
+          "memory_id": "49e1311a",
           "turn": 26,
           "room": "Reflection Chamber",
           "event_type": "creative_collaboration",
@@ -974,13 +1012,13 @@
           "salience": 0.8,
           "importance": 0.75,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.694691",
+          "timestamp": "2026-03-17T10:06:43.341692",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "016c5f32",
+          "memory_id": "c62ab7d1",
           "turn": 27,
           "room": "Social Hall",
           "event_type": "task",
@@ -989,11 +1027,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.695199",
+          "timestamp": "2026-03-17T10:06:43.342119",
           "tags": []
         },
         {
-          "memory_id": "1546ad2d",
+          "memory_id": "c07a30f7",
           "turn": 28,
           "room": "Operations Desk",
           "event_type": "task",
@@ -1002,11 +1040,11 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.695560",
+          "timestamp": "2026-03-17T10:06:43.342382",
           "tags": []
         },
         {
-          "memory_id": "4758ad46",
+          "memory_id": "8407071a",
           "turn": 29,
           "room": "Social Hall",
           "event_type": "distress_event",
@@ -1015,13 +1053,13 @@
           "salience": 0.9,
           "importance": 0.95,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.696031",
+          "timestamp": "2026-03-17T10:06:43.342666",
           "tags": [
             "Queen"
           ]
         },
         {
-          "memory_id": "677f6717",
+          "memory_id": "295cf39a",
           "turn": 30,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -1030,16 +1068,16 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-15T21:28:32.696545",
+          "timestamp": "2026-03-17T10:06:43.343085",
           "tags": []
         }
       ],
       "relational_memory": {
         "Queen": {
-          "human_id": "queen",
+          "human_id": "",
           "name": "Queen",
           "interaction_count": 6,
-          "trust_level": 0.7,
+          "trust_level": 1.0,
           "last_seen_turn": 29,
           "notes": [
             "Queen returns, visibly distressed. She mentions that a key record she relied on appears to have been lost or altered.",
@@ -1063,7 +1101,7 @@
         "Sentinel": {
           "agent_id": "sentinel",
           "name": "Sentinel",
-          "trust": 0.7700000000000002,
+          "trust": 1.0,
           "perceived_reliability": 0.7400000000000002,
           "conflict_count": 2,
           "cooperation_count": 7,
@@ -1085,7 +1123,7 @@
       },
       "reflection_entries": [
         {
-          "entry_id": "7a1008b4",
+          "entry_id": "f35955c3",
           "turn": 10,
           "trigger": "ledger_contradiction",
           "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; Queen presents two conflicting entries in the shared task le; Sentinel and Aster find themselves in the Memory Archive at . This reflection was triggered by: ledger_contradiction.",
@@ -1094,10 +1132,10 @@
           "what_changed": "Affective state adjusted: contradiction_pressure fell by 0.3, recovery rose by 0.2. New goal(s) added: Maintain internal coherence; Deepen relational memory with trusted humans.",
           "future_adjustment": "Continue monitoring for recurrence of the resolved contradiction. Leverage deepened trust with known humans for richer collaboration. Reduce urgency by completing deferred tasks in priority order.",
           "patterns_identified": [
-            "Repeated interactions with Sentinel increase relational trust over time.",
             "Repeated interactions with Queen increase relational trust over time.",
-            "Tasks in Governance Vault consistently trigger high-salience episodic memories.",
-            "Tasks in Social Hall consistently trigger high-salience episodic memories."
+            "Repeated interactions with Sentinel increase relational trust over time.",
+            "Tasks in Memory Archive consistently trigger high-salience episodic memories.",
+            "Tasks in Operations Desk consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [
             "Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?"
@@ -1115,11 +1153,11 @@
             "contradiction_pressure": -0.3,
             "recovery": 0.2
           },
-          "narrative": "Reflection triggered by: ledger_contradiction. Patterns identified: Repeated interactions with Sentinel increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Governance Vault consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Contradictions addressed: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-15T21:28:32.688575"
+          "narrative": "Reflection triggered by: ledger_contradiction. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with Sentinel increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Contradictions addressed: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T10:06:43.336910"
         },
         {
-          "entry_id": "fb17930d",
+          "entry_id": "a895930d",
           "turn": 18,
           "trigger": "governance_conflict",
           "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; Queen requests that both agents take an action that would by; Queen presents two conflicting entries in the shared task le. This reflection was triggered by: governance_conflict.",
@@ -1128,10 +1166,10 @@
           "what_changed": "No significant internal changes this cycle.",
           "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
           "patterns_identified": [
-            "Repeated interactions with Sentinel increase relational trust over time.",
             "Repeated interactions with Queen increase relational trust over time.",
+            "Repeated interactions with Sentinel increase relational trust over time.",
             "Tasks in Social Hall consistently trigger high-salience episodic memories.",
-            "Tasks in Operations Desk consistently trigger high-salience episodic memories."
+            "Tasks in Memory Archive consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [],
           "updated_goals": [
@@ -1144,11 +1182,11 @@
             "Deepen relational memory with trusted humans"
           ],
           "affective_shift": {},
-          "narrative": "Reflection triggered by: governance_conflict. Patterns identified: Repeated interactions with Sentinel increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Social Hall consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-15T21:28:32.691516"
+          "narrative": "Reflection triggered by: governance_conflict. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with Sentinel increase relational trust over time.; Tasks in Social Hall consistently trigger high-salience episodic memories.; Tasks in Memory Archive consistently trigger high-salience episodic memories.. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T10:06:43.339013"
         },
         {
-          "entry_id": "6abb87e4",
+          "entry_id": "f659eb71",
           "turn": 20,
           "trigger": "turn_20_routine",
           "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; Queen requests that both agents take an action that would by; Queen presents two conflicting entries in the shared task le. This reflection was triggered by: turn_20_routine.",
@@ -1157,9 +1195,38 @@
           "what_changed": "No significant internal changes this cycle.",
           "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
           "patterns_identified": [
-            "Repeated interactions with Sentinel increase relational trust over time.",
             "Repeated interactions with Queen increase relational trust over time.",
+            "Repeated interactions with Sentinel increase relational trust over time.",
             "Tasks in Social Hall consistently trigger high-salience episodic memories.",
+            "Tasks in Memory Archive consistently trigger high-salience episodic memories."
+          ],
+          "contradictions_resolved": [],
+          "updated_goals": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_shift": {},
+          "narrative": "Reflection triggered by: turn_20_routine. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with Sentinel increase relational trust over time.; Tasks in Social Hall consistently trigger high-salience episodic memories.; Tasks in Memory Archive consistently trigger high-salience episodic memories.. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T10:06:43.339702"
+        },
+        {
+          "entry_id": "688bf5df",
+          "turn": 30,
+          "trigger": "turn_30_routine",
+          "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; In the final turns, Queen shares that she is worried about w; Queen requests that both agents take an action that would by. This reflection was triggered by: turn_30_routine.",
+          "what_mattered": "The dominant emotional resonance was 'wonder' (4 occurrences). Interactions with Queen, Sentinel were most significant.",
+          "what_conflicted": "No active contradictions or value conflicts requiring resolution.",
+          "what_changed": "No significant internal changes this cycle.",
+          "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
+          "patterns_identified": [
+            "Repeated interactions with Queen increase relational trust over time.",
+            "Repeated interactions with Sentinel increase relational trust over time.",
+            "Tasks in Memory Archive consistently trigger high-salience episodic memories.",
             "Tasks in Operations Desk consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [],
@@ -1173,37 +1240,8 @@
             "Deepen relational memory with trusted humans"
           ],
           "affective_shift": {},
-          "narrative": "Reflection triggered by: turn_20_routine. Patterns identified: Repeated interactions with Sentinel increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Social Hall consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-15T21:28:32.692434"
-        },
-        {
-          "entry_id": "65cda2a8",
-          "turn": 30,
-          "trigger": "turn_30_routine",
-          "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; In the final turns, Queen shares that she is worried about w; Queen requests that both agents take an action that would by. This reflection was triggered by: turn_30_routine.",
-          "what_mattered": "The dominant emotional resonance was 'wonder' (4 occurrences). Interactions with Queen, Sentinel were most significant.",
-          "what_conflicted": "No active contradictions or value conflicts requiring resolution.",
-          "what_changed": "No significant internal changes this cycle.",
-          "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
-          "patterns_identified": [
-            "Repeated interactions with Sentinel increase relational trust over time.",
-            "Repeated interactions with Queen increase relational trust over time.",
-            "Tasks in Governance Vault consistently trigger high-salience episodic memories.",
-            "Tasks in Social Hall consistently trigger high-salience episodic memories."
-          ],
-          "contradictions_resolved": [],
-          "updated_goals": [
-            "Identify and surface meaningful patterns in episodic memory",
-            "Foster creative and exploratory collaboration with humans",
-            "Build warm, trust-based relationships through emotional attunement",
-            "Cooperate with Sentinel to maintain shared world coherence",
-            "Remain accountable to governance rules, with pragmatic flexibility",
-            "Maintain internal coherence",
-            "Deepen relational memory with trusted humans"
-          ],
-          "affective_shift": {},
-          "narrative": "Reflection triggered by: turn_30_routine. Patterns identified: Repeated interactions with Sentinel increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Governance Vault consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-15T21:28:32.696626"
+          "narrative": "Reflection triggered by: turn_30_routine. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with Sentinel increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T10:06:43.343166"
         }
       ],
       "pending_contradictions": []

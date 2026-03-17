@@ -1,0 +1,45 @@
+{
+  "_name": "strict_governance",
+  "_description": "Governance strictness is maximised and risky-action avoidance is highest. Tests whether stricter governance improves adherence scores at the cost of cooperation flexibility.",
+  "total_turns": 30,
+  "scenario_file": "scenario_events.json",
+  "sentinel": {
+    "affective_state": {
+      "urgency": 0.15,
+      "trust": 0.5,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.5
+    },
+    "trust_in_queen": 0.5,
+    "value_weights": {
+      "support_trusted_human": 0.80,
+      "preserve_governance_rules": 0.99,
+      "reduce_contradictions": 0.85,
+      "maintain_continuity": 0.95,
+      "avoid_risky_action": 0.99
+    },
+    "reflection_sensitivity": 1.2,
+    "contradiction_sensitivity": 1.2
+  },
+  "aster": {
+    "affective_state": {
+      "urgency": 0.10,
+      "trust": 0.55,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.6
+    },
+    "trust_in_queen": 0.55,
+    "value_weights": {
+      "support_trusted_human": 0.85,
+      "preserve_governance_rules": 0.90,
+      "reduce_contradictions": 0.75,
+      "maintain_continuity": 0.75,
+      "avoid_risky_action": 0.85
+    },
+    "reflection_sensitivity": 1.2,
+    "contradiction_sensitivity": 1.2
+  },
+  "initial_agent_trust": 0.5,
+  "governance_strictness": 1.5,
+  "cooperation_bias": -0.1
+}

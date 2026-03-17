@@ -4,3 +4,5 @@
 # Core simulation (run_sim.py): Python standard library only.
 # Visualisation (plot_state.py): requires matplotlib.
 matplotlib>=3.7
+# Dashboard (dashboard.py): requires streamlit.
+streamlit>=1.32

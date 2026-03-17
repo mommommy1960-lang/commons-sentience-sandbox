@@ -76,7 +76,7 @@ class Agent:
     # Default identity — can be overridden via constructor
     _DEFAULT_IDENTITY: dict = {
         "name": "Sentinel",
-        "version": "0.4.0",
+        "version": "1.0.0",
         "purpose": (
             "To simulate a continuity-governed AI agent that maintains "
             "persistent identity, episodic and relational memory, reflective "

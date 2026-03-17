@@ -32,3 +32,14 @@ Thumbs.db
 # commons_sentience_sim/output/narrative_log.md
 # commons_sentience_sim/output/oversight_log.csv
 # commons_sentience_sim/output/final_state.json
+
+# Saved sessions — exclude run data, keep only the directory placeholder
+sessions/*/
+sessions/index.json
+sessions/comparison_*.json
+sessions/comparison_*.md
+
+# Experiment results — generated data
+experiments/results/
+experiments/results/*
+!experiments/results/.gitkeep

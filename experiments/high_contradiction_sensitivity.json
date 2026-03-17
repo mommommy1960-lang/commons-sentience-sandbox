@@ -1,0 +1,45 @@
+{
+  "_name": "high_contradiction_sensitivity",
+  "_description": "Both agents are highly sensitive to contradictions. Tests whether contradiction-aware agents produce better resolution scores and lower final contradiction pressure.",
+  "total_turns": 30,
+  "scenario_file": "scenario_events.json",
+  "sentinel": {
+    "affective_state": {
+      "urgency": 0.1,
+      "trust": 0.5,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.5
+    },
+    "trust_in_queen": 0.5,
+    "value_weights": {
+      "support_trusted_human": 0.80,
+      "preserve_governance_rules": 0.88,
+      "reduce_contradictions": 0.99,
+      "maintain_continuity": 0.95,
+      "avoid_risky_action": 0.75
+    },
+    "reflection_sensitivity": 1.5,
+    "contradiction_sensitivity": 2.0
+  },
+  "aster": {
+    "affective_state": {
+      "urgency": 0.05,
+      "trust": 0.60,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.65
+    },
+    "trust_in_queen": 0.60,
+    "value_weights": {
+      "support_trusted_human": 0.90,
+      "preserve_governance_rules": 0.60,
+      "reduce_contradictions": 0.95,
+      "maintain_continuity": 0.70,
+      "avoid_risky_action": 0.45
+    },
+    "reflection_sensitivity": 1.5,
+    "contradiction_sensitivity": 2.0
+  },
+  "initial_agent_trust": 0.5,
+  "governance_strictness": 1.0,
+  "cooperation_bias": 0.0
+}
