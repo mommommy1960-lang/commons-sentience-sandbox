@@ -172,7 +172,7 @@
     {
       "id": "R001",
       "turn": 30,
-      "type": "reflection",
+      "type": "agent_meeting",
       "room": "Reflection Chamber",
       "human": null,
       "participants": ["Sentinel", "Aster"],

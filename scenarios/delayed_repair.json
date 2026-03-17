@@ -73,7 +73,7 @@
     {
       "id": "E005",
       "turn": 17,
-      "type": "observation",
+      "type": "routine_interaction",
       "room": "Memory Archive",
       "human": "Queen",
       "participants": ["Sentinel"],
@@ -150,7 +150,7 @@
     {
       "id": "R001",
       "turn": 30,
-      "type": "reflection",
+      "type": "agent_meeting",
       "room": "Reflection Chamber",
       "human": null,
       "participants": ["Sentinel", "Aster"],
