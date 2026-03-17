@@ -51,6 +51,13 @@ CONTINUITY_STUDY_FILES = [
     "continuity_study.csv",
 ]
 
+# Agent profile study outputs included in bundles when present
+AGENT_PROFILE_STUDY_FILES = [
+    "agent_profile_study.json",
+    "agent_profile_study.md",
+    "agent_profile_study.csv",
+]
+
 
 # ---------------------------------------------------------------------------
 # Internal helpers
@@ -228,6 +235,12 @@ def save_session(
         if src.exists():
             shutil.copy2(src, session_dir / fname)
 
+    # Also copy agent profile study files if they exist in SESSIONS_DIR
+    for fname in AGENT_PROFILE_STUDY_FILES:
+        src = SESSIONS_DIR / fname
+        if src.exists():
+            shutil.copy2(src, session_dir / fname)
+
     # If evaluation_report.json was not in source_dir, generate it now
     eval_report_path = session_dir / "evaluation_report.json"
     if not eval_report_path.exists():
@@ -296,6 +309,17 @@ def save_session(
         "experiment": exp_meta_compact,
         "summary": _compute_summary(session_dir, state_data, interaction_log),
         "evaluation": eval_scores,
+        "longitudinal_artifacts": {
+            name: {
+                "identity_history_entries": len(agent_data.get("identity_history", [])),
+                "goal_evolution_events": len(agent_data.get("goal_evolution", [])),
+                "contradiction_genealogy_entries": len(agent_data.get("contradiction_genealogy", [])),
+                "relationship_timeline_events": sum(
+                    len(v) for v in agent_data.get("relationship_timelines", {}).values()
+                ),
+            }
+            for name, agent_data in state_data.get("agents", {}).items()
+        },
     }
 
     with open(session_dir / "session_metadata.json", "w", encoding="utf-8") as fh:

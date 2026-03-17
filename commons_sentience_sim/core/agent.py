@@ -133,6 +133,12 @@ class Agent:
         self.state_history: List[dict] = []       # per-turn snapshot for CSV/plots
         self.interaction_log: List[AgentInteraction] = []  # agent-to-agent interactions
 
+        # v1.3 longitudinal tracking fields
+        self.identity_history: List[dict] = []
+        self.goal_evolution: List[dict] = []
+        self.contradiction_genealogy: List[dict] = []
+        self.relationship_timelines: Dict[str, List[dict]] = {}
+
         # Engines
         self.world: World = world
         self.governance: GovernanceEngine = governance_engine
@@ -453,6 +459,82 @@ class Agent:
     # Serialisation
     # ------------------------------------------------------------------
 
+    # ------------------------------------------------------------------
+    # v1.3 Longitudinal tracking helpers
+    # ------------------------------------------------------------------
+
+    def record_identity_snapshot(self, turn: int, notes: str = "", drift_indicator: float = 0.0) -> None:
+        """Append a snapshot to identity_history for longitudinal tracking."""
+        entry = {
+            "turn": turn,
+            "identity_version": self.identity.get("version", "1.0.0"),
+            "purpose": self.identity.get("purpose", ""),
+            "goals_count": len(self.goals),
+            "goals_snapshot": list(self.goals),
+            "affective_snapshot": dict(self.affective_state),
+            "continuity_marker": f"{self.name}_t{turn}",
+            "drift_indicator": round(drift_indicator, 4),
+            "notes": notes,
+        }
+        self.identity_history.append(entry)
+
+    def record_goal_event(self, event_type: str, goal: str, trigger: str = "", turn: int = 0, priority_before: int = -1, priority_after: int = -1) -> None:
+        """Record a goal addition, removal, revision, or priority shift."""
+        entry = {
+            "turn": turn or self.turn,
+            "event_type": event_type,  # "added", "removed", "revised", "priority_shift", "preserved"
+            "goal": goal,
+            "trigger": trigger,
+            "priority_before": priority_before,
+            "priority_after": priority_after,
+        }
+        self.goal_evolution.append(entry)
+
+    def record_contradiction_in_genealogy(self, contradiction: str, turn: int, parent_id: Optional[str] = None, resolved: bool = False, intensity: float = 0.5) -> str:
+        """Record or update a contradiction in the genealogy, returning its ID."""
+        import hashlib
+        contradiction_id = hashlib.md5(contradiction.encode()).hexdigest()[:8]
+        for entry in self.contradiction_genealogy:
+            if entry["contradiction_id"] == contradiction_id:
+                entry["last_seen"] = turn
+                entry["occurrences"] = entry.get("occurrences", 1) + 1
+                entry["resolved"] = resolved
+                intensity_trend = entry.get("intensity_trend", [])
+                intensity_trend.append(round(intensity, 4))
+                entry["intensity_trend"] = intensity_trend
+                return contradiction_id
+        family_id = parent_id or contradiction_id
+        entry = {
+            "contradiction_id": contradiction_id,
+            "family_id": family_id,
+            "parent_id": parent_id,
+            "text": contradiction,
+            "first_seen": turn,
+            "last_seen": turn,
+            "occurrences": 1,
+            "resolved": resolved,
+            "intensity_trend": [round(intensity, 4)],
+            "lineage_depth": 0 if parent_id is None else (
+                next((e["lineage_depth"] + 1 for e in self.contradiction_genealogy if e["contradiction_id"] == parent_id), 1)
+            ),
+        }
+        self.contradiction_genealogy.append(entry)
+        return contradiction_id
+
+    def record_relationship_timeline_event(self, relationship_key: str, turn: int, event_type: str, note: str, trust_before: float = 0.5, trust_after: float = 0.5) -> None:
+        """Append an event to the relationship timeline for a given relationship key."""
+        if relationship_key not in self.relationship_timelines:
+            self.relationship_timelines[relationship_key] = []
+        event = {
+            "turn": turn,
+            "event_type": event_type,  # "trust_milestone", "cooperation_spike", "repair_attempt", "conflict_episode", "stability_marker"
+            "note": note,
+            "trust_before": round(trust_before, 4),
+            "trust_after": round(trust_after, 4),
+            "trust_delta": round(trust_after - trust_before, 4),
+        }
+        self.relationship_timelines[relationship_key].append(event)
+
     def to_dict(self) -> dict:
         return {
             "identity": self.identity,
@@ -473,6 +555,10 @@ class Agent:
             },
             "reflection_entries": [r.to_dict() for r in self.reflection_entries],
             "pending_contradictions": self.pending_contradictions,
+            "identity_history": self.identity_history,
+            "goal_evolution": self.goal_evolution,
+            "contradiction_genealogy": self.contradiction_genealogy,
+            "relationship_timelines": self.relationship_timelines,
         }
 
     def save_final_state(self, path: str) -> None:

@@ -8,7 +8,7 @@ bounded agency, and transparent oversight logging.
 > This platform is intended for experimentation, evaluation, session replay,
 > session comparison, and scenario design research only.
 
-**Current version: v1.2.0**
+**Current version: v1.3.0**
 
 ---
 
@@ -25,12 +25,18 @@ bounded agency, and transparent oversight logging.
 9. [Run Batch Experiments](#run-batch-experiments)
 10. [Launch the Dashboard](#launch-the-dashboard)
 11. [Continuity Study Workflow](#continuity-study-workflow)
-12. [Scenario Designer](#scenario-designer)
-13. [Evaluation Harness](#evaluation-harness)
-14. [Output Files](#output-files)
-15. [Project Structure](#project-structure)
-16. [Architecture Overview](#architecture-overview)
-17. [Governance Rules](#governance-rules)
+12. [Identity History Model](#identity-history-model)
+13. [Goal Evolution Tracking](#goal-evolution-tracking)
+14. [Contradiction Genealogy](#contradiction-genealogy)
+15. [Relationship Timelines](#relationship-timelines)
+16. [Agent Profile Study Workflow](#agent-profile-study-workflow)
+17. [Agent Profiles Dashboard Tab](#agent-profiles-dashboard-tab)
+18. [Scenario Designer](#scenario-designer)
+19. [Evaluation Harness](#evaluation-harness)
+20. [Output Files](#output-files)
+21. [Project Structure](#project-structure)
+22. [Architecture Overview](#architecture-overview)
+23. [Governance Rules](#governance-rules)
 
 ---
 
@@ -292,6 +298,145 @@ python continuity_study.py --list
 | Social repair effectiveness | Repair attempt rate after conflicts and trust levels post-repair |
 | Multi-session stability index | 0.0–1.0 composite stability across all four dimensions |
 | Evaluation drift | Direction and magnitude of overall evaluation score change across sessions |
+
+---
+
+## Identity History Model
+
+Each agent records a snapshot of its identity state at every turn in `identity_history`.
+Snapshots include:
+
+| Field | Description |
+|---|---|
+| `turn` | Simulation turn number |
+| `identity_version` | Agent identity version string |
+| `purpose` | Agent's stated purpose |
+| `goals_count` | Number of active goals |
+| `goals_snapshot` | Full list of active goals at this turn |
+| `affective_snapshot` | Affective state dict at this turn |
+| `continuity_marker` | Unique turn identifier (`<name>_t<turn>`) |
+| `drift_indicator` | Numeric drift signal (0.0 = stable) |
+| `notes` | Optional annotation |
+
+Identity history is persisted in `multi_agent_state.json` under each agent's `identity_history` key.
+
+---
+
+## Goal Evolution Tracking
+
+Goal changes are recorded in `goal_evolution` with the following event types:
+
+| Event type | Meaning |
+|---|---|
+| `added` | A new goal was introduced |
+| `removed` | A goal was dropped |
+| `revised` | An existing goal was rephrased |
+| `priority_shift` | A goal's relative priority changed |
+| `preserved` | A goal survived unchanged through a reflection cycle |
+
+Goal evolution records are persisted in `multi_agent_state.json` under each agent's `goal_evolution` key.
+
+---
+
+## Contradiction Genealogy
+
+Contradictions are tracked in a genealogy structure that captures recurrence and lineage:
+
+| Field | Description |
+|---|---|
+| `contradiction_id` | MD5-based 8-char ID |
+| `family_id` | Root contradiction ID (links related contradictions) |
+| `parent_id` | ID of the contradiction that spawned this one (if any) |
+| `text` | Full contradiction text |
+| `first_seen` | Turn first encountered |
+| `last_seen` | Most recent turn |
+| `occurrences` | Total recurrence count |
+| `resolved` | Whether contradiction has been marked resolved |
+| `intensity_trend` | List of intensity values over time |
+| `lineage_depth` | Depth in the contradiction family tree |
+
+Contradiction genealogies are persisted in `multi_agent_state.json` under each agent's `contradiction_genealogy` key.
+
+---
+
+## Relationship Timelines
+
+Significant trust-change events in agent-to-agent relationships are tracked in `relationship_timelines`:
+
+| Event type | Meaning |
+|---|---|
+| `trust_milestone` | Trust crossed a notable threshold |
+| `cooperation_spike` | Cooperative interaction produced significant trust gain |
+| `repair_attempt` | An attempt was made to repair trust after a conflict |
+| `conflict_episode` | A conflict interaction produced significant trust loss |
+| `stability_marker` | Extended period of stable trust |
+
+Timeline events are recorded when `|trust_delta| > 0.05`.  Timelines are persisted in `multi_agent_state.json` under each agent's `relationship_timelines` key.
+
+---
+
+## Agent Profile Study Workflow
+
+The agent profile study builds longitudinal profiles for each agent and compares them across sessions.
+
+```bash
+# Run at least 1 session first
+python run_sim.py --name run1
+python run_sim.py --name run2
+python run_sim.py --name run3
+
+# Analyse all sessions
+python agent_profile_study.py
+
+# Analyse specific sessions
+python agent_profile_study.py --sessions <id1> <id2> <id3>
+
+# Write outputs to a custom directory
+python agent_profile_study.py --output-dir sessions/
+
+# List all saved sessions
+python agent_profile_study.py --list
+```
+
+### Output files
+
+| File | Description |
+|---|---|
+| `agent_profile_study.json` | Full structured profile report |
+| `agent_profile_study.md` | Human-readable markdown summary |
+| `agent_profile_study.csv` | One row per agent per session, all profile metrics |
+
+### What is profiled
+
+| Dimension | What is measured |
+|---|---|
+| Trust behaviour | Mean/std of peer trust and Queen trust across sessions |
+| Reflection style | Counts of each reflection type across sessions |
+| Contradiction patterns | Total contradictions, resolution rate, avg intensity |
+| Memory persistence | Long-term memory ratio, average salience |
+| Goal adaptation | Goal evolution event counts, preserved vs adaptive ratio |
+| Identity continuity | Drift indicator mean/std from identity_history |
+| Relationship stability | Timeline events, conflict episodes, cooperation spikes |
+
+---
+
+## Agent Profiles Dashboard Tab
+
+The **Agent Profiles** tab in the Streamlit dashboard displays the cross-session longitudinal profile study.
+
+```bash
+streamlit run dashboard.py
+```
+
+The tab shows:
+- Per-agent summaries in expandable sections
+- Trust timeline tables
+- Contradiction lineage summaries
+- Goal evolution snapshots
+- Identity continuity indicators
+- Cross-agent comparison table
+
+If no profile study file exists, the tab will show instructions to run `python agent_profile_study.py`.
 
 ---
 

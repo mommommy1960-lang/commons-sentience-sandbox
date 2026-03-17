@@ -307,6 +307,7 @@ if not state_data:
     tab_exp,
     tab_scenario,
     tab_continuity,
+    tab_profiles,
 ) = st.tabs(
     [
         "Overview",
@@ -321,6 +322,7 @@ if not state_data:
         "Experiments",
         "Scenario Designer",
         "Continuity Study",
+        "Agent Profiles",
     ]
 )
 
@@ -1825,9 +1827,165 @@ with tab_continuity:
             "Include specific sessions: `python continuity_study.py --sessions <id1> <id2>`"
         )
 
-# ---------------------------------------------------------------------------
-# Auto-refresh (must be last)
-# ---------------------------------------------------------------------------
+# ===========================================================================
+# TAB N — Agent Profiles
+# ===========================================================================
+
+with tab_profiles:
+    st.header("Agent Profiles — Cross-Session Longitudinal Study")
+    st.caption(
+        "Longitudinal behaviour profiles for Sentinel and Aster across all saved sessions. "
+        "These are continuity-governed simulated agents."
+    )
+
+    # Try to load the profile study JSON from sessions/ or output/
+    profile_study_data: dict = {}
+    _profile_paths = [
+        SESSIONS_DIR / "agent_profile_study.json",
+        Path(__file__).parent / "commons_sentience_sim" / "output" / "agent_profile_study.json",
+    ]
+    for _p in _profile_paths:
+        if _p.exists():
+            try:
+                with open(_p, encoding="utf-8") as _fh:
+                    profile_study_data = json.load(_fh)
+                break
+            except (OSError, json.JSONDecodeError):
+                pass
+
+    if not profile_study_data:
+        st.info(
+            "No agent profile study found. Run the following command then refresh this page:\n\n"
+            "```\npython agent_profile_study.py\n```"
+        )
+    elif profile_study_data.get("error"):
+        st.warning(f"Profile study error: {profile_study_data['error']}")
+        st.info("Run `python agent_profile_study.py` to generate a profile study.")
+    else:
+        st.markdown(
+            f"**Sessions analysed:** {profile_study_data.get('sessions_loaded', 0)} · "
+            f"**Generated:** {profile_study_data.get('generated_at', '')[:19]}"
+        )
+
+        profiles = profile_study_data.get("agent_profiles", {})
+        comparison = profile_study_data.get("comparison", {})
+
+        # ── Per-agent summaries ────────────────────────────────────────────
+        for agent_name, profile in profiles.items():
+            with st.expander(f"{agent_name} — Profile Summary", expanded=True):
+                n = profile.get("sessions_included", 0)
+                st.markdown(f"**Sessions included:** {n}")
+
+                col1, col2, col3 = st.columns(3)
+
+                tb = profile.get("trust_behaviour", {})
+                with col1:
+                    st.metric("Peer Trust (mean)", f"{tb.get('peer_trust_mean', 0):.3f}")
+                    st.metric("Peer Trust (std)", f"{tb.get('peer_trust_std', 0):.3f}")
+                with col2:
+                    st.metric("Queen Trust (mean)", f"{tb.get('queen_trust_mean', 0):.3f}")
+                with col3:
+                    ic = profile.get("identity_continuity", {})
+                    st.metric("Identity Drift (mean)", f"{ic.get('drift_mean_across_sessions', 0):.4f}")
+
+                st.markdown("**Reflection Style**")
+                rs = profile.get("reflection_style", {})
+                st.markdown(f"- Reflections per session (mean): `{rs.get('total_reflections_mean', 0):.2f}`")
+                rtype_totals = rs.get("reflection_type_totals", {})
+                if rtype_totals:
+                    rtype_rows = [{"Type": k, "Total": v} for k, v in rtype_totals.items()]
+                    st.dataframe(rtype_rows, use_container_width=False)
+
+                st.markdown("**Contradiction Patterns**")
+                cp = profile.get("contradiction_patterns", {})
+                st.dataframe([{
+                    "Metric": "Contradictions per session",
+                    "Value": f"{cp.get('contradictions_per_session_mean', 0):.2f}",
+                }, {
+                    "Metric": "Resolution rate (mean)",
+                    "Value": f"{cp.get('resolution_rate_mean', 0):.4f}",
+                }, {
+                    "Metric": "Avg intensity (mean)",
+                    "Value": f"{cp.get('avg_intensity_mean', 0):.4f}",
+                }], use_container_width=False)
+
+                st.markdown("**Goal Evolution**")
+                ga = profile.get("goal_adaptation", {})
+                pva = ga.get("preserved_vs_adaptive", {})
+                st.dataframe([{
+                    "Metric": "Goal events per session",
+                    "Value": f"{ga.get('goal_events_mean', 0):.2f}",
+                }, {
+                    "Metric": "Preserved goals (total)",
+                    "Value": pva.get("preserved", 0),
+                }, {
+                    "Metric": "Adaptive goals (total)",
+                    "Value": pva.get("adaptive", 0),
+                }], use_container_width=False)
+
+                st.markdown("**Relationship Stability**")
+                rls = profile.get("relationship_stability", {})
+                st.dataframe([{
+                    "Metric": "Timeline events per session",
+                    "Value": f"{rls.get('timeline_events_mean', 0):.2f}",
+                }, {
+                    "Metric": "Conflict episodes (total)",
+                    "Value": rls.get("conflict_episodes_total", 0),
+                }, {
+                    "Metric": "Cooperation spikes (total)",
+                    "Value": rls.get("cooperation_spikes_total", 0),
+                }], use_container_width=False)
+
+        # ── Cross-agent comparison ─────────────────────────────────────────
+        if comparison:
+            st.divider()
+            st.subheader("Cross-Agent Comparison")
+            comp_rows = []
+            for dim, vals in comparison.items():
+                if isinstance(vals, dict):
+                    comp_rows.append({
+                        "Dimension": dim.replace("_", " ").title(),
+                        "Sentinel": f"{vals.get('Sentinel', 0):.4f}",
+                        "Aster": f"{vals.get('Aster', 0):.4f}",
+                        "Delta (Aster − Sentinel)": f"{vals.get('delta', 0):+.4f}",
+                    })
+            if comp_rows:
+                st.dataframe(comp_rows, use_container_width=True)
+
+        # ── Trust timeline tables ─────────────────────────────────────────
+        per_session = profile_study_data.get("per_session_detail", {})
+        for agent_name, session_list in per_session.items():
+            if session_list:
+                with st.expander(f"{agent_name} — Session-by-Session Trust Timeline"):
+                    trust_rows = [
+                        {
+                            "Session": s.get("session_id", "")[-18:],
+                            "Peer Trust": f"{s.get('peer_trust_final', 0):.4f}",
+                            "Queen Trust": f"{s.get('queen_trust_mean', 0):.4f}",
+                            "Reflections": s.get("total_reflections", 0),
+                            "Contradictions": s.get("total_contradictions", 0),
+                            "Resolution Rate": f"{s.get('resolution_rate', 0):.3f}",
+                        }
+                        for s in session_list
+                    ]
+                    st.dataframe(trust_rows, use_container_width=True)
+
+        # ── File links ────────────────────────────────────────────────────
+        st.divider()
+        _profile_json = SESSIONS_DIR / "agent_profile_study.json"
+        _profile_md = SESSIONS_DIR / "agent_profile_study.md"
+        _profile_csv = SESSIONS_DIR / "agent_profile_study.csv"
+        st.caption(
+            f"JSON: `{_profile_json}` · "
+            f"Markdown: `{_profile_md}` · "
+            f"CSV: `{_profile_csv}`"
+        )
+        st.caption(
+            "Regenerate: `python agent_profile_study.py` · "
+            "Include specific sessions: `python agent_profile_study.py --sessions <id1> <id2>`"
+        )
+
+
 
 if auto_refresh:
     st.sidebar.success("Auto-refresh active \u2014 reloading in 10 s\u2026")

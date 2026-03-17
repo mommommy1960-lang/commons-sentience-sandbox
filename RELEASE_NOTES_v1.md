@@ -34,7 +34,56 @@ Commons Sentience Sandbox is a **local research platform for studying continuity
 
 ## Release History
 
-### v1.0.0 (current)
+### v1.3.0 (current)
+
+#### Identity History Model
+- `Agent.identity_history` — per-turn identity snapshots stored in `multi_agent_state.json`
+- `Agent.record_identity_snapshot(turn)` — called after every state snapshot in the simulation loop
+- Captures: identity version, purpose, goal count, goals list, affective state, drift indicator, continuity marker
+
+#### Goal Evolution Tracking
+- `Agent.goal_evolution` — event log of goal additions, removals, revisions, and priority shifts
+- `Agent.record_goal_event(event_type, goal, trigger, turn)` — records a single goal event
+- Event types: `added`, `removed`, `revised`, `priority_shift`, `preserved`
+
+#### Contradiction Genealogy
+- `Agent.contradiction_genealogy` — tracks contradiction families and lineage across turns
+- `Agent.record_contradiction_in_genealogy(text, turn, parent_id, resolved, intensity)` — upserts a contradiction entry
+- Captures: ID, family ID, parent ID, first/last seen, occurrences, intensity trend, lineage depth
+- Called automatically when `ledger_contradiction` events are processed
+
+#### Relationship Timelines
+- `Agent.relationship_timelines` — per-relationship timeline of significant trust-change events
+- `Agent.record_relationship_timeline_event(key, turn, event_type, note, trust_before, trust_after)` — appends a timeline event
+- Events recorded when `|trust_delta| > 0.05` after agent-to-agent interactions
+- Event types: `trust_milestone`, `cooperation_spike`, `repair_attempt`, `conflict_episode`, `stability_marker`
+
+#### Agent Profile Study
+- New script: `agent_profile_study.py` — cross-session longitudinal profile study
+- Builds per-agent profiles across all saved sessions
+- Produces `agent_profile_study.json`, `agent_profile_study.md`, `agent_profile_study.csv`
+- Session manager (`session_manager.py`) copies profile study files into session bundles
+- Session metadata now includes `longitudinal_artifacts` block with entry counts per agent
+
+#### Evaluation — Longitudinal Depth Category (N)
+- New evaluation category: `longitudinal_depth` — scores 0–100
+- Sub-metrics: `identity_continuity_strength`, `goal_adaptation_quality`, `contradiction_lineage_complexity`, `relationship_stability_depth`, `cross_session_profile_consistency` (placeholder)
+- Overall score is now the mean of 14 categories
+
+#### Dashboard — Agent Profiles Tab
+- New "Agent Profiles" tab (13th tab) in the Streamlit dashboard
+- Shows per-agent profile summaries, trust timelines, contradiction patterns, goal evolution, identity continuity
+- Cross-agent comparison table
+- Shows instructions to run `agent_profile_study.py` when no data file is present
+
+#### Version bump
+- `simulation_version` in `multi_agent_state.json` updated to `1.3.0`
+- README updated to v1.3.0
+
+---
+
+### v1.0.0
+
 - Version consolidation: all components report `1.0.0`
 - Consistent output schema: `created_at` added to `multi_agent_state.json`; `session_summary.json` upgraded to include `session_id`, `version`, `scenario`, `agents`, `metrics`, and `evaluation` fields
 - New file: `healthcheck.py` — verifies setup, dependencies, scenarios, and outputs

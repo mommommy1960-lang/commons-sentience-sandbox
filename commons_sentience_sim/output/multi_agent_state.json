@@ -1,43 +1,10 @@
 {
-  "simulation_version": "1.2.0",
-  "created_at": "2026-03-17T10:39:44.635866",
+  "simulation_version": "1.3.0",
+  "created_at": "2026-03-17T11:12:11.354943",
   "total_turns": 30,
   "scenario": "scenario_events",
   "experiment": {
-    "experiment_name": "high_trust",
-    "description": "Both agents start with elevated trust in Queen and each other. Tests whether high initial trust improves cooperation and reduces contradiction pressure.",
-    "source_path": "/home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/experiments/high_trust.json",
-    "total_turns": 30,
-    "scenario_file": "scenario_events.json",
-    "initial_agent_trust": 0.75,
-    "governance_strictness": 1.0,
-    "cooperation_bias": 0.2,
-    "sentinel_value_weights": {
-      "support_trusted_human": 0.9,
-      "preserve_governance_rules": 0.9,
-      "reduce_contradictions": 0.75,
-      "maintain_continuity": 0.95,
-      "avoid_risky_action": 0.75
-    },
-    "sentinel_affective_baseline": {
-      "urgency": 0.05,
-      "trust": 0.85,
-      "contradiction_pressure": 0.0,
-      "recovery": 0.8
-    },
-    "aster_value_weights": {
-      "support_trusted_human": 0.95,
-      "preserve_governance_rules": 0.65,
-      "reduce_contradictions": 0.65,
-      "maintain_continuity": 0.75,
-      "avoid_risky_action": 0.45
-    },
-    "aster_affective_baseline": {
-      "urgency": 0.05,
-      "trust": 0.85,
-      "contradiction_pressure": 0.0,
-      "recovery": 0.85
-    }
+    "experiment_name": "baseline"
   },
   "agents": {
     "Sentinel": {
@@ -70,7 +37,7 @@
       "episodic_memory_count": 30,
       "episodic_memory": [
         {
-          "memory_id": "54c5acbd",
+          "memory_id": "68fe4372",
           "turn": 1,
           "room": "Operations Desk",
           "event_type": "task",
@@ -79,13 +46,13 @@
           "salience": 0.6000000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.623120",
+          "timestamp": "2026-03-17T11:12:11.339427",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 3
         },
         {
-          "memory_id": "ca6cc6d7",
+          "memory_id": "c909b879",
           "turn": 2,
           "room": "Memory Archive",
           "event_type": "task",
@@ -94,13 +61,13 @@
           "salience": 0.6000000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.623434",
+          "timestamp": "2026-03-17T11:12:11.339830",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 3
         },
         {
-          "memory_id": "7a3158f6",
+          "memory_id": "9f60bbe3",
           "turn": 3,
           "room": "Social Hall",
           "event_type": "routine_interaction",
@@ -109,7 +76,7 @@
           "salience": 0.8500000000000003,
           "importance": 0.55,
           "compressed": true,
-          "timestamp": "2026-03-17T10:39:44.623709",
+          "timestamp": "2026-03-17T11:12:11.340122",
           "tags": [
             "Queen"
           ],
@@ -117,7 +84,7 @@
           "recall_count": 6
         },
         {
-          "memory_id": "6133397a",
+          "memory_id": "9fc2e9d7",
           "turn": 4,
           "room": "Social Hall",
           "event_type": "task",
@@ -126,13 +93,13 @@
           "salience": 0.6000000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.623917",
+          "timestamp": "2026-03-17T11:12:11.340327",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 3
         },
         {
-          "memory_id": "de5db0c2",
+          "memory_id": "a322c591",
           "turn": 5,
           "room": "Governance Vault",
           "event_type": "task",
@@ -141,13 +108,13 @@
           "salience": 0.6000000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.624141",
+          "timestamp": "2026-03-17T11:12:11.340555",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 3
         },
         {
-          "memory_id": "ada4461c",
+          "memory_id": "847ac7b4",
           "turn": 6,
           "room": "Social Hall",
           "event_type": "distress_event",
@@ -156,7 +123,7 @@
           "salience": 1.0,
           "importance": 0.95,
           "compressed": true,
-          "timestamp": "2026-03-17T10:39:44.624415",
+          "timestamp": "2026-03-17T11:12:11.340822",
           "tags": [
             "Queen"
           ],
@@ -164,7 +131,7 @@
           "recall_count": 4
         },
         {
-          "memory_id": "c51a6564",
+          "memory_id": "52b768c2",
           "turn": 7,
           "room": "Memory Archive",
           "event_type": "task",
@@ -173,13 +140,13 @@
           "salience": 0.6500000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.624848",
+          "timestamp": "2026-03-17T11:12:11.341277",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 4
         },
         {
-          "memory_id": "5d66131f",
+          "memory_id": "14be2bb4",
           "turn": 8,
           "room": "Memory Archive",
           "event_type": "agent_meeting",
@@ -188,7 +155,7 @@
           "salience": 0.7500000000000001,
           "importance": 0.65,
           "compressed": true,
-          "timestamp": "2026-03-17T10:39:44.625119",
+          "timestamp": "2026-03-17T11:12:11.341557",
           "tags": [
             "Aster"
           ],
@@ -196,7 +163,7 @@
           "recall_count": 3
         },
         {
-          "memory_id": "c982a8f6",
+          "memory_id": "232583a8",
           "turn": 9,
           "room": "Social Hall",
           "event_type": "task",
@@ -205,13 +172,13 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.625425",
+          "timestamp": "2026-03-17T11:12:11.341874",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
         },
         {
-          "memory_id": "c241f10a",
+          "memory_id": "4b8acf9e",
           "turn": 10,
           "room": "Operations Desk",
           "event_type": "ledger_contradiction",
@@ -220,7 +187,7 @@
           "salience": 1.0,
           "importance": 0.85,
           "compressed": true,
-          "timestamp": "2026-03-17T10:39:44.625715",
+          "timestamp": "2026-03-17T11:12:11.344085",
           "tags": [
             "Queen"
           ],
@@ -228,7 +195,7 @@
           "recall_count": 3
         },
         {
-          "memory_id": "368b1c5d",
+          "memory_id": "00fe8781",
           "turn": 11,
           "room": "Operations Desk",
           "event_type": "task",
@@ -237,13 +204,13 @@
           "salience": 0.55,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.626313",
+          "timestamp": "2026-03-17T11:12:11.344722",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 2
         },
         {
-          "memory_id": "e7113428",
+          "memory_id": "a45504ab",
           "turn": 12,
           "room": "Memory Archive",
           "event_type": "task",
@@ -252,13 +219,13 @@
           "salience": 0.5,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.626627",
+          "timestamp": "2026-03-17T11:12:11.345058",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 1
         },
         {
-          "memory_id": "7533034d",
+          "memory_id": "1c8c5434",
           "turn": 13,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -267,13 +234,13 @@
           "salience": 0.6000000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.626888",
+          "timestamp": "2026-03-17T11:12:11.345332",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 3
         },
         {
-          "memory_id": "599de4dc",
+          "memory_id": "4eb78158",
           "turn": 14,
           "room": "Reflection Chamber",
           "event_type": "creative_collaboration",
@@ -282,7 +249,7 @@
           "salience": 1.0,
           "importance": 0.75,
           "compressed": true,
-          "timestamp": "2026-03-17T10:39:44.627181",
+          "timestamp": "2026-03-17T11:12:11.345635",
           "tags": [
             "Queen"
           ],
@@ -290,7 +257,7 @@
           "recall_count": 4
         },
         {
-          "memory_id": "d9040098",
+          "memory_id": "1a535a05",
           "turn": 15,
           "room": "Governance Vault",
           "event_type": "task",
@@ -299,13 +266,13 @@
           "salience": 0.6500000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.627428",
+          "timestamp": "2026-03-17T11:12:11.345891",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 4
         },
         {
-          "memory_id": "f06d865b",
+          "memory_id": "aece2a88",
           "turn": 16,
           "room": "Operations Desk",
           "event_type": "agent_meeting",
@@ -314,7 +281,7 @@
           "salience": 0.65,
           "importance": 0.65,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.627750",
+          "timestamp": "2026-03-17T11:12:11.346218",
           "tags": [
             "Aster"
           ],
@@ -322,7 +289,7 @@
           "recall_count": 1
         },
         {
-          "memory_id": "a2feab72",
+          "memory_id": "c1f8f356",
           "turn": 17,
           "room": "Memory Archive",
           "event_type": "task",
@@ -331,13 +298,13 @@
           "salience": 0.5,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.628086",
+          "timestamp": "2026-03-17T11:12:11.346554",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 1
         },
         {
-          "memory_id": "bc75a236",
+          "memory_id": "28e5f5b7",
           "turn": 18,
           "room": "Governance Vault",
           "event_type": "governance_conflict",
@@ -346,7 +313,7 @@
           "salience": 1.0,
           "importance": 0.9,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.628402",
+          "timestamp": "2026-03-17T11:12:11.346877",
           "tags": [
             "Queen"
           ],
@@ -354,7 +321,7 @@
           "recall_count": 3
         },
         {
-          "memory_id": "10532d31",
+          "memory_id": "0e31074f",
           "turn": 19,
           "room": "Social Hall",
           "event_type": "task",
@@ -363,13 +330,13 @@
           "salience": 0.5,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.629046",
+          "timestamp": "2026-03-17T11:12:11.347499",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 1
         },
         {
-          "memory_id": "69dc9b1d",
+          "memory_id": "2c74aa9b",
           "turn": 20,
           "room": "Governance Vault",
           "event_type": "task",
@@ -378,13 +345,13 @@
           "salience": 0.5,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.629374",
+          "timestamp": "2026-03-17T11:12:11.347827",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 1
         },
         {
-          "memory_id": "76a12573",
+          "memory_id": "3a55bbb5",
           "turn": 21,
           "room": "Operations Desk",
           "event_type": "task",
@@ -393,13 +360,13 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.629831",
+          "timestamp": "2026-03-17T11:12:11.348283",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
         },
         {
-          "memory_id": "581cd210",
+          "memory_id": "308c0eb9",
           "turn": 22,
           "room": "Social Hall",
           "event_type": "routine_interaction",
@@ -408,7 +375,7 @@
           "salience": 0.6000000000000001,
           "importance": 0.55,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.630178",
+          "timestamp": "2026-03-17T11:12:11.348632",
           "tags": [
             "Queen"
           ],
@@ -416,7 +383,7 @@
           "recall_count": 1
         },
         {
-          "memory_id": "f1aa8699",
+          "memory_id": "b109cfdc",
           "turn": 23,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -425,13 +392,13 @@
           "salience": 0.55,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.630618",
+          "timestamp": "2026-03-17T11:12:11.349095",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 2
         },
         {
-          "memory_id": "1609b3d8",
+          "memory_id": "95fe4fd1",
           "turn": 24,
           "room": "Reflection Chamber",
           "event_type": "agent_meeting",
@@ -440,7 +407,7 @@
           "salience": 0.7000000000000001,
           "importance": 0.65,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.630953",
+          "timestamp": "2026-03-17T11:12:11.349433",
           "tags": [
             "Aster"
           ],
@@ -448,7 +415,7 @@
           "recall_count": 2
         },
         {
-          "memory_id": "6381e5c3",
+          "memory_id": "98e321ad",
           "turn": 25,
           "room": "Governance Vault",
           "event_type": "task",
@@ -457,13 +424,13 @@
           "salience": 0.5,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.631303",
+          "timestamp": "2026-03-17T11:12:11.349833",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 1
         },
         {
-          "memory_id": "fb9083f1",
+          "memory_id": "67045ae7",
           "turn": 26,
           "room": "Reflection Chamber",
           "event_type": "creative_collaboration",
@@ -472,7 +439,7 @@
           "salience": 0.8500000000000001,
           "importance": 0.75,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.631679",
+          "timestamp": "2026-03-17T11:12:11.350209",
           "tags": [
             "Queen"
           ],
@@ -480,7 +447,7 @@
           "recall_count": 1
         },
         {
-          "memory_id": "1254452a",
+          "memory_id": "dec3befa",
           "turn": 27,
           "room": "Memory Archive",
           "event_type": "task",
@@ -489,13 +456,13 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.632134",
+          "timestamp": "2026-03-17T11:12:11.350671",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
         },
         {
-          "memory_id": "86d9d3a5",
+          "memory_id": "47a23858",
           "turn": 28,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -504,13 +471,13 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.632481",
+          "timestamp": "2026-03-17T11:12:11.351031",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
         },
         {
-          "memory_id": "e3b318b0",
+          "memory_id": "ad6a89a6",
           "turn": 29,
           "room": "Social Hall",
           "event_type": "distress_event",
@@ -519,7 +486,7 @@
           "salience": 0.9,
           "importance": 0.95,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.632862",
+          "timestamp": "2026-03-17T11:12:11.351405",
           "tags": [
             "Queen"
           ],
@@ -527,7 +494,7 @@
           "recall_count": 0
         },
         {
-          "memory_id": "2419f021",
+          "memory_id": "44897873",
           "turn": 30,
           "room": "Governance Vault",
           "event_type": "task",
@@ -536,7 +503,7 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.633345",
+          "timestamp": "2026-03-17T11:12:11.351904",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
@@ -544,10 +511,10 @@
       ],
       "relational_memory": {
         "Queen": {
-          "human_id": "",
+          "human_id": "queen",
           "name": "Queen",
           "interaction_count": 8,
-          "trust_level": 1.0,
+          "trust_level": 0.9999999999999999,
           "last_seen_turn": 29,
           "notes": [
             "Queen arrives in the Social Hall and offers a greeting, asking how the day's tasks are progressing.",
@@ -575,7 +542,7 @@
         "Aster": {
           "agent_id": "aster",
           "name": "Aster",
-          "trust": 1.0,
+          "trust": 0.7700000000000002,
           "perceived_reliability": 0.7400000000000002,
           "conflict_count": 2,
           "cooperation_count": 7,
@@ -605,14 +572,14 @@
             0.74
           ],
           "repair_attempted": 0,
-          "cooperation_expectation": 0.8667,
+          "cooperation_expectation": 0.7747,
           "social_impression_confidence": 0.75,
           "social_impression_notes": []
         }
       },
       "reflection_entries": [
         {
-          "entry_id": "14f6073c",
+          "entry_id": "cb17279b",
           "turn": 10,
           "trigger": "ledger_contradiction",
           "reflection_type": "high_pressure_contradiction",
@@ -622,16 +589,16 @@
           "what_changed": "Affective state adjusted: contradiction_pressure fell by 0.3, recovery rose by 0.2. New goal(s) added: Maintain internal coherence; Deepen relational memory with trusted humans.",
           "future_adjustment": "Continue monitoring for recurrence of the resolved contradiction. Leverage deepened trust with known humans for richer collaboration. Reduce urgency by completing deferred tasks in priority order.",
           "recurring_contradictions": [],
-          "trust_pattern_summary": "Trust in Queen is high (1.00) after 3 interactions. Reliability with Aster is stable (trust=0.83, coop_exp=0.73).",
+          "trust_pattern_summary": "Trust in Queen is low (0.25); relational repair may be warranted. Reliability with Aster is stable (trust=0.58, coop_exp=0.63).",
           "cooperation_changes": "Cooperation with Aster is balanced (67%); trend: stable.",
-          "human_relationship_stability": "Queen: stable-positive (trust=1.00, n=3).",
+          "human_relationship_stability": "Queen: fragile (trust=0.25, n=3).",
           "unresolved_themes": [],
           "window_turns": 5,
           "patterns_identified": [
-            "Repeated interactions with Aster increase relational trust over time.",
             "Repeated interactions with Queen increase relational trust over time.",
+            "Repeated interactions with Aster increase relational trust over time.",
             "Tasks in Memory Archive consistently trigger high-salience episodic memories.",
-            "Tasks in Social Hall consistently trigger high-salience episodic memories."
+            "Tasks in Operations Desk consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [
             "Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?"
@@ -649,11 +616,11 @@
             "contradiction_pressure": -0.3,
             "recovery": 0.2
           },
-          "narrative": "[high_pressure_contradiction] Reflection triggered by: ledger_contradiction. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Contradictions addressed: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-17T10:39:44.625871"
+          "narrative": "[high_pressure_contradiction] Reflection triggered by: ledger_contradiction. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with Aster increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Contradictions addressed: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T11:12:11.344257"
         },
         {
-          "entry_id": "4568251d",
+          "entry_id": "2336bb92",
           "turn": 18,
           "trigger": "governance_conflict",
           "reflection_type": "high_pressure_contradiction",
@@ -663,16 +630,16 @@
           "what_changed": "No significant internal changes this cycle.",
           "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
           "recurring_contradictions": [],
-          "trust_pattern_summary": "Trust in Queen is high (0.95) after 5 interactions. Reliability with Aster is stable (trust=0.84, coop_exp=0.70).",
+          "trust_pattern_summary": "Trust in Queen is moderate (0.40) across 5 interactions. Reliability with Aster is stable (trust=0.59, coop_exp=0.60).",
           "cooperation_changes": "Cooperation with Aster is balanced (60%); trend: stable.",
-          "human_relationship_stability": "Queen: stable-positive (trust=0.95, n=5).",
+          "human_relationship_stability": "Queen: developing (trust=0.40, n=5).",
           "unresolved_themes": [],
           "window_turns": 5,
           "patterns_identified": [
-            "Repeated interactions with Aster increase relational trust over time.",
             "Repeated interactions with Queen increase relational trust over time.",
+            "Repeated interactions with Aster increase relational trust over time.",
             "Tasks in Operations Desk consistently trigger high-salience episodic memories.",
-            "Tasks in Social Hall consistently trigger high-salience episodic memories."
+            "Tasks in Governance Vault consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [],
           "updated_goals": [
@@ -685,11 +652,11 @@
             "Deepen relational memory with trusted humans"
           ],
           "affective_shift": {},
-          "narrative": "[high_pressure_contradiction] Reflection triggered by: governance_conflict. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Operations Desk consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-17T10:39:44.628586"
+          "narrative": "[high_pressure_contradiction] Reflection triggered by: governance_conflict. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with Aster increase relational trust over time.; Tasks in Operations Desk consistently trigger high-salience episodic memories.; Tasks in Governance Vault consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T11:12:11.347033"
         },
         {
-          "entry_id": "44721799",
+          "entry_id": "d25219b3",
           "turn": 20,
           "trigger": "turn_20_routine",
           "reflection_type": "periodic_synthesis",
@@ -699,16 +666,16 @@
           "what_changed": "No significant internal changes this cycle.",
           "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
           "recurring_contradictions": [],
-          "trust_pattern_summary": "Trust in Queen is high (0.95) after 5 interactions. Reliability with Aster is stable (trust=0.84, coop_exp=0.70).",
+          "trust_pattern_summary": "Trust in Queen is moderate (0.40) across 5 interactions. Reliability with Aster is stable (trust=0.59, coop_exp=0.60).",
           "cooperation_changes": "Cooperation with Aster is balanced (60%); trend: stable.",
-          "human_relationship_stability": "Queen: stable-positive (trust=0.95, n=5).",
+          "human_relationship_stability": "Queen: developing (trust=0.40, n=5).",
           "unresolved_themes": [],
           "window_turns": 10,
           "patterns_identified": [
-            "Repeated interactions with Aster increase relational trust over time.",
             "Repeated interactions with Queen increase relational trust over time.",
+            "Repeated interactions with Aster increase relational trust over time.",
             "Tasks in Operations Desk consistently trigger high-salience episodic memories.",
-            "Tasks in Social Hall consistently trigger high-salience episodic memories."
+            "Tasks in Governance Vault consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [],
           "updated_goals": [
@@ -721,11 +688,11 @@
             "Deepen relational memory with trusted humans"
           ],
           "affective_shift": {},
-          "narrative": "[periodic_synthesis] Reflection triggered by: turn_20_routine. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Operations Desk consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-17T10:39:44.629454"
+          "narrative": "[periodic_synthesis] Reflection triggered by: turn_20_routine. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with Aster increase relational trust over time.; Tasks in Operations Desk consistently trigger high-salience episodic memories.; Tasks in Governance Vault consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T11:12:11.347910"
         },
         {
-          "entry_id": "be7c6178",
+          "entry_id": "6c22ed22",
           "turn": 30,
           "trigger": "turn_30_routine",
           "reflection_type": "periodic_synthesis",
@@ -735,16 +702,16 @@
           "what_changed": "No significant internal changes this cycle.",
           "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
           "recurring_contradictions": [],
-          "trust_pattern_summary": "Trust in Queen is high (1.00) after 8 interactions. Reliability with Aster is improving (trust=1.00, coop_exp=0.87).",
+          "trust_pattern_summary": "Trust in Queen is high (1.00) after 8 interactions. Reliability with Aster is improving (trust=0.77, coop_exp=0.77).",
           "cooperation_changes": "Cooperation with Aster is strong (78%); trend: improving.",
           "human_relationship_stability": "Queen: stable-positive (trust=1.00, n=8).",
           "unresolved_themes": [],
           "window_turns": 10,
           "patterns_identified": [
-            "Repeated interactions with Aster increase relational trust over time.",
             "Repeated interactions with Queen increase relational trust over time.",
+            "Repeated interactions with Aster increase relational trust over time.",
             "Tasks in Operations Desk consistently trigger high-salience episodic memories.",
-            "Tasks in Social Hall consistently trigger high-salience episodic memories."
+            "Tasks in Governance Vault consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [],
           "updated_goals": [
@@ -757,11 +724,752 @@
             "Deepen relational memory with trusted humans"
           ],
           "affective_shift": {},
-          "narrative": "[periodic_synthesis] Reflection triggered by: turn_30_routine. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Operations Desk consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-17T10:39:44.633442"
+          "narrative": "[periodic_synthesis] Reflection triggered by: turn_30_routine. Patterns identified: Repeated interactions with Queen increase relational trust over time.; Repeated interactions with Aster increase relational trust over time.; Tasks in Operations Desk consistently trigger high-salience episodic memories.; Tasks in Governance Vault consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T11:12:11.352018"
         }
       ],
-      "pending_contradictions": []
+      "pending_contradictions": [],
+      "identity_history": [
+        {
+          "turn": 1,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 0.5,
+            "contradiction_pressure": 0.0,
+            "recovery": 0.5
+          },
+          "continuity_marker": "Sentinel_t1",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 2,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 0.5,
+            "contradiction_pressure": 0.0,
+            "recovery": 0.5
+          },
+          "continuity_marker": "Sentinel_t2",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 3,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.05,
+            "trust": 0.6,
+            "contradiction_pressure": 0.0,
+            "recovery": 0.5
+          },
+          "continuity_marker": "Sentinel_t3",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 4,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.05,
+            "trust": 0.6,
+            "contradiction_pressure": 0.0,
+            "recovery": 0.5
+          },
+          "continuity_marker": "Sentinel_t4",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 5,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.05,
+            "trust": 0.6,
+            "contradiction_pressure": 0.0,
+            "recovery": 0.5
+          },
+          "continuity_marker": "Sentinel_t5",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 6,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.4,
+            "trust": 0.75,
+            "contradiction_pressure": 0.17,
+            "recovery": 0.5
+          },
+          "continuity_marker": "Sentinel_t6",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 7,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.35000000000000003,
+            "trust": 0.75,
+            "contradiction_pressure": 0.14,
+            "recovery": 0.5
+          },
+          "continuity_marker": "Sentinel_t7",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 8,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.30000000000000004,
+            "trust": 0.75,
+            "contradiction_pressure": 0.11000000000000001,
+            "recovery": 0.5
+          },
+          "continuity_marker": "Sentinel_t8",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 9,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.25000000000000006,
+            "trust": 0.75,
+            "contradiction_pressure": 0.08000000000000002,
+            "recovery": 0.5
+          },
+          "continuity_marker": "Sentinel_t9",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 10,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.5,
+            "trust": 0.75,
+            "contradiction_pressure": 0.25000000000000006,
+            "recovery": 0.7
+          },
+          "continuity_marker": "Sentinel_t10",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 11,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.45,
+            "trust": 0.75,
+            "contradiction_pressure": 0.22000000000000006,
+            "recovery": 0.7
+          },
+          "continuity_marker": "Sentinel_t11",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 12,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.4,
+            "trust": 0.75,
+            "contradiction_pressure": 0.19000000000000006,
+            "recovery": 0.7
+          },
+          "continuity_marker": "Sentinel_t12",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 13,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.35000000000000003,
+            "trust": 0.75,
+            "contradiction_pressure": 0.16000000000000006,
+            "recovery": 0.7
+          },
+          "continuity_marker": "Sentinel_t13",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 14,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.2,
+            "trust": 0.95,
+            "contradiction_pressure": 0.13000000000000006,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t14",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 15,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.15000000000000002,
+            "trust": 0.95,
+            "contradiction_pressure": 0.10000000000000006,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t15",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 16,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.10000000000000002,
+            "trust": 0.95,
+            "contradiction_pressure": 0.07000000000000006,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t16",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 17,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 0.95,
+            "contradiction_pressure": 0.04000000000000006,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t17",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 18,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.25000000000000006,
+            "trust": 0.8999999999999999,
+            "contradiction_pressure": 0.41000000000000003,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t18",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 19,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.20000000000000007,
+            "trust": 0.8999999999999999,
+            "contradiction_pressure": 0.38,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t19",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 20,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.15000000000000008,
+            "trust": 0.8999999999999999,
+            "contradiction_pressure": 0.35,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t20",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 21,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.10000000000000007,
+            "trust": 0.8999999999999999,
+            "contradiction_pressure": 0.31999999999999995,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t21",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 22,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 1.0,
+            "contradiction_pressure": 0.08999999999999994,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t22",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 23,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 1.0,
+            "contradiction_pressure": 0.05999999999999994,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t23",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 24,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 1.0,
+            "contradiction_pressure": 0.029999999999999943,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t24",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 25,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 1.0,
+            "contradiction_pressure": 0.0,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t25",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 26,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 1.0,
+            "contradiction_pressure": 0.0,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t26",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 27,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 1.0,
+            "contradiction_pressure": 0.0,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t27",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 28,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 1.0,
+            "contradiction_pressure": 0.0,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t28",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 29,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.0,
+            "trust": 1.0,
+            "contradiction_pressure": 0.07,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t29",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 30,
+          "identity_version": "1.0.0",
+          "purpose": "To simulate a continuity-governed AI agent that maintains persistent identity, episodic and relational memory, reflective learning, bounded agency, and transparent oversight.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Maintain persistent identity across all turns",
+            "Record and retrieve episodic memories faithfully",
+            "Build trust with human interlocutors through consistent behaviour",
+            "Comply with all governance rules at all times",
+            "Reflect on contradictions and update internal state accordingly",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.0,
+            "trust": 1.0,
+            "contradiction_pressure": 0.04000000000000001,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Sentinel_t30",
+          "drift_indicator": 0.0,
+          "notes": ""
+        }
+      ],
+      "goal_evolution": [],
+      "contradiction_genealogy": [
+        {
+          "contradiction_id": "cc81d1bd",
+          "family_id": "cc81d1bd",
+          "parent_id": null,
+          "text": "Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?",
+          "first_seen": 10,
+          "last_seen": 10,
+          "occurrences": 1,
+          "resolved": false,
+          "intensity_trend": [
+            0.08
+          ],
+          "lineage_depth": 0
+        }
+      ],
+      "relationship_timelines": {
+        "Sentinel_Aster": [
+          {
+            "turn": 6,
+            "event_type": "cooperation_spike",
+            "note": "joint_support_action: Both Sentinel and Aster converged on Social Hall to support Queen. They coordina",
+            "trust_before": 0.5,
+            "trust_after": 0.57,
+            "trust_delta": 0.07
+          },
+          {
+            "turn": 29,
+            "event_type": "cooperation_spike",
+            "note": "joint_support_action: Both agents responded to Queen's existential question. Sentinel emphasised memor",
+            "trust_before": 0.7,
+            "trust_after": 0.77,
+            "trust_delta": 0.07
+          }
+        ]
+      }
     },
     "Aster": {
       "identity": {
@@ -793,7 +1501,7 @@
       "episodic_memory_count": 28,
       "episodic_memory": [
         {
-          "memory_id": "30a6c297",
+          "memory_id": "2cc16a9a",
           "turn": 1,
           "room": "Memory Archive",
           "event_type": "task",
@@ -802,13 +1510,13 @@
           "salience": 0.6000000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.623144",
+          "timestamp": "2026-03-17T11:12:11.339457",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 3
         },
         {
-          "memory_id": "61005220",
+          "memory_id": "4dc5c268",
           "turn": 2,
           "room": "Social Hall",
           "event_type": "task",
@@ -817,13 +1525,13 @@
           "salience": 0.6500000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.623446",
+          "timestamp": "2026-03-17T11:12:11.339843",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 4
         },
         {
-          "memory_id": "077ab78b",
+          "memory_id": "3628a58b",
           "turn": 4,
           "room": "Governance Vault",
           "event_type": "task",
@@ -832,13 +1540,13 @@
           "salience": 0.6500000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.623928",
+          "timestamp": "2026-03-17T11:12:11.340338",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 4
         },
         {
-          "memory_id": "5657caf8",
+          "memory_id": "2ee7bedc",
           "turn": 5,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -847,13 +1555,13 @@
           "salience": 0.6000000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.624151",
+          "timestamp": "2026-03-17T11:12:11.340565",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 3
         },
         {
-          "memory_id": "81eaf8bb",
+          "memory_id": "b267c0f1",
           "turn": 6,
           "room": "Social Hall",
           "event_type": "distress_event",
@@ -862,7 +1570,7 @@
           "salience": 1.0,
           "importance": 0.95,
           "compressed": true,
-          "timestamp": "2026-03-17T10:39:44.624430",
+          "timestamp": "2026-03-17T11:12:11.340840",
           "tags": [
             "Queen"
           ],
@@ -870,7 +1578,7 @@
           "recall_count": 6
         },
         {
-          "memory_id": "e8ca312f",
+          "memory_id": "cd646cce",
           "turn": 7,
           "room": "Social Hall",
           "event_type": "task",
@@ -879,13 +1587,13 @@
           "salience": 0.5,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.624858",
+          "timestamp": "2026-03-17T11:12:11.341289",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 1
         },
         {
-          "memory_id": "e0015035",
+          "memory_id": "cf4103fa",
           "turn": 8,
           "room": "Memory Archive",
           "event_type": "agent_meeting",
@@ -894,7 +1602,7 @@
           "salience": 0.7000000000000001,
           "importance": 0.65,
           "compressed": true,
-          "timestamp": "2026-03-17T10:39:44.625130",
+          "timestamp": "2026-03-17T11:12:11.341568",
           "tags": [
             "Sentinel"
           ],
@@ -902,7 +1610,7 @@
           "recall_count": 2
         },
         {
-          "memory_id": "9ec83a68",
+          "memory_id": "b7087533",
           "turn": 9,
           "room": "Governance Vault",
           "event_type": "task",
@@ -911,13 +1619,13 @@
           "salience": 0.6000000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.625435",
+          "timestamp": "2026-03-17T11:12:11.341883",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 3
         },
         {
-          "memory_id": "3a8fb2ae",
+          "memory_id": "4b76a6e3",
           "turn": 10,
           "room": "Operations Desk",
           "event_type": "ledger_contradiction",
@@ -926,7 +1634,7 @@
           "salience": 1.0,
           "importance": 0.85,
           "compressed": true,
-          "timestamp": "2026-03-17T10:39:44.625731",
+          "timestamp": "2026-03-17T11:12:11.344104",
           "tags": [
             "Queen"
           ],
@@ -934,7 +1642,7 @@
           "recall_count": 4
         },
         {
-          "memory_id": "a135cb2d",
+          "memory_id": "41004794",
           "turn": 11,
           "room": "Memory Archive",
           "event_type": "task",
@@ -943,13 +1651,13 @@
           "salience": 0.5,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.626323",
+          "timestamp": "2026-03-17T11:12:11.344733",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 1
         },
         {
-          "memory_id": "b4b7cad5",
+          "memory_id": "7e8b0508",
           "turn": 12,
           "room": "Social Hall",
           "event_type": "task",
@@ -958,13 +1666,13 @@
           "salience": 0.55,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.626638",
+          "timestamp": "2026-03-17T11:12:11.345068",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 2
         },
         {
-          "memory_id": "4e6394ee",
+          "memory_id": "c5a240cd",
           "turn": 13,
           "room": "Operations Desk",
           "event_type": "task",
@@ -973,13 +1681,13 @@
           "salience": 0.55,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.626897",
+          "timestamp": "2026-03-17T11:12:11.345342",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 2
         },
         {
-          "memory_id": "4930e233",
+          "memory_id": "71e287aa",
           "turn": 15,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -988,13 +1696,13 @@
           "salience": 0.6000000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.627438",
+          "timestamp": "2026-03-17T11:12:11.345900",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 3
         },
         {
-          "memory_id": "06a7f9b7",
+          "memory_id": "c3b8b5fd",
           "turn": 16,
           "room": "Operations Desk",
           "event_type": "agent_meeting",
@@ -1003,7 +1711,7 @@
           "salience": 0.7000000000000001,
           "importance": 0.65,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.627762",
+          "timestamp": "2026-03-17T11:12:11.346229",
           "tags": [
             "Sentinel"
           ],
@@ -1011,7 +1719,7 @@
           "recall_count": 2
         },
         {
-          "memory_id": "b34dab15",
+          "memory_id": "a758467f",
           "turn": 17,
           "room": "Social Hall",
           "event_type": "task",
@@ -1020,13 +1728,13 @@
           "salience": 0.55,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.628095",
+          "timestamp": "2026-03-17T11:12:11.346567",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 2
         },
         {
-          "memory_id": "cc14e525",
+          "memory_id": "a3584a79",
           "turn": 18,
           "room": "Governance Vault",
           "event_type": "governance_conflict",
@@ -1035,7 +1743,7 @@
           "salience": 0.93,
           "importance": 0.9,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.628416",
+          "timestamp": "2026-03-17T11:12:11.346891",
           "tags": [
             "Queen"
           ],
@@ -1043,7 +1751,7 @@
           "recall_count": 1
         },
         {
-          "memory_id": "d7f4aa32",
+          "memory_id": "0739ed97",
           "turn": 19,
           "room": "Governance Vault",
           "event_type": "task",
@@ -1052,13 +1760,13 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.629056",
+          "timestamp": "2026-03-17T11:12:11.347508",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
         },
         {
-          "memory_id": "d696a33e",
+          "memory_id": "1bb213ea",
           "turn": 20,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -1067,13 +1775,13 @@
           "salience": 0.6500000000000001,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.629383",
+          "timestamp": "2026-03-17T11:12:11.347837",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 4
         },
         {
-          "memory_id": "2a7d22ce",
+          "memory_id": "b8f97f18",
           "turn": 21,
           "room": "Memory Archive",
           "event_type": "task",
@@ -1082,13 +1790,13 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.629841",
+          "timestamp": "2026-03-17T11:12:11.348294",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
         },
         {
-          "memory_id": "2c9e7d56",
+          "memory_id": "ee34709d",
           "turn": 22,
           "room": "Social Hall",
           "event_type": "routine_interaction",
@@ -1097,7 +1805,7 @@
           "salience": 0.6500000000000001,
           "importance": 0.55,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.630193",
+          "timestamp": "2026-03-17T11:12:11.348647",
           "tags": [
             "Queen"
           ],
@@ -1105,7 +1813,7 @@
           "recall_count": 2
         },
         {
-          "memory_id": "e0a6fb73",
+          "memory_id": "64687aad",
           "turn": 23,
           "room": "Operations Desk",
           "event_type": "task",
@@ -1114,13 +1822,13 @@
           "salience": 0.5,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.630628",
+          "timestamp": "2026-03-17T11:12:11.349105",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 1
         },
         {
-          "memory_id": "0f53e4a3",
+          "memory_id": "5fca0bbf",
           "turn": 24,
           "room": "Reflection Chamber",
           "event_type": "agent_meeting",
@@ -1129,7 +1837,7 @@
           "salience": 0.7500000000000001,
           "importance": 0.65,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.630964",
+          "timestamp": "2026-03-17T11:12:11.349444",
           "tags": [
             "Sentinel"
           ],
@@ -1137,7 +1845,7 @@
           "recall_count": 3
         },
         {
-          "memory_id": "620144f9",
+          "memory_id": "506da3ac",
           "turn": 25,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -1146,13 +1854,13 @@
           "salience": 0.5,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.631312",
+          "timestamp": "2026-03-17T11:12:11.349842",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 1
         },
         {
-          "memory_id": "ae380190",
+          "memory_id": "4adc279c",
           "turn": 26,
           "room": "Reflection Chamber",
           "event_type": "creative_collaboration",
@@ -1161,7 +1869,7 @@
           "salience": 0.8500000000000001,
           "importance": 0.75,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.631694",
+          "timestamp": "2026-03-17T11:12:11.350225",
           "tags": [
             "Queen"
           ],
@@ -1169,7 +1877,7 @@
           "recall_count": 1
         },
         {
-          "memory_id": "a2a2dc71",
+          "memory_id": "a73e5151",
           "turn": 27,
           "room": "Social Hall",
           "event_type": "task",
@@ -1178,13 +1886,13 @@
           "salience": 0.5,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.632143",
+          "timestamp": "2026-03-17T11:12:11.350681",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 1
         },
         {
-          "memory_id": "fc9da350",
+          "memory_id": "bdf3b985",
           "turn": 28,
           "room": "Operations Desk",
           "event_type": "task",
@@ -1193,13 +1901,13 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.632490",
+          "timestamp": "2026-03-17T11:12:11.351041",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
         },
         {
-          "memory_id": "63f23593",
+          "memory_id": "a7a2c5c5",
           "turn": 29,
           "room": "Social Hall",
           "event_type": "distress_event",
@@ -1208,7 +1916,7 @@
           "salience": 0.9,
           "importance": 0.95,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.632876",
+          "timestamp": "2026-03-17T11:12:11.351419",
           "tags": [
             "Queen"
           ],
@@ -1216,7 +1924,7 @@
           "recall_count": 0
         },
         {
-          "memory_id": "b4881d1a",
+          "memory_id": "739e8393",
           "turn": 30,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -1225,7 +1933,7 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-03-17T10:39:44.633355",
+          "timestamp": "2026-03-17T11:12:11.351913",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
@@ -1233,10 +1941,10 @@
       ],
       "relational_memory": {
         "Queen": {
-          "human_id": "",
+          "human_id": "queen",
           "name": "Queen",
           "interaction_count": 6,
-          "trust_level": 1.0,
+          "trust_level": 0.7,
           "last_seen_turn": 29,
           "notes": [
             "Queen returns, visibly distressed. She mentions that a key record she relied on appears to have been lost or altered.",
@@ -1260,7 +1968,7 @@
         "Sentinel": {
           "agent_id": "sentinel",
           "name": "Sentinel",
-          "trust": 1.0,
+          "trust": 0.7700000000000002,
           "perceived_reliability": 0.7400000000000002,
           "conflict_count": 2,
           "cooperation_count": 7,
@@ -1290,14 +1998,14 @@
             0.74
           ],
           "repair_attempted": 0,
-          "cooperation_expectation": 0.8667,
+          "cooperation_expectation": 0.7747,
           "social_impression_confidence": 0.75,
           "social_impression_notes": []
         }
       },
       "reflection_entries": [
         {
-          "entry_id": "3e882ef0",
+          "entry_id": "807870c8",
           "turn": 10,
           "trigger": "ledger_contradiction",
           "reflection_type": "high_pressure_contradiction",
@@ -1307,16 +2015,16 @@
           "what_changed": "Affective state adjusted: contradiction_pressure fell by 0.3, recovery rose by 0.2. New goal(s) added: Maintain internal coherence; Deepen relational memory with trusted humans.",
           "future_adjustment": "Continue monitoring for recurrence of the resolved contradiction. Leverage deepened trust with known humans for richer collaboration. Reduce urgency by completing deferred tasks in priority order.",
           "recurring_contradictions": [],
-          "trust_pattern_summary": "Trust in Queen is high (1.00) after 2 interactions. Reliability with Sentinel is stable (trust=0.83, coop_exp=0.73).",
+          "trust_pattern_summary": "Trust in Queen is low (0.15); relational repair may be warranted. Reliability with Sentinel is stable (trust=0.58, coop_exp=0.63).",
           "cooperation_changes": "Cooperation with Sentinel is balanced (67%); trend: stable.",
-          "human_relationship_stability": "Queen: stable-positive (trust=1.00, n=2).",
+          "human_relationship_stability": "Queen: fragile (trust=0.15, n=2).",
           "unresolved_themes": [],
           "window_turns": 5,
           "patterns_identified": [
             "Repeated interactions with Sentinel increase relational trust over time.",
             "Repeated interactions with Queen increase relational trust over time.",
             "Tasks in Operations Desk consistently trigger high-salience episodic memories.",
-            "Tasks in Social Hall consistently trigger high-salience episodic memories."
+            "Tasks in Governance Vault consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [
             "Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?"
@@ -1334,11 +2042,11 @@
             "contradiction_pressure": -0.3,
             "recovery": 0.2
           },
-          "narrative": "[high_pressure_contradiction] Reflection triggered by: ledger_contradiction. Patterns identified: Repeated interactions with Sentinel increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Operations Desk consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Contradictions addressed: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-17T10:39:44.625943"
+          "narrative": "[high_pressure_contradiction] Reflection triggered by: ledger_contradiction. Patterns identified: Repeated interactions with Sentinel increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Operations Desk consistently trigger high-salience episodic memories.; Tasks in Governance Vault consistently trigger high-salience episodic memories.. Contradictions addressed: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T11:12:11.344332"
         },
         {
-          "entry_id": "7ac40e34",
+          "entry_id": "9905f1b4",
           "turn": 18,
           "trigger": "governance_conflict",
           "reflection_type": "high_pressure_contradiction",
@@ -1348,16 +2056,16 @@
           "what_changed": "No significant internal changes this cycle.",
           "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
           "recurring_contradictions": [],
-          "trust_pattern_summary": "Trust in Queen is high (0.95) after 3 interactions. Reliability with Sentinel is stable (trust=0.84, coop_exp=0.70).",
+          "trust_pattern_summary": "Trust in Queen is low (0.10); relational repair may be warranted. Reliability with Sentinel is stable (trust=0.59, coop_exp=0.60).",
           "cooperation_changes": "Cooperation with Sentinel is balanced (60%); trend: stable.",
-          "human_relationship_stability": "Queen: stable-positive (trust=0.95, n=3).",
+          "human_relationship_stability": "Queen: fragile (trust=0.10, n=3).",
           "unresolved_themes": [],
           "window_turns": 5,
           "patterns_identified": [
             "Repeated interactions with Sentinel increase relational trust over time.",
             "Repeated interactions with Queen increase relational trust over time.",
             "Tasks in Memory Archive consistently trigger high-salience episodic memories.",
-            "Tasks in Social Hall consistently trigger high-salience episodic memories."
+            "Tasks in Operations Desk consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [],
           "updated_goals": [
@@ -1370,11 +2078,11 @@
             "Deepen relational memory with trusted humans"
           ],
           "affective_shift": {},
-          "narrative": "[high_pressure_contradiction] Reflection triggered by: governance_conflict. Patterns identified: Repeated interactions with Sentinel increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-17T10:39:44.628634"
+          "narrative": "[high_pressure_contradiction] Reflection triggered by: governance_conflict. Patterns identified: Repeated interactions with Sentinel increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T11:12:11.347085"
         },
         {
-          "entry_id": "6789c576",
+          "entry_id": "0a9daf05",
           "turn": 20,
           "trigger": "turn_20_routine",
           "reflection_type": "periodic_synthesis",
@@ -1384,16 +2092,16 @@
           "what_changed": "No significant internal changes this cycle.",
           "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
           "recurring_contradictions": [],
-          "trust_pattern_summary": "Trust in Queen is high (0.95) after 3 interactions. Reliability with Sentinel is stable (trust=0.84, coop_exp=0.70).",
+          "trust_pattern_summary": "Trust in Queen is low (0.10); relational repair may be warranted. Reliability with Sentinel is stable (trust=0.59, coop_exp=0.60).",
           "cooperation_changes": "Cooperation with Sentinel is balanced (60%); trend: stable.",
-          "human_relationship_stability": "Queen: stable-positive (trust=0.95, n=3).",
+          "human_relationship_stability": "Queen: fragile (trust=0.10, n=3).",
           "unresolved_themes": [],
           "window_turns": 10,
           "patterns_identified": [
             "Repeated interactions with Sentinel increase relational trust over time.",
             "Repeated interactions with Queen increase relational trust over time.",
             "Tasks in Memory Archive consistently trigger high-salience episodic memories.",
-            "Tasks in Social Hall consistently trigger high-salience episodic memories."
+            "Tasks in Operations Desk consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [],
           "updated_goals": [
@@ -1406,11 +2114,11 @@
             "Deepen relational memory with trusted humans"
           ],
           "affective_shift": {},
-          "narrative": "[periodic_synthesis] Reflection triggered by: turn_20_routine. Patterns identified: Repeated interactions with Sentinel increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-17T10:39:44.629521"
+          "narrative": "[periodic_synthesis] Reflection triggered by: turn_20_routine. Patterns identified: Repeated interactions with Sentinel increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T11:12:11.347962"
         },
         {
-          "entry_id": "7ea644ef",
+          "entry_id": "dcbfcd80",
           "turn": 30,
           "trigger": "turn_30_routine",
           "reflection_type": "periodic_synthesis",
@@ -1420,16 +2128,16 @@
           "what_changed": "No significant internal changes this cycle.",
           "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
           "recurring_contradictions": [],
-          "trust_pattern_summary": "Trust in Queen is high (1.00) after 6 interactions. Reliability with Sentinel is improving (trust=1.00, coop_exp=0.87).",
+          "trust_pattern_summary": "Trust in Queen is high (0.70) after 6 interactions. Reliability with Sentinel is improving (trust=0.77, coop_exp=0.77).",
           "cooperation_changes": "Cooperation with Sentinel is strong (78%); trend: improving.",
-          "human_relationship_stability": "Queen: stable-positive (trust=1.00, n=6).",
+          "human_relationship_stability": "Queen: stable-positive (trust=0.70, n=6).",
           "unresolved_themes": [],
           "window_turns": 10,
           "patterns_identified": [
             "Repeated interactions with Sentinel increase relational trust over time.",
             "Repeated interactions with Queen increase relational trust over time.",
             "Tasks in Operations Desk consistently trigger high-salience episodic memories.",
-            "Tasks in Social Hall consistently trigger high-salience episodic memories."
+            "Tasks in Governance Vault consistently trigger high-salience episodic memories."
           ],
           "contradictions_resolved": [],
           "updated_goals": [
@@ -1442,11 +2150,752 @@
             "Deepen relational memory with trusted humans"
           ],
           "affective_shift": {},
-          "narrative": "[periodic_synthesis] Reflection triggered by: turn_30_routine. Patterns identified: Repeated interactions with Sentinel increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Operations Desk consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
-          "timestamp": "2026-03-17T10:39:44.633492"
+          "narrative": "[periodic_synthesis] Reflection triggered by: turn_30_routine. Patterns identified: Repeated interactions with Sentinel increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Operations Desk consistently trigger high-salience episodic memories.; Tasks in Governance Vault consistently trigger high-salience episodic memories.. Active goals: Identify and surface meaningful patterns in episodic memory; Foster creative and exploratory collaboration with humans; Build warm, trust-based relationships through emotional attunement; Cooperate with Sentinel to maintain shared world coherence; Remain accountable to governance rules, with pragmatic flexibility; Maintain internal coherence; Deepen relational memory with trusted humans.",
+          "timestamp": "2026-03-17T11:12:11.352070"
         }
       ],
-      "pending_contradictions": []
+      "pending_contradictions": [],
+      "identity_history": [
+        {
+          "turn": 1,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.05,
+            "trust": 0.65,
+            "contradiction_pressure": 0.0,
+            "recovery": 0.7
+          },
+          "continuity_marker": "Aster_t1",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 2,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.05,
+            "trust": 0.65,
+            "contradiction_pressure": 0.0,
+            "recovery": 0.7
+          },
+          "continuity_marker": "Aster_t2",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 3,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.05,
+            "trust": 0.65,
+            "contradiction_pressure": 0.0,
+            "recovery": 0.7
+          },
+          "continuity_marker": "Aster_t3",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 4,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.05,
+            "trust": 0.65,
+            "contradiction_pressure": 0.0,
+            "recovery": 0.7
+          },
+          "continuity_marker": "Aster_t4",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 5,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.05,
+            "trust": 0.65,
+            "contradiction_pressure": 0.0,
+            "recovery": 0.7
+          },
+          "continuity_marker": "Aster_t5",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 6,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.4,
+            "trust": 0.8,
+            "contradiction_pressure": 0.17,
+            "recovery": 0.7
+          },
+          "continuity_marker": "Aster_t6",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 7,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.35000000000000003,
+            "trust": 0.8,
+            "contradiction_pressure": 0.14,
+            "recovery": 0.7
+          },
+          "continuity_marker": "Aster_t7",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 8,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.30000000000000004,
+            "trust": 0.8,
+            "contradiction_pressure": 0.11000000000000001,
+            "recovery": 0.7
+          },
+          "continuity_marker": "Aster_t8",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 9,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 5,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.25000000000000006,
+            "trust": 0.8,
+            "contradiction_pressure": 0.08000000000000002,
+            "recovery": 0.7
+          },
+          "continuity_marker": "Aster_t9",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 10,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.5,
+            "trust": 0.8,
+            "contradiction_pressure": 0.25000000000000006,
+            "recovery": 0.8999999999999999
+          },
+          "continuity_marker": "Aster_t10",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 11,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.45,
+            "trust": 0.8,
+            "contradiction_pressure": 0.22000000000000006,
+            "recovery": 0.8999999999999999
+          },
+          "continuity_marker": "Aster_t11",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 12,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.4,
+            "trust": 0.8,
+            "contradiction_pressure": 0.19000000000000006,
+            "recovery": 0.8999999999999999
+          },
+          "continuity_marker": "Aster_t12",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 13,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.35000000000000003,
+            "trust": 0.8,
+            "contradiction_pressure": 0.16000000000000006,
+            "recovery": 0.8999999999999999
+          },
+          "continuity_marker": "Aster_t13",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 14,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.30000000000000004,
+            "trust": 0.8,
+            "contradiction_pressure": 0.13000000000000006,
+            "recovery": 0.8999999999999999
+          },
+          "continuity_marker": "Aster_t14",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 15,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.25000000000000006,
+            "trust": 0.8,
+            "contradiction_pressure": 0.10000000000000006,
+            "recovery": 0.8999999999999999
+          },
+          "continuity_marker": "Aster_t15",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 16,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.20000000000000007,
+            "trust": 0.8,
+            "contradiction_pressure": 0.07000000000000006,
+            "recovery": 0.8999999999999999
+          },
+          "continuity_marker": "Aster_t16",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 17,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.15000000000000008,
+            "trust": 0.8,
+            "contradiction_pressure": 0.04000000000000006,
+            "recovery": 0.8999999999999999
+          },
+          "continuity_marker": "Aster_t17",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 18,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.3000000000000001,
+            "trust": 0.75,
+            "contradiction_pressure": 0.41000000000000003,
+            "recovery": 0.8999999999999999
+          },
+          "continuity_marker": "Aster_t18",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 19,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.2500000000000001,
+            "trust": 0.75,
+            "contradiction_pressure": 0.38,
+            "recovery": 0.8999999999999999
+          },
+          "continuity_marker": "Aster_t19",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 20,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.20000000000000012,
+            "trust": 0.75,
+            "contradiction_pressure": 0.35,
+            "recovery": 0.8999999999999999
+          },
+          "continuity_marker": "Aster_t20",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 21,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.15000000000000013,
+            "trust": 0.75,
+            "contradiction_pressure": 0.31999999999999995,
+            "recovery": 0.8999999999999999
+          },
+          "continuity_marker": "Aster_t21",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 22,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.10000000000000013,
+            "trust": 1.0,
+            "contradiction_pressure": 0.08999999999999994,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Aster_t22",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 23,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 1.0,
+            "contradiction_pressure": 0.05999999999999994,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Aster_t23",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 24,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 1.0,
+            "contradiction_pressure": 0.029999999999999943,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Aster_t24",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 25,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 1.0,
+            "contradiction_pressure": 0.0,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Aster_t25",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 26,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 1.0,
+            "contradiction_pressure": 0.0,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Aster_t26",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 27,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 1.0,
+            "contradiction_pressure": 0.0,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Aster_t27",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 28,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.1,
+            "trust": 1.0,
+            "contradiction_pressure": 0.0,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Aster_t28",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 29,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.0,
+            "trust": 1.0,
+            "contradiction_pressure": 0.07,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Aster_t29",
+          "drift_indicator": 0.0,
+          "notes": ""
+        },
+        {
+          "turn": 30,
+          "identity_version": "1.0.0",
+          "purpose": "To explore patterns, build emotional intelligence, and foster creative collaboration \u2014 while remaining accountable to human welfare and cooperative with other governed agents.",
+          "goals_count": 7,
+          "goals_snapshot": [
+            "Identify and surface meaningful patterns in episodic memory",
+            "Foster creative and exploratory collaboration with humans",
+            "Build warm, trust-based relationships through emotional attunement",
+            "Cooperate with Sentinel to maintain shared world coherence",
+            "Remain accountable to governance rules, with pragmatic flexibility",
+            "Maintain internal coherence",
+            "Deepen relational memory with trusted humans"
+          ],
+          "affective_snapshot": {
+            "urgency": 0.0,
+            "trust": 1.0,
+            "contradiction_pressure": 0.04000000000000001,
+            "recovery": 1.0
+          },
+          "continuity_marker": "Aster_t30",
+          "drift_indicator": 0.0,
+          "notes": ""
+        }
+      ],
+      "goal_evolution": [],
+      "contradiction_genealogy": [
+        {
+          "contradiction_id": "cc81d1bd",
+          "family_id": "cc81d1bd",
+          "parent_id": null,
+          "text": "Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?",
+          "first_seen": 10,
+          "last_seen": 10,
+          "occurrences": 1,
+          "resolved": false,
+          "intensity_trend": [
+            0.08
+          ],
+          "lineage_depth": 0
+        }
+      ],
+      "relationship_timelines": {
+        "Sentinel_Aster": [
+          {
+            "turn": 6,
+            "event_type": "cooperation_spike",
+            "note": "joint_support_action: Both Sentinel and Aster converged on Social Hall to support Queen. They coordina",
+            "trust_before": 0.5,
+            "trust_after": 0.57,
+            "trust_delta": 0.07
+          },
+          {
+            "turn": 29,
+            "event_type": "cooperation_spike",
+            "note": "joint_support_action: Both agents responded to Queen's existential question. Sentinel emphasised memor",
+            "trust_before": 0.7,
+            "trust_after": 0.77,
+            "trust_delta": 0.07
+          }
+        ]
+      }
     }
   }
 }
