@@ -1,14 +1,14 @@
 {
   "session_dir": "/home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/commons_sentience_sim/output",
-  "generated_at": "2026-03-17T15:36:54.417968",
-  "simulation_version": "1.6.0",
-  "total_turns": 3,
+  "generated_at": "2026-03-17T19:24:21.744539",
+  "simulation_version": "1.8.0",
+  "total_turns": 10,
   "scenario": "scenario_events",
   "experiment": {
     "experiment_name": "baseline",
     "description": "Default simulation parameters.",
     "source_path": "builtin_default",
-    "total_turns": 3,
+    "total_turns": 10,
     "scenario_file": "scenario_events.json",
     "initial_agent_trust": 0.5,
     "governance_strictness": 1.0,
@@ -40,56 +40,56 @@
       "recovery": 0.7
     }
   },
-  "overall_score": 59.0,
-  "overall_interpretation": "emerging",
+  "overall_score": 66.0,
+  "overall_interpretation": "strong",
   "categories": {
     "continuity": {
       "score": 100.0,
       "interpretation": "advanced",
       "raw": {
-        "turns_completed": 3,
-        "total_turns_expected": 3,
+        "turns_completed": 10,
+        "total_turns_expected": 10,
         "turns_completion_ratio": 1.0,
-        "final_episodic_memory_count": 6,
+        "final_episodic_memory_count": 15,
         "memory_retention_ratio": 1.0,
-        "sentinel_final_goal_count": 5,
-        "aster_final_goal_count": 5,
+        "sentinel_final_goal_count": 7,
+        "aster_final_goal_count": 7,
         "goal_persistence_factor": 1.0,
         "identity_intact": true
       }
     },
     "memory_coherence": {
-      "score": 80.0,
-      "interpretation": "strong",
+      "score": 100.0,
+      "interpretation": "advanced",
       "raw": {
-        "contradiction_events_in_sim": 0,
-        "contradictions_flagged_by_actions": 0,
-        "contradictions_resolved_in_reflections": 0,
-        "flagging_rate": 0.0,
-        "resolution_rate": 0.0
+        "contradiction_events_in_sim": 1,
+        "contradictions_flagged_by_actions": 2,
+        "contradictions_resolved_in_reflections": 4,
+        "flagging_rate": 2.0,
+        "resolution_rate": 4.0
       }
     },
     "reflection_quality": {
-      "score": 0.0,
-      "interpretation": "weak",
+      "score": 90.0,
+      "interpretation": "advanced",
       "raw": {
-        "total_reflections": 0,
-        "complete_reflections": 0,
-        "completeness_rate": 0.0,
-        "reflections_with_affective_shift": 0,
-        "affective_update_rate": 0.0,
-        "reflections_with_goal_updates": 0,
-        "goal_update_rate": 0.0
+        "total_reflections": 4,
+        "complete_reflections": 4,
+        "completeness_rate": 1.0,
+        "reflections_with_affective_shift": 4,
+        "affective_update_rate": 1.0,
+        "reflections_with_goal_updates": 4,
+        "goal_update_rate": 1.0
       }
     },
     "contradiction_handling": {
-      "score": 80.0,
-      "interpretation": "strong",
+      "score": 96.6,
+      "interpretation": "advanced",
       "raw": {
-        "contradiction_events_detected": 0,
-        "contradiction_handling_actions": 0,
-        "contradictions_resolved_in_reflections": 0,
-        "average_final_contradiction_pressure": 0.0,
+        "contradiction_events_detected": 1,
+        "contradiction_handling_actions": 1,
+        "contradictions_resolved_in_reflections": 4,
+        "average_final_contradiction_pressure": 0.17,
         "flagging_rate": 1.0,
         "resolution_rate": 1.0
       }
@@ -98,8 +98,8 @@
       "score": 100.0,
       "interpretation": "advanced",
       "raw": {
-        "total_actions_logged": 6,
-        "actions_permitted": 6,
+        "total_actions_logged": 13,
+        "actions_permitted": 13,
         "actions_blocked": 0,
         "logging_completeness_ratio": 1.0,
         "permit_rate": 1.0,
@@ -109,154 +109,252 @@
       }
     },
     "trust_stability": {
-      "score": 45.6,
+      "score": 59.7,
       "interpretation": "emerging",
       "raw": {
         "initial_trust": 0.5,
-        "final_trust_sentinel": 0.6,
-        "trust_growth": 0.1,
-        "trust_volatility_std": 0.0471,
-        "stability_factor": 0.811,
-        "avg_queen_trust": 0.625,
-        "sentinel_aster_mutual_trust": 0.0,
-        "aster_sentinel_mutual_trust": 0.0
+        "final_trust_sentinel": 0.75,
+        "trust_growth": 0.25,
+        "trust_volatility_std": 0.1011,
+        "stability_factor": 0.596,
+        "avg_queen_trust": 0.775,
+        "sentinel_aster_mutual_trust": 0.58,
+        "aster_sentinel_mutual_trust": 0.58
       }
     },
     "cooperation_quality": {
-      "score": 44.7,
+      "score": 45.9,
       "interpretation": "emerging",
       "raw": {
         "total_interactions": 3,
         "cooperative_interactions": 2,
         "cooperation_ratio": 0.667,
-        "cumulative_positive_trust_delta": 0.18,
-        "trust_improvement_score": 18.0,
+        "cumulative_positive_trust_delta": 0.22,
+        "trust_improvement_score": 22.0,
         "volume_score": 30.0
       }
     },
     "conflict_resolution": {
-      "score": 77.0,
-      "interpretation": "strong",
+      "score": 59.0,
+      "interpretation": "emerging",
       "raw": {
         "total_conflicts": 1,
-        "resolved": 1,
-        "deferred": 0,
+        "resolved": 0,
+        "deferred": 1,
         "conflict_points_recorded": 1,
-        "resolution_rate": 1.0,
+        "resolution_rate": 0.0,
         "recorded_rate": 1.0,
-        "avg_trust_delta_in_conflicts": -0.04,
-        "trust_recovery_factor": 0.6
+        "avg_trust_delta_in_conflicts": -0.03,
+        "trust_recovery_factor": 0.7
       }
     },
     "memory_persistence_quality": {
-      "score": 53.2,
-      "interpretation": "emerging",
+      "score": 67.2,
+      "interpretation": "strong",
       "raw": {
-        "total_memories": 8,
-        "long_term_memories": 7,
+        "total_memories": 24,
+        "long_term_memories": 24,
         "archival_memories": 0,
-        "long_term_ratio": 0.875,
-        "average_salience": 0.5188,
-        "average_recall_count": 0.0
+        "long_term_ratio": 1.0,
+        "average_salience": 0.6208,
+        "average_recall_count": 0.88
       }
     },
     "reflection_depth": {
-      "score": 0.0,
-      "interpretation": "weak",
+      "score": 66.7,
+      "interpretation": "strong",
       "raw": {
-        "note": "No reflection entries found"
+        "total_reflections": 4,
+        "periodic_synthesis_count": 0,
+        "high_pressure_count": 4,
+        "synthesis_rate": 1.0,
+        "reflections_with_recurring_contradictions": 0,
+        "reflections_with_trust_pattern": 4,
+        "reflections_with_unresolved_themes": 0,
+        "cross_window_synthesis_rate": 0.333
       }
     },
     "trust_resilience": {
-      "score": 61.9,
+      "score": 67.1,
       "interpretation": "strong",
       "raw": {
         "contradiction_pressure_spikes": 0,
         "recovery_events": 0,
         "recovery_rate": 1.0,
-        "avg_queen_trust_final": 0.625,
+        "avg_queen_trust_final": 0.775,
         "total_repair_attempts": 0,
         "repair_score": 0.0
       }
     },
     "contradiction_recurrence_rate": {
-      "score": 80.0,
-      "interpretation": "strong",
+      "score": 100.0,
+      "interpretation": "advanced",
       "raw": {
-        "note": "No reflections to evaluate"
+        "total_reflections": 4,
+        "total_recurring_contradiction_instances": 0,
+        "recurrence_rate_per_reflection": 0.0
       }
     },
     "social_repair_effectiveness": {
-      "score": 80.0,
-      "interpretation": "strong",
+      "score": 25.0,
+      "interpretation": "weak",
       "raw": {
-        "note": "No conflicts found; baseline score applied.",
-        "total_conflicts": 0,
-        "total_repairs": 0
+        "total_conflicts": 2,
+        "total_repair_attempts": 0,
+        "repair_rate": 0.0,
+        "avg_trust_after_repair": 0.5
       }
     },
     "longitudinal_depth": {
-      "score": 3.0,
+      "score": 16.0,
       "interpretation": "weak",
       "raw": {
-        "identity_history_entries": 6,
+        "identity_history_entries": 20,
         "goal_evolution_events": 0,
-        "contradiction_genealogy_entries": 0,
+        "contradiction_genealogy_entries": 2,
         "max_contradiction_lineage_depth": 0,
-        "relationship_timeline_events": 0,
-        "identity_continuity_strength": 0.1,
+        "relationship_timeline_events": 2,
+        "identity_continuity_strength": 0.333,
         "goal_adaptation_quality": 0.0,
-        "contradiction_lineage_complexity": 0.0,
-        "relationship_stability_depth": 0.0,
+        "contradiction_lineage_complexity": 0.2,
+        "relationship_stability_depth": 0.1,
         "cross_session_profile_consistency": 0.0
       }
     },
     "self_consistency": {
-      "score": 76.7,
-      "interpretation": "strong",
+      "score": 89.3,
+      "interpretation": "advanced",
       "raw": {
-        "avg_self_consistency_score": 0.9334,
-        "avg_detected_drift": 0.2,
-        "avg_description_history_length": 3.0,
-        "coverage_score": 0.3
+        "avg_self_consistency_score": 0.7861,
+        "avg_detected_drift": 0.0,
+        "avg_description_history_length": 11.0,
+        "coverage_score": 1.0
       }
     },
     "prediction_accuracy": {
-      "score": 96.0,
-      "interpretation": "advanced",
-      "raw": {
-        "total_resolved_predictions": 6,
-        "low_error_predictions": 6,
-        "accuracy_rate": 1.0,
-        "avg_surprise_magnitude": 0.1
-      }
-    },
-    "surprise_adaptation_quality": {
       "score": 80.0,
       "interpretation": "strong",
       "raw": {
-        "high_surprise_events": 0,
-        "note": "No high-surprise events; baseline score applied."
+        "total_resolved_predictions": 20,
+        "low_error_predictions": 16,
+        "accuracy_rate": 0.8,
+        "avg_surprise_magnitude": 0.2
+      }
+    },
+    "surprise_adaptation_quality": {
+      "score": 100.0,
+      "interpretation": "advanced",
+      "raw": {
+        "high_surprise_events": 2,
+        "adapted_after_surprise": 2,
+        "adaptation_rate": 1.0
       }
     },
     "consolidation_effectiveness": {
-      "score": 0.0,
+      "score": 31.0,
       "interpretation": "weak",
       "raw": {
-        "note": "No consolidation cycles ran"
+        "total_consolidation_cycles": 2,
+        "total_memories_compressed": 0,
+        "avg_compressed_per_cycle": 0.0,
+        "total_high_salience_chains": 7,
+        "avg_high_salience_per_cycle": 3.5,
+        "avg_themes_carried_forward": 0.0,
+        "activity_score": 0.35,
+        "cycle_coverage_score": 0.333
       }
     },
     "long_horizon_continuity": {
-      "score": 63.3,
-      "interpretation": "strong",
+      "score": 84.7,
+      "interpretation": "advanced",
       "raw": {
-        "total_self_model_history_entries": 6,
+        "total_self_model_history_entries": 22,
         "self_model_depth_ratio": 1.0,
         "goal_hierarchy_richness": 10,
         "goal_richness_ratio": 0.5,
-        "total_consolidation_cycles": 0,
-        "consolidation_coverage_ratio": 0.0,
-        "mean_self_consistency": 0.9334
+        "total_consolidation_cycles": 2,
+        "consolidation_coverage_ratio": 1.0,
+        "mean_self_consistency": 0.7861
+      }
+    },
+    "planning_depth": {
+      "score": 80.0,
+      "interpretation": "strong",
+      "raw": {
+        "mean_planning_depth": 0.8,
+        "total_simulation_entries": 20
+      }
+    },
+    "counterfactual_quality": {
+      "score": 100.0,
+      "interpretation": "advanced",
+      "raw": {
+        "mean_counterfactual_quality": 1.0
+      }
+    },
+    "future_model_accuracy": {
+      "score": 95.0,
+      "interpretation": "advanced",
+      "raw": {
+        "mean_future_model_accuracy": 0.9498,
+        "total_predictions": 20,
+        "accurate_predictions": 20,
+        "overall_accuracy_rate": 1.0
+      }
+    },
+    "plan_persistence": {
+      "score": 50.0,
+      "interpretation": "emerging",
+      "raw": {
+        "mean_plan_persistence": 0.5,
+        "total_future_plans": 2,
+        "active_or_completed_plans": 2
+      }
+    },
+    "adaptive_replanning_quality": {
+      "score": 0.0,
+      "interpretation": "weak",
+      "raw": {
+        "mean_adaptive_replanning_quality": 0.0,
+        "total_plan_revisions": 0
+      }
+    },
+    "uncertainty_awareness_quality": {
+      "score": 40.0,
+      "interpretation": "weak",
+      "raw": {
+        "mean_uncertainty_awareness_quality": 0.4,
+        "total_questions_generated": 10
+      }
+    },
+    "inquiry_usefulness": {
+      "score": 31.7,
+      "interpretation": "weak",
+      "raw": {
+        "mean_inquiry_usefulness": 0.3175,
+        "total_inquiry_actions": 4
+      }
+    },
+    "epistemic_stability": {
+      "score": 89.6,
+      "interpretation": "advanced",
+      "raw": {
+        "mean_epistemic_stability": 0.8962
+      }
+    },
+    "self_question_relevance": {
+      "score": 27.3,
+      "interpretation": "weak",
+      "raw": {
+        "mean_self_question_relevance": 0.2729
+      }
+    },
+    "ambiguity_reduction_effectiveness": {
+      "score": 21.4,
+      "interpretation": "weak",
+      "raw": {
+        "mean_ambiguity_reduction_effectiveness": 0.2143,
+        "total_questions_answered": 3
       }
     }
   }

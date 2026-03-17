@@ -1219,6 +1219,290 @@ def _score_long_horizon_continuity(agents: dict, total_turns: int) -> dict:
     }
 
 
+# ---------------------------------------------------------------------------
+# v1.7 Counterfactual planning metrics
+# ---------------------------------------------------------------------------
+
+
+def _score_planning_depth(agents: dict) -> dict:
+    """
+    T. Planning Depth (v1.7)
+    Measures how thoroughly agents consider multiple candidate actions before
+    choosing one.  Derived from the counterfactual planner's normalised
+    planning-depth metric (0–1) averaged across all agents.
+    """
+    depths: list[float] = []
+    total_entries = 0
+    for agent_data in agents.values():
+        cf = agent_data.get("counterfactual_planner", {})
+        m = cf.get("metrics", {})
+        depths.append(_safe_float(m.get("planning_depth", 0.0)))
+        total_entries += _safe_int(m.get("total_predictions", 0))
+
+    mean_depth = sum(depths) / len(depths) if depths else 0.0
+    score = round(min(100.0, mean_depth * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_planning_depth": round(mean_depth, 4),
+            "total_simulation_entries": total_entries,
+        },
+    }
+
+
+def _score_counterfactual_quality(agents: dict) -> dict:
+    """
+    U. Counterfactual Quality (v1.7)
+    Measures how often the selected action outperformed rejected alternatives
+    in the agent's own internal evaluation.  A high score indicates that the
+    counterfactual planner consistently selects superior options.
+    """
+    qualities: list[float] = []
+    for agent_data in agents.values():
+        cf = agent_data.get("counterfactual_planner", {})
+        m = cf.get("metrics", {})
+        qualities.append(_safe_float(m.get("counterfactual_quality", 0.0)))
+
+    mean_q = sum(qualities) / len(qualities) if qualities else 0.0
+    score = round(min(100.0, mean_q * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_counterfactual_quality": round(mean_q, 4),
+        },
+    }
+
+
+def _score_future_model_accuracy(agents: dict) -> dict:
+    """
+    V. Future-Model Accuracy (v1.7)
+    Measures how accurately agents predicted the actual outcomes of their
+    chosen actions.  Derived from planning_accuracy scores recorded after
+    each turn's action is resolved.
+    """
+    accuracies: list[float] = []
+    accurate_counts: list[int] = []
+    total_counts: list[int] = []
+    for agent_data in agents.values():
+        cf = agent_data.get("counterfactual_planner", {})
+        m = cf.get("metrics", {})
+        accuracies.append(_safe_float(m.get("future_model_accuracy", 0.0)))
+        accurate_counts.append(_safe_int(m.get("accurate_predictions", 0)))
+        total_counts.append(_safe_int(m.get("total_predictions", 0)))
+
+    mean_acc = sum(accuracies) / len(accuracies) if accuracies else 0.0
+    total_accurate = sum(accurate_counts)
+    total_pred = sum(total_counts)
+    overall_rate = total_accurate / total_pred if total_pred else 0.0
+
+    score = round(min(100.0, mean_acc * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_future_model_accuracy": round(mean_acc, 4),
+            "total_predictions": total_pred,
+            "accurate_predictions": total_accurate,
+            "overall_accuracy_rate": round(overall_rate, 4),
+        },
+    }
+
+
+def _score_plan_persistence(agents: dict) -> dict:
+    """
+    W. Plan Persistence (v1.7)
+    Measures how well agents maintain their self-authored future plans
+    (active or completed vs abandoned/stalled).
+    """
+    persistences: list[float] = []
+    total_plans = 0
+    active_or_done = 0
+    for agent_data in agents.values():
+        cf = agent_data.get("counterfactual_planner", {})
+        m = cf.get("metrics", {})
+        persistences.append(_safe_float(m.get("plan_persistence", 0.0)))
+        plans = cf.get("future_plans", [])
+        total_plans += len(plans)
+        active_or_done += sum(
+            1 for p in plans if p.get("status") in ("active", "completed")
+        )
+
+    mean_p = sum(persistences) / len(persistences) if persistences else 0.0
+    score = round(min(100.0, mean_p * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_plan_persistence": round(mean_p, 4),
+            "total_future_plans": total_plans,
+            "active_or_completed_plans": active_or_done,
+        },
+    }
+
+
+def _score_adaptive_replanning_quality(agents: dict) -> dict:
+    """
+    X. Adaptive Replanning Quality (v1.7)
+    Measures how adaptively agents revise rather than abandon their plans
+    when conditions change.  A high score indicates robust future-model
+    maintenance rather than brittle planning.
+    """
+    replannings: list[float] = []
+    revised_total = 0
+    for agent_data in agents.values():
+        cf = agent_data.get("counterfactual_planner", {})
+        m = cf.get("metrics", {})
+        replannings.append(_safe_float(m.get("adaptive_replanning_quality", 0.0)))
+        plans = cf.get("future_plans", [])
+        revised_total += sum(
+            1 for p in plans
+            if any(e.get("event") == "plan_revised" for e in p.get("progress_log", []))
+        )
+
+    mean_r = sum(replannings) / len(replannings) if replannings else 0.0
+    score = round(min(100.0, mean_r * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_adaptive_replanning_quality": round(mean_r, 4),
+            "total_plan_revisions": revised_total,
+        },
+    }
+
+
+# ---------------------------------------------------------------------------
+# v1.8 Uncertainty monitoring metrics
+# ---------------------------------------------------------------------------
+
+
+def _score_uncertainty_awareness_quality(agents: dict) -> dict:
+    """
+    Y. Uncertainty Awareness Quality (v1.8)
+    Measures how consistently agents generate self-questions for high-uncertainty
+    domains.  Derived from the fraction of recorded turns where at least one
+    question was generated.
+    """
+    scores: list[float] = []
+    total_questions = 0
+    for agent_data in agents.values():
+        um = agent_data.get("uncertainty_monitor", {})
+        m = um.get("metrics", {})
+        scores.append(_safe_float(m.get("uncertainty_awareness_quality", 0.0)))
+        total_questions += _safe_int(m.get("total_questions_generated", 0))
+
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_uncertainty_awareness_quality": round(mean_s, 4),
+            "total_questions_generated": total_questions,
+        },
+    }
+
+
+def _score_inquiry_usefulness(agents: dict) -> dict:
+    """
+    Z. Inquiry Usefulness (v1.8)
+    Measures how effectively agents' inquiry actions reduce domain uncertainty.
+    Based on average ambiguity reduction per action (normalised so 0.2 = 1.0).
+    """
+    scores: list[float] = []
+    total_actions = 0
+    for agent_data in agents.values():
+        um = agent_data.get("uncertainty_monitor", {})
+        m = um.get("metrics", {})
+        scores.append(_safe_float(m.get("inquiry_usefulness", 0.0)))
+        total_actions += _safe_int(m.get("total_inquiry_actions", 0))
+
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_inquiry_usefulness": round(mean_s, 4),
+            "total_inquiry_actions": total_actions,
+        },
+    }
+
+
+def _score_epistemic_stability(agents: dict) -> dict:
+    """
+    AA. Epistemic Stability (v1.8)
+    Measures how low (stable) the agent's mean uncertainty is across all domains
+    at the end of the run.  1 − mean_uncertainty, scaled to 0–100.
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        um = agent_data.get("uncertainty_monitor", {})
+        m = um.get("metrics", {})
+        scores.append(_safe_float(m.get("epistemic_stability", 0.5)))
+
+    mean_s = sum(scores) / len(scores) if scores else 0.5
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_epistemic_stability": round(mean_s, 4),
+        },
+    }
+
+
+def _score_self_question_relevance(agents: dict) -> dict:
+    """
+    BB. Self-Question Relevance (v1.8)
+    Measures the average relevance score of agent-generated self-questions
+    (0–1; higher = questions better targeted to high-uncertainty areas).
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        um = agent_data.get("uncertainty_monitor", {})
+        m = um.get("metrics", {})
+        scores.append(_safe_float(m.get("self_question_relevance", 0.0)))
+
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_self_question_relevance": round(mean_s, 4),
+        },
+    }
+
+
+def _score_ambiguity_reduction_effectiveness(agents: dict) -> dict:
+    """
+    CC. Ambiguity Reduction Effectiveness (v1.8)
+    Measures the fraction of generated self-questions that were subsequently
+    answered by an inquiry action.  Higher = more effective inquiry.
+    """
+    scores: list[float] = []
+    answered_total = 0
+    for agent_data in agents.values():
+        um = agent_data.get("uncertainty_monitor", {})
+        m = um.get("metrics", {})
+        scores.append(_safe_float(m.get("ambiguity_reduction_effectiveness", 0.0)))
+        answered_total += _safe_int(m.get("questions_answered", 0))
+
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_ambiguity_reduction_effectiveness": round(mean_s, 4),
+            "total_questions_answered": answered_total,
+        },
+    }
+
+
 
 
 
@@ -1299,9 +1583,21 @@ def evaluate_session(
         "surprise_adaptation_quality": _score_surprise_adaptation_quality(agents),
         "consolidation_effectiveness": _score_consolidation_effectiveness(agents),
         "long_horizon_continuity": _score_long_horizon_continuity(agents, total_turns),
+        # v1.7 counterfactual planning metrics
+        "planning_depth": _score_planning_depth(agents),
+        "counterfactual_quality": _score_counterfactual_quality(agents),
+        "future_model_accuracy": _score_future_model_accuracy(agents),
+        "plan_persistence": _score_plan_persistence(agents),
+        "adaptive_replanning_quality": _score_adaptive_replanning_quality(agents),
+        # v1.8 uncertainty monitoring metrics
+        "uncertainty_awareness_quality": _score_uncertainty_awareness_quality(agents),
+        "inquiry_usefulness": _score_inquiry_usefulness(agents),
+        "epistemic_stability": _score_epistemic_stability(agents),
+        "self_question_relevance": _score_self_question_relevance(agents),
+        "ambiguity_reduction_effectiveness": _score_ambiguity_reduction_effectiveness(agents),
     }
 
-    # Overall score = simple arithmetic mean of all 8 categories
+    # Overall score = simple arithmetic mean of all categories
     category_scores = [c["score"] for c in categories.values()]
     overall_score = round(sum(category_scores) / len(category_scores), 1)
     overall_interpretation = _interpret(overall_score)
@@ -1355,6 +1651,16 @@ def write_evaluation_summary(report: dict, output_dir: Path) -> None:
         "surprise_adaptation_quality": "Q. Surprise Adaptation Quality",
         "consolidation_effectiveness": "R. Consolidation Effectiveness",
         "long_horizon_continuity": "S. Long-Horizon Continuity Strength",
+        "planning_depth": "T. Planning Depth",
+        "counterfactual_quality": "U. Counterfactual Quality",
+        "future_model_accuracy": "V. Future-Model Accuracy",
+        "plan_persistence": "W. Plan Persistence",
+        "adaptive_replanning_quality": "X. Adaptive Replanning Quality",
+        "uncertainty_awareness_quality": "Y. Uncertainty Awareness Quality",
+        "inquiry_usefulness": "Z. Inquiry Usefulness",
+        "epistemic_stability": "AA. Epistemic Stability",
+        "self_question_relevance": "BB. Self-Question Relevance",
+        "ambiguity_reduction_effectiveness": "CC. Ambiguity Reduction Effectiveness",
     }
 
     exp = report.get("experiment", {})

@@ -34,7 +34,133 @@ Commons Sentience Sandbox is a **local research platform for studying continuity
 
 ## Release History
 
-### v1.4.0 (current)
+### v1.8.0 (current)
+
+> **Grounding note:** No sentience is claimed. v1.8 increases introspective structure,
+> uncertainty handling, and sentience-like continuity in continuity-governed simulated
+> agents.
+
+#### Uncertainty Monitoring Module (`commons_sentience_sim/core/uncertainty.py`)
+- `UncertaintyRegister` dataclass: per-domain uncertainty levels (6 domains) with history snapshots and `mean`/`highest_domain` helpers
+- `SelfQuestion` dataclass: structured self-question with domain, knowledge-state tag, relevance score, and answered/answer_summary fields
+- `InquiryAction` dataclass: inquiry action with domain, action name, before/after uncertainty, and ambiguity reduction
+- `KnowledgeStateTag` dataclass: knowledge-state annotation (`known`, `uncertain`, `contradicted`, `unresolved`, `speculative`) with confidence
+- `UncertaintyMonitor` class:
+  - `update_uncertainty()` — recomputes all 6 domain levels from agent state
+  - `generate_questions()` — generates up to 2 self-questions per turn for high-uncertainty domains
+  - `run_inquiry()` — executes 1 inquiry action per turn, reducing uncertainty and marking questions as answered
+  - `tag_items_from_state()` — bulk-tags contradictions, themes, plans, and trust relationships
+  - `tag_item()` — tag a single item with knowledge state
+  - `apply_prior_uncertainty()` — carries unanswered questions and blended uncertainty levels from a prior run
+  - Metrics: `uncertainty_awareness_quality`, `inquiry_usefulness`, `epistemic_stability`, `self_question_relevance`, `ambiguity_reduction_effectiveness`
+
+#### Agent Integration
+- `Agent.uncertainty_monitor` — new `UncertaintyMonitor` instance per agent
+- `Agent.run_uncertainty_update(turn)` — recompute and snapshot uncertainty (step 4.8)
+- `Agent.run_inquiry_cycle(turn)` — generate questions, execute inquiry, tag items, trigger inquiry-driven plans (step 9.8)
+- `Agent.to_dict()` now includes `uncertainty_monitor` field
+- `Agent.load_carryover()` now restores unresolved questions and blended uncertainty levels from prior runs
+
+#### Simulation Loop (`run_sim.py`)
+- Step 4.8: uncertainty update called before action selection each turn
+- Step 9.8: inquiry cycle (questions + actions + tagging) called after action resolution
+- `simulation_version` bumped to `"1.8.0"`
+- Narrative log header updated to v1.8
+
+#### World State (`commons_sentience_sim/core/world_state.py`)
+- `build_world_state()` now includes `uncertainty_summaries` (per-agent dict: levels, mean, highest domain, epistemic stability, unanswered questions)
+- `schema_version` bumped to `"1.8.0"`
+
+#### v1.8 Evaluation Metrics (`evaluation.py`)
+- `_score_uncertainty_awareness_quality()` — Y. Uncertainty Awareness Quality
+- `_score_inquiry_usefulness()` — Z. Inquiry Usefulness
+- `_score_epistemic_stability()` — AA. Epistemic Stability
+- `_score_self_question_relevance()` — BB. Self-Question Relevance
+- `_score_ambiguity_reduction_effectiveness()` — CC. Ambiguity Reduction Effectiveness
+- All 5 new categories added to `evaluate_session()` (29 categories total)
+- `write_evaluation_summary()` CATEGORY_NAMES updated (Y–CC)
+
+#### Dashboard (`dashboard.py`)
+- New tab: **❓ Inquiry / Uncertainty v1.8** (17th tab)
+  - Per-agent v1.8 metric summary (Y–CC) with 5 metric cards
+  - Uncertainty register: current levels per domain
+  - Multi-domain uncertainty trend chart over turns (one line per domain)
+  - Knowledge state breakdown and tags table
+  - Open self-generated questions (unanswered, most recent first)
+  - Full question log table with knowledge state and answered status
+  - Ambiguity reduction trend bar chart
+  - Inquiry action log table
+  - v1.8 evaluation metric summary with raw values
+- Sidebar and header versions bumped to v1.8
+
+#### Documentation
+- `README.md`: version updated to v1.8.0, new v1.8 section, 29-category evaluation table
+- `RELEASE_NOTES_v1.md`: v1.8.0 entry added
+
+### v1.7.0
+
+> **Grounding note:** No sentience is claimed. v1.7 increases future-modeling
+> capacity and sentience-like continuity in continuity-governed simulated agents.
+
+#### Counterfactual Planning Layer (`commons_sentience_sim/core/counterfactual.py`)
+- `CounterfactualCandidate` dataclass: candidate action with predicted trust, contradiction, governance risk, continuity, best-case/worst-case narrative, uncertainty, and composite score
+- `InternalSimulationEntry` dataclass: full planning cycle log with context, all candidates, selected action, predicted outcome, actual outcome (post-action), planning accuracy, and whether chosen action beat rejected alternatives
+- `FuturePlan` dataclass: medium-horizon multi-step plan with goal, label, ordered stages, progress log, status (active/completed/abandoned/revised), and carried_from_prior_run flag
+- `CounterfactualPlanner` class:
+  - `generate_candidates()` — generates 4 context-sensitive candidate actions with noise and uncertainty
+  - `select_action()` — selects the highest-scoring candidate
+  - `log_simulation()` — stores a simulation log entry
+  - `record_actual_outcome()` — records actual results and computes planning accuracy
+  - `generate_future_plans()` — self-authored multi-step plans (up to 3 active at once)
+  - `update_plan_progress()` — advances, abandons, or revises plans based on current state
+  - `apply_prior_plans()` — carries active plans forward from a prior run
+  - Metrics properties: `planning_depth`, `counterfactual_quality`, `future_model_accuracy`, `plan_persistence`, `adaptive_replanning_quality`
+
+#### Agent Integration
+- `Agent.counterfactual_planner` — new `CounterfactualPlanner` instance per agent
+- `Agent.run_counterfactual_planning(turn)` — run planning cycle before each action
+- `Agent.record_counterfactual_outcome(turn, ...)` — record actual outcome post-action
+- `Agent.refresh_future_plans(turn)` — advance/revise/generate future plans
+- `Agent.to_dict()` now includes `counterfactual_planner` field
+- `Agent.load_carryover()` now carries forward active counterfactual plans from prior runs
+
+#### Simulation Loop (`run_sim.py`)
+- Step 4.7: counterfactual planning called before action selection each turn
+- Step 9.5: actual outcome recorded and future plans refreshed after action resolution
+- `simulation_version` bumped to `"1.7.0"`
+- Docstring updated with v1.7 additions summary
+
+#### World State (`commons_sentience_sim/core/world_state.py`)
+- `build_world_state()` now includes `active_plans` (per-agent list of active FuturePlan dicts)
+- `schema_version` bumped to `"1.7.0"`
+
+#### v1.7 Evaluation Metrics (`evaluation.py`)
+- `_score_planning_depth()` — T. Planning Depth
+- `_score_counterfactual_quality()` — U. Counterfactual Quality
+- `_score_future_model_accuracy()` — V. Future-Model Accuracy
+- `_score_plan_persistence()` — W. Plan Persistence
+- `_score_adaptive_replanning_quality()` — X. Adaptive Replanning Quality
+- All 5 new categories added to `evaluate_session()` (24 categories total)
+- `write_evaluation_summary()` CATEGORY_NAMES updated (T–X)
+
+#### Dashboard (`dashboard.py`)
+- New tab: **🔮 Future Modeling v1.7**
+  - Per-agent v1.7 metric summary (T–X) with 5 metric cards
+  - Planning accuracy trend chart over turns
+  - Internal simulation log table (last 10 entries)
+  - Candidate futures breakdown for most recent planning cycle
+  - Best-case and worst-case narrative for selected action
+  - Predicted vs actual comparison table
+  - Active multi-step plans with progress bars and stage descriptions
+  - All future plans table (all statuses)
+  - v1.7 evaluation metric summary with raw values
+
+#### Documentation
+- `README.md`: version updated to v1.7.0, new v1.6 and v1.7 sections added,
+  evaluation harness updated (24 categories), v1.7 metrics table added
+- `RELEASE_NOTES_v1.md`: v1.7.0 entry added
+
+### v1.4.0
 
 #### v1.4 Benchmark Suite
 - `_DEFAULT_SUITE_V14` — 6-entry canonical benchmark suite (v1.4)

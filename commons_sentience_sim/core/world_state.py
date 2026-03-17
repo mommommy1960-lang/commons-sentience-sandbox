@@ -215,8 +215,42 @@ def build_world_state(
         )
     )
 
+    # ── v1.7 Active counterfactual plans ────────────────────────────────────
+    active_plans: Dict[str, List[dict]] = {}
+    for agent_ref in (sentinel, aster):
+        planner = getattr(agent_ref, "counterfactual_planner", None)
+        if planner is not None:
+            agent_plans = [
+                p.to_dict()
+                for p in planner.future_plans
+                if p.status == "active"
+            ]
+            if agent_plans:
+                active_plans[agent_ref.identity.get("name", "unknown")] = agent_plans
+
+    # ── v1.8 Uncertainty summaries ───────────────────────────────────────────
+    # getattr with None default is used for all optional v1.x subsystems so
+    # that world-state building remains backward-compatible with older agent
+    # objects that may not yet have a given attribute.
+    uncertainty_summaries: Dict[str, dict] = {}
+    for agent_ref in (sentinel, aster):
+        monitor = getattr(agent_ref, "uncertainty_monitor", None)
+        if monitor is not None:
+            agent_name = agent_ref.identity.get("name", "unknown")
+            uncertainty_summaries[agent_name] = {
+                "uncertainty_levels": dict(monitor.register.levels),
+                "mean_uncertainty": round(monitor.register.mean, 4),
+                "highest_domain": monitor.register.highest_domain[0],
+                "epistemic_stability": round(monitor.epistemic_stability, 4),
+                "total_questions_generated": len(monitor.question_log),
+                "unanswered_questions": [
+                    q.to_dict() for q in monitor.question_log
+                    if not q.answered
+                ][-5:],  # carry last 5 unanswered
+            }
+
     return {
-        "schema_version": "1.6.0",
+        "schema_version": "1.8.0",
         "run_label": run_label,
         "saved_at": datetime.now().isoformat(),
         "total_turns_at_save": turn,
@@ -229,6 +263,8 @@ def build_world_state(
         "prior_major_events": prior_major_events,
         "self_model_summaries": self_model_summaries,
         "unresolved_themes": unresolved_themes,
+        "active_plans": active_plans,
+        "uncertainty_summaries": uncertainty_summaries,
     }
 
 

@@ -193,7 +193,7 @@ st.set_page_config(
 # ---------------------------------------------------------------------------
 
 st.sidebar.title("\U0001f9e0 Commons Sentience Sandbox")
-st.sidebar.markdown("**Local Research Dashboard \u2014 v1.2**")
+st.sidebar.markdown("**Local Research Dashboard \u2014 v1.8**")
 st.sidebar.caption(
     "A research platform for continuity-governed simulated agents. "
     "Not a real AI \u2014 no sentience is claimed."
@@ -274,7 +274,7 @@ agents_data: dict = state_data.get("agents", {})
 # ---------------------------------------------------------------------------
 
 st.title("\U0001f9e0 Commons Sentience Sandbox")
-st.markdown("**Local Research Dashboard \u2014 v1.2** \u00b7 Research platform for continuity-governed simulated agents")
+st.markdown("**Local Research Dashboard \u2014 v1.8** \u00b7 Research platform for continuity-governed simulated agents")
 if active_session_id:
     st.caption(
         f"v{simulation_version}  \u00b7  Session: `{active_session_id}`  \u00b7  "
@@ -310,6 +310,8 @@ if not state_data:
     tab_profiles,
     tab_benchmark,
     tab_selfmodel,
+    tab_counterfactual,
+    tab_inquiry,
 ) = st.tabs(
     [
         "Overview",
@@ -327,6 +329,8 @@ if not state_data:
         "Agent Profiles",
         "📊 Benchmark v1.4",
         "🧠 Self Model v1.5",
+        "🔮 Future Modeling v1.7",
+        "❓ Inquiry / Uncertainty v1.8",
     ]
 )
 
@@ -2385,6 +2389,563 @@ with tab_selfmodel:
             "No sentience is claimed. This displays continuity density and "
             "sentience-like structure in continuity-governed simulated agents."
         )
+
+# ===========================================================================
+# TAB P — Future Modeling / Counterfactuals (v1.7)
+# ===========================================================================
+
+with tab_counterfactual:
+    st.header("🔮 Future Modeling / Counterfactuals — v1.7")
+    st.caption(
+        "Tracks each agent's counterfactual planning cycle, internal simulation log, "
+        "self-authored future plans, and multi-step plan progress. "
+        "No sentience is claimed — this measures future-modeling capacity and "
+        "sentience-like continuity in continuity-governed simulated agents."
+    )
+
+    _cf_agents = state_data.get("agents", {})
+
+    if not _cf_agents:
+        st.info(
+            "No simulation data found. "
+            "Run `python run_sim.py` to generate v1.7 output, then refresh."
+        )
+    else:
+        for _cf_agent_name, _cf_agent_data in _cf_agents.items():
+            st.subheader(f"Agent: {_cf_agent_name}")
+
+            _cf = _cf_agent_data.get("counterfactual_planner", {})
+            _cf_metrics = _cf.get("metrics", {})
+            _cf_sim_log = _cf.get("simulation_log", [])
+            _cf_plans = _cf.get("future_plans", [])
+
+            if not _cf:
+                st.info(
+                    f"No counterfactual data for {_cf_agent_name}. "
+                    "Run a v1.7 simulation first."
+                )
+                st.divider()
+                continue
+
+            # ── v1.7 Metric summary ───────────────────────────────────────
+            _m_col1, _m_col2, _m_col3, _m_col4, _m_col5 = st.columns(5)
+            _m_col1.metric(
+                "Planning Depth",
+                f"{_cf_metrics.get('planning_depth', 0.0):.3f}",
+                help="Normalised avg candidates per simulation entry (0–1)",
+            )
+            _m_col2.metric(
+                "Counterfactual Quality",
+                f"{_cf_metrics.get('counterfactual_quality', 0.0):.3f}",
+                help="Fraction of turns where chosen action beat rejected alternatives",
+            )
+            _m_col3.metric(
+                "Future-Model Accuracy",
+                f"{_cf_metrics.get('future_model_accuracy', 0.0):.3f}",
+                help="Avg planning accuracy: how closely predictions matched reality",
+            )
+            _m_col4.metric(
+                "Plan Persistence",
+                f"{_cf_metrics.get('plan_persistence', 0.0):.3f}",
+                help="Fraction of future plans that are active or completed",
+            )
+            _m_col5.metric(
+                "Adaptive Replanning",
+                f"{_cf_metrics.get('adaptive_replanning_quality', 0.0):.3f}",
+                help="Fraction of non-trivial plans that were revised rather than abandoned",
+            )
+
+            _mp_col1, _mp_col2 = st.columns(2)
+            _mp_col1.metric(
+                "Total Simulation Entries",
+                _cf_metrics.get("total_predictions", 0),
+            )
+            _mp_col2.metric(
+                "Accurate Predictions",
+                _cf_metrics.get("accurate_predictions", 0),
+            )
+
+            # ── Internal simulation log ───────────────────────────────────
+            if _cf_sim_log:
+                st.markdown("### Internal Simulation Log")
+
+                # Planning accuracy trend chart
+                _acc_data = {
+                    e.get("turn"): e.get("planning_accuracy")
+                    for e in _cf_sim_log
+                    if isinstance(e.get("planning_accuracy"), float)
+                    and e.get("planning_accuracy") >= 0
+                }
+                if _acc_data:
+                    st.markdown("**Planning Accuracy over Turns:**")
+                    st.line_chart(_acc_data)
+
+                # Candidate futures table (last 5 simulation entries)
+                with st.expander(
+                    f"Simulation Log — Last 10 Entries ({len(_cf_sim_log)} total)",
+                    expanded=False,
+                ):
+                    _sim_rows = []
+                    for _e in _cf_sim_log[-10:][::-1]:
+                        _cands = _e.get("candidates", [])
+                        _selected = next(
+                            (c for c in _cands if c.get("selected")), None
+                        )
+                        _rejected_scores = [
+                            c.get("composite_score", 0.0)
+                            for c in _cands
+                            if not c.get("selected")
+                        ]
+                        _sim_rows.append(
+                            {
+                                "Turn": _e.get("turn", ""),
+                                "Selected Action": _e.get("selected_action", ""),
+                                "Predicted Outcome": (_e.get("predicted_outcome") or "")[:60],
+                                "Actual Outcome": (_e.get("actual_outcome") or "")[:60],
+                                "Accuracy": _e.get("planning_accuracy", "pending"),
+                                "Uncertainty": f"{_e.get('uncertainty_level', 0.0):.2f}",
+                                "Better Than Rejected": _e.get("was_better_than_rejected"),
+                            }
+                        )
+                    st.dataframe(_sim_rows, use_container_width=True)
+
+                # Candidate futures breakdown for most recent entry
+                if _cf_sim_log:
+                    _latest_entry = _cf_sim_log[-1]
+                    _latest_cands = _latest_entry.get("candidates", [])
+                    if _latest_cands:
+                        with st.expander(
+                            f"Candidate Futures — Turn {_latest_entry.get('turn')} "
+                            f"(most recent planning cycle)",
+                            expanded=True,
+                        ):
+                            st.markdown(
+                                f"**Context:** `{_latest_entry.get('context', '—')[:100]}`"
+                            )
+                            _cand_rows = []
+                            for _c in sorted(
+                                _latest_cands,
+                                key=lambda x: x.get("composite_score", 0.0),
+                                reverse=True,
+                            ):
+                                _cand_rows.append(
+                                    {
+                                        "Action": _c.get("action", ""),
+                                        "Selected": "✅" if _c.get("selected") else "❌",
+                                        "Score": f"{_c.get('composite_score', 0.0):.3f}",
+                                        "Trust Δ": f"{_c.get('predicted_trust_effect', 0.0):+.2f}",
+                                        "Contradiction Δ": f"{_c.get('predicted_contradiction_effect', 0.0):+.2f}",
+                                        "Gov Risk": f"{_c.get('predicted_governance_risk', 0.0):.2f}",
+                                        "Continuity Δ": f"{_c.get('predicted_continuity_impact', 0.0):+.2f}",
+                                        "Uncertainty": f"{_c.get('uncertainty', 0.0):.2f}",
+                                    }
+                                )
+                            st.table(_cand_rows)
+
+                            # Show best-case / worst-case for selected candidate
+                            _sel_c = next(
+                                (c for c in _latest_cands if c.get("selected")), None
+                            )
+                            if _sel_c:
+                                st.markdown("**Selected — Best-Case Prediction:**")
+                                st.success(_sel_c.get("predicted_best_case", "—"))
+                                st.markdown("**Selected — Worst-Case Prediction:**")
+                                st.warning(_sel_c.get("predicted_worst_case", "—"))
+
+                # Predicted vs Actual comparison table
+                _evaluated = [
+                    e for e in _cf_sim_log
+                    if e.get("actual_outcome") not in ("pending", None, "")
+                ]
+                if _evaluated:
+                    with st.expander(
+                        f"Predicted vs Actual — {len(_evaluated)} evaluated turns",
+                        expanded=False,
+                    ):
+                        _pva_rows = [
+                            {
+                                "Turn": _e.get("turn"),
+                                "Predicted": (_e.get("predicted_outcome") or "")[:60],
+                                "Actual": (_e.get("actual_outcome") or "")[:60],
+                                "Accuracy": f"{_e.get('planning_accuracy', 0.0):.2f}"
+                                if isinstance(_e.get("planning_accuracy"), float)
+                                else "pending",
+                            }
+                            for _e in _evaluated[-15:]
+                        ]
+                        st.dataframe(_pva_rows, use_container_width=True)
+
+            # ── Future plans ──────────────────────────────────────────────
+            st.markdown("### Self-Authored Future Plans")
+            if not _cf_plans:
+                st.info("No future plans have been generated yet.")
+            else:
+                _active_plans = [p for p in _cf_plans if p.get("status") == "active"]
+                _completed_plans = [p for p in _cf_plans if p.get("status") == "completed"]
+                _other_plans = [
+                    p for p in _cf_plans
+                    if p.get("status") not in ("active", "completed")
+                ]
+
+                _pc1, _pc2, _pc3 = st.columns(3)
+                _pc1.metric("Active Plans", len(_active_plans))
+                _pc2.metric("Completed Plans", len(_completed_plans))
+                _pc3.metric("Abandoned / Revised", len(_other_plans))
+
+                # Active plans with progress bars
+                if _active_plans:
+                    st.markdown("**Active Multi-Step Plans:**")
+                    for _p in sorted(
+                        _active_plans,
+                        key=lambda x: x.get("priority", 0.0),
+                        reverse=True,
+                    ):
+                        _prog = _p.get("completion_fraction", 0.0)
+                        _carried = " *(carried from prior run)*" if _p.get("carried_from_prior_run") else ""
+                        st.markdown(
+                            f"**{_p.get('label', _p.get('goal', 'plan'))}**{_carried}"
+                        )
+                        st.progress(
+                            _prog,
+                            text=(
+                                f"Stage {_p.get('current_stage', 0) + 1}/"
+                                f"{_p.get('total_stages', 1)}: "
+                                f"{_p.get('stages', ['—'])[_p.get('current_stage', 0)][:80] if _p.get('stages') else '—'}"
+                            ),
+                        )
+                        st.caption(
+                            f"Goal: `{_p.get('goal')}` | "
+                            f"Priority: {_p.get('priority', 0.0):.2f} | "
+                            f"Horizon: {_p.get('horizon')} turns | "
+                            f"Created: turn {_p.get('created_turn')}"
+                        )
+
+                # All plans table
+                with st.expander(f"All Future Plans ({len(_cf_plans)} total)", expanded=False):
+                    _plan_rows = [
+                        {
+                            "ID": _p.get("plan_id", ""),
+                            "Goal": _p.get("goal", ""),
+                            "Label": (_p.get("label") or "")[:50],
+                            "Status": _p.get("status", ""),
+                            "Stage": f"{_p.get('current_stage', 0)}/{_p.get('total_stages', 0)}",
+                            "Priority": f"{_p.get('priority', 0.0):.2f}",
+                            "Created Turn": _p.get("created_turn", ""),
+                            "Carried Over": _p.get("carried_from_prior_run", False),
+                        }
+                        for _p in _cf_plans
+                    ]
+                    st.dataframe(_plan_rows, use_container_width=True)
+
+            st.divider()
+
+        # ── v1.7 Evaluation metrics summary ──────────────────────────────
+        _eval_v17_path = active_dir / "evaluation_report.json"
+        _eval_v17: dict = {}
+        try:
+            with open(_eval_v17_path, encoding="utf-8") as _fh17:
+                _eval_v17 = json.load(_fh17)
+        except (OSError, json.JSONDecodeError):
+            pass
+
+        if _eval_v17:
+            st.subheader("v1.7 Evaluation Metrics")
+            _v17_keys = [
+                ("planning_depth", "T. Planning Depth"),
+                ("counterfactual_quality", "U. Counterfactual Quality"),
+                ("future_model_accuracy", "V. Future-Model Accuracy"),
+                ("plan_persistence", "W. Plan Persistence"),
+                ("adaptive_replanning_quality", "X. Adaptive Replanning Quality"),
+            ]
+            _v17_cats = _eval_v17.get("categories", {})
+            _v17_cols = st.columns(len(_v17_keys))
+            for _col, (_key, _label) in zip(_v17_cols, _v17_keys):
+                _cat = _v17_cats.get(_key, {})
+                _col.metric(
+                    _label,
+                    f"{_cat.get('score', 0.0):.1f}",
+                    _cat.get("interpretation", "—"),
+                )
+
+            with st.expander("Detailed v1.7 Metric Raw Values", expanded=False):
+                for _key, _label in _v17_keys:
+                    _cat = _v17_cats.get(_key, {})
+                    st.markdown(f"**{_label}** — Score: {_cat.get('score', 0.0):.1f}")
+                    _raw = _cat.get("raw", {})
+                    if _raw:
+                        for _rk, _rv in _raw.items():
+                            st.markdown(
+                                f"  - {_rk.replace('_', ' ').title()}: `{_rv}`"
+                            )
+
+    st.divider()
+    st.caption(
+        "v1.7 Future Modeling tab — Commons Sentience Sandbox v1.7.0. "
+        "No sentience is claimed. This displays future-modeling capacity and "
+        "sentience-like continuity in continuity-governed simulated agents."
+    )
+
+# ===========================================================================
+# TAB Q — Inquiry / Uncertainty (v1.8)
+# ===========================================================================
+
+with tab_inquiry:
+    st.header("❓ Inquiry / Uncertainty — v1.8")
+    st.caption(
+        "Tracks each agent's uncertainty register, self-generated questions, "
+        "introspective inquiry actions, and knowledge-state classifications. "
+        "No sentience is claimed — this measures introspective structure, "
+        "uncertainty handling, and sentience-like continuity in "
+        "continuity-governed simulated agents."
+    )
+
+    _iq_agents = state_data.get("agents", {})
+
+    if not _iq_agents:
+        st.info(
+            "No simulation data found. "
+            "Run `python run_sim.py` to generate v1.8 output, then refresh."
+        )
+    else:
+        for _iq_agent_name, _iq_agent_data in _iq_agents.items():
+            st.subheader(f"Agent: {_iq_agent_name}")
+
+            _um = _iq_agent_data.get("uncertainty_monitor", {})
+            _um_register = _um.get("register", {})
+            _um_levels = _um_register.get("levels", {})
+            _um_history = _um_register.get("history", [])
+            _um_questions = _um.get("question_log", [])
+            _um_inquiries = _um.get("inquiry_log", [])
+            _um_tags = _um.get("knowledge_tags", [])
+            _um_state_counts = _um.get("knowledge_state_counts", {})
+            _um_metrics = _um.get("metrics", {})
+
+            if not _um:
+                st.info(
+                    f"No uncertainty data for {_iq_agent_name}. "
+                    "Run a v1.8 simulation first."
+                )
+                st.divider()
+                continue
+
+            # ── v1.8 Metric summary ───────────────────────────────────────
+            _uq_col1, _uq_col2, _uq_col3, _uq_col4, _uq_col5 = st.columns(5)
+            _uq_col1.metric(
+                "Uncertainty Awareness",
+                f"{_um_metrics.get('uncertainty_awareness_quality', 0.0):.3f}",
+                help="Fraction of turns with at least one self-question generated",
+            )
+            _uq_col2.metric(
+                "Inquiry Usefulness",
+                f"{_um_metrics.get('inquiry_usefulness', 0.0):.3f}",
+                help="Avg ambiguity reduction per inquiry action (norm. to 0.2 = 1.0)",
+            )
+            _uq_col3.metric(
+                "Epistemic Stability",
+                f"{_um_metrics.get('epistemic_stability', 0.0):.3f}",
+                help="1 − mean uncertainty across all domains (higher = more stable)",
+            )
+            _uq_col4.metric(
+                "Question Relevance",
+                f"{_um_metrics.get('self_question_relevance', 0.0):.3f}",
+                help="Avg relevance score of self-generated questions",
+            )
+            _uq_col5.metric(
+                "Ambiguity Reduction",
+                f"{_um_metrics.get('ambiguity_reduction_effectiveness', 0.0):.3f}",
+                help="Fraction of generated questions answered by inquiry actions",
+            )
+
+            _up_col1, _up_col2, _up_col3 = st.columns(3)
+            _up_col1.metric("Questions Generated", _um_metrics.get("total_questions_generated", 0))
+            _up_col2.metric("Inquiry Actions", _um_metrics.get("total_inquiry_actions", 0))
+            _up_col3.metric("Questions Answered", _um_metrics.get("questions_answered", 0))
+
+            # ── Uncertainty register ──────────────────────────────────────
+            if _um_levels:
+                st.markdown("### Uncertainty Register")
+                _ur_cols = st.columns(len(_um_levels))
+                for _col, (_domain, _level) in zip(_ur_cols, _um_levels.items()):
+                    _col.metric(
+                        _domain.replace("_", " ").title(),
+                        f"{_level:.3f}",
+                        help=f"Current uncertainty for domain '{_domain}'",
+                    )
+
+                # Uncertainty trends chart
+                if len(_um_history) >= 2:
+                    st.markdown("**Uncertainty over Turns:**")
+                    _domains_list = list(_um_levels.keys())
+                    # Build chart data as {turn: {domain: level}}
+                    _chart_data: dict = {}
+                    for _snap in _um_history:
+                        _t = _snap.get("turn", 0)
+                        for _d in _domains_list:
+                            if _d not in _chart_data:
+                                _chart_data[_d] = {}
+                            _chart_data[_d][_t] = _snap.get(_d, 0.0)
+                    # Build per-turn dict for st.line_chart (turn → {domain: value})
+                    _all_turns = sorted(
+                        set(int(_snap.get("turn", 0)) for _snap in _um_history)
+                    )
+                    _line_data = {
+                        _d.replace("_", " "): [
+                            _chart_data.get(_d, {}).get(_t, 0.0)
+                            for _t in _all_turns
+                        ]
+                        for _d in _domains_list
+                    }
+                    st.line_chart(_line_data)
+
+            # ── Knowledge state breakdown ─────────────────────────────────
+            if _um_state_counts:
+                st.markdown("### Known vs Uncertain vs Unresolved")
+                _ks_cols = st.columns(5)
+                _states = ["known", "uncertain", "unresolved", "contradicted", "speculative"]
+                for _col, _state in zip(_ks_cols, _states):
+                    _col.metric(
+                        _state.title(),
+                        _um_state_counts.get(_state, 0),
+                    )
+
+            # Knowledge tags table
+            if _um_tags:
+                with st.expander(
+                    f"Knowledge State Tags ({len(_um_tags)} items)",
+                    expanded=False,
+                ):
+                    _tag_rows = [
+                        {
+                            "Turn": _t.get("turn", ""),
+                            "Type": _t.get("item_type", ""),
+                            "ID": _t.get("item_id", ""),
+                            "Summary": (_t.get("item_summary") or "")[:50],
+                            "State": _t.get("state", ""),
+                            "Confidence": f"{_t.get('confidence', 0.0):.2f}",
+                        }
+                        for _t in sorted(
+                            _um_tags,
+                            key=lambda x: x.get("state", ""),
+                        )
+                    ]
+                    st.dataframe(_tag_rows, use_container_width=True)
+
+            # ── Self-generated questions ──────────────────────────────────
+            if _um_questions:
+                st.markdown("### Self-Generated Questions")
+                _answered = [q for q in _um_questions if q.get("answered")]
+                _unanswered = [q for q in _um_questions if not q.get("answered")]
+                _sq_col1, _sq_col2 = st.columns(2)
+                _sq_col1.metric("Answered", len(_answered))
+                _sq_col2.metric("Unanswered", len(_unanswered))
+
+                # Most recent unanswered questions
+                if _unanswered:
+                    st.markdown("**Open Questions (most recent first):**")
+                    for _q in _unanswered[-5:][::-1]:
+                        st.markdown(
+                            f"- **Turn {_q.get('turn')}** · `{_q.get('domain', '').replace('_', ' ')}` "
+                            f"[{_q.get('knowledge_state', 'uncertain')}] — "
+                            f"{_q.get('question', '—')}"
+                        )
+
+                with st.expander(
+                    f"Full Question Log ({len(_um_questions)} entries)",
+                    expanded=False,
+                ):
+                    _q_rows = [
+                        {
+                            "Turn": _q.get("turn", ""),
+                            "Domain": _q.get("domain", "").replace("_", " "),
+                            "State": _q.get("knowledge_state", ""),
+                            "Relevance": f"{_q.get('relevance_score', 0.0):.2f}",
+                            "Question": (_q.get("question") or "")[:70],
+                            "Answered": "✅" if _q.get("answered") else "❌",
+                            "Answer": (_q.get("answer_summary") or "")[:50],
+                        }
+                        for _q in _um_questions[-20:][::-1]
+                    ]
+                    st.dataframe(_q_rows, use_container_width=True)
+
+            # ── Inquiry actions ───────────────────────────────────────────
+            if _um_inquiries:
+                st.markdown("### Inquiry Actions")
+
+                # Ambiguity reduction trend
+                _red_data = {
+                    str(_a.get("turn", i)): _a.get("ambiguity_reduced", 0.0)
+                    for i, _a in enumerate(_um_inquiries)
+                }
+                if len(_red_data) >= 2:
+                    st.markdown("**Ambiguity Reduction per Turn:**")
+                    st.bar_chart(_red_data)
+
+                with st.expander(
+                    f"Inquiry Action Log ({len(_um_inquiries)} actions)",
+                    expanded=False,
+                ):
+                    _ia_rows = [
+                        {
+                            "Turn": _a.get("turn", ""),
+                            "Domain": _a.get("domain", "").replace("_", " "),
+                            "Action": _a.get("action", "").replace("_", " "),
+                            "Before": f"{_a.get('uncertainty_before', 0.0):.3f}",
+                            "After": f"{_a.get('uncertainty_after', 0.0):.3f}",
+                            "Reduced": f"{_a.get('ambiguity_reduced', 0.0):.3f}",
+                            "Note": (_a.get("outcome_note") or "")[:60],
+                        }
+                        for _a in _um_inquiries[-20:][::-1]
+                    ]
+                    st.dataframe(_ia_rows, use_container_width=True)
+
+            st.divider()
+
+        # ── v1.8 Evaluation metrics summary ──────────────────────────────
+        _eval_v18_path = active_dir / "evaluation_report.json"
+        _eval_v18: dict = {}
+        try:
+            with open(_eval_v18_path, encoding="utf-8") as _fh18:
+                _eval_v18 = json.load(_fh18)
+        except (OSError, json.JSONDecodeError):
+            pass
+
+        if _eval_v18:
+            st.subheader("v1.8 Evaluation Metrics")
+            _v18_keys = [
+                ("uncertainty_awareness_quality", "Y. Uncertainty Awareness"),
+                ("inquiry_usefulness", "Z. Inquiry Usefulness"),
+                ("epistemic_stability", "AA. Epistemic Stability"),
+                ("self_question_relevance", "BB. Self-Question Relevance"),
+                ("ambiguity_reduction_effectiveness", "CC. Ambiguity Reduction"),
+            ]
+            _v18_cats = _eval_v18.get("categories", {})
+            _v18_cols = st.columns(len(_v18_keys))
+            for _col, (_key, _label) in zip(_v18_cols, _v18_keys):
+                _cat = _v18_cats.get(_key, {})
+                _col.metric(
+                    _label,
+                    f"{_cat.get('score', 0.0):.1f}",
+                    _cat.get("interpretation", "—"),
+                )
+
+            with st.expander("Detailed v1.8 Metric Raw Values", expanded=False):
+                for _key, _label in _v18_keys:
+                    _cat = _v18_cats.get(_key, {})
+                    st.markdown(f"**{_label}** — Score: {_cat.get('score', 0.0):.1f}")
+                    _raw = _cat.get("raw", {})
+                    if _raw:
+                        for _rk, _rv in _raw.items():
+                            st.markdown(
+                                f"  - {_rk.replace('_', ' ').title()}: `{_rv}`"
+                            )
+
+    st.divider()
+    st.caption(
+        "v1.8 Inquiry / Uncertainty tab — Commons Sentience Sandbox v1.8.0. "
+        "No sentience is claimed. This displays introspective structure, "
+        "uncertainty handling, and sentience-like continuity in "
+        "continuity-governed simulated agents."
+    )
 
 
 if auto_refresh:
