@@ -1,15 +1,15 @@
 # Agent Profile Study — Commons Sentience Sandbox
 
 **Version:** 1.3.0  
-**Generated:** 2026-03-17T11:46:46  
-**Sessions loaded:** 6  
+**Generated:** 2026-03-17T12:03:58  
+**Sessions loaded:** 1  
 
 > This study compares the longitudinal behaviour profiles of Sentinel and Aster
 > across multiple simulation sessions. These are continuity-governed simulated agents.
 
 ## Sentinel
 
-- Sessions included: 6
+- Sessions included: 1
 
 ### Trust Behaviour
 | Metric | Value |
@@ -23,8 +23,8 @@
 
 ### Reflection Style
 - Total reflections (mean per session): 4.00
-  - high_pressure_contradiction: 12
-  - periodic_synthesis: 12
+  - high_pressure_contradiction: 2
+  - periodic_synthesis: 2
 
 ### Contradiction Patterns
 - Contradictions per session (mean): 1.00
@@ -42,18 +42,18 @@
 ### Identity Continuity
 - Drift mean (across sessions): 0.0000
 - Drift std: 0.0000
-- Identity history entries total: 180
+- Identity history entries total: 30
 
 ### Relationship Stability
 - Timeline events (mean per session): 2.00
 - Conflict episodes total: 0
-- Cooperation spikes total: 12
+- Cooperation spikes total: 2
 
 ---
 
 ## Aster
 
-- Sessions included: 6
+- Sessions included: 1
 
 ### Trust Behaviour
 | Metric | Value |
@@ -67,8 +67,8 @@
 
 ### Reflection Style
 - Total reflections (mean per session): 4.00
-  - high_pressure_contradiction: 12
-  - periodic_synthesis: 12
+  - high_pressure_contradiction: 2
+  - periodic_synthesis: 2
 
 ### Contradiction Patterns
 - Contradictions per session (mean): 1.00
@@ -86,12 +86,12 @@
 ### Identity Continuity
 - Drift mean (across sessions): 0.0000
 - Drift std: 0.0000
-- Identity history entries total: 180
+- Identity history entries total: 30
 
 ### Relationship Stability
 - Timeline events (mean per session): 2.00
 - Conflict episodes total: 0
-- Cooperation spikes total: 12
+- Cooperation spikes total: 2
 
 ---
 
