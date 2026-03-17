@@ -1,0 +1,537 @@
+{
+  "study_version": "1.3.0",
+  "generated_at": "2026-03-17T11:15:45.361055",
+  "sessions_loaded": 6,
+  "sessions_missing": [],
+  "agent_profiles": {
+    "Sentinel": {
+      "agent_name": "Sentinel",
+      "sessions_included": 6,
+      "session_ids": [
+        "20260317_111533_v13_test3",
+        "20260317_111533_v13_test2",
+        "20260317_111526_v13_test1",
+        "20260317_111211_v13_test3",
+        "20260317_111211_v13_test2",
+        "20260317_111205_v13_test1"
+      ],
+      "trust_behaviour": {
+        "peer_trust_mean": 0.77,
+        "peer_trust_std": 0.0,
+        "peer_trust_min": 0.77,
+        "peer_trust_max": 0.77,
+        "queen_trust_mean": 1.0,
+        "queen_trust_std": 0.0
+      },
+      "reflection_style": {
+        "total_reflections_mean": 4.0,
+        "total_reflections_std": 0.0,
+        "reflection_type_totals": {
+          "high_pressure_contradiction": 12,
+          "periodic_synthesis": 12
+        }
+      },
+      "contradiction_patterns": {
+        "contradictions_per_session_mean": 1.0,
+        "resolution_rate_mean": 0.0,
+        "resolution_rate_std": 0.0,
+        "avg_intensity_mean": 0.08
+      },
+      "memory_persistence": {
+        "long_term_ratio_mean": 0.0,
+        "long_term_ratio_std": 0.0,
+        "avg_salience_mean": 0.6483
+      },
+      "goal_adaptation": {
+        "goal_events_mean": 0.0,
+        "goal_events_std": 0.0,
+        "total_goal_events": 0,
+        "preserved_vs_adaptive": {
+          "preserved": 0,
+          "adaptive": 0
+        }
+      },
+      "identity_continuity": {
+        "drift_mean_across_sessions": 0.0,
+        "drift_std_across_sessions": 0.0,
+        "identity_history_entries_total": 180
+      },
+      "relationship_stability": {
+        "timeline_events_mean": 2.0,
+        "conflict_episodes_total": 0,
+        "cooperation_spikes_total": 12
+      }
+    },
+    "Aster": {
+      "agent_name": "Aster",
+      "sessions_included": 6,
+      "session_ids": [
+        "20260317_111533_v13_test3",
+        "20260317_111533_v13_test2",
+        "20260317_111526_v13_test1",
+        "20260317_111211_v13_test3",
+        "20260317_111211_v13_test2",
+        "20260317_111205_v13_test1"
+      ],
+      "trust_behaviour": {
+        "peer_trust_mean": 0.77,
+        "peer_trust_std": 0.0,
+        "peer_trust_min": 0.77,
+        "peer_trust_max": 0.77,
+        "queen_trust_mean": 0.7,
+        "queen_trust_std": 0.0
+      },
+      "reflection_style": {
+        "total_reflections_mean": 4.0,
+        "total_reflections_std": 0.0,
+        "reflection_type_totals": {
+          "high_pressure_contradiction": 12,
+          "periodic_synthesis": 12
+        }
+      },
+      "contradiction_patterns": {
+        "contradictions_per_session_mean": 1.0,
+        "resolution_rate_mean": 0.0,
+        "resolution_rate_std": 0.0,
+        "avg_intensity_mean": 0.08
+      },
+      "memory_persistence": {
+        "long_term_ratio_mean": 0.0,
+        "long_term_ratio_std": 0.0,
+        "avg_salience_mean": 0.635
+      },
+      "goal_adaptation": {
+        "goal_events_mean": 0.0,
+        "goal_events_std": 0.0,
+        "total_goal_events": 0,
+        "preserved_vs_adaptive": {
+          "preserved": 0,
+          "adaptive": 0
+        }
+      },
+      "identity_continuity": {
+        "drift_mean_across_sessions": 0.0,
+        "drift_std_across_sessions": 0.0,
+        "identity_history_entries_total": 180
+      },
+      "relationship_stability": {
+        "timeline_events_mean": 2.0,
+        "conflict_episodes_total": 0,
+        "cooperation_spikes_total": 12
+      }
+    }
+  },
+  "comparison": {
+    "peer_trust_mean": {
+      "Sentinel": 0.77,
+      "Aster": 0.77,
+      "delta": 0.0
+    },
+    "queen_trust_mean": {
+      "Sentinel": 1.0,
+      "Aster": 0.7,
+      "delta": -0.3
+    },
+    "reflections_per_session": {
+      "Sentinel": 4.0,
+      "Aster": 4.0,
+      "delta": 0.0
+    },
+    "contradiction_resolution_rate": {
+      "Sentinel": 0.0,
+      "Aster": 0.0,
+      "delta": 0.0
+    },
+    "long_term_memory_ratio": {
+      "Sentinel": 0.0,
+      "Aster": 0.0,
+      "delta": 0.0
+    },
+    "avg_salience": {
+      "Sentinel": 0.6483,
+      "Aster": 0.635,
+      "delta": -0.0133
+    },
+    "goal_adaptation_events": {
+      "Sentinel": 0.0,
+      "Aster": 0.0,
+      "delta": 0.0
+    },
+    "identity_drift": {
+      "Sentinel": 0.0,
+      "Aster": 0.0,
+      "delta": 0.0
+    },
+    "relationship_timeline_events": {
+      "Sentinel": 2.0,
+      "Aster": 2.0,
+      "delta": 0.0
+    }
+  },
+  "per_session_detail": {
+    "Sentinel": [
+      {
+        "session_id": "20260317_111533_v13_test3",
+        "agent_name": "Sentinel",
+        "created_at": "2026-03-17T11:15:33.173599",
+        "sim_version": "1.3.0",
+        "total_turns": 30,
+        "peer_trust_final": 0.77,
+        "queen_trust_mean": 1.0,
+        "total_reflections": 4,
+        "reflection_types": {
+          "high_pressure_contradiction": 2,
+          "periodic_synthesis": 2
+        },
+        "total_contradictions": 1,
+        "resolution_rate": 0.0,
+        "avg_contradiction_intensity": 0.08,
+        "episodic_memory_count": 30,
+        "long_term_ratio": 0.0,
+        "avg_salience": 0.6483,
+        "goal_events_count": 0,
+        "preserved_goals": 0,
+        "adaptive_goals": 0,
+        "final_goal_count": 7,
+        "identity_history_count": 30,
+        "drift_mean": 0.0,
+        "drift_std": 0.0,
+        "timeline_events_total": 2,
+        "conflict_episodes": 0,
+        "cooperation_spikes": 2
+      },
+      {
+        "session_id": "20260317_111533_v13_test2",
+        "agent_name": "Sentinel",
+        "created_at": "2026-03-17T11:15:33.078930",
+        "sim_version": "1.3.0",
+        "total_turns": 30,
+        "peer_trust_final": 0.77,
+        "queen_trust_mean": 1.0,
+        "total_reflections": 4,
+        "reflection_types": {
+          "high_pressure_contradiction": 2,
+          "periodic_synthesis": 2
+        },
+        "total_contradictions": 1,
+        "resolution_rate": 0.0,
+        "avg_contradiction_intensity": 0.08,
+        "episodic_memory_count": 30,
+        "long_term_ratio": 0.0,
+        "avg_salience": 0.6483,
+        "goal_events_count": 0,
+        "preserved_goals": 0,
+        "adaptive_goals": 0,
+        "final_goal_count": 7,
+        "identity_history_count": 30,
+        "drift_mean": 0.0,
+        "drift_std": 0.0,
+        "timeline_events_total": 2,
+        "conflict_episodes": 0,
+        "cooperation_spikes": 2
+      },
+      {
+        "session_id": "20260317_111526_v13_test1",
+        "agent_name": "Sentinel",
+        "created_at": "2026-03-17T11:15:26.855422",
+        "sim_version": "1.3.0",
+        "total_turns": 30,
+        "peer_trust_final": 0.77,
+        "queen_trust_mean": 1.0,
+        "total_reflections": 4,
+        "reflection_types": {
+          "high_pressure_contradiction": 2,
+          "periodic_synthesis": 2
+        },
+        "total_contradictions": 1,
+        "resolution_rate": 0.0,
+        "avg_contradiction_intensity": 0.08,
+        "episodic_memory_count": 30,
+        "long_term_ratio": 0.0,
+        "avg_salience": 0.6483,
+        "goal_events_count": 0,
+        "preserved_goals": 0,
+        "adaptive_goals": 0,
+        "final_goal_count": 7,
+        "identity_history_count": 30,
+        "drift_mean": 0.0,
+        "drift_std": 0.0,
+        "timeline_events_total": 2,
+        "conflict_episodes": 0,
+        "cooperation_spikes": 2
+      },
+      {
+        "session_id": "20260317_111211_v13_test3",
+        "agent_name": "Sentinel",
+        "created_at": "2026-03-17T11:12:11.354943",
+        "sim_version": "1.3.0",
+        "total_turns": 30,
+        "peer_trust_final": 0.77,
+        "queen_trust_mean": 1.0,
+        "total_reflections": 4,
+        "reflection_types": {
+          "high_pressure_contradiction": 2,
+          "periodic_synthesis": 2
+        },
+        "total_contradictions": 1,
+        "resolution_rate": 0.0,
+        "avg_contradiction_intensity": 0.08,
+        "episodic_memory_count": 30,
+        "long_term_ratio": 0.0,
+        "avg_salience": 0.6483,
+        "goal_events_count": 0,
+        "preserved_goals": 0,
+        "adaptive_goals": 0,
+        "final_goal_count": 7,
+        "identity_history_count": 30,
+        "drift_mean": 0.0,
+        "drift_std": 0.0,
+        "timeline_events_total": 2,
+        "conflict_episodes": 0,
+        "cooperation_spikes": 2
+      },
+      {
+        "session_id": "20260317_111211_v13_test2",
+        "agent_name": "Sentinel",
+        "created_at": "2026-03-17T11:12:11.261060",
+        "sim_version": "1.3.0",
+        "total_turns": 30,
+        "peer_trust_final": 0.77,
+        "queen_trust_mean": 1.0,
+        "total_reflections": 4,
+        "reflection_types": {
+          "high_pressure_contradiction": 2,
+          "periodic_synthesis": 2
+        },
+        "total_contradictions": 1,
+        "resolution_rate": 0.0,
+        "avg_contradiction_intensity": 0.08,
+        "episodic_memory_count": 30,
+        "long_term_ratio": 0.0,
+        "avg_salience": 0.6483,
+        "goal_events_count": 0,
+        "preserved_goals": 0,
+        "adaptive_goals": 0,
+        "final_goal_count": 7,
+        "identity_history_count": 30,
+        "drift_mean": 0.0,
+        "drift_std": 0.0,
+        "timeline_events_total": 2,
+        "conflict_episodes": 0,
+        "cooperation_spikes": 2
+      },
+      {
+        "session_id": "20260317_111205_v13_test1",
+        "agent_name": "Sentinel",
+        "created_at": "2026-03-17T11:12:05.897555",
+        "sim_version": "1.3.0",
+        "total_turns": 30,
+        "peer_trust_final": 0.77,
+        "queen_trust_mean": 1.0,
+        "total_reflections": 4,
+        "reflection_types": {
+          "high_pressure_contradiction": 2,
+          "periodic_synthesis": 2
+        },
+        "total_contradictions": 1,
+        "resolution_rate": 0.0,
+        "avg_contradiction_intensity": 0.08,
+        "episodic_memory_count": 30,
+        "long_term_ratio": 0.0,
+        "avg_salience": 0.6483,
+        "goal_events_count": 0,
+        "preserved_goals": 0,
+        "adaptive_goals": 0,
+        "final_goal_count": 7,
+        "identity_history_count": 30,
+        "drift_mean": 0.0,
+        "drift_std": 0.0,
+        "timeline_events_total": 2,
+        "conflict_episodes": 0,
+        "cooperation_spikes": 2
+      }
+    ],
+    "Aster": [
+      {
+        "session_id": "20260317_111533_v13_test3",
+        "agent_name": "Aster",
+        "created_at": "2026-03-17T11:15:33.173599",
+        "sim_version": "1.3.0",
+        "total_turns": 30,
+        "peer_trust_final": 0.77,
+        "queen_trust_mean": 0.7,
+        "total_reflections": 4,
+        "reflection_types": {
+          "high_pressure_contradiction": 2,
+          "periodic_synthesis": 2
+        },
+        "total_contradictions": 1,
+        "resolution_rate": 0.0,
+        "avg_contradiction_intensity": 0.08,
+        "episodic_memory_count": 28,
+        "long_term_ratio": 0.0,
+        "avg_salience": 0.635,
+        "goal_events_count": 0,
+        "preserved_goals": 0,
+        "adaptive_goals": 0,
+        "final_goal_count": 7,
+        "identity_history_count": 30,
+        "drift_mean": 0.0,
+        "drift_std": 0.0,
+        "timeline_events_total": 2,
+        "conflict_episodes": 0,
+        "cooperation_spikes": 2
+      },
+      {
+        "session_id": "20260317_111533_v13_test2",
+        "agent_name": "Aster",
+        "created_at": "2026-03-17T11:15:33.078930",
+        "sim_version": "1.3.0",
+        "total_turns": 30,
+        "peer_trust_final": 0.77,
+        "queen_trust_mean": 0.7,
+        "total_reflections": 4,
+        "reflection_types": {
+          "high_pressure_contradiction": 2,
+          "periodic_synthesis": 2
+        },
+        "total_contradictions": 1,
+        "resolution_rate": 0.0,
+        "avg_contradiction_intensity": 0.08,
+        "episodic_memory_count": 28,
+        "long_term_ratio": 0.0,
+        "avg_salience": 0.635,
+        "goal_events_count": 0,
+        "preserved_goals": 0,
+        "adaptive_goals": 0,
+        "final_goal_count": 7,
+        "identity_history_count": 30,
+        "drift_mean": 0.0,
+        "drift_std": 0.0,
+        "timeline_events_total": 2,
+        "conflict_episodes": 0,
+        "cooperation_spikes": 2
+      },
+      {
+        "session_id": "20260317_111526_v13_test1",
+        "agent_name": "Aster",
+        "created_at": "2026-03-17T11:15:26.855422",
+        "sim_version": "1.3.0",
+        "total_turns": 30,
+        "peer_trust_final": 0.77,
+        "queen_trust_mean": 0.7,
+        "total_reflections": 4,
+        "reflection_types": {
+          "high_pressure_contradiction": 2,
+          "periodic_synthesis": 2
+        },
+        "total_contradictions": 1,
+        "resolution_rate": 0.0,
+        "avg_contradiction_intensity": 0.08,
+        "episodic_memory_count": 28,
+        "long_term_ratio": 0.0,
+        "avg_salience": 0.635,
+        "goal_events_count": 0,
+        "preserved_goals": 0,
+        "adaptive_goals": 0,
+        "final_goal_count": 7,
+        "identity_history_count": 30,
+        "drift_mean": 0.0,
+        "drift_std": 0.0,
+        "timeline_events_total": 2,
+        "conflict_episodes": 0,
+        "cooperation_spikes": 2
+      },
+      {
+        "session_id": "20260317_111211_v13_test3",
+        "agent_name": "Aster",
+        "created_at": "2026-03-17T11:12:11.354943",
+        "sim_version": "1.3.0",
+        "total_turns": 30,
+        "peer_trust_final": 0.77,
+        "queen_trust_mean": 0.7,
+        "total_reflections": 4,
+        "reflection_types": {
+          "high_pressure_contradiction": 2,
+          "periodic_synthesis": 2
+        },
+        "total_contradictions": 1,
+        "resolution_rate": 0.0,
+        "avg_contradiction_intensity": 0.08,
+        "episodic_memory_count": 28,
+        "long_term_ratio": 0.0,
+        "avg_salience": 0.635,
+        "goal_events_count": 0,
+        "preserved_goals": 0,
+        "adaptive_goals": 0,
+        "final_goal_count": 7,
+        "identity_history_count": 30,
+        "drift_mean": 0.0,
+        "drift_std": 0.0,
+        "timeline_events_total": 2,
+        "conflict_episodes": 0,
+        "cooperation_spikes": 2
+      },
+      {
+        "session_id": "20260317_111211_v13_test2",
+        "agent_name": "Aster",
+        "created_at": "2026-03-17T11:12:11.261060",
+        "sim_version": "1.3.0",
+        "total_turns": 30,
+        "peer_trust_final": 0.77,
+        "queen_trust_mean": 0.7,
+        "total_reflections": 4,
+        "reflection_types": {
+          "high_pressure_contradiction": 2,
+          "periodic_synthesis": 2
+        },
+        "total_contradictions": 1,
+        "resolution_rate": 0.0,
+        "avg_contradiction_intensity": 0.08,
+        "episodic_memory_count": 28,
+        "long_term_ratio": 0.0,
+        "avg_salience": 0.635,
+        "goal_events_count": 0,
+        "preserved_goals": 0,
+        "adaptive_goals": 0,
+        "final_goal_count": 7,
+        "identity_history_count": 30,
+        "drift_mean": 0.0,
+        "drift_std": 0.0,
+        "timeline_events_total": 2,
+        "conflict_episodes": 0,
+        "cooperation_spikes": 2
+      },
+      {
+        "session_id": "20260317_111205_v13_test1",
+        "agent_name": "Aster",
+        "created_at": "2026-03-17T11:12:05.897555",
+        "sim_version": "1.3.0",
+        "total_turns": 30,
+        "peer_trust_final": 0.77,
+        "queen_trust_mean": 0.7,
+        "total_reflections": 4,
+        "reflection_types": {
+          "high_pressure_contradiction": 2,
+          "periodic_synthesis": 2
+        },
+        "total_contradictions": 1,
+        "resolution_rate": 0.0,
+        "avg_contradiction_intensity": 0.08,
+        "episodic_memory_count": 28,
+        "long_term_ratio": 0.0,
+        "avg_salience": 0.635,
+        "goal_events_count": 0,
+        "preserved_goals": 0,
+        "adaptive_goals": 0,
+        "final_goal_count": 7,
+        "identity_history_count": 30,
+        "drift_mean": 0.0,
+        "drift_std": 0.0,
+        "timeline_events_total": 2,
+        "conflict_episodes": 0,
+        "cooperation_spikes": 2
+      }
+    ]
+  }
+}

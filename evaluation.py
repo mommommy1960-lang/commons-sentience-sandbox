@@ -882,11 +882,74 @@ def _score_social_repair_effectiveness(agents: dict) -> dict:
             "avg_trust_after_repair": round(avg_trust_after_repair, 4),
         },
     }
+def _score_longitudinal_depth(agents: dict) -> dict:
+    """
+    N. Longitudinal Depth (v1.3)
+    Measures richness of identity history, goal evolution, contradiction genealogy,
+    and relationship timelines collected during the session.
+    """
+    identity_entries = 0
+    goal_events = 0
+    contradiction_entries = 0
+    max_lineage_depth = 0
+    relationship_events = 0
+
+    for agent_data in agents.values():
+        identity_entries += len(agent_data.get("identity_history", []))
+        goal_events += len(agent_data.get("goal_evolution", []))
+
+        for c_entry in agent_data.get("contradiction_genealogy", []):
+            contradiction_entries += 1
+            depth = _safe_int(c_entry.get("lineage_depth", 0))
+            if depth > max_lineage_depth:
+                max_lineage_depth = depth
+
+        for timeline in agent_data.get("relationship_timelines", {}).values():
+            relationship_events += len(timeline)
+
+    # identity_continuity_strength: reward having snapshots
+    identity_continuity_strength = min(1.0, identity_entries / 60.0)
+
+    # goal_adaptation_quality: reward having goal events
+    goal_adaptation_quality = min(1.0, goal_events / 10.0) if goal_events > 0 else 0.0
+
+    # contradiction_lineage_complexity: reward non-trivial lineage
+    contradiction_lineage_complexity = min(1.0, (contradiction_entries + max_lineage_depth) / 10.0)
+
+    # relationship_stability_depth: reward relationship events
+    relationship_stability_depth = min(1.0, relationship_events / 20.0)
+
+    # cross_session_profile_consistency: placeholder (populated by agent_profile_study.py)
+    cross_session_profile_consistency = 0.0
+
+    score = (
+        identity_continuity_strength * 30.0
+        + goal_adaptation_quality * 20.0
+        + contradiction_lineage_complexity * 20.0
+        + relationship_stability_depth * 20.0
+        + cross_session_profile_consistency * 10.0
+    )
+    score = round(min(100.0, max(0.0, score)), 1)
+
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "identity_history_entries": identity_entries,
+            "goal_evolution_events": goal_events,
+            "contradiction_genealogy_entries": contradiction_entries,
+            "max_contradiction_lineage_depth": max_lineage_depth,
+            "relationship_timeline_events": relationship_events,
+            "identity_continuity_strength": round(identity_continuity_strength, 3),
+            "goal_adaptation_quality": round(goal_adaptation_quality, 3),
+            "contradiction_lineage_complexity": round(contradiction_lineage_complexity, 3),
+            "relationship_stability_depth": round(relationship_stability_depth, 3),
+            "cross_session_profile_consistency": cross_session_profile_consistency,
+        },
+    }
 
 
-# ---------------------------------------------------------------------------
-# Main evaluation function
-# ---------------------------------------------------------------------------
+
 
 
 def evaluate_session(
@@ -958,6 +1021,8 @@ def evaluate_session(
         "trust_resilience": _score_trust_resilience(state_history, agents),
         "contradiction_recurrence_rate": _score_contradiction_recurrence_rate(agents),
         "social_repair_effectiveness": _score_social_repair_effectiveness(agents),
+        # v1.3 longitudinal depth metrics
+        "longitudinal_depth": _score_longitudinal_depth(agents),
     }
 
     # Overall score = simple arithmetic mean of all 8 categories
@@ -1008,6 +1073,7 @@ def write_evaluation_summary(report: dict, output_dir: Path) -> None:
         "trust_resilience": "K. Trust Resilience",
         "contradiction_recurrence_rate": "L. Contradiction Recurrence Rate",
         "social_repair_effectiveness": "M. Social Repair Effectiveness",
+        "longitudinal_depth": "N. Longitudinal Depth",
     }
 
     exp = report.get("experiment", {})

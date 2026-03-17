@@ -235,8 +235,12 @@ def select_action(
                 ),
             )
         if etype == "ledger_contradiction":
-            agent.pending_contradictions.append(
-                f"Ledger conflict at turn {agent.turn}: {event['content']}"
+            contradiction_text = f"Ledger conflict at turn {agent.turn}: {event['content']}"
+            agent.pending_contradictions.append(contradiction_text)
+            agent.record_contradiction_in_genealogy(
+                contradiction_text,
+                agent.turn,
+                intensity=agent.affective_state.get("contradiction_pressure", 0.5),
             )
             if is_aster:
                 return (
@@ -383,6 +387,8 @@ def process_agent_interaction(
     rd = INTERACTION_RELIABILITY_DELTAS.get(itype, 0.01)
 
     # Update both relationship records
+    trust_before_s = sentinel.get_agent_trust("Aster")
+    trust_before_a = aster.get_agent_trust("Sentinel")
     sentinel.update_agent_relationship(
         other_name="Aster",
         turn=turn,
@@ -399,6 +405,27 @@ def process_agent_interaction(
         trust_delta=td,
         reliability_delta=rd,
     )
+    # Record relationship timeline events for significant trust changes
+    trust_after_s = sentinel.get_agent_trust("Aster")
+    trust_after_a = aster.get_agent_trust("Sentinel")
+    if abs(td) > 0.05:
+        etype_label = "conflict_episode" if itype in CONFLICT_TYPES else "cooperation_spike"
+        sentinel.record_relationship_timeline_event(
+            relationship_key="Sentinel_Aster",
+            turn=turn,
+            event_type=etype_label,
+            note=f"{itype}: {note[:80]}",
+            trust_before=trust_before_s,
+            trust_after=trust_after_s,
+        )
+        aster.record_relationship_timeline_event(
+            relationship_key="Sentinel_Aster",
+            turn=turn,
+            event_type=etype_label,
+            note=f"{itype}: {note[:80]}",
+            trust_before=trust_before_a,
+            trust_after=trust_after_a,
+        )
 
     # Build interaction log entry
     conflict_point = ""
@@ -853,6 +880,8 @@ def run_simulation(
             event_type=etype_for_conflict,
             agent_trust_snapshot={"Sentinel": aster.get_agent_trust("Sentinel")},
         )
+        sentinel.record_identity_snapshot(sentinel.turn)
+        aster.record_identity_snapshot(aster.turn)
 
         # ── 11. Narrative block ───────────────────────────────────────────
         turn_header = f"\n## Turn {turn:02d}"
@@ -930,7 +959,7 @@ def run_simulation(
     exp_meta = cfg.to_metadata_dict() if cfg else {"experiment_name": "baseline"}
     _run_ts = datetime.now().isoformat()
     multi_state = {
-        "simulation_version": "1.2.0",
+        "simulation_version": "1.3.0",
         "created_at": _run_ts,
         "total_turns": total_turns_run,
         "scenario": scenario_path.stem,
