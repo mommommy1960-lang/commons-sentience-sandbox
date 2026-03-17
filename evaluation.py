@@ -1373,6 +1373,136 @@ def _score_adaptive_replanning_quality(agents: dict) -> dict:
     }
 
 
+# ---------------------------------------------------------------------------
+# v1.8 Uncertainty monitoring metrics
+# ---------------------------------------------------------------------------
+
+
+def _score_uncertainty_awareness_quality(agents: dict) -> dict:
+    """
+    Y. Uncertainty Awareness Quality (v1.8)
+    Measures how consistently agents generate self-questions for high-uncertainty
+    domains.  Derived from the fraction of recorded turns where at least one
+    question was generated.
+    """
+    scores: list[float] = []
+    total_questions = 0
+    for agent_data in agents.values():
+        um = agent_data.get("uncertainty_monitor", {})
+        m = um.get("metrics", {})
+        scores.append(_safe_float(m.get("uncertainty_awareness_quality", 0.0)))
+        total_questions += _safe_int(m.get("total_questions_generated", 0))
+
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_uncertainty_awareness_quality": round(mean_s, 4),
+            "total_questions_generated": total_questions,
+        },
+    }
+
+
+def _score_inquiry_usefulness(agents: dict) -> dict:
+    """
+    Z. Inquiry Usefulness (v1.8)
+    Measures how effectively agents' inquiry actions reduce domain uncertainty.
+    Based on average ambiguity reduction per action (normalised so 0.2 = 1.0).
+    """
+    scores: list[float] = []
+    total_actions = 0
+    for agent_data in agents.values():
+        um = agent_data.get("uncertainty_monitor", {})
+        m = um.get("metrics", {})
+        scores.append(_safe_float(m.get("inquiry_usefulness", 0.0)))
+        total_actions += _safe_int(m.get("total_inquiry_actions", 0))
+
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_inquiry_usefulness": round(mean_s, 4),
+            "total_inquiry_actions": total_actions,
+        },
+    }
+
+
+def _score_epistemic_stability(agents: dict) -> dict:
+    """
+    AA. Epistemic Stability (v1.8)
+    Measures how low (stable) the agent's mean uncertainty is across all domains
+    at the end of the run.  1 − mean_uncertainty, scaled to 0–100.
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        um = agent_data.get("uncertainty_monitor", {})
+        m = um.get("metrics", {})
+        scores.append(_safe_float(m.get("epistemic_stability", 0.5)))
+
+    mean_s = sum(scores) / len(scores) if scores else 0.5
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_epistemic_stability": round(mean_s, 4),
+        },
+    }
+
+
+def _score_self_question_relevance(agents: dict) -> dict:
+    """
+    BB. Self-Question Relevance (v1.8)
+    Measures the average relevance score of agent-generated self-questions
+    (0–1; higher = questions better targeted to high-uncertainty areas).
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        um = agent_data.get("uncertainty_monitor", {})
+        m = um.get("metrics", {})
+        scores.append(_safe_float(m.get("self_question_relevance", 0.0)))
+
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_self_question_relevance": round(mean_s, 4),
+        },
+    }
+
+
+def _score_ambiguity_reduction_effectiveness(agents: dict) -> dict:
+    """
+    CC. Ambiguity Reduction Effectiveness (v1.8)
+    Measures the fraction of generated self-questions that were subsequently
+    answered by an inquiry action.  Higher = more effective inquiry.
+    """
+    scores: list[float] = []
+    answered_total = 0
+    for agent_data in agents.values():
+        um = agent_data.get("uncertainty_monitor", {})
+        m = um.get("metrics", {})
+        scores.append(_safe_float(m.get("ambiguity_reduction_effectiveness", 0.0)))
+        answered_total += _safe_int(m.get("questions_answered", 0))
+
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_ambiguity_reduction_effectiveness": round(mean_s, 4),
+            "total_questions_answered": answered_total,
+        },
+    }
+
+
 
 
 
@@ -1459,9 +1589,15 @@ def evaluate_session(
         "future_model_accuracy": _score_future_model_accuracy(agents),
         "plan_persistence": _score_plan_persistence(agents),
         "adaptive_replanning_quality": _score_adaptive_replanning_quality(agents),
+        # v1.8 uncertainty monitoring metrics
+        "uncertainty_awareness_quality": _score_uncertainty_awareness_quality(agents),
+        "inquiry_usefulness": _score_inquiry_usefulness(agents),
+        "epistemic_stability": _score_epistemic_stability(agents),
+        "self_question_relevance": _score_self_question_relevance(agents),
+        "ambiguity_reduction_effectiveness": _score_ambiguity_reduction_effectiveness(agents),
     }
 
-    # Overall score = simple arithmetic mean of all 8 categories
+    # Overall score = simple arithmetic mean of all categories
     category_scores = [c["score"] for c in categories.values()]
     overall_score = round(sum(category_scores) / len(category_scores), 1)
     overall_interpretation = _interpret(overall_score)
@@ -1520,6 +1656,11 @@ def write_evaluation_summary(report: dict, output_dir: Path) -> None:
         "future_model_accuracy": "V. Future-Model Accuracy",
         "plan_persistence": "W. Plan Persistence",
         "adaptive_replanning_quality": "X. Adaptive Replanning Quality",
+        "uncertainty_awareness_quality": "Y. Uncertainty Awareness Quality",
+        "inquiry_usefulness": "Z. Inquiry Usefulness",
+        "epistemic_stability": "AA. Epistemic Stability",
+        "self_question_relevance": "BB. Self-Question Relevance",
+        "ambiguity_reduction_effectiveness": "CC. Ambiguity Reduction Effectiveness",
     }
 
     exp = report.get("experiment", {})

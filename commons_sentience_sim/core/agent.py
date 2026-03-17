@@ -28,6 +28,7 @@ from .tasks import Task, TaskPlanner
 from .values import ValueConflictEngine
 from .world import World
 from .counterfactual import CounterfactualPlanner
+from .uncertainty import UncertaintyMonitor
 
 
 @dataclass
@@ -165,6 +166,9 @@ class Agent:
 
         # v1.7 counterfactual planning layer
         self.counterfactual_planner: CounterfactualPlanner = CounterfactualPlanner()
+
+        # v1.8 uncertainty monitoring
+        self.uncertainty_monitor: UncertaintyMonitor = UncertaintyMonitor()
 
         # Engines
         self.world: World = world
@@ -975,6 +979,150 @@ class Agent:
         return new_plans
 
     # ------------------------------------------------------------------
+    # v1.8 Uncertainty monitoring and inquiry
+    # ------------------------------------------------------------------
+
+    def run_uncertainty_update(self, turn: int) -> "UncertaintyMonitor":
+        """
+        Recompute uncertainty levels and snapshot them for this turn.
+
+        Call this each turn before action selection so that uncertainty
+        information is available for question generation and inquiry.
+
+        Returns
+        -------
+        UncertaintyMonitor
+            The updated monitor.
+        """
+        trust = self.affective_state.get("trust", 0.5)
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        urgency = self.affective_state.get("urgency", 0.1)
+        sc = self.self_model.get("self_consistency_score", 0.5)
+        n_pending = len(self.pending_contradictions)
+
+        # Collect unresolved themes from recent reflections
+        unresolved_themes: List[str] = []
+        for ref in self.reflection_entries[-5:]:
+            raw = getattr(ref, "unresolved_themes", None)
+            if isinstance(raw, list):
+                unresolved_themes.extend(str(t) for t in raw[:2])
+            elif isinstance(raw, str) and raw:
+                unresolved_themes.append(raw)
+        n_themes = len(set(unresolved_themes))
+
+        # Count active plans
+        active_plans_count = sum(
+            1 for p in self.counterfactual_planner.future_plans
+            if p.status == "active"
+        )
+
+        # Recent planning accuracy
+        recent_acc = self.counterfactual_planner.future_model_accuracy
+
+        self.uncertainty_monitor.update_uncertainty(
+            trust_level=trust,
+            contradiction_pressure=cp,
+            urgency=urgency,
+            self_consistency=sc,
+            pending_contradictions=n_pending,
+            unresolved_themes=n_themes,
+            active_plans=active_plans_count,
+            planning_accuracy=recent_acc if recent_acc > 0 else 0.5,
+        )
+        self.uncertainty_monitor.register.snapshot(turn)
+        return self.uncertainty_monitor
+
+    def run_inquiry_cycle(self, turn: int) -> List["InquiryAction"]:
+        """
+        Generate self-questions and execute inquiry actions for this turn.
+
+        Also tags important items (contradictions, themes, plans, trust) with
+        their current knowledge state, and generates inquiry-driven plans where
+        uncertainty is high.
+
+        Returns
+        -------
+        list[InquiryAction]
+            Inquiry actions taken this turn.
+        """
+        # Generate self-questions
+        self.uncertainty_monitor.generate_questions(turn, max_questions=2)
+
+        # Execute inquiry actions
+        actions = self.uncertainty_monitor.run_inquiry(turn, max_actions=1)
+
+        # Tag important items
+        unresolved_themes: List[str] = []
+        for ref in self.reflection_entries[-5:]:
+            raw = getattr(ref, "unresolved_themes", None)
+            if isinstance(raw, list):
+                unresolved_themes.extend(str(t) for t in raw[:2])
+            elif isinstance(raw, str) and raw:
+                unresolved_themes.append(raw)
+
+        active_plan_labels = [
+            p.label for p in self.counterfactual_planner.future_plans
+            if p.status == "active"
+        ]
+
+        self.uncertainty_monitor.tag_items_from_state(
+            turn=turn,
+            pending_contradictions=list(self.pending_contradictions),
+            unresolved_themes=list(dict.fromkeys(unresolved_themes)),
+            active_plan_labels=active_plan_labels,
+            agent_relationships=self.agent_relationships,
+        )
+
+        # Log inquiry actions as episodic memories if significant
+        for action in actions:
+            if action.ambiguity_reduced >= 0.10:
+                self.store_memory(
+                    summary=(
+                        f"Inquiry: {action.action.replace('_', ' ')} in "
+                        f"domain '{action.domain.replace('_', ' ')}' — "
+                        f"ambiguity reduced by {action.ambiguity_reduced:.2f}."
+                    ),
+                    event_type="reflection",
+                    emotional_resonance="resolve",
+                    salience=0.55,
+                    importance=0.50,
+                    tags=["inquiry", action.domain],
+                )
+
+        # Inquiry-driven plan generation: if uncertainty is very high in a
+        # domain and there is no active plan addressing it, request a new plan
+        top_domain, top_level = self.uncertainty_monitor.register.highest_domain
+        if top_level >= 0.70:
+            trust = self.affective_state.get("trust", 0.5)
+            cp = self.affective_state.get("contradiction_pressure", 0.0)
+            sc = self.self_model.get("self_consistency_score", 0.5)
+            new_plans = self.counterfactual_planner.generate_future_plans(
+                turn=turn,
+                trust_level=trust,
+                contradiction_pressure=cp,
+                self_consistency=sc,
+                pending_contradictions=list(self.pending_contradictions),
+                unresolved_themes=list(dict.fromkeys(unresolved_themes)),
+                agent_relationships=self.agent_relationships,
+                max_active=4,  # allow one extra slot for inquiry-driven plans
+            )
+            if new_plans:
+                self.store_memory(
+                    summary=(
+                        f"Uncertainty-driven plan generated in response to "
+                        f"high '{top_domain.replace('_', ' ')}' uncertainty "
+                        f"(level={top_level:.2f}): {new_plans[0].label}."
+                    ),
+                    event_type="reflection",
+                    emotional_resonance="resolve",
+                    salience=0.60,
+                    importance=0.55,
+                    tags=["inquiry_driven_plan", top_domain],
+                )
+
+        return actions
+
+    # ------------------------------------------------------------------
     # v1.6 Cross-run carryover
     # ------------------------------------------------------------------
 
@@ -1174,6 +1322,23 @@ class Agent:
                     tags=["carried_forward", "counterfactual_plans"],
                 )
 
+        # ── v1.8 Uncertainty monitor carryover ───────────────────────────────
+        prior_um = prior_state.get("uncertainty_monitor", {})
+        if prior_um:
+            carried_questions = self.uncertainty_monitor.apply_prior_uncertainty(prior_um)
+            if carried_questions > 0:
+                self.store_memory(
+                    summary=(
+                        f"Uncertainty questions carried from prior run: "
+                        f"{carried_questions} unresolved question(s) restored."
+                    ),
+                    event_type="observation",
+                    emotional_resonance="ambiguity",
+                    salience=0.58,
+                    importance=0.62,
+                    tags=["carried_forward", "uncertainty_questions"],
+                )
+
     def to_dict(self) -> dict:
         return {
             "identity": self.identity,
@@ -1209,6 +1374,8 @@ class Agent:
             "prior_world_state_summary": self.prior_world_state_summary,
             # v1.7 fields
             "counterfactual_planner": self.counterfactual_planner.to_dict(),
+            # v1.8 fields
+            "uncertainty_monitor": self.uncertainty_monitor.to_dict(),
         }
 
     def save_final_state(self, path: str) -> None:

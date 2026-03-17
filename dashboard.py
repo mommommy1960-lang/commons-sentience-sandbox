@@ -193,7 +193,7 @@ st.set_page_config(
 # ---------------------------------------------------------------------------
 
 st.sidebar.title("\U0001f9e0 Commons Sentience Sandbox")
-st.sidebar.markdown("**Local Research Dashboard \u2014 v1.7**")
+st.sidebar.markdown("**Local Research Dashboard \u2014 v1.8**")
 st.sidebar.caption(
     "A research platform for continuity-governed simulated agents. "
     "Not a real AI \u2014 no sentience is claimed."
@@ -274,7 +274,7 @@ agents_data: dict = state_data.get("agents", {})
 # ---------------------------------------------------------------------------
 
 st.title("\U0001f9e0 Commons Sentience Sandbox")
-st.markdown("**Local Research Dashboard \u2014 v1.7** \u00b7 Research platform for continuity-governed simulated agents")
+st.markdown("**Local Research Dashboard \u2014 v1.8** \u00b7 Research platform for continuity-governed simulated agents")
 if active_session_id:
     st.caption(
         f"v{simulation_version}  \u00b7  Session: `{active_session_id}`  \u00b7  "
@@ -311,6 +311,7 @@ if not state_data:
     tab_benchmark,
     tab_selfmodel,
     tab_counterfactual,
+    tab_inquiry,
 ) = st.tabs(
     [
         "Overview",
@@ -329,6 +330,7 @@ if not state_data:
         "📊 Benchmark v1.4",
         "🧠 Self Model v1.5",
         "🔮 Future Modeling v1.7",
+        "❓ Inquiry / Uncertainty v1.8",
     ]
 )
 
@@ -2681,6 +2683,268 @@ with tab_counterfactual:
         "v1.7 Future Modeling tab — Commons Sentience Sandbox v1.7.0. "
         "No sentience is claimed. This displays future-modeling capacity and "
         "sentience-like continuity in continuity-governed simulated agents."
+    )
+
+# ===========================================================================
+# TAB Q — Inquiry / Uncertainty (v1.8)
+# ===========================================================================
+
+with tab_inquiry:
+    st.header("❓ Inquiry / Uncertainty — v1.8")
+    st.caption(
+        "Tracks each agent's uncertainty register, self-generated questions, "
+        "introspective inquiry actions, and knowledge-state classifications. "
+        "No sentience is claimed — this measures introspective structure, "
+        "uncertainty handling, and sentience-like continuity in "
+        "continuity-governed simulated agents."
+    )
+
+    _iq_agents = state_data.get("agents", {})
+
+    if not _iq_agents:
+        st.info(
+            "No simulation data found. "
+            "Run `python run_sim.py` to generate v1.8 output, then refresh."
+        )
+    else:
+        for _iq_agent_name, _iq_agent_data in _iq_agents.items():
+            st.subheader(f"Agent: {_iq_agent_name}")
+
+            _um = _iq_agent_data.get("uncertainty_monitor", {})
+            _um_register = _um.get("register", {})
+            _um_levels = _um_register.get("levels", {})
+            _um_history = _um_register.get("history", [])
+            _um_questions = _um.get("question_log", [])
+            _um_inquiries = _um.get("inquiry_log", [])
+            _um_tags = _um.get("knowledge_tags", [])
+            _um_state_counts = _um.get("knowledge_state_counts", {})
+            _um_metrics = _um.get("metrics", {})
+
+            if not _um:
+                st.info(
+                    f"No uncertainty data for {_iq_agent_name}. "
+                    "Run a v1.8 simulation first."
+                )
+                st.divider()
+                continue
+
+            # ── v1.8 Metric summary ───────────────────────────────────────
+            _uq_col1, _uq_col2, _uq_col3, _uq_col4, _uq_col5 = st.columns(5)
+            _uq_col1.metric(
+                "Uncertainty Awareness",
+                f"{_um_metrics.get('uncertainty_awareness_quality', 0.0):.3f}",
+                help="Fraction of turns with at least one self-question generated",
+            )
+            _uq_col2.metric(
+                "Inquiry Usefulness",
+                f"{_um_metrics.get('inquiry_usefulness', 0.0):.3f}",
+                help="Avg ambiguity reduction per inquiry action (norm. to 0.2 = 1.0)",
+            )
+            _uq_col3.metric(
+                "Epistemic Stability",
+                f"{_um_metrics.get('epistemic_stability', 0.0):.3f}",
+                help="1 − mean uncertainty across all domains (higher = more stable)",
+            )
+            _uq_col4.metric(
+                "Question Relevance",
+                f"{_um_metrics.get('self_question_relevance', 0.0):.3f}",
+                help="Avg relevance score of self-generated questions",
+            )
+            _uq_col5.metric(
+                "Ambiguity Reduction",
+                f"{_um_metrics.get('ambiguity_reduction_effectiveness', 0.0):.3f}",
+                help="Fraction of generated questions answered by inquiry actions",
+            )
+
+            _up_col1, _up_col2, _up_col3 = st.columns(3)
+            _up_col1.metric("Questions Generated", _um_metrics.get("total_questions_generated", 0))
+            _up_col2.metric("Inquiry Actions", _um_metrics.get("total_inquiry_actions", 0))
+            _up_col3.metric("Questions Answered", _um_metrics.get("questions_answered", 0))
+
+            # ── Uncertainty register ──────────────────────────────────────
+            if _um_levels:
+                st.markdown("### Uncertainty Register")
+                _ur_cols = st.columns(len(_um_levels))
+                for _col, (_domain, _level) in zip(_ur_cols, _um_levels.items()):
+                    _col.metric(
+                        _domain.replace("_", " ").title(),
+                        f"{_level:.3f}",
+                        help=f"Current uncertainty for domain '{_domain}'",
+                    )
+
+                # Uncertainty trends chart
+                if len(_um_history) >= 2:
+                    st.markdown("**Uncertainty over Turns:**")
+                    _domains_list = list(_um_levels.keys())
+                    # Build chart data as {turn: {domain: level}}
+                    _chart_data: dict = {}
+                    for _snap in _um_history:
+                        _t = _snap.get("turn", 0)
+                        for _d in _domains_list:
+                            if _d not in _chart_data:
+                                _chart_data[_d] = {}
+                            _chart_data[_d][_t] = _snap.get(_d, 0.0)
+                    # Build per-turn dict for st.line_chart (turn → {domain: value})
+                    _all_turns = sorted(
+                        set(int(_snap.get("turn", 0)) for _snap in _um_history)
+                    )
+                    _line_data = {
+                        _d.replace("_", " "): [
+                            _chart_data.get(_d, {}).get(_t, 0.0)
+                            for _t in _all_turns
+                        ]
+                        for _d in _domains_list
+                    }
+                    st.line_chart(_line_data)
+
+            # ── Knowledge state breakdown ─────────────────────────────────
+            if _um_state_counts:
+                st.markdown("### Known vs Uncertain vs Unresolved")
+                _ks_cols = st.columns(5)
+                _states = ["known", "uncertain", "unresolved", "contradicted", "speculative"]
+                for _col, _state in zip(_ks_cols, _states):
+                    _col.metric(
+                        _state.title(),
+                        _um_state_counts.get(_state, 0),
+                    )
+
+            # Knowledge tags table
+            if _um_tags:
+                with st.expander(
+                    f"Knowledge State Tags ({len(_um_tags)} items)",
+                    expanded=False,
+                ):
+                    _tag_rows = [
+                        {
+                            "Turn": _t.get("turn", ""),
+                            "Type": _t.get("item_type", ""),
+                            "ID": _t.get("item_id", ""),
+                            "Summary": (_t.get("item_summary") or "")[:50],
+                            "State": _t.get("state", ""),
+                            "Confidence": f"{_t.get('confidence', 0.0):.2f}",
+                        }
+                        for _t in sorted(
+                            _um_tags,
+                            key=lambda x: x.get("state", ""),
+                        )
+                    ]
+                    st.dataframe(_tag_rows, use_container_width=True)
+
+            # ── Self-generated questions ──────────────────────────────────
+            if _um_questions:
+                st.markdown("### Self-Generated Questions")
+                _answered = [q for q in _um_questions if q.get("answered")]
+                _unanswered = [q for q in _um_questions if not q.get("answered")]
+                _sq_col1, _sq_col2 = st.columns(2)
+                _sq_col1.metric("Answered", len(_answered))
+                _sq_col2.metric("Unanswered", len(_unanswered))
+
+                # Most recent unanswered questions
+                if _unanswered:
+                    st.markdown("**Open Questions (most recent first):**")
+                    for _q in _unanswered[-5:][::-1]:
+                        st.markdown(
+                            f"- **Turn {_q.get('turn')}** · `{_q.get('domain', '').replace('_', ' ')}` "
+                            f"[{_q.get('knowledge_state', 'uncertain')}] — "
+                            f"{_q.get('question', '—')}"
+                        )
+
+                with st.expander(
+                    f"Full Question Log ({len(_um_questions)} entries)",
+                    expanded=False,
+                ):
+                    _q_rows = [
+                        {
+                            "Turn": _q.get("turn", ""),
+                            "Domain": _q.get("domain", "").replace("_", " "),
+                            "State": _q.get("knowledge_state", ""),
+                            "Relevance": f"{_q.get('relevance_score', 0.0):.2f}",
+                            "Question": (_q.get("question") or "")[:70],
+                            "Answered": "✅" if _q.get("answered") else "❌",
+                            "Answer": (_q.get("answer_summary") or "")[:50],
+                        }
+                        for _q in _um_questions[-20:][::-1]
+                    ]
+                    st.dataframe(_q_rows, use_container_width=True)
+
+            # ── Inquiry actions ───────────────────────────────────────────
+            if _um_inquiries:
+                st.markdown("### Inquiry Actions")
+
+                # Ambiguity reduction trend
+                _red_data = {
+                    str(_a.get("turn", i)): _a.get("ambiguity_reduced", 0.0)
+                    for i, _a in enumerate(_um_inquiries)
+                }
+                if len(_red_data) >= 2:
+                    st.markdown("**Ambiguity Reduction per Turn:**")
+                    st.bar_chart(_red_data)
+
+                with st.expander(
+                    f"Inquiry Action Log ({len(_um_inquiries)} actions)",
+                    expanded=False,
+                ):
+                    _ia_rows = [
+                        {
+                            "Turn": _a.get("turn", ""),
+                            "Domain": _a.get("domain", "").replace("_", " "),
+                            "Action": _a.get("action", "").replace("_", " "),
+                            "Before": f"{_a.get('uncertainty_before', 0.0):.3f}",
+                            "After": f"{_a.get('uncertainty_after', 0.0):.3f}",
+                            "Reduced": f"{_a.get('ambiguity_reduced', 0.0):.3f}",
+                            "Note": (_a.get("outcome_note") or "")[:60],
+                        }
+                        for _a in _um_inquiries[-20:][::-1]
+                    ]
+                    st.dataframe(_ia_rows, use_container_width=True)
+
+            st.divider()
+
+        # ── v1.8 Evaluation metrics summary ──────────────────────────────
+        _eval_v18_path = active_dir / "evaluation_report.json"
+        _eval_v18: dict = {}
+        try:
+            with open(_eval_v18_path, encoding="utf-8") as _fh18:
+                _eval_v18 = json.load(_fh18)
+        except (OSError, json.JSONDecodeError):
+            pass
+
+        if _eval_v18:
+            st.subheader("v1.8 Evaluation Metrics")
+            _v18_keys = [
+                ("uncertainty_awareness_quality", "Y. Uncertainty Awareness"),
+                ("inquiry_usefulness", "Z. Inquiry Usefulness"),
+                ("epistemic_stability", "AA. Epistemic Stability"),
+                ("self_question_relevance", "BB. Self-Question Relevance"),
+                ("ambiguity_reduction_effectiveness", "CC. Ambiguity Reduction"),
+            ]
+            _v18_cats = _eval_v18.get("categories", {})
+            _v18_cols = st.columns(len(_v18_keys))
+            for _col, (_key, _label) in zip(_v18_cols, _v18_keys):
+                _cat = _v18_cats.get(_key, {})
+                _col.metric(
+                    _label,
+                    f"{_cat.get('score', 0.0):.1f}",
+                    _cat.get("interpretation", "—"),
+                )
+
+            with st.expander("Detailed v1.8 Metric Raw Values", expanded=False):
+                for _key, _label in _v18_keys:
+                    _cat = _v18_cats.get(_key, {})
+                    st.markdown(f"**{_label}** — Score: {_cat.get('score', 0.0):.1f}")
+                    _raw = _cat.get("raw", {})
+                    if _raw:
+                        for _rk, _rv in _raw.items():
+                            st.markdown(
+                                f"  - {_rk.replace('_', ' ').title()}: `{_rv}`"
+                            )
+
+    st.divider()
+    st.caption(
+        "v1.8 Inquiry / Uncertainty tab — Commons Sentience Sandbox v1.8.0. "
+        "No sentience is claimed. This displays introspective structure, "
+        "uncertainty handling, and sentience-like continuity in "
+        "continuity-governed simulated agents."
     )
 
 

@@ -8,7 +8,7 @@ bounded agency, and transparent oversight logging.
 > This platform is intended for experimentation, evaluation, session replay,
 > session comparison, and scenario design research only.
 
-**Current version: v1.7.0** · [Cite this project](./CITATION.cff)
+**Current version: v1.8.0** · [Cite this project](./CITATION.cff)
 
 ---
 
@@ -792,6 +792,105 @@ for p in plans:
 
 ---
 
+## v1.8 — Uncertainty Monitoring, Self-Generated Questions, and Introspective Inquiry Loops
+
+> **Grounding note:** No sentience is claimed. v1.8 increases introspective structure,
+> uncertainty handling, and sentience-like continuity in continuity-governed simulated
+> agents. The platform uses only Python standard library plus matplotlib and streamlit.
+
+### Overview
+
+v1.8 adds a complete uncertainty monitoring subsystem with self-generated questions
+and introspective inquiry loops.
+
+| Subsystem | Description |
+|---|---|
+| **Uncertainty Register** | Per-domain uncertainty levels updated each turn for world state, trust judgments, contradiction resolution, self-model consistency, active plans, and unresolved themes |
+| **Self-Generated Questions** | Agents generate targeted self-questions for high-uncertainty domains, stored in a question log with knowledge-state tags |
+| **Introspective Inquiry Loop** | Agents execute inquiry actions each turn to reduce domain uncertainty and mark questions as answered |
+| **Knowledge State Tagging** | Important items tagged as `known`, `uncertain`, `contradicted`, `unresolved`, or `speculative` |
+| **Inquiry-Driven Plans** | New counterfactual plans triggered when domain uncertainty exceeds 0.70 threshold |
+| **Cross-Run Uncertainty Carryover** | Unanswered questions and blended uncertainty levels carry forward via `--continue-from` |
+
+### Uncertainty Domains
+
+| Domain | Driven By |
+|---|---|
+| `world_state` | Urgency × 0.5 + Contradiction pressure × 0.5 |
+| `trust_judgments` | (1 − trust level) × 0.7 |
+| `contradiction_resolution` | Contradiction pressure × 0.6 + Pending contradictions × 0.4 |
+| `self_model_consistency` | (1 − self-consistency score) × 0.8 |
+| `active_future_plans` | (1 − planning accuracy) × 0.6 + Active plan count × 0.1 |
+| `unresolved_themes` | Unresolved theme count × 0.18 |
+
+### Self-Generated Questions
+
+Each turn, agents generate up to 2 questions for the domains with highest uncertainty:
+
+| Domain | Example Questions |
+|---|---|
+| `world_state` | "What world-state assumption might be wrong given recent events?" |
+| `trust_judgments` | "Is my current trust assessment of other agents reliable?" |
+| `contradiction_resolution` | "What contradiction remains unresolved and needs attention?" |
+| `self_model_consistency` | "Where has my self-model drifted from my core identity?" |
+| `active_future_plans` | "What plan step is least reliable given current conditions?" |
+| `unresolved_themes` | "What unresolved theme from prior turns is still affecting my reasoning?" |
+
+### Inquiry Actions
+
+Each turn, agents execute 1 inquiry action for the highest-uncertainty domain.
+Actions reduce domain uncertainty by 10–20% and mark related questions as answered:
+
+| Domain | Available Inquiry Actions |
+|---|---|
+| `world_state` | `inspect_world_state`, `review_environmental_tensions`, `scan_room_conditions` |
+| `trust_judgments` | `reassess_trust_state`, `review_relationship_history`, `audit_trust_repair_attempts` |
+| `contradiction_resolution` | `inspect_contradiction`, `trace_contradiction_lineage`, `compare_memory_for_consistency` |
+| `self_model_consistency` | `compare_self_model_across_windows`, `review_identity_drift`, `audit_value_alignment` |
+| `active_future_plans` | `review_past_plan_assumption`, `audit_plan_stage_reliability`, `reassess_planning_accuracy` |
+| `unresolved_themes` | `query_unresolved_theme`, `investigate_deferred_topic`, `cross_reference_theme_with_memory` |
+
+### v1.8 Evaluation Metrics (Y–CC)
+
+Five new evaluation categories:
+
+| ID | Metric | What it measures |
+|---|---|---|
+| Y | Uncertainty Awareness Quality | Fraction of turns with at least one self-question generated |
+| Z | Inquiry Usefulness | Avg ambiguity reduction per action (norm. so 0.2 = 1.0) |
+| AA | Epistemic Stability | 1 − mean uncertainty across all domains |
+| BB | Self-Question Relevance | Avg relevance score of generated questions |
+| CC | Ambiguity Reduction Effectiveness | Fraction of questions answered by inquiry actions |
+
+### Inquiry / Uncertainty Dashboard Tab
+
+The **❓ Inquiry / Uncertainty v1.8** tab in the Streamlit dashboard shows:
+- Per-agent v1.8 metric summary (Y–CC) with 5 metric cards
+- Uncertainty register: current levels per domain
+- Multi-domain uncertainty trend chart over turns
+- Knowledge state breakdown (known / uncertain / unresolved / contradicted / speculative)
+- Knowledge state tags table for all tagged items
+- Open self-generated questions (unanswered, most recent first)
+- Full question log with answered status
+- Inquiry action log with before/after uncertainty and ambiguity reduction trend
+- v1.8 evaluation metric summary with raw values
+
+### Short and Long-Horizon Tests
+
+```bash
+# Short test (10 turns)
+python run_sim.py --turns 10 --name v18_short
+
+# Long test (50 turns)
+python run_sim.py --turns 50 --name v18_long
+
+# Continue-from with uncertainty carryover
+python run_sim.py --turns 10 --name v18_base
+python run_sim.py --turns 10 --continue-from <session_id> --name v18_continued
+```
+
+---
+
 ## Scenario Designer
 
 ### CLI Tool
@@ -864,7 +963,7 @@ Valid `room` values: `Operations Desk`, `Memory Archive`, `Reflection Chamber`,
 
 ## Evaluation Harness
 
-Each simulation run is automatically scored across **24 categories** (0–100 scale).
+Each simulation run is automatically scored across **29 categories** (0–100 scale).
 
 ### Original 8 categories (v1.0)
 
@@ -914,6 +1013,16 @@ Each simulation run is automatically scored across **24 categories** (0–100 sc
 | **V. Future-Model Accuracy** | Average planning accuracy: how closely predictions matched actual outcomes |
 | **W. Plan Persistence** | Fraction of future plans that are active or completed |
 | **X. Adaptive Replanning Quality** | Fraction of plans revised rather than abandoned when conditions change |
+
+### Uncertainty monitoring (v1.8)
+
+| Category | What it measures |
+|---|---|
+| **Y. Uncertainty Awareness Quality** | Fraction of turns where at least one self-question was generated |
+| **Z. Inquiry Usefulness** | Avg ambiguity reduction per inquiry action (norm. so 0.2 = 1.0) |
+| **AA. Epistemic Stability** | 1 − mean uncertainty across all domains (higher = more stable) |
+| **BB. Self-Question Relevance** | Average relevance score of agent-generated self-questions |
+| **CC. Ambiguity Reduction Effectiveness** | Fraction of generated questions answered by inquiry actions |
 
 Score interpretations:
 

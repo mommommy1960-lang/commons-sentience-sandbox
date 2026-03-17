@@ -40,6 +40,18 @@ v1.7 additions:
   - Multi-step planning: plans track stage progress and are abandoned/revised
     if conditions change
   - Cross-run plan carryover: active plans persist across --continue-from runs
+
+v1.8 additions:
+  - Uncertainty register: per-domain uncertainty levels (world state, trust, contradiction
+    resolution, self-model consistency, active plans, unresolved themes)
+  - Self-generated questions: agents generate targeted self-questions each turn for
+    high-uncertainty domains, stored in a question log
+  - Introspective inquiry loop: agents execute inquiry actions that reduce domain
+    uncertainty and mark questions as answered
+  - Knowledge state tagging: important items (contradictions, themes, plans, trust)
+    labelled as known / uncertain / contradicted / unresolved / speculative
+  - Inquiry-driven plans: new plans generated when uncertainty exceeds threshold
+  - Cross-run uncertainty carryover: unresolved questions persist via --continue-from
 """
 from __future__ import annotations
 
@@ -779,7 +791,7 @@ def run_simulation(
         if carryover_session_label else ""
     )
     narrative_lines: List[str] = [
-        "# Commons Sentience Sandbox — Narrative Log (v1.7)\n",
+        "# Commons Sentience Sandbox — Narrative Log (v1.8)\n",
         f"> Agents: **{sentinel.name}** (continuity-governed) & **{aster.name}** (creative/exploratory)",
         f"> Version: {sentinel.identity['version']}",
         f"> Experiment: **{exp_name}**",
@@ -791,7 +803,7 @@ def run_simulation(
     narrative_lines.append("---\n")
 
     print("=" * 65)
-    print(f"  Commons Sentience Sandbox v1.7 — {total_turns_run}-Turn Multi-Agent Simulation")
+    print(f"  Commons Sentience Sandbox v1.8 — {total_turns_run}-Turn Multi-Agent Simulation")
     print(f"  Agents: {sentinel.name} + {aster.name}")
     print(f"  Experiment: {exp_name}  |  Scenario: {scenario_label}")
     if carryover_session_label:
@@ -907,6 +919,10 @@ def run_simulation(
         _a_trust_pre = aster.affective_state.get("trust", 0.5)
         _s_cp_pre = sentinel.affective_state.get("contradiction_pressure", 0.0)
         _a_cp_pre = aster.affective_state.get("contradiction_pressure", 0.0)
+
+        # ── 4.8 v1.8 Uncertainty update ───────────────────────────────────
+        sentinel.run_uncertainty_update(turn)
+        aster.run_uncertainty_update(turn)
 
         # ── 5. Action selection ───────────────────────────────────────────
         s_action, s_reasoning, s_result = select_action(sentinel, event, s_room_actions, is_aster=False)
@@ -1078,6 +1094,10 @@ def run_simulation(
         sentinel.refresh_future_plans(turn)
         aster.refresh_future_plans(turn)
 
+        # ── 9.8 v1.8 Inquiry cycle (questions + actions + knowledge tagging) ─
+        sentinel.run_inquiry_cycle(turn)
+        aster.run_inquiry_cycle(turn)
+
         # ── 10. State snapshots ───────────────────────────────────────────
         sentinel.record_state_snapshot(
             action=s_action,
@@ -1179,7 +1199,7 @@ def run_simulation(
     exp_meta = cfg.to_metadata_dict() if cfg else {"experiment_name": "baseline"}
     _run_ts = datetime.now().isoformat()
     multi_state = {
-        "simulation_version": "1.7.0",
+        "simulation_version": "1.8.0",
         "created_at": _run_ts,
         "total_turns": total_turns_run,
         "scenario": scenario_path.stem,
