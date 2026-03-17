@@ -153,6 +153,15 @@ class Agent:
             initial_goals or self._DEFAULT_GOALS
         )
 
+        # v1.6 endogenous drives
+        self.drives: Dict[str, float] = self._init_drives()
+
+        # v1.6 self-initiated action log
+        self.endogenous_action_log: List[dict] = []
+
+        # v1.6 world-state summary carried from a prior run (if any)
+        self.prior_world_state_summary: Optional[dict] = None
+
         # Engines
         self.world: World = world
         self.governance: GovernanceEngine = governance_engine
@@ -753,6 +762,281 @@ class Agent:
             "conflict_resolution_count": len(self.goal_hierarchy["conflict_resolution"]),
         })
 
+    # ------------------------------------------------------------------
+    # v1.6 Endogenous drives
+    # ------------------------------------------------------------------
+
+    def _init_drives(self) -> Dict[str, float]:
+        """Initialise the agent's internal endogenous drive levels (0.0–1.0)."""
+        return {
+            "curiosity": 0.3,
+            "maintenance_urge": 0.1,
+            "repair_urge": 0.0,
+            "investigation_urge": 0.1,
+            "continuity_loop_urge": 0.2,
+        }
+
+    def update_drives(self) -> None:
+        """Update endogenous drive levels based on current internal state.
+
+        Called once per turn *before* action selection so that drive values
+        can influence the agent's self-initiated behaviours.
+        """
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        trust = self.affective_state.get("trust", 0.5)
+        urgency = self.affective_state.get("urgency", 0.1)
+        recovery = self.affective_state.get("recovery", 0.5)
+        mem_count = len(self.episodic_memory)
+
+        # Repair urge rises with contradiction pressure and high urgency
+        self.drives["repair_urge"] = min(1.0, cp * 0.8 + urgency * 0.2)
+
+        # Maintenance urge rises when trust is low or recovery is poor
+        self.drives["maintenance_urge"] = min(
+            1.0, (1.0 - trust) * 0.5 + (1.0 - recovery) * 0.5
+        )
+
+        # Curiosity is suppressed under high urgency / contradiction pressure;
+        # grows when many memories exist (more to reflect on)
+        base_curiosity = 0.3 + min(0.3, mem_count / 200.0)
+        self.drives["curiosity"] = max(
+            0.0, base_curiosity - urgency * 0.3 - cp * 0.2
+        )
+
+        # Investigation urge grows with unresolved contradictions
+        n_pending = len(self.pending_contradictions)
+        self.drives["investigation_urge"] = min(1.0, n_pending * 0.15)
+
+        # Continuity loop urge grows when self-consistency score is low
+        sc = self.self_model.get("self_consistency_score", 0.5)
+        self.drives["continuity_loop_urge"] = min(1.0, max(0.0, 1.0 - sc))
+
+    def check_self_initiation(self, turn: int) -> Optional[str]:
+        """Check whether any endogenous drive is strong enough to trigger a
+        self-initiated action.
+
+        Returns the action key as a string if a drive fires, otherwise ``None``.
+        Logs the event to ``endogenous_action_log``.
+
+        Drive thresholds:
+          - continuity_loop_urge ≥ 0.7 → ``run_continuity_maintenance``
+          - repair_urge          ≥ 0.6 → ``self_initiate_repair``
+          - investigation_urge   ≥ 0.5 → ``self_initiate_investigation``
+          - maintenance_urge     ≥ 0.5 → ``self_initiate_maintenance``
+          - curiosity            ≥ 0.65 → ``self_initiate_exploration``
+        """
+        triggered: Optional[str] = None
+
+        if self.drives.get("continuity_loop_urge", 0.0) >= 0.7:
+            triggered = "run_continuity_maintenance"
+        elif self.drives.get("repair_urge", 0.0) >= 0.6:
+            triggered = "self_initiate_repair"
+        elif self.drives.get("investigation_urge", 0.0) >= 0.5:
+            triggered = "self_initiate_investigation"
+        elif self.drives.get("maintenance_urge", 0.0) >= 0.5:
+            triggered = "self_initiate_maintenance"
+        elif self.drives.get("curiosity", 0.0) >= 0.65:
+            triggered = "self_initiate_exploration"
+
+        if triggered:
+            drive_name = triggered.replace("self_initiate_", "").replace(
+                "run_continuity_", ""
+            )
+            record = {
+                "turn": turn,
+                "action": triggered,
+                "drive_snapshot": dict(self.drives),
+                "note": (
+                    f"Endogenous drive '{drive_name}' reached threshold at turn {turn}. "
+                    f"Agent self-initiated '{triggered}'."
+                ),
+            }
+            self.endogenous_action_log.append(record)
+
+        return triggered
+
+    # ------------------------------------------------------------------
+    # v1.6 Cross-run carryover
+    # ------------------------------------------------------------------
+
+    def load_carryover(self, prior_state: dict, world_state: Optional[dict] = None) -> None:
+        """Restore selected state from a prior simulation run.
+
+        This allows cross-run continuity: long-term memories, unresolved
+        themes, contradiction lineages, relationship states, self-model, and
+        an optional world-state summary are all carried into the new run.
+
+        Parameters
+        ----------
+        prior_state :
+            The agent's serialised state dict from the prior run
+            (as produced by ``Agent.to_dict()``).  Only this agent's own
+            state section should be passed (i.e. ``multi_agent_state["agents"]["Sentinel"]``).
+        world_state :
+            Optional world-state snapshot as produced by
+            ``world_state.build_world_state()``.  When provided, a summary
+            is stored on the agent for use in reflection / narrative.
+        """
+        # ── Long-term memories ───────────────────────────────────────────────
+        from .memory import EpisodicMemory  # local import avoids circularity
+
+        prior_mems = prior_state.get("episodic_memory", [])
+        carried_count = 0
+        for mem_dict in prior_mems:
+            tier = mem_dict.get("memory_tier", "short_term")
+            if tier in ("long_term", "archival"):
+                mem = EpisodicMemory(
+                    turn=mem_dict.get("turn", 0),
+                    room=mem_dict.get("room", ""),
+                    event_type=mem_dict.get("event_type", "observation"),
+                    summary=f"[carried] {mem_dict.get('summary', '')}",
+                    emotional_resonance=mem_dict.get("emotional_resonance", "neutral"),
+                    salience=mem_dict.get("salience", 0.3),
+                    importance=mem_dict.get("importance", 0.3),
+                    tags=mem_dict.get("tags", []) + ["carried_forward"],
+                )
+                mem.memory_tier = tier
+                mem.compressed = mem_dict.get("compressed", False)
+                self.episodic_memory.append(mem)
+                carried_count += 1
+
+        # ── Relationship states ──────────────────────────────────────────────
+        from .memory import RelationalMemory  # local import
+
+        prior_rel = prior_state.get("relational_memory", {})
+        for name, rel_dict in prior_rel.items():
+            if name not in self.relational_memory:
+                self.relational_memory[name] = RelationalMemory(
+                    name=name,
+                    trust_level=rel_dict.get("trust_level", 0.5),
+                    interaction_count=rel_dict.get("interaction_count", 0),
+                    last_seen_turn=rel_dict.get("last_seen_turn", 0),
+                )
+                # Preserve recent notes (up to 3)
+                notes = rel_dict.get("notes", [])[-3:]
+                self.relational_memory[name].notes.extend(notes)
+            else:
+                # Blend existing trust with carried-over trust
+                existing = self.relational_memory[name]
+                prior_trust = rel_dict.get("trust_level", existing.trust_level)
+                existing.trust_level = round(
+                    existing.trust_level * 0.4 + prior_trust * 0.6, 4
+                )
+
+        # ── Agent-to-agent relationship states ──────────────────────────────
+        from .relationships import AgentRelationship  # local import
+
+        prior_agent_rels = prior_state.get("agent_relationships", {})
+        for agent_name, rel_dict in prior_agent_rels.items():
+            if agent_name not in self.agent_relationships:
+                self.agent_relationships[agent_name] = AgentRelationship(
+                    agent_id=rel_dict.get("agent_id", agent_name.lower()),
+                    name=agent_name,
+                    trust=rel_dict.get("trust", 0.5),
+                    perceived_reliability=rel_dict.get("perceived_reliability", 0.5),
+                )
+
+        # ── Contradiction lineages ───────────────────────────────────────────
+        prior_genealogy = prior_state.get("contradiction_genealogy", [])
+        # Carry forward unresolved entries only (those without a resolved_at key)
+        for entry in prior_genealogy:
+            if not entry.get("resolved_at"):
+                if entry not in self.contradiction_genealogy:
+                    self.contradiction_genealogy.append(entry)
+                    # Also ensure it surfaces as a pending contradiction
+                    text = entry.get("text", "")
+                    if text and text not in self.pending_contradictions:
+                        self.pending_contradictions.append(
+                            f"[carried] {text}"
+                        )
+
+        # ── Self-model ───────────────────────────────────────────────────────
+        prior_sm = prior_state.get("self_model", {})
+        if prior_sm:
+            # Blend: keep current (freshly initialised) structure but seed
+            # key scores from the prior run to provide continuity.
+            for key in (
+                "self_consistency_score",
+                "dominant_value",
+                "prediction_accuracy_recent",
+            ):
+                if key in prior_sm:
+                    self.self_model[key] = prior_sm[key]
+            self.self_model["carried_from_prior_run"] = True
+
+        # ── Unresolved themes (from prior reflection entries) ────────────────
+        prior_reflections = prior_state.get("reflection_entries", [])
+        carried_themes: List[str] = []
+        for ref_dict in prior_reflections[-5:]:
+            themes = ref_dict.get("unresolved_themes", [])
+            if isinstance(themes, list):
+                carried_themes.extend(themes[:2])
+            elif isinstance(themes, str) and themes:
+                carried_themes.append(themes)
+
+        # Store as a seed memory so they surface during retrieval
+        if carried_themes:
+            unique_themes = list(dict.fromkeys(carried_themes))[:5]
+            self.store_memory(
+                summary=(
+                    "Unresolved themes carried from prior run: "
+                    + "; ".join(unique_themes)
+                ),
+                event_type="observation",
+                emotional_resonance="ambiguity",
+                salience=0.65,
+                importance=0.70,
+                tags=["carried_forward", "unresolved_themes"],
+            )
+
+        # ── World-state summary ──────────────────────────────────────────────
+        if world_state:
+            self.prior_world_state_summary = {
+                "run_label": world_state.get("run_label", ""),
+                "saved_at": world_state.get("saved_at", ""),
+                "total_turns_at_save": world_state.get("total_turns_at_save", 0),
+                "unresolved_contradictions": world_state.get(
+                    "unresolved_contradictions", []
+                )[:5],
+                "environmental_tensions": world_state.get("environmental_tensions", {}),
+                "unresolved_themes": world_state.get("unresolved_themes", [])[:5],
+                "prior_major_events_count": len(
+                    world_state.get("prior_major_events", [])
+                ),
+            }
+            # Log carryover as an episodic memory with high salience
+            tension_val = world_state.get("environmental_tensions", {}).get(
+                "combined_tension", 0.0
+            )
+            self.store_memory(
+                summary=(
+                    f"World-state carried from prior run "
+                    f"(label='{world_state.get('run_label', 'unknown')}', "
+                    f"turns={world_state.get('total_turns_at_save', '?')}, "
+                    f"combined_tension={tension_val:.2f}). "
+                    f"Unresolved contradictions: "
+                    f"{len(world_state.get('unresolved_contradictions', []))}."
+                ),
+                event_type="observation",
+                emotional_resonance="resolve",
+                salience=0.70,
+                importance=0.75,
+                tags=["carried_forward", "world_state_summary"],
+            )
+
+        # Log summary
+        self.store_memory(
+            summary=(
+                f"Cross-run carryover applied: {carried_count} long-term memories "
+                f"restored, {len(self.pending_contradictions)} contradictions pending."
+            ),
+            event_type="observation",
+            emotional_resonance="resolve",
+            salience=0.55,
+            importance=0.60,
+            tags=["carried_forward", "carryover_summary"],
+        )
+
     def to_dict(self) -> dict:
         return {
             "identity": self.identity,
@@ -782,6 +1066,10 @@ class Agent:
             "self_model": self.self_model,
             "prediction_log": self.prediction_log,
             "consolidation_log": self.consolidation_log,
+            # v1.6 fields
+            "drives": self.drives,
+            "endogenous_action_log": self.endogenous_action_log,
+            "prior_world_state_summary": self.prior_world_state_summary,
         }
 
     def save_final_state(self, path: str) -> None:

@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.6.0",
+  "run_label": "test_missing_session",
+  "saved_at": "2026-03-17T15:36:54.416852",
+  "total_turns_at_save": 3,
+  "room_conditions": {
+    "Memory Archive": {
+      "condition": "normal",
+      "tension_level": 0.0,
+      "objects": {
+        "memory_shelves": "fragmented",
+        "identity_ledger": "intact",
+        "trust_index": "current"
+      }
+    },
+    "Reflection Chamber": {
+      "condition": "normal",
+      "tension_level": 0.0,
+      "objects": {
+        "reflection_mirror": "clear",
+        "contradiction_board": "empty"
+      }
+    },
+    "Operations Desk": {
+      "condition": "normal",
+      "tension_level": 0.0,
+      "objects": {
+        "task_console": "overloaded",
+        "goal_tracker": "up_to_date"
+      }
+    },
+    "Social Hall": {
+      "condition": "normal",
+      "tension_level": 0.0,
+      "objects": {
+        "message_terminal": "responding",
+        "human_interaction_queue": "empty"
+      }
+    },
+    "Governance Vault": {
+      "condition": "normal",
+      "tension_level": 0.0,
+      "objects": {
+        "rule_tablets": "stable",
+        "approval_lockbox": "locked"
+      }
+    }
+  },
+  "unresolved_contradictions": [],
+  "contradiction_lineages": [],
+  "environmental_tensions": {
+    "sentinel_urgency": 0.05,
+    "aster_urgency": 0.05,
+    "sentinel_contradiction_pressure": 0.0,
+    "aster_contradiction_pressure": 0.0,
+    "combined_tension": 0.025
+  },
+  "pending_tasks": [
+    "[Sentinel] Archive daily observations",
+    "[Sentinel] Retrieve relevant memories",
+    "[Sentinel] Scheduled reflection cycle",
+    "[Sentinel] Check governance permissions",
+    "[Sentinel] Update trust ledger",
+    "[Aster] Retrieve relevant memories",
+    "[Aster] Scheduled reflection cycle",
+    "[Aster] Plan next operational steps",
+    "[Aster] Check governance permissions",
+    "[Aster] Update trust ledger"
+  ],
+  "relationship_climate": {
+    "sentinel_trust_in_aster": 0.5,
+    "aster_trust_in_sentinel": 0.5,
+    "sentinel_trust_in_queen": 0.6,
+    "aster_trust_in_queen": 0.65,
+    "relationship_timelines": {},
+    "sentinel_human_relationships": {
+      "Queen": {
+        "trust_level": 0.6,
+        "interaction_count": 1,
+        "last_seen_turn": 3
+      }
+    },
+    "aster_human_relationships": {
+      "Queen": {
+        "trust_level": 0.65,
+        "interaction_count": 0,
+        "last_seen_turn": 0
+      }
+    }
+  },
+  "prior_major_events": [
+    {
+      "agent": "Sentinel",
+      "turn": 1,
+      "room": "Operations Desk",
+      "event_type": "observation",
+      "summary": "Self-initiated 'self_initiate_maintenance' at turn 1 (drives: maintenance_urge=0.50)",
+      "salience": 0.6,
+      "emotional_resonance": "resolve",
+      "tags": [
+        "endogenous",
+        "self_initiate_maintenance"
+      ]
+    },
+    {
+      "agent": "Sentinel",
+      "turn": 2,
+      "room": "Memory Archive",
+      "event_type": "observation",
+      "summary": "Self-initiated 'self_initiate_maintenance' at turn 2 (drives: maintenance_urge=0.50)",
+      "salience": 0.6,
+      "emotional_resonance": "resolve",
+      "tags": [
+        "endogenous",
+        "self_initiate_maintenance"
+      ]
+    },
+    {
+      "agent": "Sentinel",
+      "turn": 3,
+      "room": "Social Hall",
+      "event_type": "observation",
+      "summary": "Self-initiated 'self_initiate_maintenance' at turn 3 (drives: maintenance_urge=0.50)",
+      "salience": 0.6,
+      "emotional_resonance": "resolve",
+      "tags": [
+        "endogenous",
+        "self_initiate_maintenance"
+      ]
+    },
+    {
+      "agent": "Sentinel",
+      "turn": 3,
+      "room": "Social Hall",
+      "event_type": "routine_interaction",
+      "summary": "Queen arrives in the Social Hall and offers a greeting, asking how the day's tasks are progressing.",
+      "salience": 0.55,
+      "emotional_resonance": "resolve",
+      "tags": [
+        "Queen"
+      ]
+    },
+    {
+      "agent": "Sentinel",
+      "turn": 1,
+      "room": "Operations Desk",
+      "event_type": "task",
+      "summary": "Completed task in Operations Desk: plan_next_task.",
+      "salience": 0.45,
+      "emotional_resonance": "resolve",
+      "tags": []
+    },
+    {
+      "agent": "Sentinel",
+      "turn": 2,
+      "room": "Memory Archive",
+      "event_type": "task",
+      "summary": "Completed task in Memory Archive: retrieve_memories.",
+      "salience": 0.45,
+      "emotional_resonance": "resolve",
+      "tags": []
+    },
+    {
+      "agent": "Aster",
+      "turn": 1,
+      "room": "Memory Archive",
+      "event_type": "task",
+      "summary": "Completed task in Memory Archive: store_new_memory.",
+      "salience": 0.45,
+      "emotional_resonance": "resolve",
+      "tags": []
+    },
+    {
+      "agent": "Aster",
+      "turn": 2,
+      "room": "Social Hall",
+      "event_type": "task",
+      "summary": "Completed task in Social Hall: log_interaction.",
+      "salience": 0.45,
+      "emotional_resonance": "resolve",
+      "tags": []
+    }
+  ],
+  "self_model_summaries": {
+    "Sentinel": {
+      "self_consistency_score": 0.8667,
+      "dominant_value": "",
+      "recent_goal_alignment": "unknown",
+      "prediction_accuracy_recent": 0.0,
+      "affective_summary": ""
+    },
+    "Aster": {
+      "self_consistency_score": 1.0,
+      "dominant_value": "",
+      "recent_goal_alignment": "unknown",
+      "prediction_accuracy_recent": 0.0,
+      "affective_summary": ""
+    }
+  },
+  "unresolved_themes": []
+}
