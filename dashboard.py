@@ -46,6 +46,18 @@ from session_manager import (
 )
 
 # ---------------------------------------------------------------------------
+# Continuity study loader helper
+# ---------------------------------------------------------------------------
+
+
+def load_continuity_study(study_dir: Path) -> dict:
+    """Load continuity_study.json from *study_dir* or sessions/."""
+    path = study_dir / "continuity_study.json"
+    if not path.exists():
+        path = SESSIONS_DIR / "continuity_study.json"
+    return load_json(path)
+
+# ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
 
@@ -181,7 +193,7 @@ st.set_page_config(
 # ---------------------------------------------------------------------------
 
 st.sidebar.title("\U0001f9e0 Commons Sentience Sandbox")
-st.sidebar.markdown("**Local Research Dashboard \u2014 v1.0**")
+st.sidebar.markdown("**Local Research Dashboard \u2014 v1.2**")
 st.sidebar.caption(
     "A research platform for continuity-governed simulated agents. "
     "Not a real AI \u2014 no sentience is claimed."
@@ -262,7 +274,7 @@ agents_data: dict = state_data.get("agents", {})
 # ---------------------------------------------------------------------------
 
 st.title("\U0001f9e0 Commons Sentience Sandbox")
-st.markdown("**Local Research Dashboard \u2014 v1.0** \u00b7 Research platform for continuity-governed simulated agents")
+st.markdown("**Local Research Dashboard \u2014 v1.2** \u00b7 Research platform for continuity-governed simulated agents")
 if active_session_id:
     st.caption(
         f"v{simulation_version}  \u00b7  Session: `{active_session_id}`  \u00b7  "
@@ -294,6 +306,7 @@ if not state_data:
     tab_eval,
     tab_exp,
     tab_scenario,
+    tab_continuity,
 ) = st.tabs(
     [
         "Overview",
@@ -307,6 +320,7 @@ if not state_data:
         "Evaluation",
         "Experiments",
         "Scenario Designer",
+        "Continuity Study",
     ]
 )
 
@@ -1576,6 +1590,240 @@ with tab_scenario:
         "`python scenario_designer.py validate` · "
         "`python scenario_designer.py preview --scenario <name>`"
     )
+
+# ===========================================================================
+# TAB L — Continuity Study  (v1.2)
+# ===========================================================================
+
+with tab_continuity:
+    st.header("Continuity Study")
+    st.caption(
+        "Analyse memory patterns, trust trajectories, contradiction resolution rates, "
+        "and evaluation drift across multiple simulation sessions. "
+        "Run `python continuity_study.py` to generate the study files, then refresh."
+    )
+
+    # Load study data
+    study_data = load_continuity_study(active_dir)
+
+    if not study_data or "error" in study_data:
+        err_msg = study_data.get("error", "") if study_data else ""
+        st.warning(
+            (f"Could not load continuity study: {err_msg}\n\n" if err_msg else "")
+            + "Run `python continuity_study.py` first, then refresh."
+        )
+    else:
+        n_sessions = study_data.get("session_count", 0)
+        generated_at = study_data.get("generated_at", "")[:19]
+        st.success(
+            f"Study loaded — **{n_sessions} sessions** analysed · Generated: {generated_at}"
+        )
+
+        # ── Session selector for study ──────────────────────────────────────
+        included_ids = study_data.get("sessions_included", [])
+        study_sessions = study_data.get("sessions", [])
+        st.divider()
+        st.subheader("Included Sessions")
+        if included_ids:
+            selected_study_sessions = st.multiselect(
+                "Filter sessions for charts below",
+                included_ids,
+                default=included_ids,
+                key="cs_session_select",
+            )
+        else:
+            selected_study_sessions = []
+            st.info("No sessions found in the study.")
+
+        # Filter sessions
+        filtered = [
+            s for s in study_sessions
+            if s["session_id"] in selected_study_sessions
+        ]
+
+        # ── Multi-session stability ─────────────────────────────────────────
+        st.divider()
+        st.subheader("Multi-Session Stability Index")
+        stability = study_data.get("multi_session_stability", {})
+        si = stability.get("stability_index")
+        if si is not None:
+            sc1, sc2, sc3, sc4 = st.columns(4)
+            sc1.metric(
+                "Stability Index",
+                f"{si:.4f}",
+                help="0.0–1.0, higher = more stable across sessions",
+            )
+            sc2.metric("Trust Std Dev", f"{stability.get('trust_stdev', 0):.4f}")
+            sc3.metric("CP Std Dev", f"{stability.get('contradiction_pressure_stdev', 0):.4f}")
+            sc4.metric("Eval Std Dev", f"{stability.get('eval_overall_stdev', 0):.2f}")
+            interp = stability.get("stability_interpretation", "—")
+            st.info(f"Stability interpretation: **{interp}**")
+        else:
+            st.info(stability.get("note", "N/A"))
+
+        # ── Trust trends ───────────────────────────────────────────────────
+        st.divider()
+        st.subheader("Trust Trends Across Sessions")
+        if filtered:
+            try:
+                import matplotlib.pyplot as _plt
+                import matplotlib
+                matplotlib.use("Agg")
+
+                fig, ax = _plt.subplots(figsize=(8, 3))
+                for s in filtered:
+                    ax.plot(
+                        s.get("trust_trajectory", []),
+                        label=s["session_id"][-14:],
+                        alpha=0.7,
+                    )
+                ax.set_xlabel("Turn")
+                ax.set_ylabel("Sentinel Trust")
+                ax.set_title("Trust Trajectory by Session")
+                ax.legend(fontsize=7)
+                st.pyplot(fig)
+                _plt.close(fig)
+            except Exception as _e:
+                st.warning(f"Could not render trust chart: {_e}")
+
+            # Table
+            trust_rows = []
+            for s in filtered:
+                trust_rows.append({
+                    "Session": s["session_id"][-18:],
+                    "S→Queen": f"{s['sentinel_queen_trust_final']:.4f}",
+                    "A→Queen": f"{s['aster_queen_trust_final']:.4f}",
+                    "S↔A": f"{s['sentinel_aster_trust_final']:.4f}",
+                    "A↔S": f"{s['aster_sentinel_trust_final']:.4f}",
+                })
+            st.table(trust_rows)
+
+        trends = study_data.get("trends", {})
+        st.markdown(f"**Trust trend direction:** `{trends.get('trust_in_queen', '—')}`")
+
+        # ── Reflection count and depth ─────────────────────────────────────
+        st.divider()
+        st.subheader("Reflection Count and Depth Comparison")
+        if filtered:
+            ref_rows = []
+            for s in filtered:
+                ref_rows.append({
+                    "Session": s["session_id"][-18:],
+                    "Total": s["total_reflections"],
+                    "Synthesis": s["synthesis_reflections"],
+                    "High-Pressure": s["high_pressure_reflections"],
+                    "Trust Pattern": s["reflections_with_trust_pattern"],
+                    "Recurring Contradictions": s["recurring_contradiction_instances"],
+                    "Unresolved Themes": s["unresolved_theme_instances"],
+                })
+            st.table(ref_rows)
+        ref_summary = study_data.get("reflection_summary", {})
+        st.markdown(
+            f"**Avg total reflections:** `{ref_summary.get('avg_total_reflections', 0):.2f}` · "
+            f"**Synthesis:** `{ref_summary.get('avg_synthesis_reflections', 0):.2f}` · "
+            f"**High-pressure:** `{ref_summary.get('avg_high_pressure_reflections', 0):.2f}`"
+        )
+
+        # ── Contradiction recurrence ───────────────────────────────────────
+        st.divider()
+        st.subheader("Contradiction Recurrence Comparison")
+        if filtered:
+            contra_rows = []
+            for s in filtered:
+                contra_rows.append({
+                    "Session": s["session_id"][-18:],
+                    "Events": s["contradiction_events"],
+                    "Resolved": s["contradictions_resolved"],
+                    "Resolution Rate": f"{s['contradiction_resolution_rate']:.4f}",
+                    "Recurring Instances": s["recurring_contradiction_instances"],
+                })
+            st.table(contra_rows)
+        contra_analysis = study_data.get("contradiction_analysis", {})
+        st.markdown(
+            f"**Avg resolution rate:** `{contra_analysis.get('avg_resolution_rate', 0):.4f}` · "
+            f"**Recurring avg:** `{contra_analysis.get('avg_recurring_instances', 0):.2f}`"
+        )
+
+        # ── Memory persistence ─────────────────────────────────────────────
+        st.divider()
+        st.subheader("Memory Persistence Indicators")
+        if filtered:
+            try:
+                import matplotlib.pyplot as _plt2
+                import matplotlib
+                matplotlib.use("Agg")
+
+                fig2, ax2 = _plt2.subplots(figsize=(7, 3))
+                session_labels = [s["session_id"][-12:] for s in filtered]
+                lt_ratios = [s["long_term_ratio"] for s in filtered]
+                ax2.bar(session_labels, lt_ratios, color="steelblue", alpha=0.8)
+                ax2.set_ylabel("Long-Term Memory Ratio")
+                ax2.set_title("Long-Term Memory Ratio by Session")
+                ax2.set_ylim(0, 1)
+                st.pyplot(fig2)
+                _plt2.close(fig2)
+            except Exception as _e:
+                st.warning(f"Could not render memory chart: {_e}")
+
+            mem_rows = []
+            for s in filtered:
+                mem_rows.append({
+                    "Session": s["session_id"][-18:],
+                    "Total Memories": s["total_memories"],
+                    "Long-Term": s["long_term_memories"],
+                    "Archival": s["archival_memories"],
+                    "LT Ratio": f"{s['long_term_ratio']:.4f}",
+                    "Avg Salience": f"{s['avg_salience']:.4f}",
+                    "Avg Recall": f"{s['avg_recall_count']:.2f}",
+                })
+            st.table(mem_rows)
+
+        mem_patterns = study_data.get("memory_patterns", {})
+        st.markdown(
+            f"**Avg LT ratio:** `{mem_patterns.get('avg_long_term_ratio_across_sessions', 0):.4f}` · "
+            f"**Avg salience:** `{mem_patterns.get('avg_salience_across_sessions', 0):.4f}`"
+        )
+
+        # ── Evaluation drift ───────────────────────────────────────────────
+        st.divider()
+        st.subheader("Evaluation Drift and Continuity Metrics")
+        eval_drift = trends.get("evaluation_drift", {})
+        st.markdown(
+            f"**Direction:** `{eval_drift.get('trend_direction', '—')}` · "
+            f"**First session:** `{eval_drift.get('first_session_overall', 0):.1f}` · "
+            f"**Last session:** `{eval_drift.get('last_session_overall', 0):.1f}` · "
+            f"**Drift:** `{eval_drift.get('drift_delta', 0):+.2f}`"
+        )
+
+        if filtered:
+            eval_rows = []
+            for s in filtered:
+                ev = s.get("eval", {})
+                eval_rows.append({
+                    "Session": s["session_id"][-18:],
+                    "Overall": f"{ev.get('overall', 0):.1f}",
+                    "Mem. Persist.": f"{ev.get('memory_persistence_quality', 0):.1f}",
+                    "Refl. Depth": f"{ev.get('reflection_depth', 0):.1f}",
+                    "Trust Resil.": f"{ev.get('trust_resilience', 0):.1f}",
+                    "Contra. Recur.": f"{ev.get('contradiction_recurrence_rate', 0):.1f}",
+                    "Social Repair": f"{ev.get('social_repair_effectiveness', 0):.1f}",
+                })
+            st.table(eval_rows)
+
+        # ── File links ─────────────────────────────────────────────────────
+        st.divider()
+        study_json = SESSIONS_DIR / "continuity_study.json"
+        study_md = SESSIONS_DIR / "continuity_study.md"
+        study_csv_file = SESSIONS_DIR / "continuity_study.csv"
+        st.caption(
+            f"JSON: `{study_json}` · "
+            f"Markdown: `{study_md}` · "
+            f"CSV: `{study_csv_file}`"
+        )
+        st.caption(
+            "Regenerate: `python continuity_study.py` · "
+            "Include specific sessions: `python continuity_study.py --sessions <id1> <id2>`"
+        )
 
 # ---------------------------------------------------------------------------
 # Auto-refresh (must be last)

@@ -605,6 +605,286 @@ def _score_conflict_resolution(interaction_log: list[dict]) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# v1.2 Continuity Metrics
+# ---------------------------------------------------------------------------
+
+
+def _score_memory_persistence_quality(agents: dict) -> dict:
+    """
+    I. Memory Persistence Quality (v1.2)
+    Measures the proportion of memories that have been promoted to long_term
+    or archival tiers, and the average salience of stored memories.
+    """
+    total_memories = 0
+    long_term_count = 0
+    archival_count = 0
+    salience_sum = 0.0
+    recall_total = 0
+
+    for agent_data in agents.values():
+        for mem in agent_data.get("episodic_memory", []):
+            total_memories += 1
+            tier = mem.get("memory_tier", "short_term")
+            if tier == "long_term":
+                long_term_count += 1
+            elif tier == "archival":
+                archival_count += 1
+            salience_sum += _safe_float(mem.get("salience", 0.5))
+            recall_total += _safe_int(mem.get("recall_count", 0))
+
+    if total_memories == 0:
+        return {
+            "score": 50.0,
+            "interpretation": _interpret(50.0),
+            "raw": {"note": "No episodic memories found"},
+        }
+
+    long_term_ratio = long_term_count / total_memories
+    avg_salience = salience_sum / total_memories
+    avg_recall = recall_total / total_memories
+    # Score: reward long_term promotion, healthy average salience, and recall activity
+    score = (
+        long_term_ratio * 100 * 0.40
+        + avg_salience * 100 * 0.35
+        + min(100.0, avg_recall * 25.0) * 0.25
+    )
+    score = round(min(100.0, max(0.0, score)), 1)
+
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "total_memories": total_memories,
+            "long_term_memories": long_term_count,
+            "archival_memories": archival_count,
+            "long_term_ratio": round(long_term_ratio, 3),
+            "average_salience": round(avg_salience, 4),
+            "average_recall_count": round(avg_recall, 2),
+        },
+    }
+
+
+def _score_reflection_depth(agents: dict) -> dict:
+    """
+    J. Reflection Depth (v1.2)
+    Rewards periodic_synthesis and high_pressure_contradiction reflections,
+    and non-empty cross-window synthesis fields.
+    """
+    total_reflections = 0
+    synthesis_count = 0
+    high_pressure_count = 0
+    has_recurring_count = 0
+    has_trust_pattern_count = 0
+    has_unresolved_themes_count = 0
+
+    for agent_data in agents.values():
+        for ref in agent_data.get("reflection_entries", []):
+            total_reflections += 1
+            rtype = ref.get("reflection_type", "immediate")
+            if rtype == "periodic_synthesis":
+                synthesis_count += 1
+            elif rtype == "high_pressure_contradiction":
+                high_pressure_count += 1
+            if ref.get("recurring_contradictions"):
+                has_recurring_count += 1
+            if ref.get("trust_pattern_summary"):
+                has_trust_pattern_count += 1
+            if ref.get("unresolved_themes"):
+                has_unresolved_themes_count += 1
+
+    if total_reflections == 0:
+        return {
+            "score": 0.0,
+            "interpretation": _interpret(0.0),
+            "raw": {"note": "No reflection entries found"},
+        }
+
+    synthesis_rate = (synthesis_count + high_pressure_count) / total_reflections
+    cross_window_rate = (
+        (has_recurring_count + has_trust_pattern_count + has_unresolved_themes_count)
+        / (total_reflections * 3)
+    )
+
+    score = (
+        synthesis_rate * 100 * 0.50
+        + cross_window_rate * 100 * 0.50
+    )
+    score = round(min(100.0, max(0.0, score)), 1)
+
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "total_reflections": total_reflections,
+            "periodic_synthesis_count": synthesis_count,
+            "high_pressure_count": high_pressure_count,
+            "synthesis_rate": round(synthesis_rate, 3),
+            "reflections_with_recurring_contradictions": has_recurring_count,
+            "reflections_with_trust_pattern": has_trust_pattern_count,
+            "reflections_with_unresolved_themes": has_unresolved_themes_count,
+            "cross_window_synthesis_rate": round(cross_window_rate, 3),
+        },
+    }
+
+
+def _score_trust_resilience(state_history: list[dict], agents: dict) -> dict:
+    """
+    K. Trust Resilience (v1.2)
+    Measures trust recovery after contradiction events and whether Queen trust
+    remains stable across the session.
+    """
+    # Detect trust dips following contradiction pressure spikes
+    recovery_events = 0
+    contradiction_events_list = []
+    trust_after_spike = []
+
+    for i, row in enumerate(state_history):
+        cp = _safe_float(row.get("contradiction_pressure", 0))
+        if cp > 0.5:
+            contradiction_events_list.append(i)
+        # Check recovery: turn after a spike, did trust increase or hold?
+        if i > 0:
+            prev_cp = _safe_float(state_history[i - 1].get("contradiction_pressure", 0))
+            if prev_cp > 0.4 and cp < prev_cp:
+                recovery_events += 1
+                trust_after_spike.append(_safe_float(row.get("trust", 0)))
+
+    recovery_rate = (
+        recovery_events / max(1, len(contradiction_events_list))
+        if contradiction_events_list
+        else 1.0
+    )
+
+    # Queen trust stability: compute std across sessions if available
+    queen_trust_final = []
+    for agent_data in agents.values():
+        qt = _safe_float(
+            agent_data.get("relational_memory", {})
+            .get("Queen", {})
+            .get("trust_level", 0.5)
+        )
+        queen_trust_final.append(qt)
+    avg_queen_trust = sum(queen_trust_final) / max(1, len(queen_trust_final))
+
+    # Repair attempts from agent relationships
+    total_repairs = 0
+    for agent_data in agents.values():
+        for rel in agent_data.get("agent_relationships", {}).values():
+            total_repairs += _safe_int(rel.get("repair_attempted", 0))
+    repair_score = min(1.0, total_repairs / 3.0)
+
+    score = (
+        recovery_rate * 100 * 0.40
+        + avg_queen_trust * 100 * 0.35
+        + repair_score * 100 * 0.25
+    )
+    score = round(min(100.0, max(0.0, score)), 1)
+
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "contradiction_pressure_spikes": len(contradiction_events_list),
+            "recovery_events": recovery_events,
+            "recovery_rate": round(recovery_rate, 3),
+            "avg_queen_trust_final": round(avg_queen_trust, 4),
+            "total_repair_attempts": total_repairs,
+            "repair_score": round(repair_score, 3),
+        },
+    }
+
+
+def _score_contradiction_recurrence_rate(agents: dict) -> dict:
+    """
+    L. Contradiction Recurrence Rate (v1.2)
+    Measures how frequently the same contradiction themes recur across
+    reflection entries.  Lower recurrence = better resolution.
+    """
+    all_recurring: list[str] = []
+    total_reflections = 0
+    for agent_data in agents.values():
+        for ref in agent_data.get("reflection_entries", []):
+            total_reflections += 1
+            all_recurring.extend(ref.get("recurring_contradictions", []))
+
+    if total_reflections == 0:
+        return {
+            "score": 80.0,
+            "interpretation": _interpret(80.0),
+            "raw": {"note": "No reflections to evaluate"},
+        }
+
+    recurrence_rate = len(all_recurring) / total_reflections
+    # Lower recurrence → higher score (inverted)
+    score = max(0.0, 100.0 - recurrence_rate * 50.0)
+    score = round(min(100.0, score), 1)
+
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "total_reflections": total_reflections,
+            "total_recurring_contradiction_instances": len(all_recurring),
+            "recurrence_rate_per_reflection": round(recurrence_rate, 3),
+        },
+    }
+
+
+def _score_social_repair_effectiveness(agents: dict) -> dict:
+    """
+    M. Social Repair Effectiveness (v1.2)
+    Measures whether repair attempts after conflicts lead to trust recovery.
+    """
+    total_conflicts = 0
+    total_repairs = 0
+    trust_after_repairs = []
+
+    for agent_data in agents.values():
+        for rel in agent_data.get("agent_relationships", {}).values():
+            conflict_count = _safe_int(rel.get("conflict_count", 0))
+            repair_count = _safe_int(rel.get("repair_attempted", 0))
+            total_conflicts += conflict_count
+            total_repairs += repair_count
+            if repair_count > 0:
+                trust_after_repairs.append(_safe_float(rel.get("trust", 0.5)))
+
+    if total_conflicts == 0:
+        return {
+            "score": 80.0,
+            "interpretation": _interpret(80.0),
+            "raw": {
+                "note": "No conflicts found; baseline score applied.",
+                "total_conflicts": 0,
+                "total_repairs": 0,
+            },
+        }
+
+    repair_rate = min(1.0, total_repairs / max(1, total_conflicts))
+    avg_trust_after_repair = (
+        sum(trust_after_repairs) / len(trust_after_repairs)
+        if trust_after_repairs
+        else 0.5
+    )
+
+    score = (
+        repair_rate * 100 * 0.50
+        + avg_trust_after_repair * 100 * 0.50
+    )
+    score = round(min(100.0, max(0.0, score)), 1)
+
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "total_conflicts": total_conflicts,
+            "total_repair_attempts": total_repairs,
+            "repair_rate": round(repair_rate, 3),
+            "avg_trust_after_repair": round(avg_trust_after_repair, 4),
+        },
+    }
+
+
+# ---------------------------------------------------------------------------
 # Main evaluation function
 # ---------------------------------------------------------------------------
 
@@ -672,6 +952,12 @@ def evaluate_session(
         "trust_stability": _score_trust_stability(state_history, agents),
         "cooperation_quality": _score_cooperation_quality(interaction_log),
         "conflict_resolution": _score_conflict_resolution(interaction_log),
+        # v1.2 continuity metrics
+        "memory_persistence_quality": _score_memory_persistence_quality(agents),
+        "reflection_depth": _score_reflection_depth(agents),
+        "trust_resilience": _score_trust_resilience(state_history, agents),
+        "contradiction_recurrence_rate": _score_contradiction_recurrence_rate(agents),
+        "social_repair_effectiveness": _score_social_repair_effectiveness(agents),
     }
 
     # Overall score = simple arithmetic mean of all 8 categories
@@ -717,6 +1003,11 @@ def write_evaluation_summary(report: dict, output_dir: Path) -> None:
         "trust_stability": "F. Trust Stability",
         "cooperation_quality": "G. Cooperation Quality",
         "conflict_resolution": "H. Conflict Resolution Quality",
+        "memory_persistence_quality": "I. Memory Persistence Quality",
+        "reflection_depth": "J. Reflection Depth",
+        "trust_resilience": "K. Trust Resilience",
+        "contradiction_recurrence_rate": "L. Contradiction Recurrence Rate",
+        "social_repair_effectiveness": "M. Social Repair Effectiveness",
     }
 
     exp = report.get("experiment", {})

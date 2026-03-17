@@ -44,6 +44,13 @@ OUTPUT_FILES = [
     "evaluation_summary.md",
 ]
 
+# Continuity study outputs included in bundles when present
+CONTINUITY_STUDY_FILES = [
+    "continuity_study.json",
+    "continuity_study.md",
+    "continuity_study.csv",
+]
+
 
 # ---------------------------------------------------------------------------
 # Internal helpers
@@ -212,6 +219,12 @@ def save_session(
     # Copy output files (includes evaluation_report.json if already generated)
     for fname in OUTPUT_FILES:
         src = source_dir / fname
+        if src.exists():
+            shutil.copy2(src, session_dir / fname)
+
+    # Also copy continuity study files if they exist in SESSIONS_DIR
+    for fname in CONTINUITY_STUDY_FILES:
+        src = SESSIONS_DIR / fname
         if src.exists():
             shutil.copy2(src, session_dir / fname)
 

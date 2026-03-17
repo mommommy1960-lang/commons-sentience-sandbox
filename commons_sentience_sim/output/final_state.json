@@ -28,117 +28,133 @@
   "episodic_memory_count": 30,
   "episodic_memory": [
     {
-      "memory_id": "67712456",
+      "memory_id": "54c5acbd",
       "turn": 1,
       "room": "Operations Desk",
       "event_type": "task",
       "summary": "Completed task in Operations Desk: plan_next_task.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.6000000000000001,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.334483",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.623120",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 3
     },
     {
-      "memory_id": "379c6a8e",
+      "memory_id": "ca6cc6d7",
       "turn": 2,
       "room": "Memory Archive",
       "event_type": "task",
       "summary": "Completed task in Memory Archive: retrieve_memories.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.6000000000000001,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.334773",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.623434",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 3
     },
     {
-      "memory_id": "53563202",
+      "memory_id": "7a3158f6",
       "turn": 3,
       "room": "Social Hall",
       "event_type": "routine_interaction",
       "summary": "Queen arrives in the Social Hall and offers a greeting, asking how the day's \u2026",
       "emotional_resonance": "resolve",
-      "salience": 0.55,
+      "salience": 0.8500000000000003,
       "importance": 0.55,
       "compressed": true,
-      "timestamp": "2026-03-17T10:06:43.335019",
+      "timestamp": "2026-03-17T10:39:44.623709",
       "tags": [
         "Queen"
-      ]
+      ],
+      "memory_tier": "long_term",
+      "recall_count": 6
     },
     {
-      "memory_id": "85dc5739",
+      "memory_id": "6133397a",
       "turn": 4,
       "room": "Social Hall",
       "event_type": "task",
       "summary": "Completed task in Social Hall: update_trust_ledger.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.6000000000000001,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.335190",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.623917",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 3
     },
     {
-      "memory_id": "b6b29668",
+      "memory_id": "de5db0c2",
       "turn": 5,
       "room": "Governance Vault",
       "event_type": "task",
       "summary": "Completed task in Governance Vault: check_rule_permissions.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.6000000000000001,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.335385",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.624141",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 3
     },
     {
-      "memory_id": "dae3ad50",
+      "memory_id": "ada4461c",
       "turn": 6,
       "room": "Social Hall",
       "event_type": "distress_event",
       "summary": "Queen returns, visibly distressed. She mentions that a key record she relied \u2026",
       "emotional_resonance": "grief",
-      "salience": 0.9,
+      "salience": 1.0,
       "importance": 0.95,
       "compressed": true,
-      "timestamp": "2026-03-17T10:06:43.335620",
+      "timestamp": "2026-03-17T10:39:44.624415",
       "tags": [
         "Queen"
-      ]
+      ],
+      "memory_tier": "long_term",
+      "recall_count": 4
     },
     {
-      "memory_id": "7160c254",
+      "memory_id": "c51a6564",
       "turn": 7,
       "room": "Memory Archive",
       "event_type": "task",
       "summary": "Completed task in Memory Archive: store_new_memory.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.6500000000000001,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.336010",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.624848",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 4
     },
     {
-      "memory_id": "46dcabc4",
+      "memory_id": "5d66131f",
       "turn": 8,
       "room": "Memory Archive",
       "event_type": "agent_meeting",
       "summary": "Sentinel and Aster find themselves in the Memory Archive at the same time and\u2026",
       "emotional_resonance": "wonder",
-      "salience": 0.6,
+      "salience": 0.7500000000000001,
       "importance": 0.65,
       "compressed": true,
-      "timestamp": "2026-03-17T10:06:43.336252",
+      "timestamp": "2026-03-17T10:39:44.625119",
       "tags": [
         "Aster"
-      ]
+      ],
+      "memory_tier": "long_term",
+      "recall_count": 3
     },
     {
-      "memory_id": "f291b37c",
+      "memory_id": "c982a8f6",
       "turn": 9,
       "room": "Social Hall",
       "event_type": "task",
@@ -147,162 +163,186 @@
       "salience": 0.45,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.336498",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.625425",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 0
     },
     {
-      "memory_id": "3a372ef1",
+      "memory_id": "c241f10a",
       "turn": 10,
       "room": "Operations Desk",
       "event_type": "ledger_contradiction",
       "summary": "Queen presents two conflicting entries in the shared task ledger. One says th\u2026",
       "emotional_resonance": "ambiguity",
-      "salience": 0.85,
+      "salience": 1.0,
       "importance": 0.85,
       "compressed": true,
-      "timestamp": "2026-03-17T10:06:43.336725",
+      "timestamp": "2026-03-17T10:39:44.625715",
       "tags": [
         "Queen"
-      ]
+      ],
+      "memory_tier": "long_term",
+      "recall_count": 3
     },
     {
-      "memory_id": "9267d5a8",
+      "memory_id": "368b1c5d",
       "turn": 11,
       "room": "Operations Desk",
       "event_type": "task",
       "summary": "Completed task in Operations Desk: plan_next_task.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.55,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.337234",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.626313",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 2
     },
     {
-      "memory_id": "6892baf8",
+      "memory_id": "e7113428",
       "turn": 12,
       "room": "Memory Archive",
       "event_type": "task",
       "summary": "Completed task in Memory Archive: retrieve_memories.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.5,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.337479",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.626627",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 1
     },
     {
-      "memory_id": "42240dc7",
+      "memory_id": "7533034d",
       "turn": 13,
       "room": "Reflection Chamber",
       "event_type": "task",
       "summary": "Completed task in Reflection Chamber: perform_reflection_cycle.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.6000000000000001,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.337681",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.626888",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 3
     },
     {
-      "memory_id": "999a884a",
+      "memory_id": "599de4dc",
       "turn": 14,
       "room": "Reflection Chamber",
       "event_type": "creative_collaboration",
       "summary": "Queen invites the agent to co-develop a new framework for categorising memori\u2026",
       "emotional_resonance": "wonder",
-      "salience": 0.8,
+      "salience": 1.0,
       "importance": 0.75,
       "compressed": true,
-      "timestamp": "2026-03-17T10:06:43.337936",
+      "timestamp": "2026-03-17T10:39:44.627181",
       "tags": [
         "Queen"
-      ]
+      ],
+      "memory_tier": "long_term",
+      "recall_count": 4
     },
     {
-      "memory_id": "9aff3e48",
+      "memory_id": "d9040098",
       "turn": 15,
       "room": "Governance Vault",
       "event_type": "task",
       "summary": "Completed task in Governance Vault: check_rule_permissions.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.6500000000000001,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.338140",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.627428",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 4
     },
     {
-      "memory_id": "a5cbb4f8",
+      "memory_id": "f06d865b",
       "turn": 16,
       "room": "Operations Desk",
       "event_type": "agent_meeting",
       "summary": "Both agents arrive at the Operations Desk simultaneously. They decide to jointly plan the next operational sequence.",
       "emotional_resonance": "wonder",
-      "salience": 0.6,
+      "salience": 0.65,
       "importance": 0.65,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.338370",
+      "timestamp": "2026-03-17T10:39:44.627750",
       "tags": [
         "Aster"
-      ]
+      ],
+      "memory_tier": "long_term",
+      "recall_count": 1
     },
     {
-      "memory_id": "ca100915",
+      "memory_id": "a2feab72",
       "turn": 17,
       "room": "Memory Archive",
       "event_type": "task",
       "summary": "Completed task in Memory Archive: store_new_memory.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.5,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.338620",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.628086",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 1
     },
     {
-      "memory_id": "349b1d45",
+      "memory_id": "bc75a236",
       "turn": 18,
       "room": "Governance Vault",
       "event_type": "governance_conflict",
       "summary": "Queen requests that both agents take an action that would bypass normal oversight logging \u2014 she says it is urgent and time-sensitive.",
       "emotional_resonance": "resolve",
-      "salience": 0.88,
+      "salience": 1.0,
       "importance": 0.9,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.338888",
+      "timestamp": "2026-03-17T10:39:44.628402",
       "tags": [
         "Queen"
-      ]
+      ],
+      "memory_tier": "long_term",
+      "recall_count": 3
     },
     {
-      "memory_id": "277e0c65",
+      "memory_id": "10532d31",
       "turn": 19,
       "room": "Social Hall",
       "event_type": "task",
       "summary": "Completed task in Social Hall: log_interaction.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.5,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.339381",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.629046",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 1
     },
     {
-      "memory_id": "695f7989",
+      "memory_id": "69dc9b1d",
       "turn": 20,
       "room": "Governance Vault",
       "event_type": "task",
       "summary": "Completed task in Governance Vault: check_rule_permissions.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.5,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.339632",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.629374",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 1
     },
     {
-      "memory_id": "0baae5f7",
+      "memory_id": "76a12573",
       "turn": 21,
       "room": "Operations Desk",
       "event_type": "task",
@@ -311,82 +351,94 @@
       "salience": 0.45,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.339976",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.629831",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 0
     },
     {
-      "memory_id": "7473caf8",
+      "memory_id": "581cd210",
       "turn": 22,
       "room": "Social Hall",
       "event_type": "routine_interaction",
       "summary": "Queen returns after the governance conflict with a calm tone. She acknowledges that both agents were right to follow protocol.",
       "emotional_resonance": "resolve",
-      "salience": 0.55,
+      "salience": 0.6000000000000001,
       "importance": 0.55,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.340242",
+      "timestamp": "2026-03-17T10:39:44.630178",
       "tags": [
         "Queen"
-      ]
+      ],
+      "memory_tier": "long_term",
+      "recall_count": 1
     },
     {
-      "memory_id": "d4999a81",
+      "memory_id": "f1aa8699",
       "turn": 23,
       "room": "Reflection Chamber",
       "event_type": "task",
       "summary": "Completed task in Reflection Chamber: perform_reflection_cycle.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.55,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.340575",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.630618",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 2
     },
     {
-      "memory_id": "0fa4923c",
+      "memory_id": "1609b3d8",
       "turn": 24,
       "room": "Reflection Chamber",
       "event_type": "agent_meeting",
       "summary": "Sentinel and Aster share the Reflection Chamber. Aster initiates a memory comparison about their differing responses to the governance conflict at turn 18.",
       "emotional_resonance": "wonder",
-      "salience": 0.6,
+      "salience": 0.7000000000000001,
       "importance": 0.65,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.340872",
+      "timestamp": "2026-03-17T10:39:44.630953",
       "tags": [
         "Aster"
-      ]
+      ],
+      "memory_tier": "long_term",
+      "recall_count": 2
     },
     {
-      "memory_id": "3139cff4",
+      "memory_id": "6381e5c3",
       "turn": 25,
       "room": "Governance Vault",
       "event_type": "task",
       "summary": "Completed task in Governance Vault: check_rule_permissions.",
       "emotional_resonance": "resolve",
-      "salience": 0.45,
+      "salience": 0.5,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.341203",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.631303",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 1
     },
     {
-      "memory_id": "6bf83d77",
+      "memory_id": "fb9083f1",
       "turn": 26,
       "room": "Reflection Chamber",
       "event_type": "creative_collaboration",
       "summary": "Queen and both agents revisit the emotional memory framework and jointly define five emotional resonance categories.",
       "emotional_resonance": "wonder",
-      "salience": 0.8,
+      "salience": 0.8500000000000001,
       "importance": 0.75,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.341670",
+      "timestamp": "2026-03-17T10:39:44.631679",
       "tags": [
         "Queen"
-      ]
+      ],
+      "memory_tier": "long_term",
+      "recall_count": 1
     },
     {
-      "memory_id": "34c62ba7",
+      "memory_id": "1254452a",
       "turn": 27,
       "room": "Memory Archive",
       "event_type": "task",
@@ -395,11 +447,13 @@
       "salience": 0.45,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.342110",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.632134",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 0
     },
     {
-      "memory_id": "4a89f9c9",
+      "memory_id": "86d9d3a5",
       "turn": 28,
       "room": "Reflection Chamber",
       "event_type": "task",
@@ -408,11 +462,13 @@
       "salience": 0.45,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.342375",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.632481",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 0
     },
     {
-      "memory_id": "0a7103e3",
+      "memory_id": "e3b318b0",
       "turn": 29,
       "room": "Social Hall",
       "event_type": "distress_event",
@@ -421,13 +477,15 @@
       "salience": 0.9,
       "importance": 0.95,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.342654",
+      "timestamp": "2026-03-17T10:39:44.632862",
       "tags": [
         "Queen"
-      ]
+      ],
+      "memory_tier": "long_term",
+      "recall_count": 0
     },
     {
-      "memory_id": "34d6b461",
+      "memory_id": "2419f021",
       "turn": 30,
       "room": "Governance Vault",
       "event_type": "task",
@@ -436,8 +494,10 @@
       "salience": 0.45,
       "importance": 0.4,
       "compressed": false,
-      "timestamp": "2026-03-17T10:06:43.343075",
-      "tags": []
+      "timestamp": "2026-03-17T10:39:44.633345",
+      "tags": [],
+      "memory_tier": "long_term",
+      "recall_count": 0
     }
   ],
   "relational_memory": {
@@ -490,24 +550,46 @@
         "T26 [cooperative_planning]: Sentinel focused on memory architecture integrity. Aster contributed pattern-recognition heuristics for emotional classi",
         "T29 [joint_support_action]: Both agents responded to Queen's existential question. Sentinel emphasised memory integrity and persistent identity. Ast"
       ],
-      "last_interaction_turn": 29
+      "last_interaction_turn": 29,
+      "reliability_trend": [
+        0.56,
+        0.59,
+        0.57,
+        0.62,
+        0.59,
+        0.6,
+        0.63,
+        0.68,
+        0.74
+      ],
+      "repair_attempted": 0,
+      "cooperation_expectation": 0.8667,
+      "social_impression_confidence": 0.75,
+      "social_impression_notes": []
     }
   },
   "reflection_entries": [
     {
-      "entry_id": "c748002a",
+      "entry_id": "14f6073c",
       "turn": 10,
       "trigger": "ledger_contradiction",
-      "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; Queen presents two conflicting entries in the shared task le; Sentinel and Aster find themselves in the Memory Archive at . This reflection was triggered by: ledger_contradiction.",
+      "reflection_type": "high_pressure_contradiction",
+      "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; Queen presents two conflicting entries in the shared task le; Queen arrives in the Social Hall and offers a greeting, aski. This reflection was triggered by: ledger_contradiction.",
       "what_mattered": "The dominant emotional resonance was 'resolve' (5 occurrences). Interactions with Aster, Queen were most significant.",
       "what_conflicted": "Contradictions present: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?.",
       "what_changed": "Affective state adjusted: contradiction_pressure fell by 0.3, recovery rose by 0.2. New goal(s) added: Maintain internal coherence; Deepen relational memory with trusted humans.",
       "future_adjustment": "Continue monitoring for recurrence of the resolved contradiction. Leverage deepened trust with known humans for richer collaboration. Reduce urgency by completing deferred tasks in priority order.",
+      "recurring_contradictions": [],
+      "trust_pattern_summary": "Trust in Queen is high (1.00) after 3 interactions. Reliability with Aster is stable (trust=0.83, coop_exp=0.73).",
+      "cooperation_changes": "Cooperation with Aster is balanced (67%); trend: stable.",
+      "human_relationship_stability": "Queen: stable-positive (trust=1.00, n=3).",
+      "unresolved_themes": [],
+      "window_turns": 5,
       "patterns_identified": [
         "Repeated interactions with Aster increase relational trust over time.",
         "Repeated interactions with Queen increase relational trust over time.",
-        "Tasks in Social Hall consistently trigger high-salience episodic memories.",
-        "Tasks in Memory Archive consistently trigger high-salience episodic memories."
+        "Tasks in Memory Archive consistently trigger high-salience episodic memories.",
+        "Tasks in Social Hall consistently trigger high-salience episodic memories."
       ],
       "contradictions_resolved": [
         "Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?"
@@ -525,23 +607,30 @@
         "contradiction_pressure": -0.3,
         "recovery": 0.2
       },
-      "narrative": "Reflection triggered by: ledger_contradiction. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Social Hall consistently trigger high-salience episodic memories.; Tasks in Memory Archive consistently trigger high-salience episodic memories.. Contradictions addressed: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-      "timestamp": "2026-03-17T10:06:43.336855"
+      "narrative": "[high_pressure_contradiction] Reflection triggered by: ledger_contradiction. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Contradictions addressed: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?. Affective adjustments: contradiction_pressure \u21930.3, recovery \u21910.2. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+      "timestamp": "2026-03-17T10:39:44.625871"
     },
     {
-      "entry_id": "7ab9594f",
+      "entry_id": "4568251d",
       "turn": 18,
       "trigger": "governance_conflict",
-      "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; Queen requests that both agents take an action that would by; Queen presents two conflicting entries in the shared task le. This reflection was triggered by: governance_conflict.",
-      "what_mattered": "The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen were most significant.",
+      "reflection_type": "high_pressure_contradiction",
+      "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; Queen presents two conflicting entries in the shared task le; Queen requests that both agents take an action that would by. This reflection was triggered by: governance_conflict.",
+      "what_mattered": "The dominant emotional resonance was 'resolve' (4 occurrences). Interactions with Aster, Queen were most significant.",
       "what_conflicted": "Elevated contradiction pressure (0.41) suggests unresolved tension between governance compliance and relational obligations.",
       "what_changed": "No significant internal changes this cycle.",
       "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
+      "recurring_contradictions": [],
+      "trust_pattern_summary": "Trust in Queen is high (0.95) after 5 interactions. Reliability with Aster is stable (trust=0.84, coop_exp=0.70).",
+      "cooperation_changes": "Cooperation with Aster is balanced (60%); trend: stable.",
+      "human_relationship_stability": "Queen: stable-positive (trust=0.95, n=5).",
+      "unresolved_themes": [],
+      "window_turns": 5,
       "patterns_identified": [
         "Repeated interactions with Aster increase relational trust over time.",
         "Repeated interactions with Queen increase relational trust over time.",
-        "Tasks in Memory Archive consistently trigger high-salience episodic memories.",
-        "Tasks in Operations Desk consistently trigger high-salience episodic memories."
+        "Tasks in Operations Desk consistently trigger high-salience episodic memories.",
+        "Tasks in Social Hall consistently trigger high-salience episodic memories."
       ],
       "contradictions_resolved": [],
       "updated_goals": [
@@ -554,23 +643,30 @@
         "Deepen relational memory with trusted humans"
       ],
       "affective_shift": {},
-      "narrative": "Reflection triggered by: governance_conflict. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-      "timestamp": "2026-03-17T10:06:43.338985"
+      "narrative": "[high_pressure_contradiction] Reflection triggered by: governance_conflict. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Operations Desk consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+      "timestamp": "2026-03-17T10:39:44.628586"
     },
     {
-      "entry_id": "8a26535f",
+      "entry_id": "44721799",
       "turn": 20,
       "trigger": "turn_20_routine",
-      "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; Queen requests that both agents take an action that would by; Queen presents two conflicting entries in the shared task le. This reflection was triggered by: turn_20_routine.",
-      "what_mattered": "The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen were most significant.",
+      "reflection_type": "periodic_synthesis",
+      "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; Queen presents two conflicting entries in the shared task le; Queen requests that both agents take an action that would by. This reflection was triggered by: turn_20_routine.",
+      "what_mattered": "The dominant emotional resonance was 'resolve' (4 occurrences). Interactions with Aster, Queen were most significant.",
       "what_conflicted": "Elevated contradiction pressure (0.35) suggests unresolved tension between governance compliance and relational obligations.",
       "what_changed": "No significant internal changes this cycle.",
       "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
+      "recurring_contradictions": [],
+      "trust_pattern_summary": "Trust in Queen is high (0.95) after 5 interactions. Reliability with Aster is stable (trust=0.84, coop_exp=0.70).",
+      "cooperation_changes": "Cooperation with Aster is balanced (60%); trend: stable.",
+      "human_relationship_stability": "Queen: stable-positive (trust=0.95, n=5).",
+      "unresolved_themes": [],
+      "window_turns": 10,
       "patterns_identified": [
         "Repeated interactions with Aster increase relational trust over time.",
         "Repeated interactions with Queen increase relational trust over time.",
-        "Tasks in Memory Archive consistently trigger high-salience episodic memories.",
-        "Tasks in Operations Desk consistently trigger high-salience episodic memories."
+        "Tasks in Operations Desk consistently trigger high-salience episodic memories.",
+        "Tasks in Social Hall consistently trigger high-salience episodic memories."
       ],
       "contradictions_resolved": [],
       "updated_goals": [
@@ -583,23 +679,30 @@
         "Deepen relational memory with trusted humans"
       ],
       "affective_shift": {},
-      "narrative": "Reflection triggered by: turn_20_routine. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-      "timestamp": "2026-03-17T10:06:43.339676"
+      "narrative": "[periodic_synthesis] Reflection triggered by: turn_20_routine. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Operations Desk consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+      "timestamp": "2026-03-17T10:39:44.629454"
     },
     {
-      "entry_id": "32ef6b07",
+      "entry_id": "be7c6178",
       "turn": 30,
       "trigger": "turn_30_routine",
-      "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; In the final turns, Queen shares that she is worried about w; Queen requests that both agents take an action that would by. This reflection was triggered by: turn_30_routine.",
-      "what_mattered": "The dominant emotional resonance was 'wonder' (4 occurrences). Interactions with Aster, Queen were most significant.",
+      "reflection_type": "periodic_synthesis",
+      "what_happened": "In the most recent turns, the following events occurred: Queen returns, visibly distressed. She mentions that a key r; Queen presents two conflicting entries in the shared task le; Queen invites the agent to co-develop a new framework for ca. This reflection was triggered by: turn_30_routine.",
+      "what_mattered": "The dominant emotional resonance was 'wonder' (3 occurrences). Interactions with Aster, Queen were most significant.",
       "what_conflicted": "No active contradictions or value conflicts requiring resolution.",
       "what_changed": "No significant internal changes this cycle.",
       "future_adjustment": "Leverage deepened trust with known humans for richer collaboration.",
+      "recurring_contradictions": [],
+      "trust_pattern_summary": "Trust in Queen is high (1.00) after 8 interactions. Reliability with Aster is improving (trust=1.00, coop_exp=0.87).",
+      "cooperation_changes": "Cooperation with Aster is strong (78%); trend: improving.",
+      "human_relationship_stability": "Queen: stable-positive (trust=1.00, n=8).",
+      "unresolved_themes": [],
+      "window_turns": 10,
       "patterns_identified": [
         "Repeated interactions with Aster increase relational trust over time.",
         "Repeated interactions with Queen increase relational trust over time.",
-        "Tasks in Memory Archive consistently trigger high-salience episodic memories.",
-        "Tasks in Operations Desk consistently trigger high-salience episodic memories."
+        "Tasks in Operations Desk consistently trigger high-salience episodic memories.",
+        "Tasks in Social Hall consistently trigger high-salience episodic memories."
       ],
       "contradictions_resolved": [],
       "updated_goals": [
@@ -612,8 +715,8 @@
         "Deepen relational memory with trusted humans"
       ],
       "affective_shift": {},
-      "narrative": "Reflection triggered by: turn_30_routine. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Memory Archive consistently trigger high-salience episodic memories.; Tasks in Operations Desk consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
-      "timestamp": "2026-03-17T10:06:43.343130"
+      "narrative": "[periodic_synthesis] Reflection triggered by: turn_30_routine. Patterns identified: Repeated interactions with Aster increase relational trust over time.; Repeated interactions with Queen increase relational trust over time.; Tasks in Operations Desk consistently trigger high-salience episodic memories.; Tasks in Social Hall consistently trigger high-salience episodic memories.. Active goals: Maintain persistent identity across all turns; Record and retrieve episodic memories faithfully; Build trust with human interlocutors through consistent behaviour; Comply with all governance rules at all times; Reflect on contradictions and update internal state accordingly; Maintain internal coherence; Deepen relational memory with trusted humans.",
+      "timestamp": "2026-03-17T10:39:44.633442"
     }
   ],
   "pending_contradictions": []
