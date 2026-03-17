@@ -453,9 +453,11 @@ def write_study_json(study: dict, output_dir: Path) -> Path:
     output_dir.mkdir(parents=True, exist_ok=True)
     path = output_dir / "continuity_study.json"
     with open(path, "w", encoding="utf-8") as fh:
-        # Exclude large trajectory lists from JSON for readability
+        # Exclude internal-only trajectory lists from JSON (cp_trajectory is only used
+        # in-memory for stability index computation; trust_trajectory is kept so the
+        # dashboard can render the per-session trust chart).
         def _slim(s: dict) -> dict:
-            slim = {k: v for k, v in s.items() if k not in ("trust_trajectory", "cp_trajectory")}
+            slim = {k: v for k, v in s.items() if k not in ("cp_trajectory",)}
             return slim
 
         slim_study = dict(study)
@@ -519,7 +521,7 @@ def write_study_markdown(study: dict, output_dir: Path) -> Path:
     ]
     for s in sessions:
         lines.append(
-            f"| `{s['session_id'][-18:]}` "
+            f"| `{s['session_id']}` "
             f"| {s['sentinel_queen_trust_final']:.4f} "
             f"| {s['aster_queen_trust_final']:.4f} "
             f"| {s['sentinel_aster_trust_final']:.4f} "
@@ -542,7 +544,7 @@ def write_study_markdown(study: dict, output_dir: Path) -> Path:
     ]
     for s in sessions:
         lines.append(
-            f"| `{s['session_id'][-18:]}` "
+            f"| `{s['session_id']}` "
             f"| {s['total_reflections']} "
             f"| {s['synthesis_reflections']} "
             f"| {s['high_pressure_reflections']} "
@@ -564,7 +566,7 @@ def write_study_markdown(study: dict, output_dir: Path) -> Path:
     ]
     for s in sessions:
         lines.append(
-            f"| `{s['session_id'][-18:]}` "
+            f"| `{s['session_id']}` "
             f"| {s['contradiction_events']} "
             f"| {s['contradictions_resolved']} "
             f"| {s['contradiction_resolution_rate']:.4f} "
@@ -586,7 +588,7 @@ def write_study_markdown(study: dict, output_dir: Path) -> Path:
     ]
     for s in sessions:
         lines.append(
-            f"| `{s['session_id'][-18:]}` "
+            f"| `{s['session_id']}` "
             f"| {s['total_memories']} "
             f"| {s['long_term_memories']} "
             f"| {s['archival_memories']} "
@@ -611,7 +613,7 @@ def write_study_markdown(study: dict, output_dir: Path) -> Path:
     for s in sessions:
         ev = s.get("eval", {})
         lines.append(
-            f"| `{s['session_id'][-18:]}` "
+            f"| `{s['session_id']}` "
             f"| {ev.get('overall', 0):.1f} "
             f"| {ev.get('memory_persistence_quality', 0):.1f} "
             f"| {ev.get('reflection_depth', 0):.1f} "
