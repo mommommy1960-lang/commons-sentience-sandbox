@@ -26,6 +26,20 @@ v1.6 additions:
     continuity_loop_urge) updated each turn
   - Self-initiated continuity loops: agents can autonomously trigger maintenance,
     repair, investigation, and exploration actions based on drive thresholds
+
+v1.7 additions:
+  - Counterfactual planning layer: agents generate candidate actions and simulate
+    possible outcomes before each turn, selecting the highest-scoring option
+  - Internal simulation log: each turn's planning cycle is stored with predicted
+    and actual outcomes for post-hoc evaluation
+  - Self-authored future plans: agents generate medium-horizon multi-step plans
+    (repair trust, revisit contradiction, stabilise drift, investigate theme,
+    reinforce continuity) that persist and advance across turns
+  - Counterfactual evaluation: after each action, predicted vs actual outcomes
+    are compared to compute planning accuracy
+  - Multi-step planning: plans track stage progress and are abandoned/revised
+    if conditions change
+  - Cross-run plan carryover: active plans persist across --continue-from runs
 """
 from __future__ import annotations
 
@@ -765,7 +779,7 @@ def run_simulation(
         if carryover_session_label else ""
     )
     narrative_lines: List[str] = [
-        "# Commons Sentience Sandbox — Narrative Log (v1.6)\n",
+        "# Commons Sentience Sandbox — Narrative Log (v1.7)\n",
         f"> Agents: **{sentinel.name}** (continuity-governed) & **{aster.name}** (creative/exploratory)",
         f"> Version: {sentinel.identity['version']}",
         f"> Experiment: **{exp_name}**",
@@ -777,7 +791,7 @@ def run_simulation(
     narrative_lines.append("---\n")
 
     print("=" * 65)
-    print(f"  Commons Sentience Sandbox v1.6 — {total_turns_run}-Turn Multi-Agent Simulation")
+    print(f"  Commons Sentience Sandbox v1.7 — {total_turns_run}-Turn Multi-Agent Simulation")
     print(f"  Agents: {sentinel.name} + {aster.name}")
     print(f"  Experiment: {exp_name}  |  Scenario: {scenario_label}")
     if carryover_session_label:
@@ -884,6 +898,15 @@ def run_simulation(
         )
         _s_pred_idx = sentinel.record_prediction(turn, etype_for_conflict, _expected_s)
         _a_pred_idx = aster.record_prediction(turn, etype_for_conflict, _expected_a)
+
+        # ── 4.7 v1.7 Counterfactual planning ─────────────────────────────
+        _s_cf_candidate = sentinel.run_counterfactual_planning(turn)
+        _a_cf_candidate = aster.run_counterfactual_planning(turn)
+        # Snapshot trust/cp before action so we can measure actual delta
+        _s_trust_pre = sentinel.affective_state.get("trust", 0.5)
+        _a_trust_pre = aster.affective_state.get("trust", 0.5)
+        _s_cp_pre = sentinel.affective_state.get("contradiction_pressure", 0.0)
+        _a_cp_pre = aster.affective_state.get("contradiction_pressure", 0.0)
 
         # ── 5. Action selection ───────────────────────────────────────────
         s_action, s_reasoning, s_result = select_action(sentinel, event, s_room_actions, is_aster=False)
@@ -1036,6 +1059,25 @@ def run_simulation(
         s_ref = sentinel.maybe_reflect(trigger=event["type"] if event else f"turn_{turn}_routine")
         a_ref = aster.maybe_reflect(trigger=event["type"] if event else f"turn_{turn}_routine")
 
+        # ── 9.5 v1.7 Counterfactual outcome recording + plan refresh ─────
+        _s_cf_outcome = s_result[:120] if s_result else f"action={s_action}"
+        _a_cf_outcome = a_result[:120] if a_result else f"action={a_action}"
+        sentinel.record_counterfactual_outcome(
+            turn=turn,
+            actual_outcome=_s_cf_outcome,
+            prev_trust=_s_trust_pre,
+            prev_contradiction=_s_cp_pre,
+        )
+        aster.record_counterfactual_outcome(
+            turn=turn,
+            actual_outcome=_a_cf_outcome,
+            prev_trust=_a_trust_pre,
+            prev_contradiction=_a_cp_pre,
+        )
+        # Refresh future plans (advance/abandon/generate)
+        sentinel.refresh_future_plans(turn)
+        aster.refresh_future_plans(turn)
+
         # ── 10. State snapshots ───────────────────────────────────────────
         sentinel.record_state_snapshot(
             action=s_action,
@@ -1137,7 +1179,7 @@ def run_simulation(
     exp_meta = cfg.to_metadata_dict() if cfg else {"experiment_name": "baseline"}
     _run_ts = datetime.now().isoformat()
     multi_state = {
-        "simulation_version": "1.6.0",
+        "simulation_version": "1.7.0",
         "created_at": _run_ts,
         "total_turns": total_turns_run,
         "scenario": scenario_path.stem,

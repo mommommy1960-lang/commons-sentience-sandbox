@@ -27,6 +27,7 @@ from .relationships import (
 from .tasks import Task, TaskPlanner
 from .values import ValueConflictEngine
 from .world import World
+from .counterfactual import CounterfactualPlanner
 
 
 @dataclass
@@ -161,6 +162,9 @@ class Agent:
 
         # v1.6 world-state summary carried from a prior run (if any)
         self.prior_world_state_summary: Optional[dict] = None
+
+        # v1.7 counterfactual planning layer
+        self.counterfactual_planner: CounterfactualPlanner = CounterfactualPlanner()
 
         # Engines
         self.world: World = world
@@ -856,6 +860,121 @@ class Agent:
         return triggered
 
     # ------------------------------------------------------------------
+    # v1.7 Counterfactual planning
+    # ------------------------------------------------------------------
+
+    def run_counterfactual_planning(self, turn: int) -> "CounterfactualCandidate":
+        """
+        Run one counterfactual planning cycle for the current turn.
+
+        Generates candidate actions, selects the best one, and logs the
+        simulation entry.  Call this at the start of each turn before the
+        main action is resolved.
+
+        Returns
+        -------
+        CounterfactualCandidate
+            The selected candidate action for this turn.
+        """
+        trust = self.affective_state.get("trust", 0.5)
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        urgency = self.affective_state.get("urgency", 0.1)
+        sc = self.self_model.get("self_consistency_score", 0.5)
+
+        candidates = self.counterfactual_planner.generate_candidates(
+            trust_level=trust,
+            contradiction_pressure=cp,
+            urgency=urgency,
+            self_consistency=sc,
+            n=4,
+        )
+        selected = self.counterfactual_planner.select_action(candidates)
+
+        context = (
+            f"turn={turn}, room={self.active_room}, "
+            f"trust={trust:.2f}, cp={cp:.2f}, urgency={urgency:.2f}, "
+            f"sc={sc:.2f}, pending_contradictions={len(self.pending_contradictions)}"
+        )
+        self.counterfactual_planner.log_simulation(turn, context, candidates, selected)
+
+        return selected
+
+    def record_counterfactual_outcome(
+        self,
+        turn: int,
+        actual_outcome: str,
+        prev_trust: float,
+        prev_contradiction: float,
+    ) -> None:
+        """
+        Record the actual outcome of this turn's planned action.
+
+        Call this at the end of each turn after affective state has been updated.
+
+        Parameters
+        ----------
+        turn :
+            The turn that just completed.
+        actual_outcome :
+            Short narrative of what actually happened.
+        prev_trust :
+            Trust level at the start of this turn (before action).
+        prev_contradiction :
+            Contradiction pressure at the start of this turn.
+        """
+        trust_delta = (
+            self.affective_state.get("trust", 0.5) - prev_trust
+        )
+        cont_delta = (
+            self.affective_state.get("contradiction_pressure", 0.0) - prev_contradiction
+        )
+        self.counterfactual_planner.record_actual_outcome(
+            turn=turn,
+            actual_outcome=actual_outcome,
+            trust_delta=trust_delta,
+            contradiction_delta=cont_delta,
+        )
+
+    def refresh_future_plans(self, turn: int) -> List["FuturePlan"]:
+        """
+        Update plan progress and generate new plans if slots are available.
+
+        Returns any newly created plans.
+        """
+        trust = self.affective_state.get("trust", 0.5)
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        sc = self.self_model.get("self_consistency_score", 0.5)
+
+        # Update progress of existing plans
+        self.counterfactual_planner.update_plan_progress(
+            turn=turn,
+            trust_level=trust,
+            contradiction_pressure=cp,
+            self_consistency=sc,
+        )
+
+        # Collect unresolved themes from recent reflections
+        unresolved_themes: List[str] = []
+        for ref in self.reflection_entries[-5:]:
+            raw = getattr(ref, "unresolved_themes", None)
+            if isinstance(raw, list):
+                unresolved_themes.extend(str(t) for t in raw[:2])
+            elif isinstance(raw, str) and raw:
+                unresolved_themes.append(raw)
+
+        # Generate new plans if space allows
+        new_plans = self.counterfactual_planner.generate_future_plans(
+            turn=turn,
+            trust_level=trust,
+            contradiction_pressure=cp,
+            self_consistency=sc,
+            pending_contradictions=list(self.pending_contradictions),
+            unresolved_themes=list(dict.fromkeys(unresolved_themes)),
+            agent_relationships=self.agent_relationships,
+        )
+        return new_plans
+
+    # ------------------------------------------------------------------
     # v1.6 Cross-run carryover
     # ------------------------------------------------------------------
 
@@ -1037,6 +1156,24 @@ class Agent:
             tags=["carried_forward", "carryover_summary"],
         )
 
+        # ── v1.7 Counterfactual plan carryover ───────────────────────────────
+        prior_cf = prior_state.get("counterfactual_planner", {})
+        prior_plans = prior_cf.get("future_plans", [])
+        if prior_plans:
+            carried_plans = self.counterfactual_planner.apply_prior_plans(prior_plans)
+            if carried_plans > 0:
+                self.store_memory(
+                    summary=(
+                        f"Counterfactual plans carried from prior run: "
+                        f"{carried_plans} active plan(s) restored."
+                    ),
+                    event_type="observation",
+                    emotional_resonance="resolve",
+                    salience=0.60,
+                    importance=0.65,
+                    tags=["carried_forward", "counterfactual_plans"],
+                )
+
     def to_dict(self) -> dict:
         return {
             "identity": self.identity,
@@ -1070,6 +1207,8 @@ class Agent:
             "drives": self.drives,
             "endogenous_action_log": self.endogenous_action_log,
             "prior_world_state_summary": self.prior_world_state_summary,
+            # v1.7 fields
+            "counterfactual_planner": self.counterfactual_planner.to_dict(),
         }
 
     def save_final_state(self, path: str) -> None:
