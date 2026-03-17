@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: >
+  If you use Commons Sentience Sandbox in your research or build upon it,
+  please cite it using the metadata in this file.
+type: software
+title: Commons Sentience Sandbox
+version: 1.3.0
+date-released: "2026-03-17"
+abstract: >
+  Commons Sentience Sandbox is a local research platform for studying
+  continuity-governed simulated agents with persistent identity, episodic
+  memory, relational trust, governance compliance, and contradiction
+  resolution. It implements two agents (Sentinel and Aster) in a shared
+  room-based world with a 14-category behavioural evaluation harness,
+  authored scenario support, experiment configuration, cross-session
+  continuity analysis, and a Streamlit dashboard. No sentience is claimed;
+  the agents are deterministic, rule-governed simulations.
+license: Apache-2.0
+url: "https://github.com/mommommy1960-lang/commons-sentience-sandbox"
+repository-code: "https://github.com/mommommy1960-lang/commons-sentience-sandbox"
+keywords:
+  - multi-agent simulation
+  - continuity governance
+  - trust dynamics
+  - memory persistence
+  - behavioural evaluation
+  - AI safety research tools
+  - deterministic agents
+  - research platform
+authors:
+  - name: "Commons Sentience Sandbox Contributors"
+references:
+  - type: software
+    title: Commons Sentience Sandbox — Research Dossier v1.3
+    notes: >
+      Canonical four-run study set collected at v1.3.0 milestone.
+      Sessions: baseline_v13, trust_crisis_v13, rapid_contradiction_v13,
+      high_trust_v13. See RESEARCH_DOSSIER_v1.3.md and WHITE_PAPER_v1.3.md.

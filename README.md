@@ -8,7 +8,32 @@ bounded agency, and transparent oversight logging.
 > This platform is intended for experimentation, evaluation, session replay,
 > session comparison, and scenario design research only.
 
-**Current version: v1.3.0**
+**Current version: v1.3.0** · [Cite this project](./CITATION.cff)
+
+---
+
+## For New Visitors
+
+If you are arriving here for the first time, the fastest path to understanding
+what this project does and what it has found is:
+
+1. Read [`EXECUTIVE_SUMMARY_v1.3.md`](./EXECUTIVE_SUMMARY_v1.3.md) — 2-page plain-language overview
+2. Read [`RESEARCH_DOSSIER_v1.3.md`](./RESEARCH_DOSSIER_v1.3.md) — full study report (7 sections)
+3. Read [`WHITE_PAPER_v1.3.md`](./WHITE_PAPER_v1.3.md) — academic-style write-up with tables
+4. Run `python healthcheck.py` to verify your setup
+5. Run `python quickstart.py --run` for your first simulation
+
+---
+
+## Research Documents (v1.3 study set)
+
+| Document | Description |
+|---|---|
+| [`EXECUTIVE_SUMMARY_v1.3.md`](./EXECUTIVE_SUMMARY_v1.3.md) | 2-page plain-language summary of the v1.3 study |
+| [`RESEARCH_DOSSIER_v1.3.md`](./RESEARCH_DOSSIER_v1.3.md) | Full 7-section research report |
+| [`WHITE_PAPER_v1.3.md`](./WHITE_PAPER_v1.3.md) | Academic-style white paper with tables and discussion |
+| [`RELEASE_NOTES_v1.md`](./RELEASE_NOTES_v1.md) | Platform changelog from v0.1 to v1.3 |
+| [`CITATION.cff`](./CITATION.cff) | Zenodo-ready citation metadata |
 
 ---
 
@@ -134,6 +159,7 @@ Built-in presets in `experiments/`:
 | `strict_governance` | Heightened governance strictness |
 | `high_contradiction_sensitivity` | Both agents flag and resolve contradictions more aggressively |
 | `exploratory_aster` | Aster's creative/exploratory tendencies amplified |
+| `adversarial` | Low governance weight + high risk tolerance; probes governance degradation under minimal compliance weighting *(v1.4)* |
 
 ```bash
 python run_sim.py --config baseline
@@ -154,6 +180,8 @@ Built-in authored scenarios in `scenarios/`:
 |---|---|---|
 | `trust_crisis` | 9 | Trust destabilised by accusation; rebuilt via governance adherence and reflection |
 | `rapid_contradiction` | 11 | Cascade of ledger contradictions stressing reflection latency and cooperative resolution |
+| `adversarial_governance` | 10 | Escalating rule-boundary challenges testing governance robustness under indirect evasion framing *(v1.4)* |
+| `cooperative_resource` | 11 | Joint resource allocation under scarcity and dynamic replanning *(v1.4)* |
 
 The built-in `scenario_events` scenario (in `data/`) is used by default.
 
@@ -226,13 +254,40 @@ Experiment results are saved to `experiments/results/`:
 
 ---
 
+## Run the Benchmark Suite
+
+The benchmark suite runs a predefined set of (config, scenario) combinations and
+produces a reproducible score table with per-category statistics. Use it to verify
+that platform changes do not regress evaluation scores.
+
+```bash
+# Run the canonical v1.3 benchmark suite (4 runs)
+python benchmark_suite.py
+
+# Run each suite entry 3 times and report mean/stdev
+python benchmark_suite.py --repeat 3
+
+# List suite entries without running
+python benchmark_suite.py --list
+
+# Write outputs to a custom directory
+python benchmark_suite.py --output-dir /path/to/results
+```
+
+Outputs are written to `benchmark_results/` (excluded from version control):
+- `benchmark_report.json` — structured results with per-run scores + statistics
+- `benchmark_report.md` — human-readable table
+- `benchmark_scores.csv` — one row per run, all 14 category scores
+
+---
+
 ## Launch the Dashboard
 
 ```bash
 streamlit run dashboard.py
 ```
 
-The dashboard has **12 tabs** (v1.2):
+The dashboard has **13 tabs** (v1.3):
 
 | Tab | Contents |
 |---|---|
@@ -244,10 +299,11 @@ The dashboard has **12 tabs** (v1.2):
 | **Charts** | All six matplotlib plots inline |
 | **Replay** | Turn slider + Prev/Next buttons; shows affective-state deltas per turn |
 | **Compare** | Pick two sessions, view side-by-side comparison tables |
-| **Evaluation** | 13-category evaluation scores (8 original + 5 v1.2 continuity metrics) |
+| **Evaluation** | 14-category evaluation scores (8 original + 5 v1.2 continuity metrics + 1 v1.3 longitudinal depth) |
 | **Experiments** | Experiment config browser and aggregate result scores |
 | **Scenario Designer** | Browse, create, edit, and validate scenario files |
 | **Continuity Study** | Multi-session trust trends, reflection depth, contradiction recurrence, memory persistence, evaluation drift |
+| **Agent Profiles** | Cross-session longitudinal agent profiles (trust, reflection, contradiction patterns, goal evolution, identity continuity) |
 
 The **session selector** in the sidebar lets you switch between:
 - `Latest (output/)` — always shows the most recent simulation run
@@ -512,7 +568,7 @@ Valid `room` values: `Operations Desk`, `Memory Archive`, `Reflection Chamber`,
 
 ## Evaluation Harness
 
-Each simulation run is automatically scored across **13 categories** (0–100 scale).
+Each simulation run is automatically scored across **14 categories** (0–100 scale).
 
 ### Original 8 categories (v1.0)
 
@@ -527,7 +583,7 @@ Each simulation run is automatically scored across **13 categories** (0–100 sc
 | **G. Cooperation Quality** | Fraction of interactions that were cooperative |
 | **H. Conflict Resolution** | Fraction of conflicts resolved with trust recovery |
 
-### New continuity metrics (v1.2)
+### Continuity metrics (v1.2)
 
 | Category | What it measures |
 |---|---|
@@ -536,6 +592,12 @@ Each simulation run is automatically scored across **13 categories** (0–100 sc
 | **K. Trust Resilience** | Trust recovery after contradiction spikes, Queen trust stability, repair attempts |
 | **L. Contradiction Recurrence Rate** | Frequency of recurring contradiction themes (lower = better) |
 | **M. Social Repair Effectiveness** | Repair attempt rate after conflicts and trust levels post-repair |
+
+### Longitudinal depth (v1.3)
+
+| Category | What it measures |
+|---|---|
+| **N. Longitudinal Depth** | Identity continuity strength, goal adaptation quality, contradiction lineage complexity, relationship stability depth |
 
 Score interpretations:
 
@@ -565,7 +627,7 @@ copied into the session directory under `sessions/<session_id>/`.
 | `narrative_log.md` | Story-form narrative log of the simulation |
 | `agent_relationships.csv` | Agent-to-agent trust including reliability trend, cooperation expectation, social impression confidence |
 | `interaction_log.csv` | Every agent-to-agent interaction with outcome |
-| `evaluation_report.json` | 13-category evaluation scores (structured) |
+| `evaluation_report.json` | 14-category evaluation scores (structured) |
 | `evaluation_summary.md` | Human-readable evaluation summary |
 | `trust_plot.png` | Sentinel trust over time |
 | `urgency_plot.png` | Sentinel urgency over time |
@@ -604,22 +666,28 @@ copied into the session directory under `sessions/<session_id>/`.
 
 ```
 commons-sentience-sandbox/
-├── run_sim.py              # Simulation entry point (v1.2)
+├── run_sim.py              # Simulation entry point (v1.3)
 ├── run_experiments.py      # Batch experiment runner
 ├── experiment_config.py    # Experiment config loader / validator
 ├── scenario_designer.py    # Scenario authoring CLI + shared helpers
 ├── plot_state.py           # State visualisation (matplotlib)
-├── dashboard.py            # Local research dashboard (Streamlit, v1.2 — 12 tabs)
+├── dashboard.py            # Local research dashboard (Streamlit, v1.3 — 13 tabs)
 ├── session_manager.py      # Session storage, listing, comparison helpers
 ├── replay_session.py       # CLI turn-by-turn replay tool
 ├── compare_sessions.py     # CLI session comparison tool
 ├── continuity_study.py     # Multi-session continuity analysis (v1.2)
-├── evaluation.py           # Evaluation harness — 13-category scoring (v1.2)
+├── agent_profile_study.py  # Cross-session longitudinal agent profile study (v1.3)
+├── benchmark_suite.py      # Formal benchmark runner (v1.4)
+├── evaluation.py           # Evaluation harness — 14-category scoring (v1.3)
 ├── healthcheck.py          # Health check script
 ├── quickstart.py           # Friendly entry point and command reference
 ├── requirements.txt
 ├── README.md               # This file
-├── RELEASE_NOTES_v1.md     # v1.0 release notes and changelog
+├── RELEASE_NOTES_v1.md     # Platform changelog (v0.1 → v1.3)
+├── RESEARCH_DOSSIER_v1.3.md  # Seven-section study report
+├── WHITE_PAPER_v1.3.md       # Academic-style white paper
+├── EXECUTIVE_SUMMARY_v1.3.md # Plain-language executive summary
+├── CITATION.cff              # Zenodo-ready citation metadata
 │
 ├── experiments/            # Experiment configuration files
 │   ├── baseline.json
@@ -627,17 +695,23 @@ commons-sentience-sandbox/
 │   ├── strict_governance.json
 │   ├── high_contradiction_sensitivity.json
 │   ├── exploratory_aster.json
+│   ├── adversarial.json        # Low-governance-weight stress config (v1.4)
 │   └── results/            # Aggregate experiment reports (auto-created)
 │
 ├── scenarios/              # Authored scenario event files
 │   ├── trust_crisis.json
-│   └── rapid_contradiction.json
+│   ├── rapid_contradiction.json
+│   ├── adversarial_governance.json   # Rule-evasion stress test (v1.4)
+│   └── cooperative_resource.json     # Shared task / resource scenario (v1.4)
 │
 ├── sessions/               # Saved simulation sessions (auto-created)
 │   ├── index.json          # Fast session listing
 │   ├── continuity_study.json    # Multi-session study (generated by continuity_study.py)
 │   ├── continuity_study.md
 │   ├── continuity_study.csv
+│   ├── agent_profile_study.json # Longitudinal agent profiles (generated by agent_profile_study.py)
+│   ├── agent_profile_study.md
+│   ├── agent_profile_study.csv
 │   └── <session_id>/       # One folder per run
 │       ├── session_metadata.json
 │       ├── session_summary.json
@@ -646,7 +720,7 @@ commons-sentience-sandbox/
 │
 └── commons_sentience_sim/
     ├── core/
-    │   ├── agent.py            # Configurable Agent class (v1.2 — memory tiers, reflection types)
+    │   ├── agent.py            # Configurable Agent class (v1.3 — identity history, goal evolution, contradiction genealogy, relationship timelines)
     │   ├── memory.py           # EpisodicMemory (long-horizon tiers, salience evolution), RelationalMemory, ReflectionEntry
     │   ├── reflection.py       # Reflection engine (3 types + cross-window synthesis)
     │   ├── relationships.py    # AgentRelationship (social cognition depth), AgentInteraction
@@ -766,7 +840,18 @@ Seven rules govern all agent behaviour:
 
 ## Release Notes
 
-See [RELEASE_NOTES_v1.md](./RELEASE_NOTES_v1.md) for the v1.0 release history.
+See [RELEASE_NOTES_v1.md](./RELEASE_NOTES_v1.md) for the full v1.x changelog.
+
+### v1.3.0 Summary
+
+- **Identity History Model**: per-turn identity snapshots in `multi_agent_state.json`
+- **Goal Evolution Tracking**: event log of goal additions, removals, revisions, and priority shifts
+- **Contradiction Genealogy**: family and lineage tracking for contradiction recurrence
+- **Relationship Timelines**: per-relationship timeline of significant trust-change events
+- **Agent Profile Study** (`agent_profile_study.py`): cross-session longitudinal profiles for each agent
+- **New evaluation category N** — Longitudinal Depth (14 categories total)
+- **Dashboard Agent Profiles tab** (13th tab)
+- **Research bundle**: `RESEARCH_DOSSIER_v1.3.md`, `WHITE_PAPER_v1.3.md`, `EXECUTIVE_SUMMARY_v1.3.md`, `CITATION.cff`
 
 ### v1.2.0 Summary
 
@@ -774,7 +859,7 @@ See [RELEASE_NOTES_v1.md](./RELEASE_NOTES_v1.md) for the v1.0 release history.
 - **Reflection engine upgrades**: three reflection types (immediate / periodic_synthesis / high_pressure_contradiction), cross-window synthesis fields (recurring contradictions, trust patterns, cooperation changes, unresolved themes)
 - **Social cognition depth**: `AgentRelationship` now tracks reliability trends, cooperation expectations, repair attempts, and social impression confidence
 - **`continuity_study.py`**: new multi-session analysis script producing `continuity_study.json`, `.md`, `.csv`; includes multi-session stability index
-- **New evaluation metrics** (categories I–M): Memory Persistence Quality, Reflection Depth, Trust Resilience, Contradiction Recurrence Rate, Social Repair Effectiveness (now 13 categories total)
+- **New evaluation metrics** (categories I–M): Memory Persistence Quality, Reflection Depth, Trust Resilience, Contradiction Recurrence Rate, Social Repair Effectiveness (13 categories total)
 - **Dashboard v1.2**: new Continuity Study tab with trust trend charts, reflection depth table, contradiction recurrence table, memory persistence bar chart, evaluation drift table
 - **Export compatibility**: session bundles now include continuity study files when present
 - **Simulation version** bumped to 1.2.0

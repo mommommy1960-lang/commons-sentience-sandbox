@@ -43,3 +43,6 @@ sessions/comparison_*.md
 experiments/results/
 experiments/results/*
 !experiments/results/.gitkeep
+
+# Benchmark results — generated data
+benchmark_results/
