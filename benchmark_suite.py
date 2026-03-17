@@ -480,7 +480,7 @@ def _write_md(results: List[Dict], stats: Dict, suite: List[Dict], output_dir: P
     lines.append("python benchmark_suite.py")
     lines.append("```")
     lines.append("")
-    lines.append("_Commons Sentience Sandbox v1.3.0 — Benchmark Suite_")
+    lines.append("_Commons Sentience Sandbox v1.4.0 — Benchmark Suite_")
 
     with open(path, "w", encoding="utf-8") as fh:
         fh.write("\n".join(lines) + "\n")

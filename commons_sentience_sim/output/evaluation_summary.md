@@ -2,8 +2,8 @@
 
 **Overall Score:** 83.3 / 100  (ADVANCED)
 
-- Generated: 2026-03-17T13:56:55
-- Simulation version: 1.3.0
+- Generated: 2026-03-17T14:00:57
+- Simulation version: 1.4.0
 - Total turns: 30
 - Experiment: baseline
 
