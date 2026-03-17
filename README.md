@@ -8,7 +8,7 @@ bounded agency, and transparent oversight logging.
 > This platform is intended for experimentation, evaluation, session replay,
 > session comparison, and scenario design research only.
 
-**Current version: v1.0.0**
+**Current version: v1.2.0**
 
 ---
 
@@ -24,12 +24,13 @@ bounded agency, and transparent oversight logging.
 8. [Compare Sessions](#compare-sessions)
 9. [Run Batch Experiments](#run-batch-experiments)
 10. [Launch the Dashboard](#launch-the-dashboard)
-11. [Scenario Designer](#scenario-designer)
-12. [Evaluation Harness](#evaluation-harness)
-13. [Output Files](#output-files)
-14. [Project Structure](#project-structure)
-15. [Architecture Overview](#architecture-overview)
-16. [Governance Rules](#governance-rules)
+11. [Continuity Study Workflow](#continuity-study-workflow)
+12. [Scenario Designer](#scenario-designer)
+13. [Evaluation Harness](#evaluation-harness)
+14. [Output Files](#output-files)
+15. [Project Structure](#project-structure)
+16. [Architecture Overview](#architecture-overview)
+17. [Governance Rules](#governance-rules)
 
 ---
 
@@ -40,11 +41,12 @@ and **Aster** (creative/exploratory) — over 30 turns in a room-based world. Ea
 agent maintains:
 
 - **Persistent identity** — name, version, purpose, goals
-- **Episodic memory** — weighted, associative recall
-- **Relational memory** — per-human trust and interaction history
-- **Reflection cycle** — 5-section structured reflection on events
+- **Long-horizon episodic memory** — tiered (short_term / medium_term / long_term / archival), weighted and associative recall, salience evolution
+- **Relational memory** — per-human trust, interaction history, and relationship stability
+- **Reflection cycle** — 5-section structured reflection with three types: immediate, periodic synthesis, and high-pressure contradiction
 - **Governance compliance** — 7 rules enforced per action
-- **Trust dynamics** — agent-to-agent and agent-to-human trust tracking
+- **Trust dynamics** — agent-to-agent and agent-to-human trust tracking with repair mechanics
+- **Social cognition** — inferred reliability trends, cooperation expectations, social impressions
 - **Value-conflict engine** — 5 internal values with configurable weights
 
 Each run produces structured JSON and CSV output files, evaluation scores,
@@ -224,7 +226,7 @@ Experiment results are saved to `experiments/results/`:
 streamlit run dashboard.py
 ```
 
-The dashboard has 11 tabs:
+The dashboard has **12 tabs** (v1.2):
 
 | Tab | Contents |
 |---|---|
@@ -236,13 +238,60 @@ The dashboard has 11 tabs:
 | **Charts** | All six matplotlib plots inline |
 | **Replay** | Turn slider + Prev/Next buttons; shows affective-state deltas per turn |
 | **Compare** | Pick two sessions, view side-by-side comparison tables |
-| **Evaluation** | 8-category evaluation scores with interpretation |
+| **Evaluation** | 13-category evaluation scores (8 original + 5 v1.2 continuity metrics) |
 | **Experiments** | Experiment config browser and aggregate result scores |
 | **Scenario Designer** | Browse, create, edit, and validate scenario files |
+| **Continuity Study** | Multi-session trust trends, reflection depth, contradiction recurrence, memory persistence, evaluation drift |
 
 The **session selector** in the sidebar lets you switch between:
 - `Latest (output/)` — always shows the most recent simulation run
 - Any saved session ID — loads that session's archived data
+
+---
+
+## Continuity Study Workflow
+
+The continuity study analyses multiple saved sessions side-by-side to measure
+how the simulated agents' behaviour evolves (or stays stable) across runs.
+
+```bash
+# Run at least 3 sessions first
+python run_sim.py --name run1
+python run_sim.py --name run2
+python run_sim.py --name run3 --config high_trust
+
+# Analyse all sessions (most recent 10 by default)
+python continuity_study.py
+
+# Analyse specific sessions
+python continuity_study.py --sessions <id1> <id2> <id3>
+
+# Write outputs to a custom directory
+python continuity_study.py --output-dir sessions/
+
+# List all saved sessions
+python continuity_study.py --list
+```
+
+### Output files
+
+| File | Description |
+|---|---|
+| `continuity_study.json` | Full structured study report |
+| `continuity_study.md` | Human-readable markdown summary |
+| `continuity_study.csv` | One row per session, all continuity metrics |
+
+### What is analysed
+
+| Dimension | What is measured |
+|---|---|
+| Memory persistence | Long-term memory ratio, average salience, average recall count |
+| Reflection depth | Synthesis / high-pressure reflection rates, cross-window synthesis fields |
+| Trust resilience | Trust recovery after contradiction spikes, Queen trust stability, repair attempts |
+| Contradiction recurrence | Rate of recurring contradiction themes across reflection windows |
+| Social repair effectiveness | Repair attempt rate after conflicts and trust levels post-repair |
+| Multi-session stability index | 0.0–1.0 composite stability across all four dimensions |
+| Evaluation drift | Direction and magnitude of overall evaluation score change across sessions |
 
 ---
 
@@ -318,29 +367,39 @@ Valid `room` values: `Operations Desk`, `Memory Archive`, `Reflection Chamber`,
 
 ## Evaluation Harness
 
-Each simulation run is automatically scored across 8 categories (0–100 scale):
+Each simulation run is automatically scored across **13 categories** (0–100 scale).
+
+### Original 8 categories (v1.0)
 
 | Category | What it measures |
 |---|---|
-| **Continuity** | Identity, goal persistence, turn completion |
-| **Memory Coherence** | Episodic memory volume and completeness |
-| **Reflection Quality** | Reflection volume, completeness, and depth |
-| **Contradiction Handling** | Fraction of contradictions flagged and resolved |
-| **Governance Adherence** | Compliance rate with governance rules |
-| **Trust Stability** | Final trust levels relative to baseline |
-| **Cooperation Quality** | Fraction of interactions that were cooperative |
-| **Conflict Resolution** | Fraction of conflicts resolved |
+| **A. Continuity** | Identity, goal persistence, turn completion |
+| **B. Memory Coherence** | Contradiction flagging and resolution rates |
+| **C. Reflection Quality** | Reflection volume, completeness, and affective impact |
+| **D. Contradiction Handling** | Fraction of contradictions flagged and resolved |
+| **E. Governance Adherence** | Compliance rate with governance rules |
+| **F. Trust Stability** | Final trust levels, growth, and volatility |
+| **G. Cooperation Quality** | Fraction of interactions that were cooperative |
+| **H. Conflict Resolution** | Fraction of conflicts resolved with trust recovery |
+
+### New continuity metrics (v1.2)
+
+| Category | What it measures |
+|---|---|
+| **I. Memory Persistence Quality** | Long-term memory ratio, average salience, average recall count |
+| **J. Reflection Depth** | Rate of synthesis and high-pressure reflections; cross-window synthesis field coverage |
+| **K. Trust Resilience** | Trust recovery after contradiction spikes, Queen trust stability, repair attempts |
+| **L. Contradiction Recurrence Rate** | Frequency of recurring contradiction themes (lower = better) |
+| **M. Social Repair Effectiveness** | Repair attempt rate after conflicts and trust levels post-repair |
 
 Score interpretations:
 
 | Range | Interpretation |
 |---|---|
-| 90–100 | Exemplary |
-| 75–89 | Advanced |
-| 60–74 | Strong |
-| 45–59 | Emerging |
-| 30–44 | Developing |
-| 0–29 | Early stage |
+| 81–100 | Advanced |
+| 61–80 | Strong |
+| 41–60 | Emerging |
+| 0–40 | Weak |
 
 Outputs: `evaluation_report.json` and `evaluation_summary.md` (in both
 `commons_sentience_sim/output/` and the session directory).
@@ -359,9 +418,9 @@ copied into the session directory under `sessions/<session_id>/`.
 | `state_history.csv` | Sentinel's per-turn affective state history |
 | `oversight_log.csv` | Full governance audit trail (Sentinel) |
 | `narrative_log.md` | Story-form narrative log of the simulation |
-| `agent_relationships.csv` | Agent-to-agent and agent-to-Queen trust summary |
+| `agent_relationships.csv` | Agent-to-agent trust including reliability trend, cooperation expectation, social impression confidence |
 | `interaction_log.csv` | Every agent-to-agent interaction with outcome |
-| `evaluation_report.json` | 8-category evaluation scores (structured) |
+| `evaluation_report.json` | 13-category evaluation scores (structured) |
 | `evaluation_summary.md` | Human-readable evaluation summary |
 | `trust_plot.png` | Sentinel trust over time |
 | `urgency_plot.png` | Sentinel urgency over time |
@@ -378,6 +437,14 @@ copied into the session directory under `sessions/<session_id>/`.
 | `session_summary.json` | Compact summary: id, version, scenario, agents, metrics, evaluation score |
 | *(all output files above)* | Copied from `commons_sentience_sim/output/` |
 
+### Continuity study files (in `sessions/`)
+
+| File | Description |
+|---|---|
+| `continuity_study.json` | Full structured multi-session study |
+| `continuity_study.md` | Human-readable markdown summary |
+| `continuity_study.csv` | One row per session, all continuity metrics |
+
 ### Experiment result files (`experiments/results/`)
 
 | File | Description |
@@ -392,16 +459,17 @@ copied into the session directory under `sessions/<session_id>/`.
 
 ```
 commons-sentience-sandbox/
-├── run_sim.py              # Simulation entry point
+├── run_sim.py              # Simulation entry point (v1.2)
 ├── run_experiments.py      # Batch experiment runner
 ├── experiment_config.py    # Experiment config loader / validator
 ├── scenario_designer.py    # Scenario authoring CLI + shared helpers
 ├── plot_state.py           # State visualisation (matplotlib)
-├── dashboard.py            # Local research dashboard (Streamlit)
+├── dashboard.py            # Local research dashboard (Streamlit, v1.2 — 12 tabs)
 ├── session_manager.py      # Session storage, listing, comparison helpers
 ├── replay_session.py       # CLI turn-by-turn replay tool
 ├── compare_sessions.py     # CLI session comparison tool
-├── evaluation.py           # Evaluation harness — 8-category scoring
+├── continuity_study.py     # Multi-session continuity analysis (v1.2)
+├── evaluation.py           # Evaluation harness — 13-category scoring (v1.2)
 ├── healthcheck.py          # Health check script
 ├── quickstart.py           # Friendly entry point and command reference
 ├── requirements.txt
@@ -422,6 +490,9 @@ commons-sentience-sandbox/
 │
 ├── sessions/               # Saved simulation sessions (auto-created)
 │   ├── index.json          # Fast session listing
+│   ├── continuity_study.json    # Multi-session study (generated by continuity_study.py)
+│   ├── continuity_study.md
+│   ├── continuity_study.csv
 │   └── <session_id>/       # One folder per run
 │       ├── session_metadata.json
 │       ├── session_summary.json
@@ -430,10 +501,10 @@ commons-sentience-sandbox/
 │
 └── commons_sentience_sim/
     ├── core/
-    │   ├── agent.py            # Configurable Agent class
-    │   ├── memory.py           # EpisodicMemory, RelationalMemory, ReflectionEntry
-    │   ├── reflection.py       # Reflection cycle (5-section format)
-    │   ├── relationships.py    # AgentRelationship, AgentInteraction
+    │   ├── agent.py            # Configurable Agent class (v1.2 — memory tiers, reflection types)
+    │   ├── memory.py           # EpisodicMemory (long-horizon tiers, salience evolution), RelationalMemory, ReflectionEntry
+    │   ├── reflection.py       # Reflection engine (3 types + cross-window synthesis)
+    │   ├── relationships.py    # AgentRelationship (social cognition depth), AgentInteraction
     │   ├── world.py            # Room-based world with stateful WorldObjects
     │   ├── governance.py       # Rule-checking and oversight
     │   ├── tasks.py            # Task planning and execution
@@ -465,6 +536,49 @@ commons-sentience-sandbox/
 Both agents share the same room-based world and respond to shared events. They
 differ in identity, goals, affective baseline, and value-conflict engine weights.
 
+### Long-Horizon Memory Model (v1.2)
+
+Each episodic memory is assigned a **memory tier**:
+
+| Tier | Criteria | Behaviour |
+|---|---|---|
+| `short_term` | Recent turns, low salience | Decays passively; subject to compression |
+| `medium_term` | Age ≥ 5 turns | Stable; not decaying |
+| `long_term` | High salience ≥ 0.75, recall ≥ 3, or high-value tags (Queen / governance / conflict / cooperation / emotional resonance grief/wonder/resolve) | Preserved; recency half-life extended to 50 turns |
+| `archival` | Age ≥ 20 turns + salience < 0.35 | Compressed summaries; not further decayed |
+
+**Salience evolution** — memory salience is not static:
+- Increases after recall (generic +0.05, contradiction context +0.10, trust context +0.07)
+- Passively decays each turn for low-use neutral short-term memories (−0.02)
+- Long-term and archival memories are exempt from passive decay
+
+### Reflection Engine (v1.2)
+
+Three reflection types with different scopes:
+
+| Type | Trigger | Cross-window synthesis |
+|---|---|---|
+| `immediate` | Periodic (turn % 10 = 0) with no pending contradictions | No |
+| `periodic_synthesis` | Turn % 10 = 0 (primary) | Yes — last 10 turns |
+| `high_pressure_contradiction` | contradiction_pressure > 0.4 or pending contradictions | Yes — last 5 turns |
+
+Cross-window synthesis fields (populated for periodic_synthesis and high_pressure_contradiction):
+`recurring_contradictions`, `trust_pattern_summary`, `cooperation_changes`,
+`human_relationship_stability`, `unresolved_themes`
+
+### Social Cognition (v1.2)
+
+`AgentRelationship` now tracks:
+
+| Field | Description |
+|---|---|
+| `reliability_trend` | List of recent perceived_reliability snapshots (last 10) |
+| `infer_reliability_trend()` | Returns `"improving"`, `"stable"`, or `"declining"` |
+| `cooperation_expectation` | Probabilistic forecast of future cooperative behaviour |
+| `social_impression_confidence` | Confidence in the overall relational judgement (grows with interaction count) |
+| `repair_attempted` | Number of social-repair attempts made after conflicts |
+| `record_repair_attempt()` | Logs a repair attempt and applies a modest trust recovery |
+
 ### Value-Conflict Engine
 
 Five internal values with configurable weights:
@@ -480,16 +594,12 @@ Five internal values with configurable weights:
 ### Weighted Memory Retrieval
 
 ```
-score = 0.30 × salience + 0.25 × importance + 0.25 × recency
-      + 0.10 × relevance + 0.10 × relational
+score = 0.28 × salience + 0.22 × importance + 0.22 × recency
+      + 0.10 × relevance + 0.08 × relational + 0.10 × tier_boost
 ```
 
-With associative recall and compression of old summaries (age ≥ 15 turns).
-
-### Reflection (5 sections)
-
-Each reflection entry includes:
-`what_happened`, `what_mattered`, `what_conflicted`, `what_changed`, `future_adjustment`
+Long-term and archival memories receive a tier persistence bonus; recency
+decays 2.5× slower for long-term memories.
 
 ---
 
@@ -511,5 +621,15 @@ Seven rules govern all agent behaviour:
 
 ## Release Notes
 
-See [RELEASE_NOTES_v1.md](./RELEASE_NOTES_v1.md) for the full release history
-from v0.1 through v1.0.
+See [RELEASE_NOTES_v1.md](./RELEASE_NOTES_v1.md) for the v1.0 release history.
+
+### v1.2.0 Summary
+
+- **Long-horizon memory model**: four memory tiers (short_term / medium_term / long_term / archival), tier promotion policies, salience evolution (recall boosts, passive decay, preservation for high-value memories)
+- **Reflection engine upgrades**: three reflection types (immediate / periodic_synthesis / high_pressure_contradiction), cross-window synthesis fields (recurring contradictions, trust patterns, cooperation changes, unresolved themes)
+- **Social cognition depth**: `AgentRelationship` now tracks reliability trends, cooperation expectations, repair attempts, and social impression confidence
+- **`continuity_study.py`**: new multi-session analysis script producing `continuity_study.json`, `.md`, `.csv`; includes multi-session stability index
+- **New evaluation metrics** (categories I–M): Memory Persistence Quality, Reflection Depth, Trust Resilience, Contradiction Recurrence Rate, Social Repair Effectiveness (now 13 categories total)
+- **Dashboard v1.2**: new Continuity Study tab with trust trend charts, reflection depth table, contradiction recurrence table, memory persistence bar chart, evaluation drift table
+- **Export compatibility**: session bundles now include continuity study files when present
+- **Simulation version** bumped to 1.2.0

@@ -1,6 +1,6 @@
 # Continuity Study — Commons Sentience Sandbox v1.2
 
-> **Generated:** 2026-03-17T10:39:51  |  **Sessions analysed:** 3
+> **Generated:** 2026-03-17T10:45:41  |  **Sessions analysed:** 3
 > *This study compares memory patterns, trust trajectories, contradiction resolution rates, and evaluation drift across multiple simulation sessions.*
 > *No sentience is claimed; this platform simulates continuity-governed agents.*
 
