@@ -1,7 +1,7 @@
 {
   "session_dir": "/home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/commons_sentience_sim/output",
-  "generated_at": "2026-03-17T10:06:43.349509",
-  "simulation_version": "1.0.0",
+  "generated_at": "2026-03-17T10:39:44.638921",
+  "simulation_version": "1.2.0",
   "total_turns": 30,
   "scenario": "scenario_events",
   "experiment": {
@@ -40,8 +40,8 @@
       "recovery": 0.85
     }
   },
-  "overall_score": 88.2,
-  "overall_interpretation": "advanced",
+  "overall_score": 80.6,
+  "overall_interpretation": "strong",
   "categories": {
     "continuity": {
       "score": 100.0,
@@ -146,6 +146,63 @@
         "recorded_rate": 1.0,
         "avg_trust_delta_in_conflicts": -0.035,
         "trust_recovery_factor": 0.65
+      }
+    },
+    "memory_persistence_quality": {
+      "score": 75.0,
+      "interpretation": "strong",
+      "raw": {
+        "total_memories": 58,
+        "long_term_memories": 58,
+        "archival_memories": 0,
+        "long_term_ratio": 1.0,
+        "average_salience": 0.6419,
+        "average_recall_count": 2.0
+      }
+    },
+    "reflection_depth": {
+      "score": 66.7,
+      "interpretation": "strong",
+      "raw": {
+        "total_reflections": 8,
+        "periodic_synthesis_count": 4,
+        "high_pressure_count": 4,
+        "synthesis_rate": 1.0,
+        "reflections_with_recurring_contradictions": 0,
+        "reflections_with_trust_pattern": 8,
+        "reflections_with_unresolved_themes": 0,
+        "cross_window_synthesis_rate": 0.333
+      }
+    },
+    "trust_resilience": {
+      "score": 75.0,
+      "interpretation": "strong",
+      "raw": {
+        "contradiction_pressure_spikes": 0,
+        "recovery_events": 1,
+        "recovery_rate": 1.0,
+        "avg_queen_trust_final": 1.0,
+        "total_repair_attempts": 0,
+        "repair_score": 0.0
+      }
+    },
+    "contradiction_recurrence_rate": {
+      "score": 100.0,
+      "interpretation": "advanced",
+      "raw": {
+        "total_reflections": 8,
+        "total_recurring_contradiction_instances": 0,
+        "recurrence_rate_per_reflection": 0.0
+      }
+    },
+    "social_repair_effectiveness": {
+      "score": 25.0,
+      "interpretation": "weak",
+      "raw": {
+        "total_conflicts": 4,
+        "total_repair_attempts": 0,
+        "repair_rate": 0.0,
+        "avg_trust_after_repair": 0.5
       }
     }
   }

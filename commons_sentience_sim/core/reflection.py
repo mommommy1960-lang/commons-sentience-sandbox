@@ -3,10 +3,13 @@ reflection.py — Reflection cycle logic for the Commons Sentience Sandbox.
 
 v0.3: ReflectionEntry now carries five structured sections:
       what_happened, what_mattered, what_conflicted, what_changed, future_adjustment.
+v1.2: Three reflection types (immediate, periodic_synthesis, high_pressure_contradiction).
+      Cross-window reasoning — recurring contradictions, trust patterns, cooperation
+      changes, human-relationship stability, unresolved themes.
 """
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING, List, Optional
 
 from .memory import EpisodicMemory, ReflectionEntry
 
@@ -29,20 +32,31 @@ class ReflectionEngine:
         "Creative collaboration events reduce contradiction pressure more than routine tasks.",
     ]
 
+    # ------------------------------------------------------------------
+    # Public entry-point
+    # ------------------------------------------------------------------
+
     def run_cycle(
         self,
         agent: "Agent",
         trigger: str,
         recent_memories: List[EpisodicMemory],
+        reflection_type: str = "immediate",
     ) -> ReflectionEntry:
-        """Execute a reflection cycle and return the resulting ReflectionEntry."""
+        """Execute a reflection cycle and return the resulting ReflectionEntry.
 
+        Parameters
+        ----------
+        reflection_type : str
+            One of "immediate", "periodic_synthesis", "high_pressure_contradiction".
+            Determines which additional synthesis fields are populated.
+        """
         patterns = self._identify_patterns(agent, recent_memories)
         contradictions = self._resolve_contradictions(agent)
         updated_goals = self._revise_goals(agent, contradictions)
         affective_shift = self._compute_affective_shift(agent, contradictions)
 
-        # v0.3 five-section narrative
+        # five-section narrative (always populated)
         what_happened = self._what_happened(agent, recent_memories, trigger)
         what_mattered = self._what_mattered(agent, recent_memories)
         what_conflicted = self._what_conflicted(agent, contradictions)
@@ -50,12 +64,14 @@ class ReflectionEngine:
         future_adjustment = self._future_adjustment(agent, updated_goals, contradictions)
 
         narrative = self._compose_narrative(
-            trigger, patterns, contradictions, updated_goals, affective_shift
+            trigger, patterns, contradictions, updated_goals, affective_shift,
+            reflection_type=reflection_type,
         )
 
         entry = ReflectionEntry(
             turn=agent.turn,
             trigger=trigger,
+            reflection_type=reflection_type,
             what_happened=what_happened,
             what_mattered=what_mattered,
             what_conflicted=what_conflicted,
@@ -67,6 +83,18 @@ class ReflectionEngine:
             affective_shift=affective_shift,
             narrative=narrative,
         )
+
+        # Cross-window synthesis fields for periodic and high-pressure cycles
+        if reflection_type in ("periodic_synthesis", "high_pressure_contradiction"):
+            window = min(agent.turn, 10) if reflection_type == "periodic_synthesis" else 5
+            entry.window_turns = window
+            entry.recurring_contradictions = self._find_recurring_contradictions(
+                agent, window
+            )
+            entry.trust_pattern_summary = self._trust_pattern_summary(agent)
+            entry.cooperation_changes = self._cooperation_changes(agent, window)
+            entry.human_relationship_stability = self._human_relationship_stability(agent)
+            entry.unresolved_themes = self._unresolved_themes(agent, window)
 
         # Apply affective shift to agent
         for key, delta in affective_shift.items():
@@ -120,7 +148,6 @@ class ReflectionEngine:
         self, agent: "Agent", contradictions: List[str]
     ) -> str:
         if not contradictions and not agent.pending_contradictions:
-            # Check value history for recent conflicts
             cp = agent.affective_state.get("contradiction_pressure", 0)
             if cp > 0.3:
                 return (
@@ -170,6 +197,102 @@ class ReflectionEngine:
                 "Maintain current trajectory: stable, governed, and memory-consistent."
             )
         return " ".join(adjustments)
+
+    # ------------------------------------------------------------------
+    # Cross-window synthesis helpers (v1.2)
+    # ------------------------------------------------------------------
+
+    def _find_recurring_contradictions(
+        self, agent: "Agent", window: int
+    ) -> List[str]:
+        """Identify contradiction themes that appear in multiple recent reflections."""
+        if len(agent.reflection_entries) < 2:
+            return []
+        recent_reflections = agent.reflection_entries[-window:]
+        all_contradictions: List[str] = []
+        for ref in recent_reflections:
+            all_contradictions.extend(ref.contradictions_resolved)
+        # Simple frequency: find duplicated substrings
+        seen: dict = {}
+        for c in all_contradictions:
+            key = c[:50]  # use first 50 chars as de-dup key
+            seen[key] = seen.get(key, 0) + 1
+        recurring = [k for k, cnt in seen.items() if cnt >= 2]
+        return recurring[:3]
+
+    def _trust_pattern_summary(self, agent: "Agent") -> str:
+        """Summarise observed trust trends for Queen and peer agents."""
+        parts = []
+        queen_rm = agent.relational_memory.get("Queen")
+        if queen_rm:
+            level = queen_rm.trust_level
+            interactions = queen_rm.interaction_count
+            if level >= 0.7:
+                parts.append(f"Trust in Queen is high ({level:.2f}) after {interactions} interactions.")
+            elif level <= 0.3:
+                parts.append(f"Trust in Queen is low ({level:.2f}); relational repair may be warranted.")
+            else:
+                parts.append(f"Trust in Queen is moderate ({level:.2f}) across {interactions} interactions.")
+        for peer, rel in agent.agent_relationships.items():
+            trend = rel.infer_reliability_trend()
+            parts.append(
+                f"Reliability with {peer} is {trend} "
+                f"(trust={rel.trust:.2f}, coop_exp={rel.cooperation_expectation:.2f})."
+            )
+        return " ".join(parts) if parts else "No relational data available for trust pattern summary."
+
+    def _cooperation_changes(self, agent: "Agent", window: int) -> str:
+        """Describe changes in agent-to-agent cooperation over recent turns."""
+        if not agent.agent_relationships:
+            return "No agent relationships to compare."
+        lines = []
+        for peer, rel in agent.agent_relationships.items():
+            coop = rel.cooperation_count
+            conflict = rel.conflict_count
+            total = coop + conflict
+            if total == 0:
+                continue
+            rate = coop / total
+            trend = rel.infer_reliability_trend()
+            if rate >= 0.7:
+                lines.append(f"Cooperation with {peer} is strong ({rate:.0%}); trend: {trend}.")
+            elif rate <= 0.4:
+                lines.append(f"Cooperation with {peer} is strained ({rate:.0%}); trend: {trend}.")
+            else:
+                lines.append(f"Cooperation with {peer} is balanced ({rate:.0%}); trend: {trend}.")
+        return " ".join(lines) if lines else "Insufficient interaction history for cooperation analysis."
+
+    def _human_relationship_stability(self, agent: "Agent") -> str:
+        """Assess stability of each human-agent relationship."""
+        if not agent.relational_memory:
+            return "No human relationship data available."
+        lines = []
+        for human, rm in agent.relational_memory.items():
+            trust = rm.trust_level
+            interactions = rm.interaction_count
+            if interactions < 2:
+                stability = "nascent"
+            elif trust >= 0.6:
+                stability = "stable-positive"
+            elif trust <= 0.3:
+                stability = "fragile"
+            else:
+                stability = "developing"
+            lines.append(f"{human}: {stability} (trust={trust:.2f}, n={interactions}).")
+        return " ".join(lines) if lines else "No human relationships tracked."
+
+    def _unresolved_themes(self, agent: "Agent", window: int) -> List[str]:
+        """Identify themes that persist across recent reflections without resolution."""
+        if len(agent.reflection_entries) < 2:
+            return []
+        recent = agent.reflection_entries[-window:]
+        # Collect 'what_conflicted' snippets that repeat
+        conflict_snippets: dict = {}
+        for ref in recent:
+            snippet = ref.what_conflicted[:60] if ref.what_conflicted else ""
+            if snippet and "No active contradictions" not in snippet:
+                conflict_snippets[snippet] = conflict_snippets.get(snippet, 0) + 1
+        return [s for s, cnt in conflict_snippets.items() if cnt >= 2][:3]
 
     # ------------------------------------------------------------------
     # Legacy helpers (still used for patterns / goals / affective shift)
@@ -225,8 +348,9 @@ class ReflectionEngine:
         contradictions: List[str],
         updated_goals: List[str],
         affective_shift: dict,
+        reflection_type: str = "immediate",
     ) -> str:
-        lines = [f"Reflection triggered by: {trigger}."]
+        lines = [f"[{reflection_type}] Reflection triggered by: {trigger}."]
         if patterns:
             lines.append("Patterns identified: " + "; ".join(patterns) + ".")
         if contradictions:

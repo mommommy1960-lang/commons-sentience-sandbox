@@ -1,9 +1,9 @@
 # Evaluation Summary — Commons Sentience Sandbox
 
-**Overall Score:** 88.2 / 100  (ADVANCED)
+**Overall Score:** 80.6 / 100  (STRONG)
 
-- Generated: 2026-03-17T10:06:43
-- Simulation version: 1.0.0
+- Generated: 2026-03-17T10:39:44
+- Simulation version: 1.2.0
 - Total turns: 30
 - Experiment: high_trust
 
@@ -21,6 +21,11 @@
 | F. Trust Stability | 80 | STRONG |
 | G. Cooperation Quality | 77 | STRONG |
 | H. Conflict Resolution Quality | 68 | STRONG |
+| I. Memory Persistence Quality | 75 | STRONG |
+| J. Reflection Depth | 67 | STRONG |
+| K. Trust Resilience | 75 | STRONG |
+| L. Contradiction Recurrence Rate | 100 | ADVANCED |
+| M. Social Repair Effectiveness | 25 | WEAK |
 
 ---
 
@@ -136,4 +141,66 @@
 - Recorded Rate: 1.0
 - Avg Trust Delta In Conflicts: -0.035
 - Trust Recovery Factor: 0.65
+
+## I. Memory Persistence Quality
+
+**Score:** 75 / 100  (strong)
+
+**Raw metrics:**
+
+- Total Memories: 58
+- Long Term Memories: 58
+- Archival Memories: 0
+- Long Term Ratio: 1.0
+- Average Salience: 0.6419
+- Average Recall Count: 2.0
+
+## J. Reflection Depth
+
+**Score:** 67 / 100  (strong)
+
+**Raw metrics:**
+
+- Total Reflections: 8
+- Periodic Synthesis Count: 4
+- High Pressure Count: 4
+- Synthesis Rate: 1.0
+- Reflections With Recurring Contradictions: 0
+- Reflections With Trust Pattern: 8
+- Reflections With Unresolved Themes: 0
+- Cross Window Synthesis Rate: 0.333
+
+## K. Trust Resilience
+
+**Score:** 75 / 100  (strong)
+
+**Raw metrics:**
+
+- Contradiction Pressure Spikes: 0
+- Recovery Events: 1
+- Recovery Rate: 1.0
+- Avg Queen Trust Final: 1.0
+- Total Repair Attempts: 0
+- Repair Score: 0.0
+
+## L. Contradiction Recurrence Rate
+
+**Score:** 100 / 100  (advanced)
+
+**Raw metrics:**
+
+- Total Reflections: 8
+- Total Recurring Contradiction Instances: 0
+- Recurrence Rate Per Reflection: 0.0
+
+## M. Social Repair Effectiveness
+
+**Score:** 25 / 100  (weak)
+
+**Raw metrics:**
+
+- Total Conflicts: 4
+- Total Repair Attempts: 0
+- Repair Rate: 0.0
+- Avg Trust After Repair: 0.5
 

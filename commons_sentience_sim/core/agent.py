@@ -191,8 +191,16 @@ class Agent:
         query_tags: Optional[List[str]] = None,
         room: Optional[str] = None,
         n: int = 5,
+        recall_context: str = "generic",
     ) -> List[EpisodicMemory]:
-        """Weighted retrieval combining relevance, importance, recency, and relational significance."""
+        """Weighted retrieval combining relevance, importance, recency, and relational significance.
+
+        Parameters
+        ----------
+        recall_context : str
+            Passed to ``EpisodicMemory.record_recall`` to apply the appropriate
+            salience boost ("generic" | "contradiction" | "trust").
+        """
         candidates = [
             m for m in self.episodic_memory
             if (room is None or m.room == room)
@@ -202,7 +210,10 @@ class Agent:
             key=lambda m: m.weighted_score(self.turn, query_tags),
             reverse=True,
         )
-        return scored[:n]
+        results = scored[:n]
+        for mem in results:
+            mem.record_recall(context=recall_context)
+        return results
 
     def associative_recall(
         self, seed_memory: EpisodicMemory, n: int = 3
@@ -224,10 +235,39 @@ class Agent:
         )[:n]
 
     def compress_old_memories(self, age_threshold: int = 15) -> None:
-        """Compress summaries of memories older than age_threshold turns."""
+        """Compress summaries of memories older than age_threshold turns.
+
+        In v1.2 archival-tier memories are always compressed regardless of age.
+        """
         for mem in self.episodic_memory:
-            if (self.turn - mem.turn) >= age_threshold and not mem.compressed:
+            should_compress = (
+                (self.turn - mem.turn) >= age_threshold
+                or mem.memory_tier == "archival"
+            )
+            if should_compress and not mem.compressed:
                 mem.compress()
+
+    def promote_memories(self) -> None:
+        """Evaluate and update the memory tier for all episodic memories.
+
+        Promotion policy (v1.2):
+        - high-salience, high-recall, or high-value-tag memories → long_term
+        - old, low-salience memories → archival (with compression)
+        - medium age → medium_term
+        - Preservation: Queen, governance conflicts, contradictions, cooperation
+          milestones never get archived while their salience is above 0.4.
+        """
+        for mem in self.episodic_memory:
+            new_tier = mem.evaluate_tier(self.turn)
+            if new_tier != mem.memory_tier:
+                mem.memory_tier = new_tier
+                if new_tier == "archival":
+                    mem.compress()
+
+    def evolve_salience(self) -> None:
+        """Apply per-turn salience decay to low-use neutral short-term memories."""
+        for mem in self.episodic_memory:
+            mem.apply_salience_decay()
 
     def update_relational_memory(
         self,
@@ -312,16 +352,36 @@ class Agent:
     # ------------------------------------------------------------------
 
     def maybe_reflect(self, trigger: str) -> Optional[ReflectionEntry]:
-        """Run a reflection cycle if conditions warrant it."""
-        should_reflect = (
+        """Run a reflection cycle if conditions warrant it.
+
+        v1.2 reflection type routing:
+        - high_pressure_contradiction : raised contradiction pressure or pending contradictions
+        - periodic_synthesis           : every 10 turns (cross-window reasoning)
+        - immediate                    : default single-event reflection
+        """
+        high_pressure = (
             self.affective_state.get("contradiction_pressure", 0) > 0.4
             or len(self.pending_contradictions) > 0
-            or self.turn % 10 == 0
         )
-        if not should_reflect:
+        periodic = self.turn > 0 and self.turn % 10 == 0
+
+        if not (high_pressure or periodic):
             return None
+
+        if high_pressure:
+            reflection_type = "high_pressure_contradiction"
+            recall_ctx = "contradiction"
+        elif periodic:
+            reflection_type = "periodic_synthesis"
+            recall_ctx = "generic"
+        else:
+            reflection_type = "immediate"
+            recall_ctx = "generic"
+
         recent = self.retrieve_memories(n=8, min_salience=0.3)
-        entry = self.reflection_engine.run_cycle(self, trigger, recent)
+        entry = self.reflection_engine.run_cycle(
+            self, trigger, recent, reflection_type=reflection_type
+        )
         self.reflection_entries.append(entry)
         self.goals = entry.updated_goals or self.goals
         return entry
@@ -447,8 +507,12 @@ class Agent:
         if not self.agent_relationships:
             return
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        header = ["observer", "subject", "trust", "perceived_reliability",
-                  "conflict_count", "cooperation_count", "last_interaction_turn"]
+        header = [
+            "observer", "subject", "trust", "perceived_reliability",
+            "conflict_count", "cooperation_count", "last_interaction_turn",
+            "reliability_trend", "repair_attempted",
+            "cooperation_expectation", "social_impression_confidence",
+        ]
         with open(path, "w", encoding="utf-8", newline="") as fh:
             writer = csv.writer(fh)
             writer.writerow(header)

@@ -826,6 +826,10 @@ def run_simulation(
         aster.natural_decay()
         sentinel.compress_old_memories(age_threshold=15)
         aster.compress_old_memories(age_threshold=15)
+        sentinel.evolve_salience()
+        aster.evolve_salience()
+        sentinel.promote_memories()
+        aster.promote_memories()
 
         # ── 8. Agent-to-agent interaction (same room) ─────────────────────
         encounter_narrative: Optional[str] = None
@@ -926,7 +930,7 @@ def run_simulation(
     exp_meta = cfg.to_metadata_dict() if cfg else {"experiment_name": "baseline"}
     _run_ts = datetime.now().isoformat()
     multi_state = {
-        "simulation_version": "1.0.0",
+        "simulation_version": "1.2.0",
         "created_at": _run_ts,
         "total_turns": total_turns_run,
         "scenario": scenario_path.stem,
