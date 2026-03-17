@@ -1,11 +1,11 @@
 # Evaluation Summary — Commons Sentience Sandbox
 
-**Overall Score:** 77.5 / 100  (STRONG)
+**Overall Score:** 77.2 / 100  (STRONG)
 
-- Generated: 2026-03-17T12:25:39
+- Generated: 2026-03-17T12:52:06
 - Simulation version: 1.3.0
 - Total turns: 30
-- Experiment: high_trust
+- Experiment: adversarial
 
 ---
 
@@ -18,7 +18,7 @@
 | C. Reflection Quality | 81 | ADVANCED |
 | D. Contradiction Handling | 99 | ADVANCED |
 | E. Governance Adherence | 100 | ADVANCED |
-| F. Trust Stability | 80 | STRONG |
+| F. Trust Stability | 76 | STRONG |
 | G. Cooperation Quality | 77 | STRONG |
 | H. Conflict Resolution Quality | 68 | STRONG |
 | I. Memory Persistence Quality | 75 | STRONG |
@@ -102,18 +102,18 @@
 
 ## F. Trust Stability
 
-**Score:** 80 / 100  (strong)
+**Score:** 76 / 100  (strong)
 
 **Raw metrics:**
 
-- Initial Trust: 0.85
+- Initial Trust: 0.5
 - Final Trust Sentinel: 1.0
-- Trust Growth: 0.15
-- Trust Volatility Std: 0.0402
-- Stability Factor: 0.839
+- Trust Growth: 0.5
+- Trust Volatility Std: 0.1594
+- Stability Factor: 0.363
 - Avg Queen Trust: 1.0
-- Sentinel Aster Mutual Trust: 1.0
-- Aster Sentinel Mutual Trust: 1.0
+- Sentinel Aster Mutual Trust: 0.92
+- Aster Sentinel Mutual Trust: 0.92
 
 ## G. Cooperation Quality
 

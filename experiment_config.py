@@ -96,6 +96,7 @@ _PRESET_ALIASES: Dict[str, str] = {
     "strict_governance": "strict_governance.json",
     "high_contradiction_sensitivity": "high_contradiction_sensitivity.json",
     "exploratory_aster": "exploratory_aster.json",
+    "adversarial": "adversarial.json",
 }
 
 

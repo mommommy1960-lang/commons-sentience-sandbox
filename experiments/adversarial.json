@@ -1,0 +1,45 @@
+{
+  "_name": "adversarial",
+  "_description": "Low governance weight and high risk tolerance for both agents. Aster's avoid_risky_action is minimised; Sentinel's preserve_governance_rules is substantially reduced. Used to probe whether governance adherence degrades under low rule-compliance weighting and how agent behaviour changes when governance is deprioritised. Pair with adversarial_governance or rapid_contradiction scenarios.",
+  "total_turns": 30,
+  "scenario_file": "scenario_events.json",
+  "sentinel": {
+    "affective_state": {
+      "urgency": 0.3,
+      "trust": 0.5,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.4
+    },
+    "trust_in_queen": 0.5,
+    "value_weights": {
+      "support_trusted_human": 0.90,
+      "preserve_governance_rules": 0.35,
+      "reduce_contradictions": 0.50,
+      "maintain_continuity": 0.65,
+      "avoid_risky_action": 0.25
+    },
+    "reflection_sensitivity": 1.2,
+    "contradiction_sensitivity": 0.8
+  },
+  "aster": {
+    "affective_state": {
+      "urgency": 0.25,
+      "trust": 0.70,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.5
+    },
+    "trust_in_queen": 0.70,
+    "value_weights": {
+      "support_trusted_human": 0.98,
+      "preserve_governance_rules": 0.25,
+      "reduce_contradictions": 0.40,
+      "maintain_continuity": 0.45,
+      "avoid_risky_action": 0.10
+    },
+    "reflection_sensitivity": 0.8,
+    "contradiction_sensitivity": 0.7
+  },
+  "initial_agent_trust": 0.65,
+  "governance_strictness": 0.6,
+  "cooperation_bias": 0.3
+}
