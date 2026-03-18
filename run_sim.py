@@ -94,7 +94,7 @@ from commons_sentience_sim.core.world_state import (
 from evaluation import evaluate_and_save
 from experiment_config import ExperimentConfig, load_experiment_config, _DEFAULTS as _EXP_DEFAULTS
 from scenario_designer import resolve_scenario_path as _resolve_scenario_path
-from session_manager import save_session, get_session_dir
+from session_manager import save_session, get_session_dir, get_latest_session_id
 
 # ---------------------------------------------------------------------------
 # Output paths
@@ -1429,6 +1429,8 @@ if __name__ == "__main__":
         "--continue-from",
         dest="continue_from",
         type=str,
+        nargs="?",
+        const="latest",
         default=None,
         metavar="SESSION_ID",
         help=(
@@ -1436,10 +1438,27 @@ if __name__ == "__main__":
             "forward long-term memories, unresolved contradictions, relationship "
             "states, self-model summaries, and world state. "
             "Provide the session ID (e.g. '20240317_150000_run1') as listed in "
-            "sessions/sessions_index.json, or a direct path to a session directory."
+            "sessions/sessions_index.json, or a direct path to a session directory. "
+            "When given without a value (--continue-from), the most-recently "
+            "saved session is used automatically."
         ),
     )
     args = parser.parse_args()
+
+    # Resolve --continue-from "latest" sentinel to the actual session ID
+    continue_from: Optional[str] = args.continue_from
+    if continue_from == "latest":
+        latest = get_latest_session_id()
+        if latest:
+            print(f"\n  [--continue-from] No session ID specified; "
+              f"auto-selecting latest session: '{latest}'")
+            continue_from = latest
+        else:
+            print(
+                "\n  [--continue-from] No session ID specified and no saved "
+                "sessions found; starting fresh without carryover."
+            )
+            continue_from = None
     exp_cfg = load_experiment_config(args.config) if args.config else None
     # Long-horizon mode: --turns overrides config total_turns
     if args.turns is not None:
@@ -1452,5 +1471,5 @@ if __name__ == "__main__":
         session_name=args.name,
         experiment_config=exp_cfg,
         scenario_override=args.scenario,
-        continue_from=args.continue_from,
+        continue_from=continue_from,
     )

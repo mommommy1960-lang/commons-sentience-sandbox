@@ -360,6 +360,38 @@ def list_sessions() -> list[dict]:
         return []
 
 
+def get_latest_session_id() -> Optional[str]:
+    """Return the session ID of the most-recently saved session, or None.
+
+    Sessions are stored in ``sessions/index.json`` ordered most-recent first.
+    When the index is absent or empty the function falls back to scanning the
+    sessions directory for subdirectories whose names start with a timestamp
+    (``YYYYMMDD_HHMMSS`` — 15 chars minimum, first 8 chars are digits) and
+    returns the lexicographically largest one.
+    """
+    # Minimum name length: "YYYYMMDD_HHMMSS" = 15 characters
+    _MIN_NAME_LEN = 15
+    # Length of the leading date component "YYYYMMDD" = 8 characters
+    _DATE_PREFIX_LEN = 8
+
+    sessions = list_sessions()
+    if sessions:
+        return sessions[0].get("session_id")
+
+    # Fallback: scan directory
+    if SESSIONS_DIR.exists():
+        candidates = sorted(
+            (d.name for d in SESSIONS_DIR.iterdir()
+             if d.is_dir()
+             and len(d.name) >= _MIN_NAME_LEN
+             and d.name[:_DATE_PREFIX_LEN].isdigit()),
+            reverse=True,
+        )
+        if candidates:
+            return candidates[0]
+    return None
+
+
 def get_session_dir(session_id: str) -> Optional[Path]:
     """Return the Path for a session, or None if it does not exist."""
     d = SESSIONS_DIR / session_id
