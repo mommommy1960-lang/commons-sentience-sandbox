@@ -1,0 +1,5 @@
+session_id,agent,scenario,config,narrative_coherence,rupture_count,repaired_count,revision_count,milestone_count,theme_count
+20260318_025301_v20_test,Sentinel,scenario_events,baseline,0.8857,0,0,7,12,3
+20260318_025301_v20_test,Aster,scenario_events,baseline,0.8367,0,0,8,8,3
+20260318_024435_baseline_v20,Sentinel,scenario_events,baseline,0.8857,0,0,7,12,0
+20260318_024435_baseline_v20,Aster,scenario_events,baseline,0.8367,0,0,8,8,0
