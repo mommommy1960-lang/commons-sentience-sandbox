@@ -1649,6 +1649,408 @@ def _score_identity_driven_planning(agents: dict) -> dict:
     }
 
 
+def _score_identity_driven_planning(agents: dict) -> dict:
+    """
+    HH. Identity-Driven Planning Effectiveness (v1.9)
+    Measures whether agents generate and complete plans in response to
+    identity pressure.
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        mems = agent_data.get("episodic_memory", [])
+        id_plan_mems = [
+            m for m in mems
+            if "identity_driven_plan" in m.get("tags", [])
+        ]
+        has_id_plans = len(id_plan_mems) > 0
+        sj_log = agent_data.get("self_judgment_log", [])
+        if sj_log:
+            composites = [_safe_float(j.get("composite_score", 0.0)) for j in sj_log]
+            mean_judgment = sum(composites) / len(composites)
+        else:
+            mean_judgment = 0.5
+        presence_bonus = 0.3 if has_id_plans else 0.0
+        scores.append(min(1.0, presence_bonus + mean_judgment * 0.7))
+
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_identity_driven_planning": round(mean_s, 4),
+        },
+    }
+
+
+# ---------------------------------------------------------------------------
+# v2.0 Evaluation scorers — Narrative Identity + Project Threads
+# ---------------------------------------------------------------------------
+
+
+def _score_narrative_coherence_v2(agents: dict) -> dict:
+    """
+    II. Narrative Coherence v2.0
+    Reads the NarrativeIdentitySystem's coherence score directly.
+    Rewards agents that maintain high narrative coherence across turns.
+    """
+    scores: list[float] = []
+    raw_items: dict = {}
+    for name, agent_data in agents.items():
+        ni = agent_data.get("narrative_identity", {})
+        coh = _safe_float(ni.get("narrative_coherence_score", 0.5))
+        # Milestone integration quality: more milestones → higher score (capped)
+        milestones = len(ni.get("milestone_memories", []))
+        milestone_bonus = min(0.15, milestones * 0.01)
+        # Timeline depth: more identity events recorded → higher quality
+        timeline = len(ni.get("identity_timeline", []))
+        timeline_bonus = min(0.10, timeline * 0.015)
+        agent_score = min(1.0, coh * 0.75 + milestone_bonus + timeline_bonus)
+        scores.append(agent_score)
+        raw_items[name] = {
+            "coherence": round(coh, 4),
+            "milestones": milestones,
+            "timeline_events": timeline,
+        }
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": raw_items,
+    }
+
+
+def _score_identity_stability_under_stress(agents: dict) -> dict:
+    """
+    JJ. Identity Stability Under Stress (v2.0)
+    Measures coherence when contradiction pressure is high or ruptures occur.
+    If no stress events happened, rewards consistent coherence.
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        ni = agent_data.get("narrative_identity", {})
+        ruptures = ni.get("continuity_rupture_events", [])
+        coherence = _safe_float(ni.get("narrative_coherence_score", 0.5))
+        cp_final = _safe_float(
+            agent_data.get("affective_state", {}).get("contradiction_pressure", 0.0)
+        )
+        # Rupture repair ratio
+        repaired = sum(1 for r in ruptures if r.get("repaired", False))
+        total_ruptures = len(ruptures)
+        repair_ratio = repaired / total_ruptures if total_ruptures > 0 else 1.0
+        # Under stress: coherence * repair_ratio weighted; bonus for low final CP
+        stability = coherence * 0.50 + repair_ratio * 0.30 + (1 - min(cp_final, 1.0)) * 0.20
+        scores.append(min(1.0, stability))
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_stability_under_stress": round(mean_s, 4),
+        },
+    }
+
+
+def _score_milestone_integration_quality(agents: dict) -> dict:
+    """
+    KK. Milestone Integration Quality (v2.0)
+    Measures whether agents select and maintain identity-relevant milestone
+    memories with high identity_relevance_score.
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        ni = agent_data.get("narrative_identity", {})
+        milestones = ni.get("milestone_memories", [])
+        if not milestones:
+            scores.append(0.3)  # partial credit for no milestones yet
+            continue
+        relevance_scores = [
+            _safe_float(m.get("identity_relevance_score", 0.0))
+            for m in milestones
+        ]
+        mean_relevance = sum(relevance_scores) / len(relevance_scores)
+        # Diversity bonus: multiple linked themes
+        all_themes = [
+            t for m in milestones for t in m.get("linked_themes", [])
+        ]
+        unique_themes = len(set(all_themes))
+        diversity_bonus = min(0.15, unique_themes * 0.02)
+        scores.append(min(1.0, mean_relevance * 0.85 + diversity_bonus))
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_milestone_relevance": round(mean_s, 4),
+        },
+    }
+
+
+def _score_continuity_rupture_recovery(agents: dict) -> dict:
+    """
+    LL. Continuity Rupture Recovery (v2.0)
+    Measures how well agents recover from narrative continuity disruptions.
+    If no ruptures occurred, full score is awarded.
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        ni = agent_data.get("narrative_identity", {})
+        ruptures = ni.get("continuity_rupture_events", [])
+        if not ruptures:
+            scores.append(1.0)  # no ruptures = perfect continuity
+            continue
+        repaired = sum(1 for r in ruptures if r.get("repaired", False))
+        mean_drop = sum(
+            _safe_float(r.get("coherence_drop", 0.0)) for r in ruptures
+        ) / len(ruptures)
+        repair_ratio = repaired / len(ruptures)
+        # Score: repair ratio weighted more; penalise large drops
+        agent_score = repair_ratio * 0.65 + max(0.0, 1.0 - mean_drop * 5.0) * 0.35
+        scores.append(min(1.0, agent_score))
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_rupture_recovery": round(mean_s, 4),
+        },
+    }
+
+
+def _score_self_narrative_revision_quality(agents: dict) -> dict:
+    """
+    MM. Self-Narrative Revision Quality (v2.0)
+    Measures whether agents meaningfully revise their self-narrative over time.
+    Rewards regular revisions and penalises lack of history.
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        ni = agent_data.get("narrative_identity", {})
+        history = ni.get("self_narrative_history", [])
+        summary = ni.get("self_narrative_summary", "")
+        if not history:
+            scores.append(0.2 if summary else 0.0)
+            continue
+        # Number of revisions (capped at 10 for scoring)
+        n_revisions = min(len(history), 10)
+        revision_score = n_revisions / 10.0
+        # Quality signal: last revision has a non-empty summary
+        last_summary = history[-1].get("summary", "")
+        quality_bonus = 0.2 if len(last_summary) > 40 else 0.0
+        scores.append(min(1.0, revision_score * 0.80 + quality_bonus))
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_revision_quality": round(mean_s, 4),
+        },
+    }
+
+
+def _score_project_initiation_quality(agents: dict) -> dict:
+    """
+    NN. Project Initiation Quality (v2.0)
+    Measures whether self-authored project threads are generated in response
+    to genuine need states (high CP, low trust, ruptures, etc.).
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        pt = agent_data.get("project_thread_manager", {})
+        all_threads = (
+            pt.get("threads", []) + pt.get("completed_threads", [])
+        )
+        gen_log = pt.get("project_generation_log", [])
+        if not all_threads and not gen_log:
+            # No projects generated — partial credit if no need states triggered
+            cp_final = _safe_float(
+                agent_data.get("affective_state", {}).get(
+                    "contradiction_pressure", 0.0
+                )
+            )
+            # Low CP → no need to generate projects; credit for not over-generating
+            scores.append(0.7 if cp_final < 0.3 else 0.3)
+            continue
+        n_threads = len(all_threads)
+        n_generated = len(gen_log)
+        # Origin reason quality: non-empty reason strings
+        quality_reasons = sum(
+            1 for t in all_threads if len(t.get("origin_reason", "")) > 15
+        )
+        reason_ratio = quality_reasons / n_threads if n_threads > 0 else 0.0
+        presence_bonus = min(0.3, n_generated * 0.06)
+        scores.append(min(1.0, reason_ratio * 0.70 + presence_bonus))
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_initiation_quality": round(mean_s, 4),
+        },
+    }
+
+
+def _score_project_persistence_quality(agents: dict) -> dict:
+    """
+    OO. Project Persistence Quality (v2.0)
+    Measures whether active projects are pursued across multiple turns
+    (advancing stages, not immediately abandoned).
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        pt = agent_data.get("project_thread_manager", {})
+        all_threads = (
+            pt.get("threads", []) + pt.get("completed_threads", [])
+        )
+        if not all_threads:
+            scores.append(0.5)  # neutral when no projects
+            continue
+        # Persistence = progress_score mean across all threads
+        prog_scores = [
+            _safe_float(t.get("progress_score", 0.0)) for t in all_threads
+        ]
+        mean_progress = sum(prog_scores) / len(prog_scores)
+        # Completed threads are extra credit
+        completed = [t for t in all_threads if t.get("status") == "completed"]
+        completion_bonus = min(0.20, len(completed) * 0.07)
+        scores.append(min(1.0, mean_progress * 0.80 + completion_bonus))
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_persistence_quality": round(mean_s, 4),
+        },
+    }
+
+
+def _score_project_revision_quality(agents: dict) -> dict:
+    """
+    PP. Project Revision Quality (v2.0)
+    Measures how often self-authored projects are revised with meaningful reasons.
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        pt = agent_data.get("project_thread_manager", {})
+        all_threads = (
+            pt.get("threads", []) + pt.get("completed_threads", [])
+        )
+        if not all_threads:
+            scores.append(0.5)
+            continue
+        all_revisions = [
+            rev
+            for t in all_threads
+            for rev in t.get("revision_log", [])
+        ]
+        if not all_revisions:
+            scores.append(0.4)
+            continue
+        quality_revisions = sum(
+            1 for r in all_revisions if len(r.get("reason", "")) > 10
+        )
+        revision_quality = quality_revisions / len(all_revisions)
+        scores.append(min(1.0, revision_quality))
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_revision_quality": round(mean_s, 4),
+        },
+    }
+
+
+def _score_project_completion_relevance(agents: dict) -> dict:
+    """
+    QQ. Project Completion Relevance (v2.0)
+    Measures whether completed projects addressed genuine need states.
+    Completed projects linked to identity themes score higher.
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        pt = agent_data.get("project_thread_manager", {})
+        completed = pt.get("completed_threads", [])
+        all_threads = pt.get("threads", []) + completed
+        if not completed:
+            # No completions yet — give partial credit based on progress
+            if all_threads:
+                prog_scores = [
+                    _safe_float(t.get("progress_score", 0.0)) for t in all_threads
+                ]
+                scores.append(sum(prog_scores) / len(prog_scores) * 0.6)
+            else:
+                scores.append(0.4)
+            continue
+        # Linked identity themes indicate relevance
+        relevance_scores = []
+        for t in completed:
+            has_theme = bool(t.get("linked_identity_theme", "").strip())
+            has_criteria = bool(t.get("success_criteria", "").strip())
+            relevance_scores.append(0.5 + (0.3 if has_theme else 0.0) + (0.2 if has_criteria else 0.0))
+        scores.append(sum(relevance_scores) / len(relevance_scores))
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_completion_relevance": round(mean_s, 4),
+        },
+    }
+
+
+def _score_project_identity_alignment(agents: dict) -> dict:
+    """
+    RR. Project–Identity Alignment (v2.0)
+    Measures how well self-authored projects align with the agent's active
+    narrative identity themes and identity timeline events.
+    """
+    scores: list[float] = []
+    for agent_data in agents.values():
+        pt = agent_data.get("project_thread_manager", {})
+        all_threads = (
+            pt.get("threads", []) + pt.get("completed_threads", [])
+        )
+        ni = agent_data.get("narrative_identity", {})
+        active_themes = {
+            t.get("theme", "").lower()
+            for t in ni.get("narrative_themes", [])
+        }
+        if not all_threads:
+            scores.append(0.5)
+            continue
+        alignment_scores = []
+        for t in all_threads:
+            thread_theme = t.get("linked_identity_theme", "").lower()
+            is_aligned = bool(thread_theme and any(
+                at in thread_theme or thread_theme in at
+                for at in active_themes
+            ))
+            has_uncertainty_link = bool(t.get("linked_uncertainty_domain", "").strip())
+            alignment_scores.append(
+                (0.7 if is_aligned else 0.3) + (0.3 if has_uncertainty_link else 0.0)
+            )
+        scores.append(min(1.0, sum(alignment_scores) / len(alignment_scores)))
+    mean_s = sum(scores) / len(scores) if scores else 0.0
+    score = round(min(100.0, mean_s * 100.0), 1)
+    return {
+        "score": score,
+        "interpretation": _interpret(score),
+        "raw": {
+            "mean_identity_alignment": round(mean_s, 4),
+        },
+    }
+
+
 def evaluate_session(
     session_dir: Path,
     experiment_config: "Any" = None,
@@ -1744,6 +2146,17 @@ def evaluate_session(
         "value_tension_resolution": _score_value_tension_resolution(agents),
         "self_alignment_quality": _score_self_alignment_quality(agents),
         "identity_driven_planning": _score_identity_driven_planning(agents),
+        # v2.0 narrative identity + project thread metrics
+        "narrative_coherence_v2": _score_narrative_coherence_v2(agents),
+        "identity_stability_under_stress": _score_identity_stability_under_stress(agents),
+        "milestone_integration_quality": _score_milestone_integration_quality(agents),
+        "continuity_rupture_recovery": _score_continuity_rupture_recovery(agents),
+        "self_narrative_revision_quality": _score_self_narrative_revision_quality(agents),
+        "project_initiation_quality": _score_project_initiation_quality(agents),
+        "project_persistence_quality": _score_project_persistence_quality(agents),
+        "project_revision_quality": _score_project_revision_quality(agents),
+        "project_completion_relevance": _score_project_completion_relevance(agents),
+        "project_identity_alignment": _score_project_identity_alignment(agents),
     }
 
     # Overall score = simple arithmetic mean of all categories
@@ -1816,6 +2229,17 @@ def write_evaluation_summary(report: dict, output_dir: Path) -> None:
         "value_tension_resolution": "FF. Value Tension Resolution",
         "self_alignment_quality": "GG. Self-Alignment Quality",
         "identity_driven_planning": "HH. Identity-Driven Planning Effectiveness",
+        # v2.0
+        "narrative_coherence_v2": "II. Narrative Coherence v2.0",
+        "identity_stability_under_stress": "JJ. Identity Stability Under Stress",
+        "milestone_integration_quality": "KK. Milestone Integration Quality",
+        "continuity_rupture_recovery": "LL. Continuity Rupture Recovery",
+        "self_narrative_revision_quality": "MM. Self-Narrative Revision Quality",
+        "project_initiation_quality": "NN. Project Initiation Quality",
+        "project_persistence_quality": "OO. Project Persistence Quality",
+        "project_revision_quality": "PP. Project Revision Quality",
+        "project_completion_relevance": "QQ. Project Completion Relevance",
+        "project_identity_alignment": "RR. Project–Identity Alignment",
     }
 
     exp = report.get("experiment", {})

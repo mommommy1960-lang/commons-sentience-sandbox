@@ -6,6 +6,10 @@ v0.3: Adds state history tracking, weighted memory retrieval, associative
 v0.4: Identity, goals, affective baseline, and value weights are now
       configurable so multiple distinct agents can be created.
       Adds agent-to-agent relationship tracking.
+v2.0: Adds NarrativeIdentitySystem and ProjectThreadManager integration.
+      Narrative identity: identity_timeline, milestone_memories, rupture
+      events, narrative_coherence_score, narrative_themes, unresolved
+      identity tensions. Bounded self-authored project threads.
 """
 from __future__ import annotations
 
@@ -35,6 +39,8 @@ from .identity_pressure import (
     SelfJudgmentEntry,
     ValueTension,
 )
+from .narrative_identity import NarrativeIdentitySystem
+from .project_threads import ProjectThreadManager
 
 
 @dataclass
@@ -188,6 +194,15 @@ class Agent:
             core_traits=self.identity_pressure_system.core_traits,
         )
         self.self_judgment_log: List[SelfJudgmentEntry] = []
+
+        # v2.0 narrative identity system
+        self.narrative_identity: NarrativeIdentitySystem = NarrativeIdentitySystem(
+            agent_name=self.identity.get("name", "Agent"),
+            run_label="default",
+        )
+
+        # v2.0 self-authored project threads
+        self.project_thread_manager: ProjectThreadManager = ProjectThreadManager()
 
         # Engines
         self.world: World = world
@@ -1343,6 +1358,175 @@ class Agent:
         return new_plans
 
     # ------------------------------------------------------------------
+    # v2.0 Narrative identity + project threads
+    # ------------------------------------------------------------------
+
+    def update_narrative_identity(self, turn: int, run_label: str = "default") -> None:
+        """Update the v2.0 narrative identity system for *turn*.
+
+        Called every turn; updates strongly during reflections, surprise
+        events, and contradiction spikes.
+        """
+        trust = self.affective_state.get("trust", 0.5)
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        sc = self.self_model.get("self_consistency_score", 0.5)
+        # Collect text from recent reflections (all relevant fields) + goals
+        recent_reflection_texts: List[str] = list(self.goals[:3])
+        for re in self.reflection_entries[-3:]:
+            for field_name in ("what_happened", "what_conflicted", "what_mattered", "narrative"):
+                text = getattr(re, field_name, "") or ""
+                if text:
+                    recent_reflection_texts.append(text[:150])
+                    break
+        # Also add recent episodic memory summaries as theme sources
+        for mem in self.episodic_memory[-5:]:
+            if mem.importance >= 0.6 and mem.summary:
+                recent_reflection_texts.append(mem.summary[:80])
+        self.narrative_identity.update(
+            turn=turn,
+            trust=trust,
+            contradiction_pressure=cp,
+            self_consistency=sc,
+            reflection_entries_count=len(self.reflection_entries),
+            pending_contradictions=list(self.pending_contradictions),
+            chronic_tensions_count=len(self.identity_pressure_system.chronic_tensions()),
+            recent_reflection_texts=recent_reflection_texts,
+            active_plans_count=sum(
+                1 for p in self.counterfactual_planner.future_plans
+                if p.status == "active"
+            ),
+        )
+        # Keep run_label in sync
+        self.narrative_identity.run_label = run_label
+
+    def select_identity_relevant_memories(self) -> int:
+        """Scan episodic memories and promote high-impact ones to milestones.
+
+        Returns the count of newly added milestone memories.
+        """
+        run_label = self.narrative_identity.run_label
+        mem_dicts = [m.to_dict() for m in self.episodic_memory]
+        return self.narrative_identity.select_identity_relevant_memories(
+            mem_dicts, max_milestones=12, run_label=run_label
+        )
+
+    def detect_continuity_rupture(self, turn: int, trigger: str = "state_shift"):
+        """Check for a continuity rupture this turn and return any new event."""
+        return self.narrative_identity.detect_continuity_rupture(
+            turn=turn,
+            run_label=self.narrative_identity.run_label,
+            trigger=trigger,
+        )
+
+    def build_self_narrative_summary(self, turn: int) -> str:
+        """Rebuild and return the agent's current self-narrative summary."""
+        trust = self.affective_state.get("trust", 0.5)
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        sc = self.self_model.get("self_consistency_score", 0.5)
+        recent_reflection_texts: List[str] = []
+        for re in self.reflection_entries[-3:]:
+            if hasattr(re, "what_happened") and re.what_happened:
+                recent_reflection_texts.append(re.what_happened[:80])
+        return self.narrative_identity.build_self_narrative_summary(
+            agent_name=self.name,
+            trust=trust,
+            cp=cp,
+            sc=sc,
+            recent_reflection_texts=recent_reflection_texts,
+            active_goals=self.goals[:3],
+            run_label=self.narrative_identity.run_label,
+        )
+
+    def record_identity_milestone(
+        self,
+        turn: int,
+        description: str,
+        event_type: str = "milestone",
+        identity_impact: float = 0.5,
+    ):
+        """Record a self-defining event in the identity timeline."""
+        before = self.narrative_identity.narrative_coherence_score
+        after = before  # will be updated after coherence recompute
+        return self.narrative_identity.record_identity_milestone(
+            turn=turn,
+            run_label=self.narrative_identity.run_label,
+            description=description,
+            event_type=event_type,
+            coherence_before=before,
+            coherence_after=after,
+            identity_impact=identity_impact,
+        )
+
+    def record_narrative_theme(self, theme: str, turn: int, intensity: float = 0.5):
+        """Record or update a recurring narrative theme."""
+        return self.narrative_identity.record_narrative_theme(
+            theme=theme,
+            turn=turn,
+            run_label=self.narrative_identity.run_label,
+            intensity=intensity,
+        )
+
+    def compute_narrative_coherence(self) -> float:
+        """Return the current narrative coherence score."""
+        return self.narrative_identity.narrative_coherence_score
+
+    def update_project_threads(
+        self,
+        turn: int,
+        cooperation_this_turn: bool = False,
+    ) -> List[str]:
+        """Update self-authored project thread progress. Returns completed titles."""
+        trust = self.affective_state.get("trust", 0.5)
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        sc = self.self_model.get("self_consistency_score", 0.5)
+        return self.project_thread_manager.update_progress(
+            turn=turn,
+            trust=trust,
+            cp=cp,
+            sc=sc,
+            cooperation_this_turn=cooperation_this_turn,
+        )
+
+    def generate_project_threads(self, turn: int) -> list:
+        """Generate new self-authored project threads if conditions are met."""
+        trust = self.affective_state.get("trust", 0.5)
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        sc = self.self_model.get("self_consistency_score", 0.5)
+        chronic = len(self.identity_pressure_system.chronic_tensions())
+        unrepaired = sum(
+            1 for r in self.narrative_identity.continuity_rupture_events
+            if not r.repaired
+        )
+        top_domain, top_level = self.uncertainty_monitor.register.highest_domain
+        themes = [t.theme for t in self.narrative_identity.narrative_themes]
+        new_threads = self.project_thread_manager.generate_projects(
+            turn=turn,
+            run_label=self.narrative_identity.run_label,
+            trust=trust,
+            cp=cp,
+            sc=sc,
+            pending_contradictions=list(self.pending_contradictions),
+            chronic_tensions_count=chronic,
+            unrepaired_ruptures=unrepaired,
+            uncertainty_level=top_level,
+            identity_themes=themes,
+            active_goals=self.goals[:3],
+        )
+        for thread in new_threads:
+            self.store_memory(
+                summary=(
+                    f"Self-authored project initiated: '{thread.title}'. "
+                    f"Origin: {thread.origin_reason[:80]}."
+                ),
+                event_type="reflection",
+                emotional_resonance="resolve",
+                salience=0.62,
+                importance=0.58,
+                tags=["self_authored_project", thread.origin_category],
+            )
+        return new_threads
+
+    # ------------------------------------------------------------------
     # v1.6 Cross-run carryover
     # ------------------------------------------------------------------
 
@@ -1607,6 +1791,46 @@ class Agent:
             for jd in prior_sj[-3:]:
                 self.self_judgment_log.append(SelfJudgmentEntry.from_dict(jd))
 
+        # ── v2.0 Narrative identity carryover ────────────────────────────────
+        prior_ni = prior_state.get("narrative_identity", {})
+        if prior_ni:
+            carried_ni = self.narrative_identity.apply_prior_run(
+                prior_ni, run_label=self.narrative_identity.run_label
+            )
+            if carried_ni > 0:
+                self.store_memory(
+                    summary=(
+                        f"Narrative identity carried from prior run: "
+                        f"{carried_ni} element(s) restored "
+                        f"(timeline events, milestones, themes)."
+                    ),
+                    event_type="observation",
+                    emotional_resonance="ambiguity",
+                    salience=0.60,
+                    importance=0.62,
+                    tags=["carried_forward", "narrative_identity"],
+                )
+
+        # ── v2.0 Project threads carryover ───────────────────────────────────
+        prior_pt = prior_state.get("project_thread_manager", {})
+        if prior_pt:
+            prior_threads = prior_pt.get("threads", [])
+            carried_threads = self.project_thread_manager.apply_prior_threads(
+                prior_threads
+            )
+            if carried_threads > 0:
+                self.store_memory(
+                    summary=(
+                        f"Self-authored project threads carried from prior run: "
+                        f"{carried_threads} active/paused thread(s) restored."
+                    ),
+                    event_type="observation",
+                    emotional_resonance="resolve",
+                    salience=0.58,
+                    importance=0.58,
+                    tags=["carried_forward", "project_threads"],
+                )
+
     def to_dict(self) -> dict:
         return {
             "identity": self.identity,
@@ -1648,6 +1872,9 @@ class Agent:
             "identity_pressure_system": self.identity_pressure_system.to_dict(),
             "narrative_self": self.narrative_self.to_dict(),
             "self_judgment_log": [j.to_dict() for j in self.self_judgment_log],
+            # v2.0 fields
+            "narrative_identity": self.narrative_identity.to_dict(),
+            "project_thread_manager": self.project_thread_manager.to_dict(),
         }
 
     def save_final_state(self, path: str) -> None:

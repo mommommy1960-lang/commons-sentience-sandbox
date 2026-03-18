@@ -1,0 +1,100 @@
+{
+  "chain_name": "v20chain",
+  "generated_at": "2026-03-18T03:24:30.389061",
+  "chain_length": 5,
+  "config": "baseline",
+  "scenario": "default",
+  "turns_per_run": 30,
+  "session_ids": [
+    "20260318_032429_chain1_v20chain_chain",
+    "20260318_032430_chain2_v20chain_chain",
+    "20260318_032430_chain3_v20chain_chain",
+    "20260318_032430_chain4_v20chain_chain",
+    "20260318_032430_chain5_v20chain_chain"
+  ],
+  "runs": [
+    {
+      "session_id": "20260318_032429_chain1_v20chain_chain",
+      "narrative_coherence_v2_score": 74.6,
+      "trust_stability_score": 73.8,
+      "sentinel_trust_in_queen": 1.0,
+      "aster_trust_in_queen": 1.0,
+      "mutual_trust": 0.77,
+      "contradiction_pressure_sentinel": 0.0,
+      "cooperation_events": 7,
+      "conflict_events": 2,
+      "identity_rupture_count": 0,
+      "narrative_revision_count": 15,
+      "project_threads_generated": 1
+    },
+    {
+      "session_id": "20260318_032430_chain2_v20chain_chain",
+      "narrative_coherence_v2_score": 73.2,
+      "trust_stability_score": 77.3,
+      "sentinel_trust_in_queen": 1.0,
+      "aster_trust_in_queen": 1.0,
+      "mutual_trust": 1.0,
+      "contradiction_pressure_sentinel": 0.0,
+      "cooperation_events": 7,
+      "conflict_events": 2,
+      "identity_rupture_count": 2,
+      "narrative_revision_count": 16,
+      "project_threads_generated": 11
+    },
+    {
+      "session_id": "20260318_032430_chain3_v20chain_chain",
+      "narrative_coherence_v2_score": 68.7,
+      "trust_stability_score": 77.3,
+      "sentinel_trust_in_queen": 1.0,
+      "aster_trust_in_queen": 1.0,
+      "mutual_trust": 1.0,
+      "contradiction_pressure_sentinel": 0.0,
+      "cooperation_events": 7,
+      "conflict_events": 2,
+      "identity_rupture_count": 4,
+      "narrative_revision_count": 17,
+      "project_threads_generated": 11
+    },
+    {
+      "session_id": "20260318_032430_chain4_v20chain_chain",
+      "narrative_coherence_v2_score": 64.2,
+      "trust_stability_score": 77.3,
+      "sentinel_trust_in_queen": 1.0,
+      "aster_trust_in_queen": 1.0,
+      "mutual_trust": 1.0,
+      "contradiction_pressure_sentinel": 0.0,
+      "cooperation_events": 7,
+      "conflict_events": 2,
+      "identity_rupture_count": 6,
+      "narrative_revision_count": 17,
+      "project_threads_generated": 11
+    },
+    {
+      "session_id": "20260318_032430_chain5_v20chain_chain",
+      "narrative_coherence_v2_score": 65.7,
+      "trust_stability_score": 77.3,
+      "sentinel_trust_in_queen": 1.0,
+      "aster_trust_in_queen": 1.0,
+      "mutual_trust": 1.0,
+      "contradiction_pressure_sentinel": 0.0,
+      "cooperation_events": 7,
+      "conflict_events": 2,
+      "identity_rupture_count": 8,
+      "narrative_revision_count": 20,
+      "project_threads_generated": 11
+    }
+  ],
+  "chain_summary": {
+    "mean_narrative_coherence": 69.28,
+    "coherence_trend": "fragmenting",
+    "final_coherence": 65.7,
+    "first_coherence": 74.6,
+    "mean_trust_stability": 76.6,
+    "total_ruptures": 20,
+    "total_revisions": 85,
+    "total_cooperation_events": 35,
+    "total_conflict_events": 10,
+    "total_project_threads": 45,
+    "continuity_verdict": "fragmenting"
+  }
+}

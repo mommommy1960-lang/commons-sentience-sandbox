@@ -791,7 +791,7 @@ def run_simulation(
         if carryover_session_label else ""
     )
     narrative_lines: List[str] = [
-        "# Commons Sentience Sandbox — Narrative Log (v1.9)\n",
+        "# Commons Sentience Sandbox — Narrative Log (v2.0)\n",
         f"> Agents: **{sentinel.name}** (continuity-governed) & **{aster.name}** (creative/exploratory)",
         f"> Version: {sentinel.identity['version']}",
         f"> Experiment: **{exp_name}**",
@@ -803,7 +803,7 @@ def run_simulation(
     narrative_lines.append("---\n")
 
     print("=" * 65)
-    print(f"  Commons Sentience Sandbox v1.9 — {total_turns_run}-Turn Multi-Agent Simulation")
+    print(f"  Commons Sentience Sandbox v2.0 — {total_turns_run}-Turn Multi-Agent Simulation")
     print(f"  Agents: {sentinel.name} + {aster.name}")
     print(f"  Experiment: {exp_name}  |  Scenario: {scenario_label}")
     if carryover_session_label:
@@ -1153,6 +1153,30 @@ def run_simulation(
         sentinel.generate_identity_driven_plans(turn)
         aster.generate_identity_driven_plans(turn)
 
+        # ── 9.10 v2.0 Narrative identity + project threads ───────────────
+        _run_label = session_name or "default"
+        sentinel.update_narrative_identity(turn, run_label=_run_label)
+        aster.update_narrative_identity(turn, run_label=_run_label)
+
+        # Select high-impact memories as identity milestones every 5 turns
+        if turn % 5 == 0:
+            sentinel.select_identity_relevant_memories()
+            aster.select_identity_relevant_memories()
+
+        # Generate/update self-authored project threads
+        sentinel.generate_project_threads(turn)
+        aster.generate_project_threads(turn)
+        _s_coop = same_room and any(
+            ix.interaction_type == "cooperation"
+            for ix in sentinel.interaction_log[-1:]
+        )
+        _a_coop = same_room and any(
+            ix.interaction_type == "cooperation"
+            for ix in aster.interaction_log[-1:]
+        )
+        sentinel.update_project_threads(turn, cooperation_this_turn=_s_coop)
+        aster.update_project_threads(turn, cooperation_this_turn=_a_coop)
+
         # ── 10. State snapshots ───────────────────────────────────────────
         sentinel.record_state_snapshot(
             action=s_action,
@@ -1254,7 +1278,7 @@ def run_simulation(
     exp_meta = cfg.to_metadata_dict() if cfg else {"experiment_name": "baseline"}
     _run_ts = datetime.now().isoformat()
     multi_state = {
-        "simulation_version": "1.9.0",
+        "simulation_version": "2.0.0",
         "created_at": _run_ts,
         "total_turns": total_turns_run,
         "scenario": scenario_path.stem,

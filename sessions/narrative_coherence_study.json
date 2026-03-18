@@ -1,0 +1,129 @@
+{
+  "generated_at": "2026-03-18T03:24:38.188126",
+  "study_version": "2.0",
+  "findings": {
+    "does_sentinel_maintain_stronger_identity": {
+      "value": true,
+      "evidence": "Across sessions: Sentinel mean coherence 0.8013, Aster mean coherence 0.7593. Chain runs: Sentinel 0.7537, Aster 0.7047 (delta 0.0490)."
+    },
+    "destabilizing_scenarios": [
+      {
+        "scenario": "default",
+        "mean_coherence": 0.7292
+      }
+    ],
+    "recovery_improving_configs": [
+      {
+        "config": "baseline",
+        "repair_rate": 0.0,
+        "total_ruptures": 20,
+        "total_repaired": 0
+      }
+    ],
+    "rupture_accumulation_pattern": {
+      "pattern": "accumulating",
+      "evidence": "20 total ruptures, 0 repaired (rate 0.0%); ruptures growing across runs."
+    },
+    "narrative_revisions_quality": {
+      "quality": "meaningful",
+      "evidence": "85 meaningful revisions (>=40 chars), 0 trivial."
+    }
+  },
+  "chain_analysis": {
+    "sentinel_vs_aster": {
+      "sentinel_mean_coherence": 0.7537,
+      "aster_mean_coherence": 0.7047,
+      "sentinel_stronger": true,
+      "delta": 0.049
+    },
+    "scenario_stability": {
+      "default": {
+        "mean_coherence": 0.7292,
+        "run_count": 5
+      }
+    },
+    "rupture_repair": {
+      "total_ruptures": 20,
+      "total_repaired": 0,
+      "repair_rate": 0.0,
+      "per_run_ruptures": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "accumulating": true
+    },
+    "revision_quality": {
+      "meaningful_count": 85,
+      "trivial_count": 0,
+      "quality": "meaningful"
+    },
+    "coherence_trend": {
+      "trend": "fragmenting",
+      "first_coherence": 0.8612,
+      "final_coherence": 0.6362,
+      "per_run_mean_coherence": [
+        0.8612,
+        0.7962,
+        0.7162,
+        0.6362,
+        0.6362
+      ]
+    }
+  },
+  "session_analysis": {
+    "v2_session_count": 7,
+    "agent_comparison": {
+      "Sentinel": {
+        "mean_coherence": 0.8013,
+        "rupture_count": 10,
+        "repair_rate": 0.0,
+        "revision_count": 58
+      },
+      "Aster": {
+        "mean_coherence": 0.7593,
+        "rupture_count": 10,
+        "repair_rate": 0.0,
+        "revision_count": 65
+      }
+    },
+    "scenario_coherence": {
+      "scenario_events": 0.7803,
+      "default": 0.7292
+    },
+    "config_recovery": {
+      "baseline": {
+        "total_ruptures": 20,
+        "total_repaired": 0,
+        "repair_rate": 0.0
+      }
+    }
+  },
+  "agent_comparison": {
+    "Sentinel": {
+      "mean_coherence": 0.7537,
+      "rupture_count": 20,
+      "repair_rate": 0.0,
+      "revision_count": 98
+    },
+    "Aster": {
+      "mean_coherence": 0.7047,
+      "rupture_count": 20,
+      "repair_rate": 0.0,
+      "revision_count": 110
+    }
+  },
+  "scenario_coherence_map": {
+    "scenario_events": 0.7803,
+    "default": 0.7292
+  },
+  "config_recovery_map": {
+    "baseline": {
+      "total_ruptures": 20,
+      "total_repaired": 0,
+      "repair_rate": 0.0
+    }
+  }
+}
