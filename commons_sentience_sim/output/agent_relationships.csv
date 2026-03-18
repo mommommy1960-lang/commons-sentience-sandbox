@@ -1,5 +1,5 @@
 observer,subject,trust,perceived_reliability,conflict_count,cooperation_count,last_interaction_turn
-Sentinel,Aster,0.6600,0.6400,1,2,10,stable,0,0.6640,0.4500
-Aster,Sentinel,0.6600,0.6400,1,2,10,stable,0,0.6640,0.4500
-Sentinel,Queen,0.9000,n/a,0,3,10
-Aster,Queen,0.8900,n/a,0,2,10
+Sentinel,Aster,0.7700,0.7400,2,7,29,improving,0,0.7747,0.7500
+Aster,Sentinel,0.7700,0.7400,2,7,29,improving,0,0.7747,0.7500
+Sentinel,Queen,1.0000,n/a,0,8,29
+Aster,Queen,0.7000,n/a,0,6,29

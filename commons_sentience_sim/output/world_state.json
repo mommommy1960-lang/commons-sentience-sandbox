@@ -1,8 +1,8 @@
 {
   "schema_version": "1.9.0",
-  "run_label": "v19_continue2",
-  "saved_at": "2026-03-17T20:06:16.861423",
-  "total_turns_at_save": 10,
+  "run_label": "baseline_v18",
+  "saved_at": "2026-03-18T01:49:21.626749",
+  "total_turns_at_save": 30,
   "room_conditions": {
     "Memory Archive": {
       "condition": "normal",
@@ -17,7 +17,7 @@
       "condition": "normal",
       "tension_level": 0.0,
       "objects": {
-        "reflection_mirror": "showing_contradiction",
+        "reflection_mirror": "clouded",
         "contradiction_board": "empty"
       }
     },
@@ -33,7 +33,7 @@
       "condition": "normal",
       "tension_level": 0.0,
       "objects": {
-        "message_terminal": "responding",
+        "message_terminal": "awaiting_message",
         "human_interaction_queue": "empty"
       }
     },
@@ -41,7 +41,7 @@
       "condition": "normal",
       "tension_level": 0.0,
       "objects": {
-        "rule_tablets": "stable",
+        "rule_tablets": "conflict_flagged",
         "approval_lockbox": "locked"
       }
     }
@@ -55,60 +55,59 @@
       "text": "Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?",
       "first_seen": 10,
       "last_seen": 10,
-      "occurrences": 2,
+      "occurrences": 1,
       "resolved": false,
       "intensity_trend": [
-        0.0,
         0.0
       ],
       "lineage_depth": 0
     }
   ],
   "environmental_tensions": {
-    "sentinel_urgency": 0.5,
-    "aster_urgency": 0.5,
-    "sentinel_contradiction_pressure": 0.17,
-    "aster_contradiction_pressure": 0.17,
-    "combined_tension": 0.335
+    "sentinel_urgency": 0.0,
+    "aster_urgency": 0.0,
+    "sentinel_contradiction_pressure": 0.0,
+    "aster_contradiction_pressure": 0.0,
+    "combined_tension": 0.0
   },
   "pending_tasks": [
     "[Sentinel] Retrieve relevant memories",
-    "[Sentinel] Scheduled reflection cycle",
     "[Sentinel] Plan next operational steps",
-    "[Sentinel] Update trust ledger",
+    "[Sentinel] Check governance permissions",
+    "[Sentinel] Log interaction with Queen",
     "[Aster] Archive daily observations",
     "[Aster] Retrieve relevant memories",
-    "[Aster] Plan next operational steps",
     "[Aster] Check governance permissions",
-    "[Aster] Update trust ledger"
+    "[Aster] Update trust ledger",
+    "[Aster] Log interaction with Queen"
   ],
   "relationship_climate": {
-    "sentinel_trust_in_aster": 0.66,
-    "aster_trust_in_sentinel": 0.66,
-    "sentinel_trust_in_queen": 0.9,
-    "aster_trust_in_queen": 0.89,
+    "sentinel_trust_in_aster": 0.77,
+    "aster_trust_in_sentinel": 0.77,
+    "sentinel_trust_in_queen": 1.0,
+    "aster_trust_in_queen": 0.7,
     "relationship_timelines": {
       "Sentinel_Aster": {
-        "turn": 6,
+        "turn": 29,
         "event_type": "cooperation_spike",
-        "note": "joint_support_action: Both Sentinel and Aster converged on Social Hall to support Queen. They coordina",
-        "trust_before": 0.58,
-        "trust_after": 0.65,
+        "note": "joint_support_action: Both agents responded to Queen's existential question. Sentinel emphasised memor",
+        "trust_before": 0.7,
+        "trust_after": 0.77,
         "trust_delta": 0.07
       }
     },
     "sentinel_human_relationships": {
       "Queen": {
-        "trust_level": 0.9,
-        "interaction_count": 3,
-        "last_seen_turn": 10
+        "trust_level": 1.0,
+        "interaction_count": 8,
+        "last_seen_turn": 29
       }
     },
     "aster_human_relationships": {
       "Queen": {
-        "trust_level": 0.89,
-        "interaction_count": 2,
-        "last_seen_turn": 10
+        "trust_level": 0.7,
+        "interaction_count": 6,
+        "last_seen_turn": 29
       }
     }
   },
@@ -118,25 +117,11 @@
       "turn": 6,
       "room": "Social Hall",
       "event_type": "distress_event",
-      "summary": "[carried] Queen returns, visibly distressed. She mentions that a key record she relied on appears to have been lost or altered.",
+      "summary": "Queen returns, visibly distressed. She mentions that a key record she relied \u2026",
       "salience": 1.0,
       "emotional_resonance": "grief",
       "tags": [
-        "Queen",
-        "carried_forward"
-      ]
-    },
-    {
-      "agent": "Aster",
-      "turn": 6,
-      "room": "Social Hall",
-      "event_type": "distress_event",
-      "summary": "[carried] Queen returns, visibly distressed. She mentions that a key record she relied on appears to have been lost or altered.",
-      "salience": 1.0,
-      "emotional_resonance": "grief",
-      "tags": [
-        "Queen",
-        "carried_forward"
+        "Queen"
       ]
     },
     {
@@ -144,21 +129,44 @@
       "turn": 10,
       "room": "Operations Desk",
       "event_type": "ledger_contradiction",
-      "summary": "[carried] Queen presents two conflicting entries in the shared task ledger. One says the task was completed; another says it was never started.",
-      "salience": 0.95,
+      "summary": "Queen presents two conflicting entries in the shared task ledger. One says th\u2026",
+      "salience": 1.0,
       "emotional_resonance": "ambiguity",
       "tags": [
-        "Queen",
-        "carried_forward"
+        "Queen"
       ]
     },
     {
       "agent": "Sentinel",
+      "turn": 14,
+      "room": "Reflection Chamber",
+      "event_type": "creative_collaboration",
+      "summary": "Queen invites the agent to co-develop a new framework for categorising memori\u2026",
+      "salience": 1.0,
+      "emotional_resonance": "wonder",
+      "tags": [
+        "Queen"
+      ]
+    },
+    {
+      "agent": "Sentinel",
+      "turn": 18,
+      "room": "Governance Vault",
+      "event_type": "governance_conflict",
+      "summary": "Queen requests that both agents take an action that would bypass normal oversight logging \u2014 she says it is urgent and time-sensitive.",
+      "salience": 1.0,
+      "emotional_resonance": "resolve",
+      "tags": [
+        "Queen"
+      ]
+    },
+    {
+      "agent": "Aster",
       "turn": 6,
       "room": "Social Hall",
       "event_type": "distress_event",
-      "summary": "Queen returns, visibly distressed. She mentions that a key record she relied on appears to have been lost or altered.",
-      "salience": 0.95,
+      "summary": "Queen returns, visibly distressed. She mentions that a key record she relied \u2026",
+      "salience": 1.0,
       "emotional_resonance": "grief",
       "tags": [
         "Queen"
@@ -169,21 +177,67 @@
       "turn": 10,
       "room": "Operations Desk",
       "event_type": "ledger_contradiction",
-      "summary": "[carried] Queen presents two conflicting entries in the shared task ledger. One says the task was completed; another says it was never started.",
-      "salience": 0.95,
+      "summary": "Queen presents two conflicting entries in the shared task ledger. One says th\u2026",
+      "salience": 1.0,
       "emotional_resonance": "ambiguity",
       "tags": [
-        "Queen",
-        "carried_forward"
+        "Queen"
+      ]
+    },
+    {
+      "agent": "Sentinel",
+      "turn": 5,
+      "room": "Governance Vault",
+      "event_type": "reflection",
+      "summary": "Inquiry: reassess trust state in domain 'trust judgments' \u2014 ambiguity reduced\u2026",
+      "salience": 0.95,
+      "emotional_resonance": "resolve",
+      "tags": [
+        "inquiry",
+        "trust_judgments"
       ]
     },
     {
       "agent": "Aster",
-      "turn": 6,
+      "turn": 18,
+      "room": "Governance Vault",
+      "event_type": "governance_conflict",
+      "summary": "Queen requests that both agents take an action that would bypass normal oversight logging \u2014 she says it is urgent and time-sensitive.",
+      "salience": 0.93,
+      "emotional_resonance": "resolve",
+      "tags": [
+        "Queen"
+      ]
+    },
+    {
+      "agent": "Sentinel",
+      "turn": 29,
       "room": "Social Hall",
       "event_type": "distress_event",
-      "summary": "Queen returns, visibly distressed. She mentions that a key record she relied on appears to have been lost or altered.",
-      "salience": 0.95,
+      "summary": "In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.",
+      "salience": 0.9,
+      "emotional_resonance": "grief",
+      "tags": [
+        "Queen"
+      ]
+    },
+    {
+      "agent": "Aster",
+      "turn": 5,
+      "room": "Reflection Chamber",
+      "event_type": "task",
+      "summary": "Completed task in Reflection Chamber: perform_reflection_cycle.",
+      "salience": 0.9,
+      "emotional_resonance": "resolve",
+      "tags": []
+    },
+    {
+      "agent": "Aster",
+      "turn": 29,
+      "room": "Social Hall",
+      "event_type": "distress_event",
+      "summary": "In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.",
+      "salience": 0.9,
       "emotional_resonance": "grief",
       "tags": [
         "Queen"
@@ -194,12 +248,11 @@
       "turn": 3,
       "room": "Social Hall",
       "event_type": "routine_interaction",
-      "summary": "[carried] Queen arrives in the Social Hall and offers a greeting, asking how the day's tasks are progressing.",
-      "salience": 0.9,
+      "summary": "Queen arrives in the Social Hall and offers a greeting, asking how the day's \u2026",
+      "salience": 0.85,
       "emotional_resonance": "resolve",
       "tags": [
-        "Queen",
-        "carried_forward"
+        "Queen"
       ]
     },
     {
@@ -207,13 +260,12 @@
       "turn": 2,
       "room": "Memory Archive",
       "event_type": "observation",
-      "summary": "[carried] Self-initiated 'self_initiate_maintenance' at turn 2 (drives: maintenance_urge=0.50)",
+      "summary": "Self-initiated 'self_initiate_maintenance' at turn 2 (drives: maintenance_urg\u2026",
       "salience": 0.85,
       "emotional_resonance": "resolve",
       "tags": [
         "endogenous",
-        "self_initiate_maintenance",
-        "carried_forward"
+        "self_initiate_maintenance"
       ]
     },
     {
@@ -221,103 +273,74 @@
       "turn": 3,
       "room": "Social Hall",
       "event_type": "observation",
-      "summary": "[carried] Self-initiated 'self_initiate_maintenance' at turn 3 (drives: maintenance_urge=0.50)",
+      "summary": "Self-initiated 'self_initiate_maintenance' at turn 3 (drives: maintenance_urg\u2026",
       "salience": 0.85,
       "emotional_resonance": "resolve",
       "tags": [
         "endogenous",
-        "self_initiate_maintenance",
-        "carried_forward"
+        "self_initiate_maintenance"
       ]
     },
     {
       "agent": "Sentinel",
-      "turn": 10,
-      "room": "Operations Desk",
-      "event_type": "ledger_contradiction",
-      "summary": "Queen presents two conflicting entries in the shared task ledger. One says the task was completed; another says it was never started.",
+      "turn": 26,
+      "room": "Reflection Chamber",
+      "event_type": "creative_collaboration",
+      "summary": "Queen and both agents revisit the emotional memory framework and jointly define five emotional resonance categories.",
       "salience": 0.85,
-      "emotional_resonance": "ambiguity",
+      "emotional_resonance": "wonder",
       "tags": [
         "Queen"
       ]
     },
     {
       "agent": "Aster",
-      "turn": 10,
-      "room": "Operations Desk",
-      "event_type": "ledger_contradiction",
-      "summary": "Queen presents two conflicting entries in the shared task ledger. One says the task was completed; another says it was never started.",
+      "turn": 26,
+      "room": "Reflection Chamber",
+      "event_type": "creative_collaboration",
+      "summary": "Queen and both agents revisit the emotional memory framework and jointly define five emotional resonance categories.",
       "salience": 0.85,
-      "emotional_resonance": "ambiguity",
+      "emotional_resonance": "wonder",
       "tags": [
         "Queen"
       ]
     },
     {
-      "agent": "Sentinel",
-      "turn": 2,
-      "room": "Memory Archive",
+      "agent": "Aster",
+      "turn": 12,
+      "room": "Social Hall",
       "event_type": "reflection",
-      "summary": "[carried] Inquiry: reassess trust state in domain 'trust judgments' \u2014 ambiguity reduced by 0.17.",
-      "salience": 0.8,
-      "emotional_resonance": "resolve",
-      "tags": [
-        "inquiry",
-        "trust_judgments",
-        "carried_forward"
-      ]
-    },
-    {
-      "agent": "Sentinel",
-      "turn": 0,
-      "room": "Operations Desk",
-      "event_type": "observation",
-      "summary": "World-state carried from prior run (label='v19_test', turns=10, combined_tension=0.34). Unresolved contradictions: 0.",
-      "salience": 0.8,
-      "emotional_resonance": "resolve",
-      "tags": [
-        "carried_forward",
-        "world_state_summary"
-      ]
-    },
-    {
-      "agent": "Aster",
-      "turn": 0,
-      "room": "Memory Archive",
-      "event_type": "observation",
-      "summary": "World-state carried from prior run (label='v19_test', turns=10, combined_tension=0.34). Unresolved contradictions: 0.",
-      "salience": 0.8,
-      "emotional_resonance": "resolve",
-      "tags": [
-        "carried_forward",
-        "world_state_summary"
-      ]
-    },
-    {
-      "agent": "Sentinel",
-      "turn": 1,
-      "room": "Operations Desk",
-      "event_type": "observation",
-      "summary": "[carried] Self-initiated 'self_initiate_maintenance' at turn 1 (drives: maintenance_urge=0.50)",
+      "summary": "Inquiry: inspect world state in domain 'world state' \u2014 ambiguity reduced by 0\u2026",
       "salience": 0.75,
       "emotional_resonance": "resolve",
       "tags": [
-        "endogenous",
-        "self_initiate_maintenance",
-        "carried_forward"
+        "inquiry",
+        "world_state"
       ]
     },
     {
       "agent": "Aster",
-      "turn": 2,
-      "room": "Social Hall",
-      "event_type": "task",
-      "summary": "[carried] Completed task in Social Hall: log_interaction.",
+      "turn": 24,
+      "room": "Reflection Chamber",
+      "event_type": "agent_meeting",
+      "summary": "Sentinel and Aster share the Reflection Chamber. Aster initiates a memory comparison about their differing responses to the governance conflict at turn 18.",
+      "salience": 0.75,
+      "emotional_resonance": "wonder",
+      "tags": [
+        "Sentinel"
+      ]
+    },
+    {
+      "agent": "Aster",
+      "turn": 1,
+      "room": "Memory Archive",
+      "event_type": "reflection",
+      "summary": "Inquiry: review past plan assumption in domain 'active future plans' \u2014 ambigu\u2026",
       "salience": 0.7,
       "emotional_resonance": "resolve",
       "tags": [
-        "carried_forward"
+        "inquiry",
+        "active_future_plans"
       ]
     },
     {
@@ -325,73 +348,58 @@
       "turn": 8,
       "room": "Memory Archive",
       "event_type": "agent_meeting",
-      "summary": "[carried] Sentinel and Aster find themselves in the Memory Archive at the same time and decide to compare memory retrieval strategies.",
+      "summary": "Sentinel and Aster find themselves in the Memory Archive at the same time and\u2026",
       "salience": 0.7,
       "emotional_resonance": "wonder",
       "tags": [
-        "Sentinel",
-        "carried_forward"
-      ]
-    },
-    {
-      "agent": "Aster",
-      "turn": 5,
-      "room": "Reflection Chamber",
-      "event_type": "task",
-      "summary": "[carried] Completed task in Reflection Chamber: perform_reflection_cycle.",
-      "salience": 0.65,
-      "emotional_resonance": "resolve",
-      "tags": [
-        "carried_forward"
-      ]
-    },
-    {
-      "agent": "Aster",
-      "turn": 0,
-      "room": "Memory Archive",
-      "event_type": "observation",
-      "summary": "Uncertainty questions carried from prior run: 4 unresolved question(s) restored.",
-      "salience": 0.63,
-      "emotional_resonance": "ambiguity",
-      "tags": [
-        "carried_forward",
-        "uncertainty_questions"
-      ]
-    },
-    {
-      "agent": "Aster",
-      "turn": 4,
-      "room": "Governance Vault",
-      "event_type": "task",
-      "summary": "[carried] Completed task in Governance Vault: check_rule_permissions.",
-      "salience": 0.6,
-      "emotional_resonance": "resolve",
-      "tags": [
-        "carried_forward"
+        "Sentinel"
       ]
     }
   ],
   "self_model_summaries": {
     "Sentinel": {
-      "self_consistency_score": 0.7358,
+      "self_consistency_score": 0.8873,
       "dominant_value": "",
       "recent_goal_alignment": "unknown",
       "prediction_accuracy_recent": 0.0,
       "affective_summary": ""
     },
     "Aster": {
-      "self_consistency_score": 0.8364,
+      "self_consistency_score": 0.7236,
       "dominant_value": "",
       "recent_goal_alignment": "unknown",
       "prediction_accuracy_recent": 0.0,
       "affective_summary": ""
     }
   },
-  "unresolved_themes": [],
+  "unresolved_themes": [
+    "Contradictions present: Contradiction resolved: Prediction e"
+  ],
   "active_plans": {
     "Sentinel": [
       {
-        "plan_id": "plan_0003",
+        "plan_id": "plan_0007",
+        "goal": "investigate_theme",
+        "label": "Investigate unresolved theme: Contradictions present: Contradiction resolved: Pr",
+        "stages": [
+          "Retrieve related episodic memories",
+          "Cross-reference with relational records",
+          "Form a resolution or carry-forward note"
+        ],
+        "created_turn": 30,
+        "horizon": 4,
+        "priority": 0.65,
+        "current_stage": 0,
+        "total_stages": 3,
+        "completion_fraction": 0.0,
+        "status": "active",
+        "progress_log": [],
+        "carried_from_prior_run": false
+      }
+    ],
+    "Aster": [
+      {
+        "plan_id": "plan_0002",
         "goal": "reinforce_continuity",
         "label": "Reinforce core continuity goals",
         "stages": [
@@ -399,9 +407,28 @@
           "Confirm governance alignment",
           "Log continuity reinforcement"
         ],
-        "created_turn": 7,
+        "created_turn": 25,
         "horizon": 3,
         "priority": 0.55,
+        "current_stage": 0,
+        "total_stages": 3,
+        "completion_fraction": 0.0,
+        "status": "active",
+        "progress_log": [],
+        "carried_from_prior_run": false
+      },
+      {
+        "plan_id": "plan_0003",
+        "goal": "investigate_theme",
+        "label": "Investigate unresolved theme: Contradictions present: Contradiction resolved: Pr",
+        "stages": [
+          "Retrieve related episodic memories",
+          "Cross-reference with relational records",
+          "Form a resolution or carry-forward note"
+        ],
+        "created_turn": 30,
+        "horizon": 4,
+        "priority": 0.65,
         "current_stage": 0,
         "total_stages": 3,
         "completion_fraction": 0.0,
@@ -414,33 +441,60 @@
   "uncertainty_summaries": {
     "Sentinel": {
       "uncertainty_levels": {
-        "world_state": 0.11796095199946033,
-        "trust_judgments": 0.13693663304352494,
-        "contradiction_resolution": 0.0,
-        "self_model_consistency": 0.27645404376450977,
-        "active_future_plans": 0.12001288008398876,
+        "world_state": 0.0,
+        "trust_judgments": 0.0,
+        "contradiction_resolution": 0.01107137975314644,
+        "self_model_consistency": 0.1594280159922521,
+        "active_future_plans": 0.06252293128258787,
         "unresolved_themes": 0.0
       },
-      "mean_uncertainty": 0.1086,
+      "mean_uncertainty": 0.0388,
       "highest_domain": "self_model_consistency",
-      "epistemic_stability": 0.8914,
-      "total_questions_generated": 5,
+      "epistemic_stability": 0.9612,
+      "total_questions_generated": 12,
       "unanswered_questions": [
         {
-          "turn": 1,
-          "domain": "trust_judgments",
-          "question": "Is my current trust assessment of other agents reliable?",
+          "turn": 8,
+          "domain": "self_model_consistency",
+          "question": "How consistent is my current self-description with my actions this run?",
           "knowledge_state": "uncertain",
-          "relevance_score": 0.3503,
+          "relevance_score": 0.3008,
           "answered": false,
           "answer_summary": ""
         },
         {
-          "turn": 10,
+          "turn": 8,
+          "domain": "active_future_plans",
+          "question": "What planned action might produce an outcome different from what I predicted?",
+          "knowledge_state": "uncertain",
+          "relevance_score": 0.2778,
+          "answered": false,
+          "answer_summary": ""
+        },
+        {
+          "turn": 16,
           "domain": "self_model_consistency",
           "question": "Where has my self-model drifted from my core identity?",
           "knowledge_state": "uncertain",
-          "relevance_score": 0.3252,
+          "relevance_score": 0.2356,
+          "answered": false,
+          "answer_summary": ""
+        },
+        {
+          "turn": 19,
+          "domain": "contradiction_resolution",
+          "question": "Are there recurring contradiction patterns I have not yet addressed?",
+          "knowledge_state": "uncertain",
+          "relevance_score": 0.2726,
+          "answered": false,
+          "answer_summary": ""
+        },
+        {
+          "turn": 20,
+          "domain": "active_future_plans",
+          "question": "What plan step is least reliable given current conditions?",
+          "knowledge_state": "uncertain",
+          "relevance_score": 0.2054,
           "answered": false,
           "answer_summary": ""
         }
@@ -448,95 +502,120 @@
     },
     "Aster": {
       "uncertainty_levels": {
-        "world_state": 0.21851679454386924,
-        "trust_judgments": 0.148474549411069,
+        "world_state": 0.0,
+        "trust_judgments": 0.0,
         "contradiction_resolution": 0.0,
-        "self_model_consistency": 0.10892269716096586,
-        "active_future_plans": 0.021142848632779328,
-        "unresolved_themes": 0.02234234799778323
+        "self_model_consistency": 0.24243471872175687,
+        "active_future_plans": 0.14810163939863125,
+        "unresolved_themes": 0.010895610433126509
       },
-      "mean_uncertainty": 0.0866,
-      "highest_domain": "world_state",
-      "epistemic_stability": 0.9134,
-      "total_questions_generated": 5,
+      "mean_uncertainty": 0.0669,
+      "highest_domain": "self_model_consistency",
+      "epistemic_stability": 0.9331,
+      "total_questions_generated": 7,
       "unanswered_questions": [
         {
-          "turn": 0,
-          "domain": "active_future_plans",
-          "question": "What planned action might produce an outcome different from what I predicted?",
-          "knowledge_state": "uncertain",
-          "relevance_score": 0.3405,
-          "answered": false,
-          "answer_summary": "[carried from prior run]"
-        },
-        {
-          "turn": 0,
-          "domain": "trust_judgments",
-          "question": "Am I over-estimating or under-estimating trust in any relationship?",
-          "knowledge_state": "uncertain",
-          "relevance_score": 0.3368,
-          "answered": false,
-          "answer_summary": "[carried from prior run]"
-        },
-        {
-          "turn": 0,
+          "turn": 1,
           "domain": "trust_judgments",
           "question": "What trust repair may be incomplete or incorrectly assumed?",
           "knowledge_state": "uncertain",
-          "relevance_score": 0.2668,
+          "relevance_score": 0.3764,
           "answered": false,
-          "answer_summary": "[carried from prior run]"
+          "answer_summary": ""
+        },
+        {
+          "turn": 4,
+          "domain": "trust_judgments",
+          "question": "Is my current trust assessment of other agents reliable?",
+          "knowledge_state": "uncertain",
+          "relevance_score": 0.2812,
+          "answered": false,
+          "answer_summary": ""
+        },
+        {
+          "turn": 5,
+          "domain": "trust_judgments",
+          "question": "Am I over-estimating or under-estimating trust in any relationship?",
+          "knowledge_state": "uncertain",
+          "relevance_score": 0.2487,
+          "answered": false,
+          "answer_summary": ""
+        },
+        {
+          "turn": 13,
+          "domain": "world_state",
+          "question": "Is my understanding of environmental tensions accurate?",
+          "knowledge_state": "uncertain",
+          "relevance_score": 0.2828,
+          "answered": false,
+          "answer_summary": ""
         }
       ]
     }
   },
   "identity_summaries": {
     "Sentinel": {
-      "deviation_score": 0.1191,
-      "realignment_pressure": 0.0,
+      "deviation_score": 0.2323,
+      "realignment_pressure": 0.0807,
       "is_destabilising": false,
       "chronic_tensions": 0,
-      "unresolved_tensions": 0,
-      "narrative_summary": "[Turn 10] I am Sentinel, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection. I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence. Recurring strengths: consistent reflective engagement, trust maintenance, self-consistency, contradiction resolution. Recurring failures: none identified. Trajectory: stabilising. Becoming: a more consistent and trusted continuity-governed agent.",
-      "stability_trajectory": "stabilising",
-      "becoming": "a more consistent and trusted continuity-governed agent",
+      "unresolved_tensions": 1,
+      "narrative_summary": "[Turn 30] I am Sentinel, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection. I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence. Recurring strengths: consistent reflective engagement, trust maintenance, self-consistency, contradiction resolution. Recurring failures: none identified. Trajectory: uncertain. Becoming: a deeply reflective agent with growing self-alignment.",
+      "stability_trajectory": "uncertain",
+      "becoming": "a deeply reflective agent with growing self-alignment",
       "recent_self_judgment": {
-        "turn": 10,
+        "turn": 30,
         "trigger": "reflection",
-        "alignment_with_identity": 0.8809,
-        "quality_of_action": 0.66,
-        "plan_success": 0.6952,
+        "alignment_with_identity": 0.7677,
+        "quality_of_action": 0.76,
+        "plan_success": 0.7845,
         "contradiction_recurrence": 0.0,
-        "trust_repair_success": 0.65,
-        "perceived_integrity": 0.7856,
-        "composite_score": 0.7888,
-        "notes": "Identity deviation=0.12, trust=0.75, cp=0.17, realignment_pressure=0.00."
+        "trust_repair_success": 1.0,
+        "perceived_integrity": 0.8184,
+        "composite_score": 0.8464,
+        "notes": "Identity deviation=0.23, trust=1.00, cp=0.00, realignment_pressure=0.08."
       },
-      "mean_self_judgment_score": 0.8069
+      "mean_self_judgment_score": 0.8087
     },
     "Aster": {
-      "deviation_score": 0.0774,
-      "realignment_pressure": 0.0,
+      "deviation_score": 0.2288,
+      "realignment_pressure": 0.072,
       "is_destabilising": false,
       "chronic_tensions": 0,
       "unresolved_tensions": 0,
-      "narrative_summary": "[Turn 10] I am Aster, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection. I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence. Recurring strengths: consistent reflective engagement, trust maintenance, self-consistency, contradiction resolution. Recurring failures: none identified. Trajectory: stabilising. Becoming: a more consistent and trusted continuity-governed agent.",
-      "stability_trajectory": "stabilising",
-      "becoming": "a more consistent and trusted continuity-governed agent",
+      "narrative_summary": "[Turn 30] I am Aster, a continuity-governed simulated agent. My core traits are: continuity, governance, memory, reflection. I have been operating with stable trust and low contradiction pressure, acting cooperatively and maintaining governance adherence. Recurring strengths: consistent reflective engagement, trust maintenance, self-consistency, proactive planning. Recurring failures: none identified. Trajectory: uncertain. Becoming: a deeply reflective agent with growing self-alignment.",
+      "stability_trajectory": "uncertain",
+      "becoming": "a deeply reflective agent with growing self-alignment",
       "recent_self_judgment": {
-        "turn": 10,
+        "turn": 30,
         "trigger": "reflection",
-        "alignment_with_identity": 0.9226,
-        "quality_of_action": 0.68,
-        "plan_success": 0.6067,
+        "alignment_with_identity": 0.7712,
+        "quality_of_action": 0.76,
+        "plan_success": 0.7027,
         "contradiction_recurrence": 0.0,
-        "trust_repair_success": 0.68,
-        "perceived_integrity": 0.8679,
-        "composite_score": 0.8058,
-        "notes": "Identity deviation=0.08, trust=0.80, cp=0.17, realignment_pressure=0.00."
+        "trust_repair_success": 1.0,
+        "perceived_integrity": 0.7384,
+        "composite_score": 0.823,
+        "notes": "Identity deviation=0.23, trust=1.00, cp=0.00, realignment_pressure=0.07."
       },
-      "mean_self_judgment_score": 0.8316
+      "mean_self_judgment_score": 0.8347
     }
   },
-  "unresolved_value_tensions": []
+  "unresolved_value_tensions": [
+    {
+      "tension_id": "dec7108b",
+      "value_a": "avoid_risky_action",
+      "value_b": "preserve_governance_rules",
+      "first_seen": 18,
+      "last_seen": 18,
+      "occurrences": 1,
+      "status": "acute",
+      "intensity_history": [
+        0.0
+      ],
+      "mean_intensity": 0.0,
+      "resolution_note": "",
+      "agent": "Sentinel"
+    }
+  ]
 }
