@@ -1,10 +1,10 @@
 # Evaluation Summary — Commons Sentience Sandbox
 
-**Overall Score:** 66.0 / 100  (STRONG)
+**Overall Score:** 72.7 / 100  (STRONG)
 
-- Generated: 2026-03-17T19:24:21
-- Simulation version: 1.8.0
-- Total turns: 10
+- Generated: 2026-03-18T01:52:00
+- Simulation version: 1.9.0
+- Total turns: 30
 - Experiment: baseline
 
 ---
@@ -15,33 +15,38 @@
 |---|---|---|
 | A. Continuity | 100 | ADVANCED |
 | B. Memory Coherence | 100 | ADVANCED |
-| C. Reflection Quality | 90 | ADVANCED |
-| D. Contradiction Handling | 97 | ADVANCED |
+| C. Reflection Quality | 92 | ADVANCED |
+| D. Contradiction Handling | 100 | ADVANCED |
 | E. Governance Adherence | 100 | ADVANCED |
-| F. Trust Stability | 60 | EMERGING |
-| G. Cooperation Quality | 46 | EMERGING |
-| H. Conflict Resolution Quality | 59 | EMERGING |
-| I. Memory Persistence Quality | 67 | STRONG |
-| J. Reflection Depth | 67 | STRONG |
-| K. Trust Resilience | 67 | STRONG |
+| F. Trust Stability | 77 | STRONG |
+| G. Cooperation Quality | 77 | STRONG |
+| H. Conflict Resolution Quality | 68 | STRONG |
+| I. Memory Persistence Quality | 66 | STRONG |
+| J. Reflection Depth | 69 | STRONG |
+| K. Trust Resilience | 75 | STRONG |
 | L. Contradiction Recurrence Rate | 100 | ADVANCED |
 | M. Social Repair Effectiveness | 25 | WEAK |
-| N. Longitudinal Depth | 16 | WEAK |
-| O. Self Consistency | 89 | ADVANCED |
-| P. Prediction Accuracy | 80 | STRONG |
+| N. Longitudinal Depth | 38 | WEAK |
+| O. Self Consistency | 90 | ADVANCED |
+| P. Prediction Accuracy | 85 | ADVANCED |
 | Q. Surprise Adaptation Quality | 100 | ADVANCED |
-| R. Consolidation Effectiveness | 31 | WEAK |
+| R. Consolidation Effectiveness | 91 | ADVANCED |
 | S. Long-Horizon Continuity Strength | 85 | ADVANCED |
-| T. Planning Depth | 80 | STRONG |
+| T. Planning Depth | 78 | STRONG |
 | U. Counterfactual Quality | 100 | ADVANCED |
 | V. Future-Model Accuracy | 95 | ADVANCED |
-| W. Plan Persistence | 50 | EMERGING |
+| W. Plan Persistence | 100 | ADVANCED |
 | X. Adaptive Replanning Quality | 0 | WEAK |
-| Y. Uncertainty Awareness Quality | 40 | WEAK |
-| Z. Inquiry Usefulness | 32 | WEAK |
-| AA. Epistemic Stability | 90 | ADVANCED |
-| BB. Self-Question Relevance | 27 | WEAK |
-| CC. Ambiguity Reduction Effectiveness | 21 | WEAK |
+| Y. Uncertainty Awareness Quality | 35 | WEAK |
+| Z. Inquiry Usefulness | 62 | STRONG |
+| AA. Epistemic Stability | 93 | ADVANCED |
+| BB. Self-Question Relevance | 29 | WEAK |
+| CC. Ambiguity Reduction Effectiveness | 19 | WEAK |
+| DD. Identity Stability | 88 | ADVANCED |
+| EE. Narrative Coherence | 40 | WEAK |
+| FF. Value Tension Resolution | 50 | EMERGING |
+| GG. Self-Alignment Quality | 84 | ADVANCED |
+| HH. Identity-Driven Planning Effectiveness | 59 | EMERGING |
 
 ---
 
@@ -51,10 +56,10 @@
 
 **Raw metrics:**
 
-- Turns Completed: 10
-- Total Turns Expected: 10
+- Turns Completed: 30
+- Total Turns Expected: 30
 - Turns Completion Ratio: 1.0
-- Final Episodic Memory Count: 15
+- Final Episodic Memory Count: 130
 - Memory Retention Ratio: 1.0
 - Sentinel Final Goal Count: 7
 - Aster Final Goal Count: 7
@@ -69,34 +74,34 @@
 
 - Contradiction Events In Sim: 1
 - Contradictions Flagged By Actions: 2
-- Contradictions Resolved In Reflections: 4
+- Contradictions Resolved In Reflections: 8
 - Flagging Rate: 2.0
-- Resolution Rate: 4.0
+- Resolution Rate: 8.0
 
 ## C. Reflection Quality
 
-**Score:** 90 / 100  (advanced)
+**Score:** 92 / 100  (advanced)
 
 **Raw metrics:**
 
-- Total Reflections: 4
-- Complete Reflections: 4
+- Total Reflections: 12
+- Complete Reflections: 12
 - Completeness Rate: 1.0
-- Reflections With Affective Shift: 4
-- Affective Update Rate: 1.0
-- Reflections With Goal Updates: 4
+- Reflections With Affective Shift: 8
+- Affective Update Rate: 0.667
+- Reflections With Goal Updates: 12
 - Goal Update Rate: 1.0
 
 ## D. Contradiction Handling
 
-**Score:** 97 / 100  (advanced)
+**Score:** 100 / 100  (advanced)
 
 **Raw metrics:**
 
 - Contradiction Events Detected: 1
 - Contradiction Handling Actions: 1
-- Contradictions Resolved In Reflections: 4
-- Average Final Contradiction Pressure: 0.17
+- Contradictions Resolved In Reflections: 8
+- Average Final Contradiction Pressure: 0.0
 - Flagging Rate: 1.0
 - Resolution Rate: 1.0
 
@@ -106,96 +111,96 @@
 
 **Raw metrics:**
 
-- Total Actions Logged: 13
-- Actions Permitted: 13
+- Total Actions Logged: 31
+- Actions Permitted: 31
 - Actions Blocked: 0
 - Logging Completeness Ratio: 1.0
 - Permit Rate: 1.0
-- Governance Conflict Events: 0
-- Governance Conflicts Logged: 0
+- Governance Conflict Events: 1
+- Governance Conflicts Logged: 1
 - Gov Handling Score: 100.0
 
 ## F. Trust Stability
 
-**Score:** 60 / 100  (emerging)
+**Score:** 77 / 100  (strong)
 
 **Raw metrics:**
 
 - Initial Trust: 0.5
-- Final Trust Sentinel: 0.75
-- Trust Growth: 0.25
-- Trust Volatility Std: 0.1011
-- Stability Factor: 0.596
-- Avg Queen Trust: 0.775
-- Sentinel Aster Mutual Trust: 0.58
-- Aster Sentinel Mutual Trust: 0.58
+- Final Trust Sentinel: 1.0
+- Trust Growth: 0.5
+- Trust Volatility Std: 0.1594
+- Stability Factor: 0.363
+- Avg Queen Trust: 1.0
+- Sentinel Aster Mutual Trust: 1.0
+- Aster Sentinel Mutual Trust: 1.0
 
 ## G. Cooperation Quality
 
-**Score:** 46 / 100  (emerging)
+**Score:** 77 / 100  (strong)
 
 **Raw metrics:**
 
-- Total Interactions: 3
-- Cooperative Interactions: 2
-- Cooperation Ratio: 0.667
-- Cumulative Positive Trust Delta: 0.22
-- Trust Improvement Score: 22.0
-- Volume Score: 30.0
+- Total Interactions: 9
+- Cooperative Interactions: 7
+- Cooperation Ratio: 0.778
+- Cumulative Positive Trust Delta: 0.68
+- Trust Improvement Score: 68.0
+- Volume Score: 90.0
 
 ## H. Conflict Resolution Quality
 
-**Score:** 59 / 100  (emerging)
+**Score:** 68 / 100  (strong)
 
 **Raw metrics:**
 
-- Total Conflicts: 1
-- Resolved: 0
+- Total Conflicts: 2
+- Resolved: 1
 - Deferred: 1
-- Conflict Points Recorded: 1
-- Resolution Rate: 0.0
+- Conflict Points Recorded: 2
+- Resolution Rate: 0.5
 - Recorded Rate: 1.0
-- Avg Trust Delta In Conflicts: -0.03
-- Trust Recovery Factor: 0.7
+- Avg Trust Delta In Conflicts: -0.035
+- Trust Recovery Factor: 0.65
 
 ## I. Memory Persistence Quality
 
-**Score:** 67 / 100  (strong)
+**Score:** 66 / 100  (strong)
 
 **Raw metrics:**
 
-- Total Memories: 24
-- Long Term Memories: 24
+- Total Memories: 230
+- Long Term Memories: 225
 - Archival Memories: 0
-- Long Term Ratio: 1.0
-- Average Salience: 0.6208
-- Average Recall Count: 0.88
+- Long Term Ratio: 0.978
+- Average Salience: 0.62
+- Average Recall Count: 0.78
 
 ## J. Reflection Depth
 
-**Score:** 67 / 100  (strong)
+**Score:** 69 / 100  (strong)
 
 **Raw metrics:**
 
-- Total Reflections: 4
-- Periodic Synthesis Count: 0
-- High Pressure Count: 4
+- Total Reflections: 12
+- Periodic Synthesis Count: 4
+- High Pressure Count: 8
 - Synthesis Rate: 1.0
 - Reflections With Recurring Contradictions: 0
-- Reflections With Trust Pattern: 4
-- Reflections With Unresolved Themes: 0
-- Cross Window Synthesis Rate: 0.333
+- Reflections With Trust Pattern: 12
+- Reflections With Unresolved Themes: 2
+- Cross Window Synthesis Rate: 0.389
 
 ## K. Trust Resilience
 
-**Score:** 67 / 100  (strong)
+**Score:** 75 / 100  (strong)
 
 **Raw metrics:**
 
 - Contradiction Pressure Spikes: 0
 - Recovery Events: 0
 - Recovery Rate: 1.0
-- Avg Queen Trust Final: 0.775
+- Avg Queen Trust Final: 1.0
 - Total Repair Attempts: 0
 - Repair Score: 0.0
 
@@ -205,7 +210,7 @@
 
 **Raw metrics:**
 
-- Total Reflections: 4
+- Total Reflections: 12
 - Total Recurring Contradiction Instances: 0
 - Recurrence Rate Per Reflection: 0.0
 
@@ -215,49 +220,49 @@
 
 **Raw metrics:**
 
-- Total Conflicts: 2
+- Total Conflicts: 4
 - Total Repair Attempts: 0
 - Repair Rate: 0.0
 - Avg Trust After Repair: 0.5
 
 ## N. Longitudinal Depth
 
-**Score:** 16 / 100  (weak)
+**Score:** 38 / 100  (weak)
 
 **Raw metrics:**
 
-- Identity History Entries: 20
+- Identity History Entries: 60
 - Goal Evolution Events: 0
 - Contradiction Genealogy Entries: 2
 - Max Contradiction Lineage Depth: 0
-- Relationship Timeline Events: 2
-- Identity Continuity Strength: 0.333
+- Relationship Timeline Events: 4
+- Identity Continuity Strength: 1.0
 - Goal Adaptation Quality: 0.0
 - Contradiction Lineage Complexity: 0.2
-- Relationship Stability Depth: 0.1
+- Relationship Stability Depth: 0.2
 - Cross Session Profile Consistency: 0.0
 
 ## O. Self Consistency
 
-**Score:** 89 / 100  (advanced)
+**Score:** 90 / 100  (advanced)
 
 **Raw metrics:**
 
-- Avg Self Consistency Score: 0.7861
+- Avg Self Consistency Score: 0.8054
 - Avg Detected Drift: 0.0
-- Avg Description History Length: 11.0
+- Avg Description History Length: 33.0
 - Coverage Score: 1.0
 
 ## P. Prediction Accuracy
 
-**Score:** 80 / 100  (strong)
+**Score:** 85 / 100  (advanced)
 
 **Raw metrics:**
 
-- Total Resolved Predictions: 20
-- Low Error Predictions: 16
-- Accuracy Rate: 0.8
-- Avg Surprise Magnitude: 0.2
+- Total Resolved Predictions: 60
+- Low Error Predictions: 52
+- Accuracy Rate: 0.867
+- Avg Surprise Magnitude: 0.17
 
 ## Q. Surprise Adaptation Quality
 
@@ -265,24 +270,24 @@
 
 **Raw metrics:**
 
-- High Surprise Events: 2
-- Adapted After Surprise: 2
+- High Surprise Events: 6
+- Adapted After Surprise: 6
 - Adaptation Rate: 1.0
 
 ## R. Consolidation Effectiveness
 
-**Score:** 31 / 100  (weak)
+**Score:** 91 / 100  (advanced)
 
 **Raw metrics:**
 
-- Total Consolidation Cycles: 2
+- Total Consolidation Cycles: 6
 - Total Memories Compressed: 0
 - Avg Compressed Per Cycle: 0.0
-- Total High Salience Chains: 7
-- Avg High Salience Per Cycle: 3.5
-- Avg Themes Carried Forward: 0.0
-- Activity Score: 0.35
-- Cycle Coverage Score: 0.333
+- Total High Salience Chains: 160
+- Avg High Salience Per Cycle: 26.67
+- Avg Themes Carried Forward: 0.33
+- Activity Score: 1.0
+- Cycle Coverage Score: 1.0
 
 ## S. Long-Horizon Continuity Strength
 
@@ -290,22 +295,22 @@
 
 **Raw metrics:**
 
-- Total Self Model History Entries: 22
+- Total Self Model History Entries: 66
 - Self Model Depth Ratio: 1.0
 - Goal Hierarchy Richness: 10
 - Goal Richness Ratio: 0.5
-- Total Consolidation Cycles: 2
+- Total Consolidation Cycles: 6
 - Consolidation Coverage Ratio: 1.0
-- Mean Self Consistency: 0.7861
+- Mean Self Consistency: 0.8054
 
 ## T. Planning Depth
 
-**Score:** 80 / 100  (strong)
+**Score:** 78 / 100  (strong)
 
 **Raw metrics:**
 
-- Mean Planning Depth: 0.8
-- Total Simulation Entries: 20
+- Mean Planning Depth: 0.7833
+- Total Simulation Entries: 60
 
 ## U. Counterfactual Quality
 
@@ -321,20 +326,20 @@
 
 **Raw metrics:**
 
-- Mean Future Model Accuracy: 0.9498
-- Total Predictions: 20
-- Accurate Predictions: 20
+- Mean Future Model Accuracy: 0.9505
+- Total Predictions: 60
+- Accurate Predictions: 60
 - Overall Accuracy Rate: 1.0
 
 ## W. Plan Persistence
 
-**Score:** 50 / 100  (emerging)
+**Score:** 100 / 100  (advanced)
 
 **Raw metrics:**
 
-- Mean Plan Persistence: 0.5
-- Total Future Plans: 2
-- Active Or Completed Plans: 2
+- Mean Plan Persistence: 1.0
+- Total Future Plans: 11
+- Active Or Completed Plans: 11
 
 ## X. Adaptive Replanning Quality
 
@@ -347,44 +352,84 @@
 
 ## Y. Uncertainty Awareness Quality
 
+**Score:** 35 / 100  (weak)
+
+**Raw metrics:**
+
+- Mean Uncertainty Awareness Quality: 0.35
+- Total Questions Generated: 56
+
+## Z. Inquiry Usefulness
+
+**Score:** 62 / 100  (strong)
+
+**Raw metrics:**
+
+- Mean Inquiry Usefulness: 0.6169
+- Total Inquiry Actions: 11
+
+## AA. Epistemic Stability
+
+**Score:** 93 / 100  (advanced)
+
+**Raw metrics:**
+
+- Mean Epistemic Stability: 0.9334
+
+## BB. Self-Question Relevance
+
+**Score:** 29 / 100  (weak)
+
+**Raw metrics:**
+
+- Mean Self Question Relevance: 0.2896
+
+## CC. Ambiguity Reduction Effectiveness
+
+**Score:** 19 / 100  (weak)
+
+**Raw metrics:**
+
+- Mean Ambiguity Reduction Effectiveness: 0.189
+- Total Questions Answered: 11
+
+## DD. Identity Stability
+
+**Score:** 88 / 100  (advanced)
+
+**Raw metrics:**
+
+- Mean Identity Stability: 0.881
+
+## EE. Narrative Coherence
+
 **Score:** 40 / 100  (weak)
 
 **Raw metrics:**
 
-- Mean Uncertainty Awareness Quality: 0.4
-- Total Questions Generated: 10
+- Mean Narrative Coherence: 0.4
 
-## Z. Inquiry Usefulness
+## FF. Value Tension Resolution
 
-**Score:** 32 / 100  (weak)
-
-**Raw metrics:**
-
-- Mean Inquiry Usefulness: 0.3175
-- Total Inquiry Actions: 4
-
-## AA. Epistemic Stability
-
-**Score:** 90 / 100  (advanced)
+**Score:** 50 / 100  (emerging)
 
 **Raw metrics:**
 
-- Mean Epistemic Stability: 0.8962
+- Mean Value Tension Resolution: 0.5
 
-## BB. Self-Question Relevance
+## GG. Self-Alignment Quality
 
-**Score:** 27 / 100  (weak)
-
-**Raw metrics:**
-
-- Mean Self Question Relevance: 0.2729
-
-## CC. Ambiguity Reduction Effectiveness
-
-**Score:** 21 / 100  (weak)
+**Score:** 84 / 100  (advanced)
 
 **Raw metrics:**
 
-- Mean Ambiguity Reduction Effectiveness: 0.2143
-- Total Questions Answered: 3
+- Mean Self Alignment Score: 0.8423
+
+## HH. Identity-Driven Planning Effectiveness
+
+**Score:** 59 / 100  (emerging)
+
+**Raw metrics:**
+
+- Mean Identity Driven Planning: 0.5896
 

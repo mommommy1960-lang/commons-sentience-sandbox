@@ -34,7 +34,77 @@ Commons Sentience Sandbox is a **local research platform for studying continuity
 
 ## Release History
 
-### v1.8.0 (current)
+### v1.9.0 (current)
+
+> **Grounding note:** No sentience is claimed. v1.9 increases narrative self-structure,
+> identity continuity, and sentience-like internal organisation in continuity-governed
+> simulated agents.
+
+#### Identity Pressure Module (`commons_sentience_sim/core/identity_pressure.py`) — new
+
+- `ValueTension` dataclass: persistent cross-turn tension between two values; status lifecycle `acute` → `chronic` → `resolved` / `suppressed`; occurrence counting, intensity history, mean intensity, `make_id()`, `update()`, `resolve()`, `suppress()`, `to_dict()`, `from_dict()`
+- `SelfJudgmentEntry` dataclass: structured self-evaluation with six dimensions (`alignment_with_identity`, `quality_of_action`, `plan_success`, `contradiction_recurrence`, `trust_repair_success`, `perceived_integrity`), `composite_score` property, `to_dict()`, `from_dict()`
+- `NarrativeSelf` class: running narrative self-model; `update()` recomputes `who_i_am`, `recent_behaviour_pattern`, `recurring_strengths`, `recurring_failures`, `stability_trajectory` (stabilising/drifting/uncertain), `becoming`; per-turn `summary_history` snapshots; `to_dict()`, `from_dict()`
+- `IdentityPressureSystem` class:
+  - `update()` — four-component deviation score (trust drift 35%, consistency loss 30%, contradiction accumulation 20%, trait erosion 15%); realignment pressure (0–1); `is_destabilising` flag
+  - `_record_value_conflicts()` — logs each conflict pair as a persistent `ValueTension`
+  - `should_trigger_identity_plan()` / `get_plan_trigger_reason()` — identity-driven plan generation conditions
+  - `unresolved_tensions()`, `chronic_tensions()`, `resolve_tension()` — tension access/management
+  - `to_dict()`, `from_dict()`, `apply_prior_tensions()` — serialisation and cross-run carryover
+  - Metrics: `mean_deviation_score`, `total_tensions`, `unresolved_tensions`, `chronic_tensions`, `resolved_tensions`, `suppressed_tensions`, `realignment_pressure`, `is_destabilising`
+
+#### Agent Integration (`commons_sentience_sim/core/agent.py`)
+- `Agent.identity_pressure_system` — new `IdentityPressureSystem` instance per agent (seeded with core traits)
+- `Agent.narrative_self` — new `NarrativeSelf` instance per agent (seeded with name, purpose, core traits)
+- `Agent.self_judgment_log` — list of `SelfJudgmentEntry` records
+- `Agent.run_identity_pressure_update(turn)` — recompute deviation + pressure (step 4.9)
+- `Agent.record_value_conflicts_for_identity(turn, pairs)` — feed value conflict pairs from current turn
+- `Agent.update_narrative_self(turn)` — recompute narrative model (step 9.9)
+- `Agent.record_self_judgment(turn, trigger, ...)` — produce a structured judgment entry (step 9.9)
+- `Agent.generate_identity_driven_plans(turn)` — generate plans when identity pressure conditions are met (step 9.9)
+- `Agent.to_dict()` now includes `identity_pressure_system`, `narrative_self`, `self_judgment_log`
+- `Agent.load_carryover()` now restores unresolved value tensions, narrative trajectory, and recent self-judgment entries from prior runs
+
+#### Simulation Loop (`run_sim.py`)
+- Step 4.9: identity pressure update called after value-conflict weighing; value conflict pairs fed to identity pressure system
+- Step 9.9: narrative self updated each turn; self-judgment recorded after reflections, major events, and periodic consolidation cycles; identity-driven plans generated when pressure conditions are met
+- `simulation_version` bumped to `"1.9.0"`
+- Narrative log header updated to v1.9
+
+#### World State (`commons_sentience_sim/core/world_state.py`)
+- `build_world_state()` now includes `identity_summaries` (per-agent: deviation score, pressure, trajectory, narrative summary, becoming, recent self-judgment, mean judgment score) and `unresolved_value_tensions`
+- `schema_version` bumped to `"1.9.0"`
+
+#### v1.9 Evaluation Metrics (`evaluation.py`)
+- `_score_identity_stability()` — DD. Identity Stability
+- `_score_narrative_coherence()` — EE. Narrative Coherence
+- `_score_value_tension_resolution()` — FF. Value Tension Resolution
+- `_score_self_alignment_quality()` — GG. Self-Alignment Quality
+- `_score_identity_driven_planning()` — HH. Identity-Driven Planning Effectiveness
+- All 5 new categories added to `evaluate_session()` (34 categories total)
+- `CATEGORY_NAMES` in `write_evaluation_summary()` updated to include DD–HH
+
+#### Dashboard (`dashboard.py`)
+- New **🪞 Identity / Narrative v1.9** tab (18th tab):
+  - Identity deviation score over time (line chart)
+  - Realignment pressure over time (line chart)
+  - Deviation history table (drill-down)
+  - Narrative self-model: who I am, behaviour pattern, strengths, failures, trajectory, becoming
+  - Narrative history table with trajectory/consistency per turn
+  - Value tension table with status filter (acute/chronic/resolved/suppressed)
+  - Chronic tension warning cards
+  - Self-judgment log: composite score trend, dimension breakdown of most recent entry, full log table
+  - v1.9 evaluation metric summary (DD–HH) with raw values
+- Sidebar and header version labels updated to v1.9
+
+#### Validation Runs
+- 10-turn test: all new subsystems populate correctly; evaluation includes DD–HH metrics
+- 50-turn test: narrative coherence grows with turn count; identity stability high with stable trust
+- continue-from test: value tensions, narrative trajectory/becoming, and last 3 self-judgment entries carry forward across run boundary
+
+---
+
+### v1.8.0
 
 > **Grounding note:** No sentience is claimed. v1.8 increases introspective structure,
 > uncertainty handling, and sentience-like continuity in continuity-governed simulated

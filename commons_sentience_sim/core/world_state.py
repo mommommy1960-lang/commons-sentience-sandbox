@@ -249,8 +249,41 @@ def build_world_state(
                 ][-5:],  # carry last 5 unanswered
             }
 
+    # ── v1.9 Identity pressure + narrative summaries ─────────────────────────
+    identity_summaries: Dict[str, dict] = {}
+    unresolved_value_tensions: List[dict] = []
+    for agent_ref in (sentinel, aster):
+        ips = getattr(agent_ref, "identity_pressure_system", None)
+        ns = getattr(agent_ref, "narrative_self", None)
+        sj_log = getattr(agent_ref, "self_judgment_log", [])
+        agent_name = agent_ref.identity.get("name", "unknown")
+        if ips is not None:
+            identity_summaries[agent_name] = {
+                "deviation_score": ips.deviation_score,
+                "realignment_pressure": ips.realignment_pressure,
+                "is_destabilising": ips.is_destabilising,
+                "chronic_tensions": len(ips.chronic_tensions()),
+                "unresolved_tensions": len(ips.unresolved_tensions()),
+                "narrative_summary": ns.current_summary if ns else "",
+                "stability_trajectory": ns.stability_trajectory if ns else "unknown",
+                "becoming": ns.becoming if ns else "",
+                "recent_self_judgment": (
+                    sj_log[-1].to_dict() if sj_log else {}
+                ),
+                "mean_self_judgment_score": (
+                    round(
+                        sum(j.composite_score for j in sj_log) / len(sj_log), 4
+                    ) if sj_log else 0.0
+                ),
+            }
+            # Collect unresolved tensions from both agents
+            for t in ips.unresolved_tensions():
+                td = t.to_dict()
+                td["agent"] = agent_name
+                unresolved_value_tensions.append(td)
+
     return {
-        "schema_version": "1.8.0",
+        "schema_version": "1.9.0",
         "run_label": run_label,
         "saved_at": datetime.now().isoformat(),
         "total_turns_at_save": turn,
@@ -265,6 +298,9 @@ def build_world_state(
         "unresolved_themes": unresolved_themes,
         "active_plans": active_plans,
         "uncertainty_summaries": uncertainty_summaries,
+        # v1.9
+        "identity_summaries": identity_summaries,
+        "unresolved_value_tensions": unresolved_value_tensions,
     }
 
 

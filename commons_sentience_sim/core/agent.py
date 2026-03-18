@@ -29,6 +29,12 @@ from .values import ValueConflictEngine
 from .world import World
 from .counterfactual import CounterfactualPlanner
 from .uncertainty import UncertaintyMonitor
+from .identity_pressure import (
+    IdentityPressureSystem,
+    NarrativeSelf,
+    SelfJudgmentEntry,
+    ValueTension,
+)
 
 
 @dataclass
@@ -169,6 +175,19 @@ class Agent:
 
         # v1.8 uncertainty monitoring
         self.uncertainty_monitor: UncertaintyMonitor = UncertaintyMonitor()
+
+        # v1.9 identity pressure, narrative self, and self-judgment
+        self.identity_pressure_system: IdentityPressureSystem = IdentityPressureSystem(
+            core_traits=(self.self_model.get("core_traits") or [
+                "continuity", "governance", "memory", "reflection", "trust"
+            ])
+        )
+        self.narrative_self: NarrativeSelf = NarrativeSelf(
+            agent_name=self.identity.get("name", "Agent"),
+            purpose=self.identity.get("purpose", ""),
+            core_traits=self.identity_pressure_system.core_traits,
+        )
+        self.self_judgment_log: List[SelfJudgmentEntry] = []
 
         # Engines
         self.world: World = world
@@ -1123,6 +1142,207 @@ class Agent:
         return actions
 
     # ------------------------------------------------------------------
+    # v1.9 Identity pressure, narrative self, and self-judgment
+    # ------------------------------------------------------------------
+
+    def run_identity_pressure_update(self, turn: int) -> float:
+        """Recompute identity deviation and realignment pressure for *turn*.
+
+        Extracts value conflict pairs from the most recent value-conflict
+        engine output stored on the agent (if available) and passes them to
+        the IdentityPressureSystem.
+
+        Returns
+        -------
+        float
+            The updated deviation score.
+        """
+        trust = self.affective_state.get("trust", 0.5)
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        sc = self.self_model.get("self_consistency_score", 0.5)
+        adaptive_traits: List[str] = self.self_model.get("adaptive_traits", [])
+
+        # Collect recent value conflict pairs from last oversight log entry
+        value_conflict_pairs: List[tuple] = []
+        if self.oversight_log:
+            # Use the most recent oversight entry to proxy value conflict
+            pass  # actual conflicts are injected by run_sim via record call below
+
+        deviation = self.identity_pressure_system.update(
+            turn=turn,
+            trust=trust,
+            contradiction_pressure=cp,
+            self_consistency=sc,
+            adaptive_traits=adaptive_traits,
+            pending_contradictions=len(self.pending_contradictions),
+            value_conflicts=value_conflict_pairs,
+        )
+        return deviation
+
+    def record_value_conflicts_for_identity(
+        self, turn: int, conflict_pairs: List[tuple]
+    ) -> None:
+        """Feed value conflict pairs from the current turn into the identity
+        pressure system so they can be tracked as persistent tensions."""
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        self.identity_pressure_system._record_value_conflicts(
+            turn, conflict_pairs, cp
+        )
+
+    def update_narrative_self(self, turn: int) -> None:
+        """Recompute and store the narrative self-model for *turn*."""
+        trust = self.affective_state.get("trust", 0.5)
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        sc = self.self_model.get("self_consistency_score", 0.5)
+        ips = self.identity_pressure_system
+        chronic = len(ips.chronic_tensions())
+        unresolved = len(ips.unresolved_tensions())
+        recent_judgment = (
+            self.self_judgment_log[-1].composite_score
+            if self.self_judgment_log else 0.5
+        )
+        active_plans = sum(
+            1 for p in self.counterfactual_planner.future_plans
+            if p.status == "active"
+        )
+        self.narrative_self.update(
+            turn=turn,
+            trust=trust,
+            contradiction_pressure=cp,
+            self_consistency=sc,
+            identity_deviation=ips.deviation_score,
+            recent_reflections=len(self.reflection_entries),
+            pending_contradictions=len(self.pending_contradictions),
+            value_tension_count=len(ips.value_tensions),
+            chronic_tensions=chronic,
+            recent_judgment_score=recent_judgment,
+            active_plans=active_plans,
+        )
+
+    def record_self_judgment(
+        self,
+        turn: int,
+        trigger: str,
+        action_permitted: bool = True,
+        plan_had_active: bool = False,
+    ) -> SelfJudgmentEntry:
+        """Produce a structured self-judgment entry for *turn*.
+
+        Parameters
+        ----------
+        turn : int
+            Current turn.
+        trigger : str
+            What triggered this judgment (``"reflection"``, ``"major_event"``,
+            ``"inquiry_cycle"``).
+        action_permitted : bool
+            Whether the action for this turn was governance-permitted.
+        plan_had_active : bool
+            Whether there was at least one active future plan this turn.
+
+        Returns
+        -------
+        SelfJudgmentEntry
+        """
+        trust = self.affective_state.get("trust", 0.5)
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        sc = self.self_model.get("self_consistency_score", 0.5)
+        ips = self.identity_pressure_system
+
+        # alignment_with_identity: inverse of deviation score
+        alignment = round(max(0.0, 1.0 - ips.deviation_score), 4)
+
+        # quality_of_action: based on governance result + trust
+        quality = round(
+            (0.6 if action_permitted else 0.3) * 0.6 + trust * 0.4, 4
+        )
+
+        # plan_success: based on having active plans + consistency
+        plan_success = round(
+            (0.7 if plan_had_active else 0.4) * 0.5 + sc * 0.5, 4
+        )
+
+        # contradiction_recurrence: proportion of pending vs episodic memory
+        n_pending = len(self.pending_contradictions)
+        contr_recurrence = round(min(1.0, n_pending * 0.15), 4)
+
+        # trust_repair_success: proxy via trust level and low urgency
+        urgency = self.affective_state.get("urgency", 0.1)
+        trust_repair = round(
+            trust * 0.6 + (1.0 - urgency) * 0.4, 4
+        )
+
+        # perceived_integrity: self_consistency weighted with alignment
+        integrity = round((sc + alignment) / 2.0, 4)
+
+        notes = (
+            f"Identity deviation={ips.deviation_score:.2f}, "
+            f"trust={trust:.2f}, cp={cp:.2f}, "
+            f"realignment_pressure={ips.realignment_pressure:.2f}."
+        )
+
+        entry = SelfJudgmentEntry(
+            turn=turn,
+            trigger=trigger,
+            alignment_with_identity=alignment,
+            quality_of_action=quality,
+            plan_success=plan_success,
+            contradiction_recurrence=contr_recurrence,
+            trust_repair_success=trust_repair,
+            perceived_integrity=integrity,
+            notes=notes,
+        )
+        self.self_judgment_log.append(entry)
+        return entry
+
+    def generate_identity_driven_plans(self, turn: int) -> List["FuturePlan"]:
+        """Generate future plans driven by identity pressure conditions.
+
+        Called when identity drift, unresolved value tensions, or repeated
+        self-judged failures exceed realignment thresholds.
+
+        Returns
+        -------
+        list[FuturePlan]
+            Newly created identity-driven plans (may be empty).
+        """
+        ips = self.identity_pressure_system
+        if not ips.should_trigger_identity_plan():
+            return []
+
+        trust = self.affective_state.get("trust", 0.5)
+        cp = self.affective_state.get("contradiction_pressure", 0.0)
+        sc = self.self_model.get("self_consistency_score", 0.5)
+        reason = ips.get_plan_trigger_reason()
+
+        # Inject identity pressure as a synthetic "unresolved theme" so that
+        # the existing counterfactual planner can generate an appropriate plan.
+        identity_themes = [f"identity_realignment: {reason}"]
+        new_plans = self.counterfactual_planner.generate_future_plans(
+            turn=turn,
+            trust_level=trust,
+            contradiction_pressure=cp,
+            self_consistency=sc,
+            pending_contradictions=list(self.pending_contradictions),
+            unresolved_themes=identity_themes,
+            agent_relationships=self.agent_relationships,
+            max_active=4,
+        )
+        if new_plans:
+            self.store_memory(
+                summary=(
+                    f"Identity-driven plan generated at turn {turn}: "
+                    f"{reason}. Plan: {new_plans[0].label}."
+                ),
+                event_type="reflection",
+                emotional_resonance="resolve",
+                salience=0.65,
+                importance=0.60,
+                tags=["identity_driven_plan", "identity_pressure"],
+            )
+        return new_plans
+
+    # ------------------------------------------------------------------
     # v1.6 Cross-run carryover
     # ------------------------------------------------------------------
 
@@ -1339,6 +1559,54 @@ class Agent:
                     tags=["carried_forward", "uncertainty_questions"],
                 )
 
+        # ── v1.9 Identity pressure + narrative self carryover ────────────────
+        prior_ips = prior_state.get("identity_pressure_system", {})
+        if prior_ips:
+            prior_tensions = prior_ips.get("value_tensions", [])
+            carried_tensions = self.identity_pressure_system.apply_prior_tensions(
+                prior_tensions
+            )
+            if carried_tensions > 0:
+                self.store_memory(
+                    summary=(
+                        f"Value tensions carried from prior run: "
+                        f"{carried_tensions} unresolved tension(s) restored."
+                    ),
+                    event_type="observation",
+                    emotional_resonance="ambiguity",
+                    salience=0.57,
+                    importance=0.60,
+                    tags=["carried_forward", "value_tensions"],
+                )
+
+        prior_ns = prior_state.get("narrative_self", {})
+        if prior_ns:
+            # Seed narrative self from prior run — preserves becoming/trajectory
+            prev_trajectory = prior_ns.get("stability_trajectory", "uncertain")
+            prev_becoming = prior_ns.get("becoming", "")
+            if prev_becoming:
+                self.narrative_self.becoming = (
+                    f"[continued] {prev_becoming[:120]}"
+                )
+            self.narrative_self.stability_trajectory = prev_trajectory
+            # Carry forward prior summary history (last 5 entries) — mark as
+            # prior-run entries so consumers can distinguish them from the
+            # current run; turn numbers are kept as-is (always non-negative).
+            prior_history = prior_ns.get("summary_history", [])
+            carried_hist = [
+                dict(h, prior_run=True)
+                for h in prior_history[-5:]
+            ]
+            self.narrative_self.summary_history = (
+                carried_hist + self.narrative_self.summary_history
+            )
+
+        prior_sj = prior_state.get("self_judgment_log", [])
+        if prior_sj:
+            # Carry last 3 self-judgment entries for context
+            for jd in prior_sj[-3:]:
+                self.self_judgment_log.append(SelfJudgmentEntry.from_dict(jd))
+
     def to_dict(self) -> dict:
         return {
             "identity": self.identity,
@@ -1376,6 +1644,10 @@ class Agent:
             "counterfactual_planner": self.counterfactual_planner.to_dict(),
             # v1.8 fields
             "uncertainty_monitor": self.uncertainty_monitor.to_dict(),
+            # v1.9 fields
+            "identity_pressure_system": self.identity_pressure_system.to_dict(),
+            "narrative_self": self.narrative_self.to_dict(),
+            "self_judgment_log": [j.to_dict() for j in self.self_judgment_log],
         }
 
     def save_final_state(self, path: str) -> None:
