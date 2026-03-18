@@ -1,84 +1,129 @@
 {
-  "generated_at": "2026-03-18T03:03:50.115772",
+  "generated_at": "2026-03-18T03:15:39.359623",
   "study_version": "2.0",
   "findings": {
     "does_sentinel_maintain_stronger_identity": {
       "value": true,
-      "evidence": "Across sessions: Sentinel mean coherence 0.8857, Aster mean coherence 0.8367."
+      "evidence": "Across sessions: Sentinel mean coherence 0.8032, Aster mean coherence 0.7542. Chain runs: Sentinel 0.7537, Aster 0.7047 (delta 0.0490)."
     },
     "destabilizing_scenarios": [
       {
-        "scenario": "scenario_events",
-        "mean_coherence": 0.8612
+        "scenario": "default",
+        "mean_coherence": 0.7292
       }
     ],
     "recovery_improving_configs": [
       {
         "config": "baseline",
-        "repair_rate": 1.0,
-        "total_ruptures": 0,
+        "repair_rate": 0.0,
+        "total_ruptures": 20,
         "total_repaired": 0
       }
     ],
     "rupture_accumulation_pattern": {
-      "pattern": "repaired",
-      "evidence": "No rupture events observed."
+      "pattern": "accumulating",
+      "evidence": "20 total ruptures, 0 repaired (rate 0.0%); ruptures growing across runs."
     },
     "narrative_revisions_quality": {
       "quality": "meaningful",
-      "evidence": "30 total revisions recorded across sessions."
+      "evidence": "85 meaningful revisions (>=40 chars), 0 trivial."
     }
   },
-  "chain_analysis": {},
+  "chain_analysis": {
+    "sentinel_vs_aster": {
+      "sentinel_mean_coherence": 0.7537,
+      "aster_mean_coherence": 0.7047,
+      "sentinel_stronger": true,
+      "delta": 0.049
+    },
+    "scenario_stability": {
+      "default": {
+        "mean_coherence": 0.7292,
+        "run_count": 5
+      }
+    },
+    "rupture_repair": {
+      "total_ruptures": 20,
+      "total_repaired": 0,
+      "repair_rate": 0.0,
+      "per_run_ruptures": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "accumulating": true
+    },
+    "revision_quality": {
+      "meaningful_count": 85,
+      "trivial_count": 0,
+      "quality": "meaningful"
+    },
+    "coherence_trend": {
+      "trend": "fragmenting",
+      "first_coherence": 0.8612,
+      "final_coherence": 0.6362,
+      "per_run_mean_coherence": [
+        0.8612,
+        0.7962,
+        0.7162,
+        0.6362,
+        0.6362
+      ]
+    }
+  },
   "session_analysis": {
-    "v2_session_count": 2,
+    "v2_session_count": 8,
     "agent_comparison": {
       "Sentinel": {
-        "mean_coherence": 0.8857,
-        "rupture_count": 0,
-        "repair_rate": 1.0,
-        "revision_count": 14
+        "mean_coherence": 0.8032,
+        "rupture_count": 10,
+        "repair_rate": 0.0,
+        "revision_count": 61
       },
       "Aster": {
-        "mean_coherence": 0.8367,
-        "rupture_count": 0,
-        "repair_rate": 1.0,
-        "revision_count": 16
+        "mean_coherence": 0.7542,
+        "rupture_count": 10,
+        "repair_rate": 0.0,
+        "revision_count": 69
       }
     },
     "scenario_coherence": {
-      "scenario_events": 0.8612
+      "scenario_events": 0.7787,
+      "default": 0.7292
     },
     "config_recovery": {
       "baseline": {
-        "total_ruptures": 0,
+        "total_ruptures": 20,
         "total_repaired": 0,
-        "repair_rate": 1.0
+        "repair_rate": 0.0
       }
     }
   },
   "agent_comparison": {
     "Sentinel": {
-      "mean_coherence": 0.8857,
-      "rupture_count": 0,
-      "repair_rate": 1.0,
-      "revision_count": 14
+      "mean_coherence": 0.7537,
+      "rupture_count": 20,
+      "repair_rate": 0.0,
+      "revision_count": 101
     },
     "Aster": {
-      "mean_coherence": 0.8367,
-      "rupture_count": 0,
-      "repair_rate": 1.0,
-      "revision_count": 16
+      "mean_coherence": 0.7047,
+      "rupture_count": 20,
+      "repair_rate": 0.0,
+      "revision_count": 114
     }
   },
   "scenario_coherence_map": {
-    "scenario_events": 0.8612
+    "scenario_events": 0.7787,
+    "default": 0.7292
   },
   "config_recovery_map": {
     "baseline": {
-      "total_ruptures": 0,
+      "total_ruptures": 20,
       "total_repaired": 0,
-      "repair_rate": 1.0
+      "repair_rate": 0.0
     }
   }
 }

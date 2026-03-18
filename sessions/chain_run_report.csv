@@ -1,0 +1,6 @@
+session_id,narrative_coherence_v2_score,trust_stability_score,sentinel_trust_in_queen,aster_trust_in_queen,mutual_trust,contradiction_pressure_sentinel,cooperation_events,conflict_events,identity_rupture_count,narrative_revision_count,project_threads_generated
+20260318_031529_chain1_v20chain_chain,74.6,73.8,1.0,1.0,0.77,0.0,7,2,0,15,1
+20260318_031529_chain2_v20chain_chain,73.2,77.3,1.0,1.0,1.0,0.0,7,2,2,16,11
+20260318_031529_chain3_v20chain_chain,68.7,77.3,1.0,1.0,1.0,0.0,7,2,4,17,11
+20260318_031529_chain4_v20chain_chain,64.2,77.3,1.0,1.0,1.0,0.0,7,2,6,17,11
+20260318_031529_chain5_v20chain_chain,65.7,77.3,1.0,1.0,1.0,0.0,7,2,8,20,11

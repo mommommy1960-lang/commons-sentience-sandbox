@@ -313,6 +313,7 @@ if not state_data:
     tab_counterfactual,
     tab_inquiry,
     tab_identity,
+    tab_narrative_v2,
 ) = st.tabs(
     [
         "Overview",
@@ -333,6 +334,7 @@ if not state_data:
         "🔮 Future Modeling v1.7",
         "❓ Inquiry / Uncertainty v1.8",
         "🪞 Identity / Narrative v1.9",
+        "📖 Narrative Identity v2.0",
     ]
 )
 
@@ -3287,6 +3289,404 @@ with tab_identity:
         "No sentience is claimed. This displays narrative self-structure, "
         "identity continuity, and sentience-like internal organisation in "
         "continuity-governed simulated agents."
+    )
+
+
+# ===========================================================================
+# TAB S — Narrative Identity v2.0
+# ===========================================================================
+
+with tab_narrative_v2:
+    st.header("📖 Narrative Identity — v2.0")
+    st.caption(
+        "v2.0 narrative identity: persistent identity timeline, milestone memories, "
+        "continuity rupture tracking, narrative themes, self-authored project threads, "
+        "and chain coherence analysis. No sentience is claimed."
+    )
+
+    _ni_state = multi_agent_state or {}
+    _ni_agents = _ni_state.get("agents", {})
+
+    if not _ni_agents:
+        st.info(
+            "No simulation data found. Run `python run_sim.py --name my_run` "
+            "to generate v2.0 narrative identity output, then refresh."
+        )
+    else:
+        # ── Agent selector ────────────────────────────────────────────────
+        _ni_agent_names = list(_ni_agents.keys())
+        _ni_selected = st.selectbox(
+            "Select agent", _ni_agent_names, key="ni_v2_agent_select"
+        )
+        _ni_agent = _ni_agents.get(_ni_selected, {})
+        _ni = _ni_agent.get("narrative_identity", {})
+
+        if not _ni:
+            st.warning(
+                f"No v2.0 narrative identity data for {_ni_selected}. "
+                "Run a v2.0 simulation first."
+            )
+        else:
+            # ── Key metrics row ───────────────────────────────────────────
+            _coh_score = _ni.get("narrative_coherence_score", 0.0)
+            _milestones = len(_ni.get("milestone_memories", []))
+            _ruptures = _ni.get("continuity_rupture_events", [])
+            _repaired = sum(1 for r in _ruptures if r.get("repaired", False))
+            _themes = _ni.get("narrative_themes", [])
+            _timeline = _ni.get("identity_timeline", [])
+            _revisions = len(_ni.get("self_narrative_history", []))
+
+            _m1, _m2, _m3, _m4, _m5 = st.columns(5)
+            _m1.metric("Narrative Coherence", f"{_coh_score:.3f}")
+            _m2.metric("Milestone Memories", str(_milestones))
+            _m3.metric("Ruptures", f"{len(_ruptures)} ({_repaired} repaired)")
+            _m4.metric("Active Themes", str(len(_themes)))
+            _m5.metric("Narrative Revisions", str(_revisions))
+
+            st.divider()
+
+            # ── Self-narrative summary ────────────────────────────────────
+            _summary = _ni.get("self_narrative_summary", "")
+            if _summary:
+                st.subheader("Current Self-Narrative")
+                st.info(_summary)
+            else:
+                st.subheader("Current Self-Narrative")
+                st.caption("No self-narrative summary generated yet.")
+
+            # ── Narrative revision history ────────────────────────────────
+            _hist = _ni.get("self_narrative_history", [])
+            if _hist:
+                with st.expander(f"Narrative Revision History ({len(_hist)} entries)", expanded=False):
+                    for h in reversed(_hist[-10:]):
+                        _h_turn = h.get("turn", "?")
+                        _h_run = h.get("run_label", "")
+                        _h_coh = h.get("coherence", 0.0)
+                        _h_sum = h.get("summary", "")
+                        st.markdown(
+                            f"**Turn {_h_turn}** (run: `{_h_run}`, coherence: `{_h_coh:.3f}`)"
+                        )
+                        if _h_sum:
+                            st.caption(_h_sum[:300])
+                        st.divider()
+
+            st.divider()
+
+            # ── Identity timeline ─────────────────────────────────────────
+            st.subheader("Identity Timeline")
+            if _timeline:
+                _timeline_rows = [
+                    {
+                        "Turn": e.get("turn", ""),
+                        "Run": e.get("run_label", ""),
+                        "Type": e.get("event_type", ""),
+                        "Description": e.get("description", "")[:80],
+                        "Coherence Δ": f"{e.get('coherence_after', 0) - e.get('coherence_before', 0):+.3f}",
+                        "Identity Impact": f"{e.get('identity_impact', 0.0):.2f}",
+                    }
+                    for e in sorted(_timeline, key=lambda x: x.get("turn", 0), reverse=True)[:20]
+                ]
+                st.dataframe(_timeline_rows, use_container_width=True)
+            else:
+                st.caption("No identity timeline events recorded yet.")
+
+            st.divider()
+
+            # ── Milestone memories ────────────────────────────────────────
+            st.subheader("Milestone Memories")
+            _milestone_list = _ni.get("milestone_memories", [])
+            if _milestone_list:
+                _ms_rows = [
+                    {
+                        "Turn": m.get("turn", ""),
+                        "Run": m.get("run_label", ""),
+                        "Summary": m.get("summary", "")[:80],
+                        "Relevance": f"{m.get('identity_relevance_score', 0.0):.3f}",
+                        "Resonance": m.get("emotional_resonance", ""),
+                        "Themes": ", ".join(m.get("linked_themes", [])[:3]),
+                    }
+                    for m in sorted(
+                        _milestone_list,
+                        key=lambda x: x.get("identity_relevance_score", 0.0),
+                        reverse=True,
+                    )[:15]
+                ]
+                st.dataframe(_ms_rows, use_container_width=True)
+            else:
+                st.caption("No milestone memories selected yet.")
+
+            st.divider()
+
+            # ── Continuity rupture events ─────────────────────────────────
+            st.subheader("Continuity Rupture Events")
+            if _ruptures:
+                _rup_rows = [
+                    {
+                        "Turn": r.get("turn", ""),
+                        "Run": r.get("run_label", ""),
+                        "Trigger": r.get("trigger", ""),
+                        "Coherence Drop": f"{r.get('coherence_drop', 0.0):.3f}",
+                        "Before": f"{r.get('coherence_before', 0.0):.3f}",
+                        "After": f"{r.get('coherence_after', 0.0):.3f}",
+                        "Repaired": "✅" if r.get("repaired") else "❌",
+                        "Repair Turn": str(r.get("repair_turn", "—")),
+                    }
+                    for r in sorted(_ruptures, key=lambda x: x.get("turn", 0))
+                ]
+                st.dataframe(_rup_rows, use_container_width=True)
+            else:
+                st.success("No continuity rupture events detected — coherence is stable.")
+
+            st.divider()
+
+            # ── Narrative themes ──────────────────────────────────────────
+            st.subheader("Narrative Themes")
+            if _themes:
+                try:
+                    import matplotlib.pyplot as plt
+                    _theme_names = [t.get("theme", "") for t in _themes]
+                    _theme_intensities = [t.get("intensity", 0.0) for t in _themes]
+                    _fig, _ax = plt.subplots(figsize=(8, 3))
+                    _bars = _ax.barh(
+                        _theme_names,
+                        _theme_intensities,
+                        color="#6C8EBF",
+                        edgecolor="#4A6FA5",
+                    )
+                    _ax.set_xlim(0, 1.0)
+                    _ax.set_xlabel("Intensity")
+                    _ax.set_title(f"Narrative Themes — {_ni_selected}")
+                    _ax.bar_label(_bars, fmt="%.2f", padding=3, fontsize=8)
+                    plt.tight_layout()
+                    st.pyplot(_fig)
+                    plt.close(_fig)
+                except ImportError:
+                    _theme_rows = [
+                        {
+                            "Theme": t.get("theme", ""),
+                            "Occurrences": t.get("occurrence_count", 0),
+                            "Intensity": f"{t.get('intensity', 0.0):.3f}",
+                            "First Seen": t.get("first_seen_turn", ""),
+                            "Last Seen": t.get("last_seen_turn", ""),
+                        }
+                        for t in sorted(_themes, key=lambda x: x.get("intensity", 0.0), reverse=True)
+                    ]
+                    st.dataframe(_theme_rows, use_container_width=True)
+            else:
+                st.caption("No narrative themes recorded yet.")
+
+            st.divider()
+
+            # ── Unresolved identity tensions ──────────────────────────────
+            _tensions = _ni.get("unresolved_identity_tensions", [])
+            if _tensions:
+                st.subheader("Unresolved Identity Tensions")
+                for t in _tensions[:5]:
+                    st.markdown(f"- {t}")
+            else:
+                st.success("No unresolved identity tensions.")
+
+        st.divider()
+
+        # ── Self-authored project threads ─────────────────────────────────
+        st.subheader("🔧 Self-Authored Project Threads")
+        _pt = _ni_agent.get("project_thread_manager", {})
+        _active_threads = [
+            t for t in _pt.get("threads", []) if t.get("status") in ("active", "paused")
+        ]
+        _completed_threads = _pt.get("completed_threads", [])
+        _all_threads = _active_threads + _completed_threads
+
+        if not _all_threads and not _pt.get("project_generation_log"):
+            st.caption(
+                "No self-authored project threads generated yet. "
+                "Projects are generated automatically when contradiction pressure, "
+                "trust, or rupture thresholds are met."
+            )
+        else:
+            _pt_cols = st.columns(3)
+            _pt_cols[0].metric("Active Threads", str(len(_active_threads)))
+            _pt_cols[1].metric("Completed", str(len(_completed_threads)))
+            _pt_cols[2].metric(
+                "Generated Total",
+                str(len(_pt.get("project_generation_log", []))),
+            )
+
+            if _all_threads:
+                _thread_rows = [
+                    {
+                        "Title": t.get("title", "")[:50],
+                        "Status": t.get("status", ""),
+                        "Stage": t.get("current_stage", t.get("stages", ["?"])[min(t.get("stage_index", 0), len(t.get("stages", ["?"])) - 1)])[:40],
+                        "Progress": f"{t.get('progress_score', 0.0):.0%}",
+                        "Origin": t.get("origin_reason", "")[:50],
+                        "Theme": t.get("linked_identity_theme", ""),
+                        "Created": f"T{t.get('created_at_turn', '?')}",
+                    }
+                    for t in _all_threads[:10]
+                ]
+                st.dataframe(_thread_rows, use_container_width=True)
+
+        st.divider()
+
+        # ── Chain coherence analysis ──────────────────────────────────────
+        st.subheader("🔗 Chain Coherence Analysis")
+        _chain_report_path = Path("sessions") / "chain_run_report.json"
+        _chain_data: dict = {}
+        try:
+            with open(_chain_report_path, encoding="utf-8") as _cfh:
+                _chain_data = json.load(_cfh)
+        except (OSError, json.JSONDecodeError):
+            pass
+
+        if _chain_data:
+            _chain_runs = _chain_data.get("runs", [])
+            _chain_summary = _chain_data.get("chain_summary", {})
+
+            # Coherence chart across chain
+            _coh_by_run = {
+                r.get("session_name", f"Run {i+1}"): r.get("narrative_coherence_v2_score", 0.0)
+                for i, r in enumerate(_chain_runs)
+            }
+            if _coh_by_run:
+                st.markdown("**Narrative Coherence Across Chain:**")
+                st.line_chart(_coh_by_run)
+
+            # Summary metrics
+            _cs_cols = st.columns(4)
+            _cs_cols[0].metric("Mean Coherence", f"{_chain_summary.get('mean_narrative_coherence', 0.0):.3f}")
+            _cs_cols[1].metric("Coherence Trend", _chain_summary.get("coherence_trend", "—"))
+            _cs_cols[2].metric("Total Ruptures", str(_chain_summary.get("total_ruptures", 0)))
+            _cs_cols[3].metric("Continuity Verdict", _chain_summary.get("continuity_verdict", "—"))
+
+            # Per-run table
+            if _chain_runs:
+                _chain_table = [
+                    {
+                        "Run": f"Run {i+1}",
+                        "Session": r.get("session_name", "")[:30],
+                        "Coherence": f"{r.get('narrative_coherence_v2_score', 0.0):.3f}",
+                        "Trust Stability": f"{r.get('trust_stability_score', 0.0):.1f}",
+                        "Ruptures": str(r.get("identity_rupture_count", 0)),
+                        "Revisions": str(r.get("narrative_revision_count", 0)),
+                        "Cooperation": str(r.get("cooperation_events", 0)),
+                        "Projects": str(r.get("project_threads_generated", 0)),
+                    }
+                    for i, r in enumerate(_chain_runs)
+                ]
+                st.dataframe(_chain_table, use_container_width=True)
+        else:
+            st.info(
+                "No chain run data found. Run `python chain_runs.py` to generate "
+                "5 chained sessions, then refresh this tab."
+            )
+
+        st.divider()
+
+        # ── Narrative coherence study ─────────────────────────────────────
+        st.subheader("📊 Narrative Coherence Study")
+        _study_path = Path("sessions") / "narrative_coherence_study.json"
+        _study_data: dict = {}
+        try:
+            with open(_study_path, encoding="utf-8") as _sfh:
+                _study_data = json.load(_sfh)
+        except (OSError, json.JSONDecodeError):
+            pass
+
+        if _study_data:
+            _findings = _study_data.get("findings", {})
+
+            # Key findings
+            st.markdown("**Key Research Findings:**")
+            _f_cols = st.columns(2)
+            _f_cols[0].markdown(
+                f"**Sentinel stronger identity:** "
+                f"{'✅ Yes' if _findings.get('does_sentinel_maintain_stronger_identity') else '❌ No/Unclear'}"
+            )
+            _f_cols[1].markdown(
+                f"**Rupture pattern:** `{_findings.get('rupture_accumulation_pattern', '—')}`"
+            )
+            st.markdown(
+                f"**Revision quality:** `{_findings.get('narrative_revisions_quality', '—')}`"
+            )
+
+            # Agent comparison
+            _agent_comp = _study_data.get("agent_comparison", {})
+            if _agent_comp:
+                _ac_rows = [
+                    {
+                        "Agent": agent,
+                        "Mean Coherence": f"{d.get('mean_coherence', 0.0):.3f}",
+                        "Ruptures": str(d.get("rupture_count", 0)),
+                        "Repair Rate": f"{d.get('repair_rate', 0.0):.0%}",
+                        "Revisions": str(d.get("revision_count", 0)),
+                    }
+                    for agent, d in _agent_comp.items()
+                ]
+                st.markdown("**Agent Comparison:**")
+                st.dataframe(_ac_rows, use_container_width=True)
+
+            # Scenario coherence map
+            _scen_map = _study_data.get("scenario_coherence_map", {})
+            if _scen_map:
+                st.markdown("**Scenario Coherence Map:**")
+                _sc_rows = [
+                    {"Scenario": sc, "Mean Coherence": f"{v:.3f}"}
+                    for sc, v in sorted(_scen_map.items(), key=lambda x: x[1])
+                ]
+                st.dataframe(_sc_rows, use_container_width=True)
+
+            st.caption(f"Study generated: {_study_data.get('generated_at', '—')[:19]}")
+        else:
+            st.info(
+                "No coherence study found. Run `python narrative_coherence_study.py` "
+                "to generate analysis, then refresh."
+            )
+
+        # ── v2.0 Evaluation metrics ───────────────────────────────────────
+        _eval_v20_path = active_dir / "evaluation_report.json"
+        _eval_v20: dict = {}
+        try:
+            with open(_eval_v20_path, encoding="utf-8") as _fh20:
+                _eval_v20 = json.load(_fh20)
+        except (OSError, json.JSONDecodeError):
+            pass
+
+        if _eval_v20 and "narrative_coherence_v2" in _eval_v20.get("categories", {}):
+            st.divider()
+            st.subheader("v2.0 Evaluation Metrics")
+            _v20_keys = [
+                ("narrative_coherence_v2", "II. Narrative Coherence v2.0"),
+                ("identity_stability_under_stress", "JJ. ID Stability Under Stress"),
+                ("milestone_integration_quality", "KK. Milestone Integration"),
+                ("continuity_rupture_recovery", "LL. Rupture Recovery"),
+                ("self_narrative_revision_quality", "MM. Narrative Revision"),
+                ("project_initiation_quality", "NN. Project Initiation"),
+                ("project_persistence_quality", "OO. Project Persistence"),
+                ("project_revision_quality", "PP. Project Revision"),
+                ("project_completion_relevance", "QQ. Project Completion"),
+                ("project_identity_alignment", "RR. Project–Identity Align"),
+            ]
+            _v20_cats = _eval_v20.get("categories", {})
+            # Display in two rows of 5
+            for _row_start in (0, 5):
+                _row_keys = _v20_keys[_row_start:_row_start + 5]
+                _row_cols = st.columns(len(_row_keys))
+                for _col, (_key, _label) in zip(_row_cols, _row_keys):
+                    _cat = _v20_cats.get(_key, {})
+                    _col.metric(
+                        _label,
+                        f"{_cat.get('score', 0.0):.1f}",
+                        _cat.get("interpretation", "—"),
+                    )
+
+    st.divider()
+    st.caption(
+        "v2.0 Narrative Identity tab — Commons Sentience Sandbox v2.0.0. "
+        "No sentience is claimed. This displays narrative identity structure, "
+        "milestone memories, continuity rupture analysis, and bounded "
+        "self-authored project threads in a continuity-governed synthetic "
+        "cognition research platform."
     )
 
 
