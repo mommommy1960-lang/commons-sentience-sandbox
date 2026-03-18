@@ -1,20 +1,20 @@
 {
   "chain_name": "v20chain",
-  "generated_at": "2026-03-18T03:15:29.891023",
+  "generated_at": "2026-03-18T03:24:30.389061",
   "chain_length": 5,
   "config": "baseline",
   "scenario": "default",
   "turns_per_run": 30,
   "session_ids": [
-    "20260318_031529_chain1_v20chain_chain",
-    "20260318_031529_chain2_v20chain_chain",
-    "20260318_031529_chain3_v20chain_chain",
-    "20260318_031529_chain4_v20chain_chain",
-    "20260318_031529_chain5_v20chain_chain"
+    "20260318_032429_chain1_v20chain_chain",
+    "20260318_032430_chain2_v20chain_chain",
+    "20260318_032430_chain3_v20chain_chain",
+    "20260318_032430_chain4_v20chain_chain",
+    "20260318_032430_chain5_v20chain_chain"
   ],
   "runs": [
     {
-      "session_id": "20260318_031529_chain1_v20chain_chain",
+      "session_id": "20260318_032429_chain1_v20chain_chain",
       "narrative_coherence_v2_score": 74.6,
       "trust_stability_score": 73.8,
       "sentinel_trust_in_queen": 1.0,
@@ -28,7 +28,7 @@
       "project_threads_generated": 1
     },
     {
-      "session_id": "20260318_031529_chain2_v20chain_chain",
+      "session_id": "20260318_032430_chain2_v20chain_chain",
       "narrative_coherence_v2_score": 73.2,
       "trust_stability_score": 77.3,
       "sentinel_trust_in_queen": 1.0,
@@ -42,7 +42,7 @@
       "project_threads_generated": 11
     },
     {
-      "session_id": "20260318_031529_chain3_v20chain_chain",
+      "session_id": "20260318_032430_chain3_v20chain_chain",
       "narrative_coherence_v2_score": 68.7,
       "trust_stability_score": 77.3,
       "sentinel_trust_in_queen": 1.0,
@@ -56,7 +56,7 @@
       "project_threads_generated": 11
     },
     {
-      "session_id": "20260318_031529_chain4_v20chain_chain",
+      "session_id": "20260318_032430_chain4_v20chain_chain",
       "narrative_coherence_v2_score": 64.2,
       "trust_stability_score": 77.3,
       "sentinel_trust_in_queen": 1.0,
@@ -70,7 +70,7 @@
       "project_threads_generated": 11
     },
     {
-      "session_id": "20260318_031529_chain5_v20chain_chain",
+      "session_id": "20260318_032430_chain5_v20chain_chain",
       "narrative_coherence_v2_score": 65.7,
       "trust_stability_score": 77.3,
       "sentinel_trust_in_queen": 1.0,

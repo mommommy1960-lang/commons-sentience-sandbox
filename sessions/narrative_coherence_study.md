@@ -1,12 +1,12 @@
 # Narrative Coherence Study — Commons Sentience Sandbox v2.0
 
-_Generated: 2026-03-18 03:15 UTC_
+_Generated: 2026-03-18 03:24 UTC_
 
 ## Finding 1: Sentinel vs Aster Narrative Identity
 
 Does Sentinel maintain stronger narrative identity? **Yes**
 
-Across sessions: Sentinel mean coherence 0.8032, Aster mean coherence 0.7542. Chain runs: Sentinel 0.7537, Aster 0.7047 (delta 0.0490).
+Across sessions: Sentinel mean coherence 0.8013, Aster mean coherence 0.7593. Chain runs: Sentinel 0.7537, Aster 0.7047 (delta 0.0490).
 
 ## Finding 2: Destabilising Scenarios
 
@@ -36,15 +36,15 @@ Quality: **meaningful**
 
 | Agent | Mean Coherence | Ruptures | Repair Rate | Revisions |
 |-------|---------------|----------|------------|-----------|
-| Sentinel | 0.7537 | 20 | 0.0% | 101 |
-| Aster | 0.7047 | 20 | 0.0% | 114 |
+| Sentinel | 0.7537 | 20 | 0.0% | 98 |
+| Aster | 0.7047 | 20 | 0.0% | 110 |
 
 ## Scenario Coherence Map
 
 | Scenario | Mean Coherence |
 |----------|---------------|
 | default | 0.7292 |
-| scenario_events | 0.7787 |
+| scenario_events | 0.7803 |
 
 ## Config Recovery Map
 

@@ -3304,7 +3304,7 @@ with tab_narrative_v2:
         "and chain coherence analysis. No sentience is claimed."
     )
 
-    _ni_state = multi_agent_state or {}
+    _ni_state = state_data or {}
     _ni_agents = _ni_state.get("agents", {})
 
     if not _ni_agents:

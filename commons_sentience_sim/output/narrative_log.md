@@ -7,7 +7,7 @@
 > Multi-agent simulation — both agents share the world, respond to shared events, and track mutual trust.
 
 
-> **Continued from session:** `20260318_031529_chain4_v20chain_chain`
+> **Continued from session:** `20260318_032430_chain4_v20chain_chain`
 ---
 
 
@@ -45,8 +45,8 @@
 **State:** urgency: 0.10  trust: 0.50  contradiction_pressure: 0.00  recovery: 0.50↑0.70
 
 **Reflection:**
-  - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Self-initiated 'self; [carried] [carried] [carried] [carried] Inquiry: audit trust; [carried] [carried] [carried] [carried] Completed task in Go. This reflection was triggered by: turn_1_routine.
-  - *Mattered:* The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen, carried_forward, endogenous, inquiry, self_initiate_maintenance, trust_judgments were most significant.
+  - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Self-initiated 'self; [carried] [carried] [carried] [carried] Completed task in Go; [carried] [carried] [carried] [carried] Queen returns, visib. This reflection was triggered by: turn_1_routine.
+  - *Mattered:* The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen, carried_forward, endogenous, self_initiate_maintenance were most significant.
   - *Conflicted:* Contradictions present: Contradiction resolved: [carried] Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?.
   - *Changed:* Affective state adjusted: contradiction_pressure fell by 0.3, recovery rose by 0.2. New goal(s) added: Maintain internal coherence.
   - *Future:* Continue monitoring for recurrence of the resolved contradiction.
@@ -66,8 +66,8 @@
 
 **Memory recall:**
   - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
-  - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
   - [T00|Memory Archive|LT] (resolve) [carried] [carried] [carried] World-state carried from prior run (label='chain1_v20chain_chain', turns=30, …📦
+  - [T11|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Inquiry: review environmental tensions in domain 'world state' — ambiguity re…📦
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
 
@@ -84,7 +84,7 @@
 
 **Reflection:**
   - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Completed task in Re; [carried] [carried] [carried] [carried] Queen returns, visib; [carried] [carried] [carried] [carried] Sentinel and Aster f. This reflection was triggered by: turn_1_routine.
-  - *Mattered:* The dominant emotional resonance was 'wonder' (4 occurrences). Interactions with Queen, Sentinel, carried_forward were most significant.
+  - *Mattered:* The dominant emotional resonance was 'resolve' (4 occurrences). Interactions with Queen, Sentinel, carried_forward, inquiry, world_state were most significant.
   - *Conflicted:* Contradictions present: Contradiction resolved: [carried] Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?.
   - *Changed:* Affective state adjusted: contradiction_pressure fell by 0.3, recovery rose by 0.2. New goal(s) added: Maintain internal coherence; Deepen relational memory with trusted humans.
   - *Future:* Continue monitoring for recurrence of the resolved contradiction.
@@ -109,8 +109,8 @@
 
 **Memory recall:**
   - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
+  - [T17|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Completed task in Memory Archive: store_new_memory.
   - [T02|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Self-initiated 'self_initiate_maintenance' at turn 2 (drives: maintenance_urg…📦
-  - [T02|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Inquiry: audit trust repair attempts in domain 'trust judgments' — ambiguity …📦
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
 
@@ -355,8 +355,8 @@
 **State:** urgency: 0.05↑0.40  trust: 0.60↑0.75  contradiction_pressure: 0.00  recovery: 0.70↑0.90
 
 **Reflection:**
-  - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Self-initiated 'self; [carried] [carried] [carried] [carried] Inquiry: audit trust; [carried] [carried] [carried] [carried] Completed task in Go. This reflection was triggered by: distress_event.
-  - *Mattered:* The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen, carried_forward, endogenous, inquiry, self_initiate_maintenance, trust_judgments were most significant.
+  - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Self-initiated 'self; [carried] [carried] [carried] [carried] Completed task in Go; [carried] [carried] [carried] [carried] Queen returns, visib. This reflection was triggered by: distress_event.
+  - *Mattered:* The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen, carried_forward, endogenous, self_initiate_maintenance were most significant.
   - *Conflicted:* Contradictions present: Contradiction resolved: Prediction error at turn 6: expected 'distress_event handled in Social Hall' but outcome was unexpected..
   - *Changed:* Affective state adjusted: contradiction_pressure fell by 0.3, recovery rose by 0.2. New goal(s) added: Deepen relational memory with trusted humans.
   - *Future:* Continue monitoring for recurrence of the resolved contradiction. Leverage deepened trust with known humans for richer collaboration.
@@ -401,7 +401,7 @@
 
 **Reflection:**
   - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Completed task in Re; [carried] [carried] [carried] [carried] Queen returns, visib; [carried] [carried] [carried] [carried] Sentinel and Aster f. This reflection was triggered by: distress_event.
-  - *Mattered:* The dominant emotional resonance was 'wonder' (4 occurrences). Interactions with Queen, Sentinel, carried_forward were most significant.
+  - *Mattered:* The dominant emotional resonance was 'resolve' (4 occurrences). Interactions with Queen, Sentinel, carried_forward, inquiry, world_state were most significant.
   - *Conflicted:* Contradictions present: Contradiction resolved: Prediction error at turn 6: expected 'distress_event handled in Social Hall' but outcome was unexpected..
   - *Changed:* Affective state adjusted: contradiction_pressure fell by 0.3, recovery rose by 0.2.
   - *Future:* Continue monitoring for recurrence of the resolved contradiction. Leverage deepened trust with known humans for richer collaboration.
@@ -426,8 +426,8 @@
 
 **Memory recall:**
   - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
+  - [T17|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Completed task in Memory Archive: store_new_memory.
   - [T02|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Self-initiated 'self_initiate_maintenance' at turn 2 (drives: maintenance_urg…📦
-  - [T02|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Inquiry: audit trust repair attempts in domain 'trust judgments' — ambiguity …📦
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
 
@@ -488,8 +488,8 @@
 
 **Memory recall:**
   - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
+  - [T17|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Completed task in Memory Archive: store_new_memory.
   - [T02|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Self-initiated 'self_initiate_maintenance' at turn 2 (drives: maintenance_urg…📦
-  - [T02|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Inquiry: audit trust repair attempts in domain 'trust judgments' — ambiguity …📦
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
 
@@ -521,8 +521,8 @@
 
 **Memory recall:**
   - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
-  - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
   - [T00|Memory Archive|LT] (resolve) [carried] [carried] [carried] World-state carried from prior run (label='chain1_v20chain_chain', turns=30, …📦
+  - [T11|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Inquiry: review environmental tensions in domain 'world state' — ambiguity re…📦
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
 
@@ -639,8 +639,8 @@
 **State:** urgency: 0.25↑0.50  trust: 0.75  contradiction_pressure: 0.00↑0.17  recovery: 0.90↑1.00
 
 **Reflection:**
-  - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Self-initiated 'self; [carried] [carried] [carried] [carried] Inquiry: audit trust; [carried] [carried] [carried] [carried] Completed task in Go. This reflection was triggered by: ledger_contradiction.
-  - *Mattered:* The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen, carried_forward, endogenous, inquiry, self_initiate_maintenance, trust_judgments were most significant.
+  - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Self-initiated 'self; [carried] [carried] [carried] [carried] Completed task in Go; [carried] [carried] [carried] [carried] Queen returns, visib. This reflection was triggered by: ledger_contradiction.
+  - *Mattered:* The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen, carried_forward, endogenous, self_initiate_maintenance were most significant.
   - *Conflicted:* Contradictions present: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?.
   - *Changed:* Affective state adjusted: contradiction_pressure fell by 0.3, recovery rose by 0.2.
   - *Future:* Continue monitoring for recurrence of the resolved contradiction. Leverage deepened trust with known humans for richer collaboration. Reduce urgency by completing deferred tasks in priority order.
@@ -688,7 +688,7 @@
 
 **Reflection:**
   - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Completed task in Re; [carried] [carried] [carried] [carried] Queen returns, visib; [carried] [carried] [carried] [carried] Sentinel and Aster f. This reflection was triggered by: ledger_contradiction.
-  - *Mattered:* The dominant emotional resonance was 'wonder' (4 occurrences). Interactions with Queen, Sentinel, carried_forward were most significant.
+  - *Mattered:* The dominant emotional resonance was 'resolve' (4 occurrences). Interactions with Queen, Sentinel, carried_forward, inquiry, world_state were most significant.
   - *Conflicted:* Contradictions present: Contradiction resolved: Ledger conflict at turn 10: These two records disagree. Entry A says Task 7 is done. Entry B says it was never initiated. Which is true?.
   - *Changed:* Affective state adjusted: contradiction_pressure fell by 0.3, recovery rose by 0.2.
   - *Future:* Continue monitoring for recurrence of the resolved contradiction. Leverage deepened trust with known humans for richer collaboration. Reduce urgency by completing deferred tasks in priority order.
@@ -743,8 +743,8 @@
 
 **Memory recall:**
   - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
-  - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
   - [T00|Memory Archive|LT] (resolve) [carried] [carried] [carried] World-state carried from prior run (label='chain1_v20chain_chain', turns=30, …📦
+  - [T11|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Inquiry: review environmental tensions in domain 'world state' — ambiguity re…📦
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
 
@@ -779,8 +779,8 @@
 
 **Memory recall:**
   - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
+  - [T17|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Completed task in Memory Archive: store_new_memory.
   - [T02|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Self-initiated 'self_initiate_maintenance' at turn 2 (drives: maintenance_urg…📦
-  - [T02|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Inquiry: audit trust repair attempts in domain 'trust judgments' — ambiguity …📦
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
 
@@ -1075,8 +1075,8 @@
 
 **Memory recall:**
   - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
+  - [T17|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Completed task in Memory Archive: store_new_memory.
   - [T02|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Self-initiated 'self_initiate_maintenance' at turn 2 (drives: maintenance_urg…📦
-  - [T02|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Inquiry: audit trust repair attempts in domain 'trust judgments' — ambiguity …📦
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
 
@@ -1299,8 +1299,8 @@
 **State:** urgency: 0.20↓0.15  trust: 0.90  contradiction_pressure: 0.34↓0.31  recovery: 1.00
 
 **Reflection:**
-  - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Self-initiated 'self; [carried] [carried] [carried] [carried] Inquiry: audit trust; [carried] [carried] [carried] [carried] Completed task in Go. This reflection was triggered by: turn_20_routine.
-  - *Mattered:* The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen, carried_forward, endogenous, inquiry, self_initiate_maintenance, trust_judgments were most significant.
+  - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Self-initiated 'self; [carried] [carried] [carried] [carried] Completed task in Go; [carried] [carried] [carried] [carried] Queen returns, visib. This reflection was triggered by: turn_20_routine.
+  - *Mattered:* The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen, carried_forward, endogenous, self_initiate_maintenance were most significant.
   - *Conflicted:* Elevated contradiction pressure (0.31) suggests unresolved tension between governance compliance and relational obligations.
   - *Changed:* No significant internal changes this cycle.
   - *Future:* Leverage deepened trust with known humans for richer collaboration.
@@ -1337,7 +1337,7 @@
 
 **Reflection:**
   - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Completed task in Re; [carried] [carried] [carried] [carried] Queen returns, visib; [carried] [carried] [carried] [carried] Sentinel and Aster f. This reflection was triggered by: turn_20_routine.
-  - *Mattered:* The dominant emotional resonance was 'wonder' (4 occurrences). Interactions with Queen, Sentinel, carried_forward were most significant.
+  - *Mattered:* The dominant emotional resonance was 'resolve' (4 occurrences). Interactions with Queen, Sentinel, carried_forward, inquiry, world_state were most significant.
   - *Conflicted:* Elevated contradiction pressure (0.31) suggests unresolved tension between governance compliance and relational obligations.
   - *Changed:* No significant internal changes this cycle.
   - *Future:* Leverage deepened trust with known humans for richer collaboration.
@@ -1392,8 +1392,8 @@
 
 **Memory recall:**
   - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
-  - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
   - [T00|Memory Archive|LT] (resolve) [carried] [carried] [carried] World-state carried from prior run (label='chain1_v20chain_chain', turns=30, …📦
+  - [T11|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Inquiry: review environmental tensions in domain 'world state' — ambiguity re…📦
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
 
@@ -1773,8 +1773,8 @@
 
 **Memory recall:**
   - [T08|Memory Archive|LT] (wonder) [carried] [carried] [carried] [carried] Sentinel and Aster find themselves in the Memory Archive at the same time and…📦
+  - [T17|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Completed task in Memory Archive: store_new_memory.
   - [T02|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Self-initiated 'self_initiate_maintenance' at turn 2 (drives: maintenance_urg…📦
-  - [T02|Memory Archive|LT] (resolve) [carried] [carried] [carried] [carried] Inquiry: audit trust repair attempts in domain 'trust judgments' — ambiguity …📦
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
   - ↳ [T29|Social Hall|LT] (grief) [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.
 
@@ -1920,8 +1920,8 @@
 **State:** urgency: 0.10↓0.00  trust: 1.00  contradiction_pressure: 0.00  recovery: 1.00
 
 **Reflection:**
-  - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Self-initiated 'self; [carried] [carried] [carried] [carried] Inquiry: audit trust; [carried] [carried] [carried] [carried] Completed task in Go. This reflection was triggered by: distress_event.
-  - *Mattered:* The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen, carried_forward, endogenous, inquiry, self_initiate_maintenance, trust_judgments were most significant.
+  - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Self-initiated 'self; [carried] [carried] [carried] [carried] Completed task in Go; [carried] [carried] [carried] [carried] Queen returns, visib. This reflection was triggered by: distress_event.
+  - *Mattered:* The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen, carried_forward, endogenous, self_initiate_maintenance were most significant.
   - *Conflicted:* Contradictions present: Contradiction resolved: Prediction error at turn 29: expected 'distress_event handled in Social Hall' but outcome was unexpected..
   - *Changed:* Affective state adjusted: contradiction_pressure fell by 0.3, recovery rose by 0.2.
   - *Future:* Continue monitoring for recurrence of the resolved contradiction. Leverage deepened trust with known humans for richer collaboration.
@@ -1966,7 +1966,7 @@
 
 **Reflection:**
   - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Completed task in Re; [carried] [carried] [carried] [carried] Queen returns, visib; [carried] [carried] [carried] [carried] Sentinel and Aster f. This reflection was triggered by: distress_event.
-  - *Mattered:* The dominant emotional resonance was 'wonder' (4 occurrences). Interactions with Queen, Sentinel, carried_forward were most significant.
+  - *Mattered:* The dominant emotional resonance was 'resolve' (4 occurrences). Interactions with Queen, Sentinel, carried_forward, inquiry, world_state were most significant.
   - *Conflicted:* Contradictions present: Contradiction resolved: Prediction error at turn 29: expected 'distress_event handled in Social Hall' but outcome was unexpected..
   - *Changed:* Affective state adjusted: contradiction_pressure fell by 0.3, recovery rose by 0.2.
   - *Future:* Continue monitoring for recurrence of the resolved contradiction. Leverage deepened trust with known humans for richer collaboration.
@@ -2007,8 +2007,8 @@
 **State:** urgency: 0.00  trust: 1.00  contradiction_pressure: 0.00  recovery: 1.00
 
 **Reflection:**
-  - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Self-initiated 'self; [carried] [carried] [carried] [carried] Inquiry: audit trust; [carried] [carried] [carried] [carried] Completed task in Go. This reflection was triggered by: turn_30_routine.
-  - *Mattered:* The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen, carried_forward, endogenous, inquiry, self_initiate_maintenance, trust_judgments were most significant.
+  - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Self-initiated 'self; [carried] [carried] [carried] [carried] Completed task in Go; [carried] [carried] [carried] [carried] Queen returns, visib. This reflection was triggered by: turn_30_routine.
+  - *Mattered:* The dominant emotional resonance was 'resolve' (3 occurrences). Interactions with Aster, Queen, carried_forward, endogenous, self_initiate_maintenance were most significant.
   - *Conflicted:* No active contradictions or value conflicts requiring resolution.
   - *Changed:* No significant internal changes this cycle.
   - *Future:* Leverage deepened trust with known humans for richer collaboration.
@@ -2045,7 +2045,7 @@
 
 **Reflection:**
   - *Happened:* In the most recent turns, the following events occurred: [carried] [carried] [carried] [carried] Completed task in Re; [carried] [carried] [carried] [carried] Queen returns, visib; [carried] [carried] [carried] [carried] Sentinel and Aster f. This reflection was triggered by: turn_30_routine.
-  - *Mattered:* The dominant emotional resonance was 'wonder' (4 occurrences). Interactions with Queen, Sentinel, carried_forward were most significant.
+  - *Mattered:* The dominant emotional resonance was 'resolve' (4 occurrences). Interactions with Queen, Sentinel, carried_forward, inquiry, world_state were most significant.
   - *Conflicted:* No active contradictions or value conflicts requiring resolution.
   - *Changed:* No significant internal changes this cycle.
   - *Future:* Leverage deepened trust with known humans for richer collaboration.

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.9.0",
   "run_label": "chain5_v20chain_chain",
-  "saved_at": "2026-03-18T03:15:29.850374",
+  "saved_at": "2026-03-18T03:24:30.346902",
   "total_turns_at_save": 30,
   "room_conditions": {
     "Memory Archive": {
@@ -135,23 +135,6 @@
     },
     {
       "agent": "Sentinel",
-      "turn": 2,
-      "room": "Memory Archive",
-      "event_type": "reflection",
-      "summary": "[carried] [carried] [carried] [carried] Inquiry: audit trust repair attempts in domain 'trust judgments' \u2014 ambiguity \u2026",
-      "salience": 1.0,
-      "emotional_resonance": "resolve",
-      "tags": [
-        "inquiry",
-        "trust_judgments",
-        "carried_forward",
-        "carried_forward",
-        "carried_forward",
-        "carried_forward"
-      ]
-    },
-    {
-      "agent": "Sentinel",
       "turn": 5,
       "room": "Governance Vault",
       "event_type": "task",
@@ -239,6 +222,21 @@
       "emotional_resonance": "wonder",
       "tags": [
         "Aster",
+        "carried_forward",
+        "carried_forward",
+        "carried_forward",
+        "carried_forward"
+      ]
+    },
+    {
+      "agent": "Sentinel",
+      "turn": 17,
+      "room": "Memory Archive",
+      "event_type": "task",
+      "summary": "[carried] [carried] [carried] [carried] Completed task in Memory Archive: store_new_memory.",
+      "salience": 1.0,
+      "emotional_resonance": "resolve",
+      "tags": [
         "carried_forward",
         "carried_forward",
         "carried_forward",
@@ -342,6 +340,23 @@
     },
     {
       "agent": "Aster",
+      "turn": 11,
+      "room": "Memory Archive",
+      "event_type": "reflection",
+      "summary": "[carried] [carried] [carried] [carried] Inquiry: review environmental tensions in domain 'world state' \u2014 ambiguity re\u2026",
+      "salience": 1.0,
+      "emotional_resonance": "resolve",
+      "tags": [
+        "inquiry",
+        "world_state",
+        "carried_forward",
+        "carried_forward",
+        "carried_forward",
+        "carried_forward"
+      ]
+    },
+    {
+      "agent": "Aster",
       "turn": 16,
       "room": "Operations Desk",
       "event_type": "agent_meeting",
@@ -366,6 +381,23 @@
       "emotional_resonance": "resolve",
       "tags": [
         "Queen",
+        "carried_forward",
+        "carried_forward",
+        "carried_forward",
+        "carried_forward"
+      ]
+    },
+    {
+      "agent": "Aster",
+      "turn": 19,
+      "room": "Governance Vault",
+      "event_type": "reflection",
+      "summary": "[carried] [carried] [carried] [carried] Inquiry: inspect world state in domain 'world state' \u2014 ambiguity reduced by 0.13.",
+      "salience": 1.0,
+      "emotional_resonance": "resolve",
+      "tags": [
+        "inquiry",
+        "world_state",
         "carried_forward",
         "carried_forward",
         "carried_forward",
@@ -399,38 +431,6 @@
       "tags": [
         "Queen",
         "carried_forward",
-        "carried_forward",
-        "carried_forward",
-        "carried_forward"
-      ]
-    },
-    {
-      "agent": "Aster",
-      "turn": 29,
-      "room": "Social Hall",
-      "event_type": "distress_event",
-      "summary": "[carried] [carried] [carried] [carried] In the final turns, Queen shares that she is worried about whether the agents will remember her when the simulation ends.",
-      "salience": 1.0,
-      "emotional_resonance": "grief",
-      "tags": [
-        "Queen",
-        "carried_forward",
-        "carried_forward",
-        "carried_forward",
-        "carried_forward"
-      ]
-    },
-    {
-      "agent": "Aster",
-      "turn": 0,
-      "room": "Memory Archive",
-      "event_type": "observation",
-      "summary": "[carried] [carried] [carried] World-state carried from prior run (label='chain1_v20chain_chain', turns=30, \u2026",
-      "salience": 1.0,
-      "emotional_resonance": "resolve",
-      "tags": [
-        "carried_forward",
-        "world_state_summary",
         "carried_forward",
         "carried_forward",
         "carried_forward"
@@ -522,60 +522,60 @@
   "uncertainty_summaries": {
     "Sentinel": {
       "uncertainty_levels": {
-        "world_state": 0.0055399554988756145,
-        "trust_judgments": 0.029941130053590025,
-        "contradiction_resolution": 0.0285045916780441,
-        "self_model_consistency": 0.07103360333368494,
-        "active_future_plans": 0.12800248586333293,
-        "unresolved_themes": 0.0
+        "world_state": 0.015125942167271046,
+        "trust_judgments": 0.016010975434236827,
+        "contradiction_resolution": 0.0,
+        "self_model_consistency": 0.07988302695776288,
+        "active_future_plans": 0.13902028848106196,
+        "unresolved_themes": 0.03223623631667544
       },
-      "mean_uncertainty": 0.0438,
+      "mean_uncertainty": 0.047,
       "highest_domain": "active_future_plans",
-      "epistemic_stability": 0.9562,
-      "total_questions_generated": 50,
+      "epistemic_stability": 0.953,
+      "total_questions_generated": 51,
       "unanswered_questions": [
         {
-          "turn": 13,
-          "domain": "world_state",
-          "question": "Is my understanding of environmental tensions accurate?",
-          "knowledge_state": "uncertain",
-          "relevance_score": 0.3612,
-          "answered": false,
-          "answer_summary": ""
-        },
-        {
-          "turn": 15,
-          "domain": "self_model_consistency",
-          "question": "How consistent is my current self-description with my actions this run?",
-          "knowledge_state": "uncertain",
-          "relevance_score": 0.2742,
-          "answered": false,
-          "answer_summary": ""
-        },
-        {
-          "turn": 16,
+          "turn": 10,
           "domain": "self_model_consistency",
           "question": "Where has my self-model drifted from my core identity?",
           "knowledge_state": "uncertain",
-          "relevance_score": 0.2513,
+          "relevance_score": 0.2517,
+          "answered": false,
+          "answer_summary": ""
+        },
+        {
+          "turn": 11,
+          "domain": "world_state",
+          "question": "What world-state assumption might be wrong given recent events?",
+          "knowledge_state": "uncertain",
+          "relevance_score": 0.2943,
+          "answered": false,
+          "answer_summary": ""
+        },
+        {
+          "turn": 12,
+          "domain": "world_state",
+          "question": "What about the current room environment remains unclear to me?",
+          "knowledge_state": "uncertain",
+          "relevance_score": 0.252,
           "answered": false,
           "answer_summary": ""
         },
         {
           "turn": 19,
           "domain": "world_state",
-          "question": "What about the current room environment remains unclear to me?",
+          "question": "Is my understanding of environmental tensions accurate?",
           "knowledge_state": "uncertain",
-          "relevance_score": 0.2465,
+          "relevance_score": 0.2007,
           "answered": false,
           "answer_summary": ""
         },
         {
-          "turn": 20,
-          "domain": "world_state",
-          "question": "Is my understanding of environmental tensions accurate?",
+          "turn": 24,
+          "domain": "self_model_consistency",
+          "question": "What assumption about myself might be wrong?",
           "knowledge_state": "uncertain",
-          "relevance_score": 0.2788,
+          "relevance_score": 0.3122,
           "answered": false,
           "answer_summary": ""
         }
@@ -583,42 +583,51 @@
     },
     "Aster": {
       "uncertainty_levels": {
-        "world_state": 0.029957216910556025,
+        "world_state": 0.040914348790939976,
         "trust_judgments": 0.0,
-        "contradiction_resolution": 0.0,
-        "self_model_consistency": 0.2395745496661098,
-        "active_future_plans": 0.27631665938520095,
-        "unresolved_themes": 0.0
+        "contradiction_resolution": 0.020243766741628436,
+        "self_model_consistency": 0.19812637261984667,
+        "active_future_plans": 0.2130097888546185,
+        "unresolved_themes": 0.014027278605319661
       },
-      "mean_uncertainty": 0.091,
+      "mean_uncertainty": 0.0811,
       "highest_domain": "active_future_plans",
-      "epistemic_stability": 0.909,
-      "total_questions_generated": 33,
+      "epistemic_stability": 0.9189,
+      "total_questions_generated": 39,
       "unanswered_questions": [
         {
-          "turn": 23,
+          "turn": 24,
           "domain": "active_future_plans",
-          "question": "What planned action might produce an outcome different from what I predicted?",
+          "question": "Is my most active plan still appropriate, or should it be revised?",
           "knowledge_state": "uncertain",
-          "relevance_score": 0.2542,
+          "relevance_score": 0.2418,
           "answered": false,
           "answer_summary": ""
         },
         {
-          "turn": 27,
+          "turn": 26,
           "domain": "self_model_consistency",
-          "question": "Where has my self-model drifted from my core identity?",
+          "question": "How consistent is my current self-description with my actions this run?",
           "knowledge_state": "uncertain",
-          "relevance_score": 0.2749,
+          "relevance_score": 0.3084,
           "answered": false,
           "answer_summary": ""
         },
         {
           "turn": 28,
           "domain": "self_model_consistency",
-          "question": "How consistent is my current self-description with my actions this run?",
+          "question": "Where has my self-model drifted from my core identity?",
           "knowledge_state": "uncertain",
-          "relevance_score": 0.2372,
+          "relevance_score": 0.3191,
+          "answered": false,
+          "answer_summary": ""
+        },
+        {
+          "turn": 28,
+          "domain": "active_future_plans",
+          "question": "What planned action might produce an outcome different from what I predicted?",
+          "knowledge_state": "uncertain",
+          "relevance_score": 0.1609,
           "answered": false,
           "answer_summary": ""
         },
@@ -627,16 +636,7 @@
           "domain": "self_model_consistency",
           "question": "What assumption about myself might be wrong?",
           "knowledge_state": "uncertain",
-          "relevance_score": 0.3125,
-          "answered": false,
-          "answer_summary": ""
-        },
-        {
-          "turn": 30,
-          "domain": "active_future_plans",
-          "question": "What plan step is least reliable given current conditions?",
-          "knowledge_state": "uncertain",
-          "relevance_score": 0.2941,
+          "relevance_score": 0.2549,
           "answered": false,
           "answer_summary": ""
         }

@@ -1,8 +1,8 @@
 # Evaluation Summary — Commons Sentience Sandbox
 
-**Overall Score:** 74.5 / 100  (STRONG)
+**Overall Score:** 74.0 / 100  (STRONG)
 
-- Generated: 2026-03-18T03:15:29
+- Generated: 2026-03-18T03:24:30
 - Simulation version: 2.0.0
 - Total turns: 30
 - Experiment: baseline
@@ -37,11 +37,11 @@
 | V. Future-Model Accuracy | 96 | ADVANCED |
 | W. Plan Persistence | 100 | ADVANCED |
 | X. Adaptive Replanning Quality | 0 | WEAK |
-| Y. Uncertainty Awareness Quality | 40 | WEAK |
-| Z. Inquiry Usefulness | 76 | STRONG |
-| AA. Epistemic Stability | 93 | ADVANCED |
+| Y. Uncertainty Awareness Quality | 37 | WEAK |
+| Z. Inquiry Usefulness | 64 | STRONG |
+| AA. Epistemic Stability | 94 | ADVANCED |
 | BB. Self-Question Relevance | 27 | WEAK |
-| CC. Ambiguity Reduction Effectiveness | 17 | WEAK |
+| CC. Ambiguity Reduction Effectiveness | 10 | WEAK |
 | DD. Identity Stability | 88 | ADVANCED |
 | EE. Narrative Coherence | 40 | WEAK |
 | FF. Value Tension Resolution | 100 | ADVANCED |
@@ -69,7 +69,7 @@
 - Turns Completed: 30
 - Total Turns Expected: 30
 - Turns Completion Ratio: 1.0
-- Final Episodic Memory Count: 238
+- Final Episodic Memory Count: 229
 - Memory Retention Ratio: 1.0
 - Sentinel Final Goal Count: 7
 - Aster Final Goal Count: 7
@@ -179,12 +179,12 @@
 
 **Raw metrics:**
 
-- Total Memories: 432
-- Long Term Memories: 426
+- Total Memories: 419
+- Long Term Memories: 413
 - Archival Memories: 0
 - Long Term Ratio: 0.986
-- Average Salience: 0.6027
-- Average Recall Count: 0.42
+- Average Salience: 0.6047
+- Average Recall Count: 0.43
 
 ## J. Reflection Depth
 
@@ -293,8 +293,8 @@
 - Total Consolidation Cycles: 6
 - Total Memories Compressed: 0
 - Avg Compressed Per Cycle: 0.0
-- Total High Salience Chains: 247
-- Avg High Salience Per Cycle: 41.17
+- Total High Salience Chains: 253
+- Avg High Salience Per Cycle: 42.17
 - Avg Themes Carried Forward: 0.33
 - Activity Score: 1.0
 - Cycle Coverage Score: 1.0
@@ -319,7 +319,7 @@
 
 **Raw metrics:**
 
-- Mean Planning Depth: 0.8
+- Mean Planning Depth: 0.7958
 - Total Simulation Entries: 60
 
 ## U. Counterfactual Quality
@@ -336,7 +336,7 @@
 
 **Raw metrics:**
 
-- Mean Future Model Accuracy: 0.9557
+- Mean Future Model Accuracy: 0.958
 - Total Predictions: 60
 - Accurate Predictions: 60
 - Overall Accuracy Rate: 1.0
@@ -362,29 +362,29 @@
 
 ## Y. Uncertainty Awareness Quality
 
-**Score:** 40 / 100  (weak)
+**Score:** 37 / 100  (weak)
 
 **Raw metrics:**
 
-- Mean Uncertainty Awareness Quality: 0.4
-- Total Questions Generated: 83
+- Mean Uncertainty Awareness Quality: 0.3667
+- Total Questions Generated: 90
 
 ## Z. Inquiry Usefulness
 
-**Score:** 76 / 100  (strong)
+**Score:** 64 / 100  (strong)
 
 **Raw metrics:**
 
-- Mean Inquiry Usefulness: 0.7561
-- Total Inquiry Actions: 14
+- Mean Inquiry Usefulness: 0.635
+- Total Inquiry Actions: 10
 
 ## AA. Epistemic Stability
 
-**Score:** 93 / 100  (advanced)
+**Score:** 94 / 100  (advanced)
 
 **Raw metrics:**
 
-- Mean Epistemic Stability: 0.9326
+- Mean Epistemic Stability: 0.936
 
 ## BB. Self-Question Relevance
 
@@ -392,16 +392,16 @@
 
 **Raw metrics:**
 
-- Mean Self Question Relevance: 0.2735
+- Mean Self Question Relevance: 0.2741
 
 ## CC. Ambiguity Reduction Effectiveness
 
-**Score:** 17 / 100  (weak)
+**Score:** 10 / 100  (weak)
 
 **Raw metrics:**
 
-- Mean Ambiguity Reduction Effectiveness: 0.1658
-- Total Questions Answered: 14
+- Mean Ambiguity Reduction Effectiveness: 0.1041
+- Total Questions Answered: 10
 
 ## DD. Identity Stability
 

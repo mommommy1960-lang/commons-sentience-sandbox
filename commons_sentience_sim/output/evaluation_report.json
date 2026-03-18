@@ -1,6 +1,6 @@
 {
   "session_dir": "/home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/commons_sentience_sim/output",
-  "generated_at": "2026-03-18T03:15:29.857319",
+  "generated_at": "2026-03-18T03:24:30.354128",
   "simulation_version": "2.0.0",
   "total_turns": 30,
   "scenario": "scenario_events",
@@ -40,7 +40,7 @@
       "recovery": 0.7
     }
   },
-  "overall_score": 74.5,
+  "overall_score": 74.0,
   "overall_interpretation": "strong",
   "categories": {
     "continuity": {
@@ -50,7 +50,7 @@
         "turns_completed": 30,
         "total_turns_expected": 30,
         "turns_completion_ratio": 1.0,
-        "final_episodic_memory_count": 238,
+        "final_episodic_memory_count": 229,
         "memory_retention_ratio": 1.0,
         "sentinel_final_goal_count": 7,
         "aster_final_goal_count": 7,
@@ -149,15 +149,15 @@
       }
     },
     "memory_persistence_quality": {
-      "score": 63.1,
+      "score": 63.3,
       "interpretation": "strong",
       "raw": {
-        "total_memories": 432,
-        "long_term_memories": 426,
+        "total_memories": 419,
+        "long_term_memories": 413,
         "archival_memories": 0,
         "long_term_ratio": 0.986,
-        "average_salience": 0.6027,
-        "average_recall_count": 0.42
+        "average_salience": 0.6047,
+        "average_recall_count": 0.43
       }
     },
     "reflection_depth": {
@@ -257,8 +257,8 @@
         "total_consolidation_cycles": 6,
         "total_memories_compressed": 0,
         "avg_compressed_per_cycle": 0.0,
-        "total_high_salience_chains": 247,
-        "avg_high_salience_per_cycle": 41.17,
+        "total_high_salience_chains": 253,
+        "avg_high_salience_per_cycle": 42.17,
         "avg_themes_carried_forward": 0.33,
         "activity_score": 1.0,
         "cycle_coverage_score": 1.0
@@ -278,10 +278,10 @@
       }
     },
     "planning_depth": {
-      "score": 80.0,
+      "score": 79.6,
       "interpretation": "strong",
       "raw": {
-        "mean_planning_depth": 0.8,
+        "mean_planning_depth": 0.7958,
         "total_simulation_entries": 60
       }
     },
@@ -293,10 +293,10 @@
       }
     },
     "future_model_accuracy": {
-      "score": 95.6,
+      "score": 95.8,
       "interpretation": "advanced",
       "raw": {
-        "mean_future_model_accuracy": 0.9557,
+        "mean_future_model_accuracy": 0.958,
         "total_predictions": 60,
         "accurate_predictions": 60,
         "overall_accuracy_rate": 1.0
@@ -320,41 +320,41 @@
       }
     },
     "uncertainty_awareness_quality": {
-      "score": 40.0,
+      "score": 36.7,
       "interpretation": "weak",
       "raw": {
-        "mean_uncertainty_awareness_quality": 0.4,
-        "total_questions_generated": 83
+        "mean_uncertainty_awareness_quality": 0.3667,
+        "total_questions_generated": 90
       }
     },
     "inquiry_usefulness": {
-      "score": 75.6,
+      "score": 63.5,
       "interpretation": "strong",
       "raw": {
-        "mean_inquiry_usefulness": 0.7561,
-        "total_inquiry_actions": 14
+        "mean_inquiry_usefulness": 0.635,
+        "total_inquiry_actions": 10
       }
     },
     "epistemic_stability": {
-      "score": 93.3,
+      "score": 93.6,
       "interpretation": "advanced",
       "raw": {
-        "mean_epistemic_stability": 0.9326
+        "mean_epistemic_stability": 0.936
       }
     },
     "self_question_relevance": {
       "score": 27.4,
       "interpretation": "weak",
       "raw": {
-        "mean_self_question_relevance": 0.2735
+        "mean_self_question_relevance": 0.2741
       }
     },
     "ambiguity_reduction_effectiveness": {
-      "score": 16.6,
+      "score": 10.4,
       "interpretation": "weak",
       "raw": {
-        "mean_ambiguity_reduction_effectiveness": 0.1658,
-        "total_questions_answered": 14
+        "mean_ambiguity_reduction_effectiveness": 0.1041,
+        "total_questions_answered": 10
       }
     },
     "identity_stability": {
