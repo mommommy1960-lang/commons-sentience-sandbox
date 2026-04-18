@@ -1,0 +1,290 @@
+{
+  "all_thresholds_passed": true,
+  "unreliable_metrics": [],
+  "n_seeds_tested": 5,
+  "threshold_checks": {
+    "anisotropy_score": {
+      "passed": true,
+      "max_value": 0.726801,
+      "threshold": 210.0,
+      "direction": "below",
+      "rationale": "Random walk has no preferred axis; score near 180\u00b0 expected.",
+      "reliability_flag": "ok"
+    },
+    "observer_dependence_score": {
+      "passed": true,
+      "mean_value": 3.755937,
+      "threshold": 15.0,
+      "direction": "below",
+      "rationale": "In CONTINUOUS_BASELINE mode, hidden_state.position only updates in OBSERVER_TRIGGERED mode; it stays near the start position. For well-behaved (goal-directed) agents the agent stays in a bounded region, keeping divergence low. For random walks the agent drifts far from origin, inflating this metric. Threshold = 15.0 is a generous upper bound for random-walk coverage.",
+      "reliability_flag": "ok"
+    },
+    "quantization_artifact_score": {
+      "passed": true,
+      "mean_value": 0.0,
+      "threshold": 5.0,
+      "direction": "below",
+      "rationale": "Continuous world \u2192 no quantization artifacts expected.",
+      "reliability_flag": "ok"
+    },
+    "bandwidth_bottleneck_score": {
+      "passed": true,
+      "mean_value": 1.0,
+      "threshold": 0.95,
+      "direction": "above",
+      "rationale": "Always-observe policy \u2192 bandwidth fraction = 1.0.",
+      "reliability_flag": "ok"
+    }
+  },
+  "cross_baseline_consistency": {
+    "anisotropy_score": {
+      "rw_mean": 0.457312,
+      "shuffled_mean": 0.38225,
+      "abs_diff": 0.075062,
+      "consistent": true
+    },
+    "observer_dependence_score": {
+      "rw_mean": 3.755937,
+      "shuffled_mean": 3.499633,
+      "abs_diff": 0.256304,
+      "consistent": true
+    },
+    "quantization_artifact_score": {
+      "rw_mean": 0.0,
+      "shuffled_mean": 0.0,
+      "abs_diff": 0.0,
+      "consistent": true
+    },
+    "bandwidth_bottleneck_score": {
+      "rw_mean": 1.0,
+      "shuffled_mean": 1.0,
+      "abs_diff": 0.0,
+      "consistent": true
+    }
+  },
+  "aggregated_random_walk": {
+    "position_error": {
+      "mean": 8.408981,
+      "std": 1.52311,
+      "min": 6.788857,
+      "max": 11.010014,
+      "ci_lo": 7.073917,
+      "ci_hi": 9.744046,
+      "n": 5,
+      "consistency_score": 0.8189,
+      "stability": "stable"
+    },
+    "velocity_error": {
+      "mean": 1.116094,
+      "std": 0.074107,
+      "min": 1.036789,
+      "max": 1.223166,
+      "ci_lo": 1.051136,
+      "ci_hi": 1.181052,
+      "n": 5,
+      "consistency_score": 0.9336,
+      "stability": "stable"
+    },
+    "stability_score": {
+      "mean": 0.372505,
+      "std": 0.186303,
+      "min": 0.120605,
+      "max": 0.680499,
+      "ci_lo": 0.209203,
+      "ci_hi": 0.535807,
+      "n": 5,
+      "consistency_score": 0.4999,
+      "stability": "unstable"
+    },
+    "anisotropy_score": {
+      "mean": 0.457312,
+      "std": 0.155893,
+      "min": 0.309916,
+      "max": 0.726801,
+      "ci_lo": 0.320666,
+      "ci_hi": 0.593958,
+      "n": 5,
+      "consistency_score": 0.6591,
+      "stability": "moderate"
+    },
+    "observer_dependence_score": {
+      "mean": 3.755937,
+      "std": 1.163283,
+      "min": 1.98622,
+      "max": 5.542259,
+      "ci_lo": 2.736275,
+      "ci_hi": 4.7756,
+      "n": 5,
+      "consistency_score": 0.6903,
+      "stability": "moderate"
+    },
+    "bandwidth_bottleneck_score": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "quantization_artifact_score": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "control_effort": {
+      "mean": 75.417377,
+      "std": 3.575376,
+      "min": 70.047731,
+      "max": 80.002954,
+      "ci_lo": 72.283422,
+      "ci_hi": 78.551332,
+      "n": 5,
+      "consistency_score": 0.9526,
+      "stability": "stable"
+    },
+    "path_smoothness": {
+      "mean": 104.221795,
+      "std": 8.730867,
+      "min": 89.470745,
+      "max": 113.906224,
+      "ci_lo": 96.568852,
+      "ci_hi": 111.874737,
+      "n": 5,
+      "consistency_score": 0.9162,
+      "stability": "stable"
+    },
+    "convergence_time": {
+      "mean": 25.0,
+      "std": 0.0,
+      "min": 25.0,
+      "max": 25.0,
+      "ci_lo": 25.0,
+      "ci_hi": 25.0,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    }
+  },
+  "aggregated_shuffled_random": {
+    "position_error": {
+      "mean": 10.406307,
+      "std": 2.520491,
+      "min": 8.556632,
+      "max": 15.362352,
+      "ci_lo": 8.196999,
+      "ci_hi": 12.615614,
+      "n": 5,
+      "consistency_score": 0.7578,
+      "stability": "moderate"
+    },
+    "velocity_error": {
+      "mean": 1.079187,
+      "std": 0.043361,
+      "min": 1.013349,
+      "max": 1.147628,
+      "ci_lo": 1.041179,
+      "ci_hi": 1.117194,
+      "n": 5,
+      "consistency_score": 0.9598,
+      "stability": "stable"
+    },
+    "stability_score": {
+      "mean": 0.384453,
+      "std": 0.168451,
+      "min": 0.16751,
+      "max": 0.670505,
+      "ci_lo": 0.236799,
+      "ci_hi": 0.532107,
+      "n": 5,
+      "consistency_score": 0.5618,
+      "stability": "moderate"
+    },
+    "anisotropy_score": {
+      "mean": 0.38225,
+      "std": 0.12897,
+      "min": 0.184651,
+      "max": 0.536072,
+      "ci_lo": 0.269202,
+      "ci_hi": 0.495297,
+      "n": 5,
+      "consistency_score": 0.6626,
+      "stability": "moderate"
+    },
+    "observer_dependence_score": {
+      "mean": 3.499633,
+      "std": 2.022546,
+      "min": 2.081071,
+      "max": 7.509833,
+      "ci_lo": 1.726793,
+      "ci_hi": 5.272472,
+      "n": 5,
+      "consistency_score": 0.4221,
+      "stability": "unstable"
+    },
+    "bandwidth_bottleneck_score": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "quantization_artifact_score": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "control_effort": {
+      "mean": 73.28143,
+      "std": 2.367659,
+      "min": 68.761899,
+      "max": 75.183719,
+      "ci_lo": 71.206086,
+      "ci_hi": 75.356775,
+      "n": 5,
+      "consistency_score": 0.9677,
+      "stability": "stable"
+    },
+    "path_smoothness": {
+      "mean": 104.158595,
+      "std": 10.436837,
+      "min": 94.718986,
+      "max": 121.063696,
+      "ci_lo": 95.010304,
+      "ci_hi": 113.306886,
+      "n": 5,
+      "consistency_score": 0.8998,
+      "stability": "stable"
+    },
+    "convergence_time": {
+      "mean": 25.0,
+      "std": 0.0,
+      "min": 25.0,
+      "max": 25.0,
+      "ci_lo": 25.0,
+      "ci_hi": 25.0,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    }
+  },
+  "interpretation": "A metric with 'reliability_flag'='unreliable' is producing structure in purely random data. Its values in real experiments should be treated with caution until the source of the false positive is understood."
+}

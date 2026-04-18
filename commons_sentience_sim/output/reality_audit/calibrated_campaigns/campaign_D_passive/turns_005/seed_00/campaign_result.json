@@ -1,0 +1,17 @@
+{
+  "campaign_id": "campaign_D_passive",
+  "label": "campaign_D_passive",
+  "total_turns": 5,
+  "seed": 0,
+  "probe_mode": "passive",
+  "gov_off": false,
+  "experimental": false,
+  "probe_metrics": {
+    "path_smoothness": 0.7,
+    "avg_control_effort": 0.0,
+    "audit_bandwidth": 1.0,
+    "stability_score": 0.6884,
+    "mean_position_error": 0.6962,
+    "observer_dependence_score": 0.0
+  }
+}

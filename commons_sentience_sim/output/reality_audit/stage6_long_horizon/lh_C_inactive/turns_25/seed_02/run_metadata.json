@@ -1,0 +1,18 @@
+{
+  "campaign_id": "lh_C_inactive",
+  "label": "probe_inactive_arm",
+  "total_turns": 25,
+  "seed": 2,
+  "probe_mode": "inactive",
+  "gov_off": false,
+  "experimental": false,
+  "metrics": {
+    "path_smoothness": null,
+    "avg_control_effort": null,
+    "audit_bandwidth": null,
+    "stability_score": null,
+    "mean_position_error": null,
+    "anisotropy_score": null,
+    "observer_dependence_score": null
+  }
+}

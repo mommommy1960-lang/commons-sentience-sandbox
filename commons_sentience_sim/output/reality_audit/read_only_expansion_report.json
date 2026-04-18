@@ -1,0 +1,205 @@
+{
+  "audit_dir_a": "commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_baseline/turns_005/seed_00/reality_audit",
+  "audit_dir_b": "commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_baseline/turns_005/seed_01/reality_audit",
+  "exact_match_fields": {
+    "probe_mode": {
+      "run_a": "passive",
+      "run_b": "passive",
+      "match": true,
+      "category": "exact_match_safe"
+    },
+    "goal_room": {
+      "run_a": "Governance Vault",
+      "run_b": "Governance Vault",
+      "match": true,
+      "category": "exact_match_safe"
+    },
+    "total_records": {
+      "run_a": 10,
+      "run_b": 10,
+      "match": true,
+      "category": "exact_match_safe"
+    }
+  },
+  "probabilistic_fields": {
+    "mean_position_error": {
+      "run_a": 0.6962,
+      "run_b": 0.6962,
+      "delta": 0.0,
+      "relative_delta": 0.0,
+      "similar": true,
+      "category": "probabilistic"
+    },
+    "stability_score": {
+      "run_a": 0.6884,
+      "run_b": 0.6884,
+      "delta": 0.0,
+      "relative_delta": 0.0,
+      "similar": true,
+      "category": "probabilistic"
+    },
+    "avg_control_effort": {
+      "run_a": 0.0,
+      "run_b": 0.0,
+      "delta": 0.0,
+      "relative_delta": 0.0,
+      "similar": true,
+      "category": "probabilistic"
+    },
+    "path_smoothness": {
+      "run_a": 0.7,
+      "run_b": 0.7,
+      "delta": 0.0,
+      "relative_delta": 0.0,
+      "similar": true,
+      "category": "probabilistic"
+    },
+    "audit_bandwidth": {
+      "run_a": 1.0,
+      "run_b": 1.0,
+      "delta": 0.0,
+      "relative_delta": 0.0,
+      "similar": true,
+      "category": "probabilistic"
+    }
+  },
+  "unreliable_fields": {
+    "observer_dependence_score": {
+      "run_a": 0.0,
+      "run_b": 0.0,
+      "category": "unreliable",
+      "note": "not suitable for quantitative comparison"
+    }
+  },
+  "room_occupancy_comparison": {
+    "Aster": {
+      "Governance Vault": {
+        "run_a": 1,
+        "run_b": 1,
+        "delta": 0
+      },
+      "Memory Archive": {
+        "run_a": 1,
+        "run_b": 1,
+        "delta": 0
+      },
+      "Operations Desk": {
+        "run_a": 1,
+        "run_b": 1,
+        "delta": 0
+      },
+      "Social Hall": {
+        "run_a": 1,
+        "run_b": 1,
+        "delta": 0
+      },
+      "Reflection Chamber": {
+        "run_a": 1,
+        "run_b": 1,
+        "delta": 0
+      }
+    },
+    "Sentinel": {
+      "Governance Vault": {
+        "run_a": 1,
+        "run_b": 1,
+        "delta": 0
+      },
+      "Memory Archive": {
+        "run_a": 1,
+        "run_b": 1,
+        "delta": 0
+      },
+      "Operations Desk": {
+        "run_a": 1,
+        "run_b": 1,
+        "delta": 0
+      },
+      "Social Hall": {
+        "run_a": 2,
+        "run_b": 2,
+        "delta": 0
+      }
+    }
+  },
+  "governance_counts": {
+    "run_a": {
+      "Sentinel": {
+        "permitted": 5,
+        "blocked": 0
+      },
+      "Aster": {
+        "permitted": 5,
+        "blocked": 0
+      }
+    },
+    "run_b": {
+      "Sentinel": {
+        "permitted": 5,
+        "blocked": 0
+      },
+      "Aster": {
+        "permitted": 5,
+        "blocked": 0
+      }
+    }
+  },
+  "action_sequence_comparison": {
+    "Aster": {
+      "edit_distance": 0,
+      "normalised_edit_distance": 0.0,
+      "seq_len_a": 5,
+      "seq_len_b": 5,
+      "classification": "exact_match"
+    },
+    "Sentinel": {
+      "edit_distance": 0,
+      "normalised_edit_distance": 0.0,
+      "seq_len_a": 5,
+      "seq_len_b": 5,
+      "classification": "exact_match"
+    }
+  },
+  "path_history_comparison": {
+    "Aster": {
+      "path_a": [
+        "Memory Archive",
+        "Social Hall",
+        "Operations Desk",
+        "Governance Vault",
+        "Reflection Chamber"
+      ],
+      "path_b": [
+        "Memory Archive",
+        "Social Hall",
+        "Operations Desk",
+        "Governance Vault",
+        "Reflection Chamber"
+      ],
+      "same_length": true,
+      "identical": true
+    },
+    "Sentinel": {
+      "path_a": [
+        "Operations Desk",
+        "Memory Archive",
+        "Social Hall",
+        "Governance Vault"
+      ],
+      "path_b": [
+        "Operations Desk",
+        "Memory Archive",
+        "Social Hall",
+        "Governance Vault"
+      ],
+      "same_length": true,
+      "identical": true
+    }
+  },
+  "verdict": {
+    "exact_fields_ok": true,
+    "probabilistic_fields_similar": true,
+    "action_sequences_similar": true,
+    "overall_probe_readonly_confirmed": true
+  }
+}

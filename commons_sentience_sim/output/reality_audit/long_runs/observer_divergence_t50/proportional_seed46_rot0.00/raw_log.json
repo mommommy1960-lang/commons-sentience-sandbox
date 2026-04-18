@@ -1,0 +1,2002 @@
+[
+  {
+    "time": 0.5,
+    "position": [
+      0.75,
+      0.0
+    ],
+    "measured_position": [
+      0.75,
+      0.0
+    ],
+    "velocity": [
+      1.5,
+      0.0
+    ],
+    "measured_velocity": [
+      1.5,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.75,
+        0.0
+      ],
+      "velocity": [
+        1.5,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      10.0,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 1.0,
+    "position": [
+      1.6875,
+      0.0
+    ],
+    "measured_position": [
+      0.75,
+      0.0
+    ],
+    "velocity": [
+      1.875,
+      0.0
+    ],
+    "measured_velocity": [
+      1.5,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        0.735,
+        0.0
+      ],
+      "velocity": [
+        1.47,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      9.25,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 1.5,
+    "position": [
+      2.671875,
+      0.0
+    ],
+    "measured_position": [
+      0.75,
+      0.0
+    ],
+    "velocity": [
+      1.96875,
+      0.0
+    ],
+    "measured_velocity": [
+      1.5,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        0.7202999999999999,
+        0.0
+      ],
+      "velocity": [
+        1.4405999999999999,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      9.25,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 2.0,
+    "position": [
+      3.66796875,
+      0.0
+    ],
+    "measured_position": [
+      0.75,
+      0.0
+    ],
+    "velocity": [
+      1.9921875,
+      0.0
+    ],
+    "measured_velocity": [
+      1.5,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        0.7058939999999999,
+        0.0
+      ],
+      "velocity": [
+        1.4117879999999998,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      9.25,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 2.5,
+    "position": [
+      4.6669921875,
+      0.0
+    ],
+    "measured_position": [
+      0.75,
+      0.0
+    ],
+    "velocity": [
+      1.998046875,
+      0.0
+    ],
+    "measured_velocity": [
+      1.5,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        0.6917761199999999,
+        0.0
+      ],
+      "velocity": [
+        1.3835522399999998,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      9.25,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 3.0,
+    "position": [
+      5.666748046875,
+      0.0
+    ],
+    "measured_position": [
+      5.666748046875,
+      0.0
+    ],
+    "velocity": [
+      1.99951171875,
+      0.0
+    ],
+    "measured_velocity": [
+      1.99951171875,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        5.666748046875,
+        0.0
+      ],
+      "velocity": [
+        1.99951171875,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      9.25,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 3.5,
+    "position": [
+      6.66668701171875,
+      0.0
+    ],
+    "measured_position": [
+      5.666748046875,
+      0.0
+    ],
+    "velocity": [
+      1.9998779296875,
+      0.0
+    ],
+    "measured_velocity": [
+      1.99951171875,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        5.5534130859375,
+        0.0
+      ],
+      "velocity": [
+        1.959521484375,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      4.333251953125,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 4.0,
+    "position": [
+      7.6666717529296875,
+      0.0
+    ],
+    "measured_position": [
+      5.666748046875,
+      0.0
+    ],
+    "velocity": [
+      1.999969482421875,
+      0.0
+    ],
+    "measured_velocity": [
+      1.99951171875,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        5.4423448242187495,
+        0.0
+      ],
+      "velocity": [
+        1.9203310546874999,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      4.333251953125,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 4.5,
+    "position": [
+      8.666667938232422,
+      0.0
+    ],
+    "measured_position": [
+      5.666748046875,
+      0.0
+    ],
+    "velocity": [
+      1.9999923706054688,
+      0.0
+    ],
+    "measured_velocity": [
+      1.99951171875,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        5.333497927734374,
+        0.0
+      ],
+      "velocity": [
+        1.88192443359375,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      4.333251953125,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 5.0,
+    "position": [
+      9.666666984558105,
+      0.0
+    ],
+    "measured_position": [
+      5.666748046875,
+      0.0
+    ],
+    "velocity": [
+      1.9999980926513672,
+      0.0
+    ],
+    "measured_velocity": [
+      1.99951171875,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        5.226827969179687,
+        0.0
+      ],
+      "velocity": [
+        1.844285944921875,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      4.333251953125,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 5.5,
+    "position": [
+      10.666666746139526,
+      0.0
+    ],
+    "measured_position": [
+      10.666666746139526,
+      0.0
+    ],
+    "velocity": [
+      1.9999995231628418,
+      0.0
+    ],
+    "measured_velocity": [
+      1.9999995231628418,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        10.666666746139526,
+        0.0
+      ],
+      "velocity": [
+        1.9999995231628418,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      4.333251953125,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 6.0,
+    "position": [
+      10.66666665673256,
+      0.0
+    ],
+    "measured_position": [
+      10.666666746139526,
+      0.0
+    ],
+    "velocity": [
+      -1.7881393432617188e-07,
+      0.0
+    ],
+    "measured_velocity": [
+      1.9999995231628418,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        10.453333411216736,
+        0.0
+      ],
+      "velocity": [
+        1.959999532699585,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.6666667461395264,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 6.5,
+    "position": [
+      10.416666604578495,
+      0.0
+    ],
+    "measured_position": [
+      10.666666746139526,
+      0.0
+    ],
+    "velocity": [
+      -0.5000001043081284,
+      0.0
+    ],
+    "measured_velocity": [
+      1.9999995231628418,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        10.244266742992401,
+        0.0
+      ],
+      "velocity": [
+        1.9207995420455932,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.6666667461395264,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 7.0,
+    "position": [
+      10.104166561737657,
+      0.0
+    ],
+    "measured_position": [
+      10.666666746139526,
+      0.0
+    ],
+    "velocity": [
+      -0.6250000856816769,
+      0.0
+    ],
+    "measured_velocity": [
+      1.9999995231628418,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        10.039381408132554,
+        0.0
+      ],
+      "velocity": [
+        1.8823835512046814,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.6666667461395264,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 7.5,
+    "position": [
+      9.776041521225125,
+      0.0
+    ],
+    "measured_position": [
+      10.666666746139526,
+      0.0
+    ],
+    "velocity": [
+      -0.656250081025064,
+      0.0
+    ],
+    "measured_velocity": [
+      1.9999995231628418,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        9.838593779969903,
+        0.0
+      ],
+      "velocity": [
+        1.8447358801805878,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.6666667461395264,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 8.0,
+    "position": [
+      9.44401023129467,
+      0.0
+    ],
+    "measured_position": [
+      9.44401023129467,
+      0.0
+    ],
+    "velocity": [
+      -0.6640625798609108,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.6640625798609108,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        9.44401023129467,
+        0.0
+      ],
+      "velocity": [
+        -0.6640625798609108,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      -0.6666667461395264,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 8.5,
+    "position": [
+      9.569498572076554,
+      0.0
+    ],
+    "measured_position": [
+      9.44401023129467,
+      0.0
+    ],
+    "velocity": [
+      0.2509766815637704,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.6640625798609108,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        9.255130026668775,
+        0.0
+      ],
+      "velocity": [
+        -0.6507813282636925,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      0.5559897687053308,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 9.0,
+    "position": [
+      9.809366820536525,
+      0.0
+    ],
+    "measured_position": [
+      9.44401023129467,
+      0.0
+    ],
+    "velocity": [
+      0.4797364969199407,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.6640625798609108,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        9.070027426135399,
+        0.0
+      ],
+      "velocity": [
+        -0.6377657016984186,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      0.5559897687053308,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 9.5,
+    "position": [
+      10.077830045916016,
+      0.0
+    ],
+    "measured_position": [
+      9.44401023129467,
+      0.0
+    ],
+    "velocity": [
+      0.5369264507589833,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.6640625798609108,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        8.88862687761269,
+        0.0
+      ],
+      "velocity": [
+        -0.6250103876644503,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      0.5559897687053308,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 10.0,
+    "position": [
+      10.353442015525388,
+      0.0
+    ],
+    "measured_position": [
+      9.44401023129467,
+      0.0
+    ],
+    "velocity": [
+      0.5512239392187439,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.6640625798609108,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        8.710854340060436,
+        0.0
+      ],
+      "velocity": [
+        -0.6125101799111613,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      0.5559897687053308,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 10.5,
+    "position": [
+      10.63084117119223,
+      0.0
+    ],
+    "measured_position": [
+      10.63084117119223,
+      0.0
+    ],
+    "velocity": [
+      0.5547983113336841,
+      0.0
+    ],
+    "measured_velocity": [
+      0.5547983113336841,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        10.63084117119223,
+        0.0
+      ],
+      "velocity": [
+        0.5547983113336841,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.5559897687053308,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 11.0,
+    "position": [
+      10.463625520911854,
+      0.0
+    ],
+    "measured_position": [
+      10.63084117119223,
+      0.0
+    ],
+    "velocity": [
+      -0.33443130056075177,
+      0.0
+    ],
+    "measured_velocity": [
+      0.5547983113336841,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        10.418224347768385,
+        0.0
+      ],
+      "velocity": [
+        0.5437023451070104,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.6308411711922304,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 11.5,
+    "position": [
+      10.185256169144674,
+      0.0
+    ],
+    "measured_position": [
+      10.63084117119223,
+      0.0
+    ],
+    "velocity": [
+      -0.5567387035343607,
+      0.0
+    ],
+    "measured_velocity": [
+      0.5547983113336841,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        10.209859860813017,
+        0.0
+      ],
+      "velocity": [
+        0.5328282982048702,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.6308411711922304,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 12.0,
+    "position": [
+      9.879098392005792,
+      0.0
+    ],
+    "measured_position": [
+      10.63084117119223,
+      0.0
+    ],
+    "velocity": [
+      -0.612315554277763,
+      0.0
+    ],
+    "measured_velocity": [
+      0.5547983113336841,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        10.005662663596757,
+        0.0
+      ],
+      "velocity": [
+        0.5221717322407728,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.6308411711922304,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 12.5,
+    "position": [
+      9.565993508523986,
+      0.0
+    ],
+    "measured_position": [
+      10.63084117119223,
+      0.0
+    ],
+    "velocity": [
+      -0.6262097669636135,
+      0.0
+    ],
+    "measured_velocity": [
+      0.5547983113336841,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        9.805549410324822,
+        0.0
+      ],
+      "velocity": [
+        0.5117282975959574,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.6308411711922304,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 13.0,
+    "position": [
+      9.251151848456448,
+      0.0
+    ],
+    "measured_position": [
+      9.251151848456448,
+      0.0
+    ],
+    "velocity": [
+      -0.6296833201350762,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.6296833201350762,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        9.251151848456448,
+        0.0
+      ],
+      "velocity": [
+        -0.6296833201350762,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      -0.6308411711922304,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 13.5,
+    "position": [
+      9.453259490268396,
+      0.0
+    ],
+    "measured_position": [
+      9.251151848456448,
+      0.0
+    ],
+    "velocity": [
+      0.4042152836238947,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.6296833201350762,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        9.066128811487319,
+        0.0
+      ],
+      "velocity": [
+        -0.6170896537323747,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      0.7488481515435517,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 14.0,
+    "position": [
+      9.784604457550214,
+      0.0
+    ],
+    "measured_position": [
+      9.251151848456448,
+      0.0
+    ],
+    "velocity": [
+      0.6626899345636375,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.6296833201350762,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        8.884806235257573,
+        0.0
+      ],
+      "velocity": [
+        -0.6047478606577271,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      0.7488481515435517,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 14.5,
+    "position": [
+      10.148258756199501,
+      0.0
+    ],
+    "measured_position": [
+      9.251151848456448,
+      0.0
+    ],
+    "velocity": [
+      0.7273085972985731,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.6296833201350762,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        8.70711011055242,
+        0.0
+      ],
+      "velocity": [
+        -0.5926529034445726,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      0.7488481515435517,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 15.0,
+    "position": [
+      10.519990387690655,
+      0.0
+    ],
+    "measured_position": [
+      9.251151848456448,
+      0.0
+    ],
+    "velocity": [
+      0.743463262982307,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.6296833201350762,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        8.532967908341373,
+        0.0
+      ],
+      "velocity": [
+        -0.5807998453756811,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      0.7488481515435517,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 15.5,
+    "position": [
+      10.893741352392276,
+      0.0
+    ],
+    "measured_position": [
+      10.893741352392276,
+      0.0
+    ],
+    "velocity": [
+      0.7475019294032406,
+      0.0
+    ],
+    "measured_velocity": [
+      0.7475019294032406,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        10.893741352392276,
+        0.0
+      ],
+      "velocity": [
+        0.7475019294032406,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.7488481515435517,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 16.0,
+    "position": [
+      10.652026086420577,
+      0.0
+    ],
+    "measured_position": [
+      10.893741352392276,
+      0.0
+    ],
+    "velocity": [
+      -0.48343053194339664,
+      0.0
+    ],
+    "measured_velocity": [
+      0.7475019294032406,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        10.67586652534443,
+        0.0
+      ],
+      "velocity": [
+        0.7325518908151757,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.8937413523922757,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 16.5,
+    "position": [
+      10.25644426278055,
+      0.0
+    ],
+    "measured_position": [
+      10.893741352392276,
+      0.0
+    ],
+    "velocity": [
+      -0.791163647280056,
+      0.0
+    ],
+    "measured_velocity": [
+      0.7475019294032406,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        10.462349194837541,
+        0.0
+      ],
+      "velocity": [
+        0.7179008529988722,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.8937413523922757,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 17.0,
+    "position": [
+      9.82239579972344,
+      0.0
+    ],
+    "measured_position": [
+      10.893741352392276,
+      0.0
+    ],
+    "velocity": [
+      -0.8680969261142207,
+      0.0
+    ],
+    "measured_velocity": [
+      0.7475019294032406,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        10.25310221094079,
+        0.0
+      ],
+      "velocity": [
+        0.7035428359388948,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.8937413523922757,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 17.5,
+    "position": [
+      9.378730676812058,
+      0.0
+    ],
+    "measured_position": [
+      10.893741352392276,
+      0.0
+    ],
+    "velocity": [
+      -0.887330245822762,
+      0.0
+    ],
+    "measured_velocity": [
+      0.7475019294032406,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        10.048040166721975,
+        0.0
+      ],
+      "velocity": [
+        0.6894719792201168,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.8937413523922757,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 18.0,
+    "position": [
+      8.93266138893711,
+      0.0
+    ],
+    "measured_position": [
+      8.93266138893711,
+      0.0
+    ],
+    "velocity": [
+      -0.8921385757498973,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.8921385757498973,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        8.93266138893711,
+        0.0
+      ],
+      "velocity": [
+        -0.8921385757498973,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      -0.8937413523922757,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 18.5,
+    "position": [
+      9.221396046116956,
+      0.0
+    ],
+    "measured_position": [
+      8.93266138893711,
+      0.0
+    ],
+    "velocity": [
+      0.5774693143596935,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.8921385757498973,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        8.754008161158367,
+        0.0
+      ],
+      "velocity": [
+        -0.8742958042348994,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      1.0673386110628904,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 19.0,
+    "position": [
+      9.693831689560502,
+      0.0
+    ],
+    "measured_position": [
+      8.93266138893711,
+      0.0
+    ],
+    "velocity": [
+      0.9448712868870912,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.8921385757498973,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        8.5789279979352,
+        0.0
+      ],
+      "velocity": [
+        -0.8568098881502014,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      1.0673386110628904,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 19.5,
+    "position": [
+      10.212192579569972,
+      0.0
+    ],
+    "measured_position": [
+      8.93266138893711,
+      0.0
+    ],
+    "velocity": [
+      1.0367217800189406,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.8921385757498973,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        8.407349437976496,
+        0.0
+      ],
+      "velocity": [
+        -0.8396736903871974,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      1.0673386110628904,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 20.0,
+    "position": [
+      10.742034781220923,
+      0.0
+    ],
+    "measured_position": [
+      8.93266138893711,
+      0.0
+    ],
+    "velocity": [
+      1.0596844033019028,
+      0.0
+    ],
+    "measured_velocity": [
+      -0.8921385757498973,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        8.239202449216966,
+        0.0
+      ],
+      "velocity": [
+        -0.8228802165794534,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      1.0673386110628904,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 20.5,
+    "position": [
+      11.274747310782244,
+      0.0
+    ],
+    "measured_position": [
+      11.274747310782244,
+      0.0
+    ],
+    "velocity": [
+      1.0654250591226435,
+      0.0
+    ],
+    "measured_velocity": [
+      1.0654250591226435,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        11.274747310782244,
+        0.0
+      ],
+      "velocity": [
+        1.0654250591226435,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      1.0673386110628904,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 21.0,
+    "position": [
+      10.929895201629233,
+      0.0
+    ],
+    "measured_position": [
+      11.274747310782244,
+      0.0
+    ],
+    "velocity": [
+      -0.6897042183060221,
+      0.0
+    ],
+    "measured_velocity": [
+      1.0654250591226435,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        11.049252364566598,
+        0.0
+      ],
+      "velocity": [
+        1.0441165579401905,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -1.274747310782244,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 21.5,
+    "position": [
+      10.365651932797638,
+      0.0
+    ],
+    "measured_position": [
+      11.274747310782244,
+      0.0
+    ],
+    "velocity": [
+      -1.1284865376631885,
+      0.0
+    ],
+    "measured_velocity": [
+      1.0654250591226435,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        10.828267317275266,
+        0.0
+      ],
+      "velocity": [
+        1.0232342267813868,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -1.274747310782244,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 22.0,
+    "position": [
+      9.746560874046398,
+      0.0
+    ],
+    "measured_position": [
+      11.274747310782244,
+      0.0
+    ],
+    "velocity": [
+      -1.23818211750248,
+      0.0
+    ],
+    "measured_velocity": [
+      1.0654250591226435,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        10.61170197092976,
+        0.0
+      ],
+      "velocity": [
+        1.002769542245759,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -1.274747310782244,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 22.5,
+    "position": [
+      9.113757867815247,
+      0.0
+    ],
+    "measured_position": [
+      11.274747310782244,
+      0.0
+    ],
+    "velocity": [
+      -1.265606012462303,
+      0.0
+    ],
+    "measured_velocity": [
+      1.0654250591226435,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        10.399467931511165,
+        0.0
+      ],
+      "velocity": [
+        0.9827141514008438,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -1.274747310782244,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 23.0,
+    "position": [
+      8.477526874714117,
+      0.0
+    ],
+    "measured_position": [
+      8.477526874714117,
+      0.0
+    ],
+    "velocity": [
+      -1.2724619862022588,
+      0.0
+    ],
+    "measured_velocity": [
+      -1.2724619862022588,
+      0.0
+    ],
+    "heading": 3.141592653589793,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        8.477526874714117,
+        0.0
+      ],
+      "velocity": [
+        -1.2724619862022588,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      -1.274747310782244,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 23.5,
+    "position": [
+      8.889396548421042,
+      0.0
+    ],
+    "measured_position": [
+      8.477526874714117,
+      0.0
+    ],
+    "velocity": [
+      0.8237393474138474,
+      0.0
+    ],
+    "measured_velocity": [
+      -1.2724619862022588,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        8.307976337219834,
+        0.0
+      ],
+      "velocity": [
+        -1.2470127464782137,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      1.5224731252858827,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 24.0,
+    "position": [
+      9.56329138882998,
+      0.0
+    ],
+    "measured_position": [
+      8.477526874714117,
+      0.0
+    ],
+    "velocity": [
+      1.347789680817874,
+      0.0
+    ],
+    "measured_velocity": [
+      -1.2724619862022588,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        8.141816810475438,
+        0.0
+      ],
+      "velocity": [
+        -1.2220724915486494,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      1.5224731252858827,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 24.5,
+    "position": [
+      10.30269252091442,
+      0.0
+    ],
+    "measured_position": [
+      8.477526874714117,
+      0.0
+    ],
+    "velocity": [
+      1.4788022641688805,
+      0.0
+    ],
+    "measured_velocity": [
+      -1.2724619862022588,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        7.97898047426593,
+        0.0
+      ],
+      "velocity": [
+        -1.1976310417176763,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      1.5224731252858827,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  },
+  {
+    "time": 25.0,
+    "position": [
+      11.058470225917736,
+      0.0
+    ],
+    "measured_position": [
+      8.477526874714117,
+      0.0
+    ],
+    "velocity": [
+      1.5115554100066322,
+      0.0
+    ],
+    "measured_velocity": [
+      -1.2724619862022588,
+      0.0
+    ],
+    "heading": 0.0,
+    "observed": false,
+    "hidden_state": {
+      "position": [
+        7.819400864780611,
+        0.0
+      ],
+      "velocity": [
+        -1.1736784208833229,
+        0.0
+      ],
+      "heading": 3.141592653589793
+    },
+    "control_input": [
+      1.5224731252858827,
+      0.0
+    ],
+    "seed": 46,
+    "controller": "proportional",
+    "world_mode": "observer_triggered_updates",
+    "orientation": 0.0
+  }
+]

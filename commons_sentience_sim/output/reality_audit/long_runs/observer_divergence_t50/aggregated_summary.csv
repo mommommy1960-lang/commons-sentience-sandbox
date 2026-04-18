@@ -1,0 +1,11 @@
+metric,mean,std,min,max,ci_lo,ci_hi,n,consistency_score,stability
+position_error,2.09439,0.0,2.09439,2.09439,2.09439,2.09439,5,1.0,stable
+velocity_error,1.132558,0.0,1.132558,1.132558,1.132558,1.132558,5,1.0,stable
+stability_score,0.128093,0.0,0.128093,0.128093,0.128093,0.128093,5,1.0,stable
+anisotropy_score,429.940475,0.0,429.940475,429.940475,429.940475,429.940475,5,1.0,stable
+observer_dependence_score,0.337142,0.0,0.337142,0.337142,0.337142,0.337142,5,1.0,stable
+bandwidth_bottleneck_score,0.2,0.0,0.2,0.2,0.2,0.2,5,1.0,stable
+quantization_artifact_score,40.0,0.0,40.0,40.0,40.0,40.0,5,1.0,stable
+control_effort,113.197018,0.0,113.197018,113.197018,113.197018,113.197018,5,1.0,stable
+path_smoothness,24.118189,0.0,24.118189,24.118189,24.118189,24.118189,5,1.0,stable
+convergence_time,25.0,0.0,25.0,25.0,25.0,25.0,5,1.0,stable

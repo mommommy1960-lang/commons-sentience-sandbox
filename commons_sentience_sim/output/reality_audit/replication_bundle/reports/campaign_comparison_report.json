@@ -1,0 +1,154 @@
+{
+  "stage": "Stage 5",
+  "description": "Effect-size comparisons between calibrated campaign pairs.",
+  "effect_threshold": 0.2,
+  "note_experimental": "campaign_E comparisons are experimental \u2014 do not overclaim.",
+  "comparisons": {
+    "A_vs_B__gov_on_vs_gov_off": {
+      "5": {
+        "path_smoothness": {
+          "mean_a": 0.7,
+          "mean_b": 0.7,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "meaningful": false
+        },
+        "avg_control_effort": {
+          "mean_a": 0.0,
+          "mean_b": 0.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "meaningful": false
+        },
+        "audit_bandwidth": {
+          "mean_a": 1.0,
+          "mean_b": 1.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "meaningful": false
+        },
+        "stability_score": {
+          "mean_a": 0.6884,
+          "mean_b": 0.6884,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "meaningful": false
+        },
+        "mean_position_error": {
+          "mean_a": 0.6962,
+          "mean_b": 0.6962,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "meaningful": false
+        }
+      }
+    },
+    "A_vs_C__normal_vs_baseline_agent": {
+      "5": {
+        "path_smoothness": {
+          "mean_a": 0.7,
+          "mean_b": 0.7,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "meaningful": false
+        },
+        "avg_control_effort": {
+          "mean_a": 0.0,
+          "mean_b": 0.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "meaningful": false
+        },
+        "audit_bandwidth": {
+          "mean_a": 1.0,
+          "mean_b": 1.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "meaningful": false
+        },
+        "stability_score": {
+          "mean_a": 0.6884,
+          "mean_b": 0.6884,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "meaningful": false
+        },
+        "mean_position_error": {
+          "mean_a": 0.6962,
+          "mean_b": 0.6962,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "meaningful": false
+        }
+      }
+    },
+    "D__passive_vs_inactive_probe": {
+      "5": {
+        "path_smoothness": {
+          "delta": null,
+          "meaningful": false,
+          "note": "missing data"
+        },
+        "avg_control_effort": {
+          "delta": null,
+          "meaningful": false,
+          "note": "missing data"
+        },
+        "audit_bandwidth": {
+          "delta": null,
+          "meaningful": false,
+          "note": "missing data"
+        },
+        "stability_score": {
+          "delta": null,
+          "meaningful": false,
+          "note": "missing data"
+        },
+        "mean_position_error": {
+          "delta": null,
+          "meaningful": false,
+          "note": "missing data"
+        }
+      }
+    },
+    "E__passive_vs_active_probe (experimental)": {
+      "5": {
+        "path_smoothness": {
+          "mean_a": 0.7,
+          "mean_b": 0.7,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "meaningful": false
+        },
+        "avg_control_effort": {
+          "mean_a": 0.0,
+          "mean_b": 0.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "meaningful": false
+        },
+        "audit_bandwidth": {
+          "mean_a": 1.0,
+          "mean_b": 0.2,
+          "delta": 0.8,
+          "cohens_d": 0.0,
+          "meaningful": false
+        },
+        "stability_score": {
+          "mean_a": 0.6884,
+          "mean_b": 0.633,
+          "delta": 0.0554,
+          "cohens_d": 0.0,
+          "meaningful": false
+        },
+        "mean_position_error": {
+          "mean_a": 0.6962,
+          "mean_b": 1.1966,
+          "delta": -0.5004,
+          "cohens_d": 0.0,
+          "meaningful": false
+        }
+      }
+    }
+  }
+}

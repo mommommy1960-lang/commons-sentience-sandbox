@@ -1,0 +1,13 @@
+metric,status,encoding_sensitive,governance_sensitive,sandbox_variability,fp_threshold
+path_smoothness,trusted_absolute,False,False,unknown,
+avg_control_effort,trusted_absolute,False,True,unknown,0.95
+audit_bandwidth,trusted_absolute,False,False,unknown,
+stability_score,trusted_comparative,True,False,unknown,0.05
+mean_position_error,trusted_comparative,True,False,unknown,6.0
+convergence_turn,trusted_comparative,False,False,unknown,
+quantization_artifact_score,trusted_comparative,False,False,unknown,
+observer_dependence_score,unstable_confounded,False,False,unknown,15.0
+anisotropy_score,trusted_comparative,True,False,unknown,
+hidden_measured_gap_raw,trusted_comparative,False,False,unknown,
+hidden_measured_gap_path_normalised,trusted_comparative,False,False,unknown,
+observation_schedule_sensitivity,experimental,False,False,unknown,

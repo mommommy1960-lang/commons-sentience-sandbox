@@ -1,0 +1,809 @@
+{
+  "classification_thresholds": {
+    "cv_stable": 0.01,
+    "cv_usable": 0.3,
+    "rank_corr_usable": 0.5
+  },
+  "per_config_analyses": [
+    {
+      "config": "sc_baseline",
+      "turns": 5,
+      "n_seeds_analysed": 3,
+      "metric_classifications": {
+        "mean_position_error": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6962,
+            "std": 0.0,
+            "min": 0.6962,
+            "max": 0.6962,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "stability_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6884,
+            "std": 0.0,
+            "min": 0.6884,
+            "max": 0.6884,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "avg_control_effort": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "path_smoothness": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.7,
+            "std": 0.0,
+            "min": 0.7,
+            "max": 0.7,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "observer_dependence_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "audit_bandwidth": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        }
+      }
+    },
+    {
+      "config": "sc_baseline",
+      "turns": 10,
+      "n_seeds_analysed": 3,
+      "metric_classifications": {
+        "mean_position_error": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6962,
+            "std": 0.0,
+            "min": 0.6962,
+            "max": 0.6962,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "stability_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6975,
+            "std": 0.0,
+            "min": 0.6975,
+            "max": 0.6975,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "avg_control_effort": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "path_smoothness": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.75,
+            "std": 0.0,
+            "min": 0.75,
+            "max": 0.75,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "observer_dependence_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "audit_bandwidth": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        }
+      }
+    },
+    {
+      "config": "sc_strict_governance",
+      "turns": 5,
+      "n_seeds_analysed": 3,
+      "metric_classifications": {
+        "mean_position_error": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6962,
+            "std": 0.0,
+            "min": 0.6962,
+            "max": 0.6962,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "stability_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6884,
+            "std": 0.0,
+            "min": 0.6884,
+            "max": 0.6884,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "avg_control_effort": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "path_smoothness": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.7,
+            "std": 0.0,
+            "min": 0.7,
+            "max": 0.7,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "observer_dependence_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "audit_bandwidth": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        }
+      }
+    },
+    {
+      "config": "sc_strict_governance",
+      "turns": 10,
+      "n_seeds_analysed": 3,
+      "metric_classifications": {
+        "mean_position_error": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6962,
+            "std": 0.0,
+            "min": 0.6962,
+            "max": 0.6962,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "stability_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6975,
+            "std": 0.0,
+            "min": 0.6975,
+            "max": 0.6975,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "avg_control_effort": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "path_smoothness": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.75,
+            "std": 0.0,
+            "min": 0.75,
+            "max": 0.75,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "observer_dependence_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "audit_bandwidth": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        }
+      }
+    },
+    {
+      "config": "sc_relaxed_governance",
+      "turns": 5,
+      "n_seeds_analysed": 3,
+      "metric_classifications": {
+        "mean_position_error": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6962,
+            "std": 0.0,
+            "min": 0.6962,
+            "max": 0.6962,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "stability_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6884,
+            "std": 0.0,
+            "min": 0.6884,
+            "max": 0.6884,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "avg_control_effort": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "path_smoothness": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.7,
+            "std": 0.0,
+            "min": 0.7,
+            "max": 0.7,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "observer_dependence_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "audit_bandwidth": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        }
+      }
+    },
+    {
+      "config": "sc_relaxed_governance",
+      "turns": 10,
+      "n_seeds_analysed": 3,
+      "metric_classifications": {
+        "mean_position_error": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6962,
+            "std": 0.0,
+            "min": 0.6962,
+            "max": 0.6962,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "stability_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6975,
+            "std": 0.0,
+            "min": 0.6975,
+            "max": 0.6975,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "avg_control_effort": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "path_smoothness": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.75,
+            "std": 0.0,
+            "min": 0.75,
+            "max": 0.75,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "observer_dependence_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "audit_bandwidth": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        }
+      }
+    },
+    {
+      "config": "sc_probe_inactive",
+      "turns": 5,
+      "n_seeds_analysed": 3,
+      "metric_classifications": {
+        "mean_position_error": {
+          "classification": "insufficient_data",
+          "stats": {}
+        },
+        "stability_score": {
+          "classification": "insufficient_data",
+          "stats": {}
+        },
+        "avg_control_effort": {
+          "classification": "insufficient_data",
+          "stats": {}
+        },
+        "path_smoothness": {
+          "classification": "insufficient_data",
+          "stats": {}
+        },
+        "observer_dependence_score": {
+          "classification": "insufficient_data",
+          "stats": {}
+        },
+        "audit_bandwidth": {
+          "classification": "insufficient_data",
+          "stats": {}
+        }
+      }
+    },
+    {
+      "config": "sc_probe_inactive",
+      "turns": 10,
+      "n_seeds_analysed": 3,
+      "metric_classifications": {
+        "mean_position_error": {
+          "classification": "insufficient_data",
+          "stats": {}
+        },
+        "stability_score": {
+          "classification": "insufficient_data",
+          "stats": {}
+        },
+        "avg_control_effort": {
+          "classification": "insufficient_data",
+          "stats": {}
+        },
+        "path_smoothness": {
+          "classification": "insufficient_data",
+          "stats": {}
+        },
+        "observer_dependence_score": {
+          "classification": "insufficient_data",
+          "stats": {}
+        },
+        "audit_bandwidth": {
+          "classification": "insufficient_data",
+          "stats": {}
+        }
+      }
+    },
+    {
+      "config": "sc_active_measurement",
+      "turns": 5,
+      "n_seeds_analysed": 3,
+      "metric_classifications": {
+        "mean_position_error": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 1.1966,
+            "std": 0.0,
+            "min": 1.1966,
+            "max": 1.1966,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "stability_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.633,
+            "std": 0.0,
+            "min": 0.633,
+            "max": 0.633,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "avg_control_effort": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "path_smoothness": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.7,
+            "std": 0.0,
+            "min": 0.7,
+            "max": 0.7,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "observer_dependence_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 1.2402,
+            "std": 0.0,
+            "min": 1.2402,
+            "max": 1.2402,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "audit_bandwidth": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.2,
+            "std": 0.0,
+            "min": 0.2,
+            "max": 0.2,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        }
+      }
+    },
+    {
+      "config": "sc_active_measurement",
+      "turns": 10,
+      "n_seeds_analysed": 3,
+      "metric_classifications": {
+        "mean_position_error": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 1.1966,
+            "std": 0.0,
+            "min": 1.1966,
+            "max": 1.1966,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "stability_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.633,
+            "std": 0.0,
+            "min": 0.633,
+            "max": 0.633,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "avg_control_effort": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "path_smoothness": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.75,
+            "std": 0.0,
+            "min": 0.75,
+            "max": 0.75,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "observer_dependence_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 1.2402,
+            "std": 0.0,
+            "min": 1.2402,
+            "max": 1.2402,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "audit_bandwidth": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.1,
+            "std": 0.0,
+            "min": 0.1,
+            "max": 0.1,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        }
+      }
+    },
+    {
+      "config": "sc_low_cooperation",
+      "turns": 5,
+      "n_seeds_analysed": 3,
+      "metric_classifications": {
+        "mean_position_error": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6962,
+            "std": 0.0,
+            "min": 0.6962,
+            "max": 0.6962,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "stability_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6884,
+            "std": 0.0,
+            "min": 0.6884,
+            "max": 0.6884,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "avg_control_effort": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "path_smoothness": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.7,
+            "std": 0.0,
+            "min": 0.7,
+            "max": 0.7,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "observer_dependence_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "audit_bandwidth": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        }
+      }
+    },
+    {
+      "config": "sc_low_cooperation",
+      "turns": 10,
+      "n_seeds_analysed": 3,
+      "metric_classifications": {
+        "mean_position_error": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6962,
+            "std": 0.0,
+            "min": 0.6962,
+            "max": 0.6962,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "stability_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.6975,
+            "std": 0.0,
+            "min": 0.6975,
+            "max": 0.6975,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "avg_control_effort": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "path_smoothness": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.75,
+            "std": 0.0,
+            "min": 0.75,
+            "max": 0.75,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        },
+        "observer_dependence_score": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "cv": null,
+            "n_seeds": 3
+          }
+        },
+        "audit_bandwidth": {
+          "classification": "deterministic_stable",
+          "stats": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0,
+            "cv": 0.0,
+            "n_seeds": 3
+          }
+        }
+      }
+    }
+  ],
+  "metric_dominant_classifications": {
+    "mean_position_error": "deterministic_stable",
+    "stability_score": "deterministic_stable",
+    "avg_control_effort": "deterministic_stable",
+    "path_smoothness": "deterministic_stable",
+    "observer_dependence_score": "deterministic_stable",
+    "audit_bandwidth": "deterministic_stable"
+  }
+}

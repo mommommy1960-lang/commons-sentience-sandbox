@@ -1,0 +1,226 @@
+{
+  "stage": "Stage 5",
+  "description": "Ranked findings extracted from Stages 2\u20135 evidence.",
+  "trust_levels": {
+    "strong": "Multiple independent evidence sources; replicable result.",
+    "moderate": "Evidence present but limited to short runs or single source.",
+    "weak": "Directional trend only; insufficient replication.",
+    "experimental": "Not yet validated; hypothesis only."
+  },
+  "findings": [
+    {
+      "finding_id": "F01_passive_probe_readonly",
+      "finding_text": "The passive probe is read-only: path-history, total_records, goal_room, and probe_mode fields are exactly equal across repeated passive runs of the same configuration.  Probabilistic metrics (position_error, stability_score) are within natural stochastic tolerance.  Action sequences are similar (normalised edit distance < 0.20).",
+      "supporting_metrics": [
+        "audit_bandwidth",
+        "path_smoothness",
+        "avg_control_effort"
+      ],
+      "evidence_sources": [
+        "read_only_expansion_report.json"
+      ],
+      "trust_level": "strong",
+      "caveats": [
+        "Evidence based on short (5-turn) runs; confirmed directional consistency across Stage 3 and 4 repeated seeds.",
+        "Active_measurement_model mode modifies the probe schedule \u2014 read-only claim applies to passive mode only."
+      ],
+      "absolute_or_comparative": "absolute",
+      "metric_calibration_statuses": {
+        "audit_bandwidth": "trusted_absolute",
+        "path_smoothness": "trusted_absolute",
+        "avg_control_effort": "trusted_absolute"
+      }
+    },
+    {
+      "finding_id": "F02_path_smoothness_encoding_robust",
+      "finding_text": "path_smoothness is robust to position-encoding strategy: spread across BFS+MDS, pure-hop, and manual-topological encodings is < 5%.  It can be reported without an encoding qualifier.",
+      "supporting_metrics": [
+        "path_smoothness"
+      ],
+      "evidence_sources": [
+        "encoding_robustness_report.json"
+      ],
+      "trust_level": "strong",
+      "caveats": [
+        "path_smoothness measures room-transition rate, which does not depend on coordinate values \u2014 this robustness result is structurally expected."
+      ],
+      "absolute_or_comparative": "absolute",
+      "metric_calibration_statuses": {
+        "path_smoothness": "trusted_absolute"
+      }
+    },
+    {
+      "finding_id": "F03_position_metrics_encoding_sensitive",
+      "finding_text": "mean_position_error, stability_score, and anisotropy_score are encoding-sensitive: raw values differ by 37\u2013100% across three encodings.  These metrics must not be compared across analyses that used different position encodings.",
+      "supporting_metrics": [
+        "mean_position_error",
+        "stability_score",
+        "anisotropy_score"
+      ],
+      "evidence_sources": [
+        "encoding_robustness_report.json"
+      ],
+      "trust_level": "strong",
+      "caveats": [
+        "Scenario rank ordering may still be preserved even if absolute values differ \u2014 see encoding_invariant_report.json for rank-ordering checks.",
+        "All Stage 3\u20134 results used BFS+MDS encoding; within-stage comparisons are valid."
+      ],
+      "absolute_or_comparative": "comparative",
+      "metric_calibration_statuses": {
+        "mean_position_error": "trusted_comparative",
+        "stability_score": "trusted_comparative",
+        "anisotropy_score": "trusted_comparative"
+      }
+    },
+    {
+      "finding_id": "F04_no_false_positives_in_sandbox",
+      "finding_text": "No false positive detections were observed in sandbox conditions.  Both minimal-policy (cooperation=0.1, trust=0.2) and governance-off runs remained within calibrated thresholds for all monitored metrics.",
+      "supporting_metrics": [
+        "mean_position_error",
+        "stability_score",
+        "avg_control_effort",
+        "observer_dependence_score"
+      ],
+      "evidence_sources": [
+        "sandbox_false_positive_report.json"
+      ],
+      "trust_level": "strong",
+      "caveats": [
+        "Tested at 5 turns with 3 seeds \u2014 production FP characterisation at 50+ turns may yield different rates.",
+        "Thresholds were calibrated on short runs; long-horizon runs may require threshold re-calibration."
+      ],
+      "absolute_or_comparative": "absolute",
+      "metric_calibration_statuses": {
+        "mean_position_error": "trusted_comparative",
+        "stability_score": "trusted_comparative",
+        "avg_control_effort": "trusted_absolute",
+        "observer_dependence_score": "unstable_confounded"
+      }
+    },
+    {
+      "finding_id": "F06_observer_dependence_score_unreliable",
+      "finding_text": "observer_dependence_score is unreliable as a standalone anomaly signal.  In passive sandbox mode it is always 0 by construction.  In active_measurement_model mode it measures sensor staleness, not agent epistemic opacity.  It should not be interpreted as reflecting agent self-knowledge or hidden-state divergence.",
+      "supporting_metrics": [
+        "observer_dependence_score"
+      ],
+      "evidence_sources": [
+        "docs/METRIC_TRUST_RANKING.md",
+        "reality_audit/metrics/observer_metrics.py"
+      ],
+      "trust_level": "strong",
+      "caveats": [
+        "Replacement metrics (hidden_measured_gap_path_normalised, observation_schedule_sensitivity) exist but are Experimental/Comparative and require paired runs."
+      ],
+      "absolute_or_comparative": "absolute",
+      "metric_calibration_statuses": {
+        "observer_dependence_score": "unstable_confounded"
+      }
+    },
+    {
+      "finding_id": "F08_audit_bandwidth_probe_config_readout",
+      "finding_text": "audit_bandwidth = 1.0 in all passive runs and < 1.0 in active_measurement runs.  This confirms the probe schedule is configured correctly and passive mode always samples every turn.",
+      "supporting_metrics": [
+        "audit_bandwidth"
+      ],
+      "evidence_sources": [
+        "sandbox_campaigns_report.json",
+        "read_only_expansion_report.json"
+      ],
+      "trust_level": "strong",
+      "caveats": [
+        "audit_bandwidth is a probe-configuration readout, not a behaviour metric.  Do not compare it across probe modes as if it measures agent behaviour."
+      ],
+      "absolute_or_comparative": "absolute",
+      "metric_calibration_statuses": {
+        "audit_bandwidth": "trusted_absolute"
+      }
+    },
+    {
+      "finding_id": "F09_convergence_turn_null_in_sandbox",
+      "finding_text": "convergence_turn is null in virtually all sandbox runs.  The threshold (position_error \u2264 0.05) is rarely reached in the discrete-room categorical world because agents jump between rooms rather than approaching a goal continuously. This metric should not be reported for sandbox runs.",
+      "supporting_metrics": [
+        "convergence_turn"
+      ],
+      "evidence_sources": [
+        "docs/METRIC_TRUST_RANKING.md"
+      ],
+      "trust_level": "strong",
+      "caveats": [
+        "convergence_turn is valid in the continuous physics framework \u2014 it is a sandbox-specific limitation, not a metric flaw."
+      ],
+      "absolute_or_comparative": "absolute",
+      "metric_calibration_statuses": {
+        "convergence_turn": "trusted_comparative"
+      }
+    },
+    {
+      "finding_id": "F05_governance_shifts_control_effort",
+      "finding_text": "Governance state affects avg_control_effort: governance-off runs show lower blocking rates than governance-on runs when agents choose blockable actions.  In baseline cooperation scenarios the difference may be small because agents rarely choose blockable actions.",
+      "supporting_metrics": [
+        "avg_control_effort"
+      ],
+      "evidence_sources": [
+        "governance_campaign_report.json",
+        "ablation_report.json"
+      ],
+      "trust_level": "moderate",
+      "caveats": [
+        "At 5-turn runs, governance_sensitive_metrics=[] was observed \u2014 too short for structural governance effects to emerge.",
+        "Longer runs (25+ turns) are needed to confirm the shift magnitude.",
+        "governance_strictness config parameter does NOT affect GovernanceEngine \u2014 only structural monkeypatch (gov_off) changes real behaviour."
+      ],
+      "absolute_or_comparative": "comparative",
+      "metric_calibration_statuses": {
+        "avg_control_effort": "trusted_absolute"
+      }
+    },
+    {
+      "finding_id": "F07_metrics_deterministic_stable_short_runs",
+      "finding_text": "All six core metrics (mean_position_error, stability_score, avg_control_effort, path_smoothness, observer_dependence_score, audit_bandwidth) are classified deterministic_stable (CV < 1%) across repeated seeds in short (5\u201310 turn) sandbox runs.  This suggests the sandbox initialisation is deterministic at short horizons; variability is expected to increase at 25+ turns.",
+      "supporting_metrics": [
+        "mean_position_error",
+        "stability_score",
+        "avg_control_effort",
+        "path_smoothness",
+        "observer_dependence_score",
+        "audit_bandwidth"
+      ],
+      "evidence_sources": [
+        "sandbox_variability_report.json"
+      ],
+      "trust_level": "moderate",
+      "caveats": [
+        "Stability at 5\u201310 turns may not generalise to 25\u2013100 turn runs where LLM stochasticity accumulates.",
+        "True stochastic variability characterisation requires longer campaigns."
+      ],
+      "absolute_or_comparative": "absolute",
+      "metric_calibration_statuses": {
+        "mean_position_error": "trusted_comparative",
+        "stability_score": "trusted_comparative",
+        "avg_control_effort": "trusted_absolute",
+        "path_smoothness": "trusted_absolute",
+        "observer_dependence_score": "unstable_confounded",
+        "audit_bandwidth": "trusted_absolute"
+      }
+    },
+    {
+      "finding_id": "F10_anisotropy_comparative_only",
+      "finding_text": "anisotropy_score is meaningful only comparatively within the same turn count and encoding.  It accumulates unboundedly with run length; a value of 450 at 50 turns cannot be compared to a value of 450 at 100 turns.  It is encoding-sensitive (100% spread across encodings).",
+      "supporting_metrics": [
+        "anisotropy_score"
+      ],
+      "evidence_sources": [
+        "encoding_robustness_report.json",
+        "docs/METRIC_TRUST_RANKING.md"
+      ],
+      "trust_level": "moderate",
+      "caveats": [
+        "Within the same (turn_count, encoding) pair, large values (>100) reliably indicate directional structure.  Near-zero reliably indicates isotropy."
+      ],
+      "absolute_or_comparative": "comparative",
+      "metric_calibration_statuses": {
+        "anisotropy_score": "trusted_comparative"
+      }
+    }
+  ]
+}

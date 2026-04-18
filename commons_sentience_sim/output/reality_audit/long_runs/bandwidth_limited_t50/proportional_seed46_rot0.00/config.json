@@ -1,0 +1,40 @@
+{
+  "run_id": "proportional_seed46_rot0.00",
+  "name": "bandwidth_limited_t50",
+  "world_mode": "bandwidth_limited",
+  "controllers": [
+    "proportional"
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "duration": 25.0,
+  "dt": 0.5,
+  "start_position": [
+    0.0,
+    0.0
+  ],
+  "start_velocity": [
+    0.0,
+    0.0
+  ],
+  "goal_position": [
+    10.0,
+    0.0
+  ],
+  "controller_params": {},
+  "world_params": {
+    "observe_period": 10,
+    "bandwidth_fraction": 0.2
+  },
+  "orientation_rotations": [
+    0.0
+  ],
+  "output_dir": "commons_sentience_sim/output/reality_audit/long_runs",
+  "observation_policy": "periodic_observe",
+  "metadata": {}
+}

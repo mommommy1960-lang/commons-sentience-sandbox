@@ -1,0 +1,201 @@
+{
+  "report_type": "metric_trust_update",
+  "stage": 6,
+  "description": "Updated metric trust classifications incorporating Stage 5 calibration, encoding invariance, governance interpretation, and Stage 6 horizon analysis.",
+  "trust_level_legend": {
+    "trusted_absolute": "absolute values meaningful; minimal confounds; horizon-stable",
+    "trusted_comparative": "reliable for comparisons; not raw absolute",
+    "trusted_long_horizon": "only meaningful at \u226550 turns",
+    "conditionally_trusted": "usable with documented controls",
+    "unstable_confounded": "known confounds; interpret with caution",
+    "experimental": "exploratory only; interpretation unclear"
+  },
+  "metrics": [
+    {
+      "metric": "anisotropy_score",
+      "trust_level": "conditionally_trusted",
+      "previous_trust_level": "trusted_comparative",
+      "trust_change": "downgraded",
+      "comparative_only": true,
+      "horizon_validity": "all",
+      "horizon_sensitivity": "insufficient_data",
+      "governance_confound": "unknown",
+      "encoding_confound": "strong",
+      "notes": [
+        "no Stage 6 horizon data; trust inherited from Stage 5",
+        "governance confound unknown; use with caution"
+      ]
+    },
+    {
+      "metric": "audit_bandwidth",
+      "trust_level": "trusted_absolute",
+      "previous_trust_level": "trusted_absolute",
+      "trust_change": "unchanged",
+      "comparative_only": false,
+      "horizon_validity": "all",
+      "horizon_sensitivity": "insufficient_data",
+      "governance_confound": "none",
+      "encoding_confound": "none",
+      "notes": [
+        "no Stage 6 horizon data; trust inherited from Stage 5"
+      ]
+    },
+    {
+      "metric": "avg_control_effort",
+      "trust_level": "trusted_absolute",
+      "previous_trust_level": "trusted_absolute",
+      "trust_change": "unchanged",
+      "comparative_only": false,
+      "horizon_validity": "all",
+      "horizon_sensitivity": "insufficient_data",
+      "governance_confound": "none",
+      "encoding_confound": "none",
+      "notes": [
+        "no Stage 6 horizon data; trust inherited from Stage 5"
+      ]
+    },
+    {
+      "metric": "convergence_turn",
+      "trust_level": "trusted_comparative",
+      "previous_trust_level": "trusted_comparative",
+      "trust_change": "unchanged",
+      "comparative_only": true,
+      "horizon_validity": "all",
+      "horizon_sensitivity": "insufficient_data",
+      "governance_confound": "unknown",
+      "encoding_confound": "none",
+      "notes": [
+        "no Stage 6 horizon data; trust inherited from Stage 5",
+        "governance confound unknown; use with caution"
+      ]
+    },
+    {
+      "metric": "hidden_measured_gap_path_normalised",
+      "trust_level": "trusted_comparative",
+      "previous_trust_level": "trusted_comparative",
+      "trust_change": "unchanged",
+      "comparative_only": true,
+      "horizon_validity": "all",
+      "horizon_sensitivity": "insufficient_data",
+      "governance_confound": "unknown",
+      "encoding_confound": "none",
+      "notes": [
+        "no Stage 6 horizon data; trust inherited from Stage 5",
+        "governance confound unknown; use with caution"
+      ]
+    },
+    {
+      "metric": "hidden_measured_gap_raw",
+      "trust_level": "trusted_comparative",
+      "previous_trust_level": "trusted_comparative",
+      "trust_change": "unchanged",
+      "comparative_only": true,
+      "horizon_validity": "all",
+      "horizon_sensitivity": "insufficient_data",
+      "governance_confound": "unknown",
+      "encoding_confound": "none",
+      "notes": [
+        "no Stage 6 horizon data; trust inherited from Stage 5",
+        "governance confound unknown; use with caution"
+      ]
+    },
+    {
+      "metric": "mean_position_error",
+      "trust_level": "conditionally_trusted",
+      "previous_trust_level": "trusted_comparative",
+      "trust_change": "downgraded",
+      "comparative_only": true,
+      "horizon_validity": "all",
+      "horizon_sensitivity": "insufficient_data",
+      "governance_confound": "none",
+      "encoding_confound": "strong",
+      "notes": [
+        "no Stage 6 horizon data; trust inherited from Stage 5"
+      ]
+    },
+    {
+      "metric": "observation_schedule_sensitivity",
+      "trust_level": "experimental",
+      "previous_trust_level": "experimental",
+      "trust_change": "unchanged",
+      "comparative_only": false,
+      "horizon_validity": "all",
+      "horizon_sensitivity": "insufficient_data",
+      "governance_confound": "unknown",
+      "encoding_confound": "none",
+      "notes": [
+        "no Stage 6 horizon data; trust inherited from Stage 5",
+        "governance confound unknown; use with caution"
+      ]
+    },
+    {
+      "metric": "observer_dependence_score",
+      "trust_level": "unstable_confounded",
+      "previous_trust_level": "unstable_confounded",
+      "trust_change": "unchanged",
+      "comparative_only": false,
+      "horizon_validity": "all",
+      "horizon_sensitivity": "insufficient_data",
+      "governance_confound": "none",
+      "encoding_confound": "none",
+      "notes": [
+        "no Stage 6 horizon data; trust inherited from Stage 5"
+      ]
+    },
+    {
+      "metric": "path_smoothness",
+      "trust_level": "trusted_absolute",
+      "previous_trust_level": "trusted_absolute",
+      "trust_change": "unchanged",
+      "comparative_only": false,
+      "horizon_validity": "all",
+      "horizon_sensitivity": "insufficient_data",
+      "governance_confound": "none",
+      "encoding_confound": "none",
+      "notes": [
+        "no Stage 6 horizon data; trust inherited from Stage 5"
+      ]
+    },
+    {
+      "metric": "quantization_artifact_score",
+      "trust_level": "trusted_comparative",
+      "previous_trust_level": "trusted_comparative",
+      "trust_change": "unchanged",
+      "comparative_only": true,
+      "horizon_validity": "all",
+      "horizon_sensitivity": "insufficient_data",
+      "governance_confound": "unknown",
+      "encoding_confound": "none",
+      "notes": [
+        "no Stage 6 horizon data; trust inherited from Stage 5",
+        "governance confound unknown; use with caution"
+      ]
+    },
+    {
+      "metric": "stability_score",
+      "trust_level": "conditionally_trusted",
+      "previous_trust_level": "trusted_comparative",
+      "trust_change": "downgraded",
+      "comparative_only": true,
+      "horizon_validity": "all",
+      "horizon_sensitivity": "insufficient_data",
+      "governance_confound": "none",
+      "encoding_confound": "strong",
+      "notes": [
+        "no Stage 6 horizon data; trust inherited from Stage 5"
+      ]
+    }
+  ],
+  "summary": {
+    "total_metrics": 12,
+    "trusted_absolute": 3,
+    "trusted_comparative": 4,
+    "trusted_long_horizon": 0,
+    "conditionally_trusted": 3,
+    "unstable_confounded": 1,
+    "experimental": 1,
+    "upgraded": 0,
+    "downgraded": 3,
+    "unchanged": 9
+  }
+}

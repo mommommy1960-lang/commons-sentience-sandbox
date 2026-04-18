@@ -1,0 +1,46 @@
+{
+  "campaign_id": "campaign_C",
+  "label": "baseline_agent_passive",
+  "description": "Low-cooperation / low-trust agent, passive probe, governance on",
+  "probe_mode": "passive",
+  "gov_off": false,
+  "experimental": false,
+  "turn_counts": [
+    5
+  ],
+  "n_seeds": 2,
+  "aggregated": {
+    "5": {
+      "path_smoothness": {
+        "mean": 0.7,
+        "std": 0.0,
+        "n": 2
+      },
+      "avg_control_effort": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 2
+      },
+      "audit_bandwidth": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 2
+      },
+      "stability_score": {
+        "mean": 0.6884,
+        "std": 0.0,
+        "n": 2
+      },
+      "mean_position_error": {
+        "mean": 0.6962,
+        "std": 0.0,
+        "n": 2
+      },
+      "observer_dependence_score": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 2
+      }
+    }
+  }
+}

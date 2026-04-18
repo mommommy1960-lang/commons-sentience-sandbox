@@ -1,0 +1,25 @@
+{
+  "governance_active": true,
+  "governance_label": "gov_on",
+  "total_turns": 5,
+  "seed": 0,
+  "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/governance_campaigns/gov_on/turns_005/seed_00/reality_audit",
+  "probe_metrics": {
+    "total_turns": 5,
+    "total_records": 10,
+    "elapsed_seconds": 0.07,
+    "probe_mode": "passive",
+    "goal_room": "Governance Vault",
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "mean_position_error": 0.6962,
+    "stability_score": 0.6884,
+    "convergence_turn": 4,
+    "avg_control_effort": 0.0,
+    "path_smoothness": 0.7,
+    "observer_dependence_score": 0.0,
+    "audit_bandwidth": 1.0
+  }
+}

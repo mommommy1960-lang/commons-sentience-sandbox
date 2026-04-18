@@ -1,0 +1,14 @@
+{
+  "config_name": "sc_probe_inactive",
+  "probe_mode": "inactive",
+  "total_turns": 5,
+  "seed": 2,
+  "governance_strictness": 1.0,
+  "cooperation_bias": 0.5,
+  "initial_agent_trust": 0.5,
+  "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_probe_inactive/turns_005/seed_02/reality_audit",
+  "probe_metrics": {
+    "probe_mode": "inactive",
+    "note": "probe inactive \u2014 no audit metrics collected"
+  }
+}

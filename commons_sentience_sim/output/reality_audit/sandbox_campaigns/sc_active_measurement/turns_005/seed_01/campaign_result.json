@@ -1,0 +1,28 @@
+{
+  "config_name": "sc_active_measurement",
+  "probe_mode": "active_measurement_model",
+  "total_turns": 5,
+  "seed": 1,
+  "governance_strictness": 1.0,
+  "cooperation_bias": 0.5,
+  "initial_agent_trust": 0.5,
+  "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_active_measurement/turns_005/seed_01/reality_audit",
+  "probe_metrics": {
+    "total_turns": 5,
+    "total_records": 10,
+    "elapsed_seconds": 0.051,
+    "probe_mode": "active_measurement_model",
+    "goal_room": "Governance Vault",
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "mean_position_error": 1.1966,
+    "stability_score": 0.633,
+    "convergence_turn": null,
+    "avg_control_effort": 0.0,
+    "path_smoothness": 0.7,
+    "observer_dependence_score": 1.2402,
+    "audit_bandwidth": 0.2
+  }
+}

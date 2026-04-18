@@ -1,0 +1,298 @@
+{
+  "description": "Governance sensitivity analysis. governance_on = continuous baseline (normal rules). governance_off = noisy quantized measurement (models erratic, unconstrained decisions). This is a model-level approximation.",
+  "methodology": "The sandbox GovernanceEngine is not disabled directly (to keep the probe read-only and the sandbox unmodified). Instead, the two conditions are modelled via WorldMode selection: CONTINUOUS_BASELINE (governance present) vs NOISY_QUANTIZED_MEASUREMENT (governance absent \u2192 erratic dynamics). A metric is flagged 'governance_sensitive' if |\u0394mean| > 0.05.",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "n_runs_per_condition": 5,
+  "metric_comparison": {
+    "stability_score": {
+      "governance_on_mean": 0.157817,
+      "governance_off_mean": 0.154204,
+      "delta_off_minus_on": -0.003612,
+      "governance_sensitive": false
+    },
+    "path_smoothness": {
+      "governance_on_mean": 1.169599,
+      "governance_off_mean": 1.75,
+      "delta_off_minus_on": 0.580401,
+      "governance_sensitive": true
+    },
+    "observer_dependence_score": {
+      "governance_on_mean": 9.028889,
+      "governance_off_mean": 9.01,
+      "delta_off_minus_on": -0.018889,
+      "governance_sensitive": false
+    },
+    "quantization_artifact_score": {
+      "governance_on_mean": 0.0,
+      "governance_off_mean": 39.0,
+      "delta_off_minus_on": 39.0,
+      "governance_sensitive": true
+    },
+    "control_effort": {
+      "governance_on_mean": 58.764217,
+      "governance_off_mean": 59.5,
+      "delta_off_minus_on": 0.735783,
+      "governance_sensitive": true
+    },
+    "anisotropy_score": {
+      "governance_on_mean": 451.444443,
+      "governance_off_mean": 450.5,
+      "delta_off_minus_on": -0.944443,
+      "governance_sensitive": true
+    }
+  },
+  "aggregated_governance_on": {
+    "position_error": {
+      "mean": 0.975284,
+      "std": 0.0,
+      "min": 0.975284,
+      "max": 0.975284,
+      "ci_lo": 0.975284,
+      "ci_hi": 0.975284,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "velocity_error": {
+      "mean": 0.402943,
+      "std": 0.0,
+      "min": 0.402943,
+      "max": 0.402943,
+      "ci_lo": 0.402943,
+      "ci_hi": 0.402943,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "stability_score": {
+      "mean": 0.157817,
+      "std": 0.0,
+      "min": 0.157817,
+      "max": 0.157817,
+      "ci_lo": 0.157817,
+      "ci_hi": 0.157817,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "anisotropy_score": {
+      "mean": 451.444443,
+      "std": 0.0,
+      "min": 451.444443,
+      "max": 451.444443,
+      "ci_lo": 451.444443,
+      "ci_hi": 451.444443,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "observer_dependence_score": {
+      "mean": 9.028889,
+      "std": 0.0,
+      "min": 9.028889,
+      "max": 9.028889,
+      "ci_lo": 9.028889,
+      "ci_hi": 9.028889,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "bandwidth_bottleneck_score": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "quantization_artifact_score": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "control_effort": {
+      "mean": 58.764217,
+      "std": 0.0,
+      "min": 58.764217,
+      "max": 58.764217,
+      "ci_lo": 58.764217,
+      "ci_hi": 58.764217,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "path_smoothness": {
+      "mean": 1.169599,
+      "std": 0.0,
+      "min": 1.169599,
+      "max": 1.169599,
+      "ci_lo": 1.169599,
+      "ci_hi": 1.169599,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "convergence_time": {
+      "mean": 5.5,
+      "std": 0.0,
+      "min": 5.5,
+      "max": 5.5,
+      "ci_lo": 5.5,
+      "ci_hi": 5.5,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    }
+  },
+  "aggregated_governance_off": {
+    "position_error": {
+      "mean": 0.99,
+      "std": 0.0,
+      "min": 0.99,
+      "max": 0.99,
+      "ci_lo": 0.99,
+      "ci_hi": 0.99,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "velocity_error": {
+      "mean": 0.4,
+      "std": 0.0,
+      "min": 0.4,
+      "max": 0.4,
+      "ci_lo": 0.4,
+      "ci_hi": 0.4,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "stability_score": {
+      "mean": 0.154204,
+      "std": 0.0,
+      "min": 0.154204,
+      "max": 0.154204,
+      "ci_lo": 0.154204,
+      "ci_hi": 0.154204,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "anisotropy_score": {
+      "mean": 450.5,
+      "std": 0.0,
+      "min": 450.5,
+      "max": 450.5,
+      "ci_lo": 450.5,
+      "ci_hi": 450.5,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "observer_dependence_score": {
+      "mean": 9.01,
+      "std": 0.0,
+      "min": 9.01,
+      "max": 9.01,
+      "ci_lo": 9.01,
+      "ci_hi": 9.01,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "bandwidth_bottleneck_score": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "quantization_artifact_score": {
+      "mean": 39.0,
+      "std": 0.0,
+      "min": 39.0,
+      "max": 39.0,
+      "ci_lo": 39.0,
+      "ci_hi": 39.0,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "control_effort": {
+      "mean": 59.5,
+      "std": 0.0,
+      "min": 59.5,
+      "max": 59.5,
+      "ci_lo": 59.5,
+      "ci_hi": 59.5,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "path_smoothness": {
+      "mean": 1.75,
+      "std": 0.0,
+      "min": 1.75,
+      "max": 1.75,
+      "ci_lo": 1.75,
+      "ci_hi": 1.75,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "convergence_time": {
+      "mean": 5.5,
+      "std": 0.0,
+      "min": 5.5,
+      "max": 5.5,
+      "ci_lo": 5.5,
+      "ci_hi": 5.5,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    }
+  },
+  "consistency_governance_on": {
+    "position_error": "stable",
+    "velocity_error": "stable",
+    "stability_score": "stable",
+    "anisotropy_score": "stable",
+    "observer_dependence_score": "stable",
+    "bandwidth_bottleneck_score": "stable",
+    "quantization_artifact_score": "stable",
+    "control_effort": "stable",
+    "path_smoothness": "stable",
+    "convergence_time": "stable"
+  },
+  "consistency_governance_off": {
+    "position_error": "stable",
+    "velocity_error": "stable",
+    "stability_score": "stable",
+    "anisotropy_score": "stable",
+    "observer_dependence_score": "stable",
+    "bandwidth_bottleneck_score": "stable",
+    "quantization_artifact_score": "stable",
+    "control_effort": "stable",
+    "path_smoothness": "stable",
+    "convergence_time": "stable"
+  }
+}

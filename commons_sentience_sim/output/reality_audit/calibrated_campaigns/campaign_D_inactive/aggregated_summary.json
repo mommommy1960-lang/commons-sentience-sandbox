@@ -1,0 +1,46 @@
+{
+  "campaign_id": "campaign_D_inactive",
+  "label": "campaign_D_inactive",
+  "description": "Inactive probe arm \u2014 no audit collected",
+  "probe_mode": "inactive",
+  "gov_off": false,
+  "experimental": false,
+  "turn_counts": [
+    5
+  ],
+  "n_seeds": 2,
+  "aggregated": {
+    "5": {
+      "path_smoothness": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "avg_control_effort": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "audit_bandwidth": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "stability_score": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "mean_position_error": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      },
+      "observer_dependence_score": {
+        "mean": null,
+        "std": null,
+        "n": 0
+      }
+    }
+  }
+}

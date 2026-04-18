@@ -1,0 +1,10 @@
+{
+  "campaign_id": "campaign_D_inactive",
+  "label": "campaign_D_inactive",
+  "total_turns": 5,
+  "seed": 1,
+  "probe_mode": "inactive",
+  "gov_off": false,
+  "experimental": false,
+  "probe_metrics": {}
+}

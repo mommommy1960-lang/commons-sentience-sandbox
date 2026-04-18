@@ -1,0 +1,90 @@
+{
+  "governance_off_mechanism": "GovernanceEngine.check_action monkeypatched to always return True",
+  "turn_counts": [
+    5
+  ],
+  "n_seeds_per_condition": 3,
+  "per_turn_count_analysis": {
+    "5": {
+      "mean_position_error": {
+        "gov_on": {
+          "mean": 0.6962,
+          "std": 0.0,
+          "n": 3
+        },
+        "gov_off": {
+          "mean": 0.6962,
+          "std": 0.0,
+          "n": 3
+        },
+        "delta_off_minus_on": 0.0
+      },
+      "stability_score": {
+        "gov_on": {
+          "mean": 0.6884,
+          "std": 0.0,
+          "n": 3
+        },
+        "gov_off": {
+          "mean": 0.6884,
+          "std": 0.0,
+          "n": 3
+        },
+        "delta_off_minus_on": 0.0
+      },
+      "avg_control_effort": {
+        "gov_on": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "gov_off": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "delta_off_minus_on": 0.0
+      },
+      "path_smoothness": {
+        "gov_on": {
+          "mean": 0.7,
+          "std": 0.0,
+          "n": 3
+        },
+        "gov_off": {
+          "mean": 0.7,
+          "std": 0.0,
+          "n": 3
+        },
+        "delta_off_minus_on": 0.0
+      },
+      "observer_dependence_score": {
+        "gov_on": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "gov_off": {
+          "mean": 0.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "delta_off_minus_on": 0.0
+      },
+      "audit_bandwidth": {
+        "gov_on": {
+          "mean": 1.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "gov_off": {
+          "mean": 1.0,
+          "std": 0.0,
+          "n": 3
+        },
+        "delta_off_minus_on": 0.0
+      }
+    }
+  },
+  "governance_sensitive_metrics": []
+}

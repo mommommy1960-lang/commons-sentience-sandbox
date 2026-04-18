@@ -1,0 +1,70 @@
+{
+  "report_type": "encoding_horizon_interactions",
+  "data_source": "synthetic_fallback",
+  "metrics": [
+    {
+      "metric": "path_smoothness",
+      "stage5_baseline_classification": "invariant",
+      "horizon_classifications": {},
+      "horizon_trend": "insufficient_data",
+      "note": "synthetic_fallback: no Stage 6 long-horizon data available; status inherited from Stage 5 encoding_invariant_report",
+      "safe_for_cross_encoding_comparison": true
+    },
+    {
+      "metric": "mean_position_error",
+      "stage5_baseline_classification": "encoding_sensitive",
+      "horizon_classifications": {},
+      "horizon_trend": "insufficient_data",
+      "note": "synthetic_fallback: no Stage 6 long-horizon data available; status inherited from Stage 5 encoding_invariant_report",
+      "safe_for_cross_encoding_comparison": false
+    },
+    {
+      "metric": "stability_score",
+      "stage5_baseline_classification": "encoding_sensitive",
+      "horizon_classifications": {},
+      "horizon_trend": "insufficient_data",
+      "note": "synthetic_fallback: no Stage 6 long-horizon data available; status inherited from Stage 5 encoding_invariant_report",
+      "safe_for_cross_encoding_comparison": false
+    },
+    {
+      "metric": "anisotropy_score",
+      "stage5_baseline_classification": "encoding_sensitive",
+      "horizon_classifications": {},
+      "horizon_trend": "insufficient_data",
+      "note": "synthetic_fallback: no Stage 6 long-horizon data available; status inherited from Stage 5 encoding_invariant_report",
+      "safe_for_cross_encoding_comparison": false
+    },
+    {
+      "metric": "avg_control_effort",
+      "stage5_baseline_classification": null,
+      "horizon_classifications": {},
+      "horizon_trend": "insufficient_data",
+      "note": "no Stage 5 or Stage 6 data; not yet evaluated",
+      "safe_for_cross_encoding_comparison": false
+    },
+    {
+      "metric": "audit_bandwidth",
+      "stage5_baseline_classification": null,
+      "horizon_classifications": {},
+      "horizon_trend": "insufficient_data",
+      "note": "no Stage 5 or Stage 6 data; not yet evaluated",
+      "safe_for_cross_encoding_comparison": false
+    },
+    {
+      "metric": "observer_dependence_score",
+      "stage5_baseline_classification": null,
+      "horizon_classifications": {},
+      "horizon_trend": "insufficient_data",
+      "note": "no Stage 5 or Stage 6 data; not yet evaluated",
+      "safe_for_cross_encoding_comparison": false
+    }
+  ],
+  "summary": {
+    "consistently_invariant": 0,
+    "consistently_sensitive": 0,
+    "stabilizing": 0,
+    "worsening": 0,
+    "insufficient_data": 7
+  },
+  "interpretation": "No Stage 6 long-horizon campaign data available. Encoding sensitivity classifications are inherited from Stage 5. Run stage6_long_horizon_campaigns.py at 25+ turns to update this report."
+}

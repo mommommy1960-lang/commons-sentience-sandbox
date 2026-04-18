@@ -1,0 +1,7 @@
+metric,passive_vs_inactive_effect,passive_vs_inactive_max_d,directionally_consistent,active_vs_passive_effect(exp),active_vs_passive_max_d(exp)
+observer_dependence_score,n/a,None,None,negligible,0.0
+stability_score,n/a,None,None,negligible,0.0
+path_smoothness,n/a,None,None,negligible,0.0
+avg_control_effort,n/a,None,None,negligible,0.0
+audit_bandwidth,n/a,None,None,negligible,0.0
+mean_position_error,n/a,None,None,negligible,0.0

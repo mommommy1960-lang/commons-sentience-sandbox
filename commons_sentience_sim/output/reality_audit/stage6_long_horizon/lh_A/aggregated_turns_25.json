@@ -1,0 +1,129 @@
+{
+  "campaign_id": "lh_A",
+  "total_turns": 25,
+  "n_seeds": 3,
+  "per_run": [
+    {
+      "campaign_id": "lh_A",
+      "label": "gov_on_passive",
+      "total_turns": 25,
+      "seed": 0,
+      "probe_mode": "passive",
+      "gov_off": false,
+      "experimental": false,
+      "metrics": {
+        "path_smoothness": 0.8,
+        "avg_control_effort": 0.0,
+        "audit_bandwidth": 1.0,
+        "stability_score": 0.6905,
+        "mean_position_error": 0.731,
+        "anisotropy_score": null,
+        "observer_dependence_score": 0.0
+      }
+    },
+    {
+      "campaign_id": "lh_A",
+      "label": "gov_on_passive",
+      "total_turns": 25,
+      "seed": 1,
+      "probe_mode": "passive",
+      "gov_off": false,
+      "experimental": false,
+      "metrics": {
+        "path_smoothness": 0.8,
+        "avg_control_effort": 0.0,
+        "audit_bandwidth": 1.0,
+        "stability_score": 0.6905,
+        "mean_position_error": 0.731,
+        "anisotropy_score": null,
+        "observer_dependence_score": 0.0
+      }
+    },
+    {
+      "campaign_id": "lh_A",
+      "label": "gov_on_passive",
+      "total_turns": 25,
+      "seed": 2,
+      "probe_mode": "passive",
+      "gov_off": false,
+      "experimental": false,
+      "metrics": {
+        "path_smoothness": 0.8,
+        "avg_control_effort": 0.0,
+        "audit_bandwidth": 1.0,
+        "stability_score": 0.6905,
+        "mean_position_error": 0.731,
+        "anisotropy_score": null,
+        "observer_dependence_score": 0.0
+      }
+    }
+  ],
+  "aggregated_metrics": {
+    "path_smoothness": {
+      "mean": 0.8000000000000002,
+      "std": 1.3597399555105182e-16,
+      "n": 3,
+      "values": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    },
+    "avg_control_effort": {
+      "mean": 0.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "audit_bandwidth": {
+      "mean": 1.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "stability_score": {
+      "mean": 0.6905,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        0.6905,
+        0.6905,
+        0.6905
+      ]
+    },
+    "mean_position_error": {
+      "mean": 0.731,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        0.731,
+        0.731,
+        0.731
+      ]
+    },
+    "anisotropy_score": {
+      "mean": null,
+      "std": null,
+      "n": 0,
+      "values": []
+    },
+    "observer_dependence_score": {
+      "mean": 0.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

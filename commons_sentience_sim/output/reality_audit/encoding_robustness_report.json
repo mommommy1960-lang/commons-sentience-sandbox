@@ -1,0 +1,45 @@
+{
+  "audit_dir": "commons_sentience_sim/output/reality_audit",
+  "goal_room": "Social Hall",
+  "n_records": 6,
+  "encodings": {
+    "bfs_mds": {
+      "mean_position_error": 0.797761,
+      "stability_score": 0.439977,
+      "path_smoothness": 0.666667,
+      "anisotropy_score": 0.0
+    },
+    "pure_hop_distance": {
+      "mean_position_error": 0.5,
+      "stability_score": 0.857143,
+      "path_smoothness": 0.666667,
+      "anisotropy_score": 1.0
+    },
+    "manual_topological": {
+      "mean_position_error": 0.522446,
+      "stability_score": 0.876898,
+      "path_smoothness": 0.666667,
+      "anisotropy_score": 1.0
+    }
+  },
+  "deltas_vs_bfs_mds": {
+    "pure_hop_distance_vs_bfs_mds": {
+      "mean_position_error": -0.297761,
+      "stability_score": 0.417166,
+      "path_smoothness": 0.0,
+      "anisotropy_score": 1.0
+    },
+    "manual_topological_vs_bfs_mds": {
+      "mean_position_error": -0.275315,
+      "stability_score": 0.436921,
+      "path_smoothness": 0.0,
+      "anisotropy_score": 1.0
+    }
+  },
+  "robustness_notes": [
+    "mean_position_error: ENCODING-SENSITIVE (spread 37.3%)",
+    "stability_score: ENCODING-SENSITIVE (spread 49.8%)",
+    "path_smoothness: ROBUST across encodings (spread < 5%)",
+    "anisotropy_score: ENCODING-SENSITIVE (spread 100.0%)"
+  ]
+}

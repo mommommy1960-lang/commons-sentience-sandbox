@@ -1,0 +1,7 @@
+turns,metric,gov_on_mean,gov_on_std,gov_off_mean,gov_off_std,delta
+5,mean_position_error,0.6962,0.0,0.6962,0.0,0.0
+5,stability_score,0.6884,0.0,0.6884,0.0,0.0
+5,avg_control_effort,0.0,0.0,0.0,0.0,0.0
+5,path_smoothness,0.7,0.0,0.7,0.0,0.0
+5,observer_dependence_score,0.0,0.0,0.0,0.0,0.0
+5,audit_bandwidth,1.0,0.0,1.0,0.0,0.0

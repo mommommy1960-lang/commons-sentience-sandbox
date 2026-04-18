@@ -1,0 +1,36 @@
+{
+  "probe": "SimProbe",
+  "adapter_version": "1.1",
+  "probe_mode": "passive",
+  "observe_period": 1,
+  "goal_room": "Governance Vault",
+  "rooms": [
+    "Memory Archive",
+    "Reflection Chamber",
+    "Operations Desk",
+    "Social Hall",
+    "Governance Vault"
+  ],
+  "coordinates": {
+    "Memory Archive": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "Reflection Chamber": [
+      1.0,
+      1.0
+    ],
+    "Operations Desk": [
+      -1.0,
+      -1.0
+    ],
+    "Social Hall": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "Governance Vault": [
+      0.3846153846153847,
+      0.3846153846153847
+    ]
+  }
+}

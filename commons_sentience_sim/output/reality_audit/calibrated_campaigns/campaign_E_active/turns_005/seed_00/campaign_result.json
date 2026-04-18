@@ -1,0 +1,17 @@
+{
+  "campaign_id": "campaign_E_active",
+  "label": "campaign_E_active",
+  "total_turns": 5,
+  "seed": 0,
+  "probe_mode": "active_measurement_model",
+  "gov_off": false,
+  "experimental": true,
+  "probe_metrics": {
+    "path_smoothness": 0.7,
+    "avg_control_effort": 0.0,
+    "audit_bandwidth": 0.2,
+    "stability_score": 0.633,
+    "mean_position_error": 1.1966,
+    "observer_dependence_score": 1.2402
+  }
+}

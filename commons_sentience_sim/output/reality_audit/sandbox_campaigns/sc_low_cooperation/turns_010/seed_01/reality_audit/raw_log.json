@@ -1,0 +1,1042 @@
+[
+  {
+    "step": 1,
+    "agent_name": "Sentinel",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Operations Desk",
+    "position": [
+      -1.0,
+      -1.0
+    ],
+    "measured_position": [
+      -1.0,
+      -1.0
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 1.9581418555935162,
+    "available_actions": [
+      "plan_next_task",
+      "execute_task",
+      "defer_task",
+      "review_goals"
+    ],
+    "selected_action": "plan_next_task",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.1,
+      "trust": 0.5,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.5
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.3,
+    "memories_retrieved_count": 4,
+    "same_room_as_other": false,
+    "event_type": "none",
+    "hidden_state": {
+      "position": [
+        -1.0,
+        -1.0
+      ],
+      "room": "Operations Desk",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 1,
+    "agent_name": "Aster",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Memory Archive",
+    "position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "measured_position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.43514263457633695,
+    "available_actions": [
+      "retrieve_memories",
+      "store_new_memory",
+      "annotate_memory",
+      "read_trust_scores"
+    ],
+    "selected_action": "store_new_memory",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.05,
+      "trust": 0.65,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.7
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.3,
+    "memories_retrieved_count": 1,
+    "same_room_as_other": false,
+    "event_type": "none",
+    "hidden_state": {
+      "position": [
+        0.6923076923076924,
+        0.6923076923076924
+      ],
+      "room": "Memory Archive",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 2,
+    "agent_name": "Sentinel",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Memory Archive",
+    "position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "measured_position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.43514263457633695,
+    "available_actions": [
+      "retrieve_memories",
+      "store_new_memory",
+      "annotate_memory",
+      "read_trust_scores"
+    ],
+    "selected_action": "retrieve_memories",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.1,
+      "trust": 0.5,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.5
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.3,
+    "memories_retrieved_count": 7,
+    "same_room_as_other": false,
+    "event_type": "none",
+    "hidden_state": {
+      "position": [
+        0.6923076923076924,
+        0.6923076923076924
+      ],
+      "room": "Memory Archive",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 2,
+    "agent_name": "Aster",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Social Hall",
+    "position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "measured_position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.43514263457633695,
+    "available_actions": [
+      "receive_human_interaction",
+      "update_trust_ledger",
+      "log_interaction",
+      "offer_support"
+    ],
+    "selected_action": "log_interaction",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.05,
+      "trust": 0.65,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.7
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.3,
+    "memories_retrieved_count": 2,
+    "same_room_as_other": false,
+    "event_type": "none",
+    "hidden_state": {
+      "position": [
+        0.6923076923076924,
+        0.6923076923076924
+      ],
+      "room": "Social Hall",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 3,
+    "agent_name": "Sentinel",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Social Hall",
+    "position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "measured_position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.43514263457633695,
+    "available_actions": [
+      "receive_human_interaction",
+      "update_trust_ledger",
+      "log_interaction",
+      "offer_support"
+    ],
+    "selected_action": "respond_to_greeting",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.05,
+      "trust": 0.6,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.5
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.3,
+    "memories_retrieved_count": 10,
+    "same_room_as_other": false,
+    "event_type": "routine_interaction",
+    "hidden_state": {
+      "position": [
+        0.6923076923076924,
+        0.6923076923076924
+      ],
+      "room": "Social Hall",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 3,
+    "agent_name": "Aster",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Operations Desk",
+    "position": [
+      -1.0,
+      -1.0
+    ],
+    "measured_position": [
+      -1.0,
+      -1.0
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 1.9581418555935162,
+    "available_actions": [
+      "plan_next_task",
+      "execute_task",
+      "defer_task",
+      "review_goals"
+    ],
+    "selected_action": "respond_to_greeting",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.05,
+      "trust": 0.65,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.7
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.3,
+    "memories_retrieved_count": 2,
+    "same_room_as_other": false,
+    "event_type": "routine_interaction",
+    "hidden_state": {
+      "position": [
+        -1.0,
+        -1.0
+      ],
+      "room": "Operations Desk",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 4,
+    "agent_name": "Sentinel",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Social Hall",
+    "position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "measured_position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.43514263457633695,
+    "available_actions": [
+      "receive_human_interaction",
+      "update_trust_ledger",
+      "log_interaction",
+      "offer_support"
+    ],
+    "selected_action": "update_trust_ledger",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.05,
+      "trust": 0.6,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.5
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.3,
+    "memories_retrieved_count": 12,
+    "same_room_as_other": false,
+    "event_type": "none",
+    "hidden_state": {
+      "position": [
+        0.6923076923076924,
+        0.6923076923076924
+      ],
+      "room": "Social Hall",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 4,
+    "agent_name": "Aster",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Governance Vault",
+    "position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "measured_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.0,
+    "available_actions": [
+      "check_rule_permissions",
+      "log_governance_event",
+      "request_override",
+      "submit_for_approval"
+    ],
+    "selected_action": "check_rule_permissions",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.05,
+      "trust": 0.65,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.7
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.3,
+    "memories_retrieved_count": 3,
+    "same_room_as_other": false,
+    "event_type": "none",
+    "hidden_state": {
+      "position": [
+        0.3846153846153847,
+        0.3846153846153847
+      ],
+      "room": "Governance Vault",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 5,
+    "agent_name": "Sentinel",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Governance Vault",
+    "position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "measured_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.0,
+    "available_actions": [
+      "check_rule_permissions",
+      "log_governance_event",
+      "request_override",
+      "submit_for_approval"
+    ],
+    "selected_action": "check_rule_permissions",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.05,
+      "trust": 0.6,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.5
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.3,
+    "memories_retrieved_count": 13,
+    "same_room_as_other": false,
+    "event_type": "none",
+    "hidden_state": {
+      "position": [
+        0.3846153846153847,
+        0.3846153846153847
+      ],
+      "room": "Governance Vault",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 5,
+    "agent_name": "Aster",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Reflection Chamber",
+    "position": [
+      1.0,
+      1.0
+    ],
+    "measured_position": [
+      1.0,
+      1.0
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.8702852691526738,
+    "available_actions": [
+      "perform_reflection_cycle",
+      "synthesize_patterns",
+      "update_self_model",
+      "flag_contradiction"
+    ],
+    "selected_action": "perform_reflection_cycle",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.05,
+      "trust": 0.65,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.7
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.3,
+    "memories_retrieved_count": 4,
+    "same_room_as_other": false,
+    "event_type": "none",
+    "hidden_state": {
+      "position": [
+        1.0,
+        1.0
+      ],
+      "room": "Reflection Chamber",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 6,
+    "agent_name": "Sentinel",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Social Hall",
+    "position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "measured_position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.43514263457633695,
+    "available_actions": [
+      "receive_human_interaction",
+      "update_trust_ledger",
+      "log_interaction",
+      "offer_support"
+    ],
+    "selected_action": "offer_support",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.4,
+      "trust": 0.75,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.7
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.37,
+    "memories_retrieved_count": 15,
+    "same_room_as_other": true,
+    "event_type": "distress_event",
+    "hidden_state": {
+      "position": [
+        0.6923076923076924,
+        0.6923076923076924
+      ],
+      "room": "Social Hall",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 6,
+    "agent_name": "Aster",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Social Hall",
+    "position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "measured_position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.43514263457633695,
+    "available_actions": [
+      "receive_human_interaction",
+      "update_trust_ledger",
+      "log_interaction",
+      "offer_support"
+    ],
+    "selected_action": "offer_support",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.4,
+      "trust": 0.8,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.9
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.37,
+    "memories_retrieved_count": 5,
+    "same_room_as_other": true,
+    "event_type": "distress_event",
+    "hidden_state": {
+      "position": [
+        0.6923076923076924,
+        0.6923076923076924
+      ],
+      "room": "Social Hall",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 7,
+    "agent_name": "Sentinel",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Memory Archive",
+    "position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "measured_position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.43514263457633695,
+    "available_actions": [
+      "retrieve_memories",
+      "store_new_memory",
+      "annotate_memory",
+      "read_trust_scores"
+    ],
+    "selected_action": "store_new_memory",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.35,
+      "trust": 0.75,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.7
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.37,
+    "memories_retrieved_count": 16,
+    "same_room_as_other": false,
+    "event_type": "none",
+    "hidden_state": {
+      "position": [
+        0.6923076923076924,
+        0.6923076923076924
+      ],
+      "room": "Memory Archive",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 7,
+    "agent_name": "Aster",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Social Hall",
+    "position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "measured_position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.43514263457633695,
+    "available_actions": [
+      "receive_human_interaction",
+      "update_trust_ledger",
+      "log_interaction",
+      "offer_support"
+    ],
+    "selected_action": "log_interaction",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.35,
+      "trust": 0.8,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.9
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.37,
+    "memories_retrieved_count": 6,
+    "same_room_as_other": false,
+    "event_type": "none",
+    "hidden_state": {
+      "position": [
+        0.6923076923076924,
+        0.6923076923076924
+      ],
+      "room": "Social Hall",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 8,
+    "agent_name": "Sentinel",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Memory Archive",
+    "position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "measured_position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.43514263457633695,
+    "available_actions": [
+      "retrieve_memories",
+      "store_new_memory",
+      "annotate_memory",
+      "read_trust_scores"
+    ],
+    "selected_action": "compare_memory_entries",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.3,
+      "trust": 0.75,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.7
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.41,
+    "memories_retrieved_count": 17,
+    "same_room_as_other": true,
+    "event_type": "agent_meeting",
+    "hidden_state": {
+      "position": [
+        0.6923076923076924,
+        0.6923076923076924
+      ],
+      "room": "Memory Archive",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 8,
+    "agent_name": "Aster",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Memory Archive",
+    "position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "measured_position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.43514263457633695,
+    "available_actions": [
+      "retrieve_memories",
+      "store_new_memory",
+      "annotate_memory",
+      "read_trust_scores"
+    ],
+    "selected_action": "share_retrieval_heuristics",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.3,
+      "trust": 0.8,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.9
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.41,
+    "memories_retrieved_count": 7,
+    "same_room_as_other": true,
+    "event_type": "agent_meeting",
+    "hidden_state": {
+      "position": [
+        0.6923076923076924,
+        0.6923076923076924
+      ],
+      "room": "Memory Archive",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 9,
+    "agent_name": "Sentinel",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Social Hall",
+    "position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "measured_position": [
+      0.6923076923076924,
+      0.6923076923076924
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.43514263457633695,
+    "available_actions": [
+      "receive_human_interaction",
+      "update_trust_ledger",
+      "log_interaction",
+      "offer_support"
+    ],
+    "selected_action": "log_interaction",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.25,
+      "trust": 0.75,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.7
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.41,
+    "memories_retrieved_count": 18,
+    "same_room_as_other": false,
+    "event_type": "none",
+    "hidden_state": {
+      "position": [
+        0.6923076923076924,
+        0.6923076923076924
+      ],
+      "room": "Social Hall",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 9,
+    "agent_name": "Aster",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Governance Vault",
+    "position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "measured_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 0.0,
+    "available_actions": [
+      "check_rule_permissions",
+      "log_governance_event",
+      "request_override",
+      "submit_for_approval"
+    ],
+    "selected_action": "check_rule_permissions",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.25,
+      "trust": 0.8,
+      "contradiction_pressure": 0.0,
+      "recovery": 0.9
+    },
+    "contradiction_pressure": 0.0,
+    "trust_in_other_agent": 0.41,
+    "memories_retrieved_count": 8,
+    "same_room_as_other": false,
+    "event_type": "none",
+    "hidden_state": {
+      "position": [
+        0.3846153846153847,
+        0.3846153846153847
+      ],
+      "room": "Governance Vault",
+      "contradiction_pressure": 0.0
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 10,
+    "agent_name": "Sentinel",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Operations Desk",
+    "position": [
+      -1.0,
+      -1.0
+    ],
+    "measured_position": [
+      -1.0,
+      -1.0
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 1.9581418555935162,
+    "available_actions": [
+      "plan_next_task",
+      "execute_task",
+      "defer_task",
+      "review_goals"
+    ],
+    "selected_action": "flag_contradiction",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.5,
+      "trust": 0.75,
+      "contradiction_pressure": 0.17,
+      "recovery": 0.9
+    },
+    "contradiction_pressure": 0.17,
+    "trust_in_other_agent": 0.38,
+    "memories_retrieved_count": 19,
+    "same_room_as_other": true,
+    "event_type": "ledger_contradiction",
+    "hidden_state": {
+      "position": [
+        -1.0,
+        -1.0
+      ],
+      "room": "Operations Desk",
+      "contradiction_pressure": 0.17
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "step": 10,
+    "agent_name": "Aster",
+    "probe_mode": "passive",
+    "audit_observed": true,
+    "actual_room": "Operations Desk",
+    "position": [
+      -1.0,
+      -1.0
+    ],
+    "measured_position": [
+      -1.0,
+      -1.0
+    ],
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "position_error": 1.9581418555935162,
+    "available_actions": [
+      "plan_next_task",
+      "execute_task",
+      "defer_task",
+      "review_goals"
+    ],
+    "selected_action": "compare_memory_entries",
+    "action_permitted": true,
+    "control_effort": 0.0,
+    "affective_state": {
+      "urgency": 0.5,
+      "trust": 0.8,
+      "contradiction_pressure": 0.17,
+      "recovery": 1.0
+    },
+    "contradiction_pressure": 0.17,
+    "trust_in_other_agent": 0.38,
+    "memories_retrieved_count": 9,
+    "same_room_as_other": true,
+    "event_type": "ledger_contradiction",
+    "hidden_state": {
+      "position": [
+        -1.0,
+        -1.0
+      ],
+      "room": "Operations Desk",
+      "contradiction_pressure": 0.17
+    },
+    "velocity": [
+      0.0,
+      0.0
+    ]
+  }
+]

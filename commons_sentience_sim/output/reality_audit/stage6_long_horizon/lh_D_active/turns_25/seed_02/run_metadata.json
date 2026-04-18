@@ -1,0 +1,18 @@
+{
+  "campaign_id": "lh_D_active",
+  "label": "obs_schedule_active",
+  "total_turns": 25,
+  "seed": 2,
+  "probe_mode": "active_measurement_model",
+  "gov_off": false,
+  "experimental": true,
+  "metrics": {
+    "path_smoothness": 0.8,
+    "avg_control_effort": 0.0,
+    "audit_bandwidth": 0.52,
+    "stability_score": 0.6706,
+    "mean_position_error": 0.8007,
+    "anisotropy_score": null,
+    "observer_dependence_score": 0.5222
+  }
+}

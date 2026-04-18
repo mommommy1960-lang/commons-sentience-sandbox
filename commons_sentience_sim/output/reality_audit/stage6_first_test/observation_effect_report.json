@@ -1,0 +1,249 @@
+{
+  "report_type": "observation_effect_test",
+  "conditions": [
+    "lh_C_inactive",
+    "lh_A",
+    "lh_D_active"
+  ],
+  "horizons": [
+    25
+  ],
+  "n_seeds": 3,
+  "metric_verdicts": {
+    "observer_dependence_score": {
+      "passive_vs_inactive_max_d": null,
+      "passive_vs_inactive_effect": "n/a",
+      "passive_vs_inactive_directionally_consistent": null,
+      "passive_vs_inactive_note": "inactive probe returns no probe metrics (by design); numeric comparison not applicable \u2014 compare via simulation-level outputs",
+      "active_vs_passive_max_d": 0.0,
+      "active_vs_passive_effect": "negligible",
+      "note": "active_vs_passive is experimental; do not interpret as primary finding"
+    },
+    "stability_score": {
+      "passive_vs_inactive_max_d": null,
+      "passive_vs_inactive_effect": "n/a",
+      "passive_vs_inactive_directionally_consistent": null,
+      "passive_vs_inactive_note": "inactive probe returns no probe metrics (by design); numeric comparison not applicable \u2014 compare via simulation-level outputs",
+      "active_vs_passive_max_d": 0.0,
+      "active_vs_passive_effect": "negligible",
+      "note": "active_vs_passive is experimental; do not interpret as primary finding"
+    },
+    "path_smoothness": {
+      "passive_vs_inactive_max_d": null,
+      "passive_vs_inactive_effect": "n/a",
+      "passive_vs_inactive_directionally_consistent": null,
+      "passive_vs_inactive_note": "inactive probe returns no probe metrics (by design); numeric comparison not applicable \u2014 compare via simulation-level outputs",
+      "active_vs_passive_max_d": 0.0,
+      "active_vs_passive_effect": "negligible",
+      "note": "active_vs_passive is experimental; do not interpret as primary finding"
+    },
+    "avg_control_effort": {
+      "passive_vs_inactive_max_d": null,
+      "passive_vs_inactive_effect": "n/a",
+      "passive_vs_inactive_directionally_consistent": null,
+      "passive_vs_inactive_note": "inactive probe returns no probe metrics (by design); numeric comparison not applicable \u2014 compare via simulation-level outputs",
+      "active_vs_passive_max_d": 0.0,
+      "active_vs_passive_effect": "negligible",
+      "note": "active_vs_passive is experimental; do not interpret as primary finding"
+    },
+    "audit_bandwidth": {
+      "passive_vs_inactive_max_d": null,
+      "passive_vs_inactive_effect": "n/a",
+      "passive_vs_inactive_directionally_consistent": null,
+      "passive_vs_inactive_note": "inactive probe returns no probe metrics (by design); numeric comparison not applicable \u2014 compare via simulation-level outputs",
+      "active_vs_passive_max_d": 0.0,
+      "active_vs_passive_effect": "negligible",
+      "note": "active_vs_passive is experimental; do not interpret as primary finding"
+    },
+    "mean_position_error": {
+      "passive_vs_inactive_max_d": null,
+      "passive_vs_inactive_effect": "n/a",
+      "passive_vs_inactive_directionally_consistent": null,
+      "passive_vs_inactive_note": "inactive probe returns no probe metrics (by design); numeric comparison not applicable \u2014 compare via simulation-level outputs",
+      "active_vs_passive_max_d": 0.0,
+      "active_vs_passive_effect": "negligible",
+      "note": "active_vs_passive is experimental; do not interpret as primary finding"
+    }
+  },
+  "comparisons": {
+    "h25_passive_vs_inactive": {
+      "label": "passive_vs_inactive",
+      "campaign_a": "lh_A",
+      "campaign_b": "lh_C_inactive",
+      "total_turns": 25,
+      "sensitive_metrics": [],
+      "n_sensitive": 0,
+      "metrics": {
+        "path_smoothness": {
+          "mean_a": 0.8000000000000002,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        },
+        "avg_control_effort": {
+          "mean_a": 0.0,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        },
+        "audit_bandwidth": {
+          "mean_a": 1.0,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        },
+        "stability_score": {
+          "mean_a": 0.6905,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        },
+        "mean_position_error": {
+          "mean_a": 0.731,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        },
+        "anisotropy_score": {
+          "mean_a": null,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        },
+        "observer_dependence_score": {
+          "mean_a": 0.0,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        }
+      }
+    },
+    "h25_active_vs_passive": {
+      "label": "active_vs_passive_experimental",
+      "campaign_a": "lh_D_active",
+      "campaign_b": "lh_A",
+      "total_turns": 25,
+      "sensitive_metrics": [],
+      "n_sensitive": 0,
+      "metrics": {
+        "path_smoothness": {
+          "mean_a": 0.8000000000000002,
+          "mean_b": 0.8000000000000002,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "avg_control_effort": {
+          "mean_a": 0.0,
+          "mean_b": 0.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "audit_bandwidth": {
+          "mean_a": 0.52,
+          "mean_b": 1.0,
+          "delta": -0.48,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "stability_score": {
+          "mean_a": 0.6706,
+          "mean_b": 0.6905,
+          "delta": -0.0199,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "mean_position_error": {
+          "mean_a": 0.8007,
+          "mean_b": 0.731,
+          "delta": 0.0697,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "anisotropy_score": {
+          "mean_a": null,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        },
+        "observer_dependence_score": {
+          "mean_a": 0.5222,
+          "mean_b": 0.0,
+          "delta": 0.5222,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        }
+      }
+    },
+    "h25_active_vs_inactive": {
+      "label": "active_vs_inactive_experimental",
+      "campaign_a": "lh_D_active",
+      "campaign_b": "lh_C_inactive",
+      "total_turns": 25,
+      "sensitive_metrics": [],
+      "n_sensitive": 0,
+      "metrics": {
+        "path_smoothness": {
+          "mean_a": 0.8000000000000002,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        },
+        "avg_control_effort": {
+          "mean_a": 0.0,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        },
+        "audit_bandwidth": {
+          "mean_a": 0.52,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        },
+        "stability_score": {
+          "mean_a": 0.6706,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        },
+        "mean_position_error": {
+          "mean_a": 0.8007,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        },
+        "anisotropy_score": {
+          "mean_a": null,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        },
+        "observer_dependence_score": {
+          "mean_a": 0.5222,
+          "mean_b": null,
+          "delta": null,
+          "cohens_d": null,
+          "moved_meaningfully": false
+        }
+      }
+    }
+  },
+  "verdict": "passive_vs_inactive_not_numerically_comparable_active_no_effect",
+  "interpretation": "Passive-vs-inactive probe comparison is not numerically applicable in this design: inactive probe returns no probe metrics (by design). Passive probe successfully captures simulation signals (path_smoothness, stability_score, etc.) confirming the probe is observing but not altering the simulation. Active measurement mode shows negligible additional effect vs passive probe at tested horizons ([25]). No observation-induced signal is detectable above sandbox noise at this scale. To test a real observation effect, simulation-native metrics (evaluation scores, path statistics from session_summary.json) should be compared across probe modes."
+}

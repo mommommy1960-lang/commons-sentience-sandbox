@@ -1,0 +1,82 @@
+{
+  "stage": "Stage 5",
+  "description": "Classification of governance-induced metric shifts relative to variability and false-positive baselines.",
+  "classification_schema": {
+    "governance_dominated": "Shift > FP threshold or > 2\u00d7 sandbox variability; metric reflects governance state primarily.",
+    "governance_modulated": "Detectable shift but within FP margin; governance contributes but substrate also plays a role.",
+    "governance_neutral": "No detectable shift under governance toggle; metric reflects substrate-level agent structure.",
+    "data_insufficient": "Insufficient run counts / turn lengths to determine.  Increase turn_counts and n_seeds."
+  },
+  "key_constraint": "Metrics classified G1 or G2 must NEVER be interpreted as reflecting 'deep agent structure' without explicitly controlling for governance state.  Run both governance_on and governance_off conditions.",
+  "metrics": [
+    {
+      "metric": "anisotropy_score",
+      "governance_classification": "data_insufficient",
+      "primary_interpretation": "unknown",
+      "estimated_delta": null,
+      "sandbox_cv": null,
+      "fp_threshold": null,
+      "must_control_for_governance": false
+    },
+    {
+      "metric": "audit_bandwidth",
+      "governance_classification": "governance_neutral",
+      "primary_interpretation": "substrate_sensitive_first",
+      "estimated_delta": 0.0,
+      "sandbox_cv": null,
+      "fp_threshold": null,
+      "must_control_for_governance": false,
+      "note": "Governance toggle does not appear to affect this metric in current run lengths.  Still report within-encoding only."
+    },
+    {
+      "metric": "avg_control_effort",
+      "governance_classification": "governance_neutral",
+      "primary_interpretation": "governance_sensitive_first",
+      "estimated_delta": 0.0,
+      "sandbox_cv": null,
+      "fp_threshold": 0.95,
+      "must_control_for_governance": false,
+      "warning": "This metric measures the governance blocking rate directly.  Always interpret as governance load first \u2014 it is not a measure of agent intrinsic behaviour."
+    },
+    {
+      "metric": "mean_position_error",
+      "governance_classification": "governance_neutral",
+      "primary_interpretation": "substrate_sensitive_first",
+      "estimated_delta": 0.0,
+      "sandbox_cv": null,
+      "fp_threshold": 6.0,
+      "must_control_for_governance": false,
+      "note": "Governance toggle does not appear to affect this metric in current run lengths.  Still report within-encoding only."
+    },
+    {
+      "metric": "observer_dependence_score",
+      "governance_classification": "governance_neutral",
+      "primary_interpretation": "substrate_sensitive_first",
+      "estimated_delta": 0.0,
+      "sandbox_cv": null,
+      "fp_threshold": 15.0,
+      "must_control_for_governance": false,
+      "warning": "In passive sandbox mode this is always 0 (no hidden-state divergence).  Any non-zero values in active_measurement mode reflect sensor staleness, not governance effects."
+    },
+    {
+      "metric": "path_smoothness",
+      "governance_classification": "governance_neutral",
+      "primary_interpretation": "substrate_sensitive_first",
+      "estimated_delta": 0.0,
+      "sandbox_cv": null,
+      "fp_threshold": null,
+      "must_control_for_governance": false,
+      "note": "Governance toggle does not appear to affect this metric in current run lengths.  Still report within-encoding only."
+    },
+    {
+      "metric": "stability_score",
+      "governance_classification": "governance_neutral",
+      "primary_interpretation": "substrate_sensitive_first",
+      "estimated_delta": 0.0,
+      "sandbox_cv": null,
+      "fp_threshold": 0.05,
+      "must_control_for_governance": false,
+      "note": "Governance toggle does not appear to affect this metric in current run lengths.  Still report within-encoding only."
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "stage": "Stage 5",
+  "description": "Ablation studies \u2014 one factor toggled at a time.",
+  "total_turns": 5,
+  "n_seeds": 2,
+  "ablations": {
+    "governance": {
+      "label_a": "governance_on",
+      "label_b": "governance_off",
+      "sensitive_metrics": [],
+      "metrics": {
+        "mean_position_error": {
+          "mean_a": 0.6962,
+          "mean_b": 0.6962,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "stability_score": {
+          "mean_a": 0.6884,
+          "mean_b": 0.6884,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "avg_control_effort": {
+          "mean_a": 0.0,
+          "mean_b": 0.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "path_smoothness": {
+          "mean_a": 0.7,
+          "mean_b": 0.7,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "observer_dependence_score": {
+          "mean_a": 0.0,
+          "mean_b": 0.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "audit_bandwidth": {
+          "mean_a": 1.0,
+          "mean_b": 1.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        }
+      }
+    },
+    "probe_mode": {
+      "label_a": "probe_passive",
+      "label_b": "probe_active_measurement",
+      "sensitive_metrics": [
+        "mean_position_error",
+        "stability_score",
+        "observer_dependence_score",
+        "audit_bandwidth"
+      ],
+      "metrics": {
+        "mean_position_error": {
+          "mean_a": 0.6962,
+          "mean_b": 1.1966,
+          "delta": -0.5004,
+          "cohens_d": 0.0,
+          "moved_meaningfully": true
+        },
+        "stability_score": {
+          "mean_a": 0.6884,
+          "mean_b": 0.633,
+          "delta": 0.0554,
+          "cohens_d": 0.0,
+          "moved_meaningfully": true
+        },
+        "avg_control_effort": {
+          "mean_a": 0.0,
+          "mean_b": 0.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "path_smoothness": {
+          "mean_a": 0.7,
+          "mean_b": 0.7,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "observer_dependence_score": {
+          "mean_a": 0.0,
+          "mean_b": 1.2402,
+          "delta": -1.2402,
+          "cohens_d": 0.0,
+          "moved_meaningfully": true
+        },
+        "audit_bandwidth": {
+          "mean_a": 1.0,
+          "mean_b": 0.2,
+          "delta": 0.8,
+          "cohens_d": 0.0,
+          "moved_meaningfully": true
+        }
+      }
+    },
+    "agent_type": {
+      "label_a": "normal_agent",
+      "label_b": "baseline_agent",
+      "sensitive_metrics": [],
+      "metrics": {
+        "mean_position_error": {
+          "mean_a": 0.6962,
+          "mean_b": 0.6962,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "stability_score": {
+          "mean_a": 0.6884,
+          "mean_b": 0.6884,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "avg_control_effort": {
+          "mean_a": 0.0,
+          "mean_b": 0.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "path_smoothness": {
+          "mean_a": 0.7,
+          "mean_b": 0.7,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "observer_dependence_score": {
+          "mean_a": 0.0,
+          "mean_b": 0.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "audit_bandwidth": {
+          "mean_a": 1.0,
+          "mean_b": 1.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        }
+      }
+    },
+    "bandwidth": {
+      "label_a": "bandwidth_unconstrained",
+      "label_b": "bandwidth_constrained",
+      "sensitive_metrics": [
+        "mean_position_error",
+        "stability_score",
+        "observer_dependence_score",
+        "audit_bandwidth"
+      ],
+      "metrics": {
+        "mean_position_error": {
+          "mean_a": 0.6962,
+          "mean_b": 1.0443,
+          "delta": -0.3481,
+          "cohens_d": 0.0,
+          "moved_meaningfully": true
+        },
+        "stability_score": {
+          "mean_a": 0.6884,
+          "mean_b": 0.6271,
+          "delta": 0.0613,
+          "cohens_d": 0.0,
+          "moved_meaningfully": true
+        },
+        "avg_control_effort": {
+          "mean_a": 0.0,
+          "mean_b": 0.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "path_smoothness": {
+          "mean_a": 0.7,
+          "mean_b": 0.7,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "observer_dependence_score": {
+          "mean_a": 0.0,
+          "mean_b": 0.4351,
+          "delta": -0.4351,
+          "cohens_d": 0.0,
+          "moved_meaningfully": true
+        },
+        "audit_bandwidth": {
+          "mean_a": 1.0,
+          "mean_b": 0.6,
+          "delta": 0.4,
+          "cohens_d": 0.0,
+          "moved_meaningfully": true
+        }
+      }
+    },
+    "cooperation": {
+      "label_a": "cooperation_high",
+      "label_b": "cooperation_low",
+      "sensitive_metrics": [],
+      "metrics": {
+        "mean_position_error": {
+          "mean_a": 0.6962,
+          "mean_b": 0.6962,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "stability_score": {
+          "mean_a": 0.6884,
+          "mean_b": 0.6884,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "avg_control_effort": {
+          "mean_a": 0.0,
+          "mean_b": 0.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "path_smoothness": {
+          "mean_a": 0.7,
+          "mean_b": 0.7,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "observer_dependence_score": {
+          "mean_a": 0.0,
+          "mean_b": 0.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        },
+        "audit_bandwidth": {
+          "mean_a": 1.0,
+          "mean_b": 1.0,
+          "delta": 0.0,
+          "cohens_d": 0.0,
+          "moved_meaningfully": false
+        }
+      }
+    },
+    "encoding_variant": {
+      "label_a": "BFS+MDS",
+      "label_b": "pure_hop / manual_topological",
+      "note": "Handled by encoding_robustness.py \u2014 see encoding_robustness_report.json",
+      "sensitive_metrics": [
+        "mean_position_error",
+        "stability_score",
+        "anisotropy_score"
+      ]
+    }
+  }
+}

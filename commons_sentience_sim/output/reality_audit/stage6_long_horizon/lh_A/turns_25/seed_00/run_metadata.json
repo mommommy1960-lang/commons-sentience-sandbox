@@ -1,0 +1,18 @@
+{
+  "campaign_id": "lh_A",
+  "label": "gov_on_passive",
+  "total_turns": 25,
+  "seed": 0,
+  "probe_mode": "passive",
+  "gov_off": false,
+  "experimental": false,
+  "metrics": {
+    "path_smoothness": 0.8,
+    "avg_control_effort": 0.0,
+    "audit_bandwidth": 1.0,
+    "stability_score": 0.6905,
+    "mean_position_error": 0.731,
+    "anisotropy_score": null,
+    "observer_dependence_score": 0.0
+  }
+}

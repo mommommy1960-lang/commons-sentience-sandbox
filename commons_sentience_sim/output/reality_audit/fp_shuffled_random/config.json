@@ -1,0 +1,36 @@
+{
+  "name": "fp_shuffled_random",
+  "world_mode": "continuous_baseline",
+  "controllers": [
+    "random_walk"
+  ],
+  "seeds": [
+    1042,
+    1043,
+    1044,
+    1045,
+    1046
+  ],
+  "duration": 25.0,
+  "dt": 0.5,
+  "start_position": [
+    0.0,
+    0.0
+  ],
+  "start_velocity": [
+    0.0,
+    0.0
+  ],
+  "goal_position": [
+    10.0,
+    0.0
+  ],
+  "controller_params": {},
+  "world_params": {},
+  "orientation_rotations": [
+    0.0
+  ],
+  "output_dir": "commons_sentience_sim/output/reality_audit",
+  "observation_policy": "always_observe",
+  "metadata": {}
+}

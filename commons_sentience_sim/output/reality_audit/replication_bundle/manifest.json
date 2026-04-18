@@ -1,0 +1,142 @@
+{
+  "stage": "Stage 5",
+  "built": "2026-04-18T00:56:02Z",
+  "files": [
+    {
+      "source": "commons_sentience_sim/output/reality_audit/summary.json",
+      "bundle_path": "reports/summary.json",
+      "description": "Stage 5 output file"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/raw_log.json",
+      "bundle_path": "reports/raw_log.json",
+      "description": "Stage 5 output file"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/false_positive_report.json",
+      "bundle_path": "reports/false_positive_report.json",
+      "description": "Stage 5 output file"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/read_only_expansion_report.json",
+      "bundle_path": "reports/read_only_expansion_report.json",
+      "description": "Stage 4 expanded probe read-only validation"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/config.json",
+      "bundle_path": "reports/config.json",
+      "description": "Stage 5 output file"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/metric_calibration_report.json",
+      "bundle_path": "reports/metric_calibration_report.json",
+      "description": "Per-metric calibration status (A/B/C/D) based on Stages 1\u20134"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/findings_ranked.json",
+      "bundle_path": "reports/findings_ranked.json",
+      "description": "Ranked findings from Stages 2\u20135"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/encoding_robustness_report.json",
+      "bundle_path": "reports/encoding_robustness_report.json",
+      "description": "Stage 4 three-encoding comparison"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/governance_comparison.json",
+      "bundle_path": "reports/governance_comparison.json",
+      "description": "Stage 5 output file"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/encoding_invariant_report.json",
+      "bundle_path": "reports/encoding_invariant_report.json",
+      "description": "Encoding ordering invariance checks per metric"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/governance_interpretation_report.json",
+      "bundle_path": "reports/governance_interpretation_report.json",
+      "description": "Governance-induced shift classification per metric"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/sandbox_variability_report.json",
+      "bundle_path": "reports/sandbox_variability_report.json",
+      "description": "Stage 4 metric variability classification"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/raw_log.csv",
+      "bundle_path": "reports/raw_log.csv",
+      "description": "Stage 5 output file"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/sandbox_variability_summary.csv",
+      "bundle_path": "reports/sandbox_variability_summary.csv",
+      "description": "Stage 5 output file"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/metric_calibration_summary.csv",
+      "bundle_path": "reports/metric_calibration_summary.csv",
+      "description": "Flat table: metric, status, encoding_sensitive, gov_sensitive"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/figures_stage5/calibrated_campaign_comparison.png",
+      "bundle_path": "figures/calibrated_campaign_comparison.png",
+      "description": "Figure 4 \u2014 Cohen's d heatmap across campaigns"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/figures_stage5/governance_sensitivity.png",
+      "bundle_path": "figures/governance_sensitivity.png",
+      "description": "Figure 2 \u2014 governance on/off comparison"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/figures_stage5/metric_trust_ranking.png",
+      "bundle_path": "figures/metric_trust_ranking.png",
+      "description": "Figure 1 \u2014 metric tier bar chart"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/figures_stage5/ablation_effects.png",
+      "bundle_path": "figures/ablation_effects.png",
+      "description": "Figure 5 \u2014 |Cohen's d| ablation heatmap"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/figures_stage5/encoding_robustness.png",
+      "bundle_path": "figures/encoding_robustness.png",
+      "description": "Figure 3 \u2014 three-encoding grouped bars"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/figures_stage5/findings_summary_table.csv",
+      "bundle_path": "figures/findings_summary_table.csv",
+      "description": "Stage 5 output file"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/figures_stage5/scenario_summary_table.csv",
+      "bundle_path": "figures/scenario_summary_table.csv",
+      "description": "Stage 5 output file"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/figures_stage5/scenario_summary_table.md",
+      "bundle_path": "figures/scenario_summary_table.md",
+      "description": "Table 6 \u2014 calibrated campaign scenario means"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/figures_stage5/findings_summary_table.md",
+      "bundle_path": "figures/findings_summary_table.md",
+      "description": "Table 7 \u2014 ranked findings condensed table"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/calibrated_campaigns/campaign_comparison_report.json",
+      "bundle_path": "reports/campaign_comparison_report.json",
+      "description": "Effect-size comparisons between calibrated campaign pairs"
+    },
+    {
+      "source": "commons_sentience_sim/output/reality_audit/calibrated_campaigns/calibrated_campaigns_summary.csv",
+      "bundle_path": "reports/calibrated_campaigns_summary.csv",
+      "description": "Mean/std per (campaign, turns, metric)"
+    },
+    {
+      "source": "reality_audit/reports/stage5_summary.md",
+      "bundle_path": "stage5_summary.md",
+      "description": "Stage 5 compiled Markdown report"
+    }
+  ],
+  "total_files": 27
+}

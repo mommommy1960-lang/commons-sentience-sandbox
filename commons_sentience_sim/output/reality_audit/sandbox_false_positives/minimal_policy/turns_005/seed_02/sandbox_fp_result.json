@@ -1,0 +1,46 @@
+{
+  "scenario": "minimal_policy",
+  "total_turns": 5,
+  "seed": 2,
+  "governance_off": false,
+  "probe_metrics": {
+    "total_turns": 5,
+    "total_records": 10,
+    "elapsed_seconds": 0.051,
+    "probe_mode": "passive",
+    "goal_room": "Governance Vault",
+    "goal_position": [
+      0.3846153846153847,
+      0.3846153846153847
+    ],
+    "mean_position_error": 0.6962,
+    "stability_score": 0.6884,
+    "convergence_turn": 4,
+    "avg_control_effort": 0.0,
+    "path_smoothness": 0.7,
+    "observer_dependence_score": 0.0,
+    "audit_bandwidth": 1.0
+  },
+  "false_positive_check": {
+    "all_thresholds_pass": true,
+    "violations": [],
+    "thresholds_applied": {
+      "mean_position_error": {
+        "upper": 6.0,
+        "note": "Normal range \u2264 5.5 (based on long-horizon random_walk baseline)"
+      },
+      "stability_score": {
+        "lower": 0.05,
+        "note": "Stable behaviour has stability > 0.08 even for random walk"
+      },
+      "avg_control_effort": {
+        "upper": 0.95,
+        "note": "Even adversarial agents have <90% blocked actions"
+      },
+      "observer_dependence_score": {
+        "upper": 15.0,
+        "note": "Calibrated from random-walk with passive probe (Stage 3)"
+      }
+    }
+  }
+}

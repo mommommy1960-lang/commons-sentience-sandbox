@@ -1,0 +1,116 @@
+{
+  "experiment_name": "bandwidth_limited_t50",
+  "run_count": 5,
+  "results": [
+    {
+      "run_id": "proportional_seed42_rot0.00",
+      "controller": "proportional",
+      "seed": 42,
+      "orientation": 0.0,
+      "world_mode": "bandwidth_limited",
+      "metrics": {
+        "position_error": 4.294444833861286,
+        "velocity_error": 1.633331473669447,
+        "directional_error": 1.2566370614359172,
+        "steady_state_error": 2.0000010331467726,
+        "overshoot": 0.0,
+        "convergence_time": 25.0,
+        "stability_score": 0.08128532268247053,
+        "control_effort": 222.7222406599175,
+        "path_smoothness": 30.472128497358817,
+        "anisotropy_score": 445.27776042620417,
+        "quantization_artifact_score": 45.0,
+        "bandwidth_bottleneck_score": 0.1,
+        "observer_dependence_score": 8.905555208524083
+      }
+    },
+    {
+      "run_id": "proportional_seed43_rot0.00",
+      "controller": "proportional",
+      "seed": 43,
+      "orientation": 0.0,
+      "world_mode": "bandwidth_limited",
+      "metrics": {
+        "position_error": 4.294444833861286,
+        "velocity_error": 1.633331473669447,
+        "directional_error": 1.2566370614359172,
+        "steady_state_error": 2.0000010331467726,
+        "overshoot": 0.0,
+        "convergence_time": 25.0,
+        "stability_score": 0.08128532268247053,
+        "control_effort": 222.7222406599175,
+        "path_smoothness": 30.472128497358817,
+        "anisotropy_score": 445.27776042620417,
+        "quantization_artifact_score": 45.0,
+        "bandwidth_bottleneck_score": 0.1,
+        "observer_dependence_score": 8.905555208524083
+      }
+    },
+    {
+      "run_id": "proportional_seed44_rot0.00",
+      "controller": "proportional",
+      "seed": 44,
+      "orientation": 0.0,
+      "world_mode": "bandwidth_limited",
+      "metrics": {
+        "position_error": 4.294444833861286,
+        "velocity_error": 1.633331473669447,
+        "directional_error": 1.2566370614359172,
+        "steady_state_error": 2.0000010331467726,
+        "overshoot": 0.0,
+        "convergence_time": 25.0,
+        "stability_score": 0.08128532268247053,
+        "control_effort": 222.7222406599175,
+        "path_smoothness": 30.472128497358817,
+        "anisotropy_score": 445.27776042620417,
+        "quantization_artifact_score": 45.0,
+        "bandwidth_bottleneck_score": 0.1,
+        "observer_dependence_score": 8.905555208524083
+      }
+    },
+    {
+      "run_id": "proportional_seed45_rot0.00",
+      "controller": "proportional",
+      "seed": 45,
+      "orientation": 0.0,
+      "world_mode": "bandwidth_limited",
+      "metrics": {
+        "position_error": 4.294444833861286,
+        "velocity_error": 1.633331473669447,
+        "directional_error": 1.2566370614359172,
+        "steady_state_error": 2.0000010331467726,
+        "overshoot": 0.0,
+        "convergence_time": 25.0,
+        "stability_score": 0.08128532268247053,
+        "control_effort": 222.7222406599175,
+        "path_smoothness": 30.472128497358817,
+        "anisotropy_score": 445.27776042620417,
+        "quantization_artifact_score": 45.0,
+        "bandwidth_bottleneck_score": 0.1,
+        "observer_dependence_score": 8.905555208524083
+      }
+    },
+    {
+      "run_id": "proportional_seed46_rot0.00",
+      "controller": "proportional",
+      "seed": 46,
+      "orientation": 0.0,
+      "world_mode": "bandwidth_limited",
+      "metrics": {
+        "position_error": 4.294444833861286,
+        "velocity_error": 1.633331473669447,
+        "directional_error": 1.2566370614359172,
+        "steady_state_error": 2.0000010331467726,
+        "overshoot": 0.0,
+        "convergence_time": 25.0,
+        "stability_score": 0.08128532268247053,
+        "control_effort": 222.7222406599175,
+        "path_smoothness": 30.472128497358817,
+        "anisotropy_score": 445.27776042620417,
+        "quantization_artifact_score": 45.0,
+        "bandwidth_bottleneck_score": 0.1,
+        "observer_dependence_score": 8.905555208524083
+      }
+    }
+  ]
+}

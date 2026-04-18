@@ -1,0 +1,46 @@
+{
+  "campaign_id": "campaign_B",
+  "label": "normal_agent_passive_gov_off",
+  "description": "Normal agent, passive probe, governance structurally disabled",
+  "probe_mode": "passive",
+  "gov_off": true,
+  "experimental": false,
+  "turn_counts": [
+    5
+  ],
+  "n_seeds": 2,
+  "aggregated": {
+    "5": {
+      "path_smoothness": {
+        "mean": 0.7,
+        "std": 0.0,
+        "n": 2
+      },
+      "avg_control_effort": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 2
+      },
+      "audit_bandwidth": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 2
+      },
+      "stability_score": {
+        "mean": 0.6884,
+        "std": 0.0,
+        "n": 2
+      },
+      "mean_position_error": {
+        "mean": 0.6962,
+        "std": 0.0,
+        "n": 2
+      },
+      "observer_dependence_score": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 2
+      }
+    }
+  }
+}

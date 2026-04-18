@@ -1,0 +1,116 @@
+{
+  "experiment_name": "anisotropy_t50",
+  "n_runs": 5,
+  "metrics": {
+    "position_error": {
+      "mean": 0.33416,
+      "std": 0.0,
+      "min": 0.33416,
+      "max": 0.33416,
+      "ci_lo": 0.33416,
+      "ci_hi": 0.33416,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "velocity_error": {
+      "mean": 0.165968,
+      "std": 0.0,
+      "min": 0.165968,
+      "max": 0.165968,
+      "ci_lo": 0.165968,
+      "ci_hi": 0.165968,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "stability_score": {
+      "mean": 0.372537,
+      "std": 0.0,
+      "min": 0.372537,
+      "max": 0.372537,
+      "ci_lo": 0.372537,
+      "ci_hi": 0.372537,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "anisotropy_score": {
+      "mean": 486.645833,
+      "std": 0.0,
+      "min": 486.645833,
+      "max": 486.645833,
+      "ci_lo": 486.645833,
+      "ci_hi": 486.645833,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "observer_dependence_score": {
+      "mean": 9.732917,
+      "std": 0.0,
+      "min": 9.732917,
+      "max": 9.732917,
+      "ci_lo": 9.732917,
+      "ci_hi": 9.732917,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "bandwidth_bottleneck_score": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "quantization_artifact_score": {
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "control_effort": {
+      "mean": 26.707976,
+      "std": 0.0,
+      "min": 26.707976,
+      "max": 26.707976,
+      "ci_lo": 26.707976,
+      "ci_hi": 26.707976,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "path_smoothness": {
+      "mean": 5.48544,
+      "std": 0.0,
+      "min": 5.48544,
+      "max": 5.48544,
+      "ci_lo": 5.48544,
+      "ci_hi": 5.48544,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    },
+    "convergence_time": {
+      "mean": 3.0,
+      "std": 0.0,
+      "min": 3.0,
+      "max": 3.0,
+      "ci_lo": 3.0,
+      "ci_hi": 3.0,
+      "n": 5,
+      "consistency_score": 1.0,
+      "stability": "stable"
+    }
+  }
+}

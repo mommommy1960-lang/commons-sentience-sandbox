@@ -1,0 +1,15 @@
+{
+  "position_error": 8.55663247998306,
+  "velocity_error": 1.0639864114306368,
+  "directional_error": 1.5226908698265558,
+  "steady_state_error": 9.782208029305362,
+  "overshoot": 0.706191357295765,
+  "convergence_time": 25.0,
+  "stability_score": 0.6705049762558472,
+  "control_effort": 75.10772019137494,
+  "path_smoothness": 121.06369586616233,
+  "anisotropy_score": 0.4409853912826301,
+  "quantization_artifact_score": 0.0,
+  "bandwidth_bottleneck_score": 1.0,
+  "observer_dependence_score": 2.354397120167615
+}

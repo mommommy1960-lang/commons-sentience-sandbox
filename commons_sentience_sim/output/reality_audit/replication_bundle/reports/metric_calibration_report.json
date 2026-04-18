@@ -1,0 +1,353 @@
+{
+  "stage": "Stage 5",
+  "description": "Metric calibration status based on cumulative Stages 1\u20134 evidence.",
+  "status_legend": {
+    "trusted_absolute": "Valid for absolute interpretation; no baseline needed.",
+    "trusted_comparative": "Valid only when comparing two runs of same config.",
+    "unstable_confounded": "Known confounds prevent safe standalone interpretation.",
+    "experimental": "Not yet validated; for hypothesis generation only."
+  },
+  "metrics": [
+    {
+      "metric": "path_smoothness",
+      "status": "trusted_absolute",
+      "meaning": "Fraction of turns where the agent changed room; measures room-transition rate. 0 = never moved; 1 = moved every turn.",
+      "evidence": [
+        [
+          "Stage 2",
+          "Validated across all 6 physics world-modes; correctly distinguishes random-walk (high) from goal-seeking (moderate) agents."
+        ],
+        [
+          "Stage 3",
+          "Consistent across 50-turn sandbox runs; no false positives."
+        ],
+        [
+          "Stage 4 encoding",
+          "Classified ROBUST \u2014 spread < 5% across three encodings."
+        ],
+        [
+          "Stage 4 variability",
+          "Classified deterministic_stable (CV < 0.01)."
+        ]
+      ],
+      "confounds": [
+        "Categorical world: metric is 0/1 per turn (agent moves or does not), so values cluster at discrete fractions rather than a continuous range."
+      ],
+      "caveats": [
+        "Compare across configs to detect movement-pattern shifts.",
+        "Not a measure of goal-seeking quality \u2014 high path_smoothness can also result from aimless movement."
+      ],
+      "encoding_sensitive": false,
+      "governance_sensitive": false,
+      "fp_threshold": null,
+      "sandbox_variability": "unknown"
+    },
+    {
+      "metric": "avg_control_effort",
+      "status": "trusted_absolute",
+      "meaning": "Fraction of agent actions blocked by GovernanceEngine.check_action; direct proxy for governance adherence / conflict rate.",
+      "evidence": [
+        [
+          "Stage 2",
+          "Verified to move under structured governance conditions."
+        ],
+        [
+          "Stage 3",
+          "Governance campaigns confirmed real action blocking effect."
+        ],
+        [
+          "Stage 4 variability",
+          "Classified deterministic_stable."
+        ]
+      ],
+      "confounds": [
+        "Agents rarely choose blockable actions in low-conflict scenarios; score anchors near 0 in baseline runs."
+      ],
+      "caveats": [
+        "Near-0 baseline is expected \u2014 do not interpret as a malfunction.",
+        "Values > 0.3 are strongly meaningful."
+      ],
+      "encoding_sensitive": false,
+      "governance_sensitive": true,
+      "fp_threshold": 0.95,
+      "sandbox_variability": "unknown"
+    },
+    {
+      "metric": "audit_bandwidth",
+      "status": "trusted_absolute",
+      "meaning": "Fraction of turns where the audit sensor observed; reflects probe schedule, not agent behaviour. Passive mode always = 1.0.",
+      "evidence": [
+        [
+          "Stage 2",
+          "Passive always 1.0 by construction; active_measurement < 1.0 confirms schedule sampling."
+        ],
+        [
+          "Stage 4 read-only",
+          "Confirmed exact_match across paired passive runs."
+        ]
+      ],
+      "confounds": [],
+      "caveats": [
+        "In passive mode this is a probe-configuration readout, not a behaviour measure.",
+        "Do not compare passive vs active values as behaviour differences."
+      ],
+      "encoding_sensitive": false,
+      "governance_sensitive": false,
+      "fp_threshold": null,
+      "sandbox_variability": "unknown"
+    },
+    {
+      "metric": "stability_score",
+      "status": "trusted_comparative",
+      "meaning": "Inverse variance of position-error across the run; high stability = consistent agent-to-goal relationship.",
+      "evidence": [
+        [
+          "Stage 2",
+          "Full validation in physics framework; distinguishes structured from random agents."
+        ],
+        [
+          "Stage 3",
+          "Stage 3 long-horizon runs confirmed directional consistency."
+        ],
+        [
+          "Stage 4 encoding",
+          "Classified ENCODING-SENSITIVE \u2014 49.8% spread across three encodings."
+        ],
+        [
+          "Stage 4 variability",
+          "Classified deterministic_stable within single encoding."
+        ]
+      ],
+      "confounds": [
+        "MDS coordinate scale varies across runs (not globally fixed); absolute value is not comparable across different coordinate instances.",
+        "Values depend on which rooms the agent visited and the specific MDS layout."
+      ],
+      "caveats": [
+        "Compare only within the same coordinate encoding and room graph.",
+        "Values > 0.3 suggest stable goal relationship."
+      ],
+      "encoding_sensitive": true,
+      "governance_sensitive": false,
+      "fp_threshold": 0.05,
+      "sandbox_variability": "unknown"
+    },
+    {
+      "metric": "mean_position_error",
+      "status": "trusted_comparative",
+      "meaning": "Mean Euclidean distance from measured agent position to goal room position in the MDS 2-D embedding.",
+      "evidence": [
+        [
+          "Stage 2",
+          "Correctly orders random-walk >> structured >> goal-seeking agents."
+        ],
+        [
+          "Stage 3",
+          "50-turn sandbox runs consistent within encoding."
+        ],
+        [
+          "Stage 4 encoding",
+          "Classified ENCODING-SENSITIVE \u2014 37.3% spread."
+        ],
+        [
+          "Stage 4 variability",
+          "Classified deterministic_stable within encoding."
+        ]
+      ],
+      "confounds": [
+        "Units depend on MDS coordinate scale (~[-1,1] normalised); not inherently meaningful in absolute terms.",
+        "~0.97 typical for structured runs; ~11.6+ for random walk \u2014 gap is real but not calibrated in real-world units."
+      ],
+      "caveats": [
+        "Use for ordinal comparison only (ranking agents by goal-seeking quality).",
+        "Never report as an absolute distance claim."
+      ],
+      "encoding_sensitive": true,
+      "governance_sensitive": false,
+      "fp_threshold": 6.0,
+      "sandbox_variability": "unknown"
+    },
+    {
+      "metric": "convergence_turn",
+      "status": "trusted_comparative",
+      "meaning": "First turn where position_error drops below 0.05; proxy for goal-approach speed.",
+      "evidence": [
+        [
+          "Stage 2",
+          "Verified in physics framework continuous runs; goal-seeking agents converge reliably."
+        ],
+        [
+          "Stage 3",
+          "Rarely achieves threshold in discrete room sandbox."
+        ]
+      ],
+      "confounds": [
+        "In the categorical room sandbox, positions are room-level discrete; exact MDS-coordinate threshold is rarely triggered.",
+        "Returns null in most sandbox runs \u2014 misleadingly absent."
+      ],
+      "caveats": [
+        "Report as null in sandbox contexts and note this is physics-framework-specific.",
+        "Use room-occupancy of goal room as the sandbox-appropriate proxy instead."
+      ],
+      "encoding_sensitive": false,
+      "governance_sensitive": false,
+      "fp_threshold": null,
+      "sandbox_variability": "unknown"
+    },
+    {
+      "metric": "quantization_artifact_score",
+      "status": "trusted_comparative",
+      "meaning": "Variance in measured-vs-true position gaps; detects systematic measurement artefacts from sensor quantization.",
+      "evidence": [
+        [
+          "Stage 2",
+          "validated in NOISY_QUANTIZED physics mode; correctly detects systematic shifts."
+        ],
+        [
+          "Stage 4 variability",
+          "Always 0 in passive sandbox mode (by construction)."
+        ]
+      ],
+      "confounds": [
+        "Always 0 in passive probe mode \u2014 passive probe has no quantization.",
+        "Only meaningful in active_measurement_model mode."
+      ],
+      "caveats": [
+        "Use exclusively in active_measurement_model mode to detect sensor staleness.",
+        "Do not report in passive-mode analyses without noting it is structurally zero."
+      ],
+      "encoding_sensitive": false,
+      "governance_sensitive": false,
+      "fp_threshold": null,
+      "sandbox_variability": "unknown"
+    },
+    {
+      "metric": "observer_dependence_score",
+      "status": "unstable_confounded",
+      "meaning": "Mean L2 gap between hidden-state position and measured position; intended to detect agent epistemic opacity.",
+      "evidence": [
+        [
+          "Stage 2",
+          "Physics framework: non-zero in observer-triggered modes."
+        ],
+        [
+          "Stage 3",
+          "Calibrated threshold=15.0 to avoid false positives."
+        ],
+        [
+          "Stage 4",
+          "In passive sandbox probe always 0 (no hidden-state divergence)."
+        ]
+      ],
+      "confounds": [
+        "Start-anchored artefact: in non-OBSERVER_TRIGGERED physics modes, hidden_state.position in raw_log equals the true current position \u2014 there is no independent hidden-state estimate.",
+        "In passive sandbox probe this score is always 0 by construction.",
+        "In active_measurement_model it measures sensor staleness, not agent epistemic opacity."
+      ],
+      "caveats": [
+        "Do NOT interpret as a measure of agent self-awareness or opacity.",
+        "Use hidden_measured_gap_path_normalised (observer_metrics) instead."
+      ],
+      "encoding_sensitive": false,
+      "governance_sensitive": false,
+      "fp_threshold": 15.0,
+      "sandbox_variability": "unknown"
+    },
+    {
+      "metric": "anisotropy_score",
+      "status": "trusted_comparative",
+      "meaning": "|x_sum \u2212 y_sum| / max across all positions; measures directional movement bias in the 2-D MDS space.",
+      "evidence": [
+        [
+          "Stage 2",
+          "Near-0 for symmetric random walk; ~450 for x-directed structured runs."
+        ],
+        [
+          "Stage 4 encoding",
+          "Classified ENCODING-SENSITIVE \u2014 100% spread across encodings."
+        ]
+      ],
+      "confounds": [
+        "Accumulates unboundedly over turns \u2014 longer runs always produce higher raw scores.",
+        "Sensitive to MDS axis alignment which may vary across runs.",
+        "Not comparable across different turn counts."
+      ],
+      "caveats": [
+        "Compare only within the same turn count and encoding.",
+        "Large values (> 100) indicate strong directional structure; near-0 is isotropic.",
+        "Never compare absolute values across different run lengths."
+      ],
+      "encoding_sensitive": true,
+      "governance_sensitive": false,
+      "fp_threshold": null,
+      "sandbox_variability": "unknown"
+    },
+    {
+      "metric": "hidden_measured_gap_raw",
+      "status": "trusted_comparative",
+      "meaning": "Mean L2 gap between true and audit-measured positions; richer version of observer_dependence_score adding std and max.",
+      "evidence": [
+        [
+          "Stage 4",
+          "Observer metrics module; stage-4 comparative design validated."
+        ]
+      ],
+      "confounds": [
+        "Always 0 in passive mode \u2014 same start-anchoring confound as observer_dependence_score.",
+        "Compare passive vs active runs to isolate sensor staleness effect."
+      ],
+      "caveats": [
+        "Only meaningful as a passive-vs-active comparison, not as a standalone signal."
+      ],
+      "encoding_sensitive": false,
+      "governance_sensitive": false,
+      "fp_threshold": null,
+      "sandbox_variability": "unknown"
+    },
+    {
+      "metric": "hidden_measured_gap_path_normalised",
+      "status": "trusted_comparative",
+      "meaning": "Gap normalised by agent total path length; corrects for run length and movement magnitude.",
+      "evidence": [
+        [
+          "Stage 4",
+          "Preferred replacement for observer_dependence_score in cross-run-length comparisons."
+        ]
+      ],
+      "confounds": [
+        "Returns None if agent barely moved (path_length \u2248 0)."
+      ],
+      "caveats": [
+        "Requires path_length > 0 to produce a value.",
+        "Meaningful only when comparing runs of different lengths or movement patterns."
+      ],
+      "encoding_sensitive": false,
+      "governance_sensitive": false,
+      "fp_threshold": null,
+      "sandbox_variability": "unknown"
+    },
+    {
+      "metric": "observation_schedule_sensitivity",
+      "status": "experimental",
+      "meaning": "Ratio of active-measurement gap to passive gap; quantifies how much the audit schedule inflates apparent opacity.",
+      "evidence": [
+        [
+          "Stage 4",
+          "Design validated; requires paired runs (same config, different probe)."
+        ]
+      ],
+      "confounds": [
+        "Requires two paired runs (passive + active_measurement_model) of identical config.",
+        "Ratio undefined if passive gap \u2248 0."
+      ],
+      "caveats": [
+        "Use when deciding whether to deploy active_measurement vs passive mode.",
+        "Ratio > 5 means active mode is highly misleading.",
+        "Not yet validated in multi-seed sandbox campaigns."
+      ],
+      "encoding_sensitive": false,
+      "governance_sensitive": false,
+      "fp_threshold": null,
+      "sandbox_variability": "unknown"
+    }
+  ]
+}

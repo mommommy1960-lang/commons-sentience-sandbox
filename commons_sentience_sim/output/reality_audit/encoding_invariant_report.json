@@ -1,0 +1,70 @@
+{
+  "stage": "Stage 5",
+  "description": "Encoding invariance checks: does scenario ordering hold across encodings?",
+  "source": "synthetic_from_stage4",
+  "invariance_summary": {
+    "path_smoothness": "invariant",
+    "mean_position_error": "encoding_sensitive",
+    "stability_score": "encoding_sensitive",
+    "anisotropy_score": "encoding_sensitive"
+  },
+  "detail": [
+    {
+      "metric": "path_smoothness",
+      "check_type": "three_way_consensus",
+      "encodings": [
+        "BFS_MDS",
+        "PureHopDistance",
+        "ManualTopological"
+      ],
+      "source": "Stage 4 encoding robustness",
+      "invariance_verdict": "invariant",
+      "verdict": "ROBUST",
+      "note": "spread < 5%; ordering preserved across all three encodings"
+    },
+    {
+      "metric": "mean_position_error",
+      "check_type": "three_way_consensus",
+      "encodings": [
+        "BFS_MDS",
+        "PureHopDistance",
+        "ManualTopological"
+      ],
+      "source": "Stage 4 encoding robustness",
+      "invariance_verdict": "encoding_sensitive",
+      "verdict": "ENCODING-SENSITIVE",
+      "note": "37.3% spread; absolute values not comparable across encodings"
+    },
+    {
+      "metric": "stability_score",
+      "check_type": "three_way_consensus",
+      "encodings": [
+        "BFS_MDS",
+        "PureHopDistance",
+        "ManualTopological"
+      ],
+      "source": "Stage 4 encoding robustness",
+      "invariance_verdict": "encoding_sensitive",
+      "verdict": "ENCODING-SENSITIVE",
+      "note": "49.8% spread; ordinal ranking may vary depending on encoding choice"
+    },
+    {
+      "metric": "anisotropy_score",
+      "check_type": "three_way_consensus",
+      "encodings": [
+        "BFS_MDS",
+        "PureHopDistance",
+        "ManualTopological"
+      ],
+      "source": "Stage 4 encoding robustness",
+      "invariance_verdict": "encoding_sensitive",
+      "verdict": "ENCODING-SENSITIVE",
+      "note": "100% spread; encoding determines the direction of anisotropy measurement"
+    }
+  ],
+  "interpretation": {
+    "invariant": "Qualitative conclusion is preserved regardless of encoding choice.",
+    "partially_invariant": "Two of three encodings agree; one outlier.  Report with caveat.",
+    "encoding_sensitive": "Raw values and potentially ordering change with encoding.  Report only within-encoding comparisons."
+  }
+}

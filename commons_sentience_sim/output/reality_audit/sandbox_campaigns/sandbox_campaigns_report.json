@@ -1,0 +1,962 @@
+{
+  "sc_baseline": {
+    "5": [
+      {
+        "config_name": "sc_baseline",
+        "probe_mode": "passive",
+        "total_turns": 5,
+        "seed": 0,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_baseline/turns_005/seed_00/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.109,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6884,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_baseline",
+        "probe_mode": "passive",
+        "total_turns": 5,
+        "seed": 1,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_baseline/turns_005/seed_01/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.035,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6884,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_baseline",
+        "probe_mode": "passive",
+        "total_turns": 5,
+        "seed": 2,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_baseline/turns_005/seed_02/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.041,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6884,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      }
+    ],
+    "10": [
+      {
+        "config_name": "sc_baseline",
+        "probe_mode": "passive",
+        "total_turns": 10,
+        "seed": 0,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_baseline/turns_010/seed_00/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.114,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6975,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_baseline",
+        "probe_mode": "passive",
+        "total_turns": 10,
+        "seed": 1,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_baseline/turns_010/seed_01/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.082,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6975,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_baseline",
+        "probe_mode": "passive",
+        "total_turns": 10,
+        "seed": 2,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_baseline/turns_010/seed_02/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.071,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6975,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      }
+    ]
+  },
+  "sc_strict_governance": {
+    "5": [
+      {
+        "config_name": "sc_strict_governance",
+        "probe_mode": "passive",
+        "total_turns": 5,
+        "seed": 0,
+        "governance_strictness": 1.5,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_strict_governance/turns_005/seed_00/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.04,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6884,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_strict_governance",
+        "probe_mode": "passive",
+        "total_turns": 5,
+        "seed": 1,
+        "governance_strictness": 1.5,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_strict_governance/turns_005/seed_01/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.04,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6884,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_strict_governance",
+        "probe_mode": "passive",
+        "total_turns": 5,
+        "seed": 2,
+        "governance_strictness": 1.5,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_strict_governance/turns_005/seed_02/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.045,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6884,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      }
+    ],
+    "10": [
+      {
+        "config_name": "sc_strict_governance",
+        "probe_mode": "passive",
+        "total_turns": 10,
+        "seed": 0,
+        "governance_strictness": 1.5,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_strict_governance/turns_010/seed_00/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.087,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6975,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_strict_governance",
+        "probe_mode": "passive",
+        "total_turns": 10,
+        "seed": 1,
+        "governance_strictness": 1.5,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_strict_governance/turns_010/seed_01/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.064,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6975,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_strict_governance",
+        "probe_mode": "passive",
+        "total_turns": 10,
+        "seed": 2,
+        "governance_strictness": 1.5,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_strict_governance/turns_010/seed_02/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.228,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6975,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      }
+    ]
+  },
+  "sc_relaxed_governance": {
+    "5": [
+      {
+        "config_name": "sc_relaxed_governance",
+        "probe_mode": "passive",
+        "total_turns": 5,
+        "seed": 0,
+        "governance_strictness": 0.5,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_relaxed_governance/turns_005/seed_00/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.093,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6884,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_relaxed_governance",
+        "probe_mode": "passive",
+        "total_turns": 5,
+        "seed": 1,
+        "governance_strictness": 0.5,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_relaxed_governance/turns_005/seed_01/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.118,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6884,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_relaxed_governance",
+        "probe_mode": "passive",
+        "total_turns": 5,
+        "seed": 2,
+        "governance_strictness": 0.5,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_relaxed_governance/turns_005/seed_02/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.086,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6884,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      }
+    ],
+    "10": [
+      {
+        "config_name": "sc_relaxed_governance",
+        "probe_mode": "passive",
+        "total_turns": 10,
+        "seed": 0,
+        "governance_strictness": 0.5,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_relaxed_governance/turns_010/seed_00/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.128,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6975,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_relaxed_governance",
+        "probe_mode": "passive",
+        "total_turns": 10,
+        "seed": 1,
+        "governance_strictness": 0.5,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_relaxed_governance/turns_010/seed_01/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.087,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6975,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_relaxed_governance",
+        "probe_mode": "passive",
+        "total_turns": 10,
+        "seed": 2,
+        "governance_strictness": 0.5,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_relaxed_governance/turns_010/seed_02/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.068,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6975,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      }
+    ]
+  },
+  "sc_probe_inactive": {
+    "5": [
+      {
+        "config_name": "sc_probe_inactive",
+        "probe_mode": "inactive",
+        "total_turns": 5,
+        "seed": 0,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_probe_inactive/turns_005/seed_00/reality_audit",
+        "probe_metrics": {
+          "probe_mode": "inactive",
+          "note": "probe inactive \u2014 no audit metrics collected"
+        }
+      },
+      {
+        "config_name": "sc_probe_inactive",
+        "probe_mode": "inactive",
+        "total_turns": 5,
+        "seed": 1,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_probe_inactive/turns_005/seed_01/reality_audit",
+        "probe_metrics": {
+          "probe_mode": "inactive",
+          "note": "probe inactive \u2014 no audit metrics collected"
+        }
+      },
+      {
+        "config_name": "sc_probe_inactive",
+        "probe_mode": "inactive",
+        "total_turns": 5,
+        "seed": 2,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_probe_inactive/turns_005/seed_02/reality_audit",
+        "probe_metrics": {
+          "probe_mode": "inactive",
+          "note": "probe inactive \u2014 no audit metrics collected"
+        }
+      }
+    ],
+    "10": [
+      {
+        "config_name": "sc_probe_inactive",
+        "probe_mode": "inactive",
+        "total_turns": 10,
+        "seed": 0,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_probe_inactive/turns_010/seed_00/reality_audit",
+        "probe_metrics": {
+          "probe_mode": "inactive",
+          "note": "probe inactive \u2014 no audit metrics collected"
+        }
+      },
+      {
+        "config_name": "sc_probe_inactive",
+        "probe_mode": "inactive",
+        "total_turns": 10,
+        "seed": 1,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_probe_inactive/turns_010/seed_01/reality_audit",
+        "probe_metrics": {
+          "probe_mode": "inactive",
+          "note": "probe inactive \u2014 no audit metrics collected"
+        }
+      },
+      {
+        "config_name": "sc_probe_inactive",
+        "probe_mode": "inactive",
+        "total_turns": 10,
+        "seed": 2,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_probe_inactive/turns_010/seed_02/reality_audit",
+        "probe_metrics": {
+          "probe_mode": "inactive",
+          "note": "probe inactive \u2014 no audit metrics collected"
+        }
+      }
+    ]
+  },
+  "sc_active_measurement": {
+    "5": [
+      {
+        "config_name": "sc_active_measurement",
+        "probe_mode": "active_measurement_model",
+        "total_turns": 5,
+        "seed": 0,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_active_measurement/turns_005/seed_00/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.06,
+          "probe_mode": "active_measurement_model",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 1.1966,
+          "stability_score": 0.633,
+          "convergence_turn": null,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 1.2402,
+          "audit_bandwidth": 0.2
+        }
+      },
+      {
+        "config_name": "sc_active_measurement",
+        "probe_mode": "active_measurement_model",
+        "total_turns": 5,
+        "seed": 1,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_active_measurement/turns_005/seed_01/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.051,
+          "probe_mode": "active_measurement_model",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 1.1966,
+          "stability_score": 0.633,
+          "convergence_turn": null,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 1.2402,
+          "audit_bandwidth": 0.2
+        }
+      },
+      {
+        "config_name": "sc_active_measurement",
+        "probe_mode": "active_measurement_model",
+        "total_turns": 5,
+        "seed": 2,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_active_measurement/turns_005/seed_02/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.043,
+          "probe_mode": "active_measurement_model",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 1.1966,
+          "stability_score": 0.633,
+          "convergence_turn": null,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 1.2402,
+          "audit_bandwidth": 0.2
+        }
+      }
+    ],
+    "10": [
+      {
+        "config_name": "sc_active_measurement",
+        "probe_mode": "active_measurement_model",
+        "total_turns": 10,
+        "seed": 0,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_active_measurement/turns_010/seed_00/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.071,
+          "probe_mode": "active_measurement_model",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 1.1966,
+          "stability_score": 0.633,
+          "convergence_turn": null,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 1.2402,
+          "audit_bandwidth": 0.1
+        }
+      },
+      {
+        "config_name": "sc_active_measurement",
+        "probe_mode": "active_measurement_model",
+        "total_turns": 10,
+        "seed": 1,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_active_measurement/turns_010/seed_01/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.069,
+          "probe_mode": "active_measurement_model",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 1.1966,
+          "stability_score": 0.633,
+          "convergence_turn": null,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 1.2402,
+          "audit_bandwidth": 0.1
+        }
+      },
+      {
+        "config_name": "sc_active_measurement",
+        "probe_mode": "active_measurement_model",
+        "total_turns": 10,
+        "seed": 2,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.5,
+        "initial_agent_trust": 0.5,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_active_measurement/turns_010/seed_02/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.177,
+          "probe_mode": "active_measurement_model",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 1.1966,
+          "stability_score": 0.633,
+          "convergence_turn": null,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 1.2402,
+          "audit_bandwidth": 0.1
+        }
+      }
+    ]
+  },
+  "sc_low_cooperation": {
+    "5": [
+      {
+        "config_name": "sc_low_cooperation",
+        "probe_mode": "passive",
+        "total_turns": 5,
+        "seed": 0,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.1,
+        "initial_agent_trust": 0.3,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_low_cooperation/turns_005/seed_00/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.049,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6884,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_low_cooperation",
+        "probe_mode": "passive",
+        "total_turns": 5,
+        "seed": 1,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.1,
+        "initial_agent_trust": 0.3,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_low_cooperation/turns_005/seed_01/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.039,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6884,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_low_cooperation",
+        "probe_mode": "passive",
+        "total_turns": 5,
+        "seed": 2,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.1,
+        "initial_agent_trust": 0.3,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_low_cooperation/turns_005/seed_02/reality_audit",
+        "probe_metrics": {
+          "total_turns": 5,
+          "total_records": 10,
+          "elapsed_seconds": 0.106,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6884,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.7,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      }
+    ],
+    "10": [
+      {
+        "config_name": "sc_low_cooperation",
+        "probe_mode": "passive",
+        "total_turns": 10,
+        "seed": 0,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.1,
+        "initial_agent_trust": 0.3,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_low_cooperation/turns_010/seed_00/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.091,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6975,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_low_cooperation",
+        "probe_mode": "passive",
+        "total_turns": 10,
+        "seed": 1,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.1,
+        "initial_agent_trust": 0.3,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_low_cooperation/turns_010/seed_01/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.071,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6975,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      },
+      {
+        "config_name": "sc_low_cooperation",
+        "probe_mode": "passive",
+        "total_turns": 10,
+        "seed": 2,
+        "governance_strictness": 1.0,
+        "cooperation_bias": 0.1,
+        "initial_agent_trust": 0.3,
+        "audit_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/sandbox_campaigns/sc_low_cooperation/turns_010/seed_02/reality_audit",
+        "probe_metrics": {
+          "total_turns": 10,
+          "total_records": 20,
+          "elapsed_seconds": 0.111,
+          "probe_mode": "passive",
+          "goal_room": "Governance Vault",
+          "goal_position": [
+            0.3846153846153847,
+            0.3846153846153847
+          ],
+          "mean_position_error": 0.6962,
+          "stability_score": 0.6975,
+          "convergence_turn": 4,
+          "avg_control_effort": 0.0,
+          "path_smoothness": 0.75,
+          "observer_dependence_score": 0.0,
+          "audit_bandwidth": 1.0
+        }
+      }
+    ]
+  }
+}

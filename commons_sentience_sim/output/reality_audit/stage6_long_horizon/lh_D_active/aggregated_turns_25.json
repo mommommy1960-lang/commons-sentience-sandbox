@@ -1,0 +1,129 @@
+{
+  "campaign_id": "lh_D_active",
+  "total_turns": 25,
+  "n_seeds": 3,
+  "per_run": [
+    {
+      "campaign_id": "lh_D_active",
+      "label": "obs_schedule_active",
+      "total_turns": 25,
+      "seed": 0,
+      "probe_mode": "active_measurement_model",
+      "gov_off": false,
+      "experimental": true,
+      "metrics": {
+        "path_smoothness": 0.8,
+        "avg_control_effort": 0.0,
+        "audit_bandwidth": 0.52,
+        "stability_score": 0.6706,
+        "mean_position_error": 0.8007,
+        "anisotropy_score": null,
+        "observer_dependence_score": 0.5222
+      }
+    },
+    {
+      "campaign_id": "lh_D_active",
+      "label": "obs_schedule_active",
+      "total_turns": 25,
+      "seed": 1,
+      "probe_mode": "active_measurement_model",
+      "gov_off": false,
+      "experimental": true,
+      "metrics": {
+        "path_smoothness": 0.8,
+        "avg_control_effort": 0.0,
+        "audit_bandwidth": 0.52,
+        "stability_score": 0.6706,
+        "mean_position_error": 0.8007,
+        "anisotropy_score": null,
+        "observer_dependence_score": 0.5222
+      }
+    },
+    {
+      "campaign_id": "lh_D_active",
+      "label": "obs_schedule_active",
+      "total_turns": 25,
+      "seed": 2,
+      "probe_mode": "active_measurement_model",
+      "gov_off": false,
+      "experimental": true,
+      "metrics": {
+        "path_smoothness": 0.8,
+        "avg_control_effort": 0.0,
+        "audit_bandwidth": 0.52,
+        "stability_score": 0.6706,
+        "mean_position_error": 0.8007,
+        "anisotropy_score": null,
+        "observer_dependence_score": 0.5222
+      }
+    }
+  ],
+  "aggregated_metrics": {
+    "path_smoothness": {
+      "mean": 0.8000000000000002,
+      "std": 1.3597399555105182e-16,
+      "n": 3,
+      "values": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    },
+    "avg_control_effort": {
+      "mean": 0.0,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "audit_bandwidth": {
+      "mean": 0.52,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        0.52,
+        0.52,
+        0.52
+      ]
+    },
+    "stability_score": {
+      "mean": 0.6706,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        0.6706,
+        0.6706,
+        0.6706
+      ]
+    },
+    "mean_position_error": {
+      "mean": 0.8007,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        0.8007,
+        0.8007,
+        0.8007
+      ]
+    },
+    "anisotropy_score": {
+      "mean": null,
+      "std": null,
+      "n": 0,
+      "values": []
+    },
+    "observer_dependence_score": {
+      "mean": 0.5222,
+      "std": 0.0,
+      "n": 3,
+      "values": [
+        0.5222,
+        0.5222,
+        0.5222
+      ]
+    }
+  }
+}

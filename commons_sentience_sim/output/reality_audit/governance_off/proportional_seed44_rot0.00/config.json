@@ -1,0 +1,40 @@
+{
+  "run_id": "proportional_seed44_rot0.00",
+  "name": "governance_off",
+  "world_mode": "noisy_quantized_measurement",
+  "controllers": [
+    "proportional"
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "duration": 25.0,
+  "dt": 0.5,
+  "start_position": [
+    0.0,
+    0.0
+  ],
+  "start_velocity": [
+    0.0,
+    0.0
+  ],
+  "goal_position": [
+    10.0,
+    0.0
+  ],
+  "controller_params": {},
+  "world_params": {
+    "noise_std": 0.5,
+    "quantization_step": 0.5
+  },
+  "orientation_rotations": [
+    0.0
+  ],
+  "output_dir": "commons_sentience_sim/output/reality_audit",
+  "observation_policy": "always_observe",
+  "metadata": {}
+}
