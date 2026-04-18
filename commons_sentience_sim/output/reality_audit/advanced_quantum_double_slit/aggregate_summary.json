@@ -1,0 +1,73 @@
+{
+  "benchmark": "advanced_quantum_double_slit",
+  "n_repeated_runs": 100,
+  "n_trials_per_run": 20000,
+  "two_slit_coherent": {
+    "condition": "AQCondition.TWO_SLIT_COHERENT",
+    "detector_overlap": 1.0,
+    "n_runs": 100,
+    "fringe_visibility_empirical": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0,
+      "cv": 0.0,
+      "n": 100
+    },
+    "fringe_visibility_theoretical": {
+      "mean": 0.9990665194726023,
+      "std": 0.0,
+      "min": 0.9990665194726023,
+      "max": 0.9990665194726023,
+      "cv": 0.0,
+      "n": 100
+    },
+    "center_bin_rate": {
+      "mean": 0.0122055,
+      "std": 0.0006218616153830921,
+      "min": 0.0103,
+      "max": 0.01375,
+      "cv": 0.050949294611698996,
+      "n": 100
+    }
+  },
+  "two_slit_which_path": {
+    "condition": "AQCondition.TWO_SLIT_WHICH_PATH",
+    "detector_overlap": 0.0,
+    "n_runs": 100,
+    "fringe_visibility_empirical": {
+      "mean": 0.4384418689734964,
+      "std": 0.03273960135463304,
+      "min": 0.3567839195979899,
+      "max": 0.533678756476684,
+      "cv": 0.07467261607858015,
+      "n": 100
+    },
+    "fringe_visibility_theoretical": {
+      "mean": 0.2710654789882462,
+      "std": 0.0,
+      "min": 0.2710654789882462,
+      "max": 0.2710654789882462,
+      "cv": 0.0,
+      "n": 100
+    },
+    "center_bin_rate": {
+      "mean": 0.005914,
+      "std": 0.0005374876085017489,
+      "min": 0.0046,
+      "max": 0.0074,
+      "cv": 0.0908839378596126,
+      "n": 100
+    }
+  },
+  "stability_assessment": {
+    "coherent_cv": 0.0,
+    "which_path_cv": 0.0,
+    "stable": true,
+    "coherent_mean_vis": 0.9990665194726023,
+    "which_path_mean_vis": 0.2710654789882462,
+    "coherent_center_rate_mean": 0.0122055,
+    "which_path_center_rate_mean": 0.005914,
+    "conditions_separated": true
+  }
+}

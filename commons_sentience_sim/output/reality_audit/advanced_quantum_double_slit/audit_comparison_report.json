@@ -1,0 +1,17 @@
+{
+  "benchmark": "advanced_quantum_double_slit",
+  "comparisons": {
+    "Q1_PASS": true,
+    "Q2_PASS": true,
+    "Q3_PASS": true,
+    "Q4_PASS": true,
+    "v_coherent": 0.9990665194726023,
+    "v_which_path": 0.2710654789882462,
+    "v_ratio": 3.6857017839439576,
+    "visibility_monotone": true,
+    "complementarity_bounds_satisfied": true,
+    "stability_cv_coherent": 0.0,
+    "stability_cv_which_path": 0.0,
+    "eraser_recovery_visibility": 1.0
+  }
+}

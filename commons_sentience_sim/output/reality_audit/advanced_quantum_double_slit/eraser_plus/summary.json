@@ -1,0 +1,10 @@
+{
+  "condition": "AQCondition.ERASER_PLUS",
+  "detector_overlap": 0.5,
+  "path_distinguishability": 0.8660254037844386,
+  "fringe_visibility": 0.9990665194726023,
+  "theoretical_max_visibility": 0.5,
+  "n_trials": 20000,
+  "seed": 42,
+  "total_hits": 20000
+}

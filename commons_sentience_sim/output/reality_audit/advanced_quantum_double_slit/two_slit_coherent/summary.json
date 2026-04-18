@@ -1,0 +1,10 @@
+{
+  "condition": "AQCondition.TWO_SLIT_COHERENT",
+  "detector_overlap": 1.0,
+  "path_distinguishability": 0.0,
+  "fringe_visibility": 0.9990665194726023,
+  "theoretical_max_visibility": 1.0,
+  "n_trials": 20000,
+  "seed": 42,
+  "total_hits": 20000
+}

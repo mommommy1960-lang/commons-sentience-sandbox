@@ -1,0 +1,72 @@
+[
+  {
+    "condition": "AQCondition.TWO_SLIT_PARTIAL",
+    "detector_overlap": 1.0,
+    "path_distinguishability": 0.0,
+    "fringe_visibility": 0.9990665194726023,
+    "theoretical_max_visibility": 1.0,
+    "n_trials": 20000,
+    "seed": 42,
+    "total_hits": 20000
+  },
+  {
+    "condition": "AQCondition.TWO_SLIT_PARTIAL",
+    "detector_overlap": 0.9,
+    "path_distinguishability": 0.4358898943540673,
+    "fringe_visibility": 0.9363878963164742,
+    "theoretical_max_visibility": 0.9,
+    "n_trials": 20000,
+    "seed": 42,
+    "total_hits": 20000
+  },
+  {
+    "condition": "AQCondition.TWO_SLIT_PARTIAL",
+    "detector_overlap": 0.75,
+    "path_distinguishability": 0.6614378277661477,
+    "fringe_visibility": 0.837823962965678,
+    "theoretical_max_visibility": 0.75,
+    "n_trials": 20000,
+    "seed": 42,
+    "total_hits": 20000
+  },
+  {
+    "condition": "AQCondition.TWO_SLIT_PARTIAL",
+    "detector_overlap": 0.5,
+    "path_distinguishability": 0.8660254037844386,
+    "fringe_visibility": 0.6605820951350736,
+    "theoretical_max_visibility": 0.5,
+    "n_trials": 20000,
+    "seed": 42,
+    "total_hits": 20000
+  },
+  {
+    "condition": "AQCondition.TWO_SLIT_PARTIAL",
+    "detector_overlap": 0.25,
+    "path_distinguishability": 0.9682458365518543,
+    "fringe_visibility": 0.46754705648317585,
+    "theoretical_max_visibility": 0.25,
+    "n_trials": 20000,
+    "seed": 42,
+    "total_hits": 20000
+  },
+  {
+    "condition": "AQCondition.TWO_SLIT_PARTIAL",
+    "detector_overlap": 0.1,
+    "path_distinguishability": 0.99498743710662,
+    "fringe_visibility": 0.35199112314516734,
+    "theoretical_max_visibility": 0.1,
+    "n_trials": 20000,
+    "seed": 42,
+    "total_hits": 20000
+  },
+  {
+    "condition": "AQCondition.TWO_SLIT_PARTIAL",
+    "detector_overlap": 0.0,
+    "path_distinguishability": 1.0,
+    "fringe_visibility": 0.2710654789882462,
+    "theoretical_max_visibility": 0.0,
+    "n_trials": 20000,
+    "seed": 42,
+    "total_hits": 20000
+  }
+]

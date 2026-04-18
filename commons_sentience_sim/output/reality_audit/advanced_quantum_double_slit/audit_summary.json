@@ -1,0 +1,35 @@
+{
+  "benchmark": "advanced_quantum_double_slit",
+  "audit_version": "1.0",
+  "Q1_coherent_vs_which_path": {
+    "question": "Can auditor distinguish coherent from fully measured (which-path)?",
+    "v_coherent": 0.9990665194726023,
+    "v_which_path": 0.2710654789882462,
+    "ratio_coherent_over_which_path": 3.6857017839439576,
+    "PASS": true
+  },
+  "Q2_visibility_vs_distinguishability": {
+    "question": "Does visibility decrease as path distinguishability increases?",
+    "visibility_monotone_decreasing": true,
+    "all_theoretical_complementarity_bounds_satisfied": true,
+    "n_sweep_points": 7,
+    "PASS": true
+  },
+  "Q3_stability_100runs": {
+    "question": "Are results stable across 100 repeated runs?",
+    "n_runs": 100,
+    "cv_coherent": 0.0,
+    "cv_which_path": 0.0,
+    "conditions_separated": true,
+    "PASS": true
+  },
+  "Q4_eraser_recovery": {
+    "question": "Does eraser |+\u27e9 recover conditional fringe pattern?",
+    "eraser_interference_visibility": 1.0,
+    "eraser_closer_to_coherent_than_which_path": true,
+    "kl_eraser_vs_coherent": 8.6346960459228e-17,
+    "PASS": true
+  },
+  "overall_PASS": true,
+  "verdict": "AUDIT_PASSED"
+}

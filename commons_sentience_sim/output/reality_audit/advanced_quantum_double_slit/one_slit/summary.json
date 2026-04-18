@@ -1,0 +1,10 @@
+{
+  "condition": "AQCondition.ONE_SLIT",
+  "detector_overlap": NaN,
+  "path_distinguishability": NaN,
+  "fringe_visibility": 0.2716220972540819,
+  "theoretical_max_visibility": NaN,
+  "n_trials": 20000,
+  "seed": 42,
+  "total_hits": 20000
+}

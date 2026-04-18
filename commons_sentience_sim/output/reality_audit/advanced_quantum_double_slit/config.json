@@ -1,0 +1,25 @@
+{
+  "benchmark": "advanced_quantum_double_slit",
+  "version": "1.0",
+  "model": "Entangled path-detector state |\u03a8\u27e9=(1/\u221a2)(|L\u27e9|d_L\u27e9+|R\u27e9|d_R\u27e9). Marginal P(y)=\u00bd(|A_L|\u00b2+|A_R|\u00b2)+s\u00b7Re(A_L\u00b7A_R*). Eraser: post-select on |\u00b1\u27e9. Born-rule sampling.",
+  "n_trials": 20000,
+  "slit_separation": 4.0,
+  "slit_width": 1.0,
+  "wavelength": 1.0,
+  "screen_distance": 100.0,
+  "screen_width": 40.0,
+  "n_bins": 200,
+  "seed": 42,
+  "eraser_overlap": 0.5,
+  "overlap_sweep_values": [
+    1.0,
+    0.9,
+    0.75,
+    0.5,
+    0.25,
+    0.1,
+    0.0
+  ],
+  "n_repeated_runs": 100,
+  "honest_framing": "This is a small-system quantum-style benchmark running on a classical computer. It faithfully models a two-path entangled state with a detector, but is NOT a simulation of the physical universe. Purpose: validate auditing logic."
+}
