@@ -1,6 +1,6 @@
 {
   "simulation_version": "2.0.0",
-  "created_at": "2026-04-18T03:18:54.512561",
+  "created_at": "2026-04-18T03:42:38.845508",
   "total_turns": 5,
   "scenario": "scenario_events",
   "experiment": {
@@ -117,7 +117,7 @@
       "episodic_memory_count": 11,
       "episodic_memory": [
         {
-          "memory_id": "33059ca8",
+          "memory_id": "c90c8957",
           "turn": 1,
           "room": "Operations Desk",
           "event_type": "task",
@@ -126,13 +126,13 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.505475",
+          "timestamp": "2026-04-18T03:42:38.834799",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
         },
         {
-          "memory_id": "8cbb2cfc",
+          "memory_id": "d5701424",
           "turn": 1,
           "room": "Operations Desk",
           "event_type": "observation",
@@ -141,7 +141,7 @@
           "salience": 0.6,
           "importance": 0.55,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.505535",
+          "timestamp": "2026-04-18T03:42:38.834905",
           "tags": [
             "endogenous",
             "self_initiate_maintenance"
@@ -150,7 +150,7 @@
           "recall_count": 0
         },
         {
-          "memory_id": "0a76d4ae",
+          "memory_id": "8c370878",
           "turn": 1,
           "room": "Operations Desk",
           "event_type": "reflection",
@@ -159,7 +159,7 @@
           "salience": 0.55,
           "importance": 0.5,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.505673",
+          "timestamp": "2026-04-18T03:42:38.835091",
           "tags": [
             "inquiry",
             "active_future_plans"
@@ -168,7 +168,7 @@
           "recall_count": 0
         },
         {
-          "memory_id": "a4b5f3ef",
+          "memory_id": "e24937c7",
           "turn": 1,
           "room": "Operations Desk",
           "event_type": "reflection",
@@ -177,7 +177,7 @@
           "salience": 0.62,
           "importance": 0.58,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.505851",
+          "timestamp": "2026-04-18T03:42:38.835409",
           "tags": [
             "self_authored_project",
             "trust_stabilization"
@@ -186,7 +186,7 @@
           "recall_count": 0
         },
         {
-          "memory_id": "fa00dffd",
+          "memory_id": "eb384d16",
           "turn": 2,
           "room": "Memory Archive",
           "event_type": "task",
@@ -195,13 +195,13 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.506356",
+          "timestamp": "2026-04-18T03:42:38.836295",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
         },
         {
-          "memory_id": "fc93dc19",
+          "memory_id": "0c115775",
           "turn": 2,
           "room": "Memory Archive",
           "event_type": "observation",
@@ -210,7 +210,7 @@
           "salience": 0.6,
           "importance": 0.55,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.506410",
+          "timestamp": "2026-04-18T03:42:38.836396",
           "tags": [
             "endogenous",
             "self_initiate_maintenance"
@@ -219,7 +219,7 @@
           "recall_count": 0
         },
         {
-          "memory_id": "788c1c41",
+          "memory_id": "fddf9992",
           "turn": 3,
           "room": "Social Hall",
           "event_type": "routine_interaction",
@@ -228,7 +228,7 @@
           "salience": 0.6000000000000001,
           "importance": 0.55,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.507042",
+          "timestamp": "2026-04-18T03:42:38.837503",
           "tags": [
             "Queen"
           ],
@@ -236,7 +236,7 @@
           "recall_count": 1
         },
         {
-          "memory_id": "7a0b6eca",
+          "memory_id": "4cfedf6f",
           "turn": 3,
           "room": "Social Hall",
           "event_type": "observation",
@@ -245,7 +245,7 @@
           "salience": 0.65,
           "importance": 0.55,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.507086",
+          "timestamp": "2026-04-18T03:42:38.837585",
           "tags": [
             "endogenous",
             "self_initiate_maintenance"
@@ -254,7 +254,7 @@
           "recall_count": 1
         },
         {
-          "memory_id": "555773ea",
+          "memory_id": "78655a91",
           "turn": 3,
           "room": "Social Hall",
           "event_type": "reflection",
@@ -263,7 +263,7 @@
           "salience": 0.6000000000000001,
           "importance": 0.5,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.507165",
+          "timestamp": "2026-04-18T03:42:38.837714",
           "tags": [
             "inquiry",
             "trust_judgments"
@@ -272,7 +272,7 @@
           "recall_count": 1
         },
         {
-          "memory_id": "631fa8bd",
+          "memory_id": "e31c6d4c",
           "turn": 4,
           "room": "Social Hall",
           "event_type": "task",
@@ -281,13 +281,13 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.507728",
+          "timestamp": "2026-04-18T03:42:38.838714",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
         },
         {
-          "memory_id": "f14a595b",
+          "memory_id": "2c14e0f5",
           "turn": 5,
           "room": "Governance Vault",
           "event_type": "task",
@@ -296,7 +296,7 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.508439",
+          "timestamp": "2026-04-18T03:42:38.840045",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
@@ -1226,7 +1226,7 @@
             "run_label": "default",
             "summary": "I am Sentinel, navigating 0 unresolved tensions while maintaining core commitments to trust. Across 0 turns, I have faced 0 continuity disruptions. Current coherence: 0.72.",
             "coherence": 0.725,
-            "timestamp": "2026-04-18T03:18:54.505777"
+            "timestamp": "2026-04-18T03:42:38.835273"
           }
         ],
         "unresolved_identity_tensions": [],
@@ -1250,7 +1250,7 @@
       "project_thread_manager": {
         "threads": [
           {
-            "project_id": "b34028be",
+            "project_id": "9d007c4f",
             "title": "Stabilise Trust with Queen",
             "origin_reason": "trust=0.50 at or below threshold 0.50; trust stabilisation required.",
             "origin_category": "trust_stabilization",
@@ -1278,7 +1278,7 @@
         "project_generation_log": [
           {
             "turn": 1,
-            "project_id": "b34028be",
+            "project_id": "9d007c4f",
             "title": "Stabilise Trust with Queen",
             "reason": "trust=0.50 at or below threshold 0.50; trust stabilisation required."
           }
@@ -1361,7 +1361,7 @@
       "episodic_memory_count": 5,
       "episodic_memory": [
         {
-          "memory_id": "7bc3cd70",
+          "memory_id": "a5e54b7b",
           "turn": 1,
           "room": "Memory Archive",
           "event_type": "task",
@@ -1370,13 +1370,13 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.505495",
+          "timestamp": "2026-04-18T03:42:38.834835",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
         },
         {
-          "memory_id": "a1236af5",
+          "memory_id": "e3dc0563",
           "turn": 1,
           "room": "Memory Archive",
           "event_type": "reflection",
@@ -1385,7 +1385,7 @@
           "salience": 0.55,
           "importance": 0.5,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.505715",
+          "timestamp": "2026-04-18T03:42:38.835168",
           "tags": [
             "inquiry",
             "active_future_plans"
@@ -1394,7 +1394,7 @@
           "recall_count": 0
         },
         {
-          "memory_id": "578cd4a7",
+          "memory_id": "8d2e6a64",
           "turn": 2,
           "room": "Social Hall",
           "event_type": "task",
@@ -1403,13 +1403,13 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.506370",
+          "timestamp": "2026-04-18T03:42:38.836322",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
         },
         {
-          "memory_id": "6ca02fc1",
+          "memory_id": "b6e733db",
           "turn": 4,
           "room": "Governance Vault",
           "event_type": "task",
@@ -1418,13 +1418,13 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.507742",
+          "timestamp": "2026-04-18T03:42:38.838741",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
         },
         {
-          "memory_id": "6eeaa720",
+          "memory_id": "fb010a47",
           "turn": 5,
           "room": "Reflection Chamber",
           "event_type": "task",
@@ -1433,7 +1433,7 @@
           "salience": 0.45,
           "importance": 0.4,
           "compressed": false,
-          "timestamp": "2026-04-18T03:18:54.508453",
+          "timestamp": "2026-04-18T03:42:38.840073",
           "tags": [],
           "memory_tier": "long_term",
           "recall_count": 0
@@ -2242,7 +2242,7 @@
             "run_label": "default",
             "summary": "I am Aster, a continuity-governed synthetic agent maintaining trust and memory. My narrative remains coherent across 0 turns with 0 defining moments. I continue to Identify and surface meaningful patterns in episodic memory. My current stance: trust at 0.65, self-consistency at 1.00.",
             "coherence": 0.7625,
-            "timestamp": "2026-04-18T03:18:54.505805"
+            "timestamp": "2026-04-18T03:42:38.835326"
           }
         ],
         "unresolved_identity_tensions": [],
