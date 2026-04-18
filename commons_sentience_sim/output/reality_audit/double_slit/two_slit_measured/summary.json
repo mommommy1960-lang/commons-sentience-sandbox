@@ -1,0 +1,12 @@
+{
+  "condition": "SlitCondition.TWO_SLIT_MEASURED",
+  "n_trials": 50000,
+  "seed": 42,
+  "total_hits": 50000,
+  "center_intensity": 0.998671,
+  "max_intensity": 0.998671,
+  "peak_bin": 99,
+  "center_bin": 100,
+  "n_bins": 200,
+  "screen_width": 40.0
+}

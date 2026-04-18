@@ -1,0 +1,19 @@
+{
+  "benchmark": "double_slit",
+  "benchmark_version": "1.0",
+  "model_type": "classical_wave_optics_approximation",
+  "n_trials": 50000,
+  "slit_separation": 4.0,
+  "slit_width": 1.0,
+  "wavelength": 1.0,
+  "screen_distance": 100.0,
+  "screen_width": 40.0,
+  "n_bins": 200,
+  "seed": 42,
+  "conditions": [
+    "one_slit",
+    "two_slit",
+    "two_slit_measured"
+  ],
+  "honest_framing": "This is a classical wave-optics benchmark model.  It is NOT a quantum simulator.  Its purpose is to provide a known observer-sensitive signal for audit framework validation."
+}

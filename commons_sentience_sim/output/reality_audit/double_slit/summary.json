@@ -1,0 +1,65 @@
+{
+  "benchmark": "double_slit",
+  "config": {
+    "benchmark": "double_slit",
+    "benchmark_version": "1.0",
+    "model_type": "classical_wave_optics_approximation",
+    "n_trials": 50000,
+    "slit_separation": 4.0,
+    "slit_width": 1.0,
+    "wavelength": 1.0,
+    "screen_distance": 100.0,
+    "screen_width": 40.0,
+    "n_bins": 200,
+    "seed": 42,
+    "conditions": [
+      "one_slit",
+      "two_slit",
+      "two_slit_measured"
+    ],
+    "honest_framing": "This is a classical wave-optics benchmark model.  It is NOT a quantum simulator.  Its purpose is to provide a known observer-sensitive signal for audit framework validation."
+  },
+  "conditions_run": [
+    "one_slit",
+    "two_slit",
+    "two_slit_measured"
+  ],
+  "per_condition": {
+    "one_slit": {
+      "condition": "SlitCondition.ONE_SLIT",
+      "n_trials": 50000,
+      "seed": 42,
+      "total_hits": 50000,
+      "center_intensity": 0.999987,
+      "max_intensity": 0.999987,
+      "peak_bin": 99,
+      "center_bin": 100,
+      "n_bins": 200,
+      "screen_width": 40.0
+    },
+    "two_slit": {
+      "condition": "SlitCondition.TWO_SLIT",
+      "n_trials": 50000,
+      "seed": 42,
+      "total_hits": 50000,
+      "center_intensity": 0.999349,
+      "max_intensity": 0.999349,
+      "peak_bin": 99,
+      "center_bin": 100,
+      "n_bins": 200,
+      "screen_width": 40.0
+    },
+    "two_slit_measured": {
+      "condition": "SlitCondition.TWO_SLIT_MEASURED",
+      "n_trials": 50000,
+      "seed": 42,
+      "total_hits": 50000,
+      "center_intensity": 0.998671,
+      "max_intensity": 0.998671,
+      "peak_bin": 99,
+      "center_bin": 100,
+      "n_bins": 200,
+      "screen_width": 40.0
+    }
+  }
+}

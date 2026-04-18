@@ -1,0 +1,30 @@
+{
+  "per_condition": {
+    "one_slit": {
+      "fringe_visibility": 0.271622,
+      "peak_count": 0,
+      "center_intensity_normalised": 1.0,
+      "distribution_entropy": 5.283306
+    },
+    "two_slit": {
+      "fringe_visibility": 0.99985,
+      "peak_count": 2,
+      "center_intensity_normalised": 1.0,
+      "distribution_entropy": 4.927352
+    },
+    "two_slit_measured": {
+      "fringe_visibility": 0.271065,
+      "peak_count": 0,
+      "center_intensity_normalised": 1.0,
+      "distribution_entropy": 5.283391
+    }
+  },
+  "cross_condition": {
+    "measured_vs_unmeasured_kl": 0.340362,
+    "fringe_suppression_ratio": 0.271106,
+    "visibility_drop": 0.728785,
+    "one_slit_vs_two_slit_kl": 0.340375,
+    "verdict": "BENCHMARK_BEHAVED_CORRECTLY: interference present, measurement suppresses, one-slit distinct"
+  },
+  "interpretation": "=== Double-Slit Metric Summary ===\n  one_slit: visibility=0.2716  peaks=0  center_norm=1.0000  entropy=5.2833\n  two_slit: visibility=0.9999  peaks=2  center_norm=1.0000  entropy=4.9274\n  two_slit_measured: visibility=0.2711  peaks=0  center_norm=1.0000  entropy=5.2834\n\n  Measurement suppresses fringe visibility by 0.7288 (suppression ratio=0.2711)\n  KL(two_slit || measured)  = 0.3404\n  KL(two_slit || one_slit)  = 0.3404\n\n  VERDICT: BENCHMARK_BEHAVED_CORRECTLY: interference present, measurement suppresses, one-slit distinct"
+}
