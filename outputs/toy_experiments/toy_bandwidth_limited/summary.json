@@ -1,0 +1,28 @@
+{
+  "experiment_name": "toy_bandwidth_limited",
+  "run_count": 1,
+  "results": [
+    {
+      "run_id": "proportional_seed42_rot0.00",
+      "controller": "proportional",
+      "seed": 42,
+      "orientation": 0.0,
+      "world_mode": "bandwidth_limited",
+      "metrics": {
+        "position_error": 1.5166550231118503,
+        "velocity_error": 1.106505248821434,
+        "directional_error": 0.0,
+        "steady_state_error": 0.019605356258102447,
+        "overshoot": 0.0,
+        "convergence_time": 3.600000000000002,
+        "stability_score": 0.26127034337447014,
+        "control_effort": 80.81314579933442,
+        "path_smoothness": 1.4599315551440954,
+        "anisotropy_score": 174.16724884440748,
+        "quantization_artifact_score": 40.0,
+        "bandwidth_bottleneck_score": 0.2,
+        "observer_dependence_score": 3.4833449768881497
+      }
+    }
+  ]
+}

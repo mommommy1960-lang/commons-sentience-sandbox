@@ -1,0 +1,270 @@
+{
+  "experiment_name": "preferred_frame_audit",
+  "run_count": 12,
+  "results": [
+    {
+      "run_id": "proportional_seed101_rot0.00",
+      "controller": "proportional",
+      "seed": 101,
+      "orientation": 0.0,
+      "world_mode": "anisotropic_preferred_axis",
+      "metrics": {
+        "position_error": 1.3708254867241518,
+        "velocity_error": 0.7133730999149391,
+        "directional_error": 1.3705701726861688,
+        "steady_state_error": 0.012648176480073669,
+        "overshoot": 0.0,
+        "convergence_time": 4.499999999999992,
+        "stability_score": 0.16312632746663747,
+        "control_effort": 282.6377305425888,
+        "path_smoothness": 0.7887401440846318,
+        "anisotropy_score": 0.06846759097534458,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 10.140376914652723
+      }
+    },
+    {
+      "run_id": "proportional_seed101_rot0.79",
+      "controller": "proportional",
+      "seed": 101,
+      "orientation": 0.785398,
+      "world_mode": "anisotropic_preferred_axis",
+      "metrics": {
+        "position_error": 1.7364177456940306,
+        "velocity_error": 0.8566148204377824,
+        "directional_error": 1.5479427964928425,
+        "steady_state_error": 0.012006341038265044,
+        "overshoot": 0.0,
+        "convergence_time": 4.99999999999999,
+        "stability_score": 0.13786866047512567,
+        "control_effort": 355.7568241720064,
+        "path_smoothness": 0.7812596067490896,
+        "anisotropy_score": 0.9976629740109404,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 6.770988548229796
+      }
+    },
+    {
+      "run_id": "proportional_seed101_rot1.57",
+      "controller": "proportional",
+      "seed": 101,
+      "orientation": 1.5708,
+      "world_mode": "anisotropic_preferred_axis",
+      "metrics": {
+        "position_error": 1.3712949959835867,
+        "velocity_error": 0.7126659044367705,
+        "directional_error": 1.744382902548513,
+        "steady_state_error": 0.012647636699555907,
+        "overshoot": 0.0,
+        "convergence_time": 4.499999999999992,
+        "stability_score": 0.16315672417216512,
+        "control_effort": 282.73163293425637,
+        "path_smoothness": 0.8485020640509389,
+        "anisotropy_score": 0.06847950975726573,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 10.140023877111785
+      }
+    },
+    {
+      "run_id": "proportional_seed202_rot0.00",
+      "controller": "proportional",
+      "seed": 202,
+      "orientation": 0.0,
+      "world_mode": "anisotropic_preferred_axis",
+      "metrics": {
+        "position_error": 1.3706839201585126,
+        "velocity_error": 0.7114939424593397,
+        "directional_error": 1.3945063601846943,
+        "steady_state_error": 0.009106440090817472,
+        "overshoot": 0.0,
+        "convergence_time": 4.499999999999992,
+        "stability_score": 0.1630756054156806,
+        "control_effort": 282.6129589658503,
+        "path_smoothness": 0.8005575672716275,
+        "anisotropy_score": 0.06856744920676161,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 10.140433516564405
+      }
+    },
+    {
+      "run_id": "proportional_seed202_rot0.79",
+      "controller": "proportional",
+      "seed": 202,
+      "orientation": 0.785398,
+      "world_mode": "anisotropic_preferred_axis",
+      "metrics": {
+        "position_error": 1.7356720674768493,
+        "velocity_error": 0.8552678137902541,
+        "directional_error": 1.5559826459359047,
+        "steady_state_error": 0.008611997277049328,
+        "overshoot": 0.0,
+        "convergence_time": 5.1999999999999895,
+        "stability_score": 0.13786714308944248,
+        "control_effort": 355.6110828723314,
+        "path_smoothness": 0.7617013895688197,
+        "anisotropy_score": 0.9979012224723591,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 6.769441015770767
+      }
+    },
+    {
+      "run_id": "proportional_seed202_rot1.57",
+      "controller": "proportional",
+      "seed": 202,
+      "orientation": 1.5708,
+      "world_mode": "anisotropic_preferred_axis",
+      "metrics": {
+        "position_error": 1.3705132866048835,
+        "velocity_error": 0.712680199874551,
+        "directional_error": 1.767959223901191,
+        "steady_state_error": 0.009106017339896763,
+        "overshoot": 0.0,
+        "convergence_time": 4.499999999999992,
+        "stability_score": 0.16317811884389252,
+        "control_effort": 282.57883267787537,
+        "path_smoothness": 0.823302191781124,
+        "anisotropy_score": 0.06848923489661464,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 10.139947863402679
+      }
+    },
+    {
+      "run_id": "pid_seed101_rot0.00",
+      "controller": "pid",
+      "seed": 101,
+      "orientation": 0.0,
+      "world_mode": "anisotropic_preferred_axis",
+      "metrics": {
+        "position_error": 1.5759407513140495,
+        "velocity_error": 0.7651762048415187,
+        "directional_error": 1.485057959311627,
+        "steady_state_error": 0.44506031253026157,
+        "overshoot": 0.0,
+        "convergence_time": 10.000000000000007,
+        "stability_score": 0.1784844792869602,
+        "control_effort": 362.7423788454986,
+        "path_smoothness": 1.040737879129534,
+        "anisotropy_score": 0.049570749656531264,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 10.649017552427537
+      }
+    },
+    {
+      "run_id": "pid_seed101_rot0.79",
+      "controller": "pid",
+      "seed": 101,
+      "orientation": 0.785398,
+      "world_mode": "anisotropic_preferred_axis",
+      "metrics": {
+        "position_error": 1.9672007379141114,
+        "velocity_error": 0.9287227300932298,
+        "directional_error": 1.5807404843749473,
+        "steady_state_error": 0.5960346077998808,
+        "overshoot": 0.0,
+        "convergence_time": 3.999999999999994,
+        "stability_score": 0.1532298050608615,
+        "control_effort": 467.0740372391968,
+        "path_smoothness": 0.9872404784945586,
+        "anisotropy_score": 0.9977997873518258,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 7.1915760066667955
+      }
+    },
+    {
+      "run_id": "pid_seed101_rot1.57",
+      "controller": "pid",
+      "seed": 101,
+      "orientation": 1.5708,
+      "world_mode": "anisotropic_preferred_axis",
+      "metrics": {
+        "position_error": 1.5768512733223436,
+        "velocity_error": 0.7644651476429946,
+        "directional_error": 1.6746096053054413,
+        "steady_state_error": 0.44877515011808694,
+        "overshoot": 0.0,
+        "convergence_time": 10.000000000000007,
+        "stability_score": 0.17857044733563,
+        "control_effort": 362.8336109271751,
+        "path_smoothness": 1.1100826118301121,
+        "anisotropy_score": 0.04958536358120241,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 10.648882597086576
+      }
+    },
+    {
+      "run_id": "pid_seed202_rot0.00",
+      "controller": "pid",
+      "seed": 202,
+      "orientation": 0.0,
+      "world_mode": "anisotropic_preferred_axis",
+      "metrics": {
+        "position_error": 1.5759102738637663,
+        "velocity_error": 0.7643391674899912,
+        "directional_error": 1.4912721924815855,
+        "steady_state_error": 0.4396244748292756,
+        "overshoot": 0.0,
+        "convergence_time": 10.000000000000007,
+        "stability_score": 0.17846823804816195,
+        "control_effort": 362.90382708730397,
+        "path_smoothness": 1.0940634915350793,
+        "anisotropy_score": 0.049627692059655004,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 10.649516258369179
+      }
+    },
+    {
+      "run_id": "pid_seed202_rot0.79",
+      "controller": "pid",
+      "seed": 202,
+      "orientation": 0.785398,
+      "world_mode": "anisotropic_preferred_axis",
+      "metrics": {
+        "position_error": 1.9654875917995183,
+        "velocity_error": 0.927142283292185,
+        "directional_error": 1.6176136238716645,
+        "steady_state_error": 0.5912869331048296,
+        "overshoot": 0.0,
+        "convergence_time": 3.949999999999994,
+        "stability_score": 0.15315102881106968,
+        "control_effort": 466.89032717047513,
+        "path_smoothness": 1.0325418751578876,
+        "anisotropy_score": 0.9980223827860679,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 7.190242747741667
+      }
+    },
+    {
+      "run_id": "pid_seed202_rot1.57",
+      "controller": "pid",
+      "seed": 202,
+      "orientation": 1.5708,
+      "world_mode": "anisotropic_preferred_axis",
+      "metrics": {
+        "position_error": 1.5753416781036247,
+        "velocity_error": 0.7657028039500925,
+        "directional_error": 1.6892622056414968,
+        "steady_state_error": 0.4462857216467336,
+        "overshoot": 0.0,
+        "convergence_time": 10.000000000000007,
+        "stability_score": 0.1785525953830519,
+        "control_effort": 362.8542307642214,
+        "path_smoothness": 1.1056971883249587,
+        "anisotropy_score": 0.04955230402310215,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 10.648949308423585
+      }
+    }
+  ]
+}

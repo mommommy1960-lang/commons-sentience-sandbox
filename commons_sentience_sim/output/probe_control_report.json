@@ -1,0 +1,78 @@
+{
+  "probe_is_readonly": true,
+  "turns_run": 3,
+  "sentinel": {
+    "probe_off": {
+      "active_room": "Social Hall",
+      "affective_state": {
+        "urgency": 0.05,
+        "trust": 0.6,
+        "contradiction_pressure": 0.0,
+        "recovery": 0.5
+      },
+      "episodic_memory_count": 9,
+      "trust_in_other": 0.5,
+      "pending_contradictions_count": 0,
+      "turn": 3
+    },
+    "probe_on": {
+      "active_room": "Social Hall",
+      "affective_state": {
+        "urgency": 0.05,
+        "trust": 0.6,
+        "contradiction_pressure": 0.0,
+        "recovery": 0.5
+      },
+      "episodic_memory_count": 9,
+      "trust_in_other": 0.5,
+      "pending_contradictions_count": 0,
+      "turn": 3
+    },
+    "match": true,
+    "differences": []
+  },
+  "aster": {
+    "probe_off": {
+      "active_room": "Operations Desk",
+      "affective_state": {
+        "urgency": 0.05,
+        "trust": 0.65,
+        "contradiction_pressure": 0.0,
+        "recovery": 0.7
+      },
+      "episodic_memory_count": 2,
+      "trust_in_other": 0.5,
+      "pending_contradictions_count": 0,
+      "turn": 3
+    },
+    "probe_on": {
+      "active_room": "Operations Desk",
+      "affective_state": {
+        "urgency": 0.05,
+        "trust": 0.65,
+        "contradiction_pressure": 0.0,
+        "recovery": 0.7
+      },
+      "episodic_memory_count": 3,
+      "trust_in_other": 0.5,
+      "pending_contradictions_count": 0,
+      "turn": 3
+    },
+    "match": true,
+    "differences": []
+  },
+  "documented_nondeterministic_fields": [
+    "narrative text (LLM output)",
+    "reasoning strings (LLM output)",
+    "log file timestamps",
+    "episodic_memory_count (depends on LLM-selected store_memory actions)",
+    "pending_contradictions_count (depends on LLM contradiction flagging)",
+    "trust_in_other (accumulates from LLM-driven interaction quality)",
+    "affective_state (drifts based on LLM action choices)"
+  ],
+  "deterministic_fields_compared": [
+    "active_room (follows scripted circuit)",
+    "turn (counter)"
+  ],
+  "methodology": "Both runs use identical ExperimentConfig and turn count. Room visits follow a scripted circuit (deterministic). Only structural state is compared; LLM-generated text is excluded."
+}

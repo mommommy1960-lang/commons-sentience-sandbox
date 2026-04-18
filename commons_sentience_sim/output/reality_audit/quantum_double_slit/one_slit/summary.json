@@ -1,0 +1,15 @@
+{
+  "condition": "QSlitCondition.ONE_SLIT",
+  "decoherence_gamma": 0.0,
+  "n_trials": 50000,
+  "seed": 42,
+  "total_hits": 50000,
+  "center_prob": 0.99998671,
+  "max_prob": 0.99998671,
+  "min_prob": 0.5727867,
+  "peak_bin": 99,
+  "center_bin": 100,
+  "fringe_visibility": 0.2716221,
+  "n_bins": 200,
+  "screen_width": 40.0
+}

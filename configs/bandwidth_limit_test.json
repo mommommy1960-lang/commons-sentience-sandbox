@@ -1,0 +1,20 @@
+{
+  "name": "bandwidth_limit_audit",
+  "world_mode": "bandwidth_limited",
+  "controllers": ["pid", "future"],
+  "seeds": [7, 13],
+  "duration": 14.0,
+  "dt": 0.05,
+  "start_position": [0.0, 0.0],
+  "goal_position": [10.0, 0.0],
+  "controller_params": {
+    "pid": {"kp": 1.1, "ki": 0.15, "kd": 0.04},
+    "future": {"kp": 0.9, "horizon": 1.0}
+  },
+  "world_params": {
+    "max_updates_per_second": 6,
+    "measurement_noise": 0.05,
+    "max_speed": 2.0
+  },
+  "orientation_rotations": [0.0]
+}

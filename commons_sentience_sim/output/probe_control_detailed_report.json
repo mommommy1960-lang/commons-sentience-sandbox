@@ -1,0 +1,174 @@
+{
+  "probe_is_readonly": true,
+  "turns_run": 3,
+  "comparison_methodology": {
+    "exact_match_fields": [
+      "active_room",
+      "turn"
+    ],
+    "acceptable_variation_fields": [
+      "affective_state (\u00b10.01 tolerance)"
+    ],
+    "excluded_nondeterministic": [
+      "affective_state",
+      "episodic_memory_count",
+      "pending_contradictions_count",
+      "trust_in_other"
+    ],
+    "tolerance": 0.01
+  },
+  "sentinel": {
+    "label": "Sentinel",
+    "fields": {
+      "active_room": {
+        "classification": "exact_match",
+        "run1": "Social Hall",
+        "run2": "Social Hall"
+      },
+      "affective_state": {
+        "classification": "excluded_nondeterministic",
+        "run1": {
+          "urgency": 0.05,
+          "trust": 0.6,
+          "contradiction_pressure": 0.0,
+          "recovery": 0.5
+        },
+        "run2": {
+          "urgency": 0.05,
+          "trust": 0.6,
+          "contradiction_pressure": 0.0,
+          "recovery": 0.5
+        },
+        "note": "excluded: LLM-driven field"
+      },
+      "episodic_memory_count": {
+        "classification": "excluded_nondeterministic",
+        "run1": 10,
+        "run2": 9,
+        "detail": "|\u0394|=1.000000 > 0.01",
+        "note": "excluded: LLM-driven field"
+      },
+      "trust_in_other": {
+        "classification": "excluded_nondeterministic",
+        "run1": 0.5,
+        "run2": 0.5,
+        "note": "excluded: LLM-driven field"
+      },
+      "pending_contradictions_count": {
+        "classification": "excluded_nondeterministic",
+        "run1": 0,
+        "run2": 0,
+        "note": "excluded: LLM-driven field"
+      },
+      "turn": {
+        "classification": "exact_match",
+        "run1": 3,
+        "run2": 3
+      }
+    },
+    "counts": {
+      "exact_match": 2,
+      "acceptable_variation": 0,
+      "unexpected_divergence": 0
+    },
+    "unexpected_divergence_fields": [],
+    "probe_is_readonly": true
+  },
+  "aster": {
+    "label": "Aster",
+    "fields": {
+      "active_room": {
+        "classification": "exact_match",
+        "run1": "Operations Desk",
+        "run2": "Operations Desk"
+      },
+      "affective_state": {
+        "classification": "excluded_nondeterministic",
+        "run1": {
+          "urgency": 0.05,
+          "trust": 0.65,
+          "contradiction_pressure": 0.0,
+          "recovery": 0.7
+        },
+        "run2": {
+          "urgency": 0.05,
+          "trust": 0.65,
+          "contradiction_pressure": 0.0,
+          "recovery": 0.7
+        },
+        "note": "excluded: LLM-driven field"
+      },
+      "episodic_memory_count": {
+        "classification": "excluded_nondeterministic",
+        "run1": 3,
+        "run2": 3,
+        "note": "excluded: LLM-driven field"
+      },
+      "trust_in_other": {
+        "classification": "excluded_nondeterministic",
+        "run1": 0.5,
+        "run2": 0.5,
+        "note": "excluded: LLM-driven field"
+      },
+      "pending_contradictions_count": {
+        "classification": "excluded_nondeterministic",
+        "run1": 0,
+        "run2": 0,
+        "note": "excluded: LLM-driven field"
+      },
+      "turn": {
+        "classification": "exact_match",
+        "run1": 3,
+        "run2": 3
+      }
+    },
+    "counts": {
+      "exact_match": 2,
+      "acceptable_variation": 0,
+      "unexpected_divergence": 0
+    },
+    "unexpected_divergence_fields": [],
+    "probe_is_readonly": true
+  },
+  "path_history": {
+    "sentinel": {
+      "expected_final_room": "Reflection Chamber",
+      "probe_off_final_room": "Social Hall",
+      "probe_on_final_room": "Social Hall",
+      "both_match_expected": false,
+      "run1_vs_run2_match": true
+    },
+    "aster": {
+      "expected_final_room": "Operations Desk",
+      "probe_off_final_room": "Operations Desk",
+      "probe_on_final_room": "Operations Desk",
+      "both_match_expected": true,
+      "run1_vs_run2_match": true
+    },
+    "circuits_used": {
+      "sentinel": [
+        "Operations Desk",
+        "Memory Archive",
+        "Reflection Chamber",
+        "Social Hall",
+        "Governance Vault"
+      ],
+      "aster": [
+        "Memory Archive",
+        "Social Hall",
+        "Operations Desk",
+        "Governance Vault",
+        "Reflection Chamber"
+      ]
+    },
+    "note": "Path history is inferred from final room + expected circuit formula. Per-turn history is not captured without modifying run_simulation(); the circuit formula provides the ground truth."
+  },
+  "summary": {
+    "sentinel_unexpected_divergences": [],
+    "aster_unexpected_divergences": [],
+    "sentinel_exact_matches": 2,
+    "aster_exact_matches": 2,
+    "sentinel_acceptable_variations": 0,
+    "aster_acceptable_variations": 0
+  }
+}

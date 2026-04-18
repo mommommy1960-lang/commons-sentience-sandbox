@@ -1,0 +1,30 @@
+{
+  "benchmark": "quantum_double_slit",
+  "benchmark_version": "1.0",
+  "model_type": "complex_amplitude_fraunhofer_with_decoherence",
+  "formalism": "Complex path amplitudes (Fraunhofer far-field). P(y) = |A_L + A_R|^2 for coherent; P(y) = |A_L|^2 + |A_R|^2 + 2*(1-gamma)*Re(A_L*conj(A_R)) for partial. Born-rule sampling (seeded multinomial).",
+  "n_trials": 50000,
+  "slit_separation": 4.0,
+  "slit_width": 1.0,
+  "wavelength": 1.0,
+  "screen_distance": 100.0,
+  "screen_width": 40.0,
+  "n_bins": 200,
+  "seed": 42,
+  "partial_gammas": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    1.0
+  ],
+  "conditions": [
+    "one_slit",
+    "two_slit_coherent",
+    "two_slit_decohered",
+    "decoherence_sweep"
+  ],
+  "honest_framing": "This is a quantum-style interferometer benchmark using complex amplitudes and Born-rule sampling. It is NOT a full quantum computer and does NOT simulate the physical universe. Its purpose is to validate observer-sensitive auditing logic in the Reality Audit framework."
+}

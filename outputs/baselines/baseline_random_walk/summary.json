@@ -1,0 +1,28 @@
+{
+  "experiment_name": "baseline_random_walk",
+  "run_count": 1,
+  "results": [
+    {
+      "run_id": "random_walk_seed42_rot0.00",
+      "controller": "random_walk",
+      "seed": 42,
+      "orientation": 0.0,
+      "world_mode": "continuous_baseline",
+      "metrics": {
+        "position_error": 10.219028555673342,
+        "velocity_error": 1.1804370210694402,
+        "directional_error": 1.6457054738595067,
+        "steady_state_error": 10.782158467428905,
+        "overshoot": 0.8130540729142623,
+        "convergence_time": 9.99999999999998,
+        "stability_score": 0.8349749363444061,
+        "control_effort": 156.01467450013624,
+        "path_smoothness": 198.03995067304265,
+        "anisotropy_score": 0.5689231893040675,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 1.5903502047170914
+      }
+    }
+  ]
+}

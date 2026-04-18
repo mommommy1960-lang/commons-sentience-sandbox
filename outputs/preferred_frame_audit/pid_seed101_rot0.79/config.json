@@ -1,0 +1,51 @@
+{
+  "run_id": "pid_seed101_rot0.79",
+  "name": "preferred_frame_audit",
+  "world_mode": "anisotropic_preferred_axis",
+  "controllers": [
+    "proportional",
+    "pid"
+  ],
+  "seeds": [
+    101,
+    202
+  ],
+  "duration": 10.0,
+  "dt": 0.05,
+  "start_position": [
+    0.0,
+    0.0
+  ],
+  "start_velocity": [
+    0.0,
+    0.0
+  ],
+  "goal_position": [
+    6.0,
+    6.0
+  ],
+  "controller_params": {
+    "proportional": {
+      "kp": 1.0
+    },
+    "pid": {
+      "kp": 1.2,
+      "ki": 0.05,
+      "kd": 0.02
+    }
+  },
+  "world_params": {
+    "preferred_axis": 0.0,
+    "axis_strength": 1.8,
+    "max_speed": 2.2,
+    "measurement_noise": 0.02
+  },
+  "orientation_rotations": [
+    0.0,
+    0.785398,
+    1.5708
+  ],
+  "output_dir": "outputs",
+  "observation_policy": "always_observe",
+  "metadata": {}
+}

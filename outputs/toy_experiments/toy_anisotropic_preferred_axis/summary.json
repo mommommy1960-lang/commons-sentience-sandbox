@@ -1,0 +1,28 @@
+{
+  "experiment_name": "toy_anisotropic_preferred_axis",
+  "run_count": 1,
+  "results": [
+    {
+      "run_id": "proportional_seed42_rot0.00",
+      "controller": "proportional",
+      "seed": 42,
+      "orientation": 0.0,
+      "world_mode": "anisotropic_preferred_axis",
+      "metrics": {
+        "position_error": 0.4320013020137273,
+        "velocity_error": 0.3333333331941213,
+        "directional_error": 0.0,
+        "steady_state_error": 2.0881820717022492e-09,
+        "overshoot": 0.0,
+        "convergence_time": 1.0999999999999999,
+        "stability_score": 0.47122667131875456,
+        "control_effort": 26.600065098598183,
+        "path_smoothness": 0.7562521274273207,
+        "anisotropy_score": 228.39993489931365,
+        "quantization_artifact_score": 0.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 4.567998697986273
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "control_artifact_audit",
+  "world_mode": "continuous_baseline",
+  "controllers": ["proportional", "pid"],
+  "seeds": [5, 15],
+  "duration": 10.0,
+  "dt": 0.05,
+  "start_position": [0.0, 0.0],
+  "goal_position": [7.0, 2.0],
+  "controller_params": {
+    "proportional": {"kp": 1.2},
+    "pid": {"kp": 1.0, "ki": 0.1, "kd": 0.03}
+  },
+  "world_params": {
+    "max_speed": 2.5,
+    "measurement_noise": 0.01
+  },
+  "orientation_rotations": [0.0]
+}

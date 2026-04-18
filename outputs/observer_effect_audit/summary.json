@@ -1,0 +1,94 @@
+{
+  "experiment_name": "observer_effect_audit",
+  "run_count": 4,
+  "results": [
+    {
+      "run_id": "proportional_seed3_rot0.00",
+      "controller": "proportional",
+      "seed": 3,
+      "orientation": 0.0,
+      "world_mode": "observer_triggered_updates",
+      "metrics": {
+        "position_error": 1.158041365154023,
+        "velocity_error": 0.6175753303797351,
+        "directional_error": 1.0963978947851654,
+        "steady_state_error": 0.01614915962733418,
+        "overshoot": 0.0,
+        "convergence_time": 4.6499999999999915,
+        "stability_score": 0.20417419686475285,
+        "control_effort": 284.98484628920363,
+        "path_smoothness": 0.870842919946705,
+        "anisotropy_score": 0.0001443778340281634,
+        "quantization_artifact_score": 180.0,
+        "bandwidth_bottleneck_score": 0.25,
+        "observer_dependence_score": 0.9602523722727627
+      }
+    },
+    {
+      "run_id": "proportional_seed11_rot0.00",
+      "controller": "proportional",
+      "seed": 11,
+      "orientation": 0.0,
+      "world_mode": "observer_triggered_updates",
+      "metrics": {
+        "position_error": 1.1565249054567617,
+        "velocity_error": 0.6293223367128641,
+        "directional_error": 1.094249764430783,
+        "steady_state_error": 0.01858636471123045,
+        "overshoot": 0.0,
+        "convergence_time": 4.449999999999992,
+        "stability_score": 0.20473715749332957,
+        "control_effort": 284.61845875677704,
+        "path_smoothness": 0.9115046345747673,
+        "anisotropy_score": 3.604516909505216e-05,
+        "quantization_artifact_score": 180.0,
+        "bandwidth_bottleneck_score": 0.25,
+        "observer_dependence_score": 0.9645460747385071
+      }
+    },
+    {
+      "run_id": "future_seed3_rot0.00",
+      "controller": "future",
+      "seed": 3,
+      "orientation": 0.0,
+      "world_mode": "observer_triggered_updates",
+      "metrics": {
+        "position_error": 1.1077286752603475,
+        "velocity_error": 0.6462626294323769,
+        "directional_error": 1.3243207216445656,
+        "steady_state_error": 0.014500767099356519,
+        "overshoot": 0.0,
+        "convergence_time": 3.649999999999995,
+        "stability_score": 0.2009505349075439,
+        "control_effort": 654.9874778573989,
+        "path_smoothness": 1.9956465017051297,
+        "anisotropy_score": 0.00022351448540429072,
+        "quantization_artifact_score": 180.0,
+        "bandwidth_bottleneck_score": 0.25,
+        "observer_dependence_score": 0.96938018991257
+      }
+    },
+    {
+      "run_id": "future_seed11_rot0.00",
+      "controller": "future",
+      "seed": 11,
+      "orientation": 0.0,
+      "world_mode": "observer_triggered_updates",
+      "metrics": {
+        "position_error": 1.1064156415588304,
+        "velocity_error": 0.6599656633138312,
+        "directional_error": 1.2538921475633464,
+        "steady_state_error": 0.011949296562558697,
+        "overshoot": 0.0,
+        "convergence_time": 3.649999999999995,
+        "stability_score": 0.20155803237804337,
+        "control_effort": 654.2372939746133,
+        "path_smoothness": 2.1707987683943637,
+        "anisotropy_score": 0.00013702593805332443,
+        "quantization_artifact_score": 180.0,
+        "bandwidth_bottleneck_score": 0.25,
+        "observer_dependence_score": 0.9739515722306239
+      }
+    }
+  ]
+}

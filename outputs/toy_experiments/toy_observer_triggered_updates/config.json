@@ -1,0 +1,34 @@
+{
+  "name": "toy_observer_triggered_updates",
+  "world_mode": "observer_triggered_updates",
+  "controllers": [
+    "proportional"
+  ],
+  "seeds": [
+    42
+  ],
+  "duration": 5.0,
+  "dt": 0.1,
+  "start_position": [
+    0.0,
+    0.0
+  ],
+  "start_velocity": [
+    0.0,
+    0.0
+  ],
+  "goal_position": [
+    5.0,
+    0.0
+  ],
+  "controller_params": {},
+  "world_params": {
+    "observe_period": 10
+  },
+  "orientation_rotations": [
+    0.0
+  ],
+  "output_dir": "outputs/toy_experiments",
+  "observation_policy": "periodic_observe",
+  "metadata": {}
+}

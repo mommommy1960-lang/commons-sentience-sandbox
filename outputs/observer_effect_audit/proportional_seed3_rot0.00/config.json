@@ -1,0 +1,48 @@
+{
+  "run_id": "proportional_seed3_rot0.00",
+  "name": "observer_effect_audit",
+  "world_mode": "observer_triggered_updates",
+  "controllers": [
+    "proportional",
+    "future"
+  ],
+  "seeds": [
+    3,
+    11
+  ],
+  "duration": 12.0,
+  "dt": 0.05,
+  "start_position": [
+    0.0,
+    0.0
+  ],
+  "start_velocity": [
+    0.0,
+    0.0
+  ],
+  "goal_position": [
+    5.0,
+    5.0
+  ],
+  "controller_params": {
+    "proportional": {
+      "kp": 1.0
+    },
+    "future": {
+      "kp": 1.0,
+      "horizon": 0.7
+    }
+  },
+  "world_params": {
+    "hidden_decay": 0.92,
+    "measurement_noise": 0.02,
+    "max_speed": 2.0,
+    "observe_period": 4
+  },
+  "orientation_rotations": [
+    0.0
+  ],
+  "output_dir": "outputs",
+  "observation_policy": "periodic_observe",
+  "metadata": {}
+}

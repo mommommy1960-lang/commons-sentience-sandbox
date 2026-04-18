@@ -1,0 +1,15 @@
+{
+  "benchmark": "quantum_double_slit",
+  "comparisons": {
+    "Q1_PASS": true,
+    "Q2_PASS": true,
+    "Q3_PASS": true,
+    "fringe_visibility_coherent": 0.9990665194794135,
+    "fringe_visibility_decohered": 0.27106547900570227,
+    "visibility_ratio": 3.685701783731733,
+    "decoherence_monotone": true,
+    "decoherence_slope": -0.7305063037037036,
+    "seed_cv_coherent": 0.0,
+    "seed_cv_decohered": 0.0
+  }
+}

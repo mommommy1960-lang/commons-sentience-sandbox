@@ -1,0 +1,94 @@
+{
+  "experiment_name": "discretization_audit",
+  "run_count": 4,
+  "results": [
+    {
+      "run_id": "proportional_seed42_rot0.00",
+      "controller": "proportional",
+      "seed": 42,
+      "orientation": 0.0,
+      "world_mode": "discrete_grid",
+      "metrics": {
+        "position_error": 8.54400374531753,
+        "velocity_error": 1.7950000000000004,
+        "directional_error": 0.3587706702705722,
+        "steady_state_error": 8.54400374531753,
+        "overshoot": 0.0,
+        "convergence_time": 11.999999999999973,
+        "stability_score": 1.0,
+        "control_effort": 922.7524044942934,
+        "path_smoothness": 0.12149999999999998,
+        "anisotropy_score": 0.0,
+        "quantization_artifact_score": 119.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 0.0
+      }
+    },
+    {
+      "run_id": "proportional_seed99_rot0.00",
+      "controller": "proportional",
+      "seed": 99,
+      "orientation": 0.0,
+      "world_mode": "discrete_grid",
+      "metrics": {
+        "position_error": 8.54400374531753,
+        "velocity_error": 1.7950000000000004,
+        "directional_error": 0.3587706702705722,
+        "steady_state_error": 8.54400374531753,
+        "overshoot": 0.0,
+        "convergence_time": 11.999999999999973,
+        "stability_score": 1.0,
+        "control_effort": 922.7524044942934,
+        "path_smoothness": 0.12149999999999998,
+        "anisotropy_score": 0.0,
+        "quantization_artifact_score": 119.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 0.0
+      }
+    },
+    {
+      "run_id": "pid_seed42_rot0.00",
+      "controller": "pid",
+      "seed": 42,
+      "orientation": 0.0,
+      "world_mode": "discrete_grid",
+      "metrics": {
+        "position_error": 8.54400374531753,
+        "velocity_error": 1.7950000000000002,
+        "directional_error": 0.35877067027057247,
+        "steady_state_error": 8.54400374531753,
+        "overshoot": 0.0,
+        "convergence_time": 11.999999999999973,
+        "stability_score": 1.0,
+        "control_effort": 1649.8471232208146,
+        "path_smoothness": 0.1215,
+        "anisotropy_score": 0.0,
+        "quantization_artifact_score": 119.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 0.0
+      }
+    },
+    {
+      "run_id": "pid_seed99_rot0.00",
+      "controller": "pid",
+      "seed": 99,
+      "orientation": 0.0,
+      "world_mode": "discrete_grid",
+      "metrics": {
+        "position_error": 8.54400374531753,
+        "velocity_error": 1.7950000000000002,
+        "directional_error": 0.35877067027057247,
+        "steady_state_error": 8.54400374531753,
+        "overshoot": 0.0,
+        "convergence_time": 11.999999999999973,
+        "stability_score": 1.0,
+        "control_effort": 1649.8471232208146,
+        "path_smoothness": 0.1215,
+        "anisotropy_score": 0.0,
+        "quantization_artifact_score": 119.0,
+        "bandwidth_bottleneck_score": 1.0,
+        "observer_dependence_score": 0.0
+      }
+    }
+  ]
+}

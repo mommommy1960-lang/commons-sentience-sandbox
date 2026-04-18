@@ -65,6 +65,12 @@ import textwrap
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
+try:
+    from reality_audit.adapters.sim_probe import SimProbe as _SimProbe
+    _REALITY_AUDIT_AVAILABLE = True
+except ImportError:
+    _REALITY_AUDIT_AVAILABLE = False
+
 # ---------------------------------------------------------------------------
 # Path setup
 # ---------------------------------------------------------------------------
@@ -629,6 +635,7 @@ def run_simulation(
     experiment_config: Optional[ExperimentConfig] = None,
     scenario_override: Optional[str] = None,
     continue_from: Optional[str] = None,
+    enable_reality_audit: bool = False,
 ) -> Tuple[Agent, Agent]:
     """Run a full simulation, optionally applying an experiment config.
 
@@ -653,6 +660,18 @@ def run_simulation(
 
     world = World(str(DATA_DIR / "rooms.json"))
     governance = GovernanceEngine(str(DATA_DIR / "rules.json"))
+
+    # ── Reality Audit probe (Option B – read-only) ───────────────────────
+    _audit_probe = None
+    if enable_reality_audit:
+        if _REALITY_AUDIT_AVAILABLE:
+            _audit_probe = _SimProbe(
+                rooms_json_path=DATA_DIR / "rooms.json",
+                output_dir=OUTPUT_DIR,
+            )
+            print("  [Reality Audit] probe initialised.")
+        else:
+            print("  [Reality Audit] WARNING: reality_audit package not found; audit disabled.")
 
     # Create Sentinel (primary, continuity-governed)
     sentinel = Agent(
@@ -1202,6 +1221,23 @@ def run_simulation(
             sentinel.run_consolidation(turn)
             aster.run_consolidation(turn)
 
+        # ── 10.7 Reality Audit per-turn capture ──────────────────────────
+        if _audit_probe is not None:
+            _audit_probe.record_turn(
+                turn=turn,
+                sentinel=sentinel,
+                aster=aster,
+                world=world,
+                s_obs=s_obs,
+                a_obs=a_obs,
+                s_action=s_action,
+                a_action=a_action,
+                s_permitted=s_permitted,
+                a_permitted=a_permitted,
+                event=event,
+                same_room=same_room,
+            )
+
         # ── 11. Narrative block ───────────────────────────────────────────
         turn_header = f"\n## Turn {turn:02d}"
         if same_room and event:
@@ -1307,6 +1343,11 @@ def run_simulation(
         run_label=session_name or _run_ts,
     )
     save_world_state(world_state_snapshot, OUTPUT_DIR)
+
+    # ── Reality Audit finalisation ────────────────────────────────────────
+    if _audit_probe is not None:
+        audit_dir = _audit_probe.finalize()
+        print(f"  Reality Audit log    → {audit_dir}")
 
     print("\n" + "=" * 65)
     print("  Simulation complete.")
@@ -1467,6 +1508,16 @@ if __name__ == "__main__":
             "saved session is used automatically."
         ),
     )
+    parser.add_argument(
+        "--reality-audit",
+        dest="reality_audit",
+        action="store_true",
+        default=False,
+        help=(
+            "Enable the Reality Audit probe.  Writes audit metrics to "
+            "<output>/reality_audit/ after the simulation completes."
+        ),
+    )
     args = parser.parse_args()
 
     # Resolve --continue-from "latest" sentinel to the actual session ID
@@ -1496,4 +1547,5 @@ if __name__ == "__main__":
         experiment_config=exp_cfg,
         scenario_override=args.scenario,
         continue_from=continue_from,
+        enable_reality_audit=args.reality_audit,
     )

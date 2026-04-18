@@ -1,0 +1,45 @@
+{
+  "benchmark": "quantum_double_slit",
+  "audit_version": "1.0",
+  "Q1_coherent_vs_decohered": {
+    "question": "Can auditor distinguish coherent from decohered interference?",
+    "v_coherent": 0.9990665194794135,
+    "v_decohered": 0.27106547900570227,
+    "ratio_coherent_over_decohered": 3.685701783731733,
+    "PASS": true,
+    "note": "Coherent condition must have V > 0.5 and decohered V < 0.5 and ratio > 2 for clear audit distinguishability."
+  },
+  "Q2_decoherence_trend": {
+    "question": "Is the partial decoherence trend correctly detected?",
+    "n_gamma_values": 7,
+    "is_monotone_non_increasing": true,
+    "visibility_vs_gamma_slope": -0.7305063037037036,
+    "PASS": true,
+    "note": "Expects visibility to decrease monotonically as gamma increases (0 \u2192 1). Slope should be negative."
+  },
+  "Q3_seed_stability": {
+    "question": "Is the benchmark stable under seed variation?",
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "v_coherent_per_seed": [
+      0.9990665194794135,
+      0.9990665194794135,
+      0.9990665194794135
+    ],
+    "v_decohered_per_seed": [
+      0.27106547900570227,
+      0.27106547900570227,
+      0.27106547900570227
+    ],
+    "cv_coherent": 0.0,
+    "cv_decohered": 0.0,
+    "cv_threshold": 0.05,
+    "PASS": true,
+    "note": "Coefficient of variation (CV = \u03c3/\u03bc) must be < 0.05 for both conditions to declare seed-stable."
+  },
+  "overall_PASS": true,
+  "verdict": "AUDIT_PASSED"
+}

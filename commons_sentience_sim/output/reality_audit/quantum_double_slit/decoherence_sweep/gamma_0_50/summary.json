@@ -1,0 +1,15 @@
+{
+  "condition": "QSlitCondition.TWO_SLIT_PARTIAL",
+  "decoherence_gamma": 0.5,
+  "n_trials": 50000,
+  "seed": 42,
+  "total_hits": 50000,
+  "center_prob": 2.99474038,
+  "max_prob": 2.99474038,
+  "min_prob": 0.61211578,
+  "peak_bin": 99,
+  "center_bin": 100,
+  "fringe_visibility": 0.6605821,
+  "n_bins": 200,
+  "screen_width": 40.0
+}

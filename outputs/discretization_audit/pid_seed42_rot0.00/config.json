@@ -1,0 +1,47 @@
+{
+  "run_id": "pid_seed42_rot0.00",
+  "name": "discretization_audit",
+  "world_mode": "discrete_grid",
+  "controllers": [
+    "proportional",
+    "pid"
+  ],
+  "seeds": [
+    42,
+    99
+  ],
+  "duration": 12.0,
+  "dt": 0.1,
+  "start_position": [
+    0.0,
+    0.0
+  ],
+  "start_velocity": [
+    0.0,
+    0.0
+  ],
+  "goal_position": [
+    8.0,
+    3.0
+  ],
+  "controller_params": {
+    "proportional": {
+      "kp": 0.9
+    },
+    "pid": {
+      "kp": 1.0,
+      "ki": 0.1,
+      "kd": 0.05
+    }
+  },
+  "world_params": {
+    "grid_size": 0.5,
+    "measurement_noise": 0.0,
+    "max_speed": 1.8
+  },
+  "orientation_rotations": [
+    0.0
+  ],
+  "output_dir": "outputs",
+  "metadata": {}
+}

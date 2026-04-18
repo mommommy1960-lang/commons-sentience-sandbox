@@ -1,0 +1,28 @@
+{
+  "experiment_name": "toy_observer_triggered_updates",
+  "run_count": 1,
+  "results": [
+    {
+      "run_id": "proportional_seed42_rot0.00",
+      "controller": "proportional",
+      "seed": 42,
+      "orientation": 0.0,
+      "world_mode": "observer_triggered_updates",
+      "metrics": {
+        "position_error": 1.7302518426824367,
+        "velocity_error": 1.2808888299727128,
+        "directional_error": 1.0681415022205298,
+        "steady_state_error": 0.030148154223369694,
+        "overshoot": 0.0,
+        "convergence_time": 3.1000000000000014,
+        "stability_score": 0.22197688674512547,
+        "control_effort": 91.48244397989846,
+        "path_smoothness": 2.352461600493188,
+        "anisotropy_score": 164.8459257853469,
+        "quantization_artifact_score": 45.0,
+        "bandwidth_bottleneck_score": 0.1,
+        "observer_dependence_score": 0.2814382657132117
+      }
+    }
+  ]
+}

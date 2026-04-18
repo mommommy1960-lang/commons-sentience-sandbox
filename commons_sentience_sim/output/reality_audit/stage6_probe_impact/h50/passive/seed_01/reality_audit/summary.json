@@ -1,0 +1,18 @@
+{
+  "total_turns": 50,
+  "total_records": 100,
+  "elapsed_seconds": 0.393,
+  "probe_mode": "passive",
+  "goal_room": "Governance Vault",
+  "goal_position": [
+    0.3846153846153847,
+    0.3846153846153847
+  ],
+  "mean_position_error": 0.7332,
+  "stability_score": 0.7005,
+  "convergence_turn": 4,
+  "avg_control_effort": 0.0,
+  "path_smoothness": 0.89,
+  "observer_dependence_score": 0.0,
+  "audit_bandwidth": 1.0
+}

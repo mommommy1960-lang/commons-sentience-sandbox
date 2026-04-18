@@ -1,0 +1,8002 @@
+[
+  {
+    "time": 0.05,
+    "position": [
+      2.4264521071425592e-08,
+      0.08249999999999891
+    ],
+    "measured_position": [
+      -0.011489319196683459,
+      0.0760749361338459
+    ],
+    "velocity": [
+      2.6960578968250655e-07,
+      1.6499999999999782
+    ],
+    "measured_velocity": [
+      0.04432471009608432,
+      1.6401657150064475
+    ],
+    "heading": 1.5707961633974483,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      2.221823502661646e-06,
+      13.597663402217128
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.1,
+    "position": [
+      0.00027068367437542505,
+      0.18562486297550684
+    ],
+    "measured_position": [
+      -0.028619416137185525,
+      0.19167614793972867
+    ],
+    "velocity": [
+      0.0030073267761594846,
+      2.0624972595101587
+    ],
+    "measured_velocity": [
+      0.006137680354917206,
+      2.0763070969984465
+    ],
+    "heading": 1.5693382280599537,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.01841330471304138,
+      10.102853970802853
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.15000000000000002,
+    "position": [
+      0.0009535114935346223,
+      0.29390537084976337
+    ],
+    "measured_position": [
+      -0.006407745396194919,
+      0.3237220623095197
+    ],
+    "velocity": [
+      0.007586975768435525,
+      2.1656101574851307
+    ],
+    "measured_velocity": [
+      0.020057442546387867,
+      2.2173767796055
+    ],
+    "heading": 1.5672929516826875,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.041297284145697576,
+      9.969056019432726
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.2,
+    "position": [
+      0.001107933056768595,
+      0.40347549732222954
+    ],
+    "measured_position": [
+      0.012956249137312284,
+      0.40908324977594746
+    ],
+    "velocity": [
+      0.0017157951470441412,
+      2.1914025294493236
+    ],
+    "measured_velocity": [
+      0.0307928237238004,
+      2.2095654422335014
+    ],
+    "heading": 1.5700133602821855,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.0010774049864144212,
+      9.824426939443237
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.25,
+    "position": [
+      0.0007934643339611252,
+      0.5133677957538405
+    ],
+    "measured_position": [
+      -0.014308227657740844,
+      0.5301721053656872
+    ],
+    "velocity": [
+      -0.0034940969200829976,
+      2.1978459686322194
+    ],
+    "measured_velocity": [
+      -0.01659156323183895,
+      2.2231457661275242
+    ],
+    "heading": 1.5723861078925192,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.02320751510028967,
+      9.760857900556022
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.3,
+    "position": [
+      0.0011500591924021796,
+      0.6233405160596002
+    ],
+    "measured_position": [
+      -0.01010117552090141,
+      0.6311016552204477
+    ],
+    "velocity": [
+      0.003962165093789494,
+      2.199454406115192
+    ],
+    "measured_velocity": [
+      -0.011460342057067918,
+      2.206693463694925
+    ],
+    "heading": 1.5689948978601402,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.028197019620525877,
+      9.621147979771195
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.35,
+    "position": [
+      0.001404189621574164,
+      0.7333336452213851
+    ],
+    "measured_position": [
+      0.029981004893990647,
+      0.7572171435357076
+    ],
+    "velocity": [
+      0.002823671435244271,
+      2.1998625832356993
+    ],
+    "measured_velocity": [
+      -0.009742021941140166,
+      2.173094982112252
+    ],
+    "heading": 1.5695127603094008,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.010585201888547096,
+      9.527731691537015
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.39999999999999997,
+    "position": [
+      0.0006459628772535556,
+      0.8433306643363698
+    ],
+    "measured_position": [
+      0.015462678845106716,
+      0.8298393942441469
+    ],
+    "velocity": [
+      -0.008424741603562314,
+      2.199940382299694
+    ],
+    "measured_velocity": [
+      -0.023648454810515716,
+      2.2143668599772806
+    ],
+    "heading": 1.5746258398525605,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.0519384149665961,
+      9.385638890751261
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.44999999999999996,
+    "position": [
+      0.00025422700578750474,
+      0.9533298426533839
+    ],
+    "measured_position": [
+      -0.024294661364618685,
+      0.9701139102227343
+    ],
+    "velocity": [
+      -0.004352620794067232,
+      2.1999835663402827
+    ],
+    "measured_velocity": [
+      0.01796816606121327,
+      2.200898283311491
+    ],
+    "heading": 1.5727748029896316,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.01271487435335443,
+      9.33902808989385
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.49999999999999994,
+    "position": [
+      0.0008880572409806512,
+      1.0633286355826195
+    ],
+    "measured_position": [
+      -0.01708165784301696,
+      1.059302020087365
+    ],
+    "velocity": [
+      0.007042558168812737,
+      2.1999758585847125
+    ],
+    "measured_velocity": [
+      0.03798167986476537,
+      2.204253506409603
+    ],
+    "heading": 1.5675951397978305,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.045150279682247496,
+      9.162425683271525
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.5499999999999999,
+    "position": [
+      0.0013363368995181505,
+      1.1733281766938481
+    ],
+    "measured_position": [
+      0.027075524803275783,
+      1.1748572711651872
+    ],
+    "velocity": [
+      0.004980885094861104,
+      2.199990822224574
+    ],
+    "measured_velocity": [
+      0.008008279030122382,
+      2.2043486208643
+    ],
+    "heading": 1.568532282538875,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.017749245574585428,
+      9.094399462264926
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.6,
+    "position": [
+      0.0006186530777041876,
+      1.283326774099158
+    ],
+    "measured_position": [
+      0.0037236858570124398,
+      1.2900169427090638
+    ],
+    "velocity": [
+      -0.00797426468682181,
+      2.1999719481061972
+    ],
+    "measured_velocity": [
+      0.00977359720595061,
+      2.2246462992789713
+    ],
+    "heading": 1.5744210229054862,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.05008473059666715,
+      8.963462364743949
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.65,
+    "position": [
+      0.0005220472896362886,
+      1.3933264106215433
+    ],
+    "measured_position": [
+      -0.0020615582772005106,
+      1.3745157030343513
+    ],
+    "velocity": [
+      -0.0010733976451988774,
+      2.199992730447706
+    ],
+    "measured_velocity": [
+      -0.01414407236338062,
+      2.1814226607848197
+    ],
+    "heading": 1.5712842363889452,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.004931779027412081,
+      8.843417151783697
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.7000000000000001,
+    "position": [
+      0.0005800441319792284,
+      1.5033263071289784
+    ],
+    "measured_position": [
+      -0.04027557652465855,
+      1.5037237694802243
+    ],
+    "velocity": [
+      0.0006444093593659978,
+      2.1999979301487027
+    ],
+    "measured_velocity": [
+      -0.014532566091930484,
+      2.237438252078403
+    ],
+    "heading": 1.5705034131825222,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.0048525914255237775,
+      8.772059918058797
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.7500000000000001,
+    "position": [
+      0.001693739306373565,
+      1.6133240211579754
+    ],
+    "measured_position": [
+      -0.009281760402323654,
+      1.5850437419870615
+    ],
+    "velocity": [
+      0.01237439082660374,
+      2.1999542805799397
+    ],
+    "measured_velocity": [
+      0.020749750497282386,
+      2.2002674189993456
+    ],
+    "heading": 1.5651715461189588,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.06378161537526643,
+      8.616580409887414
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.8000000000000002,
+    "position": [
+      0.0019535751789472476,
+      1.7233234490189269
+    ],
+    "measured_position": [
+      0.020006259786105395,
+      1.7270020370261447
+    ],
+    "velocity": [
+      0.002887065250818697,
+      2.199988557219029
+    ],
+    "measured_velocity": [
+      0.041409342203058905,
+      2.1864192698284945
+    ],
+    "heading": 1.5694840183358267,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.0010708898522635117,
+      8.55540227453545
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.8500000000000002,
+    "position": [
+      0.0013877868279316273,
+      1.8333225617941629
+    ],
+    "measured_position": [
+      0.006702979771670575,
+      1.8247791032680072
+    ],
+    "velocity": [
+      -0.00628653723350689,
+      2.19998225550472
+    ],
+    "measured_velocity": [
+      -0.01576568070863769,
+      2.166791612660042
+    ],
+    "heading": 1.5736538589894775,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.035584207888097984,
+      8.377692689818684
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.9000000000000002,
+    "position": [
+      0.001199782801990467,
+      1.943322335933448
+    ],
+    "measured_position": [
+      0.014097660764078283,
+      1.910296290556945
+    ],
+    "velocity": [
+      -0.002088933621568449,
+      2.1999954827856993
+    ],
+    "measured_velocity": [
+      0.0058945695173229645,
+      2.209684966338028
+    ],
+    "heading": 1.5717458437416958,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.0026005057728765166,
+      8.294683957524763
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 0.9500000000000003,
+    "position": [
+      0.0007950019286398369,
+      2.0533220400245376
+    ],
+    "measured_position": [
+      0.009447274475215893,
+      2.0217415307844386
+    ],
+    "velocity": [
+      -0.004497565259451445,
+      2.1999940818217936
+    ],
+    "measured_velocity": [
+      0.012474230610148324,
+      2.1863882502802863
+    ],
+    "heading": 1.5728406772915415,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.01978854805222966,
+      8.213404747068411
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.0000000000000002,
+    "position": [
+      0.0005209124381476537,
+      2.1633219101317853
+    ],
+    "measured_position": [
+      0.00894647770647075,
+      2.1563134465930074
+    ],
+    "velocity": [
+      -0.0030454387832464804,
+      2.1999974021449558
+    ],
+    "measured_velocity": [
+      0.03700833258855514,
+      2.1889380159694434
+    ],
+    "heading": 1.5721806179013273,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.009413672313091481,
+      8.08545808722863
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.0500000000000003,
+    "position": [
+      0.0002558722020497222,
+      2.2733218054190023
+    ],
+    "measured_position": [
+      -0.003654815362822205,
+      2.279698375933675
+    ],
+    "velocity": [
+      -0.002944891512199238,
+      2.1999979057443357
+    ],
+    "measured_velocity": [
+      -0.032110139209520994,
+      2.1908171112987684
+    ],
+    "heading": 1.572134914320643,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.010494914726727074,
+      7.9305435378450335
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.1000000000000003,
+    "position": [
+      0.00036996289449964145,
+      2.383321718398297
+    ],
+    "measured_position": [
+      -0.003688607478740731,
+      2.3888803003347765
+    ],
+    "velocity": [
+      0.001267674360554658,
+      2.1999982595858953
+    ],
+    "measured_velocity": [
+      -0.0054172900836152015,
+      2.2367053641761054
+    ],
+    "heading": 1.5702201107843923,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.009475975981233963,
+      7.802470374719154
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.1500000000000004,
+    "position": [
+      0.0004853331915300479,
+      2.4933216825344218
+    ],
+    "measured_position": [
+      0.040122609392186814,
+      2.5186965653922373
+    ],
+    "velocity": [
+      0.0012818921892267386,
+      2.199999282722496
+    ],
+    "measured_velocity": [
+      0.001280343672151044,
+      2.213525749215146
+    ],
+    "heading": 1.5702136484030351,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.004498751123866586,
+      7.692374270098418
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.2000000000000004,
+    "position": [
+      -0.0007794314867789321,
+      2.6033185432813752
+    ],
+    "measured_position": [
+      0.042117410164462195,
+      2.6398128718777167
+    ],
+    "velocity": [
+      -0.014052940870099775,
+      2.1999372149390726
+    ],
+    "measured_velocity": [
+      0.00020228688773420156,
+      2.1897232434698433
+    ],
+    "heading": 1.5771841226082144,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.06571301577328205,
+      7.543257477789037
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.2500000000000004,
+    "position": [
+      -0.002126555858953306,
+      2.713315770372202
+    ],
+    "measured_position": [
+      0.02188626740554244,
+      2.7297730781759064
+    ],
+    "velocity": [
+      -0.014968048579715265,
+      2.199944541816534
+    ],
+    "measured_velocity": [
+      -0.012592960640524843,
+      2.197917952712165
+    ],
+    "heading": 1.577600051768024,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.051485500319779484,
+      7.416011564691155
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.3000000000000005,
+    "position": [
+      -0.0028352981783897066,
+      2.8233148183432424
+    ],
+    "measured_position": [
+      -0.029268848175649845,
+      2.794063854408569
+    ],
+    "velocity": [
+      -0.00787491466040445,
+      2.1999809594208024
+    ],
+    "measured_velocity": [
+      -0.03297249378419951,
+      2.206623680618021
+    ],
+    "heading": 1.5743758491507356,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.018372463798928273,
+      7.3349105279484
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.3500000000000005,
+    "position": [
+      -0.0018816472559789181,
+      2.9333121882489572
+    ],
+    "measured_position": [
+      0.00305582775700903,
+      2.919397532344644
+    ],
+    "velocity": [
+      0.010596121360119871,
+      2.199947398114295
+    ],
+    "measured_velocity": [
+      0.006318045067232742,
+      2.229028433083962
+    ],
+    "heading": 1.565979830077503,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.05545643961403392,
+      7.282257412294991
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.4000000000000006,
+    "position": [
+      -0.0019921572857847063,
+      3.0433113029901433
+    ],
+    "measured_position": [
+      -0.025427615737496235,
+      3.0353143439922428
+    ],
+    "velocity": [
+      -0.0012278892200643108,
+      2.199982294823719
+    ],
+    "measured_velocity": [
+      -0.025001405104598695,
+      2.2405555601025426
+    ],
+    "heading": 1.5713544626923768,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.016732724213906407,
+      7.121354547695071
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.4500000000000006,
+    "position": [
+      -0.0011322724944313853,
+      3.1533096082651997
+    ],
+    "measured_position": [
+      -0.008289575138331446,
+      3.182593373492848
+    ],
+    "velocity": [
+      0.009554275459481343,
+      2.1999661055011277
+    ],
+    "measured_velocity": [
+      0.025482607816907903,
+      2.1874756390829218
+    ],
+    "heading": 1.5664534347072852,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.041834228255892614,
+      6.999646037808959
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.5000000000000007,
+    "position": [
+      -0.0008511273771961519,
+      3.2633091763928155
+    ],
+    "measured_position": [
+      0.012447494617998624,
+      3.268034024829744
+    ],
+    "velocity": [
+      0.0031238346359470366,
+      2.199991362552318
+    ],
+    "measured_velocity": [
+      0.013480468555983085,
+      2.204573238863022
+    ],
+    "heading": 1.5693763973398565,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.0030407133034559917,
+      6.823623035268892
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.5500000000000007,
+    "position": [
+      -0.0012930836564425093,
+      3.3733085776031344
+    ],
+    "measured_position": [
+      0.012023001940304652,
+      3.385883478773993
+    ],
+    "velocity": [
+      -0.004910625324959524,
+      2.1999880242063803
+    ],
+    "measured_velocity": [
+      -0.019815048245203495,
+      2.2158729505903825
+    ],
+    "heading": 1.5730284376589065,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.023314497337367887,
+      6.758872723303623
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.6000000000000008,
+    "position": [
+      -0.0017260666927344896,
+      3.483308233363101
+    ],
+    "measured_position": [
+      -0.01701038379780609,
+      3.4574290126127205
+    ],
+    "velocity": [
+      -0.004810922625466449,
+      2.19999311519933
+    ],
+    "measured_velocity": [
+      -0.012125256936583801,
+      2.182415041859916
+    ],
+    "heading": 1.572983113164163,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.014370535189192957,
+      6.617238352266245
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.6500000000000008,
+    "position": [
+      -0.0011112083583519035,
+      3.5933071692211067
+    ],
+    "measured_position": [
+      -0.014264663282261957,
+      3.5717329454226956
+    ],
+    "velocity": [
+      0.0068317592709176206,
+      2.1999787171601204
+    ],
+    "measured_velocity": [
+      0.024316660999360123,
+      2.218026591064099
+    ],
+    "heading": 1.5676909616123171,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.03195561434638446,
+      6.562474910606044
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.7000000000000008,
+    "position": [
+      -0.0005877819493868459,
+      3.70330664750464
+    ],
+    "measured_position": [
+      -0.013088378645272503,
+      3.7306032706429937
+    ],
+    "velocity": [
+      0.005815848988500639,
+      2.1999895656706654
+    ],
+    "measured_velocity": [
+      0.004398095182387536,
+      2.185214578584351
+    ],
+    "heading": 1.568152752692884,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.015984772350658524,
+      6.420490702717615
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.7500000000000009,
+    "position": [
+      -9.345554246017996e-05,
+      3.8133062699552527
+    ],
+    "measured_position": [
+      -0.020320772504154,
+      3.82204050681343
+    ],
+    "velocity": [
+      0.00549251563251851,
+      2.1999924490122504
+    ],
+    "measured_velocity": [
+      0.003822309383195031,
+      2.2054960532873085
+    ],
+    "heading": 1.5682997253982285,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.015233729550489544,
+      6.2239064507481165
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.800000000000001,
+    "position": [
+      0.0006896620203767961,
+      3.923305361894451
+    ],
+    "measured_position": [
+      0.06050236808295266,
+      3.942579503656067
+    ],
+    "velocity": [
+      0.008701306253744177,
+      2.1999818387839616
+    ],
+    "measured_velocity": [
+      0.007342355272845756,
+      2.1785286192361344
+    ],
+    "heading": 1.566841175562215,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.02732687897693942,
+      6.152813105132101
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.850000000000001,
+    "position": [
+      -0.0017103515480174465,
+      4.033292529836451
+    ],
+    "measured_position": [
+      -0.009626616787710767,
+      4.0195815509488755
+    ],
+    "velocity": [
+      -0.026666817426602693,
+      2.1997433588399957
+    ],
+    "measured_velocity": [
+      -0.03876157500239869,
+      2.1521647524811
+    ],
+    "heading": 1.582918427820238,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.10503435596000789,
+      6.007882359328512
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.900000000000001,
+    "position": [
+      -0.0013229178707883475,
+      4.1432874979485055
+    ],
+    "measured_position": [
+      0.0019292199058668314,
+      4.121150366359742
+    ],
+    "velocity": [
+      0.0043048186358788775,
+      2.1998993622410956
+    ],
+    "measured_velocity": [
+      0.04925060316177242,
+      2.1952402766136503
+    ],
+    "heading": 1.568839504035111,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.03952534607604882,
+      5.944058931955296
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 1.950000000000001,
+    "position": [
+      -0.001405087961742362,
+      4.253286180022873
+    ],
+    "measured_position": [
+      0.017835576399523184,
+      4.260659861977787
+    ],
+    "velocity": [
+      -0.000913001010600161,
+      2.1999736414873547
+    ],
+    "measured_velocity": [
+      -0.01620229795642661,
+      2.204722237943521
+    ],
+    "heading": 1.571211332202674,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.007020406165522056,
+      5.82325997373473
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.000000000000001,
+    "position": [
+      -0.002158573857884184,
+      4.363284845660694
+    ],
+    "measured_position": [
+      -0.01043962765647538,
+      4.355848608641461
+    ],
+    "velocity": [
+      -0.008372065512686907,
+      2.1999733127564136
+    ],
+    "measured_velocity": [
+      -0.009080587841249163,
+      2.1604854491763166
+    ],
+    "heading": 1.5746018389115977,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.027892827352756673,
+      5.651233860690857
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.0500000000000007,
+    "position": [
+      -0.0017135674635478369,
+      4.473283761659845
+    ],
+    "measured_position": [
+      0.026715654054867866,
+      4.484867800449004
+    ],
+    "velocity": [
+      0.004944515492626077,
+      2.199978319983019
+    ],
+    "measured_velocity": [
+      0.0020857472914981544,
+      2.2283563483701463
+    ],
+    "heading": 1.5685488013887667,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.023736144269628064,
+      5.56505924619019
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.1000000000000005,
+    "position": [
+      -0.002895613171317234,
+      4.583280361872427
+    ],
+    "measured_position": [
+      -0.02269449251151401,
+      4.532144402837225
+    ],
+    "velocity": [
+      -0.01313384119743774,
+      2.199932004251648
+    ],
+    "measured_velocity": [
+      -0.007720803285481788,
+      2.1825580428742755
+    ],
+    "heading": 1.5767663682032431,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.047089173759874405,
+      5.406705071898063
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.1500000000000004,
+    "position": [
+      -0.0019000302111827347,
+      4.69327639378824
+    ],
+    "measured_position": [
+      -0.0033101528511327886,
+      4.682095043867771
+    ],
+    "velocity": [
+      0.011062032890383324,
+      2.199920638316255
+    ],
+    "measured_velocity": [
+      0.006354075077831448,
+      2.179679789094072
+    ],
+    "heading": 1.56576799101489,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.04688591312833598,
+      5.392553027228431
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.2,
+    "position": [
+      -0.0017624814125815702,
+      4.803275378575755
+    ],
+    "measured_position": [
+      -0.0031685084055547647,
+      4.817972459655631
+    ],
+    "velocity": [
+      0.0015283199844573834,
+      2.199979695750291
+    ],
+    "measured_velocity": [
+      0.00892271199696012,
+      2.234886356848793
+    ],
+    "heading": 1.5701016295931216,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.0038848101065155744,
+      5.181050608360771
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.25,
+    "position": [
+      -0.0016203891690407012,
+      4.9132751030734605
+    ],
+    "measured_position": [
+      0.010351885125324197,
+      4.921532831479149
+    ],
+    "velocity": [
+      0.0015788027060096555,
+      2.1999944899541086
+    ],
+    "measured_velocity": [
+      0.005740242985019361,
+      2.2109632996866146
+    ],
+    "heading": 1.5700786875270767,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.003650219381909273,
+      5.0327952717988715
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.3,
+    "position": [
+      -0.0021255567939659466,
+      5.0232744873453115
+    ],
+    "measured_position": [
+      -0.0054609352156341825,
+      4.996874330997143
+    ],
+    "velocity": [
+      -0.005612973610280504,
+      2.1999876854370255
+    ],
+    "measured_velocity": [
+      -0.027520204292590167,
+      2.1630539537631486
+    ],
+    "heading": 1.573347687181287,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.017951628735895855,
+      4.930359014553285
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.3499999999999996,
+    "position": [
+      -0.001861630915160996,
+      5.133274048583154
+    ],
+    "measured_position": [
+      -0.007129278165540204,
+      5.135032130309133
+    ],
+    "velocity": [
+      0.0029325097644994523,
+      2.1999912247568396
+    ],
+    "measured_velocity": [
+      0.011910574649224653,
+      2.22237087281139
+    ],
+    "heading": 1.5694633632836428,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.012770697026211532,
+      4.859957781662006
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.3999999999999995,
+    "position": [
+      -0.0015057010002585205,
+      5.243273781634513
+    ],
+    "measured_position": [
+      -0.011192593714374732,
+      5.199545121250701
+    ],
+    "velocity": [
+      0.003954776832249727,
+      2.1999946610271826
+    ],
+    "measured_velocity": [
+      -0.010354021177785926,
+      2.1989861992481416
+    ],
+    "heading": 1.5689986985358846,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.009132744271274978,
+      4.677417525679841
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.4499999999999993,
+    "position": [
+      -0.0009365854294711057,
+      5.353273283680764
+    ],
+    "measured_position": [
+      -0.03996460609170942,
+      5.3275774237809985
+    ],
+    "velocity": [
+      0.006323506342082386,
+      2.1999900409250124
+    ],
+    "measured_velocity": [
+      -0.01671546547500597,
+      2.2400997669049447
+    ],
+    "heading": 1.5679220006343098,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.014994696919917063,
+      4.637674200530599
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.499999999999999,
+    "position": [
+      0.0011838847849336884,
+      5.463265838925725
+    ],
+    "measured_position": [
+      0.02276866094338681,
+      5.448359736611184
+    ],
+    "velocity": [
+      0.023560780160053266,
+      2.199851104899233
+    ],
+    "measured_velocity": [
+      0.013128387333560636,
+      2.2011013732016673
+    ],
+    "heading": 1.5600865658926446,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.05950450548553133,
+      4.466521972734893
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.549999999999999,
+    "position": [
+      -8.32758412228332e-05,
+      5.573257935224518
+    ],
+    "measured_position": [
+      0.004360569195777808,
+      5.576957109158115
+    ],
+    "velocity": [
+      -0.014079562512850238,
+      2.199841925975868
+    ],
+    "measured_velocity": [
+      -0.03824242816494364,
+      2.1794965296080036
+    ],
+    "heading": 1.577196500417685,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.05243444490773166,
+      4.3320754973127835
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.5999999999999988,
+    "position": [
+      -0.00032546236067185945,
+      5.68325594888825
+    ],
+    "measured_position": [
+      0.02681751744323305,
+      5.682125383464316
+    ],
+    "velocity": [
+      -0.0026909613272114025,
+      2.1999602732746246
+    ],
+    "measured_velocity": [
+      0.017605017450977666,
+      2.199166968229944
+    ],
+    "heading": 1.5720195125123135,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.0021009107456751,
+      4.18190343703247
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.6499999999999986,
+    "position": [
+      -0.0018906124675709566,
+      5.793251217568444
+    ],
+    "measured_position": [
+      0.0027813730137751643,
+      5.798478069547902
+    ],
+    "velocity": [
+      -0.0173905567433233,
+      2.1999053736038796
+    ],
+    "measured_velocity": [
+      -0.02324437858321393,
+      2.2238018452510366
+    ],
+    "heading": 1.5787013006693298,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.041260483476721656,
+      4.072081037138254
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.6999999999999984,
+    "position": [
+      -0.002048917708109477,
+      5.903249933203178
+    ],
+    "measured_position": [
+      0.01468614755744939,
+      5.901795932619518
+    ],
+    "velocity": [
+      -0.001758947117094671,
+      2.199974312694682
+    ],
+    "measured_velocity": [
+      0.0012191145704259264,
+      2.2318930668377126
+    ],
+    "heading": 1.5715958573767508,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.00617317694304193,
+      3.934701057388725
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.7499999999999982,
+    "position": [
+      -0.0029635999828292927,
+      6.013248179607001
+    ],
+    "measured_position": [
+      -0.022503282253406934,
+      6.029742389862075
+    ],
+    "velocity": [
+      -0.010163136385775736,
+      2.199964928076478
+    ],
+    "measured_velocity": [
+      0.01258433670467867,
+      2.231868549641574
+    ],
+    "heading": 1.5754159750257832,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.022525632001330297,
+      3.8223922645116195
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.799999999999998,
+    "position": [
+      -0.001498954478952388,
+      6.12324237754815
+    ],
+    "measured_position": [
+      0.02783587301354361,
+      6.106962530063473
+    ],
+    "velocity": [
+      0.016273838931965608,
+      2.1998839588229866
+    ],
+    "measured_velocity": [
+      0.03280970337968557,
+      2.192814199048882
+    ],
+    "heading": 1.5633988720254688,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.04179562718532634,
+      3.6651439256131173
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.849999999999998,
+    "position": [
+      -0.003348147375406435,
+      6.233231746211058
+    ],
+    "measured_position": [
+      0.013356929209194443,
+      6.236682511628186
+    ],
+    "velocity": [
+      -0.0205465877383783,
+      2.1997873732581654
+    ],
+    "measured_velocity": [
+      -0.0025123742392221954,
+      2.1863034388226037
+    ],
+    "heading": 1.580136315978133,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.05369237938248761,
+      3.5987160812983396
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.8999999999999977,
+    "position": [
+      -0.004262042427810173,
+      6.343228706894992
+    ],
+    "measured_position": [
+      -0.0007500246735851718,
+      6.354127826059632
+    ],
+    "velocity": [
+      -0.010154389471152641,
+      2.199939213678671
+    ],
+    "measured_velocity": [
+      0.0008805128682146304,
+      2.218397345437934
+    ],
+    "heading": 1.5754120531272708,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.010423796045588393,
+      3.427673664031884
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.9499999999999975,
+    "position": [
+      -0.004204161004576504,
+      6.453227793681447
+    ],
+    "measured_position": [
+      0.032862611383250355,
+      6.434555000673483
+    ],
+    "velocity": [
+      0.0006431269248185489,
+      2.1999817357290965
+    ],
+    "measured_velocity": [
+      0.0022783278389134232,
+      2.1664230935159488
+    ],
+    "heading": 1.5705039939559218,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.006357631172986593,
+      3.2969770374379026
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 2.9999999999999973,
+    "position": [
+      -0.006640111710579762,
+      6.563216332732758
+    ],
+    "measured_position": [
+      0.005949975659369959,
+      6.595524596253776
+    ],
+    "velocity": [
+      -0.02706611895559176,
+      2.199770781026233
+    ],
+    "measured_velocity": [
+      -0.023096014880962815,
+      2.223873560965302
+    ],
+    "heading": 1.5830997692566016,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.05314752113333691,
+      3.2203984997622324
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.049999999999997,
+    "position": [
+      -0.007083612771274438,
+      6.673213416268822
+    ],
+    "measured_position": [
+      0.03421556948634538,
+      6.682032672045047
+    ],
+    "velocity": [
+      -0.004927789563274171,
+      2.1999416707212607
+    ],
+    "measured_velocity": [
+      0.013607645003119836,
+      2.219304590771808
+    ],
+    "heading": 1.5730362867844077,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.00334287897464082,
+      2.999742408624265
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.099999999999997,
+    "position": [
+      -0.009866477803163465,
+      6.783199331172157
+    ],
+    "measured_position": [
+      -0.024928482422501223,
+      6.758718285642162
+    ],
+    "velocity": [
+      -0.03092072257654474,
+      2.1997182980667045
+    ],
+    "measured_velocity": [
+      -0.03884395333316973,
+      2.182226002679078
+    ],
+    "heading": 1.5848520748888497,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.05273266089560456,
+      2.930225447345833
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.149999999999997,
+    "position": [
+      -0.0077837582161604975,
+      6.893181368481116
+    ],
+    "measured_position": [
+      0.004609403733914679,
+      6.847608494293864
+    ],
+    "velocity": [
+      0.023141328744477406,
+      2.1996407461791794
+    ],
+    "measured_velocity": [
+      -0.018243421363824126,
+      2.162177764714309
+    ],
+    "heading": 1.5602762111474202,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.05326638436157974,
+      2.8464481036284472
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.1999999999999966,
+    "position": [
+      -0.008220713957957766,
+      7.003175162365874
+    ],
+    "measured_position": [
+      -0.004252243587635399,
+      6.997701646538634
+    ],
+    "velocity": [
+      -0.004855063797747434,
+      2.1998758776951615
+    ],
+    "measured_velocity": [
+      -0.008995943482893117,
+      2.192155674115625
+    ],
+    "heading": 1.5730032949081605,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.017663374295375824,
+      2.7389921974244325
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.2499999999999964,
+    "position": [
+      -0.007841938097019774,
+      7.1131731653468195
+    ],
+    "measured_position": [
+      -0.01803714201637894,
+      7.096822276123843
+    ],
+    "velocity": [
+      0.0042086206770888,
+      2.199960059618908
+    ],
+    "measured_velocity": [
+      0.007899893820844694,
+      2.1951683686864736
+    ],
+    "heading": 1.5688832849991834,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.008341049956823061,
+      2.53811818661273
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.2999999999999963,
+    "position": [
+      -0.006112387084994447,
+      7.22316766639405
+    ],
+    "measured_position": [
+      -0.0004831612713196527,
+      7.221200558705052
+    ],
+    "velocity": [
+      0.019217233466948078,
+      2.19989002094462
+    ],
+    "measured_velocity": [
+      0.020566735240999907,
+      2.200392207197997
+    ],
+    "heading": 1.562061006171649,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.026897324835416948,
+      2.4430335879195906
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.349999999999996,
+    "position": [
+      -0.0061151908140210445,
+      7.333165937387185
+    ],
+    "measured_position": [
+      0.0351364028495568,
+      7.374660611822309
+    ],
+    "velocity": [
+      -3.1152544739962776e-05,
+      2.199965419862692
+    ],
+    "measured_velocity": [
+      0.022724856513805944,
+      2.1616073493091976
+    ],
+    "heading": 1.5708104872650825,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.00670179235881371,
+      2.2868367896625745
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.399999999999996,
+    "position": [
+      -0.009947147209449165,
+      7.439184076495974
+    ],
+    "measured_position": [
+      0.0019343861501060922,
+      7.467287474911351
+    ],
+    "velocity": [
+      -0.04257729328253466,
+      2.120362782175788
+    ],
+    "measured_velocity": [
+      -0.033544835680987185,
+      2.089430087113543
+    ],
+    "heading": 1.5908738212857312,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.056759340195132894,
+      2.093828569613487
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.4499999999999957,
+    "position": [
+      -0.01018917193036878,
+      7.541046908573155
+    ],
+    "measured_position": [
+      -0.01673929764222116,
+      7.5938262530130665
+    ],
+    "velocity": [
+      -0.0026891635657735214,
+      2.0372566415436264
+    ],
+    "measured_velocity": [
+      -0.006816711585178419,
+      2.0071665337893676
+    ],
+    "heading": 1.5721163185667182,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.010606879673146857,
+      2.0095545946662394
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.4999999999999956,
+    "position": [
+      -0.0084105853435306,
+      7.635751564070282
+    ],
+    "measured_position": [
+      -0.012744897606269536,
+      7.655406889530646
+    ],
+    "velocity": [
+      0.019762073187090896,
+      1.894093109942538
+    ],
+    "measured_velocity": [
+      0.020952953379744118,
+      1.8700167434741435
+    ],
+    "heading": 1.560363177526632,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.027245818771379035,
+      1.846371932742175
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.5499999999999954,
+    "position": [
+      -0.007060279660590149,
+      7.726947719635808
+    ],
+    "measured_position": [
+      -0.051850081277961556,
+      7.730351759534771
+    ],
+    "velocity": [
+      0.015003396477116121,
+      1.8239231113105125
+    ],
+    "measured_velocity": [
+      -0.01974122748140967,
+      1.8428887983935671
+    ],
+    "heading": 1.5625706192556776,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.013417170907124529,
+      1.800533111766504
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.599999999999995,
+    "position": [
+      -0.0014770856309276681,
+      7.813764542217328
+    ],
+    "measured_position": [
+      0.02206186395982696,
+      7.820885531832273
+    ],
+    "velocity": [
+      0.062035489218472,
+      1.7363364516303992
+    ],
+    "measured_velocity": [
+      0.06135948059970353,
+      1.7334811416317557
+    ],
+    "heading": 1.5350837125989378,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.07771285346559062,
+      1.7071408984036949
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.649999999999995,
+    "position": [
+      -0.0038777222649773726,
+      7.895240965375284
+    ],
+    "measured_position": [
+      -0.009309170546883835,
+      7.879748253725
+    ],
+    "velocity": [
+      -0.02667374037833005,
+      1.6295284631591176
+    ],
+    "measured_velocity": [
+      -0.046352192738843175,
+      1.6096856404079467
+    ],
+    "heading": 1.5871638582670757,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.05624348357726406,
+      1.5939258003353571
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.699999999999995,
+    "position": [
+      -0.002889051160312907,
+      7.973265300678296
+    ],
+    "measured_position": [
+      0.028520527505278503,
+      8.009543377037048
+    ],
+    "velocity": [
+      0.01098523449627184,
+      1.5604867060602376
+    ],
+    "measured_velocity": [
+      0.011489079538732468,
+      1.5713082345016993
+    ],
+    "heading": 1.5637568223911555,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.023538226121139136,
+      1.5374727870272777
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.7499999999999947,
+    "position": [
+      -0.005990491047333766,
+      8.043566447884478
+    ],
+    "measured_position": [
+      -0.012796284181572408,
+      8.046128586832712
+    ],
+    "velocity": [
+      -0.03446044318912065,
+      1.4060229441236316
+    ],
+    "measured_velocity": [
+      -0.007223826148040357,
+      1.4261465473809758
+    ],
+    "heading": 1.5953005823628326,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.04960900241758481,
+      1.3545350234780962
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.7999999999999945,
+    "position": [
+      -0.00462868156576466,
+      8.111729782902213
+    ],
+    "measured_position": [
+      0.015797074817764493,
+      8.126091903530948
+    ],
+    "velocity": [
+      0.01513121646187896,
+      1.3632667003546832
+    ],
+    "measured_velocity": [
+      0.03167093993401511,
+      1.3487673225597574
+    ],
+    "heading": 1.559697548286961,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.03166176967887883,
+      1.3490146190983672
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.8499999999999943,
+    "position": [
+      -0.006357361951929546,
+      8.175143318030754
+    ],
+    "measured_position": [
+      0.008484479966234268,
+      8.140522103066274
+    ],
+    "velocity": [
+      -0.019207559846276517,
+      1.268270702570838
+    ],
+    "measured_velocity": [
+      -0.015126752044645371,
+      1.2751272745853464
+    ],
+    "heading": 1.5859398537390994,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.030653818615661674,
+      1.236605369976223
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.899999999999994,
+    "position": [
+      -0.007298315390107499,
+      8.237735362147024
+    ],
+    "measured_position": [
+      0.0012609771875243475,
+      8.198533164092543
+    ],
+    "velocity": [
+      -0.010455038201977252,
+      1.2518408823254044
+    ],
+    "measured_velocity": [
+      0.008623911547121646,
+      1.226581200578773
+    ],
+    "heading": 1.57914786353987,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.007537530987210831,
+      1.2463642755769264
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.949999999999994,
+    "position": [
+      -0.007459851408112384,
+      8.29688470548638
+    ],
+    "measured_position": [
+      -0.05770105441478374,
+      8.293756774276934
+    ],
+    "velocity": [
+      -0.0017948446444987247,
+      1.1829868667871446
+    ],
+    "measured_velocity": [
+      -0.003953380042479451,
+      1.1491220871940608
+    ],
+    "heading": 1.5723135399759418,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.0010918865413274514,
+      1.1600355282743913
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 3.999999999999994,
+    "position": [
+      -0.0012439309461500271,
+      8.350348078367087
+    ],
+    "measured_position": [
+      0.004445487435573484,
+      8.346817636002697
+    ],
+    "velocity": [
+      0.06906578291069285,
+      1.0692674576141192
+    ],
+    "measured_velocity": [
+      0.06760052503658343,
+      1.0428102662739094
+    ],
+    "heading": 1.5062942485773594,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.0926859920957567,
+      1.0313609878897774
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.049999999999994,
+    "position": [
+      -0.0017381976793341392,
+      8.40064764205781
+    ],
+    "measured_position": [
+      0.013571439593338345,
+      8.401872039219057
+    ],
+    "velocity": [
+      -0.0054918525909345775,
+      1.0059912738144563
+    ],
+    "measured_velocity": [
+      -0.010693051975355545,
+      0.9820026838489343
+    ],
+    "heading": 1.5762554179205406,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.03034439775814372,
+      0.984899212547902
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.099999999999993,
+    "position": [
+      -0.0032199473608478307,
+      8.4476567218091
+    ],
+    "measured_position": [
+      -0.018431183319028585,
+      8.441366889529315
+    ],
+    "velocity": [
+      -0.016463885350152127,
+      0.9401815950257989
+    ],
+    "measured_velocity": [
+      -0.05397999577736537,
+      0.923408944093099
+    ],
+    "heading": 1.5883059258662668,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.02012122960322464,
+      0.9182450354295798
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.149999999999993,
+    "position": [
+      -0.0012427733004961778,
+      8.492303422588103
+    ],
+    "measured_position": [
+      0.023913094004148712,
+      8.489112899330575
+    ],
+    "velocity": [
+      0.021968600670573917,
+      0.8929340155800635
+    ],
+    "measured_velocity": [
+      0.020965434701247353,
+      0.8844442159830248
+    ],
+    "heading": 1.5461985744277182,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.034779429344149265,
+      0.8771848224314851
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.199999999999993,
+    "position": [
+      -0.003842156174861071,
+      8.534086831585135
+    ],
+    "measured_position": [
+      0.012435896323855227,
+      8.553854964888426
+    ],
+    "velocity": [
+      -0.0288820319373877,
+      0.8356681799406468
+    ],
+    "measured_velocity": [
+      -0.02422109648028524,
+      0.8267260639459837
+    ],
+    "heading": 1.6053441783950533,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.04583224280670824,
+      0.8165795680608412
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.249999999999993,
+    "position": [
+      -0.005204943769244894,
+      8.571979655076099
+    ],
+    "measured_position": [
+      0.008937768763638824,
+      8.59080156756961
+    ],
+    "velocity": [
+      -0.015142084382042478,
+      0.7578564698192803
+    ],
+    "measured_velocity": [
+      -0.01887046958606084,
+      0.7682119620333935
+    ],
+    "heading": 1.5907738166348777,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.010562101863594069,
+      0.7319192331121581
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.299999999999993,
+    "position": [
+      -0.006192177119009493,
+      8.607644274494918
+    ],
+    "measured_position": [
+      0.005235697380222466,
+      8.625296264994793
+    ],
+    "velocity": [
+      -0.01096925944182887,
+      0.7132923883763779
+    ],
+    "measured_velocity": [
+      -0.007720640503474302,
+      0.701469470336633
+    ],
+    "heading": 1.586173463889406,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.009578317795091003,
+      0.698437694562077
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.3499999999999925,
+    "position": [
+      -0.006781030932301701,
+      8.641223233694399
+    ],
+    "measured_position": [
+      -0.004070500548138269,
+      8.633825845871696
+    ],
+    "velocity": [
+      -0.006542820147691194,
+      0.6715791839896196
+    ],
+    "measured_velocity": [
+      -0.006694436145393647,
+      0.7013053803238476
+    ],
+    "heading": 1.5805384589383804,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.005067340382978635,
+      0.6576747825273669
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.399999999999992,
+    "position": [
+      -0.006364489281630221,
+      8.674272497403594
+    ],
+    "measured_position": [
+      0.011252884770545937,
+      8.67505723389621
+    ],
+    "velocity": [
+      0.004628240563016442,
+      0.6609852741838887
+    ],
+    "measured_velocity": [
+      0.01280354352601593,
+      0.6729281448309361
+    ],
+    "heading": 1.5637944084352957,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.008351927466585654,
+      0.6574539709153119
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.449999999999992,
+    "position": [
+      -0.00760469041378911,
+      8.704825606185057
+    ],
+    "measured_position": [
+      0.001318481144621261,
+      8.697130870599821
+    ],
+    "velocity": [
+      -0.013780012579543206,
+      0.6110621756292524
+    ],
+    "measured_velocity": [
+      -0.022014438650011115,
+      0.567928816253268
+    ],
+    "heading": 1.593343422537161,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.019916096960396423,
+      0.594421142777707
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.499999999999992,
+    "position": [
+      -0.007772652506177033,
+      8.734028867962454
+    ],
+    "measured_position": [
+      -0.006788578457229964,
+      8.773858918961384
+    ],
+    "velocity": [
+      -0.0018662454709769262,
+      0.5840652355479361
+    ],
+    "measured_velocity": [
+      -0.016625674676525225,
+      0.6151671316672134
+    ],
+    "heading": 1.57399158480057,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.0021050102318785004,
+      0.5750662555208307
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.549999999999992,
+    "position": [
+      -0.0070640754929402185,
+      8.758595035492878
+    ],
+    "measured_position": [
+      -0.023294429118208178,
+      8.749552746232652
+    ],
+    "velocity": [
+      0.007873077924853498,
+      0.4913233506084595
+    ],
+    "measured_velocity": [
+      0.031160261608275428,
+      0.4710811303264269
+    ],
+    "heading": 1.5547734690442203,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.011119519056796975,
+      0.4604093889619673
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.599999999999992,
+    "position": [
+      -0.004568691272280483,
+      8.78458644510958
+    ],
+    "measured_position": [
+      -0.01556417322272857,
+      8.808262325573208
+    ],
+    "velocity": [
+      0.02772649134066372,
+      0.5198281923340483
+    ],
+    "measured_velocity": [
+      0.0232057011164412,
+      0.5356016063402841
+    ],
+    "heading": 1.5175090228048294,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.034344295812600456,
+      0.529329806242578
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.6499999999999915,
+    "position": [
+      -0.0029045041661245182,
+      8.807016718432301
+    ],
+    "measured_position": [
+      0.04752249136035878,
+      8.786442874633048
+    ],
+    "velocity": [
+      0.018490967846177382,
+      0.4486054664544058
+    ],
+    "measured_velocity": [
+      0.04286604809863681,
+      0.4859159971549055
+    ],
+    "heading": 1.5296008712860445,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.015412460014681936,
+      0.42486455782785826
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.699999999999991,
+    "position": [
+      -0.008060778390839667,
+      8.830718284537381
+    ],
+    "measured_position": [
+      -0.008733842635147593,
+      8.827807097065287
+    ],
+    "velocity": [
+      -0.057291935830168325,
+      0.4740313221016149
+    ],
+    "measured_velocity": [
+      -0.04065349736398442,
+      0.4874851030787022
+    ],
+    "heading": 1.6910740190568527,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.08255290372228356,
+      0.48250660731735123
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.749999999999991,
+    "position": [
+      -0.007141669863102494,
+      8.8518964169415
+    ],
+    "measured_position": [
+      0.023774288477063657,
+      8.825465113823466
+    ],
+    "velocity": [
+      0.010212316974857479,
+      0.4235626480823813
+    ],
+    "measured_velocity": [
+      0.01009682744516053,
+      0.44528199400178453
+    ],
+    "heading": 1.5466904741059788,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.032713734576532746,
+      0.40673975674263674
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.799999999999991,
+    "position": [
+      -0.009737526502462858,
+      8.873172781025785
+    ],
+    "measured_position": [
+      0.0024978702171865545,
+      8.866966373211065
+    ],
+    "velocity": [
+      -0.02884285154844849,
+      0.4255272816857088
+    ],
+    "measured_velocity": [
+      -0.012450611955947662,
+      0.4381802921168958
+    ],
+    "heading": 1.63847424786244,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.04186124105621714,
+      0.42618215955348465
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.849999999999991,
+    "position": [
+      -0.010036973003132952,
+      8.891912714749575
+    ],
+    "measured_position": [
+      -0.02717132414228602,
+      8.855094078825582
+    ],
+    "velocity": [
+      -0.0033271833407788253,
+      0.37479867447580095
+    ],
+    "measured_velocity": [
+      -0.0011406463734557333,
+      0.37266121149297066
+    ],
+    "heading": 1.5796733484366594,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.005178039395111063,
+      0.357889138739165
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.899999999999991,
+    "position": [
+      -0.007127921876407738,
+      8.911318727496129
+    ],
+    "measured_position": [
+      -0.002395284833752164,
+      8.920675599805966
+    ],
+    "velocity": [
+      0.03232279029694682,
+      0.38812025493108326
+    ],
+    "measured_velocity": [
+      0.015502944337551405,
+      0.3765648408117523
+    ],
+    "heading": 1.487707714029758,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.04420611484285537,
+      0.3925607817495107
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.94999999999999,
+    "position": [
+      -0.006893222397578044,
+      8.92673746611512
+    ],
+    "measured_position": [
+      0.017532508353166134,
+      8.91378574626577
+    ],
+    "velocity": [
+      0.0026077719869965973,
+      0.3083747723798589
+    ],
+    "measured_velocity": [
+      -0.020286390248438722,
+      0.2882475547036175
+    ],
+    "heading": 1.5623400260189502,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.007297234116320142,
+      0.2817929448627841
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 4.99999999999999,
+    "position": [
+      -0.008813317810396216,
+      8.942516327944464
+    ],
+    "measured_position": [
+      0.00305992564106624,
+      8.983274839243728
+    ],
+    "velocity": [
+      -0.02133439347575746,
+      0.315577236586852
+    ],
+    "measured_velocity": [
+      0.0025793230999403456,
+      0.2870932196825339
+    ],
+    "heading": 1.6382979649868015,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.02931511529667548,
+      0.317978057989183
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.04999999999999,
+    "position": [
+      -0.009171538725657328,
+      8.954065840307269
+    ],
+    "measured_position": [
+      -0.00667766989344511,
+      8.94201359495521
+    ],
+    "velocity": [
+      -0.0039802323917901275,
+      0.23099024725610626
+    ],
+    "measured_velocity": [
+      0.014022187820321844,
+      0.23724965356418065
+    ],
+    "heading": 1.5880257924598886,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.0018044879695323169,
+      0.20279458414585766
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.09999999999999,
+    "position": [
+      -0.008477263341266753,
+      8.968033207709729
+    ],
+    "measured_position": [
+      -0.011240321048764258,
+      8.954932580586819
+    ],
+    "velocity": [
+      0.007714170937673051,
+      0.279347348049186
+    ],
+    "measured_velocity": [
+      0.03453683761880493,
+      0.2503925603963907
+    ],
+    "heading": 1.5431883649532077,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.011612305380827444,
+      0.2954663816468792
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.14999999999999,
+    "position": [
+      -0.007288115598476243,
+      8.981166951269282
+    ],
+    "measured_position": [
+      -0.014852804758912371,
+      8.959435405744989
+    ],
+    "velocity": [
+      0.013212752697672334,
+      0.26267487119106603
+    ],
+    "measured_velocity": [
+      0.03453454638571894,
+      0.2921971849047998
+    ],
+    "heading": 1.5205378988589144,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.015045613284338762,
+      0.25711737890502606
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.1999999999999895,
+    "position": [
+      -0.005705786461812929,
+      8.993971452202638
+    ],
+    "measured_position": [
+      0.005225824079145057,
+      9.014673477234442
+    ],
+    "velocity": [
+      0.01758143485181459,
+      0.25609001866714026
+    ],
+    "measured_velocity": [
+      0.019083415173901674,
+      0.22771442892756114
+    ],
+    "heading": 1.5022505446715342,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.01903766223652868,
+      0.25389506782583166
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.249999999999989,
+    "position": [
+      -0.006292072575211599,
+      9.003397270057796
+    ],
+    "measured_position": [
+      -0.002660473007609485,
+      9.044344516489547
+    ],
+    "velocity": [
+      -0.006514290148874108,
+      0.18851635710314799
+    ],
+    "measured_velocity": [
+      -0.01547690118395623,
+      0.20737851087474712
+    ],
+    "heading": 1.6053381523836445,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.014546198482437007,
+      0.1659918032484839
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.299999999999989,
+    "position": [
+      -0.006026220248341315,
+      9.010974313690854
+    ],
+    "measured_position": [
+      -0.034824504755179855,
+      9.022698837759815
+    ],
+    "velocity": [
+      0.002953914743003149,
+      0.15154087266113983
+    ],
+    "measured_velocity": [
+      0.030631392851502556,
+      0.1584324510893315
+    ],
+    "heading": 1.5513062667564559,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.006109983040295568,
+      0.13921571118047046
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.349999999999989,
+    "position": [
+      -0.002280671034863756,
+      9.019782587193792
+    ],
+    "measured_position": [
+      -0.038101234040549894,
+      9.022559228890845
+    ],
+    "velocity": [
+      0.04161721348308399,
+      0.17616547005874425
+    ],
+    "measured_velocity": [
+      0.02429900612602073,
+      0.19559892317839736
+    ],
+    "heading": 1.3388102164339406,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.0545049797297776,
+      0.18437366919127907
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.399999999999989,
+    "position": [
+      0.0018266901231129029,
+      9.028531989716518
+    ],
+    "measured_position": [
+      0.008615605374305843,
+      9.027130510462237
+    ],
+    "velocity": [
+      0.04563734619974065,
+      0.17498805045451687
+    ],
+    "measured_velocity": [
+      0.05151367202761465,
+      0.15329074576527585
+    ],
+    "heading": 1.3156765945543416,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.046977390438626206,
+      0.17459557725310776
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.449999999999989,
+    "position": [
+      0.0008891602702653857,
+      9.036939505110352
+    ],
+    "measured_position": [
+      -0.004048484203371708,
+      9.052185080953002
+    ],
+    "velocity": [
+      -0.010416998364972414,
+      0.16815030787667865
+    ],
+    "measured_velocity": [
+      -0.002623585676501365,
+      0.20585978650210096
+    ],
+    "heading": 1.6326677723474123,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.029101779886543437,
+      0.16587106035073257
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.4999999999999885,
+    "position": [
+      0.001320167418978797,
+      9.043773696493583
+    ],
+    "measured_position": [
+      0.016343086839815762,
+      9.092708639680248
+    ],
+    "velocity": [
+      0.004788968319037903,
+      0.13668382766462933
+    ],
+    "measured_velocity": [
+      -0.011510134681028085,
+      0.13498267524586946
+    ],
+    "heading": 1.5357738209898044,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.009857623880374675,
+      0.12619500092727956
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.549999999999988,
+    "position": [
+      -0.000453668935115946,
+      9.048102015601755
+    ],
+    "measured_position": [
+      0.005001051764932185,
+      9.022283059277243
+    ],
+    "velocity": [
+      -0.01970929282327492,
+      0.08656638216344777
+    ],
+    "measured_velocity": [
+      -0.011365936308635818,
+      0.07915636412312084
+    ],
+    "heading": 1.7946586137099592,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.027875379870712525,
+      0.06986056699638725
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.599999999999988,
+    "position": [
+      -0.0010040476521771982,
+      9.056586910938279
+    ],
+    "measured_position": [
+      -0.0026982848275319427,
+      9.052146129735622
+    ],
+    "velocity": [
+      -0.006115319078458355,
+      0.16969790673048543
+    ],
+    "measured_velocity": [
+      0.0022766124041221514,
+      0.18862082296835375
+    ],
+    "heading": 1.6068172423086022,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.001583994496852834,
+      0.19740841491949795
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.649999999999988,
+    "position": [
+      -0.0007228129854837887,
+      9.063209638827516
+    ],
+    "measured_position": [
+      -0.00702360981611582,
+      9.078244636870897
+    ],
+    "velocity": [
+      0.003124829629926772,
+      0.13245455778473078
+    ],
+    "measured_velocity": [
+      -0.026934470431782414,
+      0.1184688947961776
+    ],
+    "heading": 1.5472089912730724,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.006204879199388481,
+      0.12004010813614588
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.699999999999988,
+    "position": [
+      2.6763506042656307e-05,
+      9.068193270177817
+    ],
+    "measured_position": [
+      -0.020567784828983703,
+      9.080205269419771
+    ],
+    "velocity": [
+      0.008328627683627167,
+      0.09967262700603965
+    ],
+    "measured_velocity": [
+      0.011178075316849242,
+      0.08563842161500701
+    ],
+    "heading": 1.4874301653491793,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.010063227034860633,
+      0.08874531674647594
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.749999999999988,
+    "position": [
+      0.0022428836281325913,
+      9.07298519293231
+    ],
+    "measured_position": [
+      0.006618061687410701,
+      9.072927166768082
+    ],
+    "velocity": [
+      0.024623556912110392,
+      0.09583845508983552
+    ],
+    "measured_velocity": [
+      -0.001108467677478596,
+      0.12292094082573973
+    ],
+    "heading": 1.3193081482028761,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.03005519998827147,
+      0.09456039778443415
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.799999999999987,
+    "position": [
+      0.0015227589448029936,
+      9.078140192392134
+    ],
+    "measured_position": [
+      0.0031839549279221854,
+      9.095987549418298
+    ],
+    "velocity": [
+      -0.008001385370328861,
+      0.10309998919648077
+    ],
+    "measured_velocity": [
+      0.01782641506470536,
+      0.15065815594315107
+    ],
+    "heading": 1.6482490899984428,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.018876366131141947,
+      0.10552050056536251
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.849999999999987,
+    "position": [
+      0.0011729373876592079,
+      9.081835912825579
+    ],
+    "measured_position": [
+      0.007036433973920201,
+      9.076051829677512
+    ],
+    "velocity": [
+      -0.003886906190486506,
+      0.07391440866891326
+    ],
+    "measured_velocity": [
+      -0.015039515647411855,
+      0.07115079927339467
+    ],
+    "heading": 1.623334516706349,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.0025154131305390546,
+      0.06418588182639076
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.899999999999987,
+    "position": [
+      0.00040571582832217427,
+      9.086653477696432
+    ],
+    "measured_position": [
+      0.014451199707007801,
+      9.088255722723371
+    ],
+    "velocity": [
+      -0.008524683992633706,
+      0.09635129741708169
+    ],
+    "measured_velocity": [
+      -0.01570697373145992,
+      0.07289772658845817
+    ],
+    "heading": 1.659041579820625,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.010070609926682773,
+      0.10383026033313784
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.949999999999987,
+    "position": [
+      -0.0011650719024778695,
+      9.090663705452604
+    ],
+    "measured_position": [
+      -0.007295473318600172,
+      9.116283383190765
+    ],
+    "velocity": [
+      -0.017453197008889376,
+      0.0802045551234479
+    ],
+    "measured_velocity": [
+      -0.0015467098607657784,
+      0.08927686988820084
+    ],
+    "heading": 1.7850644439240917,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.020429368014307933,
+      0.07482230769223663
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 5.999999999999987,
+    "position": [
+      -0.0003866804694947528,
+      9.09291434125941
+    ],
+    "measured_position": [
+      0.030041712517529007,
+      9.114481753395804
+    ],
+    "velocity": [
+      0.008648793699812408,
+      0.04501271613613834
+    ],
+    "measured_velocity": [
+      -0.01483415791608787,
+      0.06632673534133683
+    ],
+    "heading": 1.3809686754664767,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.01734945726937967,
+      0.03328210314036848
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.0499999999999865,
+    "position": [
+      -0.0036456397925791716,
+      9.095194604238038
+    ],
+    "measured_position": [
+      -0.014254367466817748,
+      9.112995380724323
+    ],
+    "velocity": [
+      -0.03621065914538243,
+      0.04560525957256287
+    ],
+    "measured_velocity": [
+      -0.05000394732258166,
+      0.03855020732040228
+    ],
+    "heading": 2.241869126401732,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.05116381009378071,
+      0.04580277405137105
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.099999999999986,
+    "position": [
+      -0.002119450490318138,
+      9.097485583734878
+    ],
+    "measured_position": [
+      -0.03502538497043297,
+      9.087425558269532
+    ],
+    "velocity": [
+      0.016957658914011485,
+      0.045819589936796946
+    ],
+    "measured_velocity": [
+      0.028857970577983914,
+      0.05178945522343931
+    ],
+    "heading": 1.2163317406494754,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.034680431600476125,
+      0.04589103339154164
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.149999999999986,
+    "position": [
+      0.0016562124667734751,
+      9.101234685101232
+    ],
+    "measured_position": [
+      0.024629993239793705,
+      9.104189861595462
+    ],
+    "velocity": [
+      0.04195181063435125,
+      0.07498202732710248
+    ],
+    "measured_velocity": [
+      0.060627460091430545,
+      0.09046181210844964
+    ],
+    "heading": 1.060695155433479,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.05028319454113117,
+      0.08470283979053765
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.199999999999986,
+    "position": [
+      -0.0010135105591212016,
+      9.1039008887279
+    ],
+    "measured_position": [
+      0.011942557279554839,
+      9.124615942941318
+    ],
+    "velocity": [
+      -0.029663589176607517,
+      0.05332407253333114
+    ],
+    "measured_velocity": [
+      -0.03629872017330222,
+      0.0859165364496837
+    ],
+    "heading": 2.078455035745743,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.053535389113593776,
+      0.0461047542687407
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.249999999999986,
+    "position": [
+      -0.0023156568579540842,
+      9.105262329972966
+    ],
+    "measured_position": [
+      0.017926213259664526,
+      9.058850194495507
+    ],
+    "velocity": [
+      -0.01446829220925425,
+      0.02722882490132125
+    ],
+    "measured_velocity": [
+      -0.05533564220362004,
+      0.03682814204377065
+    ],
+    "heading": 2.059215598528653,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.009403193220136493,
+      0.018530409023984618
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.299999999999986,
+    "position": [
+      -0.0042677294063200085,
+      9.11049614467267
+    ],
+    "measured_position": [
+      0.0074254318616495014,
+      9.09668442799814
+    ],
+    "velocity": [
+      -0.021689694981843602,
+      0.1046762939940671
+    ],
+    "measured_velocity": [
+      0.028314510383745474,
+      0.09843325786348117
+    ],
+    "heading": 1.7751123053683542,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.02409682923937339,
+      0.1304921170249824
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.349999999999985,
+    "position": [
+      -0.0050878932222798885,
+      9.113384193462897
+    ],
+    "measured_position": [
+      0.013264282274693635,
+      9.141272308114269
+    ],
+    "velocity": [
+      -0.009112931288443114,
+      0.05776097580455182
+    ],
+    "measured_velocity": [
+      -0.019723809300148932,
+      0.03218980263372791
+    ],
+    "heading": 1.727276196968762,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.004920676723976287,
+      0.04212253640804673
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.399999999999985,
+    "position": [
+      -0.006541434911159911,
+      9.113516542321277
+    ],
+    "measured_position": [
+      -0.01046211328627748,
+      9.097848528408523
+    ],
+    "velocity": [
+      -0.016150463209778025,
+      0.0026469771675904814
+    ],
+    "measured_velocity": [
+      1.8491769676783065e-06,
+      -0.02497393649310645
+    ],
+    "heading": 2.9791421199183152,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.01849630718355633,
+      -0.01572435571139663
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.449999999999985,
+    "position": [
+      -0.005431455670948464,
+      9.116176783010078
+    ],
+    "measured_position": [
+      0.01569712424102017,
+      9.163666748642752
+    ],
+    "velocity": [
+      0.012333102669016075,
+      0.05320481377601521
+    ],
+    "measured_velocity": [
+      0.011623465040022695,
+      0.046466830085989994
+    ],
+    "heading": 1.3430150022982312,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.02182762462861411,
+      0.07005742597882345
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.499999999999985,
+    "position": [
+      -0.007149055187306815,
+      9.114804948117992
+    ],
+    "measured_position": [
+      0.00478130830786458,
+      9.117261576996244
+    ],
+    "velocity": [
+      -0.01908443907064834,
+      -0.027436697841685488
+    ],
+    "measured_velocity": [
+      -0.035874040685979824,
+      -0.05470554861022063
+    ],
+    "heading": -2.178550194887682,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.029556952983869813,
+      -0.05431720171425239
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.549999999999985,
+    "position": [
+      -0.007689148470599354,
+      9.116137429788983
+    ],
+    "measured_position": [
+      0.029960382869273713,
+      9.098776532584912
+    ],
+    "velocity": [
+      -0.0060010364810282055,
+      0.026649633419797612
+    ],
+    "measured_velocity": [
+      -0.002286742788018948,
+      0.03925818380577625
+    ],
+    "heading": 1.7922846614540102,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.0016399022844881608,
+      0.04467841050695864
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.5999999999999845,
+    "position": [
+      -0.010953987859094641,
+      9.11850150051963
+    ],
+    "measured_position": [
+      0.006170051552300597,
+      9.128612287818973
+    ],
+    "velocity": [
+      -0.03627599320550321,
+      0.04728141461291407
+    ],
+    "measured_velocity": [
+      -0.05361951722143028,
+      0.056335010410318125
+    ],
+    "heading": 2.2252373890625092,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.04636764544699488,
+      0.05415867501061955
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.649999999999984,
+    "position": [
+      -0.011651863940731552,
+      9.118995735261826
+    ],
+    "measured_position": [
+      0.00023479972180287523,
+      9.094133399599986
+    ],
+    "velocity": [
+      -0.007754178684854566,
+      0.009884694843957643
+    ],
+    "measured_velocity": [
+      0.005459844130252701,
+      -0.027694640669782295
+    ],
+    "heading": 2.235991510390712,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.0017530928220283156,
+      -0.002580878412361166
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.699999999999984,
+    "position": [
+      -0.011709370332004069,
+      9.121481700751184
+    ],
+    "measured_position": [
+      -0.009414422105510481,
+      9.097573217971137
+    ],
+    "velocity": [
+      -0.0006389599030279703,
+      0.04971930978716748
+    ],
+    "measured_velocity": [
+      -0.02150249862211497,
+      0.06310589590441082
+    ],
+    "heading": 1.5836469623530183,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.0017327796909142284,
+      0.06299751476823742
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.749999999999984,
+    "position": [
+      -0.010723331225061404,
+      9.123684624141429
+    ],
+    "measured_position": [
+      -0.03951865943172893,
+      9.131085851080687
+    ],
+    "velocity": [
+      0.010955990077140704,
+      0.04405846780489453
+    ],
+    "measured_velocity": [
+      0.028932109853391584,
+      0.020005985019544432
+    ],
+    "heading": 1.3270704418474935,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.014820973403863597,
+      0.04217152047747021
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.799999999999984,
+    "position": [
+      -0.006479008093924334,
+      9.123797082126186
+    ],
+    "measured_position": [
+      -0.007186075735572992,
+      9.149568973882815
+    ],
+    "velocity": [
+      0.04715914590152298,
+      0.0022491596951316924
+    ],
+    "measured_velocity": [
+      0.037306499090265816,
+      0.005065939257578765
+    ],
+    "heading": 0.04765685740090392,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.0592268645096504,
+      -0.01168727634145592
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.849999999999984,
+    "position": [
+      -0.005723634519483652,
+      9.12271834892562
+    ],
+    "measured_position": [
+      0.011534556579680742,
+      9.136198140930999
+    ],
+    "velocity": [
+      0.008393039716007574,
+      -0.021574664011329844
+    ],
+    "measured_velocity": [
+      0.037432158645503935,
+      -0.03288301037651246
+    ],
+    "heading": -1.19978858223618,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.004528995679164229,
+      -0.029515938580150357
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.8999999999999835,
+    "position": [
+      -0.006991293086923708,
+      9.122360291300986
+    ],
+    "measured_position": [
+      0.03487428713114058,
+      9.137694941076143
+    ],
+    "velocity": [
+      -0.014085095193778395,
+      -0.007161152492676255
+    ],
+    "measured_velocity": [
+      -0.018380122101497635,
+      -0.0340261874486122
+    ],
+    "heading": -2.671231282581073,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.02157780683037372,
+      -0.0023566486531250595
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.949999999999983,
+    "position": [
+      -0.010785828318865768,
+      9.121830868295458
+    ],
+    "measured_position": [
+      0.006437004685834972,
+      9.122516435811182
+    ],
+    "velocity": [
+      -0.04216150257713399,
+      -0.010588460110551484
+    ],
+    "measured_velocity": [
+      -0.05367630071077471,
+      0.009273569137623705
+    ],
+    "heading": -2.895540883315667,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.051520305038252515,
+      -0.011730895983176559
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 6.999999999999983,
+    "position": [
+      -0.011511769498524267,
+      9.122132025475759
+    ],
+    "measured_position": [
+      0.008705830123428763,
+      9.141781781487408
+    ],
+    "velocity": [
+      -0.008066013107316652,
+      0.006023143606027457
+    ],
+    "measured_velocity": [
+      -0.02991006007676548,
+      -0.01245670153402136
+    ],
+    "heading": 2.5001868645854985,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.0032991500492891256,
+      0.011560344844887105
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.049999999999983,
+    "position": [
+      -0.012484870813261212,
+      9.12119568246979
+    ],
+    "measured_position": [
+      -0.038007014223201296,
+      9.122101192489536
+    ],
+    "velocity": [
+      -0.010812236830410495,
+      -0.018726860119379324
+    ],
+    "measured_velocity": [
+      0.017570808382211894,
+      0.0057118276456286365
+    ],
+    "heading": -2.094406280092264,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.011727644738108443,
+      -0.026976861361181582
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.099999999999983,
+    "position": [
+      -0.00840710276789915,
+      9.121360078084308
+    ],
+    "measured_position": [
+      0.017999317646260653,
+      9.092591517973602
+    ],
+    "velocity": [
+      0.045308533837356245,
+      0.0032879122903624325
+    ],
+    "measured_velocity": [
+      0.04692922245007009,
+      -0.011520635423305838
+    ],
+    "heading": 0.07244019620381575,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.06401545739327849,
+      0.01062616976027635
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.149999999999983,
+    "position": [
+      -0.010379585172658672,
+      9.12321809466396
+    ],
+    "measured_position": [
+      -0.01214272752596465,
+      9.129443513167075
+    ],
+    "velocity": [
+      -0.021916471163994686,
+      0.037160331593053424
+    ],
+    "measured_velocity": [
+      -0.013163479884221445,
+      -0.001503009911805235
+    ],
+    "heading": 2.103668242809882,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.044324806164445,
+      0.048451138027283756
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.199999999999982,
+    "position": [
+      -0.009095069031635405,
+      9.122785361455024
+    ],
+    "measured_position": [
+      0.015876437704722204,
+      9.112271627133618
+    ],
+    "velocity": [
+      0.014272401566925195,
+      -0.008654664178712622
+    ],
+    "measured_velocity": [
+      0.025987958294414512,
+      -0.04549311282022968
+    ],
+    "heading": -0.5451059443025517,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.026335359143898486,
+      -0.023926329435967973
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.249999999999982,
+    "position": [
+      -0.010838887233626002,
+      9.123304253552643
+    ],
+    "measured_position": [
+      -0.005376038687082729,
+      9.128481312387741
+    ],
+    "velocity": [
+      -0.019375757799895522,
+      0.01037784195235834
+    ],
+    "measured_velocity": [
+      0.01852380923550394,
+      -0.026824090849834666
+    ],
+    "heading": 2.6498648199663624,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.03059181092216909,
+      0.016722010662715326
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.299999999999982,
+    "position": [
+      -0.010287096669330769,
+      9.122770592576948
+    ],
+    "measured_position": [
+      -0.016152495227579555,
+      9.095593409892496
+    ],
+    "velocity": [
+      0.006131006269947037,
+      -0.010673219513889408
+    ],
+    "measured_velocity": [
+      -0.02526741942276331,
+      0.013364787160596872
+    ],
+    "heading": -1.049391312713424,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.014633260959894558,
+      -0.017690240002638656
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.349999999999982,
+    "position": [
+      -0.008568637502132126,
+      9.12413299600811
+    ],
+    "measured_position": [
+      -0.010026409953719177,
+      9.130648754262587
+    ],
+    "velocity": [
+      0.019093990746651582,
+      0.027248068623228837
+    ],
+    "measured_velocity": [
+      0.021441643596411472,
+      0.020544609969571963
+    ],
+    "heading": 0.9595694814843632,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.023414985572219767,
+      0.039888498002268256
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.399999999999982,
+    "position": [
+      -0.007509400529730903,
+      9.123312273149473
+    ],
+    "measured_position": [
+      -0.013650699740225513,
+      9.094985262547256
+    ],
+    "velocity": [
+      0.011769299693346925,
+      -0.01641445717272011
+    ],
+    "measured_velocity": [
+      0.02825676899809217,
+      -0.0027283475985528383
+    ],
+    "heading": -0.9487464621352186,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.009327736008912041,
+      -0.030968632438036426
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.4499999999999815,
+    "position": [
+      -0.006055837717143583,
+      9.12455424864733
+    ],
+    "measured_position": [
+      -0.011121734293515328,
+      9.160487329181448
+    ],
+    "velocity": [
+      0.01615069791763688,
+      0.024839509957138323
+    ],
+    "measured_velocity": [
+      0.01918985895644141,
+      0.007228220559626134
+    ],
+    "heading": 0.9942791479262444,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.017611163992400203,
+      0.0385908323337578
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.499999999999981,
+    "position": [
+      -0.004872800510360706,
+      9.121783521802254
+    ],
+    "measured_position": [
+      0.00550317467822722,
+      9.136876537340925
+    ],
+    "velocity": [
+      0.013144857853143076,
+      -0.05541453690154474
+    ],
+    "measured_velocity": [
+      -0.012200690201940874,
+      -0.04531230016462794
+    ],
+    "heading": -1.3378914772792354,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.012142911164978475,
+      -0.0821658858544391
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.549999999999981,
+    "position": [
+      -0.005485531233675537,
+      9.120347710834846
+    ],
+    "measured_position": [
+      0.01117434757146884,
+      9.11468316884644
+    ],
+    "velocity": [
+      -0.00680811914794257,
+      -0.02871621934814679
+    ],
+    "measured_velocity": [
+      0.009965057480035042,
+      -0.006223510024618968
+    ],
+    "heading": -1.8035810828271919,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.013459111481637785,
+      -0.019816780163680804
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.599999999999981,
+    "position": [
+      -0.006712703506933154,
+      9.120164062650673
+    ],
+    "measured_position": [
+      -0.03604464292424155,
+      9.135011670425747
+    ],
+    "velocity": [
+      -0.01363524748064018,
+      -0.003672963683463155
+    ],
+    "measured_velocity": [
+      -0.026833584167512328,
+      -0.025110969185630678
+    ],
+    "heading": -2.8784655710200453,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.015910956924872717,
+      0.0046747882047647234
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.649999999999981,
+    "position": [
+      -0.0028346307585613803,
+      9.118679932324865
+    ],
+    "measured_position": [
+      0.00247485617623072,
+      9.10659117242091
+    ],
+    "velocity": [
+      0.04308969720413081,
+      -0.02968260651615715
+    ],
+    "measured_velocity": [
+      0.04569619336603244,
+      -0.04211190485393978
+    ],
+    "heading": -0.6032077068126571,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.06199801209905448,
+      -0.03835248746038848
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.699999999999981,
+    "position": [
+      -0.0031156827990298113,
+      9.118822591074048
+    ],
+    "measured_position": [
+      -0.028381448367148204,
+      9.122093999677956
+    ],
+    "velocity": [
+      -0.0031228004496492347,
+      0.0028531749836748785
+    ],
+    "measured_velocity": [
+      -0.012511751636213231,
+      0.00021532744968938856
+    ],
+    "heading": 2.401282147812808,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.018526966334242584,
+      0.013698435483618888
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.7499999999999805,
+    "position": [
+      -5.9219066931288315e-05,
+      9.11795576880285
+    ],
+    "measured_position": [
+      -0.01575444261869741,
+      9.122072776682234
+    ],
+    "velocity": [
+      0.03396070813442803,
+      -0.01733644542397346
+    ],
+    "measured_velocity": [
+      0.030467633124977574,
+      0.0032917232121702673
+    ],
+    "heading": -0.47200069381140075,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.046321877662453784,
+      -0.024066318893189574
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.79999999999998,
+    "position": [
+      0.0016374455609643348,
+      9.117010692871174
+    ],
+    "measured_position": [
+      -0.010012186853358515,
+      9.124034592144744
+    ],
+    "velocity": [
+      0.018851829198840257,
+      -0.01890151863348752
+    ],
+    "measured_velocity": [
+      0.0006399615313885006,
+      -0.06144356118023276
+    ],
+    "heading": -0.786714322329261,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.013815536220311,
+      -0.01942320970332554
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.84999999999998,
+    "position": [
+      0.002716615735859682,
+      9.115868143137515
+    ],
+    "measured_position": [
+      0.014660624454505864,
+      9.111818027588589
+    ],
+    "velocity": [
+      0.01199077972105941,
+      -0.022850994673168423
+    ],
+    "measured_velocity": [
+      0.014318508836401511,
+      -0.002541557508920742
+    ],
+    "heading": -1.0875549263599802,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.009703763228465794,
+      -0.02416748668639539
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.89999999999998,
+    "position": [
+      0.0011293158355104326,
+      9.115379908247416
+    ],
+    "measured_position": [
+      -0.024334265610063112,
+      9.098169676995798
+    ],
+    "velocity": [
+      -0.017636665559436104,
+      -0.009764697801981076
+    ],
+    "measured_velocity": [
+      -0.037368598022289784,
+      -0.022177375306227674
+    ],
+    "heading": -2.6359446060610034,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.027512480652934608,
+      -0.005402598844918627
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.94999999999998,
+    "position": [
+      0.0037571190899248937,
+      9.115633446357048
+    ],
+    "measured_position": [
+      0.054744213204432846,
+      9.115208571374527
+    ],
+    "velocity": [
+      0.029197813937938452,
+      0.005070762192647455
+    ],
+    "measured_velocity": [
+      0.03424618061076358,
+      -0.009306525145003798
+    ],
+    "heading": 0.17195416005229103,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.044809307103729976,
+      0.010015915524190299
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 7.99999999999998,
+    "position": [
+      -0.0021638774626895167,
+      9.114786313120266
+    ],
+    "measured_position": [
+      -0.0015779424782325505,
+      9.109398147374124
+    ],
+    "velocity": [
+      -0.06578885058460456,
+      -0.016942664735637027
+    ],
+    "measured_velocity": [
+      -0.03635749048010535,
+      -0.02695773858317527
+    ],
+    "heading": -2.8895386996230776,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.0974510720921189,
+      -0.024280473711731854
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.04999999999998,
+    "position": [
+      -0.0020038957135813176,
+      9.114209709955105
+    ],
+    "measured_position": [
+      0.01672433589422537,
+      9.104712478302487
+    ],
+    "velocity": [
+      0.0017775749900911,
+      -0.01153206330323515
+    ],
+    "measured_velocity": [
+      -0.0019042843920777752,
+      -0.026267506991622995
+    ],
+    "heading": -1.417858031869553,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.024299716848322987,
+      -0.009728529492434523
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.09999999999998,
+    "position": [
+      -0.003823835654414664,
+      9.113836651426135
+    ],
+    "measured_position": [
+      0.007362021140690492,
+      9.108166795366712
+    ],
+    "velocity": [
+      -0.020221554898148295,
+      -0.007461170579410769
+    ],
+    "measured_velocity": [
+      -0.004032839619493411,
+      -0.006552075802129624
+    ],
+    "heading": -2.7881179888838066,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.02755459819422809,
+      -0.006104206338135976
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.14999999999998,
+    "position": [
+      -0.0046347066153953845,
+      9.113178539488054
+    ],
+    "measured_position": [
+      -0.017335739419886913,
+      9.091842895319505
+    ],
+    "velocity": [
+      -0.009009677344230225,
+      -0.013162238761631577
+    ],
+    "measured_velocity": [
+      0.0016638819161300389,
+      -0.04156781510419016
+    ],
+    "heading": -2.171050145696826,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.005272384826257534,
+      -0.015062594822371845
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.199999999999982,
+    "position": [
+      -0.0027758090492215506,
+      9.11342354781389
+    ],
+    "measured_position": [
+      0.00632163894154034,
+      9.066509243846204
+    ],
+    "velocity": [
+      0.02065441740193149,
+      0.0049001665167014655
+    ],
+    "measured_velocity": [
+      0.029307076528494083,
+      0.008726992553375692
+    ],
+    "heading": 0.23293882685059064,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.030542448983985393,
+      0.010920968276145814
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.249999999999982,
+    "position": [
+      -0.003472372292032823,
+      9.115115006680618
+    ],
+    "measured_position": [
+      -0.006037379474609129,
+      9.125517226986615
+    ],
+    "velocity": [
+      -0.0077395915867919125,
+      0.03382917733457049
+    ],
+    "measured_velocity": [
+      -0.03796590429600823,
+      0.023627495779025374
+    ],
+    "heading": 1.7957099827088971,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.017204261249699714,
+      0.04347218094052683
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.299999999999983,
+    "position": [
+      -0.0028332584906339796,
+      9.113187572310851
+    ],
+    "measured_position": [
+      0.006924885267416046,
+      9.13448175546412
+    ],
+    "velocity": [
+      0.0071012644599871486,
+      -0.03854868739534891
+    ],
+    "measured_velocity": [
+      0.007175399089910535,
+      -0.03484125838748833
+    ],
+    "heading": -1.3886232375632985,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.01204821647558017,
+      -0.06267464230532205
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.349999999999984,
+    "position": [
+      -0.0035950118579788646,
+      9.110641800134676
+    ],
+    "measured_position": [
+      -0.005063278079225981,
+      9.126279411073634
+    ],
+    "velocity": [
+      -0.008463926303832057,
+      -0.050915443523510635
+    ],
+    "measured_velocity": [
+      -0.028516463708157733,
+      -0.09964530259875198
+    ],
+    "heading": -1.7355249280014275,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.013652323225105125,
+      -0.05503769556623121
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.399999999999984,
+    "position": [
+      -0.0030614245658944204,
+      9.108507958531536
+    ],
+    "measured_position": [
+      0.018102509612676027,
+      9.11806126453465
+    ],
+    "velocity": [
+      0.005928747689827158,
+      -0.042676832062781334
+    ],
+    "measured_velocity": [
+      -0.021488117618230572,
+      -0.03641835016489446
+    ],
+    "heading": -1.4327578917671988,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.010726305687713563,
+      -0.039930628242538235
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.449999999999985,
+    "position": [
+      -0.0050326421545671615,
+      9.106787830083423
+    ],
+    "measured_position": [
+      0.024776248658907558,
+      9.146984864122874
+    ],
+    "velocity": [
+      -0.02190241765191934,
+      -0.034402568962268607
+    ],
+    "measured_velocity": [
+      -0.02608273502998771,
+      -0.008446147479600642
+    ],
+    "heading": -2.1377297989827957,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.031179472765834836,
+      -0.03164448126209769
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.499999999999986,
+    "position": [
+      -0.007729529270734666,
+      9.103250407048511
+    ],
+    "measured_position": [
+      -0.02927967420324098,
+      9.117262469270978
+    ],
+    "velocity": [
+      -0.029965412401861166,
+      -0.07074846069823928
+    ],
+    "measured_velocity": [
+      -0.009689738366011974,
+      -0.08967443557302261
+    ],
+    "heading": -1.97143699439356,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.032653077318508444,
+      -0.08286375794356285
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.549999999999986,
+    "position": [
+      -0.0045846619664263975,
+      9.101416609824177
+    ],
+    "measured_position": [
+      -0.03129851384280457,
+      9.142918581814753
+    ],
+    "velocity": [
+      0.03494297004786964,
+      -0.03667594448667453
+    ],
+    "measured_velocity": [
+      0.05767701232169105,
+      0.008512000922553643
+    ],
+    "heading": -0.8095906040183836,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.05657909753111324,
+      -0.02531843908281961
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.599999999999987,
+    "position": [
+      -0.0012155494350259825,
+      9.097961862888873
+    ],
+    "measured_position": [
+      -0.00813524550787333,
+      9.08467357898561
+    ],
+    "velocity": [
+      0.03743458368222683,
+      -0.06909493870608771
+    ],
+    "measured_velocity": [
+      0.07737577631308235,
+      -0.07263417388893928
+    ],
+    "heading": -1.074282285858174,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.038265121560345894,
+      -0.07990127011255876
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.649999999999988,
+    "position": [
+      -0.0003451441906464944,
+      9.097925227364536
+    ],
+    "measured_position": [
+      -0.036675490851269844,
+      9.095980746615021
+    ],
+    "velocity": [
+      0.009671169381994311,
+      -0.0007327104867383347
+    ],
+    "measured_velocity": [
+      0.022998529063273668,
+      0.00819244812987347
+    ],
+    "heading": -0.07561788685214522,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.00041669794858347105,
+      0.022054698919711457
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.699999999999989,
+    "position": [
+      0.0036145281971562545,
+      9.097133761526578
+    ],
+    "measured_position": [
+      -0.043956339776023985,
+      9.103568159085913
+    ],
+    "velocity": [
+      0.04399635986447499,
+      -0.015829316759143237
+    ],
+    "measured_velocity": [
+      0.0015713374450506828,
+      0.029653339266013892
+    ],
+    "heading": -0.3453669739171367,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.05543809002530188,
+      -0.02086151884994487
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.74999999999999,
+    "position": [
+      0.008369680296721138,
+      9.095809986490323
+    ],
+    "measured_position": [
+      -0.019531909242914435,
+      9.080498592791471
+    ],
+    "velocity": [
+      0.052835023328498695,
+      -0.026475500725080633
+    ],
+    "measured_velocity": [
+      0.054941519582223944,
+      -0.03691941070316884
+    ],
+    "heading": -0.4645252631797155,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.05578124448317326,
+      -0.030024228713726432
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.79999999999999,
+    "position": [
+      0.010492577149334477,
+      9.095795317704985
+    ],
+    "measured_position": [
+      0.033906375110605645,
+      9.082697742680836
+    ],
+    "velocity": [
+      0.02358774280681487,
+      -0.00029337570675382497
+    ],
+    "measured_velocity": [
+      0.03182281029517294,
+      0.0076591017557481
+    ],
+    "heading": -0.012436992495132823,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.013838649299586928,
+      0.008433999299355111
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.84999999999999,
+    "position": [
+      0.006839813637591176,
+      9.095573925210056
+    ],
+    "measured_position": [
+      0.014644952321573434,
+      9.071101795021614
+    ],
+    "velocity": [
+      -0.040586261241592224,
+      -0.0044278498985710615
+    ],
+    "measured_velocity": [
+      -0.004964184930455924,
+      -0.021907080928288143
+    ],
+    "heading": -3.0329251614521096,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.061977595924394585,
+      -0.00580600796251014
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.899999999999991,
+    "position": [
+      0.0052637312717823456,
+      9.095974675231176
+    ],
+    "measured_position": [
+      -0.014588889383436316,
+      9.089647658021144
+    ],
+    "velocity": [
+      -0.01751202628676478,
+      0.008015000422381784
+    ],
+    "measured_velocity": [
+      -0.013345967059297774,
+      -0.04704340622738456
+    ],
+    "heading": 2.7123658785630878,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.009820614635155633,
+      0.012162617196032732
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.949999999999992,
+    "position": [
+      0.0068464777903451445,
+      9.095187610547342
+    ],
+    "measured_position": [
+      -0.0015876484490354942,
+      9.117883270887226
+    ],
+    "velocity": [
+      0.01758607242847554,
+      -0.015741293676676336
+    ],
+    "measured_velocity": [
+      0.022010526930818286,
+      -0.011673305899023607
+    ],
+    "heading": -0.7301013218300144,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.029285438666888982,
+      -0.02366005837636238
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 8.999999999999993,
+    "position": [
+      0.007025751932693447,
+      9.092628336932487
+    ],
+    "measured_position": [
+      0.02498802343871101,
+      9.099893902470384
+    ],
+    "velocity": [
+      0.0019919349149811376,
+      -0.05118547229709622
+    ],
+    "measured_velocity": [
+      -0.02753994934795587,
+      -0.07805338050938504
+    ],
+    "heading": -1.531899933502217,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.0032061109228503303,
+      -0.06300019850390284
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.049999999999994,
+    "position": [
+      0.0043308024273524155,
+      9.091071287458357
+    ],
+    "measured_position": [
+      0.0043614097416694395,
+      9.039528239716365
+    ],
+    "velocity": [
+      -0.02994388339267812,
+      -0.031140989482601154
+    ],
+    "measured_velocity": [
+      -0.031207795982777897,
+      0.008077113183679742
+    ],
+    "heading": -2.3365995755142874,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.04058915616189787,
+      -0.0244594952111028
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.099999999999994,
+    "position": [
+      0.003861778676412163,
+      9.093064932614759
+    ],
+    "measured_position": [
+      -0.004478371480792513,
+      9.110567965405494
+    ],
+    "velocity": [
+      -0.005211375010447247,
+      0.0398729031280225
+    ],
+    "measured_velocity": [
+      -0.07001806058455996,
+      0.02171886547300739
+    ],
+    "heading": 1.7007593046205967,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.0030327944502963776,
+      0.06354420066489705
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.149999999999995,
+    "position": [
+      0.004347770125432631,
+      9.090719762328213
+    ],
+    "measured_position": [
+      -0.0024194385215690747,
+      9.092259325152074
+    ],
+    "velocity": [
+      0.005399904989116313,
+      -0.04690340573092069
+    ],
+    "measured_velocity": [
+      -0.01187930682471005,
+      -0.027625086818000986
+    ],
+    "heading": -1.4561727685891597,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.008936998322304166,
+      -0.07582884201723508
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.199999999999996,
+    "position": [
+      0.004611885036058564,
+      9.089397098298575
+    ],
+    "measured_position": [
+      -9.591522170307974e-05,
+      9.078851920230328
+    ],
+    "velocity": [
+      0.0029346101180659167,
+      -0.026453280592777496
+    ],
+    "measured_velocity": [
+      0.00033369535744830073,
+      -0.01467173201373008
+    ],
+    "heading": -1.460312495989524,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.002112845161049118,
+      -0.01963657221339643
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.249999999999996,
+    "position": [
+      0.004625197905260403,
+      9.08880422828598
+    ],
+    "measured_position": [
+      -0.015304267919510523,
+      9.087188856600063
+    ],
+    "velocity": [
+      0.000147920768909332,
+      -0.011857400251906102
+    ],
+    "measured_velocity": [
+      -0.009849163141495433,
+      0.009776432823199227
+    ],
+    "heading": -1.55832199910976,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.0007809756808095296,
+      -0.006992106804948972
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.299999999999997,
+    "position": [
+      0.006283630313744596,
+      9.087636050695163
+    ],
+    "measured_position": [
+      0.006859526353851437,
+      9.059968762258533
+    ],
+    "velocity": [
+      0.018427026760935484,
+      -0.023363551816322797
+    ],
+    "measured_velocity": [
+      0.016350534512310517,
+      -0.04359216170963846
+    ],
+    "heading": -0.9029786040404318,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.024520062091610867,
+      -0.027198935671128365
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.349999999999998,
+    "position": [
+      0.005547869991580646,
+      9.088028428973203
+    ],
+    "measured_position": [
+      0.014462022479969729,
+      9.08356820511506
+    ],
+    "velocity": [
+      -0.008175114690710555,
+      0.00784756556079195
+    ],
+    "measured_velocity": [
+      -7.403550072610475e-05,
+      0.011797527596316023
+    ],
+    "heading": 2.3766344857205928,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.017042495174592567,
+      0.018251271353163533
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.399999999999999,
+    "position": [
+      0.003988474118188536,
+      9.086930588841547
+    ],
+    "measured_position": [
+      -0.013602885246099974,
+      9.089090856021832
+    ],
+    "velocity": [
+      -0.017326620815467885,
+      -0.021956802633114746
+    ],
+    "measured_velocity": [
+      -0.016555611896159724,
+      -0.01965172387431919
+    ],
+    "heading": -2.2388697529642028,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.02037712285705366,
+      -0.031891592031083646
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.45,
+    "position": [
+      0.005461742507662761,
+      9.085426219556991
+    ],
+    "measured_position": [
+      0.007064807053633881,
+      9.078698569513946
+    ],
+    "velocity": [
+      0.016369648771935835,
+      -0.030087385691102475
+    ],
+    "measured_velocity": [
+      -0.018911666054859125,
+      -0.06828593454067183
+    ],
+    "heading": -1.0725171721133568,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.027601738634403742,
+      -0.032797580043765054
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.5,
+    "position": [
+      0.0047021217336555045,
+      9.084470962076228
+    ],
+    "measured_position": [
+      0.004344476961388797,
+      9.11113840939644
+    ],
+    "velocity": [
+      -0.008440230822302854,
+      -0.019105149615247174
+    ],
+    "measured_velocity": [
+      0.007573489052745727,
+      -0.03342619023956875
+    ],
+    "heading": -1.9867916622249382,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.016710190687049084,
+      -0.015444404256628741
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.55,
+    "position": [
+      0.004235369114313299,
+      9.0814920337588
+    ],
+    "measured_position": [
+      0.008888596146048672,
+      9.078913072668987
+    ],
+    "velocity": [
+      -0.005186140214913386,
+      -0.05957856634856333
+    ],
+    "measured_velocity": [
+      -0.036357723914955814,
+      -0.07479671349151354
+    ],
+    "heading": -1.6576245431455652,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.004101443345783563,
+      -0.07306970525966872
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.600000000000001,
+    "position": [
+      0.003276120032571202,
+      9.080371652562361
+    ],
+    "measured_position": [
+      -0.03429786484027608,
+      9.081856278412005
+    ],
+    "velocity": [
+      -0.010658323130467752,
+      -0.0224076239287572
+    ],
+    "measured_velocity": [
+      0.027233484311259208,
+      -0.026874839966229504
+    ],
+    "heading": -2.0147798502432397,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.012482384102319208,
+      -0.010017309788821826
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.650000000000002,
+    "position": [
+      0.006986363838397191,
+      9.079000006853411
+    ],
+    "measured_position": [
+      -0.023399964060448575,
+      9.083111138013779
+    ],
+    "velocity": [
+      0.041224931175844325,
+      -0.027432914178988008
+    ],
+    "measured_velocity": [
+      0.060511969992985075,
+      -0.04765293590550777
+    ],
+    "heading": -0.5871561867655478,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.05851934927794834,
+      -0.029108010929064943
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.700000000000003,
+    "position": [
+      0.009524922113165638,
+      9.077478354986019
+    ],
+    "measured_position": [
+      0.022538073122985,
+      9.081384945379874
+    ],
+    "velocity": [
+      0.028206203052982735,
+      -0.030433037347848142
+    ],
+    "measured_velocity": [
+      0.020597605393949746,
+      -0.036776002816531414
+    ],
+    "heading": -0.8233550802405899,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.02386662701202887,
+      -0.031433078404134854
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.750000000000004,
+    "position": [
+      0.0070996912445420845,
+      9.075985711321282
+    ],
+    "measured_position": [
+      0.036034222312312854,
+      9.120946323672017
+    ],
+    "velocity": [
+      -0.02694700965137281,
+      -0.029852873294735183
+    ],
+    "measured_velocity": [
+      -0.08689699741941768,
+      -0.0305861162885944
+    ],
+    "heading": -2.305079377235374,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.045331413886157995,
+      -0.029659485277030863
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.800000000000004,
+    "position": [
+      0.0032101754405280004,
+      9.072041150531163
+    ],
+    "measured_position": [
+      0.02149250125759118,
+      9.042248979828942
+    ],
+    "velocity": [
+      -0.04321684226682315,
+      -0.07889121580238834
+    ],
+    "measured_velocity": [
+      -0.05600064464453236,
+      -0.07182540075757063
+    ],
+    "heading": -2.0719511931776475,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.0486401198053066,
+      -0.09523732997160606
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.850000000000005,
+    "position": [
+      0.0008858636790682311,
+      9.07274665605164
+    ],
+    "measured_position": [
+      0.013822633850522617,
+      9.078486779246601
+    ],
+    "velocity": [
+      -0.025825686238441878,
+      0.014110110409549181
+    ],
+    "measured_velocity": [
+      -0.053223946288321874,
+      0.01461785576128109
+    ],
+    "heading": 2.6415487067811614,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.020028634228981455,
+      0.04511055248019502
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.900000000000006,
+    "position": [
+      -0.0006137601957619415,
+      9.071204337020342
+    ],
+    "measured_position": [
+      0.012354235946508632,
+      9.08908834942446
+    ],
+    "velocity": [
+      -0.016662487498113027,
+      -0.03084638062597006
+    ],
+    "measured_velocity": [
+      -0.04448433903146477,
+      -0.0006357974466287414
+    ],
+    "heading": -2.066066171508566,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.013608087918003412,
+      -0.045831877637809805
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 9.950000000000006,
+    "position": [
+      -0.001957796088640656,
+      9.06895092772777
+    ],
+    "measured_position": [
+      -0.013380631721699992,
+      9.105334359173188
+    ],
+    "velocity": [
+      -0.014933732143096824,
+      -0.04506818585145561
+    ],
+    "measured_velocity": [
+      -0.04384933175720694,
+      -0.08198352429237851
+    ],
+    "heading": -1.890768593046198,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      -0.014357480358091423,
+      -0.04980878759328413
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  },
+  {
+    "time": 10.000000000000007,
+    "position": [
+      -0.0005209578057029413,
+      9.065645878870285
+    ],
+    "measured_position": [
+      -0.0034501128925759007,
+      9.081305988534952
+    ],
+    "velocity": [
+      0.01596486981041905,
+      -0.06610097714969672
+    ],
+    "measured_velocity": [
+      0.00047043933355017317,
+      -0.06484059167150792
+    ],
+    "heading": -1.3338123133071726,
+    "observed": true,
+    "hidden_state": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "heading": 0.0
+    },
+    "control_input": [
+      0.02626440379492434,
+      -0.07311190758244375
+    ],
+    "seed": 101,
+    "controller": "pid",
+    "world_mode": "anisotropic_preferred_axis",
+    "orientation": 0.785398
+  }
+]
