@@ -1,10 +1,10 @@
 # SESSION RECOVERY INDEX
 
-> **Last updated:** 2026-04-18  
-> **HEAD commit:** `63575ca` — FULL SESSION SNAPSHOT  
+> **Last updated:** 2026-04-19  
+> **HEAD commit:** see `git log --oneline -1`  
 > **Branch:** `main`  
 > **Remote:** https://github.com/mommommy1960-lang/commons-sentience-sandbox  
-> **Tests passing:** 720 / 720
+> **Tests passing:** see latest pytest run
 
 ---
 
@@ -158,3 +158,87 @@ cat commons_sentience_sim/output/reality_audit/advanced_quantum_double_slit/audi
 # 5. Read metric trust report
 cat commons_sentience_sim/output/reality_audit/metric_trust_update_report.json
 ```
+
+---
+
+## 9. Next Restart Point — Stage 5 Checkpoint + Real-Data Readiness Layer
+
+### What was added on 2026-04-19
+
+This session completed the **Real-Data Analysis Readiness Layer** — the final
+Year 1 deliverable. All code is committed, tested, and pushed to remote.
+
+**Roadmap position after this session:** End of Year 1. Ready to transition to Experiment 1.
+
+---
+
+### Files Added
+
+#### `reality_audit/data_analysis/` (new package)
+
+| File | Purpose |
+|---|---|
+| `__init__.py` | Package init; re-exports all public names |
+| `experiment_registry.py` | `ExperimentSpec`, `ExperimentRegistry`, `build_default_registry()` |
+| `null_models.py` | `NullModelLibrary` — 5 null model generators (isotropic, no-delay, symmetric, white-noise, bandwidth-flat) |
+| `signal_injection.py` | `SignalInjector` — 4 signal injectors (preferred-axis, anisotropy, timing-delay, bandwidth-anomaly) |
+| `blinding.py` | `Blinder` — blind/freeze/unblind protocol with audit trail |
+| `reporting.py` | `ReportWriter` — JSON/CSV/Markdown/manifest output |
+| `mock_cosmic_ray_pipeline.py` | Full mock cosmic-ray anisotropy pipeline (dry run) |
+| `mock_timing_pipeline.py` | Full mock astrophysical timing-delay pipeline (dry run) |
+
+#### `reality_audit/analysis/`
+
+| File | Purpose |
+|---|---|
+| `benchmark_transfer.py` | 10 transfer principles from benchmarks → real analysis; `run_benchmark_transfer()` writes JSON report |
+
+#### `tests/`
+
+| File | Tests |
+|---|---|
+| `test_data_analysis_readiness.py` | ~72 tests across 7 classes (Registry, NullModels, SignalInjector, Blinder, ReportWriter, CosmicRay pipeline, Timing pipeline) |
+| `test_benchmark_transfer.py` | 9 tests (principles library, run function, output structure) |
+
+#### `docs/`
+
+| File | Purpose |
+|---|---|
+| `COMPANION_BOOK_ALIGNMENT.md` | Maps repo modules to companion book roadmap; explicit framing of what is/isn't done |
+| `FIRST_REAL_EXPERIMENT_PLAN.md` | Candidate experiments, datasets, pre-conditions, recommended first target |
+
+---
+
+### Outputs Generated
+
+| Output | Path |
+|---|---|
+| Benchmark transfer report | `commons_sentience_sim/output/reality_audit/benchmark_transfer_report.json` |
+| Mock cosmic-ray pipeline outputs | `commons_sentience_sim/output/reality_audit/mock_cosmic_ray/` |
+| Mock timing-delay pipeline outputs | `commons_sentience_sim/output/reality_audit/mock_timing_delay/` |
+
+---
+
+### Exact Next Command After This Phase
+
+```bash
+# 1. Confirm all tests still pass
+python -m pytest tests/ -q
+
+# 2. Read transfer report
+cat commons_sentience_sim/output/reality_audit/benchmark_transfer_report.json
+
+# 3. Read experiment plan
+cat docs/FIRST_REAL_EXPERIMENT_PLAN.md
+
+# 4. Start Experiment 1 (next session)
+# Build ingestion adapter for Fermi-LAT GRB timing data:
+#   reality_audit/adapters/fermi_lat_grb_adapter.py
+# Then run mock dry run, freeze analysis plan, fetch public data.
+```
+
+**Do NOT fetch real data until:**
+- [ ] `python -m pytest tests/ -q` shows 0 failures
+- [ ] Analysis plan written and frozen in ExperimentRegistry
+- [ ] Ingestion adapter built and tested on synthetic data
+- [ ] Full dry run passes (recovery + null retention both verified)

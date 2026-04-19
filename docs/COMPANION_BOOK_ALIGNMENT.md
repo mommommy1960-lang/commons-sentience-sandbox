@@ -1,0 +1,178 @@
+# Companion Book Alignment
+
+> **Date:** 2026-04-19  
+> **Repository:** commons-sentience-sandbox  
+> **Branch:** main  
+> **Status:** Pre-physical-experiment phase — methodology and benchmark validation complete
+
+---
+
+## 1. Where the Project Currently Sits in the Companion Roadmap
+
+The companion book describes a multi-year research programme progressing through:
+
+```
+Year 0: Conceptual framing + probe design
+Year 1: Simulation validation + software infrastructure + pre-experiment methodology
+Year 2: Experiment 1 — data-analysis-only program (public datasets)
+Year 3: Experiment 2 — optical-cavity hardware
+Year 4: Experiment 3 — interferometer hardware
+Year 5+: Experiment 4 — mesoscopic coherence lab
+```
+
+**Current position: Late Year 1.**
+
+All Year 1 methodology work described in the companion is now implemented and tested. The project is **at the transition point** from simulation/validation into real-data work. No physical experiments have been run. No real public datasets have been ingested.
+
+---
+
+## 2. Completed Repo Modules — Year 1 Methods Work
+
+The following modules directly implement the Year 1 methods described in the companion book.
+
+### 2.1 Audit Framework (Stages 1–4)
+
+| Companion section | Repo module | Status |
+|---|---|---|
+| Probe design — passive, non-perturbing | `reality_audit/adapters/sim_probe.py` | ✅ Complete |
+| Agent behavioral audit methodology | `reality_audit/` (full framework) | ✅ Complete |
+| Governance condition ablation | `reality_audit/analysis/aggregate_experiments.py` | ✅ Complete |
+| Metric trust ranking | `reality_audit/analysis/update_metric_trust.py` | ✅ Complete |
+| Long-horizon stability testing | `reality_audit/benchmarks/` + Stage 6 suite | ✅ Complete |
+| Probe-impact validation (Stage 6) | `reality_audit/analysis/plot_stage6.py` + reports | ✅ Complete |
+
+### 2.2 Classical and Quantum Benchmarks (Stage 5)
+
+| Companion section | Repo module | Status |
+|---|---|---|
+| Wave double-slit benchmark | `reality_audit/benchmarks/double_slit.py` | ✅ Complete |
+| Quantum double-slit with decoherence | `reality_audit/benchmarks/quantum_double_slit.py` | ✅ Complete |
+| Entangled which-path / eraser | `reality_audit/benchmarks/advanced_quantum_double_slit.py` | ✅ Complete |
+| Complementarity V² + D² = 1 | `reality_audit/analysis/advanced_quantum_metrics.py` | ✅ Complete |
+| 100-run stability validation | `reality_audit/benchmarks/advanced_quantum_runner.py` | ✅ Complete |
+
+**Test count:** 720/720 passing.
+
+### 2.3 Real-Data Analysis Readiness Layer (Year 1 — final phase)
+
+| Companion section | Repo module | Status |
+|---|---|---|
+| Pre-analysis plan discipline | `reality_audit/data_analysis/experiment_registry.py` | ✅ Complete |
+| Null model library | `reality_audit/data_analysis/null_models.py` | ✅ Complete |
+| Signal injection framework | `reality_audit/data_analysis/signal_injection.py` | ✅ Complete |
+| Blinding protocol | `reality_audit/data_analysis/blinding.py` | ✅ Complete |
+| Structured reporting | `reality_audit/data_analysis/reporting.py` | ✅ Complete |
+| Cosmic-ray anisotropy mock pipeline | `reality_audit/data_analysis/mock_cosmic_ray_pipeline.py` | ✅ Complete |
+| Timing-delay mock pipeline | `reality_audit/data_analysis/mock_timing_pipeline.py` | ✅ Complete |
+| Benchmark-to-method transfer audit | `reality_audit/analysis/benchmark_transfer.py` | ✅ Complete |
+
+---
+
+## 3. Companion Experiments — Future Work Status
+
+### Experiment 1 — Data-Analysis-Only Program (Year 2)
+
+**Target:** Public cosmic-ray, astrophysical timing, or CMB datasets.  
+**Status:** Architecture ready. Ingestion adapters not yet built. No real data fetched.  
+**What was built this session:** Mock pipelines, experiment registry, blinding layer — the full structural skeleton.  
+**What remains:** Ingestion adapter for real dataset; real-data dry run; analysis plan sign-off.
+
+See: [docs/FIRST_REAL_EXPERIMENT_PLAN.md](FIRST_REAL_EXPERIMENT_PLAN.md)
+
+---
+
+### Experiment 2 — Optical-Cavity Hardware (Year 3)
+
+**Status:** Not started.  
+**Prerequisite:** Experiment 1 complete and reviewed. Hardware procurement not begun.  
+**Companion requirement:** Coherence measurement protocol; cavity characterisation; integration with audit framework.  
+**Repo work needed:** Hardware adapter; cavity simulation benchmark; alignment with blinding protocol.
+
+---
+
+### Experiment 3 — Interferometer Hardware (Year 4)
+
+**Status:** Not started.  
+**Prerequisite:** Experiments 1 and 2 reviewed.  
+**Companion requirement:** Phase-sensitive measurement; vibration isolation characterisation; full blind analysis plan.  
+**Repo work needed:** Interferometer simulation benchmark; signal-extraction module; cross-channel blinding.
+
+---
+
+### Experiment 4 — Mesoscopic Coherence Lab (Year 5+)
+
+**Status:** Conceptual — not started.  
+**Prerequisite:** All prior experiments reviewed and published.  
+**Companion requirement:** Full quantum-state characterisation; advanced decoherence modelling.  
+**Repo work needed:** Extensions to advanced quantum benchmark; hardware-in-the-loop adapter.
+
+---
+
+## 4. What Is Needed Before Each Experiment
+
+### Before Experiment 1 (real data-analysis-only)
+
+- [ ] Choose first real dataset (Auger, Fermi-LAT, or Planck — see FIRST_REAL_EXPERIMENT_PLAN.md)
+- [ ] Write and sign off formal analysis plan (freeze before data access)
+- [ ] Build ingestion adapter in `reality_audit/adapters/`
+- [ ] Run full dry-run on synthetic data matching real-dataset format
+- [ ] Confirm all mock-pipeline tests pass
+- [ ] Obtain and stage public dataset (read-only)
+- [ ] Run analysis; report via ReportWriter
+- [ ] Unblind; document in registry
+
+### Before Experiment 2 (optical-cavity hardware)
+
+- [ ] Experiment 1 reviewed internally
+- [ ] Hardware specification finalized
+- [ ] Cavity simulation benchmark implemented
+- [ ] Probe-is-read-only contract extended to hardware interface
+
+### Before Experiment 3 (interferometer)
+
+- [ ] Experiments 1–2 reviewed
+- [ ] Phase-measurement pipeline implemented and validated
+- [ ] Noise floor characterised
+
+### Before Experiment 4 (mesoscopic)
+
+- [ ] All prior experiments reviewed
+- [ ] Advanced decoherence model validated against hardware data
+- [ ] Full quantum state tomography pipeline
+
+---
+
+## 5. Explicit Framing — What This Repo Work Is and Is Not
+
+### What this repo work IS
+
+- A rigorous software methodology built before touching real data
+- Benchmark-validated analysis infrastructure
+- A documented audit trail of design decisions
+- A reproducible foundation for future experiments
+
+### What this repo work IS NOT
+
+- A physical experiment
+- A real-data analysis
+- Evidence for or against any physical hypothesis
+- A replacement for the hardware experiments described in the companion
+
+**The benchmark results (e.g. AUDIT_PASSED for advanced quantum double-slit) are**
+**statements about the software pipeline, not about physical reality.**  
+They confirm that the analysis tools behave correctly on synthetic data with known ground truth.  
+They do not confirm any hypothesis about the physical world.
+
+This distinction must be maintained in all publications and communications.
+
+---
+
+## 6. Quick Reference — Current Outputs
+
+| Output | Path |
+|---|---|
+| Advanced quantum audit | `commons_sentience_sim/output/reality_audit/advanced_quantum_double_slit/audit_summary.json` |
+| Stage 6 probe-impact report | `commons_sentience_sim/output/reality_audit/stage6_probe_impact_report.json` |
+| Metric trust update | `commons_sentience_sim/output/reality_audit/metric_trust_update_report.json` |
+| Benchmark transfer report | `commons_sentience_sim/output/reality_audit/benchmark_transfer_report.json` |
+| Experiment registry (default) | Built in memory via `build_default_registry()` |

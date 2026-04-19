@@ -1,0 +1,35 @@
+{
+  "experiment": "timing_delay_mock",
+  "blinded": false,
+  "written_at": "2026-04-19T23:15:00.766132Z",
+  "results": {
+    "experiment": "astrophysical_timing_delay_v1_mock",
+    "n_events": 2000,
+    "inject_signal": false,
+    "injection": {
+      "type": "none",
+      "injection_strength": 0.0
+    },
+    "primary_statistic": "timing_slope_s_per_GeV_per_Mpc",
+    "observed_slope": 7.037154098207993e-10,
+    "null_mean_slope": 1.815333063912129e-10,
+    "null_std_slope": 5.051421743720926e-10,
+    "p_value": 0.206,
+    "z_score": 1.033732936828478,
+    "detection_claimed": false,
+    "null_retained": true,
+    "n_permutations": 500,
+    "recovery_test": {
+      "injection_strength": 1.0,
+      "true_delay_slope": 0.0005,
+      "observed_slope": 0.000499999279061548,
+      "p_value": 0.0,
+      "recovered": true
+    },
+    "seed": 42,
+    "status": "mock_dry_run",
+    "_blinding_status": "unblinded",
+    "_freeze_reason": "Mock pipeline: immediate unblind for validation.",
+    "_freeze_timestamp": "2026-04-19T23:15:00.766113Z"
+  }
+}
