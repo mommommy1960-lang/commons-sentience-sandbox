@@ -1,0 +1,31 @@
+{
+  "experiment": "dry_run_fermi_lat",
+  "written_at": "2026-04-19T23:38:37.226637Z",
+  "files": [
+    {
+      "file": "commons_sentience_sim/output/reality_audit/dry_run_timing/dry_run_fermi_lat_blinded_summary.json",
+      "description": "JSON blinded summary",
+      "written_at": "2026-04-19T23:38:37.225721Z"
+    },
+    {
+      "file": "commons_sentience_sim/output/reality_audit/dry_run_timing/dry_run_fermi_lat_blinded_methods_summary.md",
+      "description": "Markdown blinded methods summary",
+      "written_at": "2026-04-19T23:38:37.225962Z"
+    },
+    {
+      "file": "commons_sentience_sim/output/reality_audit/dry_run_timing/dry_run_fermi_lat_unblinded_summary.json",
+      "description": "JSON unblinded summary",
+      "written_at": "2026-04-19T23:38:37.226242Z"
+    },
+    {
+      "file": "commons_sentience_sim/output/reality_audit/dry_run_timing/dry_run_fermi_lat_unblinded_methods_summary.md",
+      "description": "Markdown unblinded methods summary",
+      "written_at": "2026-04-19T23:38:37.226471Z"
+    },
+    {
+      "file": "commons_sentience_sim/output/reality_audit/dry_run_timing/dry_run_fermi_lat_results.csv",
+      "description": "CSV result row",
+      "written_at": "2026-04-19T23:38:37.226621Z"
+    }
+  ]
+}
