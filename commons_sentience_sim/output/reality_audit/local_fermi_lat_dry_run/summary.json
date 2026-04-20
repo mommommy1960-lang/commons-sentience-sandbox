@@ -1,0 +1,21 @@
+{
+  "experiment": "local_fermi_lat_dry_run_v1",
+  "source_file": "/workspaces/commons-sentience-sandbox/data/sample_fermi_lat_grb_events.csv",
+  "n_events": 50,
+  "n_sources": 5,
+  "n_dropped": 0,
+  "observed_slope": 4.566571529623276e-06,
+  "p_value": 0.0,
+  "z_score": 4.122032468490353,
+  "null_retained": false,
+  "detection_claimed": true,
+  "recovery_test": {
+    "injection_strength": 1.0,
+    "true_delay_slope": 0.0005,
+    "observed_slope_with_injection": 0.0005045665715296232,
+    "p_value": 0.0,
+    "recovered": true
+  },
+  "note": "First true local data ingest dry run. Sample data is synthetic-but-realistic; no real public FITS data ingested. Null retained result is expected and correct.",
+  "statistical_caveat": "CAUTION: sample dataset has only 50 events across 5 GRBs. Random fluctuations at this scale can produce any p-value. Any slope or p-value result here is NOT a scientific claim. This run proves infrastructure works end-to-end only."
+}

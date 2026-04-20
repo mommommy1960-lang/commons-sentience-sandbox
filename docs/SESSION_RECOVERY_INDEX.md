@@ -104,7 +104,10 @@ Key subdirectories:
 | `test_advanced_quantum_runner.py` | 14 |
 | `test_advanced_quantum_audit.py` | 14 |
 | `test_plot_advanced_quantum.py` | 12 |
-| **Total** | **720** |
+| Real-data analysis readiness | 82 |
+| Fermi-LAT adapter + real pipeline | 39 |
+| `test_sample_data_ingest.py` | 37 |
+| **Total** | **890** |
 
 Run all tests:
 ```bash
@@ -118,29 +121,48 @@ python -m pytest tests/ -q
 
 | Hash | Message |
 |---|---|
+| current | Add local sample data ingest test and Fermi-LAT public-data analysis plan |
+| `7288717` | Add Fermi-LAT GRB adapter, real timing pipeline, and dry-run output (832 tests passing) |
+| `e35b6cf` | Add real-data analysis readiness layer and companion-book alignment docs |
 | `63575ca` | FULL SESSION SNAPSHOT — Stage 5 quantum benchmarks + Stage 6 readiness layer |
 | `5d222a7` | Add advanced quantum double-slit benchmark with which-path detection and 100-run validation |
-| `376e736` | Add quantum double-slit benchmark with decoherence and audit integration |
-| `17cb26f` | Add double-slit benchmark for observer-sensitive audit validation |
-| `76bd8a7` | Stage 6 probe impact test |
 
 ---
 
-## 6. Next Step — Real-Data Analysis Pipelines (Experiment 1)
+## 6. Current Position — Experiment 1, Phase 4 Complete
 
-The framework is ready for real-data ingestion. The next session should:
+As of 2026-04-19, the project has completed Phase 4 (local-sample dry run) of Experiment 1.
 
-1. **Define Experiment 1:** choose a public dataset (e.g. EEG, fMRI, behavioural time-series)
-2. **Build ingestion adapter** in `reality_audit/adapters/` that reads the dataset and emits the standard campaign format
-3. **Wire to audit pipeline:** reuse `reality_audit/analysis/aggregate_experiments.py` and audit modules
-4. **Validate with mock data first** (utilities in `reality_audit/benchmarks/` for reference)
-5. **Register findings** in `commons_sentience_sim/output/reality_audit/findings_ranked.json`
+**Files added this session:**
+- `data/sample_fermi_lat_grb_events.csv` — 50-event synthetic-but-realistic local sample (5 GRBs, randomized energy/time)
+- `docs/SAMPLE_DATA_SCHEMA.md` — schema documentation for sample file
+- `tests/test_sample_data_ingest.py` — 37 tests covering load, normalization, grouping, pipeline compatibility
+- `reality_audit/data_analysis/run_local_fermi_lat_dry_run.py` — end-to-end local dry-run script
+- `docs/FERMI_LAT_PUBLIC_DATA_PLAN.md` — full planning document for first real public-data analysis
 
-The mock pipeline scaffolding lives in `reality_audit/` — extend, don't replace.
+Dry-run outputs written to:
+`commons_sentience_sim/output/reality_audit/local_fermi_lat_dry_run/`
+
+**Phase 5 (first real public-data analysis) has NOT started.**
 
 ---
 
-## 7. Quick Recovery Checklist (New Session)
+## 7. Next Step — Phase 5: First Real Public-Data Analysis
+
+The framework is ready for real Fermi-LAT FITS ingestion. The next session should:
+
+1. **Register formal analysis plan** in `experiment_registry.py` (before touching real data)
+2. **Download a single real GRB event file** from the Fermi FSSC (e.g. GRB080916C LAT data)
+3. **Ingest through `fermi_lat_grb_adapter.py`** with `column_map` override for FITS-derived column names
+4. **Run blinded pipeline** (`freeze_immediately=False`)
+5. **Check systematics** per `docs/FERMI_LAT_PUBLIC_DATA_PLAN.md §9`
+6. **Unblind** only after all checks pass
+
+See: [docs/FERMI_LAT_PUBLIC_DATA_PLAN.md](FERMI_LAT_PUBLIC_DATA_PLAN.md)
+
+---
+
+## 8. Quick Recovery Checklist (New Session)
 
 ```bash
 # 1. Confirm branch and commit
@@ -148,6 +170,23 @@ git log --oneline -5
 
 # 2. Confirm tests still pass
 python -m pytest tests/ -q
+
+# 3. Read this file
+cat docs/SESSION_RECOVERY_INDEX.md
+
+# 4. Read the public-data plan
+cat docs/FERMI_LAT_PUBLIC_DATA_PLAN.md
+
+# 5. See the local dry-run results
+cat commons_sentience_sim/output/reality_audit/local_fermi_lat_dry_run/summary.json
+```
+
+**Restart command for Phase 5:**
+```
+Continue Experiment 1 Phase 5: ingest the first real Fermi-LAT GRB event file
+following the plan in docs/FERMI_LAT_PUBLIC_DATA_PLAN.md.
+Register the analysis plan first, then ingest, then run blinded pipeline.
+```
 
 # 3. Read this file
 cat docs/SESSION_RECOVERY_INDEX.md
@@ -229,16 +268,8 @@ python -m pytest tests/ -q
 cat commons_sentience_sim/output/reality_audit/benchmark_transfer_report.json
 
 # 3. Read experiment plan
-cat docs/FIRST_REAL_EXPERIMENT_PLAN.md
+cat docs/FERMI_LAT_PUBLIC_DATA_PLAN.md
 
-# 4. Start Experiment 1 (next session)
-# Build ingestion adapter for Fermi-LAT GRB timing data:
-#   reality_audit/adapters/fermi_lat_grb_adapter.py
-# Then run mock dry run, freeze analysis plan, fetch public data.
+# 4. See local dry-run results
+cat commons_sentience_sim/output/reality_audit/local_fermi_lat_dry_run/summary.json
 ```
-
-**Do NOT fetch real data until:**
-- [ ] `python -m pytest tests/ -q` shows 0 failures
-- [ ] Analysis plan written and frozen in ExperimentRegistry
-- [ ] Ingestion adapter built and tested on synthetic data
-- [ ] Full dry run passes (recovery + null retention both verified)

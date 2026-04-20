@@ -1,0 +1,43 @@
+{
+  "experiment": "local_fermi_lat_dry_run_v1_unblinded",
+  "blinded": false,
+  "written_at": "2026-04-19T23:54:08.718796Z",
+  "results": {
+    "experiment": "local_fermi_lat_dry_run_v1_unblinded",
+    "data_source": "/workspaces/commons-sentience-sandbox/data/sample_fermi_lat_grb_events.csv",
+    "n_events": 50,
+    "n_sources": 5,
+    "has_distance": true,
+    "primary_statistic": "timing_slope_s_per_GeV_per_Mpc",
+    "observed_slope": 4.566571529623276e-06,
+    "null_mean_slope": 2.74909415308706e-07,
+    "null_std_slope": 1.0411519431544754e-06,
+    "p_value": 0.0,
+    "z_score": 4.122032468490353,
+    "detection_claimed": true,
+    "null_retained": false,
+    "n_permutations": 500,
+    "recovery_test": {
+      "injection_strength": 1.0,
+      "true_delay_slope": 0.0005,
+      "observed_slope_with_injection": 0.0005045665715296232,
+      "p_value": 0.0,
+      "recovered": true
+    },
+    "seed": 42,
+    "status": "real_data_run",
+    "metadata": {
+      "n_events": 50,
+      "n_sources": 5,
+      "n_dropped": 0,
+      "energy_unit_in": "GeV",
+      "time_unit_in": "s",
+      "has_distance": true,
+      "source_file": "/workspaces/commons-sentience-sandbox/data/sample_fermi_lat_grb_events.csv",
+      "schema_version": "1.0"
+    },
+    "_blinding_status": "unblinded",
+    "_freeze_reason": "Immediate unblind requested (dry-run / validation mode).",
+    "_freeze_timestamp": "2026-04-19T23:54:08.718778Z"
+  }
+}

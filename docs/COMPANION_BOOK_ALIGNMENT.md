@@ -176,3 +176,64 @@ This distinction must be maintained in all publications and communications.
 | Metric trust update | `commons_sentience_sim/output/reality_audit/metric_trust_update_report.json` |
 | Benchmark transfer report | `commons_sentience_sim/output/reality_audit/benchmark_transfer_report.json` |
 | Experiment registry (default) | Built in memory via `build_default_registry()` |
+| Local Fermi-LAT dry run | `commons_sentience_sim/output/reality_audit/local_fermi_lat_dry_run/` |
+| Prior dry-run timing outputs | `commons_sentience_sim/output/reality_audit/dry_run_timing/` |
+
+---
+
+## 7. Current Exact Position on the Roadmap
+
+> **Last updated:** 2026-04-19
+
+### Programme track: Data-analysis-only (Year 2, Experiment 1)
+
+We are partway through **Experiment 1, transitioning from Phase 3 readiness into Phase 4 local-sample validation**. The exact position is:
+
+```
+EXPERIMENT 1 — GRB TIMING-DELAY ANALYSIS (Fermi-LAT, public data)
+
+  Phase 1 — Hypothesis definition              ✅ complete
+  Phase 2 — Null model design                  ✅ complete
+  Phase 3 — Infrastructure readiness           ✅ complete
+    ├─ Signal injection framework              ✅
+    ├─ Blinding protocol                       ✅
+    ├─ Structured reporting                    ✅
+    ├─ Mock cosmic-ray pipeline                ✅
+    ├─ Mock timing-delay pipeline              ✅
+    ├─ Fermi-LAT adapter (fermi_lat_grb_adapter.py)  ✅
+    ├─ Real timing pipeline (real_timing_pipeline.py) ✅
+    └─ Benchmark-to-method transfer audit      ✅
+  Phase 4 — Local-sample dry run               ✅ complete (this session)
+    ├─ Sample dataset (data/sample_fermi_lat_grb_events.csv)  ✅
+    ├─ Schema documentation (docs/SAMPLE_DATA_SCHEMA.md)      ✅
+    ├─ Sample ingest tests (tests/test_sample_data_ingest.py)  ✅
+    ├─ Local end-to-end dry run script          ✅
+    └─ Dry-run outputs generated                ✅
+  Phase 5 — First real public-data analysis    ⬜ NOT STARTED
+    ├─ Download real Fermi-LAT FITS files       ⬜
+    ├─ Register formal analysis plan            ⬜
+    ├─ Ingest real event catalog                ⬜
+    └─ Unblind and report                       ⬜
+```
+
+### What has NOT happened
+
+- ❌ No real Fermi-LAT FITS data has been fetched or read
+- ❌ No discovery or exclusion claim has been made
+- ❌ No hardware has been involved
+- ❌ The sandbox has not been rewritten or restructured
+- ❌ No benchmark benchmark success has been overclaimed as physical proof
+
+### What we are about to enter
+
+The next session should begin **Phase 5: first real public-data analysis**,
+following the plan in [docs/FERMI_LAT_PUBLIC_DATA_PLAN.md](FERMI_LAT_PUBLIC_DATA_PLAN.md).
+The first step is registering the formal analysis plan in `experiment_registry.py`
+and then downloading a single GRB event file from the Fermi FSSC.
+
+### No steps have been skipped
+
+The progression follows the companion-book sequence exactly:
+- conceptual framing → simulation validation → software infrastructure
+  → pre-analysis methodology → local dry-run → real data access
+Each phase was committed before the next was begun.

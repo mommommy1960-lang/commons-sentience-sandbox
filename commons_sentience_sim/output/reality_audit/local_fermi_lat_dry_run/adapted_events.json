@@ -1,0 +1,101 @@
+{
+  "metadata": {
+    "n_events": 50,
+    "n_sources": 5,
+    "n_dropped": 0,
+    "energy_unit_in": "GeV",
+    "time_unit_in": "s",
+    "has_distance": true,
+    "source_file": "/workspaces/commons-sentience-sandbox/data/sample_fermi_lat_grb_events.csv",
+    "schema_version": "1.0"
+  },
+  "events_first_10": [
+    {
+      "event_id": "EVT_002",
+      "energy": 8.6272,
+      "time": 0.0,
+      "source": "GRB080916C",
+      "redshift": 4.35,
+      "distance_Mpc": 61433.42359050444
+    },
+    {
+      "event_id": "EVT_006",
+      "energy": 1.0151,
+      "time": 0.2924,
+      "source": "GRB080916C",
+      "redshift": 4.35,
+      "distance_Mpc": 61433.42359050444
+    },
+    {
+      "event_id": "EVT_001",
+      "energy": 4.3422,
+      "time": 1.2546000000000002,
+      "source": "GRB080916C",
+      "redshift": 4.35,
+      "distance_Mpc": 61433.42359050444
+    },
+    {
+      "event_id": "EVT_008",
+      "energy": 1.7218,
+      "time": 2.4128,
+      "source": "GRB080916C",
+      "redshift": 4.35,
+      "distance_Mpc": 61433.42359050444
+    },
+    {
+      "event_id": "EVT_003",
+      "energy": 7.1201,
+      "time": 4.692,
+      "source": "GRB080916C",
+      "redshift": 4.35,
+      "distance_Mpc": 61433.42359050444
+    },
+    {
+      "event_id": "EVT_010",
+      "energy": 7.66,
+      "time": 5.1879,
+      "source": "GRB080916C",
+      "redshift": 4.35,
+      "distance_Mpc": 61433.42359050444
+    },
+    {
+      "event_id": "EVT_005",
+      "energy": 0.5912,
+      "time": 5.7793,
+      "source": "GRB080916C",
+      "redshift": 4.35,
+      "distance_Mpc": 61433.42359050444
+    },
+    {
+      "event_id": "EVT_004",
+      "energy": 0.8598,
+      "time": 6.96,
+      "source": "GRB080916C",
+      "redshift": 4.35,
+      "distance_Mpc": 61433.42359050444
+    },
+    {
+      "event_id": "EVT_007",
+      "energy": 5.6612,
+      "time": 12.070599999999999,
+      "source": "GRB080916C",
+      "redshift": 4.35,
+      "distance_Mpc": 61433.42359050444
+    },
+    {
+      "event_id": "EVT_009",
+      "energy": 8.3194,
+      "time": 14.004299999999999,
+      "source": "GRB080916C",
+      "redshift": 4.35,
+      "distance_Mpc": 61433.42359050444
+    }
+  ],
+  "by_source_names": [
+    "GRB080916C",
+    "GRB090510",
+    "GRB090902B",
+    "GRB130427A",
+    "GRB160509A"
+  ]
+}

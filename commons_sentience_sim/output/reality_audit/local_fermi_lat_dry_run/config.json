@@ -1,0 +1,11 @@
+{
+  "experiment_name": "local_fermi_lat_dry_run_v1",
+  "source_file": "/workspaces/commons-sentience-sandbox/data/sample_fermi_lat_grb_events.csv",
+  "energy_unit": "GeV",
+  "time_unit": "s",
+  "n_permutations": 500,
+  "seed": 42,
+  "recovery_true_slope": 0.0005,
+  "output_dir": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/local_fermi_lat_dry_run",
+  "note": "First true local data ingest dry run. Sample data is synthetic-but-realistic; no real public FITS data ingested. Null retained result is expected and correct."
+}

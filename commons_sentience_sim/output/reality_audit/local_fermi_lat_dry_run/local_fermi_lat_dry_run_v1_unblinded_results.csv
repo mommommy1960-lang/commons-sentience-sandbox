@@ -1,0 +1,4 @@
+experiment,n_events,observed_slope,p_value,z_score,detection_claimed,null_retained
+local_fermi_lat_dry_run_v1_unblinded,50,1.0353298226661616e-05,0.0,5.260847946523146,True,False
+local_fermi_lat_dry_run_v1_unblinded,50,4.566571529623276e-06,0.0,4.122032468490353,True,False
+local_fermi_lat_dry_run_v1_unblinded,50,4.566571529623276e-06,0.0,4.122032468490353,True,False
