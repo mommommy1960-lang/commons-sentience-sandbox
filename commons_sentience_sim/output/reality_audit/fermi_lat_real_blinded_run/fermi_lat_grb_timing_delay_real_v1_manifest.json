@@ -1,0 +1,16 @@
+{
+  "experiment": "fermi_lat_grb_timing_delay_real_v1",
+  "written_at": "2026-04-20T00:37:09.948159Z",
+  "files": [
+    {
+      "file": "commons_sentience_sim/output/reality_audit/fermi_lat_real_blinded_run/fermi_lat_grb_timing_delay_real_v1_blinded_summary.json",
+      "description": "JSON blinded summary",
+      "written_at": "2026-04-20T00:37:09.947934Z"
+    },
+    {
+      "file": "commons_sentience_sim/output/reality_audit/fermi_lat_real_blinded_run/fermi_lat_grb_timing_delay_real_v1_blinded_methods_summary.md",
+      "description": "Markdown blinded methods summary",
+      "written_at": "2026-04-20T00:37:09.948142Z"
+    }
+  ]
+}
