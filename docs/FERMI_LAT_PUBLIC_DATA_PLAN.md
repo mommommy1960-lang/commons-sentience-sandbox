@@ -176,7 +176,86 @@ Document if multiple signal models are tested (subluminal + superluminal both).
 | Registry entry | Optional | Mandatory before first data load |
 | Code frozen | Not required | Required; commit hash recorded |
 
-**Current state (2026-04-19):** Still in dry-run phase. Real FITS ingestion not yet started.
+**Current state (2026-04-20):** Local dry-run complete. Registration and blinded ingest workflow implemented. Real FITS ingestion not yet started.
+
+---
+
+## 11. Phase 5 Transition: Local Dry-Run → Real-Data Ingest
+
+> **Updated 2026-04-20 — Phase 5 preparation complete**
+
+### 11.1 Transition Checklist
+
+| Step | Status |
+|---|---|
+| Local sample dry-run complete | ✅ committed `3457f42` |
+| Analysis registration frozen | ✅ `fermi_lat_real_analysis_registration.json` committed |
+| Blinded ingest workflow built and tested | ✅ `run_fermi_lat_real_blinded.py` + 24 tests |
+| QC/unblinding rules documented | ✅ `docs/FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md` |
+| Real public file downloaded | ❌ NOT YET |
+| Pipeline run on real data | ❌ NOT YET |
+| Unblinding approved | ❌ NOT YET |
+
+### 11.2 Minimum Viable File Package
+
+Before running the blinded analysis, the following files must be present locally:
+
+```
+data/real/
+  <GRB_NAME>_events.csv   (or .json / .fits.csv)
+  for each GRB in: GRB080916C, GRB090902B, GRB090510, GRB130427A, GRB160509A
+  OR any ≥ 3 GRBs with known spectroscopic redshift
+```
+
+Required columns (any naming convention; adapter auto-maps or use `column_map`):
+- `event_id`, `source_id`, `photon_energy`, `arrival_time`, `redshift`
+
+Minimum: 20 events total across ≥ 3 GRBs with redshift.
+
+### 11.3 Exact Blinding Sequence
+
+```
+Step A: python reality_audit/data_analysis/register_fermi_lat_real_analysis.py
+        → writes fermi_lat_real_analysis_registration.json
+        → COMMIT this file before touching any real data
+
+Step B: [Download real Fermi-LAT event file(s) to data/real/]
+
+Step C: python reality_audit/data_analysis/run_fermi_lat_real_blinded.py \
+            --source data/real/grb_events.csv \
+            --registration commons_sentience_sim/output/reality_audit/fermi_lat_real_analysis_registration.json \
+            --output commons_sentience_sim/output/reality_audit/fermi_lat_real_blinded_run/
+        → writes blinded_summary.json (signal keys = "BLINDED")
+        → writes quality_control_report.json
+        → writes run_manifest.json
+        → does NOT unblind automatically
+
+Step D: Review quality_control_report.json
+        → Verify all QC gates in FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md §3 pass
+
+Step E: [Human sign-off documented in docs/UNBLINDING_APPROVAL.md]
+
+Step F: [Run dedicated unblinding script — to be built in Phase 6]
+```
+
+### 11.4 Stopping Rules if Ingest Is Insufficient
+
+| Condition | Runner behaviour |
+|---|---|
+| File not found | `FileNotFoundError` immediately |
+| Registration not found | `BlindedRunError` immediately |
+| Fewer than 20 events after QC | `blinded_summary["status"] = "BLOCKED"` |
+| Fewer than 3 sources with redshift | `blinded_summary["status"] = "BLOCKED"` |
+| Drop rate > 20% | `blinded_summary["status"] = "BLOCKED"` |
+| Energy unit implausible | Stopping rule triggered; BLOCKED |
+
+In all blocked cases: `run_ok=False`, `analysis_ran=False`, no signal values written.
+
+### 11.5 Conditions Required Before Unblinding
+
+See full checklist in [docs/FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md](FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md) §3.
+
+Summary: all 9 unblinding gates (U1–U9) must pass AND explicit human approval must be documented before any signal statistics are examined.
 
 ---
 

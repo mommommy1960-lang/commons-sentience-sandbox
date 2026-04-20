@@ -143,22 +143,34 @@ As of 2026-04-19, the project has completed Phase 4 (local-sample dry run) of Ex
 Dry-run outputs written to:
 `commons_sentience_sim/output/reality_audit/local_fermi_lat_dry_run/`
 
-**Phase 5 (first real public-data analysis) has NOT started.**
+**Phase 5 preparation is COMPLETE. Real data ingest has NOT yet run.**
+
+New files added in Phase 5 preparation:
+- `reality_audit/data_analysis/register_fermi_lat_real_analysis.py` — frozen registration
+- `reality_audit/adapters/fermi_lat_public_ingest.py` — strict ingest layer (28 tests)
+- `reality_audit/data_analysis/run_fermi_lat_real_blinded.py` — blinded runner (24 tests)
+- `docs/FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md` — 9 QC gates + unblinding conditions
+- `commons_sentience_sim/output/reality_audit/fermi_lat_real_analysis_registration.json`
 
 ---
 
-## 7. Next Step — Phase 5: First Real Public-Data Analysis
+## 7. Next Step — Phase 6: First Real File Download and Blinded Run
 
-The framework is ready for real Fermi-LAT FITS ingestion. The next session should:
+The registration is frozen and the blinded runner is ready. The next session should:
 
-1. **Register formal analysis plan** in `experiment_registry.py` (before touching real data)
-2. **Download a single real GRB event file** from the Fermi FSSC (e.g. GRB080916C LAT data)
-3. **Ingest through `fermi_lat_grb_adapter.py`** with `column_map` override for FITS-derived column names
-4. **Run blinded pipeline** (`freeze_immediately=False`)
-5. **Check systematics** per `docs/FERMI_LAT_PUBLIC_DATA_PLAN.md §9`
-6. **Unblind** only after all checks pass
+1. **Download a real Fermi-LAT GRB event CSV** for ≥ 3 GRBs with known redshift
+2. **Place in `data/real/`**
+3. **Run the blinded pipeline:**
+   ```bash
+   python reality_audit/data_analysis/run_fermi_lat_real_blinded.py \
+     --source data/real/<file>.csv \
+     --registration commons_sentience_sim/output/reality_audit/fermi_lat_real_analysis_registration.json
+   ```
+4. **Review `quality_control_report.json`** — all 9 QC gates must pass
+5. **Document human sign-off** before any unblinding
 
-See: [docs/FERMI_LAT_PUBLIC_DATA_PLAN.md](FERMI_LAT_PUBLIC_DATA_PLAN.md)
+See: [docs/FERMI_LAT_PUBLIC_DATA_PLAN.md §11.3](FERMI_LAT_PUBLIC_DATA_PLAN.md)
+See: [docs/FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md](FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md)
 
 ---
 
@@ -177,15 +189,18 @@ cat docs/SESSION_RECOVERY_INDEX.md
 # 4. Read the public-data plan
 cat docs/FERMI_LAT_PUBLIC_DATA_PLAN.md
 
-# 5. See the local dry-run results
-cat commons_sentience_sim/output/reality_audit/local_fermi_lat_dry_run/summary.json
+# 5. Check registration JSON
+cat commons_sentience_sim/output/reality_audit/fermi_lat_real_analysis_registration.json
 ```
 
-**Restart command for Phase 5:**
+**Restart command for Phase 6:**
 ```
-Continue Experiment 1 Phase 5: ingest the first real Fermi-LAT GRB event file
-following the plan in docs/FERMI_LAT_PUBLIC_DATA_PLAN.md.
-Register the analysis plan first, then ingest, then run blinded pipeline.
+Continue Experiment 1 Phase 6: download a real Fermi-LAT GRB event CSV (≥3 GRBs
+with known redshift), place in data/real/, and run the blinded pipeline with
+  python reality_audit/data_analysis/run_fermi_lat_real_blinded.py
+Review quality_control_report.json (all 9 QC gates must pass).
+See docs/FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md for exact unblinding conditions.
+Do NOT unblind without explicit human sign-off.
 ```
 
 # 3. Read this file

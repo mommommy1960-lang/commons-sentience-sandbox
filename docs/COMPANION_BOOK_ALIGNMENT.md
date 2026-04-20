@@ -203,17 +203,20 @@ EXPERIMENT 1 — GRB TIMING-DELAY ANALYSIS (Fermi-LAT, public data)
     ├─ Fermi-LAT adapter (fermi_lat_grb_adapter.py)  ✅
     ├─ Real timing pipeline (real_timing_pipeline.py) ✅
     └─ Benchmark-to-method transfer audit      ✅
-  Phase 4 — Local-sample dry run               ✅ complete (this session)
+  Phase 4 — Local-sample dry run               ✅ complete
     ├─ Sample dataset (data/sample_fermi_lat_grb_events.csv)  ✅
     ├─ Schema documentation (docs/SAMPLE_DATA_SCHEMA.md)      ✅
     ├─ Sample ingest tests (tests/test_sample_data_ingest.py)  ✅
     ├─ Local end-to-end dry run script          ✅
     └─ Dry-run outputs generated                ✅
-  Phase 5 — First real public-data analysis    ⬜ NOT STARTED
-    ├─ Download real Fermi-LAT FITS files       ⬜
-    ├─ Register formal analysis plan            ⬜
-    ├─ Ingest real event catalog                ⬜
-    └─ Unblind and report                       ⬜
+  Phase 5 — Real public-data analysis preparation  ✅ workflow ready; data NOT yet ingested
+    ├─ Formal analysis registration frozen      ✅ fermi_lat_real_analysis_registration.json
+    ├─ Strict public ingest layer               ✅ fermi_lat_public_ingest.py (28 tests)
+    ├─ Blinded real-data runner                 ✅ run_fermi_lat_real_blinded.py (24 tests)
+    ├─ QC and unblinding rules                  ✅ FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md
+    ├─ Download real Fermi-LAT data files       ⬜ NOT YET
+    ├─ Run blinded pipeline on real data        ⬜ NOT YET
+    └─ Human unblinding approval                ⬜ NOT YET
 ```
 
 ### What has NOT happened
@@ -222,18 +225,22 @@ EXPERIMENT 1 — GRB TIMING-DELAY ANALYSIS (Fermi-LAT, public data)
 - ❌ No discovery or exclusion claim has been made
 - ❌ No hardware has been involved
 - ❌ The sandbox has not been rewritten or restructured
-- ❌ No benchmark benchmark success has been overclaimed as physical proof
+- ❌ No benchmark success has been overclaimed as physical proof
+- ❌ The local dry-run p-value (synthetic data) has not been treated as science
 
 ### What we are about to enter
 
-The next session should begin **Phase 5: first real public-data analysis**,
-following the plan in [docs/FERMI_LAT_PUBLIC_DATA_PLAN.md](FERMI_LAT_PUBLIC_DATA_PLAN.md).
-The first step is registering the formal analysis plan in `experiment_registry.py`
-and then downloading a single GRB event file from the Fermi FSSC.
+The next immediate step is downloading real Fermi-LAT event data and running the
+blinded analysis with `run_fermi_lat_real_blinded.py`.  The registration is
+already frozen.  See [docs/FERMI_LAT_PUBLIC_DATA_PLAN.md §11](FERMI_LAT_PUBLIC_DATA_PLAN.md)
+for the exact blinding sequence.
 
 ### No steps have been skipped
 
 The progression follows the companion-book sequence exactly:
 - conceptual framing → simulation validation → software infrastructure
-  → pre-analysis methodology → local dry-run → real data access
+  → pre-analysis methodology → local dry-run
+  → registration + blinded ingest workflow → real data access
 Each phase was committed before the next was begun.
+True public-data analysis has NOT begun until a real file is successfully ingested.
+The local dry-run does not count as the public-data run.
