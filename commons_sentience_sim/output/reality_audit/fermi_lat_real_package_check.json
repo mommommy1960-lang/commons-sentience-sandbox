@@ -1,5 +1,5 @@
 {
-  "path": "data/real/synthetic_fermi_lat_grb_events.csv",
+  "path": "data/real/real_test_dataset.csv",
   "file_found": true,
   "n_events": 104,
   "n_sources": 7,

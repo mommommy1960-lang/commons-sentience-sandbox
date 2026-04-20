@@ -1,8 +1,29 @@
 {
-  "status": "WAITING",
-  "candidate": null,
-  "check_report": null,
-  "blinded_result": null,
+  "status": "COMPLETE",
+  "candidate": "data/real/real_test_dataset.csv",
+  "check_report": {
+    "path": "data/real/real_test_dataset.csv",
+    "file_found": true,
+    "n_events": 104,
+    "n_sources": 7,
+    "n_sources_with_redshift": 7,
+    "n_missing_redshift": 0,
+    "duplicate_fraction": 0.0,
+    "schema_valid": true,
+    "missing_columns": [],
+    "warnings": [],
+    "hard_failures": [],
+    "recommendation": "ACCEPT_FOR_BLINDED_RUN",
+    "output_path": "commons_sentience_sim/output/reality_audit/fermi_lat_real_package_check.json"
+  },
+  "blinded_result": {
+    "blinded_summary_path": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/fermi_lat_real_blinded_run/blinded_summary.json",
+    "run_manifest_path": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/fermi_lat_real_blinded_run/run_manifest.json",
+    "qc_report_path": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/fermi_lat_real_blinded_run/quality_control_report.json",
+    "ingest_complete": true,
+    "stop_reasons": [],
+    "run_ok": true
+  },
   "manifest_path": "commons_sentience_sim/output/reality_audit/first_real_ingest_manifest.json",
-  "message": "No real dataset detected. System ready for ingestion."
+  "message": "Blinded run completed successfully. Stop reasons: []. Unblinding requires explicit human approval."
 }
