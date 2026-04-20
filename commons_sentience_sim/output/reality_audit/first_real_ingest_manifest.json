@@ -1,0 +1,8 @@
+{
+  "status": "WAITING",
+  "candidate": null,
+  "check_report": null,
+  "blinded_result": null,
+  "manifest_path": "commons_sentience_sim/output/reality_audit/first_real_ingest_manifest.json",
+  "message": "No real dataset detected. System ready for ingestion."
+}
