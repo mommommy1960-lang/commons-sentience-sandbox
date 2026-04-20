@@ -146,7 +146,8 @@ def _canonical_column_map(
             "energy_tev", "energy_kev", "e_gev", "e_mev",
         ],
         "arrival_time": [
-            "arrival_time", "time", "t", "time_s", "t_s",
+            "arrival_time", "photon_arrival_time_s", "arrival_time_s",
+            "time_s", "time", "t", "t_s",
             "mjd", "time_mjd", "arrival_mjd",
         ],
         "source_id":    ["source_id", "source", "grb_id", "grb_name", "name", "burst"],

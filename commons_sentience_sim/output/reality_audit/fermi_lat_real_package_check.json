@@ -1,0 +1,15 @@
+{
+  "path": "data/real/synthetic_fermi_lat_grb_events.csv",
+  "file_found": true,
+  "n_events": 104,
+  "n_sources": 7,
+  "n_sources_with_redshift": 7,
+  "n_missing_redshift": 0,
+  "duplicate_fraction": 0.0,
+  "schema_valid": true,
+  "missing_columns": [],
+  "warnings": [],
+  "hard_failures": [],
+  "recommendation": "ACCEPT_FOR_BLINDED_RUN",
+  "output_path": "commons_sentience_sim/output/reality_audit/fermi_lat_real_package_check.json"
+}
