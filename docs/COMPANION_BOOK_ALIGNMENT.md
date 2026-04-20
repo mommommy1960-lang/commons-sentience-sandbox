@@ -228,19 +228,31 @@ EXPERIMENT 1 — GRB TIMING-DELAY ANALYSIS (Fermi-LAT, public data)
 - ❌ No benchmark success has been overclaimed as physical proof
 - ❌ The local dry-run p-value (synthetic data) has not been treated as science
 
-### What we are about to enter
+### Phase 5 / Phase 6 boundary
 
-The next immediate step is downloading real Fermi-LAT event data and running the
-blinded analysis with `run_fermi_lat_real_blinded.py`.  The registration is
-already frozen.  See [docs/FERMI_LAT_PUBLIC_DATA_PLAN.md §11](FERMI_LAT_PUBLIC_DATA_PLAN.md)
-for the exact blinding sequence.
+We are now at the boundary between Experiment 1 **Phase 5** (preparation) and
+**Phase 6** (first true real-data run).
+
+- Phase 5 preparation is **complete and committed**.
+- Phase 6 begins the moment a non-synthetic, QC-accepted CSV file is placed
+  in `data/real/` and the blinded pipeline runs successfully on it.
+- Until that happens, **no public-data analysis has occurred**.
+- `data/real/synthetic_fermi_lat_grb_events.csv` is a rehearsal fixture and
+  does NOT count as Phase 6.
+
+To enter Phase 6, run:
+```bash
+python reality_audit/data_analysis/run_first_real_ingest.py
+```
+See [docs/HOW_TO_RUN_FIRST_REAL_INGEST.md](HOW_TO_RUN_FIRST_REAL_INGEST.md).
 
 ### No steps have been skipped
 
 The progression follows the companion-book sequence exactly:
 - conceptual framing → simulation validation → software infrastructure
   → pre-analysis methodology → local dry-run
-  → registration + blinded ingest workflow → real data access
+  → registration + blinded ingest workflow + validation gate
+  → real data access (next)
 Each phase was committed before the next was begun.
 True public-data analysis has NOT begun until a real file is successfully ingested.
-The local dry-run does not count as the public-data run.
+The local dry-run and the synthetic rehearsal file do not count as the public-data run.

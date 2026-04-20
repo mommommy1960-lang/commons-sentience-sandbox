@@ -154,23 +154,60 @@ New files added in Phase 5 preparation:
 
 ---
 
-## 7. Next Step — Phase 6: First Real File Download and Blinded Run
+## 7. First True Real-Data Ingest Readiness
 
-The registration is frozen and the blinded runner is ready. The next session should:
+**Status (2026-04-20):** Framework complete. No real public data ingested yet.
 
-1. **Download a real Fermi-LAT GRB event CSV** for ≥ 3 GRBs with known redshift
-2. **Place in `data/real/`**
-3. **Run the blinded pipeline:**
-   ```bash
-   python reality_audit/data_analysis/run_fermi_lat_real_blinded.py \
-     --source data/real/<file>.csv \
-     --registration commons_sentience_sim/output/reality_audit/fermi_lat_real_analysis_registration.json
-   ```
-4. **Review `quality_control_report.json`** — all 9 QC gates must pass
-5. **Document human sign-off** before any unblinding
+### What has been built
 
-See: [docs/FERMI_LAT_PUBLIC_DATA_PLAN.md §11.3](FERMI_LAT_PUBLIC_DATA_PLAN.md)
-See: [docs/FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md](FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md)
+- Registration frozen: `fermi_lat_real_analysis_registration.json`
+- Adapter hardened: all arrival-time aliases supported
+- Package validation gate: `check_fermi_lat_real_package.py`
+- Blinded runner: `run_fermi_lat_real_blinded.py`
+- One-shot helper: `run_first_real_ingest.py`
+- Dropzone instructions: `data/real/README.md` + `docs/HOW_TO_RUN_FIRST_REAL_INGEST.md`
+
+### What ACCEPT_FOR_BLINDED_RUN means
+
+The package check returns `ACCEPT_FOR_BLINDED_RUN` when ALL of:
+- ≥ 30 total events
+- ≥ 5 sources with valid, non-negative redshift
+- duplicate event-ID fraction < 0.1%
+- no missing required columns
+- energies plausible (0.01–1000 GeV after unit conversion)
+
+Any hard failure → `REJECT`. Soft issues only → `ACCEPT_WITH_WARNINGS` (human review required before proceeding).
+
+### The synthetic rehearsal file is NOT real data
+
+`data/real/synthetic_fermi_lat_grb_events.csv` is a pipeline rehearsal fixture.
+It is excluded by name from the real-data workflow. Any statistics computed from
+it have no scientific standing. It does NOT count as a completed public-data run.
+
+### No automatic unblinding
+
+The pipeline enforces `automatic_unblind=False` in code. Even after a successful
+blinded run, all signal keys (`p_value`, `z_score`, `observed_slope`,
+`detection_claimed`, `null_retained`) remain `"BLINDED"` in all written files.
+Unblinding requires explicit human sign-off after all 9 QC gates pass.
+See [docs/FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md](FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md).
+
+### Exact command to run when a real file is available
+
+```bash
+# Step 1 — place real CSV in data/real/ (not named synthetic*)
+
+# Step 2 — one-shot helper (recommended)
+python reality_audit/data_analysis/run_first_real_ingest.py
+
+# Step 3 — review outputs
+cat commons_sentience_sim/output/reality_audit/first_real_ingest_manifest.json
+cat commons_sentience_sim/output/reality_audit/fermi_lat_real_blinded_run/quality_control_report.json
+
+# Step 4 — human sign-off before any unblinding
+```
+
+See: [docs/HOW_TO_RUN_FIRST_REAL_INGEST.md](HOW_TO_RUN_FIRST_REAL_INGEST.md)
 
 ---
 
@@ -186,8 +223,8 @@ python -m pytest tests/ -q
 # 3. Read this file
 cat docs/SESSION_RECOVERY_INDEX.md
 
-# 4. Read the public-data plan
-cat docs/FERMI_LAT_PUBLIC_DATA_PLAN.md
+# 4. Read the public-data how-to
+cat docs/HOW_TO_RUN_FIRST_REAL_INGEST.md
 
 # 5. Check registration JSON
 cat commons_sentience_sim/output/reality_audit/fermi_lat_real_analysis_registration.json
@@ -195,11 +232,12 @@ cat commons_sentience_sim/output/reality_audit/fermi_lat_real_analysis_registrat
 
 **Restart command for Phase 6:**
 ```
-Continue Experiment 1 Phase 6: download a real Fermi-LAT GRB event CSV (≥3 GRBs
-with known redshift), place in data/real/, and run the blinded pipeline with
-  python reality_audit/data_analysis/run_fermi_lat_real_blinded.py
-Review quality_control_report.json (all 9 QC gates must pass).
-See docs/FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md for exact unblinding conditions.
+Continue Experiment 1 Phase 6: place a real Fermi-LAT GRB event CSV (non-synthetic,
+≥30 events, ≥5 sources with redshift) in data/real/, then run:
+  python reality_audit/data_analysis/run_first_real_ingest.py
+Review first_real_ingest_manifest.json and quality_control_report.json.
+See docs/HOW_TO_RUN_FIRST_REAL_INGEST.md and
+docs/FERMI_LAT_REAL_DATA_QC_AND_UNBLINDING.md for exact unblinding conditions.
 Do NOT unblind without explicit human sign-off.
 ```
 
