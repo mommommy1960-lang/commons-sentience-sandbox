@@ -51,6 +51,22 @@ from reality_audit.data_analysis.public_anisotropy_study import (
     write_public_study_artifacts,
 )
 
+
+def _build_preregistration_metadata(
+    plan: Optional[Dict[str, Any]],
+    plan_path: Optional[str],
+) -> Optional[Dict[str, Any]]:
+    """Build a compact preregistration summary for embedding in run metadata.
+
+    Returns None if no plan was provided (exploratory run)."""
+    if plan is None:
+        return None
+    try:
+        from reality_audit.data_analysis.preregistration import plan_summary_for_metadata
+        return plan_summary_for_metadata(plan, plan_path=plan_path)
+    except Exception:
+        return {"error": "preregistration module unavailable", "plan_path": plan_path}
+
 # ---------------------------------------------------------------------------
 # Known real catalog filenames (in priority order)
 # ---------------------------------------------------------------------------
@@ -191,6 +207,8 @@ def run_stage8_first_results(
     plots: bool = True,
     save_normalized: bool = True,
     null_mode: Optional[str] = None,
+    preregistration_plan: Optional[Dict[str, Any]] = None,
+    preregistration_plan_path: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Run the complete Stage 8 first-results workflow on a real catalog.
 
@@ -214,6 +232,9 @@ def run_stage8_first_results(
     save_normalized: Whether to save the normalised event CSV.
     null_mode      : "isotropic", "exposure_corrected", or None (auto per catalog).
                      When None, the recommended default for the detected catalog is used.
+    preregistration_plan : optional loaded plan dict (from preregistration.load_preregistration_plan).
+                           When provided, a compact plan summary is recorded in run_metadata.
+    preregistration_plan_path : optional path string for traceability (stored in metadata).
 
     Returns
     -------
@@ -305,6 +326,9 @@ def run_stage8_first_results(
             "null_mode":    null_mode,
             "timestamp":    datetime.datetime.utcnow().isoformat() + "Z",
             "stage":        "stage8_first_results",
+            "preregistration": _build_preregistration_metadata(
+                preregistration_plan, preregistration_plan_path
+            ),
         },
     }
 

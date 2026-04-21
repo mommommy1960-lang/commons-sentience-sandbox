@@ -43,6 +43,18 @@ from reality_audit.data_analysis.stage8_first_results import (
 )
 
 
+def _load_plan_if_given(plan_path):
+    """Load a preregistration plan if a path was given; return None otherwise."""
+    if not plan_path:
+        return None
+    try:
+        from reality_audit.data_analysis.preregistration import load_preregistration_plan
+        return load_preregistration_plan(plan_path)
+    except Exception as exc:
+        print(f"[WARN] Could not load preregistration plan ({plan_path}): {exc}")
+        return None
+
+
 def _build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         description="Run the Stage 8 first real-catalog results package.",
@@ -122,6 +134,17 @@ def _build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Save a normalised event CSV alongside analysis artifacts.",
     )
+    p.add_argument(
+        "--preregistration-plan",
+        default=None,
+        metavar="PATH",
+        dest="preregistration_plan",
+        help=(
+            "Path to a locked preregistration plan JSON file. "
+            "When provided, plan metadata is recorded in run output. "
+            "See docs/REALITY_AUDIT_PREREGISTRATION_TEMPLATE.md."
+        ),
+    )
     return p
 
 
@@ -185,6 +208,8 @@ def main(argv=None) -> int:
         plots=args.plots,
         save_normalized=args.save_normalized,
         null_mode=args.null_mode,
+        preregistration_plan=_load_plan_if_given(getattr(args, "preregistration_plan", None)),
+        preregistration_plan_path=getattr(args, "preregistration_plan", None),
     )
 
     status = build_stage8_status_summary(bundle)
