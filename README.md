@@ -1391,3 +1391,227 @@ See [RELEASE_NOTES_v1.md](./RELEASE_NOTES_v1.md) for the full v1.x changelog.
 - **Dashboard v1.2**: new Continuity Study tab with trust trend charts, reflection depth table, contradiction recurrence table, memory persistence bar chart, evaluation drift table
 - **Export compatibility**: session bundles now include continuity study files when present
 - **Simulation version** bumped to 1.2.0
+
+---
+
+## Quantum Double-Slit Benchmark
+
+### What it does
+
+This benchmark simulates the 1-D double-slit experiment under varying levels
+of decoherence and measurement. It is a **purely computational model** — no
+real quantum hardware is involved. The purpose is a reproducible benchmark
+for studying how interference patterns depend on coherence conditions, and
+how measurement or decoherence wash out fringe contrast.
+
+### What coherence and decoherence mean in this repo
+
+| Term | Meaning |
+|------|---------|
+| **Coherent** | Both slits contribute with a fixed phase relationship; strong interference fringes appear on the screen. Fringe visibility V → 1. |
+| **Partially decohered** | Phase coherence partially destroyed (e.g., environment-induced dephasing modelled by `decoherence_strength`). Fringe contrast is reduced; V is intermediate. |
+| **Classicalized / measurement-on** | Which-path information is extracted (`measurement_on=True`) or decoherence is maximal. Interference fringes disappear; the pattern matches a classical sum of two single-slit envelopes. V → 0. |
+
+The mixing is controlled by a single parameter α (computed internally from
+`coherence`, `decoherence_strength`, and `measurement_on`):
+
+```
+I(x) = (1 - α) · I_coherent(x) + α · I_classical(x)
+```
+
+### Commands to run
+
+**Single coherent run (with all artifacts):**
+```bash
+python -m reality_audit.data_analysis.run_double_slit \
+    --wavelength 500e-9 \
+    --slit-separation 1e-4 \
+    --num-particles 10000 \
+    --seed 42 \
+    --output-dir outputs/double_slit/coherent \
+    --name coherent_run
+```
+
+**Using a config file:**
+```bash
+python -m reality_audit.data_analysis.run_double_slit \
+    --config configs/double_slit_baseline.json
+```
+
+**With decoherence:**
+```bash
+python -m reality_audit.data_analysis.run_double_slit \
+    --decoherence-strength 0.6 \
+    --output-dir outputs/double_slit/decohered \
+    --name decohered_run
+```
+
+**With measurement (classicalized output):**
+```bash
+python -m reality_audit.data_analysis.run_double_slit \
+    --measurement-on \
+    --output-dir outputs/double_slit/measurement \
+    --name measurement_run
+```
+
+**Run all three example cases at once:**
+```bash
+python scripts/run_double_slit_examples.py
+```
+
+**Run formal benchmark suite:**
+```bash
+python -m reality_audit.data_analysis.double_slit_benchmark
+```
+
+### Output files generated
+
+For each run, the following artifacts are written to `--output-dir`:
+
+| File | Description |
+|------|-------------|
+| `<name>_report.json` | Structured JSON with all parameters, visibility, regime, notes |
+| `<name>_intensity.csv` | Screen positions (m) + normalised intensity (one row per position) |
+| `<name>_summary.md` | Human-readable Markdown summary table |
+| `<name>_plot.png` | Intensity curve + particle hit histogram |
+
+The benchmark suite additionally writes:
+
+| File | Description |
+|------|-------------|
+| `benchmark_results/double_slit/double_slit_benchmark_report.json` | Per-mode pass/fail + visibility |
+| `benchmark_results/double_slit/double_slit_benchmark_report.md` | Markdown table |
+| `benchmark_results/double_slit/double_slit_benchmark_scores.csv` | CSV scorecard |
+
+### Tests
+
+```bash
+python -m pytest tests/test_double_slit_sim.py -v
+```
+
+### ⚠️ Important disclaimer
+
+> **This is a computational simulation model.** The double-slit benchmark
+> does not by itself constitute evidence that reality is a simulation.
+> All "interference" and "decoherence" observed here arise from a simple
+> mathematical mixing formula, not from any physical quantum device or
+> genuine measurement of particles. Interpret results accordingly.
+
+---
+
+## Simulation Signature Analysis
+
+### What this module does
+
+`reality_audit/data_analysis/simulation_signature_analysis.py` implements a
+first-pass statistical anomaly-analysis pipeline for astrophysical event-style
+datasets (e.g., GRB catalogs, cosmic-ray surveys, or synthetic toy data).
+
+The pipeline stages are:
+
+1. **Load** – ingest CSV or JSON event catalogs
+2. **Standardize** – normalize field names, coerce types, add derived fields
+3. **Null generation** – produce isotropic-sky or shuffled-time comparison datasets
+4. **Anomaly injection** – inject known synthetic signals for pipeline validation
+5. **Analysis** – compute anisotropy, preferred-axis, energy–time correlation, and clustering metrics
+6. **Signal evaluation** – classify deviation strength as `no_anomaly_detected`, `weak`, `moderate`, or `strong`
+7. **Artifact writing** – save JSON summary, CSV row, Markdown report, and PNG plots
+
+### What it does NOT prove
+
+> ⚠️ **Important disclaimer**
+>
+> Detecting a statistically anomalous pattern in an event dataset is
+> **hypothesis testing**, not proof of any specific physical or metaphysical
+> claim.  A deviation from a simple null model may reflect:
+>
+> - incomplete null modeling (e.g., instrument selection effects)
+> - systematic or calibration artefacts in the source data
+> - statistical fluctuation at a low-significance threshold
+> - a genuine astrophysical signal of conventional origin
+>
+> This pipeline is a **starter analysis framework**.  It does not prove that
+> reality is a simulation or support any overarching metaphysical conclusion.
+> All claims drawn from this pipeline require independent cross-checks,
+> careful systematic evaluation, and peer scrutiny before any scientific
+> weight can be attached.
+
+### How it connects to the reality audit theme
+
+This module extends the repo's existing "benchmark-driven validation
+discipline" — used in the double-slit and Fermi-LAT pipeline work — to
+event-level sky surveys.  Any anomaly detected here would be the
+*starting point* of a longer investigation, not the end.
+
+### Example commands
+
+#### Baseline null analysis (no injection)
+
+```bash
+python reality_audit/data_analysis/run_simulation_signature_analysis.py \
+  --input data/real/example_event_catalog.csv \
+  --name baseline_run \
+  --output-dir outputs/simulation_signature/baseline \
+  --null-mode isotropic \
+  --null-repeats 25 \
+  --seed 42 \
+  --plots
+```
+
+#### Preferred-axis injection test
+
+```bash
+python reality_audit/data_analysis/run_simulation_signature_analysis.py \
+  --input data/real/example_event_catalog.csv \
+  --name preferred_axis_run \
+  --output-dir outputs/simulation_signature/preferred_axis \
+  --null-mode isotropic --null-repeats 25 \
+  --inject-anomaly preferred_axis --anomaly-strength 0.5 \
+  --seed 42 --plots
+```
+
+#### Energy-delay injection test
+
+```bash
+python reality_audit/data_analysis/run_simulation_signature_analysis.py \
+  --input data/real/example_event_catalog.csv \
+  --name energy_delay_run \
+  --output-dir outputs/simulation_signature/energy_delay \
+  --null-mode shuffled_time --null-repeats 25 \
+  --inject-anomaly energy_dependent_delay --anomaly-strength 0.5 \
+  --seed 42 --plots
+```
+
+#### Convenience runner (all three cases)
+
+```bash
+python scripts/run_simulation_signature_examples.py
+```
+
+#### Benchmark suite
+
+```bash
+python reality_audit/data_analysis/simulation_signature_benchmark.py
+```
+
+### Output files generated
+
+Each run creates an output directory containing:
+
+| File | Description |
+|------|-------------|
+| `<name>_summary.json` | Machine-readable full results + signal evaluation |
+| `<name>_results.csv` | One-row CSV summary for aggregation |
+| `<name>_summary.md` | Markdown methods summary |
+| `<name>_sky_scatter.png` | RA/Dec scatter (observed vs null) |
+| `<name>_energy_hist.png` | Energy distribution histogram |
+| `<name>_time_hist.png` | Arrival-time distribution histogram |
+| `<name>_null_comparison.png` | Percentile bar chart vs null |
+| `<name>_anomaly_summary.png` | Per-metric recovery (injection runs only) |
+| `<name>_manifest.json` | File manifest with paths and timestamps |
+
+### Tests
+
+```bash
+python -m pytest tests/test_simulation_signature_analysis.py -v
+```

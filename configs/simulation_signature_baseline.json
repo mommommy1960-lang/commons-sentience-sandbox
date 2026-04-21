@@ -1,0 +1,12 @@
+{
+  "description": "Baseline null analysis on synthetic example event catalog. No anomaly injected.",
+  "input_path": "data/real/example_event_catalog.csv",
+  "null_mode": "isotropic",
+  "null_repeats": 50,
+  "anomaly_type": null,
+  "anomaly_strength": 0.0,
+  "run_injection_test": false,
+  "output_dir": "outputs/simulation_signature/baseline",
+  "seed": 42,
+  "plots_enabled": true
+}
