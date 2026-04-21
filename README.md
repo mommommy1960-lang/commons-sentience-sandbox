@@ -2004,3 +2004,69 @@ python reality_audit/data_analysis/run_stage10_catalog_comparison.py \
 3. Locked preregistration (`_locked: true`) before confirmatory reruns
 4. Full cross-instrument systematics analysis
 5. External scientific review
+
+---
+
+## Stage 12: IceCube Robustness Diagnostics and Run-Discipline Auditing
+
+Stage 12 extends Stage 11 by stress-testing the small-N IceCube result and making
+confirmatory discipline explicit in run metadata and reporting.
+
+### What Stage 12 adds
+
+- **IceCube diagnostics module**: `reality_audit/data_analysis/icecube_diagnostics.py`
+- **Small-N sensitivity checks** across axis densities (`axis_modes`)
+- **Leave-k-out influence analysis** to detect single-event fragility
+- **Epoch split persistence checks** for time-localized effects
+- **Robustness memo/manifest + plots/tables** from Stage 12 runner
+- **Explicit run mode** in Stage 8 outputs: `exploratory` vs `preregistered_confirmatory`
+- **Preregistration match auditing** in confirmatory reruns
+- **Three-catalog interpretation integration** of IceCube robustness labels
+
+### Run Stage 12 diagnostics (exploratory)
+
+```bash
+python reality_audit/data_analysis/run_stage12_icecube_diagnostics.py \
+  --input data/real/icecube_hese_events.csv \
+  --output-dir outputs/stage12_icecube_diagnostics/stage12_icecube_diagnostics \
+  --seed 42 \
+  --axis-modes 24,48,96 \
+  --leave-k-out 1 \
+  --repeats 100 \
+  --run-mode exploratory
+```
+
+### Run Stage 12 diagnostics (confirmatory mode + rerun)
+
+```bash
+python reality_audit/data_analysis/run_stage12_icecube_diagnostics.py \
+  --input data/real/icecube_hese_events.csv \
+  --output-dir outputs/stage12_icecube_diagnostics/stage12_icecube_confirmatory \
+  --seed 42 \
+  --axis-modes 48,96,192 \
+  --leave-k-out 1 \
+  --repeats 100 \
+  --preregistration configs/preregistered_anisotropy_plan.json \
+  --run-mode preregistered_confirmatory
+```
+
+### Integrate IceCube robustness into three-catalog comparison
+
+```bash
+python reality_audit/data_analysis/run_stage10_catalog_comparison.py \
+  --require-three \
+  --summary-c outputs/stage12_icecube_diagnostics/stage12_icecube_confirmatory/confirmatory_rerun/stage12_icecube_confirmatory_rerun_summary.json \
+  --icecube-diagnostics outputs/stage12_icecube_diagnostics/stage12_icecube_diagnostics/stage12_icecube_diagnostics_summary.json \
+  --name stage12_comparison_with_robustness
+```
+
+### Stage 12 status docs
+
+- `docs/REALITY_AUDIT_STAGE12_STATUS.md`
+- `docs/REALITY_AUDIT_STAGE12_TEMPLATE.md`
+
+### Stage 12 caveat
+
+A `relatively_stable` Stage 12 robustness label improves confidence that the observed
+IceCube deviation is not dominated by trivial perturbations, but it does **not**
+remove small-N limitations or establish a catalog-independent physical claim.
