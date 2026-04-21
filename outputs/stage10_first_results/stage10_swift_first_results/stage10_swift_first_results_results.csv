@@ -1,0 +1,2 @@
+name,catalog,written_at,event_count,hemisphere_imbalance,preferred_axis_score,energy_time_r,cluster_score,hemi_percentile,axis_percentile,et_r_percentile,clust_percentile,signal_tier,max_percentile
+stage10_swift_first_results,swift_bat3_grb_catalog,2026-04-21T09:14:26.675104Z,872,0.0481651376146789,0.06750066868278942,,1.0,0.63,0.57,0.5,0.0,no_anomaly_detected,0.63

@@ -1,0 +1,11 @@
+{
+  "experiment": "stage10_swift_first_results",
+  "catalog": "swift_bat3_grb_catalog",
+  "written_at": "2026-04-21T09:14:26.675104Z",
+  "artifacts": {
+    "json_summary": "outputs/stage10_first_results/stage10_swift_first_results/stage10_swift_first_results_summary.json",
+    "csv_summary": "outputs/stage10_first_results/stage10_swift_first_results/stage10_swift_first_results_results.csv",
+    "md_summary": "outputs/stage10_first_results/stage10_swift_first_results/stage10_swift_first_results_summary.md",
+    "manifest": "outputs/stage10_first_results/stage10_swift_first_results/stage10_swift_first_results_manifest.json"
+  }
+}

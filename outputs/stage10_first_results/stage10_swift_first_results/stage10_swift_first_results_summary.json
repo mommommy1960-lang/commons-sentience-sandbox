@@ -1,0 +1,189 @@
+{
+  "experiment": "stage10_swift_first_results",
+  "catalog": "swift_bat3_grb_catalog",
+  "written_at": "2026-04-21T09:14:26.675104Z",
+  "results": {
+    "event_count": 872,
+    "events_with_energy": 872,
+    "events_with_position": 872,
+    "events_with_time": 0,
+    "energy_stats": {
+      "count": 872,
+      "min": 0.0,
+      "max": 0.000109,
+      "mean": 2.7233108715596334e-06,
+      "median": 7.945e-07,
+      "std": 6.830694553341584e-06
+    },
+    "anisotropy": {
+      "hemisphere_imbalance": 0.0481651376146789,
+      "interpretation": "Fraction of events in north minus south hemisphere. 0 = balanced, \u00b11 = all in one hemisphere."
+    },
+    "preferred_axis": {
+      "score": 0.06750066868278942,
+      "best_axis_xyz": [
+        5.302876193624534e-17,
+        0.8660254037844386,
+        -0.5
+      ],
+      "num_axes_scanned": 48,
+      "interpretation": "Max |mean cos-projection| across trial axes. Isotropic \u2248 0; perfect alignment \u2248 1."
+    },
+    "axis_scan": {
+      "best_score": 0.06750066868278942,
+      "best_axis_index": 10,
+      "best_axis_xyz": [
+        5.302876193624534e-17,
+        0.8660254037844386,
+        -0.5
+      ],
+      "all_scores": [
+        0.024595695129755332,
+        0.048595440768638955,
+        0.06370295541781475,
+        0.06106846188954574,
+        0.04223521076270777,
+        0.018235465123824138,
+        0.0031279504746483436,
+        0.005762444002917354,
+        0.006231366866636817,
+        0.04383174204578541,
+        0.06750066868278942,
+        0.06337321056050568,
+        0.03386717666884105,
+        0.003733198510307552,
+        0.02740212514731155,
+        0.02327466702502783,
+        0.00904928621189871,
+        0.03376062414836184,
+        0.060708882585305136,
+        0.05600956478890499,
+        0.022415467390391332,
+        0.020394442969869225,
+        0.04734270140681252,
+        0.04264338361041237,
+        0.022415467390391332,
+        0.020394442969869222,
+        0.047342701406812515,
+        0.042643383610412366,
+        0.009049286211898714,
+        0.03376062414836184,
+        0.06070888258530514,
+        0.056009564788904995,
+        0.033867176668841044,
+        0.003733198510307552,
+        0.027402125147311555,
+        0.023274667025027826,
+        0.006231366866636814,
+        0.04383174204578541,
+        0.06750066868278942,
+        0.0633732105605057,
+        0.04223521076270776,
+        0.01823546512382413,
+        0.003127950474648332,
+        0.005762444002917342,
+        0.024595695129755325,
+        0.048595440768638955,
+        0.06370295541781475,
+        0.06106846188954575
+      ],
+      "num_axes": 48
+    },
+    "energy_time_correlation": {
+      "pearson_r": null,
+      "interpretation": "Pearson r between energy and arrival_time. Non-zero may indicate energy-dependent propagation effects."
+    },
+    "cluster_score": {
+      "value": 1.0,
+      "interpretation": "Mean window count / expected-random. \u22481.0 = uniform; >1.0 = clustered."
+    },
+    "null_comparison": {
+      "null_mode": "exposure_corrected",
+      "null_repeats": 100,
+      "hemi_percentile": 0.63,
+      "axis_percentile": 0.57,
+      "et_r_percentile": 0.5,
+      "clust_percentile": 0.0,
+      "null_axis_mean": 0.06472876085746096,
+      "null_axis_std": 0.019768164937539072,
+      "null_hemi_mean": 0.043440366972477065
+    },
+    "signal_evaluation": {
+      "tier": "no_anomaly_detected",
+      "max_percentile": 0.63,
+      "per_metric_percentiles": {
+        "hemisphere_imbalance": 0.63,
+        "preferred_axis": 0.57,
+        "energy_time_r": 0.5,
+        "clustering": 0.0
+      },
+      "summary": "All metrics are within the bulk of the exposure-corrected null distribution. No significant anomaly detected.",
+      "caveat": "Anomaly-like deviations from an isotropic null are hypothesis-generating results, not proof of any specific physical or cosmological cause. Systematic effects, selection biases, and incomplete modeling should be ruled out before drawing any scientific conclusion."
+    },
+    "run_metadata": {
+      "seed": 42,
+      "null_repeats": 100,
+      "num_axes": 48,
+      "null_mode": "exposure_corrected",
+      "exposure_map_desc": {
+        "ra_bins": 24,
+        "dec_bins": 12,
+        "total_cells": 288,
+        "n_events_used": 872,
+        "n_occupied_cells": 253,
+        "n_empty_cells": 35,
+        "occupancy_fraction": 0.8784722222222222,
+        "max_cell_weight": 0.009350393700787402,
+        "min_cell_weight": 0.0004921259842519685,
+        "description": "Empirical sky-acceptance proxy built from 872 events in a 24\u00d712 RA\u00d7Dec grid (floor_value=0.5 per cell).",
+        "limitations": [
+          "Map is built from the data under test: absorbs instrument acceptance AND any genuine signal.",
+          "Conservative test: 'is pattern stronger than the observed sky coverage?'",
+          "Does not model time-varying orientation, trigger efficiency, or spectral selection.",
+          "Not a mission-grade exposure model; suitable for Stage 9 internal robustness only.",
+          "Empty-cell floor weight prevents complete exclusion of sparsely observed regions."
+        ]
+      },
+      "timestamp": "2026-04-21T09:14:26.667825Z"
+    }
+  },
+  "coverage": {
+    "event_count": 872,
+    "available_fields": [
+      "event_id",
+      "energy",
+      "ra",
+      "dec",
+      "instrument",
+      "epoch"
+    ],
+    "missingness": {
+      "event_id": 0.0,
+      "energy": 0.0,
+      "arrival_time": 1.0,
+      "ra": 0.0,
+      "dec": 0.0,
+      "instrument": 0.0,
+      "epoch": 0.0
+    },
+    "ra_dec_coverage": {
+      "ra_min": 0.130125,
+      "ra_max": 359.01708,
+      "dec_min": -89.00861,
+      "dec_max": 88.605611,
+      "n_with_position": 872
+    },
+    "time_span_mjd": {
+      "n_with_time": 0
+    },
+    "instrument_labels": [
+      "Swift-BAT"
+    ]
+  },
+  "config": {
+    "null_repeats": 100,
+    "num_axes": 48,
+    "seed": 42,
+    "null_mode": "exposure_corrected"
+  }
+}
