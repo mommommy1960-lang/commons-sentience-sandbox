@@ -96,11 +96,53 @@ _COL_ALIASES: Dict[str, str] = {
     "year":        "epoch",
     "obs_date":    "epoch",
     "date":        "epoch",
+    # Swift BAT-specific column names
+    "bat_fluence": "energy",      # Swift BAT total fluence (erg/cm²)
+    "bat_t90":     "energy",      # fallback if no fluence; duration as proxy
+    "trigger_time": "arrival_time",  # Swift BAT ISO-8601 trigger timestamp
+    "bat_ra":      "ra",          # BAT-refined RA (if present instead of 'ra')
+    "bat_dec":     "dec",         # BAT-refined Dec
+    "grb":         "event_id",    # Some Swift table exports use 'grb'
 }
 
 # ---------------------------------------------------------------------------
 # Resolve data/real/ directory relative to this file's repo root
 # ---------------------------------------------------------------------------
+
+# Default null model per catalog label.  Wide-field detectors with clearly
+# non-uniform sky acceptance should default to "exposure_corrected" to avoid
+# confusing acceptance geometry with a real anisotropy signal.
+# Any catalog not listed here defaults to "isotropic".
+CATALOG_NULL_DEFAULTS: Dict[str, str] = {
+    "fermi_lat_grb_catalog":   "exposure_corrected",   # Fermi GBM non-uniform SKY
+    "fermi_lat_grb":           "exposure_corrected",
+    "swift_bat3_grb_catalog":  "exposure_corrected",   # Swift BAT non-uniform sky
+    "swift_bat3_grb":          "exposure_corrected",
+    "icecube_hese_events":     "isotropic",            # IceCube: ~uniform RA coverage
+    "icecube_hese":            "isotropic",
+}
+
+
+def default_null_mode_for_catalog(catalog_label: str) -> str:
+    """Return the recommended null model for a given catalog label.
+
+    Wide-field gamma-ray detectors (Fermi GBM, Swift BAT) have non-uniform sky
+    acceptance; comparing against an isotropic null will almost always produce a
+    spurious strong anomaly that is purely acceptance geometry.  These catalogs
+    default to ``"exposure_corrected"``.
+
+    Any unknown catalog defaults to ``"isotropic"`` (conservative).
+
+    Parameters
+    ----------
+    catalog_label : catalog identifier string (basename of file, or short name)
+
+    Returns
+    -------
+    "exposure_corrected" | "isotropic"
+    """
+    return CATALOG_NULL_DEFAULTS.get(catalog_label, "isotropic")
+
 
 def _real_data_dir() -> str:
     """Return absolute path to the ``data/real/`` directory."""

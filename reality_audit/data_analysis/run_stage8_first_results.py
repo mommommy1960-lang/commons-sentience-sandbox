@@ -106,13 +106,15 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--null-mode",
-        default="isotropic",
+        default=None,
         choices=["isotropic", "exposure_corrected"],
+        dest="null_mode",
         metavar="MODE",
         help=(
-            "Null model: 'isotropic' (uniform sphere, default) or "
-            "'exposure_corrected' (empirical sky-acceptance proxy from observed catalog). "
-            "Use 'exposure_corrected' for real Fermi/Swift/IceCube catalogs."
+            "Null model: 'isotropic' (uniform sphere) or "
+            "'exposure_corrected' (empirical sky-acceptance proxy). "
+            "Default: auto-selected per catalog (Fermi/Swift → 'exposure_corrected', "
+            "unknown → 'isotropic')."
         ),
     )
     p.add_argument(

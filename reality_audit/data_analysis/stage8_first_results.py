@@ -44,6 +44,7 @@ if _REPO_ROOT not in sys.path:
 from reality_audit.data_analysis.public_event_catalogs import (
     load_public_catalog,
     describe_catalog_coverage,
+    default_null_mode_for_catalog,
 )
 from reality_audit.data_analysis.public_anisotropy_study import (
     run_public_anisotropy_study,
@@ -189,7 +190,7 @@ def run_stage8_first_results(
     seed: int = 42,
     plots: bool = True,
     save_normalized: bool = True,
-    null_mode: str = "isotropic",
+    null_mode: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Run the complete Stage 8 first-results workflow on a real catalog.
 
@@ -211,7 +212,8 @@ def run_stage8_first_results(
     seed           : RNG seed.
     plots          : Whether to generate PNG plots.
     save_normalized: Whether to save the normalised event CSV.
-    null_mode      : "isotropic" or "exposure_corrected".
+    null_mode      : "isotropic", "exposure_corrected", or None (auto per catalog).
+                     When None, the recommended default for the detected catalog is used.
 
     Returns
     -------
@@ -221,6 +223,10 @@ def run_stage8_first_results(
 
     # Derive a catalog label from the file basename
     catalog_label = os.path.splitext(os.path.basename(input_path))[0]
+
+    # Auto-select null model if not explicitly specified
+    if null_mode is None:
+        null_mode = default_null_mode_for_catalog(catalog_label)
 
     # --- Load and normalise ---
     events = load_public_catalog(input_path)
