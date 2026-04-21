@@ -1,0 +1,33 @@
+{
+  "comparison_mode": "two_catalog",
+  "catalog_a": "fermi_lat_grb_catalog",
+  "catalog_b": "swift_bat3_grb_catalog",
+  "event_count_a": 3000,
+  "event_count_b": 872,
+  "events_with_pos_a": 3000,
+  "events_with_pos_b": 872,
+  "null_mode_a": "exposure_corrected",
+  "null_mode_b": "exposure_corrected",
+  "hemi_percentile_a": 0.85,
+  "hemi_percentile_b": 0.63,
+  "axis_percentile_a": 0.89,
+  "axis_percentile_b": 0.57,
+  "tier_a": "weak_anomaly_like_deviation",
+  "tier_b": "no_anomaly_detected",
+  "max_percentile_a": 0.89,
+  "max_percentile_b": 0.63,
+  "tiers_agree": false,
+  "both_anomaly": false,
+  "neither_anomaly": false,
+  "max_percentile_delta": 0.26,
+  "consistency_verdict": "inconsistent",
+  "interpretation": "fermi_lat_grb_catalog shows weak_anomaly_like_deviation while swift_bat3_grb_catalog shows no_anomaly_detected. Cross-catalog disagreement typically indicates an instrument-specific systematic rather than a genuine sky-position signal. The anomaly in fermi_lat_grb_catalog most likely reflects residual acceptance geometry not fully corrected by the empirical null, or a selection bias particular to that instrument. This result does NOT support a catalog-independent anisotropy claim.",
+  "caveats": [
+    "Both runs use empirical exposure-proxy nulls built from the data under test: any real signal is partially absorbed, making these tests conservative.",
+    "Different catalogs have different source populations, redshift distributions, energy ranges, and trigger thresholds. Non-detection in Swift BAT does not rule out a GRB-population-wide effect undetectable by BAT.",
+    "The preferred-axis scan uses 48 trial axes without a trial-factor correction; a metric significant at 90th percentile is consistent with a fluctuation.",
+    "No pre-registration was filed before these runs. These are exploratory first-results packages, not confirmatory tests.",
+    "N_Fermi=3000 vs N_Swift=872: unequal statistical power. The Fermi result is not directly comparable in absolute significance."
+  ],
+  "timestamp": "2026-04-21T18:18:11.295318Z"
+}

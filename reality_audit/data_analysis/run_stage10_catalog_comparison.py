@@ -31,7 +31,9 @@ if _REPO_ROOT not in sys.path:
 from reality_audit.data_analysis.catalog_comparison import (
     load_stage_results,
     compare_catalog_results,
+    compare_three_catalog_results,
     write_catalog_comparison_memo,
+    write_three_catalog_comparison_memo,
 )
 
 # Default summary JSON locations (relative to repo root)
@@ -47,6 +49,11 @@ _DEFAULT_SUMMARY_B = os.path.join(
 )
 _DEFAULT_OUTPUT_DIR  = os.path.join("outputs", "stage10_first_results", "comparison")
 _DEFAULT_OUTPUT_NAME = "stage10_catalog_comparison"
+_DEFAULT_SUMMARY_C = os.path.join(
+    "outputs", "stage8_first_results",
+    "stage11_icecube_first_results",
+    "stage11_icecube_first_results_summary.json",
+)
 
 
 def _build_parser() -> argparse.ArgumentParser:
@@ -71,6 +78,22 @@ def _build_parser() -> argparse.ArgumentParser:
         help=(
             f"Path to the second catalog summary JSON. "
             f"Default: {_DEFAULT_SUMMARY_B}"
+        ),
+    )
+    p.add_argument(
+        "--summary-c",
+        default=None,
+        metavar="PATH",
+        help=(
+            f"Optional third catalog summary JSON (Stage 11). "
+            f"Default: {_DEFAULT_SUMMARY_C} if file exists."
+        ),
+    )
+    p.add_argument(
+        "--require-three",
+        action="store_true",
+        help=(
+            "Require three-catalog comparison. If true and summary C is missing, fail."
         ),
     )
     p.add_argument(
@@ -100,6 +123,8 @@ def main(argv=None) -> int:
 
     path_a      = _abs(args.summary_a or _DEFAULT_SUMMARY_A)
     path_b      = _abs(args.summary_b or _DEFAULT_SUMMARY_B)
+    c_candidate = args.summary_c or _DEFAULT_SUMMARY_C
+    path_c      = _abs(c_candidate) if c_candidate else None
     output_dir  = _abs(args.output_dir or _DEFAULT_OUTPUT_DIR)
 
     # Check prerequisites
@@ -108,6 +133,9 @@ def main(argv=None) -> int:
         missing.append(("Catalog A summary", path_a))
     if not os.path.isfile(path_b):
         missing.append(("Catalog B summary", path_b))
+    has_c = bool(path_c and os.path.isfile(path_c))
+    if args.require_three and not has_c:
+        missing.append(("Catalog C summary", path_c or _DEFAULT_SUMMARY_C))
 
     if missing:
         print("\n[ERROR] Missing prerequisite files for Stage 10 comparison:")
@@ -131,6 +159,14 @@ def main(argv=None) -> int:
                 "    --output-dir outputs/stage10_first_results/stage10_swift_first_results \\\n"
                 "    --null-mode exposure_corrected --null-repeats 100 --axis-count 48 --seed 42"
             )
+        if args.require_three and not has_c:
+            print(
+                "  python reality_audit/data_analysis/run_stage8_first_results.py \\\n"
+                "    --input data/real/icecube_hese_events.csv \\\n"
+                "    --name stage11_icecube_first_results \\\n"
+                "    --output-dir outputs/stage8_first_results/stage11_icecube_first_results \\\n"
+                "    --null-mode isotropic --null-repeats 100 --axis-count 48 --seed 42"
+            )
         return 1
 
     # Load results
@@ -148,31 +184,58 @@ def main(argv=None) -> int:
         f"null={result_b['null_mode']} | tier={result_b['tier']}"
     )
 
-    # Compare
-    comparison = compare_catalog_results(result_a, result_b)
+    result_c = None
+    if has_c:
+        print(f"[INFO] Loading catalog C: {path_c}")
+        result_c = load_stage_results(path_c)
+        print(
+            f"[INFO]   {result_c['catalog']} | N={result_c['event_count']} | "
+            f"null={result_c['null_mode']} | tier={result_c['tier']}"
+        )
 
-    # Write outputs
-    memo_path = write_catalog_comparison_memo(comparison, output_dir, name=args.name)
+    # Compare
+    if result_c is not None:
+        comparison = compare_three_catalog_results(result_a, result_b, result_c)
+        memo_path = write_three_catalog_comparison_memo(comparison, output_dir, name=args.name)
+    else:
+        comparison = compare_catalog_results(result_a, result_b)
+        memo_path = write_catalog_comparison_memo(comparison, output_dir, name=args.name)
     json_path = os.path.join(output_dir, f"{args.name}.json")
 
     # Terminal summary
     print()
     print("=" * 62)
-    print("  STAGE 10 CROSS-CATALOG COMPARISON")
+    if result_c is not None:
+        print("  STAGE 11 THREE-CATALOG COMPARISON")
+    else:
+        print("  STAGE 10 CROSS-CATALOG COMPARISON")
     print("=" * 62)
-    print(f"  Catalog A        : {comparison['catalog_a']}")
-    print(f"    Events         : {comparison['event_count_a']}")
-    print(f"    Null model     : {comparison['null_mode_a']}")
-    print(f"    Hemi pct       : {comparison['hemi_percentile_a']}")
-    print(f"    Axis pct       : {comparison['axis_percentile_a']}")
-    print(f"    Tier           : {comparison['tier_a']}")
-    print()
-    print(f"  Catalog B        : {comparison['catalog_b']}")
-    print(f"    Events         : {comparison['event_count_b']}")
-    print(f"    Null model     : {comparison['null_mode_b']}")
-    print(f"    Hemi pct       : {comparison['hemi_percentile_b']}")
-    print(f"    Axis pct       : {comparison['axis_percentile_b']}")
-    print(f"    Tier           : {comparison['tier_b']}")
+    if result_c is not None:
+        rows = comparison.get("catalog_rows", [])
+        for i, row in enumerate(rows):
+            label = chr(ord("A") + i)
+            print(f"  Catalog {label}        : {row.get('catalog')}")
+            print(f"    Events         : {row.get('event_count')}")
+            print(f"    Null model     : {row.get('null_mode')}")
+            print(f"    Hemi pct       : {row.get('hemi_percentile')}")
+            print(f"    Axis pct       : {row.get('axis_percentile')}")
+            print(f"    Tier           : {row.get('tier')}")
+            if i < len(rows) - 1:
+                print()
+    else:
+        print(f"  Catalog A        : {comparison['catalog_a']}")
+        print(f"    Events         : {comparison['event_count_a']}")
+        print(f"    Null model     : {comparison['null_mode_a']}")
+        print(f"    Hemi pct       : {comparison['hemi_percentile_a']}")
+        print(f"    Axis pct       : {comparison['axis_percentile_a']}")
+        print(f"    Tier           : {comparison['tier_a']}")
+        print()
+        print(f"  Catalog B        : {comparison['catalog_b']}")
+        print(f"    Events         : {comparison['event_count_b']}")
+        print(f"    Null model     : {comparison['null_mode_b']}")
+        print(f"    Hemi pct       : {comparison['hemi_percentile_b']}")
+        print(f"    Axis pct       : {comparison['axis_percentile_b']}")
+        print(f"    Tier           : {comparison['tier_b']}")
     print()
     print(f"  Verdict          : {comparison['consistency_verdict'].upper()}")
     print()

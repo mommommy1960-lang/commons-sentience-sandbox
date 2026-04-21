@@ -46,6 +46,19 @@ if _REPO_ROOT not in sys.path:
     sys.path.insert(0, _REPO_ROOT)
 
 
+_TIER_RANK = {
+    "no_anomaly_detected":         0,
+    "no_anomaly":                  0,
+    "weak_anomaly_like_deviation": 1,
+    "weak_anomaly":                1,
+    "moderate_anomaly_like_deviation": 2,
+    "moderate_anomaly":            2,
+    "strong_anomaly_like_deviation": 3,
+    "strong_anomaly":              3,
+    "unknown":                     -1,
+}
+
+
 # ===========================================================================
 # 1. Load a Stage 7/8/9 summary JSON
 # ===========================================================================
@@ -149,22 +162,10 @@ def compare_catalog_results(
         except (TypeError, ValueError):
             return None
 
-    _tier_rank = {
-        "no_anomaly_detected":         0,
-        "no_anomaly":                  0,
-        "weak_anomaly_like_deviation": 1,
-        "weak_anomaly":                1,
-        "moderate_anomaly_like_deviation": 2,
-        "moderate_anomaly":            2,
-        "strong_anomaly_like_deviation": 3,
-        "strong_anomaly":              3,
-        "unknown":                     -1,
-    }
-
     tier_a = result_a.get("tier", "unknown")
     tier_b = result_b.get("tier", "unknown")
-    rank_a = _tier_rank.get(tier_a, -1)
-    rank_b = _tier_rank.get(tier_b, -1)
+    rank_a = _TIER_RANK.get(tier_a, -1)
+    rank_b = _TIER_RANK.get(tier_b, -1)
 
     tiers_agree    = (tier_a == tier_b)
     both_anomaly   = (rank_a >= 1 and rank_b >= 1)
@@ -247,6 +248,7 @@ def compare_catalog_results(
     ]
 
     return {
+        "comparison_mode":      "two_catalog",
         "catalog_a":             result_a.get("catalog"),
         "catalog_b":             result_b.get("catalog"),
         "event_count_a":         result_a.get("event_count"),
@@ -272,6 +274,214 @@ def compare_catalog_results(
         "caveats":               caveats,
         "timestamp":             datetime.datetime.utcnow().isoformat() + "Z",
     }
+
+
+def compare_three_catalog_results(
+    result_a: Dict[str, Any],
+    result_b: Dict[str, Any],
+    result_c: Dict[str, Any],
+) -> Dict[str, Any]:
+    """Compare anisotropy results across three independent catalogs.
+
+    Verdict rules
+    -------------
+    - consistent_null: all three are no-anomaly tiers
+    - broad_replication: all three show anomaly-like deviation
+    - partial_replication: exactly two show anomaly-like deviation
+    - inconsistent: exactly one shows anomaly-like deviation
+    """
+    results = [result_a, result_b, result_c]
+    labels = [r.get("catalog", f"catalog_{i+1}") for i, r in enumerate(results)]
+
+    rows: List[Dict[str, Any]] = []
+    anomaly_catalogs: List[str] = []
+    null_catalogs: List[str] = []
+
+    for r in results:
+        tier = r.get("tier", "unknown")
+        rank = _TIER_RANK.get(tier, -1)
+        row = {
+            "catalog": r.get("catalog"),
+            "event_count": r.get("event_count"),
+            "events_with_position": r.get("events_with_position"),
+            "null_mode": r.get("null_mode"),
+            "tier": tier,
+            "rank": rank,
+            "hemi_percentile": r.get("hemi_percentile"),
+            "axis_percentile": r.get("axis_percentile"),
+            "max_percentile": r.get("max_percentile"),
+            "anomaly_like": rank >= 1,
+        }
+        rows.append(row)
+        if row["anomaly_like"]:
+            anomaly_catalogs.append(str(row.get("catalog")))
+        else:
+            null_catalogs.append(str(row.get("catalog")))
+
+    n_anom = len(anomaly_catalogs)
+    n_null = len(null_catalogs)
+
+    if n_anom == 0:
+        verdict = "consistent_null"
+        interpretation = (
+            "All three catalogs are consistent with null expectations. "
+            "This weakens the case for a catalog-independent anisotropy claim."
+        )
+    elif n_anom == 3:
+        verdict = "broad_replication"
+        interpretation = (
+            "All three catalogs show anomaly-like deviations. "
+            "This is the strongest replication pattern available in this workflow, "
+            "but still requires systematics and preregistered confirmation."
+        )
+    elif n_anom == 2:
+        verdict = "partial_replication"
+        interpretation = (
+            f"Two catalogs ({', '.join(anomaly_catalogs)}) show anomaly-like deviation, "
+            f"while one ({', '.join(null_catalogs)}) does not. "
+            "This is mixed evidence and may indicate instrument/population effects "
+            "rather than a universal sky anisotropy."
+        )
+    else:
+        verdict = "inconsistent"
+        interpretation = (
+            f"Only one catalog ({', '.join(anomaly_catalogs)}) shows anomaly-like deviation, "
+            f"while two ({', '.join(null_catalogs)}) are null-like. "
+            "This pattern most strongly suggests instrument-specific residual systematics."
+        )
+
+    # Pairwise context for diagnostics
+    pairwise = {
+        "ab": compare_catalog_results(result_a, result_b),
+        "ac": compare_catalog_results(result_a, result_c),
+        "bc": compare_catalog_results(result_b, result_c),
+    }
+
+    instrument_specific_signal = (n_anom == 1)
+    supports_catalog_independent_claim = (verdict == "broad_replication")
+
+    caveats = [
+        "Three-catalog consistency improves robustness but does not by itself prove a physical mechanism.",
+        "Catalogs differ in selection function, energy band, and source population.",
+        "Small catalogs (especially IceCube HESE) are underpowered for exclusion-level claims.",
+        "Trial-factor correction and preregistration status should be checked in each input summary.",
+    ]
+
+    return {
+        "comparison_mode": "three_catalog",
+        "catalog_rows": rows,
+        "catalog_labels": labels,
+        "n_anomaly_like": n_anom,
+        "n_null_like": n_null,
+        "anomaly_catalogs": anomaly_catalogs,
+        "null_catalogs": null_catalogs,
+        "instrument_specific_signal": instrument_specific_signal,
+        "supports_catalog_independent_claim": supports_catalog_independent_claim,
+        "consistency_verdict": verdict,
+        "interpretation": interpretation,
+        "pairwise": pairwise,
+        "caveats": caveats,
+        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+    }
+
+
+def write_three_catalog_comparison_memo(
+    comparison: Dict[str, Any],
+    output_dir: str,
+    name: str = "stage11_three_catalog_comparison",
+) -> str:
+    """Write markdown + JSON artifacts for a three-catalog comparison."""
+    os.makedirs(output_dir, exist_ok=True)
+    memo_path = os.path.join(output_dir, f"{name}_memo.md")
+    json_path = os.path.join(output_dir, f"{name}.json")
+
+    with open(json_path, "w") as f:
+        json.dump(comparison, f, indent=2, default=str)
+
+    def _fmt(v, digits=4):
+        if v is None:
+            return "N/A"
+        try:
+            return f"{float(v):.{digits}f}"
+        except (TypeError, ValueError):
+            return str(v)
+
+    verdict = str(comparison.get("consistency_verdict", "unknown")).upper()
+    ts = comparison.get("timestamp", "")
+    rows = comparison.get("catalog_rows", [])
+
+    table_lines = [
+        "| Catalog | N | Null mode | Hemi pct | Axis pct | Tier |",
+        "|---------|---|-----------|----------|----------|------|",
+    ]
+    for r in rows:
+        table_lines.append(
+            "| {catalog} | {n} | {null_mode} | {hemi} | {axis} | `{tier}` |".format(
+                catalog=r.get("catalog"),
+                n=r.get("event_count"),
+                null_mode=r.get("null_mode"),
+                hemi=_fmt(r.get("hemi_percentile")),
+                axis=_fmt(r.get("axis_percentile")),
+                tier=r.get("tier"),
+            )
+        )
+
+    caveats_md = "\n".join(f"- {c}" for c in comparison.get("caveats", []))
+    pairwise = comparison.get("pairwise", {})
+
+    memo = f"""# Stage 11: Three-Catalog Comparison Memo
+
+**Internal first-results artifact — not a scientific publication.**
+*Generated: {ts}*
+
+---
+
+## Verdict: {verdict}
+
+---
+
+## Catalog Table
+
+{chr(10).join(table_lines)}
+
+---
+
+## Replication Pattern
+
+- Anomaly-like catalogs: {', '.join(comparison.get('anomaly_catalogs', [])) or 'none'}
+- Null-like catalogs: {', '.join(comparison.get('null_catalogs', [])) or 'none'}
+- Instrument-specific residual pattern likely: {comparison.get('instrument_specific_signal')}
+- Supports catalog-independent claim: {comparison.get('supports_catalog_independent_claim')}
+
+---
+
+## Interpretation
+
+{comparison.get('interpretation', '')}
+
+---
+
+## Pairwise Context
+
+- A/B verdict: {pairwise.get('ab', {}).get('consistency_verdict', 'N/A')}
+- A/C verdict: {pairwise.get('ac', {}).get('consistency_verdict', 'N/A')}
+- B/C verdict: {pairwise.get('bc', {}).get('consistency_verdict', 'N/A')}
+
+---
+
+## Caveats
+
+{caveats_md}
+
+---
+
+*This comparison is exploratory unless all inputs were run under a locked preregistration plan.*
+"""
+
+    with open(memo_path, "w") as f:
+        f.write(memo)
+
+    return memo_path
 
 
 # ===========================================================================
