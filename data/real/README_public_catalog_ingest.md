@@ -47,6 +47,19 @@ All columns except `ra` and `dec` are optional in the sense that missing values 
 - **Minimum columns to export:** `event`, `ra`, `dec`, `energy_TeV`, `year`
 - **Save as:** `data/real/icecube_hese_events.csv`
 
+Validation step (recommended before running Stage 8):
+
+```bash
+python - << 'PY'
+from reality_audit.data_analysis.public_event_catalogs import load_public_catalog, validate_icecube_hese_schema
+events = load_public_catalog('data/real/icecube_hese_events.csv')
+print(validate_icecube_hese_schema(events))
+PY
+```
+
+The validator enforces required positional fields (`event_id`, `ra`, `dec`) and
+checks coordinate ranges.
+
 ---
 
 ## How the pipeline normalizes your file

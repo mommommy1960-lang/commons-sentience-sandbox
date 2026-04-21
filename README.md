@@ -1925,3 +1925,82 @@ out a real signal.  Swift BAT (N=872) has lower statistical power than Fermi (N=
 A third independent catalog (e.g. IceCube HESE) would strengthen the case.
 No pre-registration has been filed.  Results are **exploratory only**.
 See `docs/REALITY_AUDIT_STAGE10_STATUS.md`.
+
+---
+
+## Stage 11: Confirmatory Hardening and Third-Catalog Replication
+
+Stage 11 extends Stage 10 into a more defensible confirmatory-analysis path.
+It adds third-catalog support (IceCube HESE), preregistration scaffolding,
+multiple-testing correction, higher-resolution axis-scan planning hooks, and
+three-catalog comparison outputs.
+
+### What Stage 11 adds on top of Stage 10
+
+- **Third-catalog support** for `data/real/icecube_hese_events.csv`
+- **IceCube schema validation** in `public_event_catalogs.py`
+- **Pre-registration helper module**: `reality_audit/data_analysis/preregistration.py`
+- **Locked-analysis config scaffold**: `configs/preregistered_anisotropy_plan.json`
+- **Template doc**: `docs/REALITY_AUDIT_PREREGISTRATION_TEMPLATE.md`
+- **Trial-factor correction module**: `reality_audit/data_analysis/trial_factor_correction.py`
+- **Stage 8 metadata integration** for preregistration and correction labels
+- **Axis-scan abstraction** (`coarse`, `dense`, `healpix_plan` hook)
+- **Three-catalog comparison support** in `catalog_comparison.py` + updated CLI
+
+### Run IceCube HESE first-results
+
+```bash
+python reality_audit/data_analysis/run_stage8_first_results.py \
+  --input data/real/icecube_hese_events.csv \
+  --name stage11_icecube_first_results \
+  --output-dir outputs/stage8_first_results/stage11_icecube_first_results \
+  --null-mode isotropic \
+  --null-repeats 100 \
+  --axis-count 48 \
+  --seed 42
+```
+
+### Run with preregistration plan recording
+
+```bash
+python reality_audit/data_analysis/run_stage8_first_results.py \
+  --input data/real/fermi_lat_grb_catalog.csv \
+  --name stage11_fermi_preregistered \
+  --null-mode exposure_corrected \
+  --null-repeats 500 \
+  --axis-count 192 \
+  --preregistration-plan configs/preregistered_anisotropy_plan.json
+```
+
+### Run comparison in 2-catalog or 3-catalog mode
+
+```bash
+# Auto: compares A/B and includes C if available
+python reality_audit/data_analysis/run_stage10_catalog_comparison.py \
+  --name stage11_catalog_comparison_auto
+
+# Require all three catalogs
+python reality_audit/data_analysis/run_stage10_catalog_comparison.py \
+  --require-three \
+  --name stage11_catalog_comparison_required
+```
+
+### Stage 11 status docs
+
+- `docs/REALITY_AUDIT_STAGE11_STATUS.md`
+- `docs/REALITY_AUDIT_STAGE11_TEMPLATE.md`
+
+### Why Stage 11 matters
+
+- **Pre-registration** reduces post-hoc flexibility and separates exploratory vs confirmatory claims.
+- **Third-catalog replication** tests whether residual signals are instrument-specific.
+- **Multiple-testing correction** controls false positives across simultaneously tested metrics.
+- **Dense/HEALPix planning** prepares directional scans for stronger confirmatory geometry checks.
+
+### What still blocks a publishable claim
+
+1. True instrument exposure maps (especially Fermi FSSC products)
+2. Larger independent replication catalogs (IceCube HESE is small-N)
+3. Locked preregistration (`_locked: true`) before confirmatory reruns
+4. Full cross-instrument systematics analysis
+5. External scientific review
