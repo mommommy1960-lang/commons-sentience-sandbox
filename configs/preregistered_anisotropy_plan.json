@@ -2,14 +2,12 @@
   "_schema_version": "1.0",
   "_purpose": "Machine-readable preregistration plan for the Reality Audit public anisotropy program.",
   "_note": "Lock this file before any confirmatory run.  Do NOT modify after first confirmatory execution.",
-  "_locked": false,
-
+  "_locked": true,
   "hypothesis": {
     "name": "catalog_independent_sky_anisotropy",
     "description": "High-energy astrophysical event arrival directions show a statistically significant sky-position anisotropy that persists across independent instrument catalogs, after correcting for known instrument acceptance geometry.",
     "null_hypothesis": "Event arrival directions are consistent with isotropic (or acceptance-corrected-isotropic) sky coverage.  Any detected deviation is due to instrument bias, acceptance geometry, or random fluctuation."
   },
-
   "target_catalogs": [
     {
       "label": "fermi_lat_grb_catalog",
@@ -33,43 +31,39 @@
       "role": "independent_replication"
     }
   ],
-
   "primary_statistics": [
     "hemisphere_imbalance",
     "preferred_axis_score"
   ],
-
   "secondary_statistics": [
     "energy_time_pearson_r",
     "clustering_score"
   ],
-
   "null_model": {
     "primary": "exposure_corrected",
     "fallback": "isotropic",
     "null_repeats": 500,
     "note": "Wide-field gamma-ray detectors use exposure_corrected null.  Neutrino detectors with approximately uniform RA coverage use isotropic null."
   },
-
   "axis_scan": {
     "mode": "grid",
     "axis_count": 192,
     "note": "192-axis grid (16 lon x 12 lat) for confirmatory runs; 48-axis grid acceptable for exploratory screening."
   },
-
   "thresholds": {
     "exclusion_percentile": 0.95,
     "discovery_percentile": 0.999,
     "note": "Single-metric uncorrected percentile thresholds before multiple-testing correction."
   },
-
   "multiple_testing_correction": {
     "method": "holm",
     "n_tests": 2,
-    "metrics_tested": ["hemisphere_imbalance", "preferred_axis_score"],
+    "metrics_tested": [
+      "hemisphere_imbalance",
+      "preferred_axis_score"
+    ],
     "note": "Holm correction applied across the two primary statistics.  Secondary statistics are exploratory only and not used for discovery claims."
   },
-
   "discovery_criteria": {
     "description": "A discovery claim requires ALL of the following:",
     "criteria": [
@@ -80,7 +74,6 @@
       "Analysis was pre-registered and not modified after first confirmatory run"
     ]
   },
-
   "interpretation_guardrails": [
     "A statistically significant anisotropy is NOT evidence for any specific physical mechanism without independent theoretical motivation and Bayesian model comparison.",
     "Small catalogs (N < 100) are statistically underpowered.  IceCube HESE has ~37 events; treat its results as exploratory regardless of percentile.",
@@ -88,12 +81,11 @@
     "Do NOT report percentiles as p-values.  The empirical null distributes over 'null_repeats' samples; with 500 repeats, resolution floor is ~0.002.",
     "Pre-trial significance does not account for researcher degrees of freedom; only results using EXACTLY this preregistered plan are confirmatory."
   ],
-
   "preregistration_metadata": {
     "registered_by": "commons-sentience-sandbox automated pipeline",
-    "registration_date": null,
-    "first_confirmatory_run_date": null,
-    "plan_hash_sha256": null,
+    "registration_date": "2026-04-21",
+    "first_confirmatory_run_date": "2026-04-21",
+    "plan_hash_sha256": "34bebe54d5c0d9b5ca5e94704e0c92a9855f83af3cb45d1a908e3333ff07439c",
     "note": "Set registration_date before first confirmatory run.  Compute plan_hash_sha256 as sha256(json-canonical-form-of-this-file) to detect post-hoc modifications."
   }
 }
