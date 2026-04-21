@@ -2070,3 +2070,55 @@ python reality_audit/data_analysis/run_stage10_catalog_comparison.py \
 A `relatively_stable` Stage 12 robustness label improves confidence that the observed
 IceCube deviation is not dominated by trivial perturbations, but it does **not**
 remove small-N limitations or establish a catalog-independent physical claim.
+
+---
+
+## Stage 13: Publication Gate and First-Results Packaging
+
+Stage 13 adds a formal publication-readiness gate that mechanizes the conditions
+required before any result can be circulated internally or submitted for external review.
+
+### What Stage 13 adds
+
+- **Publication gate checklist**: `configs/publication_gate_checklist.json`
+- **Gate documentation**: `docs/REALITY_AUDIT_PUBLICATION_GATE.md`
+- **`publication_gate.py`**: evaluates run metadata/comparison/diagnostics against gate
+- **`first_results_package.py`**: collects/packages/briefs current project state
+- **`output_hygiene.py`**: classifies outputs directory without deleting anything
+- **Stage 13 runner**: `run_stage13_publication_gate.py`
+
+### Run publication gate
+
+```bash
+# Default paths (auto-detects current best outputs)
+python reality_audit/data_analysis/run_stage13_publication_gate.py
+# or:
+python scripts/run_stage13_publication_gate.py
+```
+
+### Gate verdict levels
+
+| Verdict | Meaning |
+|---|---|
+| `not_ready` | Required gates failing. Do not circulate. |
+| `internally_reviewable` | All required gates pass. Internal team review only. |
+| `candidate_first_results_note` | Required + recommended gates pass. |
+| `ready_for_external_review` | All gates pass, external review initiated. |
+
+### Current verdict: NOT_READY
+
+The current project state fails three required gates because Stage 9 runs predated
+the preregistration and trial-correction features:
+
+1. `prereg_present` — no preregistration plan in Stage 9 run metadata
+2. `prereg_locked` — plan never locked
+3. `trial_correction_applied` — Stage 9 runs did not apply trial correction
+
+These are honest failures, not implementation errors. The path forward is Stage 14:
+lock the plan, rerun all three catalogs in `preregistered_confirmatory` mode, and
+re-evaluate the gate.
+
+### Stage 13 status docs
+
+- `docs/REALITY_AUDIT_STAGE13_STATUS.md`
+- `docs/REALITY_AUDIT_STAGE13_TEMPLATE.md`
