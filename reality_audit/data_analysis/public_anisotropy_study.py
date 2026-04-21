@@ -60,6 +60,11 @@ from reality_audit.data_analysis.simulation_signature_analysis import (
     TIER_STRONG,
 )
 
+# Exposure-corrected null (lazy import to avoid circular deps)
+def _get_exposure_null_module():
+    from reality_audit.data_analysis import exposure_corrected_nulls as _ecn
+    return _ecn
+
 # =========================================================================
 # Denser axis scan (48 axes)
 # =========================================================================
@@ -184,16 +189,21 @@ def run_public_anisotropy_study(
     seed: Optional[int] = None,
     config: Optional[Dict[str, Any]] = None,
     num_axes: int = 48,
+    null_mode: str = "isotropic",
 ) -> Dict[str, Any]:
     """Run the public-data anisotropy study.
 
     Parameters
     ----------
     events       : normalized event list (output of load_public_catalog)
-    null_repeats : number of isotropic null draws for empirical percentile
+    null_repeats : number of null draws for empirical percentile
     seed         : RNG seed for reproducibility
-    config       : optional config dict (may override null_repeats, num_axes)
+    config       : optional config dict (may override null_repeats, num_axes,
+                   null_mode, ra_bins, dec_bins)
     num_axes     : number of trial axes for axis scan
+    null_mode    : "isotropic" (default) or "exposure_corrected"
+                   "exposure_corrected" builds an empirical sky-acceptance proxy
+                   from the observed catalog and samples null positions from it.
 
     Returns
     -------
@@ -207,6 +217,29 @@ def run_public_anisotropy_study(
         null_repeats = int(cfg["null_repeats"])
     if "num_axes" in cfg:
         num_axes = int(cfg["num_axes"])
+    if "null_mode" in cfg:
+        null_mode = str(cfg["null_mode"])
+
+    rng_seed = seed if seed is not None else cfg.get("seed", None)
+
+    _valid_null_modes = ("isotropic", "exposure_corrected")
+    if null_mode not in _valid_null_modes:
+        raise ValueError(
+            f"null_mode={null_mode!r} is not recognised. "
+            f"Choose from: {_valid_null_modes}"
+        )
+
+    # Build exposure map once if needed
+    exposure_map: Optional[Dict[str, Any]] = None
+    exposure_map_desc: Optional[Dict[str, Any]] = None
+    null_ensemble: Optional[List[List[Dict[str, Any]]]] = None
+
+    if null_mode == "exposure_corrected":
+        ecn = _get_exposure_null_module()
+        null_ensemble, exposure_map = ecn.generate_exposure_corrected_null_ensemble(
+            events, repeats=null_repeats, seed=rng_seed, config=cfg
+        )
+        exposure_map_desc = ecn.describe_exposure_map(exposure_map)
 
     rng_seed = seed if seed is not None else cfg.get("seed", None)
 
@@ -258,7 +291,12 @@ def run_public_anisotropy_study(
 
     for rep in range(null_repeats):
         ns = (rng_seed + rep) if rng_seed is not None else None
-        null = generate_null_events(events, mode="isotropic", seed=ns)
+
+        # Generate the null draw
+        if null_mode == "exposure_corrected" and null_ensemble is not None:
+            null = null_ensemble[rep]
+        else:
+            null = generate_null_events(events, mode="isotropic", seed=ns)
 
         n_ras  = [r["ra"]  for r in null if r.get("ra")  is not None]
         n_decs = [r["dec"] for r in null if r.get("dec") is not None]
@@ -282,7 +320,7 @@ def run_public_anisotropy_study(
         null_clust_vals.append(_clustering_score(n_times) if n_times else 1.0)
 
     null_comparison = {
-        "null_mode":         "isotropic",
+        "null_mode":         null_mode,
         "null_repeats":      null_repeats,
         "hemi_percentile":   _empirical_percentile(abs(hemi),         null_hemi_vals),
         "axis_percentile":   _empirical_percentile(axis_score,        null_axis_vals),
@@ -335,10 +373,12 @@ def run_public_anisotropy_study(
         "null_comparison": null_comparison,
         "signal_evaluation": signal_eval,
         "run_metadata": {
-            "seed":         rng_seed,
-            "null_repeats": null_repeats,
-            "num_axes":     num_axes,
-            "timestamp":    datetime.datetime.utcnow().isoformat() + "Z",
+            "seed":              rng_seed,
+            "null_repeats":      null_repeats,
+            "num_axes":          num_axes,
+            "null_mode":         null_mode,
+            "exposure_map_desc": exposure_map_desc,
+            "timestamp":         datetime.datetime.utcnow().isoformat() + "Z",
         },
     }
 
@@ -349,6 +389,9 @@ def run_public_anisotropy_study(
 
 def _evaluate_signal_strength(null_comparison: Dict[str, Any]) -> Dict[str, Any]:
     """Return a plain-language tier classification from null-comparison percentiles."""
+    null_mode = null_comparison.get("null_mode", "isotropic")
+    null_label = "exposure-corrected" if null_mode == "exposure_corrected" else "isotropic"
+
     percentiles = {
         "hemisphere_imbalance": null_comparison.get("hemi_percentile", 0.5),
         "preferred_axis":       null_comparison.get("axis_percentile", 0.5),
@@ -360,25 +403,25 @@ def _evaluate_signal_strength(null_comparison: Dict[str, Any]) -> Dict[str, Any]
     if max_pval >= 0.97:
         tier    = TIER_STRONG
         summary = (
-            "One or more metrics fall in the top 3% of the isotropic null distribution. "
+            f"One or more metrics fall in the top 3% of the {null_label} null distribution. "
             "This is a strong anomaly-like deviation; its cause requires further investigation."
         )
     elif max_pval >= 0.90:
         tier    = TIER_MODERATE
         summary = (
-            "One or more metrics fall in the top 10% of the isotropic null distribution. "
+            f"One or more metrics fall in the top 10% of the {null_label} null distribution. "
             "Moderate anomaly-like deviation; warrants follow-up."
         )
     elif max_pval >= 0.75:
         tier    = TIER_WEAK
         summary = (
-            "One or more metrics fall in the top 25% of the isotropic null distribution. "
+            f"One or more metrics fall in the top 25% of the {null_label} null distribution. "
             "Weak deviation; consistent with statistical fluctuation."
         )
     else:
         tier    = TIER_NONE
         summary = (
-            "All metrics are within the bulk of the isotropic null distribution. "
+            f"All metrics are within the bulk of the {null_label} null distribution. "
             "No significant anomaly detected."
         )
 

@@ -1800,3 +1800,60 @@ python -m pytest tests/test_stage8_first_results.py -v
 ### ⚠️ Stage 8 caveat
 
 Stage 8 outputs are **internal first-results artifacts only**.  They are not a scientific publication, preprint, or evidence for any metaphysical or cosmological conclusion.  A single-catalog run without exposure-map correction, trial-factor adjustment, or pre-registration is insufficient to support a scientific claim.  See `docs/REALITY_AUDIT_STAGE8_STATUS.md` for what remains before a publishable first-results note.
+
+---
+
+## Stage 9: Exposure-Corrected Null Model
+
+Stage 9 replaces the naive uniform null with an empirical sky-acceptance proxy built from the observed catalog.  This corrects the dominant systematic in Stage 8: wide-field detectors like Fermi GBM do not observe the sky uniformly, so comparing against an isotropic null produces a spurious "strong anomaly" that is just the acceptance footprint.
+
+### What Stage 9 adds on top of Stage 8
+
+- **`exposure_corrected_nulls.py`** — empirical 24×12 RA×Dec histogram null module
+- **`--null-mode` CLI flag** — choose `isotropic` (Stage 8 default) or `exposure_corrected` (Stage 9)
+- **`docs/REALITY_AUDIT_STAGE9_TEMPLATE.md`** — collaborator guide, side-by-side comparison recipe
+- **`docs/REALITY_AUDIT_STAGE9_STATUS.md`** — current stage status and limitations
+- **`tests/test_exposure_corrected_nulls.py`** — unit tests for the new null module
+
+### Run with exposure-corrected null
+
+```bash
+python reality_audit/data_analysis/run_stage8_first_results.py \
+    --input data/real/fermi_lat_grb_catalog.csv \
+    --name stage9_fermi_exposure_corrected \
+    --output-dir outputs/stage9_first_results/stage9_fermi_exposure_corrected \
+    --null-mode exposure_corrected \
+    --null-repeats 100 --axis-count 48 --seed 42 --plots --save-normalized
+```
+
+### Run both nulls for side-by-side comparison
+
+```bash
+# Isotropic baseline
+python reality_audit/data_analysis/run_stage8_first_results.py \
+    --input data/real/fermi_lat_grb_catalog.csv \
+    --name stage9_fermi_isotropic_compare \
+    --output-dir outputs/stage9_first_results/stage9_fermi_isotropic_compare \
+    --null-mode isotropic \
+    --null-repeats 100 --axis-count 48 --seed 42
+
+# Corrected null
+python reality_audit/data_analysis/run_stage8_first_results.py \
+    --input data/real/fermi_lat_grb_catalog.csv \
+    --name stage9_fermi_exposure_corrected \
+    --output-dir outputs/stage9_first_results/stage9_fermi_exposure_corrected \
+    --null-mode exposure_corrected \
+    --null-repeats 100 --axis-count 48 --seed 42
+```
+
+See `docs/REALITY_AUDIT_STAGE9_TEMPLATE.md` for a Python snippet that reads both summary JSONs and prints a comparison table.
+
+### Tests
+
+```bash
+python -m pytest tests/test_exposure_corrected_nulls.py -v
+```
+
+### ⚠️  Stage 9 caveat — the null absorbs signal
+
+The empirical exposure map is **built from the same events under test**.  Any real anisotropy in the data is partially absorbed into the null, making Stage 9 *conservative*.  A non-detection under the corrected null does not rule out a real signal — it rules out signals that *exceed* the observed sky-coverage pattern.  A proper instrument-response exposure map (e.g. from the Fermi FSSC) is needed before claiming a well-controlled null.  See `docs/REALITY_AUDIT_STAGE9_STATUS.md`.

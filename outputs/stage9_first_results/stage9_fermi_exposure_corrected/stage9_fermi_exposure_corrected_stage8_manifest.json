@@ -1,0 +1,28 @@
+{
+  "stage": "stage8_first_results",
+  "run_name": "stage9_fermi_exposure_corrected",
+  "written_at": "2026-04-21T08:53:32.166119Z",
+  "input_path": "data/real/fermi_lat_grb_catalog.csv",
+  "output_dir": "outputs/stage9_first_results/stage9_fermi_exposure_corrected",
+  "catalog_label": "fermi_lat_grb_catalog",
+  "event_count": 3000,
+  "run_metadata": {
+    "null_repeats": 100,
+    "axis_count": 48,
+    "seed": 42,
+    "plots": false,
+    "save_normalized": false,
+    "null_mode": "exposure_corrected",
+    "timestamp": "2026-04-21T08:53:32.165782Z",
+    "stage": "stage8_first_results"
+  },
+  "artifacts": {
+    "json_summary": "outputs/stage9_first_results/stage9_fermi_exposure_corrected/stage9_fermi_exposure_corrected_summary.json",
+    "csv_summary": "outputs/stage9_first_results/stage9_fermi_exposure_corrected/stage9_fermi_exposure_corrected_results.csv",
+    "md_summary": "outputs/stage9_first_results/stage9_fermi_exposure_corrected/stage9_fermi_exposure_corrected_summary.md",
+    "manifest": "outputs/stage9_first_results/stage9_fermi_exposure_corrected/stage9_fermi_exposure_corrected_manifest.json",
+    "stage8_memo": "outputs/stage9_first_results/stage9_fermi_exposure_corrected/stage9_fermi_exposure_corrected_memo.md"
+  },
+  "signal_tier": "weak_anomaly_like_deviation",
+  "max_percentile": 0.89
+}

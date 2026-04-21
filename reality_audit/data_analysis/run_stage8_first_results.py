@@ -105,6 +105,17 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Generate PNG plots (requires matplotlib).",
     )
     p.add_argument(
+        "--null-mode",
+        default="isotropic",
+        choices=["isotropic", "exposure_corrected"],
+        metavar="MODE",
+        help=(
+            "Null model: 'isotropic' (uniform sphere, default) or "
+            "'exposure_corrected' (empirical sky-acceptance proxy from observed catalog). "
+            "Use 'exposure_corrected' for real Fermi/Swift/IceCube catalogs."
+        ),
+    )
+    p.add_argument(
         "--save-normalized",
         action="store_true",
         help="Save a normalised event CSV alongside analysis artifacts.",
@@ -171,6 +182,7 @@ def main(argv=None) -> int:
         seed=args.seed,
         plots=args.plots,
         save_normalized=args.save_normalized,
+        null_mode=args.null_mode,
     )
 
     status = build_stage8_status_summary(bundle)
@@ -202,6 +214,7 @@ def main(argv=None) -> int:
     )
     print(f"  Signal tier      : {sig.get('tier', 'unknown')}")
     print(f"  Max percentile   : {sig.get('max_percentile', 0.0):.4f}")
+    print(f"  Null model       : {args.null_mode}")
     print()
     print(f"  Output dir       : {output_dir}")
     print(f"  Memo             : {bundle.get('memo_path')}")

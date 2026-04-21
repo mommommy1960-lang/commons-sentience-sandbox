@@ -1,0 +1,11 @@
+{
+  "experiment": "stage9_fermi_exposure_corrected",
+  "catalog": "fermi_lat_grb_catalog",
+  "written_at": "2026-04-21T08:53:32.164141Z",
+  "artifacts": {
+    "json_summary": "outputs/stage9_first_results/stage9_fermi_exposure_corrected/stage9_fermi_exposure_corrected_summary.json",
+    "csv_summary": "outputs/stage9_first_results/stage9_fermi_exposure_corrected/stage9_fermi_exposure_corrected_results.csv",
+    "md_summary": "outputs/stage9_first_results/stage9_fermi_exposure_corrected/stage9_fermi_exposure_corrected_summary.md",
+    "manifest": "outputs/stage9_first_results/stage9_fermi_exposure_corrected/stage9_fermi_exposure_corrected_manifest.json"
+  }
+}

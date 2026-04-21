@@ -189,6 +189,7 @@ def run_stage8_first_results(
     seed: int = 42,
     plots: bool = True,
     save_normalized: bool = True,
+    null_mode: str = "isotropic",
 ) -> Dict[str, Any]:
     """Run the complete Stage 8 first-results workflow on a real catalog.
 
@@ -205,18 +206,16 @@ def run_stage8_first_results(
     input_path     : Path to the raw catalog file.
     output_dir     : Directory for all output artifacts.
     name           : Run name used in filenames and report headers.
-    null_repeats   : Isotropic null ensemble size.
+    null_repeats   : Null ensemble size.
     axis_count     : Trial axis count (default 48).
     seed           : RNG seed.
     plots          : Whether to generate PNG plots.
     save_normalized: Whether to save the normalised event CSV.
+    null_mode      : "isotropic" or "exposure_corrected".
 
     Returns
     -------
-    A compact result bundle dict with keys:
-      run_name, input_path, output_dir, catalog_label, event_count,
-      coverage, study_results, manifest, memo_path, stage8_manifest_path,
-      run_metadata
+    A compact result bundle dict.
     """
     os.makedirs(output_dir, exist_ok=True)
 
@@ -256,6 +255,7 @@ def run_stage8_first_results(
         "null_repeats": null_repeats,
         "num_axes":     axis_count,
         "seed":         seed,
+        "null_mode":    null_mode,
     }
     study_results = run_public_anisotropy_study(
         events,
@@ -263,6 +263,7 @@ def run_stage8_first_results(
         seed=seed,
         config=run_config,
         num_axes=axis_count,
+        null_mode=null_mode,
     )
 
     # --- Write Stage 7 study artifacts ---
@@ -295,6 +296,7 @@ def run_stage8_first_results(
             "seed":         seed,
             "plots":        plots,
             "save_normalized": save_normalized,
+            "null_mode":    null_mode,
             "timestamp":    datetime.datetime.utcnow().isoformat() + "Z",
             "stage":        "stage8_first_results",
         },
@@ -414,6 +416,18 @@ def write_stage8_first_results_memo(
     input_path    = result_bundle.get("input_path", "unknown")
     event_count   = result_bundle.get("event_count", 0)
     tier          = status.get("interpretation_label", "unknown")
+    null_mode     = rm.get("null_mode", "isotropic")
+    null_label    = "exposure-corrected empirical sky-acceptance proxy" if null_mode == "exposure_corrected" else "uniform isotropic sphere"
+    null_why      = (
+        "The empirical exposure-corrected null was selected to account for "
+        "the non-uniform sky coverage of the Fermi GBM detector. "
+        "The null is built by histogramming the observed events and re-sampling "
+        "from the resulting distribution; see docs/REALITY_AUDIT_STAGE9_STATUS.md."
+        if null_mode == "exposure_corrected"
+        else
+        "A uniform isotropic null was used (events placed uniformly on the sphere). "
+        "This does not account for instrument sky-coverage biases."
+    )
 
     def _fmt(v: Any, digits: int = 4) -> str:
         if v is None:
@@ -469,7 +483,9 @@ def write_stage8_first_results_memo(
     lines.append(f"- Energy–time Pearson correlation")
     lines.append(f"- Temporal clustering score")
     lines.append(f"")
-    lines.append(f"Seed: `{seed}`. Null model: isotropic sphere (uniform RA/Dec).")
+    lines.append(f"Seed: `{seed}`. Null model: **{null_label}**.")
+    lines.append(f"")
+    lines.append(f"**Why this null model:** {null_why}")
     lines.append(f"")
     lines.append(f"---")
     lines.append(f"")

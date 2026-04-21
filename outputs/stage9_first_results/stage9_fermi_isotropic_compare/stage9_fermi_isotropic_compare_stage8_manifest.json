@@ -1,0 +1,28 @@
+{
+  "stage": "stage8_first_results",
+  "run_name": "stage9_fermi_isotropic_compare",
+  "written_at": "2026-04-21T08:54:48.401876Z",
+  "input_path": "data/real/fermi_lat_grb_catalog.csv",
+  "output_dir": "outputs/stage9_first_results/stage9_fermi_isotropic_compare",
+  "catalog_label": "fermi_lat_grb_catalog",
+  "event_count": 3000,
+  "run_metadata": {
+    "null_repeats": 100,
+    "axis_count": 48,
+    "seed": 42,
+    "plots": false,
+    "save_normalized": false,
+    "null_mode": "isotropic",
+    "timestamp": "2026-04-21T08:54:48.400770Z",
+    "stage": "stage8_first_results"
+  },
+  "artifacts": {
+    "json_summary": "outputs/stage9_first_results/stage9_fermi_isotropic_compare/stage9_fermi_isotropic_compare_summary.json",
+    "csv_summary": "outputs/stage9_first_results/stage9_fermi_isotropic_compare/stage9_fermi_isotropic_compare_results.csv",
+    "md_summary": "outputs/stage9_first_results/stage9_fermi_isotropic_compare/stage9_fermi_isotropic_compare_summary.md",
+    "manifest": "outputs/stage9_first_results/stage9_fermi_isotropic_compare/stage9_fermi_isotropic_compare_manifest.json",
+    "stage8_memo": "outputs/stage9_first_results/stage9_fermi_isotropic_compare/stage9_fermi_isotropic_compare_memo.md"
+  },
+  "signal_tier": "strong_anomaly_like_deviation",
+  "max_percentile": 1.0
+}

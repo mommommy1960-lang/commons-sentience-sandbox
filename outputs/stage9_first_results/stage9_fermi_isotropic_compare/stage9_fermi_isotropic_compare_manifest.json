@@ -1,0 +1,11 @@
+{
+  "experiment": "stage9_fermi_isotropic_compare",
+  "catalog": "fermi_lat_grb_catalog",
+  "written_at": "2026-04-21T08:54:48.394856Z",
+  "artifacts": {
+    "json_summary": "outputs/stage9_first_results/stage9_fermi_isotropic_compare/stage9_fermi_isotropic_compare_summary.json",
+    "csv_summary": "outputs/stage9_first_results/stage9_fermi_isotropic_compare/stage9_fermi_isotropic_compare_results.csv",
+    "md_summary": "outputs/stage9_first_results/stage9_fermi_isotropic_compare/stage9_fermi_isotropic_compare_summary.md",
+    "manifest": "outputs/stage9_first_results/stage9_fermi_isotropic_compare/stage9_fermi_isotropic_compare_manifest.json"
+  }
+}

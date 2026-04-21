@@ -1,0 +1,2 @@
+name,catalog,written_at,event_count,hemisphere_imbalance,preferred_axis_score,energy_time_r,cluster_score,hemi_percentile,axis_percentile,et_r_percentile,clust_percentile,signal_tier,max_percentile
+stage9_fermi_exposure_corrected,fermi_lat_grb_catalog,2026-04-21T08:53:32.164141Z,3000,-0.412,0.24558079170978916,0.02010987986963195,0.96986,0.85,0.89,0.0,0.0,weak_anomaly_like_deviation,0.89
