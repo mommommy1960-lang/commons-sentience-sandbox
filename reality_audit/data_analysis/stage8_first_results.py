@@ -71,6 +71,87 @@ def _build_preregistration_metadata(
     except Exception:
         return {"error": "preregistration module unavailable", "plan_path": plan_path}
 
+
+def _expected_null_mode_from_plan(
+    plan: Dict[str, Any],
+    catalog_label: str,
+) -> Optional[str]:
+    """Return expected null mode from plan for this catalog, if available."""
+    cats = plan.get("target_catalogs", [])
+    if isinstance(cats, list):
+        for c in cats:
+            if not isinstance(c, dict):
+                continue
+            label = str(c.get("label", "")).strip().lower()
+            if label and label in catalog_label.lower() and c.get("null_mode"):
+                return str(c.get("null_mode")).strip().lower()
+    nm = plan.get("null_model", {})
+    if isinstance(nm, dict) and nm.get("primary"):
+        return str(nm.get("primary")).strip().lower()
+    return None
+
+
+def _evaluate_preregistration_match(
+    plan: Optional[Dict[str, Any]],
+    catalog_label: str,
+    run_null_mode: str,
+    run_axis_count: int,
+    run_null_repeats: int,
+    run_mtc_method: str,
+    run_mode: str,
+) -> Dict[str, Any]:
+    """Check whether run choices match preregistered plan choices."""
+    if not isinstance(plan, dict):
+        return {
+            "has_plan": False,
+            "matches_locked_plan": False,
+            "mismatches": ["no_preregistration_plan_provided"],
+        }
+
+    mismatches: List[str] = []
+
+    expected_null = _expected_null_mode_from_plan(plan, catalog_label)
+    if expected_null and str(run_null_mode).lower() != expected_null:
+        mismatches.append(
+            f"null_mode_mismatch(run={run_null_mode}, plan={expected_null})"
+        )
+
+    expected_axis = plan.get("axis_scan", {}).get("axis_count")
+    if expected_axis is not None:
+        try:
+            if int(expected_axis) != int(run_axis_count):
+                mismatches.append(
+                    f"axis_count_mismatch(run={run_axis_count}, plan={expected_axis})"
+                )
+        except (TypeError, ValueError):
+            mismatches.append("axis_count_unparseable_in_plan")
+
+    expected_repeats = plan.get("null_model", {}).get("null_repeats")
+    if expected_repeats is not None:
+        try:
+            if int(expected_repeats) != int(run_null_repeats):
+                mismatches.append(
+                    f"null_repeats_mismatch(run={run_null_repeats}, plan={expected_repeats})"
+                )
+        except (TypeError, ValueError):
+            mismatches.append("null_repeats_unparseable_in_plan")
+
+    expected_mtc = plan.get("multiple_testing_correction", {}).get("method")
+    if expected_mtc and str(expected_mtc).lower() != str(run_mtc_method).lower():
+        mismatches.append(
+            f"trial_correction_mismatch(run={run_mtc_method}, plan={expected_mtc})"
+        )
+
+    if run_mode == "preregistered_confirmatory" and not bool(plan.get("_locked", False)):
+        mismatches.append("plan_not_locked_for_confirmatory_run")
+
+    return {
+        "has_plan": True,
+        "matches_locked_plan": len(mismatches) == 0,
+        "mismatches": mismatches,
+        "plan_locked": bool(plan.get("_locked", False)),
+    }
+
 # ---------------------------------------------------------------------------
 # Known real catalog filenames (in priority order)
 # ---------------------------------------------------------------------------
@@ -213,6 +294,7 @@ def run_stage8_first_results(
     null_mode: Optional[str] = None,
     preregistration_plan: Optional[Dict[str, Any]] = None,
     preregistration_plan_path: Optional[str] = None,
+    run_mode: str = "exploratory",
 ) -> Dict[str, Any]:
     """Run the complete Stage 8 first-results workflow on a real catalog.
 
@@ -239,12 +321,19 @@ def run_stage8_first_results(
     preregistration_plan : optional loaded plan dict (from preregistration.load_preregistration_plan).
                            When provided, a compact plan summary is recorded in run_metadata.
     preregistration_plan_path : optional path string for traceability (stored in metadata).
+    run_mode       : "exploratory" or "preregistered_confirmatory".
 
     Returns
     -------
     A compact result bundle dict.
     """
     os.makedirs(output_dir, exist_ok=True)
+
+    if run_mode not in ("exploratory", "preregistered_confirmatory"):
+        raise ValueError(
+            f"run_mode={run_mode!r} is not recognised. "
+            "Choose from: ('exploratory', 'preregistered_confirmatory')"
+        )
 
     # Derive a catalog label from the file basename
     catalog_label = os.path.splitext(os.path.basename(input_path))[0]
@@ -343,6 +432,22 @@ def run_stage8_first_results(
     prereg_meta = _build_preregistration_metadata(
         preregistration_plan, preregistration_plan_path
     )
+    prereg_match = _evaluate_preregistration_match(
+        plan=preregistration_plan,
+        catalog_label=catalog_label,
+        run_null_mode=null_mode,
+        run_axis_count=axis_count,
+        run_null_repeats=null_repeats,
+        run_mtc_method=mtc_method,
+        run_mode=run_mode,
+    )
+
+    if run_mode == "preregistered_confirmatory" and prereg_match.get("matches_locked_plan"):
+        run_label = "preregistered_confirmatory"
+    elif run_mode == "preregistered_confirmatory":
+        run_label = "preregistered_confirmatory_with_mismatch"
+    else:
+        run_label = "exploratory"
 
     study_rm = study_results.setdefault("run_metadata", {})
     study_rm["trial_factor_correction"] = {
@@ -353,6 +458,8 @@ def run_stage8_first_results(
         "discovery_threshold": discovery_threshold,
     }
     study_rm["preregistration"] = prereg_meta
+    study_rm["preregistration_match"] = prereg_match
+    study_rm["run_mode"] = run_label
     study_rm["stage"] = "stage8_first_results"
 
     # --- Write Stage 7 study artifacts ---
@@ -393,9 +500,11 @@ def run_stage8_first_results(
                 "exclusion_threshold": exclusion_threshold,
                 "discovery_threshold": discovery_threshold,
             },
+            "run_mode": run_label,
             "timestamp":    datetime.datetime.utcnow().isoformat() + "Z",
             "stage":        "stage8_first_results",
             "preregistration": prereg_meta,
+            "preregistration_match": prereg_match,
         },
     }
 
@@ -557,6 +666,8 @@ def write_stage8_first_results_memo(
     seed      = rm.get("seed")
     null_rep  = rm.get("null_repeats")
     axis_cnt  = rm.get("axis_count")
+    run_mode = rm.get("run_mode", "exploratory")
+    prereg_match = rm.get("preregistration_match", {})
 
     instruments = cov.get("instrument_labels", [])
     instr_str   = ", ".join(str(x) for x in instruments[:8]) if instruments else "N/A"
@@ -580,6 +691,7 @@ def write_stage8_first_results_memo(
     lines.append(f"**Generated:** {ts}  ")
     lines.append(f"**Catalog:** `{catalog_label}` (`{input_path}`)  ")
     lines.append(f"**Stage:** Stage 8 — First Real-Catalog Results Package  ")
+    lines.append(f"**Run mode:** `{run_mode}`  ")
     lines.append(f"")
     lines.append(f"---")
     lines.append(f"")
@@ -603,7 +715,25 @@ def write_stage8_first_results_memo(
     lines.append(f"")
     lines.append(f"---")
     lines.append(f"")
-    lines.append(f"## 2. Catalog Coverage")
+    lines.append(f"## 2. Run Discipline (Exploratory vs Confirmatory)")
+    lines.append(f"")
+    if run_mode.startswith("preregistered_confirmatory"):
+        lines.append("This run was requested as preregistered confirmatory.")
+        if prereg_match.get("matches_locked_plan"):
+            lines.append("Plan match status: **MATCHED LOCKED PLAN**")
+        else:
+            lines.append("Plan match status: **MISMATCH**")
+            mm = prereg_match.get("mismatches", [])
+            if mm:
+                lines.append("Mismatches:")
+                for item in mm:
+                    lines.append(f"- {item}")
+    else:
+        lines.append("This run is explicitly labeled exploratory.")
+    lines.append(f"")
+    lines.append(f"---")
+    lines.append(f"")
+    lines.append(f"## 3. Catalog Coverage")
     lines.append(f"")
     lines.append(f"| Field               | Value                |")
     lines.append(f"|---------------------|----------------------|")
@@ -614,7 +744,7 @@ def write_stage8_first_results_memo(
     lines.append(f"")
     lines.append(f"---")
     lines.append(f"")
-    lines.append(f"## 3. Key Metrics")
+    lines.append(f"## 4. Key Metrics")
     lines.append(f"")
     lines.append(f"| Metric                    | Observed value | Percentile vs null |")
     lines.append(f"|---------------------------|----------------|--------------------|")
@@ -638,7 +768,7 @@ def write_stage8_first_results_memo(
     lines.append(f"**Signal tier:** `{tier}`  ")
     lines.append(f"**Maximum percentile:** {_fmt(sig.get('max_percentile'))}")
     lines.append(f"")
-    lines.append(f"## 4. Trial-Factor Correction")
+    lines.append(f"## 5. Trial-Factor Correction")
     lines.append(f"")
     if tfc:
         lines.append(
@@ -668,13 +798,13 @@ def write_stage8_first_results_memo(
         lines.append("")
     lines.append(f"---")
     lines.append(f"")
-    lines.append(f"## 5. Interpretation")
+    lines.append(f"## 6. Interpretation")
     lines.append(f"")
     lines.append(sig_summary)
     lines.append(f"")
     lines.append(f"---")
     lines.append(f"")
-    lines.append(f"## 6. What This Result Does NOT Prove")
+    lines.append(f"## 7. What This Result Does NOT Prove")
     lines.append(f"")
     lines.append(
         "A deviation from an isotropic null model — even a statistically "
@@ -699,14 +829,14 @@ def write_stage8_first_results_memo(
     lines.append(f"")
     lines.append(f"---")
     lines.append(f"")
-    lines.append(f"## 7. Current Limitations")
+    lines.append(f"## 8. Current Limitations")
     lines.append(f"")
     for c in status.get("caveats", []):
         lines.append(f"- {c}")
     lines.append(f"")
     lines.append(f"---")
     lines.append(f"")
-    lines.append(f"## 8. Recommended Next Upgrades")
+    lines.append(f"## 9. Recommended Next Upgrades")
     lines.append(f"")
     for a in status.get("next_recommended_actions", []):
         lines.append(f"- {a}")

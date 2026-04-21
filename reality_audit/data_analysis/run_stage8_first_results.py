@@ -145,6 +145,18 @@ def _build_parser() -> argparse.ArgumentParser:
             "See docs/REALITY_AUDIT_PREREGISTRATION_TEMPLATE.md."
         ),
     )
+    p.add_argument(
+        "--run-mode",
+        default="exploratory",
+        choices=["exploratory", "preregistered_confirmatory"],
+        metavar="MODE",
+        dest="run_mode",
+        help=(
+            "Run discipline label. exploratory = hypothesis-generating. "
+            "preregistered_confirmatory = requires preregistration plan and "
+            "records plan-match diagnostics in metadata."
+        ),
+    )
     return p
 
 
@@ -210,6 +222,7 @@ def main(argv=None) -> int:
         null_mode=args.null_mode,
         preregistration_plan=_load_plan_if_given(getattr(args, "preregistration_plan", None)),
         preregistration_plan_path=getattr(args, "preregistration_plan", None),
+        run_mode=args.run_mode,
     )
 
     status = build_stage8_status_summary(bundle)
@@ -241,6 +254,7 @@ def main(argv=None) -> int:
     )
     print(f"  Signal tier      : {sig.get('tier', 'unknown')}")
     print(f"  Max percentile   : {sig.get('max_percentile', 0.0):.4f}")
+    print(f"  Run mode         : {bundle.get('run_metadata', {}).get('run_mode', args.run_mode)}")
     resolved_null_mode = (
         bundle.get("run_metadata", {})
         .get("null_mode", args.null_mode)
