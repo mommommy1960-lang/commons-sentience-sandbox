@@ -36,7 +36,6 @@ import datetime
 import json
 import math
 import os
-import random
 from typing import Any, Dict, List, Optional, Tuple
 
 try:
@@ -66,20 +65,12 @@ def _get_exposure_null_module():
     return _ecn
 
 # =========================================================================
-# Denser axis scan (48 axes)
+# Axis-scan generation (coarse, dense, and HEALPix planning hook)
 # =========================================================================
 
-def _build_48_axes() -> List[Tuple[float, float, float]]:
-    """Return 48 unit vectors evenly distributed on the sphere.
-
-    Construction: 8 equally-spaced azimuth angles × 6 polar-angle bands.
-
-    The grid is regular in (longitude, sin-latitude) space, which gives a
-    roughly uniform area coverage and is fully deterministic.
-    """
+def _build_axis_grid(n_lon: int, n_lat: int) -> List[Tuple[float, float, float]]:
+    """Return unit vectors on a deterministic lon × sin(lat) grid."""
     axes: List[Tuple[float, float, float]] = []
-    n_lon = 8
-    n_lat = 6
     for i_lat in range(n_lat):
         # sin(lat) uniformly spaced in [-1, 1] — covers both hemispheres
         sin_lat = -1.0 + (2.0 * (i_lat + 0.5)) / n_lat
@@ -93,6 +84,86 @@ def _build_48_axes() -> List[Tuple[float, float, float]]:
     return axes
 
 
+def _build_48_axes() -> List[Tuple[float, float, float]]:
+    """Return the legacy 48-axis deterministic scan grid."""
+    return _build_axis_grid(n_lon=8, n_lat=6)
+
+
+def _build_axes_for_count(num_axes: int) -> List[Tuple[float, float, float]]:
+    """Build a deterministic grid with at least ``num_axes`` points, then trim."""
+    n = max(12, int(num_axes))
+    # n_lon*n_lat ~ n with n_lon roughly sqrt(2n) for near-square lon/lat density.
+    n_lon = max(4, int(math.ceil(math.sqrt(2.0 * n))))
+    n_lat = max(3, int(math.ceil(n / n_lon)))
+    axes = _build_axis_grid(n_lon=n_lon, n_lat=n_lat)
+    return axes[:n]
+
+
+def _generate_trial_axes(
+    num_axes: int,
+    mode: str = "auto",
+    seed: Optional[int] = None,
+    healpix_nside: Optional[int] = None,
+) -> Tuple[List[Tuple[float, float, float]], Dict[str, Any]]:
+    """Generate trial axes and return (axes, planning metadata).
+
+    Modes
+    -----
+    auto
+        Use legacy 48-axis grid for <=48 and deterministic dense grid above 48.
+    coarse
+        Legacy 48-axis grid (trimmed/extended deterministically as needed).
+    dense
+        Deterministic dense lon/sin(lat) grid with at least ``num_axes`` points.
+    healpix_plan
+        Planning hook only.  Uses a deterministic dense fallback now while
+        recording intended HEALPix target size for future integration.
+    """
+    mode = (mode or "auto").lower()
+    n = max(12, int(num_axes))
+
+    if mode == "healpix_plan":
+        nside = int(healpix_nside) if healpix_nside is not None else 8
+        planned_npix = 12 * nside * nside
+        axes = _build_axes_for_count(max(n, planned_npix))
+        axes = axes[:max(n, min(planned_npix, len(axes)))]
+        return axes, {
+            "mode": "healpix_plan",
+            "implemented": False,
+            "message": "HEALPix integration pending; using deterministic dense-grid fallback.",
+            "planned_healpix_nside": nside,
+            "planned_healpix_npix": planned_npix,
+            "seed": seed,
+        }
+
+    if mode == "dense" or (mode == "auto" and n > 48):
+        axes = _build_axes_for_count(n)
+        return axes, {
+            "mode": "dense",
+            "implemented": True,
+            "message": "Deterministic dense lon/sin(lat) grid.",
+            "planned_healpix_nside": None,
+            "planned_healpix_npix": None,
+            "seed": seed,
+        }
+
+    # coarse or auto with <=48
+    fixed = list(_AXES_48)
+    if n <= len(fixed):
+        axes = fixed[:n]
+    else:
+        # Extend coarse grid deterministically using the dense builder.
+        axes = _build_axes_for_count(n)
+    return axes, {
+        "mode": "coarse",
+        "implemented": True,
+        "message": "Legacy 48-axis grid (deterministic).",
+        "planned_healpix_nside": None,
+        "planned_healpix_npix": None,
+        "seed": seed,
+    }
+
+
 _AXES_48: List[Tuple[float, float, float]] = _build_48_axes()
 
 
@@ -100,6 +171,8 @@ def scan_trial_axes(
     events: List[Dict[str, Any]],
     num_axes: int = 48,
     seed: Optional[int] = None,
+    axis_mode: str = "auto",
+    healpix_nside: Optional[int] = None,
 ) -> Dict[str, Any]:
     """Scan ``num_axes`` trial directions and return the preferred-axis score.
 
@@ -107,7 +180,9 @@ def scan_trial_axes(
     ----------
     events   : normalized event list
     num_axes : number of trial axes (default 48; minimum 12)
-    seed     : only used if num_axes differs from 48 (for random axis sampling)
+    seed     : retained for reproducibility metadata (generation is deterministic)
+    axis_mode: "auto", "coarse", "dense", or "healpix_plan"
+    healpix_nside : optional planning NSIDE for future HEALPix integration
 
     Returns
     -------
@@ -141,20 +216,12 @@ def scan_trial_axes(
             math.sin(dec_r),
         ))
 
-    # Build the axis set
-    if num_axes == 48:
-        axes = _AXES_48
-    else:
-        # Use the fixed 48 axes then augment / thin with random axes
-        rng = random.Random(seed)
-        fixed = list(_AXES_48)
-        # Add extra random axes if num_axes > 48
-        while len(fixed) < num_axes:
-            cos_d = rng.uniform(-1.0, 1.0)
-            sin_d = math.sqrt(1.0 - cos_d ** 2)
-            lon   = rng.uniform(0.0, 2.0 * math.pi)
-            fixed.append((sin_d * math.cos(lon), sin_d * math.sin(lon), cos_d))
-        axes = fixed[:num_axes]
+    axes, axis_plan = _generate_trial_axes(
+        num_axes=num_axes,
+        mode=axis_mode,
+        seed=seed,
+        healpix_nside=healpix_nside,
+    )
 
     best_score = 0.0
     best_idx   = 0
@@ -176,6 +243,7 @@ def scan_trial_axes(
         "best_axis_xyz":   axes[best_idx],
         "all_scores":      all_scores,
         "num_axes":        len(axes),
+        "axis_plan":       axis_plan,
     }
 
 
@@ -190,6 +258,8 @@ def run_public_anisotropy_study(
     config: Optional[Dict[str, Any]] = None,
     num_axes: int = 48,
     null_mode: str = "isotropic",
+    axis_mode: str = "auto",
+    healpix_nside: Optional[int] = None,
 ) -> Dict[str, Any]:
     """Run the public-data anisotropy study.
 
@@ -204,6 +274,8 @@ def run_public_anisotropy_study(
     null_mode    : "isotropic" (default) or "exposure_corrected"
                    "exposure_corrected" builds an empirical sky-acceptance proxy
                    from the observed catalog and samples null positions from it.
+    axis_mode    : axis generation mode: "auto", "coarse", "dense", or "healpix_plan"
+    healpix_nside: optional NSIDE planning value when using "healpix_plan"
 
     Returns
     -------
@@ -219,6 +291,10 @@ def run_public_anisotropy_study(
         num_axes = int(cfg["num_axes"])
     if "null_mode" in cfg:
         null_mode = str(cfg["null_mode"])
+    if "axis_mode" in cfg:
+        axis_mode = str(cfg["axis_mode"]).strip().lower()
+    if "healpix_nside" in cfg and cfg.get("healpix_nside") is not None:
+        healpix_nside = int(cfg["healpix_nside"])
 
     rng_seed = seed if seed is not None else cfg.get("seed", None)
 
@@ -269,7 +345,13 @@ def run_public_anisotropy_study(
 
     # Primary metrics (observed)
     hemi          = _hemisphere_imbalance(ras, decs)
-    axis_scan_obs = scan_trial_axes(events, num_axes=num_axes, seed=rng_seed)
+    axis_scan_obs = scan_trial_axes(
+        events,
+        num_axes=num_axes,
+        seed=rng_seed,
+        axis_mode=axis_mode,
+        healpix_nside=healpix_nside,
+    )
     axis_score    = axis_scan_obs["best_score"]
 
     et_pairs = [
@@ -304,7 +386,13 @@ def run_public_anisotropy_study(
 
         null_hemi_vals.append(abs(_hemisphere_imbalance(n_ras, n_decs)))
 
-        null_ax_scan = scan_trial_axes(null, num_axes=num_axes, seed=ns)
+        null_ax_scan = scan_trial_axes(
+            null,
+            num_axes=num_axes,
+            seed=ns,
+            axis_mode=axis_mode,
+            healpix_nside=healpix_nside,
+        )
         null_axis_vals.append(null_ax_scan["best_score"])
 
         null_pairs = [
@@ -376,6 +464,9 @@ def run_public_anisotropy_study(
             "seed":              rng_seed,
             "null_repeats":      null_repeats,
             "num_axes":          num_axes,
+            "axis_mode":         axis_mode,
+            "healpix_nside":     healpix_nside,
+            "axis_plan":         axis_scan_obs.get("axis_plan"),
             "null_mode":         null_mode,
             "exposure_map_desc": exposure_map_desc,
             "timestamp":         datetime.datetime.utcnow().isoformat() + "Z",
