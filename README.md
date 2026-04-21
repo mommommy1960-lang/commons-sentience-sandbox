@@ -1712,3 +1712,91 @@ python -m pytest tests/test_public_anisotropy_study.py -v
 ### ⚠️ Statistical caveat
 
 Any anomaly-like deviation reported by this pipeline is a **hypothesis-generating result only**.  Detection of a statistically unusual pattern does not constitute proof of any specific physical model, and in particular does not confirm any simulation-ontology hypothesis.  Results are subject to instrument systematics, selection effects, and the exploratory nature of the analysis protocol.  All scientific claims require independent replication, control of systematic uncertainties, and peer review.
+
+---
+
+## Stage 8: First Real-Catalog Results Package
+
+Stage 8 adds a thin orchestration layer on top of the Stage 7 public anisotropy track.  It makes it easy for a collaborator to:
+
+1. Place one real public catalog in `data/real/`.
+2. Run a fully reproducible anisotropy analysis.
+3. Receive all outputs in a predictable folder.
+4. Read a concise internal memo summarising what was run, what was found, what it does and does not mean, and what the next upgrade priorities are.
+
+### What Stage 8 adds on top of Stage 7
+
+- **`stage8_first_results.py`** — orchestration module: auto-detect, workflow runner, memo writer, manifest writer
+- **`run_stage8_first_results.py`** — dedicated CLI with `--auto-detect` and `--input` modes
+- **`scripts/run_stage8_first_results.py`** — convenience runner
+- **`docs/REALITY_AUDIT_STAGE8_TEMPLATE.md`** — collaborator guide
+- **`docs/REALITY_AUDIT_STAGE8_STATUS.md`** — current stage status and next priorities
+
+### Place a real catalog
+
+Download a supported catalog and place it in `data/real/`:
+
+| File name | Source |
+|-----------|--------|
+| `fermi_lat_grb_catalog.csv` | HEASARC / Fermi-LAT GRBs |
+| `swift_bat3_grb_catalog.csv` | HEASARC / Swift BAT3 GRBs |
+| `icecube_hese_events.csv` | IceCube HESE public data release |
+
+See `data/real/README_public_catalog_ingest.md` for column naming and download links.
+
+### Run with auto-detect
+
+```bash
+python reality_audit/data_analysis/run_stage8_first_results.py \
+    --auto-detect \
+    --name stage8_real_first_results \
+    --output-dir outputs/stage8_first_results/stage8_real_first_results \
+    --null-repeats 100 --axis-count 48 --seed 42 --plots --save-normalized
+```
+
+### Run with explicit input path
+
+```bash
+python reality_audit/data_analysis/run_stage8_first_results.py \
+    --input data/real/fermi_lat_grb_catalog.csv \
+    --name stage8_fermi_lat \
+    --output-dir outputs/stage8_first_results/stage8_fermi_lat \
+    --null-repeats 100 --axis-count 48 --seed 42 --plots --save-normalized
+```
+
+### Convenience runner
+
+```bash
+python scripts/run_stage8_first_results.py
+```
+
+### Output files
+
+All outputs land under `outputs/stage8_first_results/<run_name>/`:
+
+| File | Description |
+|------|-------------|
+| `<name>_normalized_events.csv` | Normalised catalog in pipeline schema |
+| `<name>_summary.json` | Full Stage 7 structured results JSON |
+| `<name>_results.csv` | One-row CSV summary |
+| `<name>_summary.md` | Stage 7 Markdown summary |
+| `<name>_sky_plot.png` | Sky position scatter plot (if --plots) |
+| `<name>_null_comparison.png` | Metric vs null comparison (if --plots) |
+| `<name>_axis_scan.png` | Per-axis score plot (if --plots) |
+| `<name>_memo.md` | **Stage 8 first-results internal memo** |
+| `<name>_stage8_manifest.json` | Full artifact manifest |
+
+### The internal memo
+
+The memo (`<name>_memo.md`) is a ~1–2 page Markdown document covering:
+catalog used, event count, methods, key metrics table (observed + percentile vs null), signal tier, plain-language interpretation, explicit "does NOT prove" section, current limitations, and recommended next upgrades.
+
+### Tests
+
+```bash
+python -m pytest tests/test_stage8_first_results.py -v
+```
+
+### ⚠️ Stage 8 caveat
+
+Stage 8 outputs are **internal first-results artifacts only**.  They are not a scientific publication, preprint, or evidence for any metaphysical or cosmological conclusion.  A single-catalog run without exposure-map correction, trial-factor adjustment, or pre-registration is insufficient to support a scientific claim.  See `docs/REALITY_AUDIT_STAGE8_STATUS.md` for what remains before a publishable first-results note.
