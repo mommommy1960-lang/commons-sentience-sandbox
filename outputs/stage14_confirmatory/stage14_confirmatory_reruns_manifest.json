@@ -1,0 +1,34 @@
+{
+  "stage": 14,
+  "pipeline_step": "confirmatory_reruns",
+  "plan_path": "/workspaces/commons-sentience-sandbox/configs/preregistered_anisotropy_plan.json",
+  "plan_hash_sha256": "34bebe54d5c0d9b5ca5e94704e0c92a9855f83af3cb45d1a908e3333ff07439c",
+  "null_repeats": 500,
+  "axis_count": 192,
+  "seed": 42,
+  "output_base": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory",
+  "catalogs": [
+    {
+      "label": "fermi",
+      "output_dir": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/fermi",
+      "summary_path": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/fermi/stage14_confirmatory_fermi_summary.json",
+      "rc": 0,
+      "elapsed_s": 494.0
+    },
+    {
+      "label": "swift",
+      "output_dir": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/swift",
+      "summary_path": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/swift/stage14_confirmatory_swift_summary.json",
+      "rc": 0,
+      "elapsed_s": 76.5
+    },
+    {
+      "label": "icecube",
+      "output_dir": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/icecube",
+      "summary_path": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/icecube/stage14_confirmatory_icecube_summary.json",
+      "rc": 0,
+      "elapsed_s": 4.3
+    }
+  ],
+  "all_succeeded": true
+}

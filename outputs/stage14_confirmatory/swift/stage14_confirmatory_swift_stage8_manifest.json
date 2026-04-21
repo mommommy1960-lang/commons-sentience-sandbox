@@ -1,0 +1,58 @@
+{
+  "stage": "stage8_first_results",
+  "run_name": "stage14_confirmatory_swift",
+  "written_at": "2026-04-21T21:46:50.825912Z",
+  "input_path": "/workspaces/commons-sentience-sandbox/data/real/swift_bat3_grb_catalog.csv",
+  "output_dir": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/swift",
+  "catalog_label": "swift_bat3_grb_catalog",
+  "event_count": 872,
+  "run_metadata": {
+    "null_repeats": 500,
+    "axis_count": 192,
+    "seed": 42,
+    "plots": false,
+    "save_normalized": false,
+    "null_mode": "exposure_corrected",
+    "trial_factor_correction": {
+      "method": "holm",
+      "n_tests": 2,
+      "summary_verdict": "corrected_null",
+      "exclusion_threshold": 0.95,
+      "discovery_threshold": 0.999
+    },
+    "run_mode": "preregistered_confirmatory",
+    "timestamp": "2026-04-21T21:46:50.825662Z",
+    "stage": "stage8_first_results",
+    "preregistration": {
+      "plan_path": "/workspaces/commons-sentience-sandbox/configs/preregistered_anisotropy_plan.json",
+      "hypothesis_name": "catalog_independent_sky_anisotropy",
+      "primary_statistics": [
+        "hemisphere_imbalance",
+        "preferred_axis_score"
+      ],
+      "null_model": "exposure_corrected",
+      "null_repeats": 500,
+      "axis_count": 192,
+      "n_target_catalogs": 3,
+      "mtc_method": "holm",
+      "discovery_pct": 0.999,
+      "plan_hash_sha256": "51c21f66561049a9f14b2bfb9f9bd0b1cbf1736faaf3d35b97fc571ac8245db7",
+      "locked": true
+    },
+    "preregistration_match": {
+      "has_plan": true,
+      "matches_locked_plan": true,
+      "mismatches": [],
+      "plan_locked": true
+    }
+  },
+  "artifacts": {
+    "json_summary": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/swift/stage14_confirmatory_swift_summary.json",
+    "csv_summary": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/swift/stage14_confirmatory_swift_results.csv",
+    "md_summary": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/swift/stage14_confirmatory_swift_summary.md",
+    "manifest": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/swift/stage14_confirmatory_swift_manifest.json",
+    "stage8_memo": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/swift/stage14_confirmatory_swift_memo.md"
+  },
+  "signal_tier": "no_anomaly_detected",
+  "max_percentile": 0.562
+}
