@@ -1,0 +1,81 @@
+{
+  "package_version": "stage13_v1",
+  "generated_at": "2026-04-21T21:23:17.596695Z",
+  "catalogs_available": 3,
+  "catalog_entries": [
+    {
+      "label": "fermi",
+      "available": true,
+      "catalog": "fermi_lat_grb_catalog",
+      "event_count": null,
+      "null_mode": null,
+      "hemi_percentile": null,
+      "axis_percentile": null,
+      "tier": null,
+      "trial_correction_method": null,
+      "run_mode": null,
+      "preregistration_hash": null
+    },
+    {
+      "label": "swift",
+      "available": true,
+      "catalog": "swift_bat3_grb_catalog",
+      "event_count": null,
+      "null_mode": null,
+      "hemi_percentile": null,
+      "axis_percentile": null,
+      "tier": null,
+      "trial_correction_method": null,
+      "run_mode": null,
+      "preregistration_hash": null
+    },
+    {
+      "label": "icecube",
+      "available": true,
+      "catalog": "icecube_hese_events",
+      "event_count": null,
+      "null_mode": null,
+      "hemi_percentile": null,
+      "axis_percentile": null,
+      "tier": null,
+      "trial_correction_method": null,
+      "run_mode": null,
+      "preregistration_hash": null
+    }
+  ],
+  "replication_verdict": "partial_replication",
+  "interpretation": "Two catalogs (fermi_lat_grb_catalog, icecube_hese_events) show anomaly-like deviation, while one (swift_bat3_grb_catalog) does not. This is mixed evidence and may indicate instrument/population effects rather than a universal sky anisotropy. Stage 12 diagnostics classify the IceCube signal as relatively stable under the tested perturbations, but this does not remove small-N limitations.",
+  "caveats": [
+    "Three-catalog consistency improves robustness but does not by itself prove a physical mechanism.",
+    "Catalogs differ in selection function, energy band, and source population.",
+    "Small catalogs (especially IceCube HESE) are underpowered for exclusion-level claims.",
+    "Trial-factor correction and preregistration status should be checked in each input summary.",
+    "IceCube robustness diagnostic label: relatively_stable (fragile=[], robust=['axis_density_stable', 'leave_k_out_stable'])."
+  ],
+  "icecube_robustness": {
+    "available": true,
+    "label": "relatively_stable",
+    "fragile_signals": [],
+    "robust_signals": [
+      "axis_density_stable",
+      "leave_k_out_stable"
+    ],
+    "source": "/workspaces/commons-sentience-sandbox/outputs/stage12_icecube_diagnostics/stage12_icecube_diagnostics/stage12_icecube_diagnostics_summary.json"
+  },
+  "icecube_diagnostics_label": null,
+  "preregistration_recorded": false,
+  "gate_verdict": "not_ready",
+  "failing_required_gates": [
+    "prereg_present",
+    "prereg_locked",
+    "trial_correction_applied"
+  ],
+  "publishable_internal": false,
+  "blockers": [
+    "Lock the preregistration plan (_locked: true) before confirmatory reruns.",
+    "Apply Holm or Bonferroni trial-factor correction.",
+    "IceCube HESE is small-N; supplement with a larger independent catalog.",
+    "External scientific review is required before public circulation.",
+    "Resolve gate failure: prereg_present"
+  ]
+}

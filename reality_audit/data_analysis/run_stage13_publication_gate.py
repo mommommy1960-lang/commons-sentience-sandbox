@@ -63,6 +63,7 @@ from reality_audit.data_analysis.output_hygiene import (
     classify_output_paths,
     write_output_hygiene_report,
 )
+from reality_audit.data_analysis.catalog_comparison import load_stage_results as _load_stage_results
 
 # ---------------------------------------------------------------------------
 # Default paths
@@ -143,8 +144,20 @@ def main(argv=None) -> int:
     os.makedirs(output_dir, exist_ok=True)
 
     # -----------------------------------------------------------------------
-    # 1. Load catalog summaries
+    # 1. Load and normalize catalog summaries
     # -----------------------------------------------------------------------
+    def _load_catalog(p: str, label: str):
+        if not os.path.isfile(p):
+            print(f"[WARN] {label} not found: {p}")
+            return None
+        print(f"[INFO] Loading {label}: {p}")
+        try:
+            return _load_stage_results(p)
+        except Exception:
+            # Fallback: raw JSON load (e.g. Stage 12 rerun summaries)
+            with open(p) as f:
+                return json.load(f)
+
     def _load_if_exists(p: str, label: str):
         if os.path.isfile(p):
             print(f"[INFO] Loading {label}: {p}")
@@ -154,9 +167,9 @@ def main(argv=None) -> int:
             print(f"[WARN] {label} not found: {p}")
             return None
 
-    fermi      = _load_if_exists(fermi_path,       "Fermi summary")
-    swift      = _load_if_exists(swift_path,       "Swift summary")
-    icecube    = _load_if_exists(icecube_path,     "IceCube summary")
+    fermi      = _load_catalog(fermi_path,  "Fermi summary")
+    swift      = _load_catalog(swift_path,  "Swift summary")
+    icecube    = _load_catalog(icecube_path,"IceCube summary")
     comparison = _load_if_exists(comparison_path,  "Comparison summary")
     diagnostics = _load_if_exists(diagnostics_path,"IceCube diagnostics")
 

@@ -1,0 +1,37 @@
+{
+  "stage": 13,
+  "name": "stage13_main",
+  "generated_at": "2026-04-21T21:23:17.601275Z",
+  "inputs": {
+    "fermi": "/workspaces/commons-sentience-sandbox/outputs/stage9_first_results/stage9_fermi_exposure_corrected/stage9_fermi_exposure_corrected_summary.json",
+    "swift": "/workspaces/commons-sentience-sandbox/outputs/stage10_first_results/stage10_swift_first_results/stage10_swift_first_results_summary.json",
+    "icecube": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_first_results/stage11_icecube_first_results_summary.json",
+    "comparison": "/workspaces/commons-sentience-sandbox/outputs/stage10_first_results/comparison/stage12_comparison_with_robustness.json",
+    "diagnostics": "/workspaces/commons-sentience-sandbox/outputs/stage12_icecube_diagnostics/stage12_icecube_diagnostics/stage12_icecube_diagnostics_summary.json"
+  },
+  "outputs": {
+    "gate_json": "/workspaces/commons-sentience-sandbox/outputs/stage13_publication_gate/stage13_main/stage13_main_publication_gate.json",
+    "gate_report": "/workspaces/commons-sentience-sandbox/outputs/stage13_publication_gate/stage13_main/stage13_main_publication_gate_report.md",
+    "brief_json": "/workspaces/commons-sentience-sandbox/outputs/stage13_publication_gate/stage13_main/stage13_main_first_results_brief.json",
+    "brief_md": "/workspaces/commons-sentience-sandbox/outputs/stage13_publication_gate/stage13_main/stage13_main_first_results_brief.md",
+    "hygiene_json": "/workspaces/commons-sentience-sandbox/outputs/stage13_publication_gate/stage13_main/stage13_main_output_hygiene.json",
+    "hygiene_report": "/workspaces/commons-sentience-sandbox/outputs/stage13_publication_gate/stage13_main/stage13_main_output_hygiene_report.md"
+  },
+  "gate_verdict": "not_ready",
+  "replication_verdict": "partial_replication",
+  "icecube_robustness": null,
+  "failing_required_gates": [
+    "prereg_present",
+    "prereg_locked",
+    "trial_correction_applied"
+  ],
+  "hygiene_summary": {
+    "deliverable": 65,
+    "smoke": 46,
+    "transient_plot": 0,
+    "benchmark": 80,
+    "legacy": 104,
+    "unknown": 2,
+    "total_files": 297
+  }
+}

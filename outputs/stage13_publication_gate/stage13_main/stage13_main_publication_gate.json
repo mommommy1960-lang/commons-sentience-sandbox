@@ -1,0 +1,100 @@
+{
+  "verdict": "not_ready",
+  "readiness_description": "Required gates are failing. Do not circulate this result.",
+  "gates": [
+    {
+      "id": "prereg_present",
+      "severity": "required",
+      "description": "A preregistration plan is recorded in run metadata for any result labeled confirmatory.",
+      "passed": false,
+      "detail": "No preregistration plan recorded in any catalog metadata."
+    },
+    {
+      "id": "prereg_locked",
+      "severity": "required",
+      "description": "The preregistration plan must have _locked: true for a confirmatory result.",
+      "passed": false,
+      "detail": "No locked preregistration plan (_locked: true) found."
+    },
+    {
+      "id": "null_model_appropriate",
+      "severity": "required",
+      "description": "Each catalog must use a null model appropriate for its instrument.",
+      "passed": true,
+      "detail": "All catalogs use appropriate null models."
+    },
+    {
+      "id": "trial_correction_applied",
+      "severity": "required",
+      "description": "Multiple-testing correction is applied and is recorded in run metadata.",
+      "passed": false,
+      "detail": "No trial-factor correction applied (method=none or absent)."
+    },
+    {
+      "id": "at_least_two_catalogs",
+      "severity": "required",
+      "description": "At least two independent catalogs are present in the comparison.",
+      "passed": true,
+      "detail": "Found 3 catalogs in comparison."
+    },
+    {
+      "id": "replication_status_labeled",
+      "severity": "required",
+      "description": "The comparison output must include an explicit replication verdict.",
+      "passed": true,
+      "detail": "Replication verdict: 'partial_replication'."
+    },
+    {
+      "id": "systematics_documented",
+      "severity": "required",
+      "description": "Known systematics and caveats must be documented in the comparison memo.",
+      "passed": true,
+      "detail": "5 caveat(s) documented."
+    },
+    {
+      "id": "output_artifacts_complete",
+      "severity": "required",
+      "description": "All required output artifacts (summary JSON, memo markdown, comparison JSON) must be present.",
+      "passed": true,
+      "detail": "Summary JSON and comparison output appear complete."
+    },
+    {
+      "id": "comparison_memo_present",
+      "severity": "required",
+      "description": "A cross-catalog comparison memo is present in the output directory.",
+      "passed": true,
+      "detail": "Comparison interpretation/memo is present."
+    },
+    {
+      "id": "no_metaphysical_language",
+      "severity": "required",
+      "description": "Run memos must not make unsupported metaphysical claims.",
+      "passed": true,
+      "detail": "No metaphysical language detected in interpretation."
+    },
+    {
+      "id": "external_review_pending",
+      "severity": "informational",
+      "description": "External scientific review has not yet been completed.",
+      "passed": false,
+      "detail": "External review has not yet been initiated (expected \u2014 this is a status flag)."
+    },
+    {
+      "id": "icecube_small_n_acknowledged",
+      "severity": "recommended",
+      "description": "IceCube HESE small-N limitation is acknowledged in any result using that catalog.",
+      "passed": true,
+      "detail": "IceCube small-N limitation acknowledged in caveats."
+    }
+  ],
+  "failing_required": [
+    "prereg_present",
+    "prereg_locked",
+    "trial_correction_applied"
+  ],
+  "failing_recommended": [],
+  "notes": [
+    "Cross-catalog replication verdict: partial_replication"
+  ],
+  "generated_at": "2026-04-21T21:23:17.595400Z"
+}
