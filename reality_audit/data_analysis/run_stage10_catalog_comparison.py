@@ -32,6 +32,8 @@ from reality_audit.data_analysis.catalog_comparison import (
     load_stage_results,
     compare_catalog_results,
     compare_three_catalog_results,
+    load_icecube_diagnostics_summary,
+    integrate_icecube_robustness_into_three_catalog,
     write_catalog_comparison_memo,
     write_three_catalog_comparison_memo,
 )
@@ -53,6 +55,11 @@ _DEFAULT_SUMMARY_C = os.path.join(
     "outputs", "stage8_first_results",
     "stage11_icecube_first_results",
     "stage11_icecube_first_results_summary.json",
+)
+_DEFAULT_ICECUBE_DIAGNOSTICS = os.path.join(
+    "outputs", "stage12_icecube_diagnostics",
+    "stage12_icecube_diagnostics",
+    "stage12_icecube_diagnostics_summary.json",
 )
 
 
@@ -97,6 +104,15 @@ def _build_parser() -> argparse.ArgumentParser:
         ),
     )
     p.add_argument(
+        "--icecube-diagnostics",
+        default=None,
+        metavar="PATH",
+        help=(
+            "Optional Stage 12 IceCube diagnostics summary JSON. "
+            f"Default candidate: {_DEFAULT_ICECUBE_DIAGNOSTICS}"
+        ),
+    )
+    p.add_argument(
         "--output-dir",
         default=None,
         metavar="DIR",
@@ -125,6 +141,8 @@ def main(argv=None) -> int:
     path_b      = _abs(args.summary_b or _DEFAULT_SUMMARY_B)
     c_candidate = args.summary_c or _DEFAULT_SUMMARY_C
     path_c      = _abs(c_candidate) if c_candidate else None
+    diag_candidate = args.icecube_diagnostics or _DEFAULT_ICECUBE_DIAGNOSTICS
+    diag_path = _abs(diag_candidate) if diag_candidate else None
     output_dir  = _abs(args.output_dir or _DEFAULT_OUTPUT_DIR)
 
     # Check prerequisites
@@ -196,6 +214,13 @@ def main(argv=None) -> int:
     # Compare
     if result_c is not None:
         comparison = compare_three_catalog_results(result_a, result_b, result_c)
+        if diag_path and os.path.isfile(diag_path):
+            diag = load_icecube_diagnostics_summary(diag_path)
+            comparison = integrate_icecube_robustness_into_three_catalog(comparison, diag)
+            print(
+                f"[INFO] Integrated IceCube robustness diagnostics: "
+                f"label={comparison.get('icecube_robustness', {}).get('label')}"
+            )
         memo_path = write_three_catalog_comparison_memo(comparison, output_dir, name=args.name)
     else:
         comparison = compare_catalog_results(result_a, result_b)

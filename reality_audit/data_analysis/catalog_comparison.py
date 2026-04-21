@@ -377,12 +377,88 @@ def compare_three_catalog_results(
         "null_catalogs": null_catalogs,
         "instrument_specific_signal": instrument_specific_signal,
         "supports_catalog_independent_claim": supports_catalog_independent_claim,
+        "icecube_robustness": {
+            "available": False,
+            "label": "unknown",
+            "fragile_signals": [],
+            "robust_signals": [],
+            "source": None,
+        },
         "consistency_verdict": verdict,
         "interpretation": interpretation,
         "pairwise": pairwise,
         "caveats": caveats,
         "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
     }
+
+
+def load_icecube_diagnostics_summary(path: str) -> Dict[str, Any]:
+    """Load a Stage 12 IceCube diagnostics summary JSON."""
+    p = os.path.abspath(path)
+    if not os.path.isfile(p):
+        raise FileNotFoundError(f"IceCube diagnostics summary not found: {p}")
+    with open(p) as f:
+        raw = json.load(f)
+    return {
+        "path": p,
+        "robustness_assessment": raw.get("robustness_assessment", {}),
+        "catalog_summary": raw.get("catalog_summary", {}),
+        "small_n_sensitivity": raw.get("small_n_sensitivity", {}),
+        "leave_k_out": raw.get("leave_k_out", {}),
+        "epoch_split": raw.get("epoch_split", {}),
+        "_raw": raw,
+    }
+
+
+def integrate_icecube_robustness_into_three_catalog(
+    comparison: Dict[str, Any],
+    icecube_diag: Dict[str, Any],
+) -> Dict[str, Any]:
+    """Inject Stage 12 IceCube robustness into three-catalog interpretation."""
+    out = dict(comparison)
+    if out.get("comparison_mode") != "three_catalog":
+        return out
+
+    robust = icecube_diag.get("robustness_assessment", {}) if isinstance(icecube_diag, dict) else {}
+    label = str(robust.get("label", "unknown"))
+    fragile = list(robust.get("fragile_signals", []) or [])
+    robust_signals = list(robust.get("robust_signals", []) or [])
+
+    out["icecube_robustness"] = {
+        "available": True,
+        "label": label,
+        "fragile_signals": fragile,
+        "robust_signals": robust_signals,
+        "source": icecube_diag.get("path"),
+    }
+
+    interp = str(out.get("interpretation", ""))
+    if label == "fragile":
+        interp += (
+            " Stage 12 diagnostics classify the IceCube signal as fragile, "
+            "which weakens the three-catalog anomaly interpretation and favors "
+            "small-sample instability or influential-event effects."
+        )
+        out["supports_catalog_independent_claim"] = False
+    elif label == "mixed":
+        interp += (
+            " Stage 12 diagnostics classify the IceCube signal as mixed stability; "
+            "the three-catalog picture remains uncertain and requires confirmatory reruns."
+        )
+    elif label == "relatively_stable":
+        interp += (
+            " Stage 12 diagnostics classify the IceCube signal as relatively stable under "
+            "the tested perturbations, but this does not remove small-N limitations."
+        )
+    out["interpretation"] = interp
+
+    caveats = list(out.get("caveats", []))
+    caveats.append(
+        "IceCube robustness diagnostic label: "
+        f"{label} (fragile={fragile}, robust={robust_signals})."
+    )
+    out["caveats"] = caveats
+    return out
 
 
 def write_three_catalog_comparison_memo(
