@@ -1,0 +1,11 @@
+{
+  "experiment": "stage11_icecube_first_results",
+  "catalog": "icecube_hese_events",
+  "written_at": "2026-04-21T17:13:04.263724Z",
+  "artifacts": {
+    "json_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_first_results/stage11_icecube_first_results_summary.json",
+    "csv_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_first_results/stage11_icecube_first_results_results.csv",
+    "md_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_first_results/stage11_icecube_first_results_summary.md",
+    "manifest": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_first_results/stage11_icecube_first_results_manifest.json"
+  }
+}

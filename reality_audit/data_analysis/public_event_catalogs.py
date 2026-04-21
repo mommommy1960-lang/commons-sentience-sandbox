@@ -103,6 +103,12 @@ _COL_ALIASES: Dict[str, str] = {
     "bat_ra":      "ra",          # BAT-refined RA (if present instead of 'ra')
     "bat_dec":     "dec",         # BAT-refined Dec
     "grb":         "event_id",    # Some Swift table exports use 'grb'
+    # IceCube HESE-specific column names
+    "deposited_energy_tev": "energy",  # IceCube deposited energy proxy
+    "energy_tev":  "energy",
+    "event_type":  "epoch",       # shower/track topology (mapped to epoch for storage)
+    "hese_id":     "event_id",
+    "nu_id":       "event_id",
 }
 
 # ---------------------------------------------------------------------------
@@ -473,3 +479,101 @@ def _write_events_csv(events: List[Dict[str, Any]], path: str) -> None:
         writer = csv.DictWriter(f, fieldnames=SCHEMA_FIELDS, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(events)
+
+
+# ===========================================================================
+# IceCube HESE schema validation
+# ===========================================================================
+
+# Required fields for a valid IceCube HESE catalog row
+_ICECUBE_REQUIRED_FIELDS = ("event_id", "ra", "dec")
+# IceCube HESE energy is in TeV; mark the unit for downstream use
+ICECUBE_ENERGY_UNIT = "TeV"
+
+# Known IceCube catalog labels
+ICECUBE_CATALOG_LABELS = {"icecube_hese", "icecube_hese_events", "icecube"}
+
+
+def validate_icecube_hese_schema(events: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Validate a normalized IceCube HESE event list against schema requirements.
+
+    Checks that each event has the mandatory positional fields (event_id, ra,
+    dec) and that coordinate values are within sensible ranges.  Energy is
+    optional (some HESE catalogs omit deposit energies for certain event types).
+
+    Parameters
+    ----------
+    events : list of normalized event dicts (output of load_public_catalog)
+
+    Returns
+    -------
+    Dict with keys:
+        valid          – bool: True if all events pass all checks
+        n_events       – int
+        n_valid        – int (events passing all required checks)
+        n_missing_pos  – int (events missing ra or dec)
+        n_energy_ok    – int (events with non-None energy)
+        errors         – list[str] describing individual failures (up to 20)
+        warnings       – list[str] (non-fatal notices)
+    """
+    errors: List[str] = []
+    warnings: List[str] = []
+    n_valid = 0
+    n_missing_pos = 0
+    n_energy_ok = 0
+
+    for i, ev in enumerate(events):
+        eid = ev.get("event_id", f"row_{i}")
+        ok = True
+
+        # Required position checks
+        ra = ev.get("ra")
+        dec = ev.get("dec")
+        if ra is None or dec is None:
+            n_missing_pos += 1
+            if len(errors) < 20:
+                errors.append(f"{eid}: missing ra or dec")
+            ok = False
+        else:
+            try:
+                ra_f = float(ra)
+                dec_f = float(dec)
+                if not (0.0 <= ra_f < 360.0):
+                    if len(errors) < 20:
+                        errors.append(f"{eid}: ra out of range [{ra_f}]")
+                    ok = False
+                if not (-90.0 <= dec_f <= 90.0):
+                    if len(errors) < 20:
+                        errors.append(f"{eid}: dec out of range [{dec_f}]")
+                    ok = False
+            except (TypeError, ValueError):
+                if len(errors) < 20:
+                    errors.append(f"{eid}: ra/dec not numeric")
+                ok = False
+
+        # Energy optional but note if missing
+        if ev.get("energy") is not None:
+            n_energy_ok += 1
+
+        if ok:
+            n_valid += 1
+
+    if n_energy_ok == 0:
+        warnings.append("No events have energy values; energy column may be missing or unmapped.")
+
+    n_events = len(events)
+    valid = (n_valid == n_events and n_events > 0)
+    return {
+        "valid":          valid,
+        "n_events":       n_events,
+        "n_valid":        n_valid,
+        "n_missing_pos":  n_missing_pos,
+        "n_energy_ok":    n_energy_ok,
+        "errors":         errors,
+        "warnings":       warnings,
+    }
+
+
+def is_icecube_catalog(catalog_label: str) -> bool:
+    """Return True if the catalog label identifies an IceCube HESE dataset."""
+    return catalog_label.lower() in ICECUBE_CATALOG_LABELS or "icecube" in catalog_label.lower()

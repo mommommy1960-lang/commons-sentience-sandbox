@@ -1,0 +1,28 @@
+{
+  "stage": "stage8_first_results",
+  "run_name": "stage11_icecube_first_results",
+  "written_at": "2026-04-21T17:13:04.264988Z",
+  "input_path": "data/real/icecube_hese_events.csv",
+  "output_dir": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_first_results",
+  "catalog_label": "icecube_hese_events",
+  "event_count": 37,
+  "run_metadata": {
+    "null_repeats": 100,
+    "axis_count": 48,
+    "seed": 42,
+    "plots": false,
+    "save_normalized": false,
+    "null_mode": "isotropic",
+    "timestamp": "2026-04-21T17:13:04.264764Z",
+    "stage": "stage8_first_results"
+  },
+  "artifacts": {
+    "json_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_first_results/stage11_icecube_first_results_summary.json",
+    "csv_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_first_results/stage11_icecube_first_results_results.csv",
+    "md_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_first_results/stage11_icecube_first_results_summary.md",
+    "manifest": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_first_results/stage11_icecube_first_results_manifest.json",
+    "stage8_memo": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_first_results/stage11_icecube_first_results_memo.md"
+  },
+  "signal_tier": "strong_anomaly_like_deviation",
+  "max_percentile": 0.99
+}
