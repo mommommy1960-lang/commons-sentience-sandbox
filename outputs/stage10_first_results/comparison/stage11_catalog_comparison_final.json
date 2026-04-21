@@ -1,0 +1,167 @@
+{
+  "comparison_mode": "three_catalog",
+  "catalog_rows": [
+    {
+      "catalog": "fermi_lat_grb_catalog",
+      "event_count": 3000,
+      "events_with_position": 3000,
+      "null_mode": "exposure_corrected",
+      "tier": "weak_anomaly_like_deviation",
+      "rank": 1,
+      "hemi_percentile": 0.85,
+      "axis_percentile": 0.89,
+      "max_percentile": 0.89,
+      "anomaly_like": true
+    },
+    {
+      "catalog": "swift_bat3_grb_catalog",
+      "event_count": 872,
+      "events_with_position": 872,
+      "null_mode": "exposure_corrected",
+      "tier": "no_anomaly_detected",
+      "rank": 0,
+      "hemi_percentile": 0.63,
+      "axis_percentile": 0.57,
+      "max_percentile": 0.63,
+      "anomaly_like": false
+    },
+    {
+      "catalog": "icecube_hese_events",
+      "event_count": 37,
+      "events_with_position": 37,
+      "null_mode": "isotropic",
+      "tier": "strong_anomaly_like_deviation",
+      "rank": 3,
+      "hemi_percentile": 0.99,
+      "axis_percentile": 0.67,
+      "max_percentile": 0.99,
+      "anomaly_like": true
+    }
+  ],
+  "catalog_labels": [
+    "fermi_lat_grb_catalog",
+    "swift_bat3_grb_catalog",
+    "icecube_hese_events"
+  ],
+  "n_anomaly_like": 2,
+  "n_null_like": 1,
+  "anomaly_catalogs": [
+    "fermi_lat_grb_catalog",
+    "icecube_hese_events"
+  ],
+  "null_catalogs": [
+    "swift_bat3_grb_catalog"
+  ],
+  "instrument_specific_signal": false,
+  "supports_catalog_independent_claim": false,
+  "consistency_verdict": "partial_replication",
+  "interpretation": "Two catalogs (fermi_lat_grb_catalog, icecube_hese_events) show anomaly-like deviation, while one (swift_bat3_grb_catalog) does not. This is mixed evidence and may indicate instrument/population effects rather than a universal sky anisotropy.",
+  "pairwise": {
+    "ab": {
+      "comparison_mode": "two_catalog",
+      "catalog_a": "fermi_lat_grb_catalog",
+      "catalog_b": "swift_bat3_grb_catalog",
+      "event_count_a": 3000,
+      "event_count_b": 872,
+      "events_with_pos_a": 3000,
+      "events_with_pos_b": 872,
+      "null_mode_a": "exposure_corrected",
+      "null_mode_b": "exposure_corrected",
+      "hemi_percentile_a": 0.85,
+      "hemi_percentile_b": 0.63,
+      "axis_percentile_a": 0.89,
+      "axis_percentile_b": 0.57,
+      "tier_a": "weak_anomaly_like_deviation",
+      "tier_b": "no_anomaly_detected",
+      "max_percentile_a": 0.89,
+      "max_percentile_b": 0.63,
+      "tiers_agree": false,
+      "both_anomaly": false,
+      "neither_anomaly": false,
+      "max_percentile_delta": 0.26,
+      "consistency_verdict": "inconsistent",
+      "interpretation": "fermi_lat_grb_catalog shows weak_anomaly_like_deviation while swift_bat3_grb_catalog shows no_anomaly_detected. Cross-catalog disagreement typically indicates an instrument-specific systematic rather than a genuine sky-position signal. The anomaly in fermi_lat_grb_catalog most likely reflects residual acceptance geometry not fully corrected by the empirical null, or a selection bias particular to that instrument. This result does NOT support a catalog-independent anisotropy claim.",
+      "caveats": [
+        "Both runs use empirical exposure-proxy nulls built from the data under test: any real signal is partially absorbed, making these tests conservative.",
+        "Different catalogs have different source populations, redshift distributions, energy ranges, and trigger thresholds. Non-detection in Swift BAT does not rule out a GRB-population-wide effect undetectable by BAT.",
+        "The preferred-axis scan uses 48 trial axes without a trial-factor correction; a metric significant at 90th percentile is consistent with a fluctuation.",
+        "No pre-registration was filed before these runs. These are exploratory first-results packages, not confirmatory tests.",
+        "N_Fermi=3000 vs N_Swift=872: unequal statistical power. The Fermi result is not directly comparable in absolute significance."
+      ],
+      "timestamp": "2026-04-21T18:22:16.797227Z"
+    },
+    "ac": {
+      "comparison_mode": "two_catalog",
+      "catalog_a": "fermi_lat_grb_catalog",
+      "catalog_b": "icecube_hese_events",
+      "event_count_a": 3000,
+      "event_count_b": 37,
+      "events_with_pos_a": 3000,
+      "events_with_pos_b": 37,
+      "null_mode_a": "exposure_corrected",
+      "null_mode_b": "isotropic",
+      "hemi_percentile_a": 0.85,
+      "hemi_percentile_b": 0.99,
+      "axis_percentile_a": 0.89,
+      "axis_percentile_b": 0.67,
+      "tier_a": "weak_anomaly_like_deviation",
+      "tier_b": "strong_anomaly_like_deviation",
+      "max_percentile_a": 0.89,
+      "max_percentile_b": 0.99,
+      "tiers_agree": false,
+      "both_anomaly": true,
+      "neither_anomaly": false,
+      "max_percentile_delta": 0.09999999999999998,
+      "consistency_verdict": "partial_agreement",
+      "interpretation": "Both catalogs show some anomaly-like deviation: fermi_lat_grb_catalog at tier=weak_anomaly_like_deviation (max percentile=0.89), icecube_hese_events at tier=strong_anomaly_like_deviation (max percentile=0.99). However, a shared pattern in two independently-observed catalogs warrants deeper investigation into common systematics (e.g., galactic plane avoidance, shared redshift selection, detector sensitivity boundaries) before any physical interpretation is possible.",
+      "caveats": [
+        "Both runs use empirical exposure-proxy nulls built from the data under test: any real signal is partially absorbed, making these tests conservative.",
+        "Different catalogs have different source populations, redshift distributions, energy ranges, and trigger thresholds. Non-detection in Swift BAT does not rule out a GRB-population-wide effect undetectable by BAT.",
+        "The preferred-axis scan uses 48 trial axes without a trial-factor correction; a metric significant at 90th percentile is consistent with a fluctuation.",
+        "No pre-registration was filed before these runs. These are exploratory first-results packages, not confirmatory tests.",
+        "N_Fermi=3000 vs N_Swift=872: unequal statistical power. The Fermi result is not directly comparable in absolute significance."
+      ],
+      "timestamp": "2026-04-21T18:22:16.797255Z"
+    },
+    "bc": {
+      "comparison_mode": "two_catalog",
+      "catalog_a": "swift_bat3_grb_catalog",
+      "catalog_b": "icecube_hese_events",
+      "event_count_a": 872,
+      "event_count_b": 37,
+      "events_with_pos_a": 872,
+      "events_with_pos_b": 37,
+      "null_mode_a": "exposure_corrected",
+      "null_mode_b": "isotropic",
+      "hemi_percentile_a": 0.63,
+      "hemi_percentile_b": 0.99,
+      "axis_percentile_a": 0.57,
+      "axis_percentile_b": 0.67,
+      "tier_a": "no_anomaly_detected",
+      "tier_b": "strong_anomaly_like_deviation",
+      "max_percentile_a": 0.63,
+      "max_percentile_b": 0.99,
+      "tiers_agree": false,
+      "both_anomaly": false,
+      "neither_anomaly": false,
+      "max_percentile_delta": 0.36,
+      "consistency_verdict": "inconsistent",
+      "interpretation": "icecube_hese_events shows strong_anomaly_like_deviation while swift_bat3_grb_catalog shows no_anomaly_detected. Cross-catalog disagreement typically indicates an instrument-specific systematic rather than a genuine sky-position signal. The anomaly in icecube_hese_events most likely reflects residual acceptance geometry not fully corrected by the empirical null, or a selection bias particular to that instrument. This result does NOT support a catalog-independent anisotropy claim.",
+      "caveats": [
+        "Both runs use empirical exposure-proxy nulls built from the data under test: any real signal is partially absorbed, making these tests conservative.",
+        "Different catalogs have different source populations, redshift distributions, energy ranges, and trigger thresholds. Non-detection in Swift BAT does not rule out a GRB-population-wide effect undetectable by BAT.",
+        "The preferred-axis scan uses 48 trial axes without a trial-factor correction; a metric significant at 90th percentile is consistent with a fluctuation.",
+        "No pre-registration was filed before these runs. These are exploratory first-results packages, not confirmatory tests.",
+        "N_Fermi=3000 vs N_Swift=872: unequal statistical power. The Fermi result is not directly comparable in absolute significance."
+      ],
+      "timestamp": "2026-04-21T18:22:16.797266Z"
+    }
+  },
+  "caveats": [
+    "Three-catalog consistency improves robustness but does not by itself prove a physical mechanism.",
+    "Catalogs differ in selection function, energy band, and source population.",
+    "Small catalogs (especially IceCube HESE) are underpowered for exclusion-level claims.",
+    "Trial-factor correction and preregistration status should be checked in each input summary."
+  ],
+  "timestamp": "2026-04-21T18:22:16.797272Z"
+}

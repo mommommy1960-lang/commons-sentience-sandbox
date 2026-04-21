@@ -1,0 +1,11 @@
+{
+  "experiment": "stage11_icecube_final_validation",
+  "catalog": "icecube_hese_events",
+  "written_at": "2026-04-21T18:22:08.307175Z",
+  "artifacts": {
+    "json_summary": "outputs/stage11_first_results/stage11_icecube_final_validation/stage11_icecube_final_validation_summary.json",
+    "csv_summary": "outputs/stage11_first_results/stage11_icecube_final_validation/stage11_icecube_final_validation_results.csv",
+    "md_summary": "outputs/stage11_first_results/stage11_icecube_final_validation/stage11_icecube_final_validation_summary.md",
+    "manifest": "outputs/stage11_first_results/stage11_icecube_final_validation/stage11_icecube_final_validation_manifest.json"
+  }
+}
