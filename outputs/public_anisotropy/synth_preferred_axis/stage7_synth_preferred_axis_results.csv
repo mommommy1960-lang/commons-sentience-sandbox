@@ -1,0 +1,2 @@
+name,catalog,written_at,event_count,hemisphere_imbalance,preferred_axis_score,energy_time_r,cluster_score,hemi_percentile,axis_percentile,et_r_percentile,clust_percentile,signal_tier,max_percentile
+stage7_synth_preferred_axis,synthetic_preferred_axis,2026-04-21T06:42:36.379318Z,300,0.35333333333333333,0.33993084698135617,-0.051854222207814465,0.9955555555555555,1.0,1.0,0.62,0.44,strong_anomaly_like_deviation,1.0

@@ -1,0 +1,11 @@
+{
+  "experiment": "stage8_first_results",
+  "catalog": "real_test_dataset",
+  "written_at": "2026-04-21T08:02:10.841722Z",
+  "artifacts": {
+    "json_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage8_first_results/stage8_first_results_summary.json",
+    "csv_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage8_first_results/stage8_first_results_results.csv",
+    "md_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage8_first_results/stage8_first_results_summary.md",
+    "manifest": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage8_first_results/stage8_first_results_manifest.json"
+  }
+}

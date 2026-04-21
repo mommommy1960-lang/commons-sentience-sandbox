@@ -1,0 +1,11 @@
+{
+  "experiment": "synthetic_preferred_axis_recovery",
+  "catalog": "synthetic_preferred_axis",
+  "written_at": "2026-04-21T06:42:51.239375Z",
+  "artifacts": {
+    "json_summary": "/workspaces/commons-sentience-sandbox/outputs/public_anisotropy_benchmark/synthetic_preferred_axis_recovery/synthetic_preferred_axis_recovery_summary.json",
+    "csv_summary": "/workspaces/commons-sentience-sandbox/outputs/public_anisotropy_benchmark/synthetic_preferred_axis_recovery/synthetic_preferred_axis_recovery_results.csv",
+    "md_summary": "/workspaces/commons-sentience-sandbox/outputs/public_anisotropy_benchmark/synthetic_preferred_axis_recovery/synthetic_preferred_axis_recovery_summary.md",
+    "manifest": "/workspaces/commons-sentience-sandbox/outputs/public_anisotropy_benchmark/synthetic_preferred_axis_recovery/synthetic_preferred_axis_recovery_manifest.json"
+  }
+}

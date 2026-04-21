@@ -1,0 +1,14 @@
+{
+  "experiment": "preferred_axis_run",
+  "written_at": "2026-04-21T05:54:35.028223Z",
+  "files": {
+    "json_summary": "outputs/simulation_signature/preferred_axis/preferred_axis_run_summary.json",
+    "csv_summary": "outputs/simulation_signature/preferred_axis/preferred_axis_run_results.csv",
+    "markdown_summary": "outputs/simulation_signature/preferred_axis/preferred_axis_run_summary.md",
+    "plot_sky_scatter": "outputs/simulation_signature/preferred_axis/preferred_axis_run_sky_scatter.png",
+    "plot_energy_hist": "outputs/simulation_signature/preferred_axis/preferred_axis_run_energy_hist.png",
+    "plot_time_hist": "outputs/simulation_signature/preferred_axis/preferred_axis_run_time_hist.png",
+    "plot_null_comparison": "outputs/simulation_signature/preferred_axis/preferred_axis_run_null_comparison.png",
+    "plot_anomaly_summary": "outputs/simulation_signature/preferred_axis/preferred_axis_run_anomaly_summary.png"
+  }
+}

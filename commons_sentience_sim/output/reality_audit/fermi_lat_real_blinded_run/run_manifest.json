@@ -5,8 +5,8 @@
   "ingest_manifest_path": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/fermi_lat_real_blinded_run/fermi_lat_public_ingest_manifest.json",
   "qc_report_path": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/fermi_lat_real_blinded_run/quality_control_report.json",
   "blinded_summary_path": "/workspaces/commons-sentience-sandbox/commons_sentience_sim/output/reality_audit/fermi_lat_real_blinded_run/blinded_summary.json",
-  "n_permutations": 500,
-  "seed": 42,
+  "n_permutations": 50,
+  "seed": 0,
   "analysis_ran": true,
   "unblind_status": "BLINDED \u2014 awaiting human approval",
   "automatic_unblind": false

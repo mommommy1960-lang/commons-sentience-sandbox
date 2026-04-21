@@ -1,0 +1,13 @@
+{
+  "experiment": "baseline_run",
+  "written_at": "2026-04-21T05:54:34.236276Z",
+  "files": {
+    "json_summary": "outputs/simulation_signature/baseline/baseline_run_summary.json",
+    "csv_summary": "outputs/simulation_signature/baseline/baseline_run_results.csv",
+    "markdown_summary": "outputs/simulation_signature/baseline/baseline_run_summary.md",
+    "plot_sky_scatter": "outputs/simulation_signature/baseline/baseline_run_sky_scatter.png",
+    "plot_energy_hist": "outputs/simulation_signature/baseline/baseline_run_energy_hist.png",
+    "plot_time_hist": "outputs/simulation_signature/baseline/baseline_run_time_hist.png",
+    "plot_null_comparison": "outputs/simulation_signature/baseline/baseline_run_null_comparison.png"
+  }
+}

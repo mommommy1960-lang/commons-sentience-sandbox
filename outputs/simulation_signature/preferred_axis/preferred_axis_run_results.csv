@@ -1,0 +1,3 @@
+name,written_at,event_count,hemisphere_imbalance,preferred_axis_score,energy_time_r,cluster_score,hemi_percentile,axis_percentile,et_r_percentile,clust_percentile,signal_tier,max_percentile
+preferred_axis_run,2026-04-21T05:54:25.084598Z,300,0.31333333333333335,0.26207396640515107,-0.051854222207814465,0.9955555555555555,1.0,1.0,0.68,0.36,strong_anomaly_like_deviation,1.0
+preferred_axis_run,2026-04-21T05:54:35.028223Z,300,0.31333333333333335,0.26207396640515107,-0.051854222207814465,0.9955555555555555,1.0,1.0,0.68,0.36,strong_anomaly_like_deviation,1.0

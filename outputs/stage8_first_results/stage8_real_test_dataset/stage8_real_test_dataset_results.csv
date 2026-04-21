@@ -1,0 +1,2 @@
+name,catalog,written_at,event_count,hemisphere_imbalance,preferred_axis_score,energy_time_r,cluster_score,hemi_percentile,axis_percentile,et_r_percentile,clust_percentile,signal_tier,max_percentile
+stage8_real_test_dataset,real_test_dataset,2026-04-21T08:02:19.498425Z,104,0.0,0.0,,1.0,0.0,0.0,0.5,0.0,no_anomaly_detected,0.5

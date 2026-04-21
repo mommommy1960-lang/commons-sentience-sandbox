@@ -1,0 +1,173 @@
+{
+  "experiment": "stage7_synth_baseline",
+  "catalog": "synthetic_isotropic",
+  "written_at": "2026-04-21T06:42:29.563890Z",
+  "results": {
+    "event_count": 300,
+    "events_with_energy": 300,
+    "events_with_position": 300,
+    "events_with_time": 300,
+    "energy_stats": {
+      "count": 300,
+      "min": 0.100281,
+      "max": 99.505573,
+      "mean": 15.71732766,
+      "median": 4.126187,
+      "std": 23.954991414810234
+    },
+    "anisotropy": {
+      "hemisphere_imbalance": 0.006666666666666667,
+      "interpretation": "Fraction of events in north minus south hemisphere. 0 = balanced, \u00b11 = all in one hemisphere."
+    },
+    "preferred_axis": {
+      "score": 0.05055370111731853,
+      "best_axis_xyz": [
+        -0.6972166887783965,
+        -0.6972166887783963,
+        -0.16666666666666663
+      ],
+      "num_axes_scanned": 48,
+      "interpretation": "Max |mean cos-projection| across trial axes. Isotropic \u2248 0; perfect alignment \u2248 1."
+    },
+    "axis_scan": {
+      "best_score": 0.05055370111731853,
+      "best_axis_index": 21,
+      "best_axis_xyz": [
+        -0.6972166887783965,
+        -0.6972166887783963,
+        -0.16666666666666663
+      ],
+      "all_scores": [
+        0.014844470536272253,
+        0.022775925553955786,
+        0.01443426587397827,
+        0.005294077395830283,
+        0.024852508331168,
+        0.03278396334885154,
+        0.02444230366887402,
+        0.004713960399065465,
+        0.0280941952954822,
+        0.040520397175649876,
+        0.027451528100814093,
+        0.0034568456698646794,
+        0.03409901797241965,
+        0.04652521985258732,
+        0.033456350777751546,
+        0.0025479770070727715,
+        0.0344042403501224,
+        0.04855209355833937,
+        0.03367253156093778,
+        0.0015182000261758084,
+        0.03640584790910154,
+        0.05055370111731853,
+        0.035674139119916945,
+        0.00048340753280334733,
+        0.03640584790910154,
+        0.05055370111731853,
+        0.03567413911991694,
+        0.00048340753280334104,
+        0.03440424035012239,
+        0.04855209355833937,
+        0.03367253156093779,
+        0.0015182000261757997,
+        0.034099017972419654,
+        0.04652521985258732,
+        0.03345635077775154,
+        0.0025479770070727698,
+        0.0280941952954822,
+        0.040520397175649876,
+        0.027451528100814096,
+        0.003456845669864674,
+        0.02485250833116801,
+        0.032783963348851544,
+        0.024442303668874024,
+        0.004713960399065464,
+        0.014844470536272253,
+        0.0227759255539558,
+        0.01443426587397828,
+        0.005294077395830279
+      ],
+      "num_axes": 48
+    },
+    "energy_time_correlation": {
+      "pearson_r": -0.051854222207814465,
+      "interpretation": "Pearson r between energy and arrival_time. Non-zero may indicate energy-dependent propagation effects."
+    },
+    "cluster_score": {
+      "value": 0.9955555555555555,
+      "interpretation": "Mean window count / expected-random. \u22481.0 = uniform; >1.0 = clustered."
+    },
+    "null_comparison": {
+      "null_mode": "isotropic",
+      "null_repeats": 50,
+      "hemi_percentile": 0.06,
+      "axis_percentile": 0.64,
+      "et_r_percentile": 0.62,
+      "clust_percentile": 0.44,
+      "null_axis_mean": 0.04808700132957672,
+      "null_axis_std": 0.02008999364745478,
+      "null_hemi_mean": 0.04373333333333333
+    },
+    "signal_evaluation": {
+      "tier": "no_anomaly_detected",
+      "max_percentile": 0.64,
+      "per_metric_percentiles": {
+        "hemisphere_imbalance": 0.06,
+        "preferred_axis": 0.64,
+        "energy_time_r": 0.62,
+        "clustering": 0.44
+      },
+      "summary": "All metrics are within the bulk of the isotropic null distribution. No significant anomaly detected.",
+      "caveat": "Anomaly-like deviations from an isotropic null are hypothesis-generating results, not proof of any specific physical or cosmological cause. Systematic effects, selection biases, and incomplete modeling should be ruled out before drawing any scientific conclusion."
+    },
+    "run_metadata": {
+      "seed": 42,
+      "null_repeats": 50,
+      "num_axes": 48,
+      "timestamp": "2026-04-21T06:42:29.561878Z"
+    }
+  },
+  "coverage": {
+    "event_count": 300,
+    "available_fields": [
+      "event_id",
+      "energy",
+      "arrival_time",
+      "ra",
+      "dec",
+      "instrument",
+      "epoch"
+    ],
+    "missingness": {
+      "event_id": 0.0,
+      "energy": 0.0,
+      "arrival_time": 0.0,
+      "ra": 0.0,
+      "dec": 0.0,
+      "instrument": 0.0,
+      "epoch": 0.0
+    },
+    "ra_dec_coverage": {
+      "ra_min": 2.12259,
+      "ra_max": 359.84607,
+      "dec_min": -87.259356,
+      "dec_max": 88.899836,
+      "n_with_position": 300
+    },
+    "time_span_mjd": {
+      "t_min_mjd": 58005.544818,
+      "t_max_mjd": 58998.902333,
+      "span_days": 993.357514999996,
+      "n_with_time": 300
+    },
+    "instrument_labels": [
+      "EXAMPLE-A",
+      "EXAMPLE-B",
+      "EXAMPLE-C"
+    ]
+  },
+  "config": {
+    "null_repeats": 50,
+    "num_axes": 48
+  }
+}

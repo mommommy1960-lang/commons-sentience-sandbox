@@ -1,0 +1,11 @@
+{
+  "experiment": "synth_preferred_axis_example",
+  "catalog": "synthetic_preferred_axis",
+  "written_at": "2026-04-21T16:38:58.381844Z",
+  "artifacts": {
+    "json_summary": "outputs/public_anisotropy/synth_preferred_axis/synth_preferred_axis_example_summary.json",
+    "csv_summary": "outputs/public_anisotropy/synth_preferred_axis/synth_preferred_axis_example_results.csv",
+    "md_summary": "outputs/public_anisotropy/synth_preferred_axis/synth_preferred_axis_example_summary.md",
+    "manifest": "outputs/public_anisotropy/synth_preferred_axis/synth_preferred_axis_example_manifest.json"
+  }
+}

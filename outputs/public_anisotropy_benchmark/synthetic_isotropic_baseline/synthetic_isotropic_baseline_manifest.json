@@ -1,0 +1,11 @@
+{
+  "experiment": "synthetic_isotropic_baseline",
+  "catalog": "synthetic_isotropic",
+  "written_at": "2026-04-21T06:42:50.156075Z",
+  "artifacts": {
+    "json_summary": "/workspaces/commons-sentience-sandbox/outputs/public_anisotropy_benchmark/synthetic_isotropic_baseline/synthetic_isotropic_baseline_summary.json",
+    "csv_summary": "/workspaces/commons-sentience-sandbox/outputs/public_anisotropy_benchmark/synthetic_isotropic_baseline/synthetic_isotropic_baseline_results.csv",
+    "md_summary": "/workspaces/commons-sentience-sandbox/outputs/public_anisotropy_benchmark/synthetic_isotropic_baseline/synthetic_isotropic_baseline_summary.md",
+    "manifest": "/workspaces/commons-sentience-sandbox/outputs/public_anisotropy_benchmark/synthetic_isotropic_baseline/synthetic_isotropic_baseline_manifest.json"
+  }
+}

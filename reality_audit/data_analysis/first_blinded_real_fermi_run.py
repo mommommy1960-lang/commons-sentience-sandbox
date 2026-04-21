@@ -46,10 +46,14 @@ result = first_blinded_real_fermi_run()
 import json
 import pathlib
 import sys
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 from reality_audit.data_analysis.run_first_real_ingest import run_first_real_ingest
 from reality_audit.data_analysis.milestone_report import generate_milestone_report
+from reality_audit.data_analysis.data_provenance import (
+    assess_authenticity,
+    AuthenticityTier,
+)
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -80,6 +84,7 @@ def first_blinded_real_fermi_run(
     n_permutations: int = 500,
     seed: int = 42,
     require_accept_only: bool = True,
+    check_provenance: bool = True,
 ) -> Dict[str, Any]:
     """
     Execute the full Stage 6 blinded real-data analysis workflow.
@@ -101,14 +106,46 @@ def first_blinded_real_fermi_run(
     require_accept_only : bool
         If True (default), abort on ACCEPT_WITH_WARNINGS as well as REJECT.
         Set False only in test contexts.
+    check_provenance : bool
+        If True (default), assess data authenticity before running the
+        pipeline.  Files that are synthetic fixtures or lack a provenance
+        sidecar are labelled REHEARSAL and not eligible for scientific
+        interpretation.
 
     Returns
     -------
     dict with keys:
-        ingest_result   — output of run_first_real_ingest
-        milestone_report — output of generate_milestone_report
-        overall_status  — WAITING | BLOCKED | COMPLETE | ERROR
+        ingest_result       — output of run_first_real_ingest
+        milestone_report    — output of generate_milestone_report
+        overall_status      — WAITING | BLOCKED | COMPLETE | ERROR
+        run_mode            — AUTHENTIC_PUBLIC | REHEARSAL | UNVERIFIED | MISSING
+        authenticity_report — output of assess_authenticity (or None)
     """
+    # ------------------------------------------------------------------
+    # Step 0: Provenance / authenticity check
+    # ------------------------------------------------------------------
+    effective_data_dir = pathlib.Path(data_dir) if data_dir else _DATA_DIR
+    authenticity_report = None
+    run_mode = AuthenticityTier.MISSING.value
+
+    if check_provenance:
+        # Find the first non-synthetic CSV candidate
+        candidates = [
+            f for f in effective_data_dir.glob("*.csv")
+            if "synthetic" not in f.name.lower()
+        ]
+        if candidates:
+            auth = assess_authenticity(str(candidates[0]))
+            authenticity_report = auth.to_dict()
+            run_mode = auth.authenticity_tier.value
+            _print_provenance_banner(auth)
+        else:
+            run_mode = AuthenticityTier.MISSING.value
+            print(
+                "[PROVENANCE] No non-synthetic CSV found in "
+                f"{effective_data_dir} — run_mode = MISSING"
+            )
+
     # ------------------------------------------------------------------
     # Step 1–4: Ingest (detect → validate → run blinded pipeline)
     # ------------------------------------------------------------------
@@ -142,12 +179,14 @@ def first_blinded_real_fermi_run(
     # ------------------------------------------------------------------
     # Step 6: Final status print
     # ------------------------------------------------------------------
-    _print_summary(overall_status, ingest_result, milestone)
+    _print_summary(overall_status, run_mode, ingest_result, milestone)
 
     return {
         "ingest_result": ingest_result,
         "milestone_report": milestone,
         "overall_status": overall_status,
+        "run_mode": run_mode,
+        "authenticity_report": authenticity_report,
     }
 
 
@@ -159,8 +198,29 @@ def _print_abort(ingest_result: Dict[str, Any]) -> None:
     )
 
 
+def _print_provenance_banner(auth: Any) -> None:
+    tier = getattr(auth, 'authenticity_tier', auth)
+    reasons = getattr(auth, 'failure_reasons', [])
+    print()
+    print("[PROVENANCE CHECK]")
+    print(f"  File              : {getattr(auth, 'candidate_path', 'N/A')}")
+    print(f"  Authenticity tier : {tier.value if hasattr(tier, 'value') else tier}")
+    print(f"  SHA-256 (prefix)  : {getattr(auth, 'sha256_prefix', 'N/A')}")
+    print(f"  Is known synthetic: {getattr(auth, 'is_known_synthetic', 'N/A')}")
+    print(f"  Provenance sidecar: {getattr(auth, 'provenance_sidecar_found', 'N/A')}")
+    if reasons:
+        print(f"  Failure reasons   : {reasons}")
+    is_authentic = getattr(auth, 'eligible_for_scientific_run', False)
+    if not is_authentic:
+        print()
+        print("  *** RUN MODE: REHEARSAL (data not certified as AUTHENTIC_PUBLIC) ***")
+        print("  *** This run produces NO eligible scientific output.           ***")
+    print()
+
+
 def _print_summary(
     status: str,
+    run_mode: str,
     ingest_result: Dict[str, Any],
     milestone: Dict[str, Any],
 ) -> None:
@@ -172,6 +232,7 @@ def _print_summary(
     print("STAGE 6 — FIRST BLINDED REAL FERMI-LAT RUN")
     print("=" * 60)
     print(f"  Overall status       : {status}")
+    print(f"  Run mode             : {run_mode}")
     print(f"  Dataset              : {dataset.get('dataset_name', 'N/A')}")
     print(f"  Events ingested      : {qc.get('n_events', 'N/A')}")
     print(f"  Events dropped       : {qc.get('n_dropped_by_adapter', 'N/A')}")

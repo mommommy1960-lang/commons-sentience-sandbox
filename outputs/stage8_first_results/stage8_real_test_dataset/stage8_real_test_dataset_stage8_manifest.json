@@ -1,0 +1,30 @@
+{
+  "stage": "stage8_first_results",
+  "run_name": "stage8_real_test_dataset",
+  "written_at": "2026-04-21T08:02:20.318404Z",
+  "input_path": "/workspaces/commons-sentience-sandbox/data/real/real_test_dataset.csv",
+  "output_dir": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage8_real_test_dataset",
+  "catalog_label": "real_test_dataset",
+  "event_count": 104,
+  "run_metadata": {
+    "null_repeats": 100,
+    "axis_count": 48,
+    "seed": 42,
+    "plots": true,
+    "save_normalized": true,
+    "timestamp": "2026-04-21T08:02:20.318123Z",
+    "stage": "stage8_first_results"
+  },
+  "artifacts": {
+    "json_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage8_real_test_dataset/stage8_real_test_dataset_summary.json",
+    "csv_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage8_real_test_dataset/stage8_real_test_dataset_results.csv",
+    "md_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage8_real_test_dataset/stage8_real_test_dataset_summary.md",
+    "sky_plot": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage8_real_test_dataset/stage8_real_test_dataset_sky_plot.png",
+    "null_comparison_plot": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage8_real_test_dataset/stage8_real_test_dataset_null_comparison.png",
+    "manifest": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage8_real_test_dataset/stage8_real_test_dataset_manifest.json",
+    "normalized_events_csv": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage8_real_test_dataset/stage8_real_test_dataset_normalized_events.csv",
+    "stage8_memo": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage8_real_test_dataset/stage8_real_test_dataset_memo.md"
+  },
+  "signal_tier": "no_anomaly_detected",
+  "max_percentile": 0.5
+}

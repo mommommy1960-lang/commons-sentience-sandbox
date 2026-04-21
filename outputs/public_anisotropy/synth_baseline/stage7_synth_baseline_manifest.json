@@ -1,0 +1,14 @@
+{
+  "experiment": "stage7_synth_baseline",
+  "catalog": "synthetic_isotropic",
+  "written_at": "2026-04-21T06:42:29.563890Z",
+  "artifacts": {
+    "json_summary": "outputs/public_anisotropy/synth_baseline/stage7_synth_baseline_summary.json",
+    "csv_summary": "outputs/public_anisotropy/synth_baseline/stage7_synth_baseline_results.csv",
+    "md_summary": "outputs/public_anisotropy/synth_baseline/stage7_synth_baseline_summary.md",
+    "sky_plot": "outputs/public_anisotropy/synth_baseline/stage7_synth_baseline_sky_plot.png",
+    "null_comparison_plot": "outputs/public_anisotropy/synth_baseline/stage7_synth_baseline_null_comparison.png",
+    "axis_scan_plot": "outputs/public_anisotropy/synth_baseline/stage7_synth_baseline_axis_scan.png",
+    "manifest": "outputs/public_anisotropy/synth_baseline/stage7_synth_baseline_manifest.json"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "experiment": "energy_delay_run",
+  "written_at": "2026-04-21T05:54:37.142163Z",
+  "results": {
+    "event_count": 300,
+    "events_with_energy": 300,
+    "events_with_position": 300,
+    "events_with_arrival_time": 300,
+    "energy_stats": {
+      "count": 300,
+      "min": 0.100281,
+      "max": 99.505573,
+      "mean": 15.71732766,
+      "median": 4.126187,
+      "std": 23.954991414810234
+    },
+    "anisotropy": {
+      "hemisphere_imbalance": 0.006666666666666667,
+      "interpretation": "Fraction of events in north minus south hemisphere. 0 = balanced, \u00b11 = all in one hemisphere."
+    },
+    "preferred_axis": {
+      "score": 0.05025581042302982,
+      "interpretation": "Max |mean cos-projection| across 12 trial axes. Isotropic \u2248 0.0; perfect clustering \u2248 1.0."
+    },
+    "energy_time_correlation": {
+      "pearson_r": -0.2548926144789417,
+      "interpretation": "Pearson r between energy and arrival_time. Non-zero suggests energy-dependent propagation effects."
+    },
+    "cluster_score": {
+      "value": 1.0686666666666667,
+      "interpretation": "Mean window count / expected-random window count. \u22481.0 for uniform; >1.0 for clustered arrivals."
+    },
+    "null_comparison": {
+      "null_mode": "shuffled_time",
+      "null_repeats": 25,
+      "hemi_percentile": 0.0,
+      "axis_percentile": 0.0,
+      "et_r_percentile": 1.0,
+      "clust_percentile": 0.28
+    },
+    "anomaly_injected": {
+      "anomaly_type": "energy_dependent_delay",
+      "strength": 0.5,
+      "seed": 42,
+      "n_affected": 300
+    }
+  },
+  "signal_evaluation": {
+    "tier": "strong_anomaly_like_deviation",
+    "max_percentile": 1.0,
+    "per_metric_percentiles": {
+      "hemisphere_imbalance": 0.0,
+      "preferred_axis": 0.0,
+      "energy_time_r": 1.0,
+      "clustering": 0.28
+    },
+    "summary": "One or more metrics are in the top 3% of the null distribution. This is a strong anomaly-like deviation, but does not identify its cause.",
+    "caveat": "Anomaly detection in event data is hypothesis testing, not proof of any specific physical or metaphysical claim. A deviation from the null model may reflect incomplete modeling, selection effects, instrument systematics, or statistical fluctuation."
+  },
+  "config": {
+    "null_mode": "shuffled_time",
+    "null_repeats": 25,
+    "seed": 42
+  }
+}

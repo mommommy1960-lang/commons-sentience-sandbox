@@ -1,0 +1,172 @@
+{
+  "experiment": "stage8_real_first_results",
+  "catalog": "fermi_lat_grb_catalog",
+  "written_at": "2026-04-21T08:15:13.733792Z",
+  "results": {
+    "event_count": 3000,
+    "events_with_energy": 2999,
+    "events_with_position": 3000,
+    "events_with_time": 3000,
+    "energy_stats": {
+      "count": 2999,
+      "min": 5.0105e-09,
+      "max": 0.038836,
+      "mean": 2.4788447337945983e-05,
+      "median": 2.8003e-06,
+      "std": 0.0007119055756512575
+    },
+    "anisotropy": {
+      "hemisphere_imbalance": -0.412,
+      "interpretation": "Fraction of events in north minus south hemisphere. 0 = balanced, \u00b11 = all in one hemisphere."
+    },
+    "preferred_axis": {
+      "score": 0.24558079170978916,
+      "best_axis_xyz": [
+        0.39086797998528566,
+        -0.39086797998528583,
+        -0.8333333333333334
+      ],
+      "num_axes_scanned": 48,
+      "interpretation": "Max |mean cos-projection| across trial axes. Isotropic \u2248 0; perfect alignment \u2248 1."
+    },
+    "axis_scan": {
+      "best_score": 0.24558079170978916,
+      "best_axis_index": 7,
+      "best_axis_xyz": [
+        0.39086797998528566,
+        -0.39086797998528583,
+        -0.8333333333333334
+      ],
+      "all_scores": [
+        0.2434726864230176,
+        0.2404000044189198,
+        0.23816268114263653,
+        0.2380713102260016,
+        0.24017941551277322,
+        0.243252097516871,
+        0.24548942079315422,
+        0.24558079170978916,
+        0.14767541254290817,
+        0.14286144501597273,
+        0.13935623309201822,
+        0.13921308237710517,
+        0.14251584861856634,
+        0.1473298161455017,
+        0.15083502806945628,
+        0.1509781787843693,
+        0.05130242116616529,
+        0.04582147802867249,
+        0.04183061869433728,
+        0.04166763443568998,
+        0.04542799922099284,
+        0.05090894235848564,
+        0.05489980169282085,
+        0.05506278595146815,
+        0.045427999220992867,
+        0.05090894235848567,
+        0.054899801692820875,
+        0.05506278595146818,
+        0.05130242116616532,
+        0.045821478028672515,
+        0.04183061869433731,
+        0.04166763443569001,
+        0.14251584861856634,
+        0.1473298161455017,
+        0.15083502806945628,
+        0.15097817878436928,
+        0.14767541254290817,
+        0.14286144501597273,
+        0.13935623309201822,
+        0.1392130823771052,
+        0.24017941551277316,
+        0.24325209751687096,
+        0.2454894207931542,
+        0.2455807917097891,
+        0.24347268642301753,
+        0.24040000441891973,
+        0.23816268114263653,
+        0.23807131022600156
+      ],
+      "num_axes": 48
+    },
+    "energy_time_correlation": {
+      "pearson_r": 0.02010987986963195,
+      "interpretation": "Pearson r between energy and arrival_time. Non-zero may indicate energy-dependent propagation effects."
+    },
+    "cluster_score": {
+      "value": 0.96986,
+      "interpretation": "Mean window count / expected-random. \u22481.0 = uniform; >1.0 = clustered."
+    },
+    "null_comparison": {
+      "null_mode": "isotropic",
+      "null_repeats": 100,
+      "hemi_percentile": 1.0,
+      "axis_percentile": 1.0,
+      "et_r_percentile": 0.71,
+      "clust_percentile": 0.0,
+      "null_axis_mean": 0.017392482860491762,
+      "null_axis_std": 0.006571959743869832,
+      "null_hemi_mean": 0.014633333333333333
+    },
+    "signal_evaluation": {
+      "tier": "strong_anomaly_like_deviation",
+      "max_percentile": 1.0,
+      "per_metric_percentiles": {
+        "hemisphere_imbalance": 1.0,
+        "preferred_axis": 1.0,
+        "energy_time_r": 0.71,
+        "clustering": 0.0
+      },
+      "summary": "One or more metrics fall in the top 3% of the isotropic null distribution. This is a strong anomaly-like deviation; its cause requires further investigation.",
+      "caveat": "Anomaly-like deviations from an isotropic null are hypothesis-generating results, not proof of any specific physical or cosmological cause. Systematic effects, selection biases, and incomplete modeling should be ruled out before drawing any scientific conclusion."
+    },
+    "run_metadata": {
+      "seed": 42,
+      "null_repeats": 100,
+      "num_axes": 48,
+      "timestamp": "2026-04-21T08:15:13.728523Z"
+    }
+  },
+  "coverage": {
+    "event_count": 3000,
+    "available_fields": [
+      "event_id",
+      "energy",
+      "arrival_time",
+      "ra",
+      "dec",
+      "instrument",
+      "epoch"
+    ],
+    "missingness": {
+      "event_id": 0.0,
+      "energy": 0.0003,
+      "arrival_time": 0.0,
+      "ra": 0.0,
+      "dec": 0.0,
+      "instrument": 0.0,
+      "epoch": 0.0
+    },
+    "ra_dec_coverage": {
+      "ra_min": 0.27,
+      "ra_max": 359.74,
+      "dec_min": -89.0093,
+      "dec_max": 55.25,
+      "n_with_position": 3000
+    },
+    "time_span_mjd": {
+      "t_min_mjd": 54661.0863,
+      "t_max_mjd": 61149.2984,
+      "span_days": 6488.212099999997,
+      "n_with_time": 3000
+    },
+    "instrument_labels": [
+      "Fermi-GBM"
+    ]
+  },
+  "config": {
+    "null_repeats": 100,
+    "num_axes": 48,
+    "seed": 42
+  }
+}

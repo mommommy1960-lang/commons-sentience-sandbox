@@ -1,0 +1,3 @@
+name,catalog,written_at,event_count,hemisphere_imbalance,preferred_axis_score,energy_time_r,cluster_score,hemi_percentile,axis_percentile,et_r_percentile,clust_percentile,signal_tier,max_percentile
+real_catalog_fermi_lat_grb,/workspaces/commons-sentience-sandbox/data/real/fermi_lat_grb_catalog.csv,2026-04-21T08:57:05.933613Z,3000,-0.412,0.24558079170978916,0.02010987986963195,0.96986,1.0,1.0,0.7,0.0,strong_anomaly_like_deviation,1.0
+real_catalog_fermi_lat_grb,/workspaces/commons-sentience-sandbox/data/real/fermi_lat_grb_catalog.csv,2026-04-21T16:39:26.687270Z,3000,-0.412,0.24558079170978916,0.02010987986963195,0.96986,1.0,1.0,0.7,0.0,strong_anomaly_like_deviation,1.0

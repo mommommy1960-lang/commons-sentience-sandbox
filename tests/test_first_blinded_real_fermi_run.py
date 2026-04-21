@@ -394,3 +394,213 @@ class TestFirstBlindedRealFermiRunComplete:
         assert not re.search(r'"p_value"\s*:\s*[0-9]', text)
         assert not re.search(r'"z_score"\s*:\s*[0-9\-]', text)
         assert not re.search(r'"observed_slope"\s*:\s*[0-9\-]', text)
+
+
+# ---------------------------------------------------------------------------
+# TestProvenanceIntegration — run_mode classification and guardrails
+# ---------------------------------------------------------------------------
+
+class TestProvenanceIntegration:
+    """Tests for provenance/authenticity checking inside first_blinded_real_fermi_run."""
+
+    # 1. Synthetic fixture rejected as authentic_public input
+    def test_synthetic_fixture_yields_rehearsal_run_mode(self, tmp_path):
+        d = tmp_path / "real"; d.mkdir()
+        _write_csv(d / "synthetic_events.csv", n=40, n_grb=6)
+        mfst = tmp_path / "manifest.json"
+        ms = tmp_path / "milestone.json"
+        result = first_blinded_real_fermi_run(
+            data_dir=str(d),
+            manifest_path=str(mfst),
+            milestone_report_path=str(ms),
+        )
+        # Even though run proceeded (synthetic name skipped by ingest), provenance tier is MISSING
+        assert result["run_mode"] in ("REHEARSAL", "MISSING", "UNVERIFIED")
+
+    # 2. File without provenance sidecar yields UNVERIFIED (not AUTHENTIC_PUBLIC)
+    def test_no_sidecar_yields_unverified_run_mode(self, tmp_path):
+        if not _REG_PATH.exists():
+            pytest.skip("Registration JSON not present")
+        d = tmp_path / "real"; d.mkdir()
+        _write_csv(d / "grb_public_events.csv", n=40, n_grb=6)
+        mfst = tmp_path / "manifest.json"
+        ms = tmp_path / "milestone.json"
+        result = first_blinded_real_fermi_run(
+            data_dir=str(d),
+            registration_path=str(_REG_PATH),
+            manifest_path=str(mfst),
+            milestone_report_path=str(ms),
+            n_permutations=50, seed=0,
+        )
+        # No provenance sidecar → UNVERIFIED, not AUTHENTIC_PUBLIC
+        assert result["run_mode"] == "UNVERIFIED"
+        assert result["authenticity_report"] is not None
+        assert result["authenticity_report"]["eligible_for_scientific_run"] is False
+
+    # 3. Valid provenance sidecar on non-synthetic file yields AUTHENTIC_PUBLIC
+    def test_valid_sidecar_yields_authentic_public_run_mode(self, tmp_path):
+        if not _REG_PATH.exists():
+            pytest.skip("Registration JSON not present")
+        import json as _json
+        d = tmp_path / "real"; d.mkdir()
+        _write_csv(d / "grb_public_events.csv", n=40, n_grb=6)
+        sidecar = d / "grb_public_events.provenance.json"
+        sidecar.write_text(_json.dumps({
+            "source_description": "Fermi-LAT GRB event data from FSSC public archive",
+            "data_origin": "Fermi FSSC / HEASARC",
+            "acquisition_date": "2026-04-20",
+        }))
+        mfst = tmp_path / "manifest.json"
+        ms = tmp_path / "milestone.json"
+        result = first_blinded_real_fermi_run(
+            data_dir=str(d),
+            registration_path=str(_REG_PATH),
+            manifest_path=str(mfst),
+            milestone_report_path=str(ms),
+            n_permutations=50, seed=0,
+        )
+        assert result["run_mode"] == "AUTHENTIC_PUBLIC"
+        assert result["authenticity_report"]["eligible_for_scientific_run"] is True
+
+    # 4. Authenticity report always present in result when check_provenance=True
+    def test_authenticity_report_in_result(self, tmp_path):
+        if not _REG_PATH.exists():
+            pytest.skip("Registration JSON not present")
+        d = tmp_path / "real"; d.mkdir()
+        _write_csv(d / "grb_real.csv", n=40, n_grb=6)
+        mfst = tmp_path / "manifest.json"
+        ms = tmp_path / "milestone.json"
+        result = first_blinded_real_fermi_run(
+            data_dir=str(d),
+            registration_path=str(_REG_PATH),
+            manifest_path=str(mfst),
+            milestone_report_path=str(ms),
+            n_permutations=50, seed=0,
+        )
+        assert result["authenticity_report"] is not None
+        assert "authenticity_tier" in result["authenticity_report"]
+
+    # 5. run_mode returned even when check_provenance=False
+    def test_check_provenance_false_run_mode_is_missing(self, tmp_path):
+        if not _REG_PATH.exists():
+            pytest.skip("Registration JSON not present")
+        d = tmp_path / "real"; d.mkdir()
+        _write_csv(d / "grb_real.csv", n=40, n_grb=6)
+        mfst = tmp_path / "manifest.json"
+        ms = tmp_path / "milestone.json"
+        result = first_blinded_real_fermi_run(
+            data_dir=str(d),
+            registration_path=str(_REG_PATH),
+            manifest_path=str(mfst),
+            milestone_report_path=str(ms),
+            n_permutations=50, seed=0,
+            check_provenance=False,
+        )
+        # When provenance check is disabled, run_mode stays MISSING
+        assert result["run_mode"] == "MISSING"
+        assert result["authenticity_report"] is None
+
+    # 6. Blinded fields stay blinded regardless of run_mode
+    def test_blinded_fields_stay_blinded_in_authentic_public_mode(self, tmp_path):
+        if not _REG_PATH.exists():
+            pytest.skip("Registration JSON not present")
+        import json as _json, re
+        d = tmp_path / "real"; d.mkdir()
+        _write_csv(d / "grb_public_events.csv", n=40, n_grb=6)
+        sidecar = d / "grb_public_events.provenance.json"
+        sidecar.write_text(_json.dumps({
+            "source_description": "Fermi-LAT GRB event data from FSSC public archive",
+            "data_origin": "Fermi FSSC / HEASARC",
+            "acquisition_date": "2026-04-20",
+        }))
+        mfst = tmp_path / "manifest.json"
+        ms = tmp_path / "milestone.json"
+        result = first_blinded_real_fermi_run(
+            data_dir=str(d),
+            registration_path=str(_REG_PATH),
+            manifest_path=str(mfst),
+            milestone_report_path=str(ms),
+            n_permutations=50, seed=0,
+        )
+        assert result["run_mode"] == "AUTHENTIC_PUBLIC"
+        blinding = result["milestone_report"]["blinding"]
+        assert blinding["blinding_enforced"] is True
+        assert blinding["signal_keys_confirmed_blinded"] is True
+        assert blinding["unblind_permitted"] is False
+        text = ms.read_text()
+        assert not re.search(r'"p_value"\s*:\s*[0-9]', text)
+        assert not re.search(r'"z_score"\s*:\s*[0-9\-]', text)
+        assert not re.search(r'"observed_slope"\s*:\s*[0-9\-]', text)
+
+    # 7. Empty data dir when check_provenance=True → run_mode MISSING
+    def test_empty_dir_run_mode_missing(self, tmp_path):
+        d = tmp_path / "real"; d.mkdir()
+        mfst = tmp_path / "manifest.json"
+        ms = tmp_path / "milestone.json"
+        result = first_blinded_real_fermi_run(
+            data_dir=str(d),
+            manifest_path=str(mfst),
+            milestone_report_path=str(ms),
+        )
+        assert result["run_mode"] == "MISSING"
+        assert result["overall_status"] == "WAITING"
+
+    # 8. Operator aborts honestly when stage is still rehearsal-only
+    def test_rehearsal_run_mode_not_eligible_for_scientific_run(self, tmp_path):
+        if not _REG_PATH.exists():
+            pytest.skip("Registration JSON not present")
+        d = tmp_path / "real"; d.mkdir()
+        _write_csv(d / "grb_real.csv", n=40, n_grb=6)
+        mfst = tmp_path / "manifest.json"
+        ms = tmp_path / "milestone.json"
+        result = first_blinded_real_fermi_run(
+            data_dir=str(d),
+            registration_path=str(_REG_PATH),
+            manifest_path=str(mfst),
+            milestone_report_path=str(ms),
+            n_permutations=50, seed=0,
+        )
+        # Without sidecar file, it's UNVERIFIED — not eligible for scientific run
+        assert result["run_mode"] in ("REHEARSAL", "UNVERIFIED")
+        auth = result["authenticity_report"]
+        assert auth is not None
+        assert auth["eligible_for_scientific_run"] is False
+
+    # 9. Known synthetic hash file is always REHEARSAL regardless of name
+    def test_known_hash_file_is_rehearsal_regardless_of_name(self, tmp_path):
+        import shutil
+        # Copy the known synthetic fixture under a new name with no "synthetic" marker
+        src = pathlib.Path("data/real/real_test_dataset.csv")
+        if not src.exists():
+            pytest.skip("real_test_dataset.csv fixture not present")
+        d = tmp_path / "real"; d.mkdir()
+        shutil.copy(src, d / "grb_renamed_looks_real.csv")
+        mfst = tmp_path / "manifest.json"
+        ms = tmp_path / "milestone.json"
+        result = first_blinded_real_fermi_run(
+            data_dir=str(d),
+            manifest_path=str(mfst),
+            milestone_report_path=str(ms),
+        )
+        auth = result["authenticity_report"]
+        assert auth is not None
+        assert auth["is_known_synthetic"] is True
+        assert auth["authenticity_tier"] == "REHEARSAL"
+
+    # 10. Provenance check disabled → authenticity_report is None
+    def test_provenance_check_disabled_returns_none_report(self, tmp_path):
+        if not _REG_PATH.exists():
+            pytest.skip("Registration JSON not present")
+        d = tmp_path / "real"; d.mkdir()
+        _write_csv(d / "grb_real.csv", n=40, n_grb=6)
+        mfst = tmp_path / "manifest.json"
+        ms = tmp_path / "milestone.json"
+        result = first_blinded_real_fermi_run(
+            data_dir=str(d),
+            registration_path=str(_REG_PATH),
+            manifest_path=str(mfst),
+            milestone_report_path=str(ms),
+            n_permutations=50, seed=0,
+            check_provenance=False,
+        )
+        assert result["authenticity_report"] is None

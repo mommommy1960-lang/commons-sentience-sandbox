@@ -1,8 +1,8 @@
 {
-  "source_file": "data/real/synthetic_fermi_lat_grb_events.csv",
+  "source_file": "/tmp/pytest-of-codespace/pytest-0/test_complete_message_mentions0/real/grb_real.csv",
   "registration_experiment": "fermi_lat_grb_timing_delay_real_v1",
-  "n_events": 104,
-  "n_sources": 7,
+  "n_events": 40,
+  "n_sources": 6,
   "n_dropped_by_adapter": 0,
   "n_warnings": 0,
   "warnings": [],

@@ -1,0 +1,3 @@
+name,catalog,written_at,event_count,hemisphere_imbalance,preferred_axis_score,energy_time_r,cluster_score,hemi_percentile,axis_percentile,et_r_percentile,clust_percentile,signal_tier,max_percentile
+stage8_first_results,_synthetic_synthetic_isotropic,2026-04-21T08:01:27.627087Z,300,0.006666666666666667,0.05055370111731853,-0.051854222207814465,0.9955555555555555,0.06,0.61,0.59,0.51,no_anomaly_detected,0.61
+stage8_first_results,real_test_dataset,2026-04-21T08:02:10.841722Z,104,0.0,0.0,,1.0,0.0,0.0,0.5,0.0,no_anomaly_detected,0.5

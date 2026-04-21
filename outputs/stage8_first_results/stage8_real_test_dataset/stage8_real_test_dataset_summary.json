@@ -1,0 +1,113 @@
+{
+  "experiment": "stage8_real_test_dataset",
+  "catalog": "real_test_dataset",
+  "written_at": "2026-04-21T08:02:19.498425Z",
+  "results": {
+    "event_count": 104,
+    "events_with_energy": 104,
+    "events_with_position": 0,
+    "events_with_time": 0,
+    "energy_stats": {
+      "count": 104,
+      "min": 0.2224,
+      "max": 27.1751,
+      "mean": 6.576613461538462,
+      "median": 4.982749999999999,
+      "std": 5.940300478932955
+    },
+    "anisotropy": {
+      "hemisphere_imbalance": 0.0,
+      "interpretation": "Fraction of events in north minus south hemisphere. 0 = balanced, \u00b11 = all in one hemisphere."
+    },
+    "preferred_axis": {
+      "score": 0.0,
+      "best_axis_xyz": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "num_axes_scanned": 0,
+      "interpretation": "Max |mean cos-projection| across trial axes. Isotropic \u2248 0; perfect alignment \u2248 1."
+    },
+    "axis_scan": {
+      "best_score": 0.0,
+      "best_axis_index": 0,
+      "best_axis_xyz": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "all_scores": [],
+      "num_axes": 0
+    },
+    "energy_time_correlation": {
+      "pearson_r": null,
+      "interpretation": "Pearson r between energy and arrival_time. Non-zero may indicate energy-dependent propagation effects."
+    },
+    "cluster_score": {
+      "value": 1.0,
+      "interpretation": "Mean window count / expected-random. \u22481.0 = uniform; >1.0 = clustered."
+    },
+    "null_comparison": {
+      "null_mode": "isotropic",
+      "null_repeats": 100,
+      "hemi_percentile": 0.0,
+      "axis_percentile": 0.0,
+      "et_r_percentile": 0.5,
+      "clust_percentile": 0.0,
+      "null_axis_mean": 0.0907186867041856,
+      "null_axis_std": 0.037029597763849606,
+      "null_hemi_mean": 0.06807692307692309
+    },
+    "signal_evaluation": {
+      "tier": "no_anomaly_detected",
+      "max_percentile": 0.5,
+      "per_metric_percentiles": {
+        "hemisphere_imbalance": 0.0,
+        "preferred_axis": 0.0,
+        "energy_time_r": 0.5,
+        "clustering": 0.0
+      },
+      "summary": "All metrics are within the bulk of the isotropic null distribution. No significant anomaly detected.",
+      "caveat": "Anomaly-like deviations from an isotropic null are hypothesis-generating results, not proof of any specific physical or cosmological cause. Systematic effects, selection biases, and incomplete modeling should be ruled out before drawing any scientific conclusion."
+    },
+    "run_metadata": {
+      "seed": 42,
+      "null_repeats": 100,
+      "num_axes": 48,
+      "timestamp": "2026-04-21T08:02:19.498335Z"
+    }
+  },
+  "coverage": {
+    "event_count": 104,
+    "available_fields": [
+      "event_id",
+      "energy",
+      "instrument",
+      "epoch"
+    ],
+    "missingness": {
+      "event_id": 0.0,
+      "energy": 0.0,
+      "arrival_time": 1.0,
+      "ra": 1.0,
+      "dec": 1.0,
+      "instrument": 0.0,
+      "epoch": 0.0
+    },
+    "ra_dec_coverage": {
+      "n_with_position": 0
+    },
+    "time_span_mjd": {
+      "n_with_time": 0
+    },
+    "instrument_labels": [
+      "real_test_dataset"
+    ]
+  },
+  "config": {
+    "null_repeats": 100,
+    "num_axes": 48,
+    "seed": 42
+  }
+}

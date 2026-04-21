@@ -1,0 +1,14 @@
+{
+  "experiment": "stage7_synth_preferred_axis",
+  "catalog": "synthetic_preferred_axis",
+  "written_at": "2026-04-21T06:42:36.379318Z",
+  "artifacts": {
+    "json_summary": "outputs/public_anisotropy/synth_preferred_axis/stage7_synth_preferred_axis_summary.json",
+    "csv_summary": "outputs/public_anisotropy/synth_preferred_axis/stage7_synth_preferred_axis_results.csv",
+    "md_summary": "outputs/public_anisotropy/synth_preferred_axis/stage7_synth_preferred_axis_summary.md",
+    "sky_plot": "outputs/public_anisotropy/synth_preferred_axis/stage7_synth_preferred_axis_sky_plot.png",
+    "null_comparison_plot": "outputs/public_anisotropy/synth_preferred_axis/stage7_synth_preferred_axis_null_comparison.png",
+    "axis_scan_plot": "outputs/public_anisotropy/synth_preferred_axis/stage7_synth_preferred_axis_axis_scan.png",
+    "manifest": "outputs/public_anisotropy/synth_preferred_axis/stage7_synth_preferred_axis_manifest.json"
+  }
+}

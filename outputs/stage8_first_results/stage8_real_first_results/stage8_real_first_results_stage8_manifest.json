@@ -1,0 +1,31 @@
+{
+  "stage": "stage8_first_results",
+  "run_name": "stage8_real_first_results",
+  "written_at": "2026-04-21T08:15:14.446394Z",
+  "input_path": "/workspaces/commons-sentience-sandbox/data/real/fermi_lat_grb_catalog.csv",
+  "output_dir": "outputs/stage8_first_results/stage8_real_first_results",
+  "catalog_label": "fermi_lat_grb_catalog",
+  "event_count": 3000,
+  "run_metadata": {
+    "null_repeats": 100,
+    "axis_count": 48,
+    "seed": 42,
+    "plots": true,
+    "save_normalized": true,
+    "timestamp": "2026-04-21T08:15:14.446145Z",
+    "stage": "stage8_first_results"
+  },
+  "artifacts": {
+    "json_summary": "outputs/stage8_first_results/stage8_real_first_results/stage8_real_first_results_summary.json",
+    "csv_summary": "outputs/stage8_first_results/stage8_real_first_results/stage8_real_first_results_results.csv",
+    "md_summary": "outputs/stage8_first_results/stage8_real_first_results/stage8_real_first_results_summary.md",
+    "sky_plot": "outputs/stage8_first_results/stage8_real_first_results/stage8_real_first_results_sky_plot.png",
+    "null_comparison_plot": "outputs/stage8_first_results/stage8_real_first_results/stage8_real_first_results_null_comparison.png",
+    "axis_scan_plot": "outputs/stage8_first_results/stage8_real_first_results/stage8_real_first_results_axis_scan.png",
+    "manifest": "outputs/stage8_first_results/stage8_real_first_results/stage8_real_first_results_manifest.json",
+    "normalized_events_csv": "outputs/stage8_first_results/stage8_real_first_results/stage8_real_first_results_normalized_events.csv",
+    "stage8_memo": "outputs/stage8_first_results/stage8_real_first_results/stage8_real_first_results_memo.md"
+  },
+  "signal_tier": "strong_anomaly_like_deviation",
+  "max_percentile": 1.0
+}
