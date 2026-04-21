@@ -1857,3 +1857,71 @@ python -m pytest tests/test_exposure_corrected_nulls.py -v
 ### ⚠️  Stage 9 caveat — the null absorbs signal
 
 The empirical exposure map is **built from the same events under test**.  Any real anisotropy in the data is partially absorbed into the null, making Stage 9 *conservative*.  A non-detection under the corrected null does not rule out a real signal — it rules out signals that *exceed* the observed sky-coverage pattern.  A proper instrument-response exposure map (e.g. from the Fermi FSSC) is needed before claiming a well-controlled null.  See `docs/REALITY_AUDIT_STAGE9_STATUS.md`.
+
+---
+
+## Stage 10: Second-Catalog Replication and Cross-Catalog Comparison
+
+Stage 10 adds a second real catalog (Swift BAT GRBs) to the pipeline and
+generates a cross-catalog comparison memo.  The scientific rationale is simple:
+a genuine sky-position signal must replicate across independent instruments.
+Cross-catalog disagreement after acceptance correction points to a systematic,
+not a physical effect.
+
+### What Stage 10 adds on top of Stage 9
+
+- **`data/real/swift_bat3_grb_catalog.csv`** — 872 Swift BAT GRBs (HEASARC TAP)
+- **`catalog_comparison.py`** — `load_stage_results`, `compare_catalog_results`, `write_catalog_comparison_memo`
+- **`run_stage10_catalog_comparison.py`** — CLI for cross-catalog comparison
+- **`scripts/run_stage10_catalog_comparison.py`** — convenience runner
+- **Per-catalog null defaults** — Fermi/Swift → `exposure_corrected` automatically
+- **`docs/REALITY_AUDIT_STAGE10_STATUS.md`** — current status and results
+- **`docs/REALITY_AUDIT_STAGE10_TEMPLATE.md`** — collaborator guide
+
+### Run the Swift BAT pipeline
+
+```bash
+python reality_audit/data_analysis/run_stage8_first_results.py \
+    --input data/real/swift_bat3_grb_catalog.csv \
+    --name stage10_swift_first_results \
+    --output-dir outputs/stage10_first_results/stage10_swift_first_results \
+    --null-repeats 100 --axis-count 48 --seed 42 --save-normalized
+```
+
+Note: `--null-mode` can be omitted — Swift BAT auto-selects `exposure_corrected`.
+
+### Run the cross-catalog comparison
+
+```bash
+python reality_audit/data_analysis/run_stage10_catalog_comparison.py
+# or:
+python scripts/run_stage10_catalog_comparison.py
+```
+
+Both produce `outputs/stage10_first_results/comparison/stage10_catalog_comparison_memo.md`.
+
+### Stage 10 results summary
+
+| Catalog | N | Null | Hemi pct | Axis pct | Tier |
+|---------|---|------|----------|----------|------|
+| Fermi GBM (Stage 9) | 3000 | exposure_corrected | 0.85 | 0.89 | `weak_anomaly_like_deviation` |
+| Swift BAT (Stage 10) | 872 | exposure_corrected | 0.63 | 0.57 | `no_anomaly_detected` |
+| **Cross-catalog** | — | — | — | — | **INCONSISTENT** |
+
+The Fermi GBM residual deviation does **not** replicate in Swift BAT under the
+corrected null.  This is consistent with a Fermi-specific systematic (residual
+acceptance geometry or trigger-algorithm bias), not a catalog-independent signal.
+
+### Tests
+
+```bash
+python -m pytest tests/test_catalog_comparison.py -v
+```
+
+### ⚠️ Stage 10 caveat
+
+Cross-catalog disagreement is a necessary but not sufficient condition for ruling
+out a real signal.  Swift BAT (N=872) has lower statistical power than Fermi (N=3000).
+A third independent catalog (e.g. IceCube HESE) would strengthen the case.
+No pre-registration has been filed.  Results are **exploratory only**.
+See `docs/REALITY_AUDIT_STAGE10_STATUS.md`.
