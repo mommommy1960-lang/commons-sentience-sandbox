@@ -73,3 +73,22 @@ and is confirmatory rerun behavior auditable against the preregistration plan?
 1. Locked prereg confirmatory reruns across all catalogs with stable plan hash.
 2. Better-powered independent replication datasets.
 3. Full cross-instrument systematic controls and external review.
+
+---
+
+## Final Validation Snapshot
+
+Validated during Stage 12 closeout:
+
+- `python -m pytest tests/test_stage12_icecube_diagnostics.py -v`:
+  7 passed
+- `python -m pytest tests/test_catalog_comparison.py -v`:
+  28 passed
+- `python -m pytest tests/test_stage8_first_results.py -v`:
+  23 passed
+
+Cross-catalog robustness integration output:
+
+- `outputs/stage10_first_results/comparison/stage12_comparison_with_robustness.json`
+- comparison verdict: `partial_replication`
+- IceCube robustness label: `relatively_stable`
