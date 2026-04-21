@@ -29,6 +29,14 @@ import os
 import random
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
+try:
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    _HAS_MPL = True
+except ImportError:  # pragma: no cover
+    _HAS_MPL = False
+
 from reality_audit.data_analysis.public_anisotropy_study import run_public_anisotropy_study
 
 
@@ -597,3 +605,134 @@ def write_json(path: str, payload: Dict[str, Any]) -> None:
     os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
     with open(path, "w") as f:
         json.dump(payload, f, indent=2, default=str)
+
+
+def write_metric_stability_table(results: Dict[str, Any], output_dir: str) -> str:
+    """Write a compact CSV stability table for Stage 12 diagnostics."""
+    os.makedirs(output_dir, exist_ok=True)
+    path = os.path.join(output_dir, "stage12_metric_stability_table.csv")
+
+    rows: List[Dict[str, Any]] = []
+    for row in results.get("small_n_sensitivity", {}).get("trend_rows", []):
+        rows.append({
+            "analysis": "small_n_full_sample",
+            "axis_count": row.get("axis_count"),
+            "metric": "fraction_ge_0.90",
+            "value": row.get("fraction_ge_0_90"),
+        })
+        rows.append({
+            "analysis": "small_n_full_sample",
+            "axis_count": row.get("axis_count"),
+            "metric": "fraction_ge_0.97",
+            "value": row.get("fraction_ge_0_97"),
+        })
+
+    lko = results.get("leave_k_out", {})
+    rows.append({
+        "analysis": "leave_k_out",
+        "axis_count": 192,
+        "metric": "fraction_tier_drops",
+        "value": lko.get("fraction_tier_drops"),
+    })
+
+    epoch = results.get("epoch_split", {})
+    rows.append({
+        "analysis": "epoch_split",
+        "axis_count": 192,
+        "metric": "tier_agreement",
+        "value": epoch.get("tier_agreement") if epoch.get("usable") else None,
+    })
+
+    import csv
+    with open(path, "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=["analysis", "axis_count", "metric", "value"])
+        w.writeheader()
+        w.writerows(rows)
+    return path
+
+
+def generate_icecube_diagnostic_plots(results: Dict[str, Any], output_dir: str) -> Dict[str, Optional[str]]:
+    """Generate simple Stage 12 diagnostic plots and return output paths."""
+    os.makedirs(output_dir, exist_ok=True)
+    if not _HAS_MPL:
+        return {
+            "axis_sensitivity_plot": None,
+            "leave_k_out_plot": None,
+            "epoch_split_plot": None,
+        }
+
+    out: Dict[str, Optional[str]] = {
+        "axis_sensitivity_plot": None,
+        "leave_k_out_plot": None,
+        "epoch_split_plot": None,
+    }
+
+    # 1) Axis-count sensitivity plot
+    trend = results.get("small_n_sensitivity", {}).get("trend_rows", [])
+    if trend:
+        xs = [int(r.get("axis_count")) for r in trend]
+        ys90 = [float(r.get("fraction_ge_0_90") or 0.0) for r in trend]
+        ys97 = [float(r.get("fraction_ge_0_97") or 0.0) for r in trend]
+
+        plt.figure(figsize=(7, 4))
+        plt.plot(xs, ys90, marker="o", label="P(max_pct >= 0.90)")
+        plt.plot(xs, ys97, marker="s", label="P(max_pct >= 0.97)")
+        plt.xlabel("Axis Count")
+        plt.ylabel("Frequency")
+        plt.ylim(0.0, 1.0)
+        plt.title("IceCube Small-N Axis Sensitivity")
+        plt.grid(alpha=0.3)
+        plt.legend()
+        p = os.path.join(output_dir, "stage12_axis_count_sensitivity.png")
+        plt.tight_layout()
+        plt.savefig(p, dpi=150)
+        plt.close()
+        out["axis_sensitivity_plot"] = p
+
+    # 2) Leave-k-out stability plot
+    lko_rows = results.get("leave_k_out", {}).get("rows", [])
+    if lko_rows:
+        vals = [_safe_float(r.get("max_percentile")) or 0.0 for r in lko_rows]
+        vals_sorted = sorted(vals)
+        baseline = _safe_float(results.get("leave_k_out", {}).get("baseline", {}).get("max_percentile"))
+
+        plt.figure(figsize=(7, 4))
+        plt.plot(range(1, len(vals_sorted) + 1), vals_sorted, linewidth=1.5)
+        if baseline is not None:
+            plt.axhline(baseline, linestyle="--", linewidth=1.2, label="Baseline")
+        plt.xlabel("Leave-k-out subset rank")
+        plt.ylabel("Max percentile")
+        plt.ylim(0.0, 1.0)
+        plt.title("IceCube Leave-k-out Stability")
+        plt.grid(alpha=0.3)
+        if baseline is not None:
+            plt.legend()
+        p = os.path.join(output_dir, "stage12_leave_k_out_stability.png")
+        plt.tight_layout()
+        plt.savefig(p, dpi=150)
+        plt.close()
+        out["leave_k_out_plot"] = p
+
+    # 3) Epoch split comparison plot
+    epoch = results.get("epoch_split", {})
+    if epoch.get("usable"):
+        early = epoch.get("early", {})
+        late = epoch.get("late", {})
+        labels = ["Early", "Late"]
+        vals = [
+            _safe_float(early.get("max_percentile")) or 0.0,
+            _safe_float(late.get("max_percentile")) or 0.0,
+        ]
+        plt.figure(figsize=(6, 4))
+        plt.bar(labels, vals)
+        plt.ylim(0.0, 1.0)
+        plt.ylabel("Max percentile")
+        plt.title("IceCube Epoch Split Comparison")
+        plt.grid(axis="y", alpha=0.3)
+        p = os.path.join(output_dir, "stage12_epoch_split_comparison.png")
+        plt.tight_layout()
+        plt.savefig(p, dpi=150)
+        plt.close()
+        out["epoch_split_plot"] = p
+
+    return out

@@ -33,6 +33,8 @@ from reality_audit.data_analysis.icecube_diagnostics import (
     run_full_icecube_diagnostics,
     write_icecube_diagnostics_memo,
     write_json,
+    generate_icecube_diagnostic_plots,
+    write_metric_stability_table,
 )
 from reality_audit.data_analysis.preregistration import load_preregistration_plan
 from reality_audit.data_analysis.stage8_first_results import run_stage8_first_results
@@ -143,6 +145,8 @@ def main(argv=None) -> int:
     summary_json_path = os.path.join(output_dir, "stage12_icecube_diagnostics_summary.json")
     write_json(summary_json_path, diagnostics)
     memo_path = write_icecube_diagnostics_memo(diagnostics, output_dir)
+    metric_table_path = write_metric_stability_table(diagnostics, output_dir)
+    plot_paths = generate_icecube_diagnostic_plots(diagnostics, output_dir)
 
     confirmatory_bundle: Optional[Dict[str, Any]] = None
     prereg_path = _abs(args.preregistration) if args.preregistration else None
@@ -189,6 +193,8 @@ def main(argv=None) -> int:
         "repeats": args.repeats,
         "diagnostics_summary_json": summary_json_path,
         "diagnostics_memo_md": memo_path,
+        "metric_stability_table_csv": metric_table_path,
+        "plots": plot_paths,
         "preregistration_plan": prereg_path,
         "confirmatory_rerun_summary": (
             confirmatory_bundle.get("manifest", {}).get("summary_json")
@@ -211,6 +217,7 @@ def main(argv=None) -> int:
     print(f"  Robustness label  : {diagnostics.get('robustness_assessment', {}).get('label')}")
     print(f"  Summary JSON      : {summary_json_path}")
     print(f"  Memo              : {memo_path}")
+    print(f"  Stability table   : {metric_table_path}")
     print(f"  Manifest          : {manifest_path}")
     if confirmatory_bundle:
         print(f"  Confirmatory rerun: {confirmatory_bundle.get('stage8_manifest_path')}")
