@@ -141,7 +141,21 @@ def run_stage14_comparison(
             print(f"[WARN] {label} not found: {p}")
             return None
         print(f"[INFO] Loading {label}: {p}")
-        return load_stage_results(p)
+        result = load_stage_results(p)
+        # Promote nested run_metadata fields to the top level so the
+        # publication gate can find them via flat dict access.
+        rm   = result.get("run_metadata", {})
+        prereg = rm.get("preregistration", {})
+        tfc    = rm.get("trial_factor_correction", {})
+        if prereg.get("plan_hash_sha256") and "preregistration_hash" not in result:
+            result["preregistration_hash"]   = prereg["plan_hash_sha256"]
+        if "locked" in prereg and "preregistration_locked" not in result:
+            result["preregistration_locked"] = prereg["locked"]
+        if tfc.get("method") and "trial_correction_method" not in result:
+            result["trial_correction_method"] = tfc["method"]
+        if rm.get("run_mode") and "run_mode" not in result:
+            result["run_mode"] = rm["run_mode"]
+        return result
 
     fermi    = _load(fermi_path,   "Fermi confirmatory summary")
     swift    = _load(swift_path,   "Swift confirmatory summary")
@@ -159,9 +173,9 @@ def run_stage14_comparison(
     # -----------------------------------------------------------------------
     print("[INFO] Running three-catalog comparison...")
     comparison = compare_three_catalog_results(
-        primary_result     = fermi,
-        replication_result = swift,
-        independent_result = icecube,
+        fermi or {},
+        swift or {},
+        icecube or {},
     )
 
     # Integrate IceCube diagnostics if available
