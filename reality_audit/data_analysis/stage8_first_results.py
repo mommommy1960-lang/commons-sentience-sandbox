@@ -50,6 +50,10 @@ from reality_audit.data_analysis.public_anisotropy_study import (
     run_public_anisotropy_study,
     write_public_study_artifacts,
 )
+from reality_audit.data_analysis.trial_factor_correction import (
+    apply_trial_correction,
+    interpret_corrected_result,
+)
 
 
 def _build_preregistration_metadata(
@@ -293,6 +297,64 @@ def run_stage8_first_results(
         null_mode=null_mode,
     )
 
+    # --- Apply trial-factor correction across tested metrics ---
+    nc = study_results.get("null_comparison", {})
+    metric_percentiles = {
+        "hemisphere_imbalance": nc.get("hemi_percentile"),
+        "preferred_axis_score": nc.get("axis_percentile"),
+        "energy_time_pearson_r": nc.get("et_r_percentile"),
+        "clustering_score": nc.get("clust_percentile"),
+    }
+
+    mtc_method = "holm"
+    exclusion_threshold = 0.95
+    discovery_threshold = 0.999
+    primary_metrics = None
+
+    if isinstance(preregistration_plan, dict):
+        mtc = preregistration_plan.get("multiple_testing_correction", {})
+        if isinstance(mtc, dict) and mtc.get("method"):
+            mtc_method = str(mtc.get("method"))
+            m_list = mtc.get("metrics_tested")
+            if isinstance(m_list, list) and m_list:
+                primary_metrics = [str(x) for x in m_list]
+
+        thr = preregistration_plan.get("thresholds", {})
+        if isinstance(thr, dict):
+            try:
+                exclusion_threshold = float(thr.get("exclusion_percentile", exclusion_threshold))
+            except (TypeError, ValueError):
+                pass
+            try:
+                discovery_threshold = float(thr.get("discovery_percentile", discovery_threshold))
+            except (TypeError, ValueError):
+                pass
+
+    correction = apply_trial_correction(
+        metric_percentiles=metric_percentiles,
+        method=mtc_method,
+        exclusion_threshold=exclusion_threshold,
+        discovery_threshold=discovery_threshold,
+        primary_metrics=primary_metrics,
+    )
+    correction["interpretation_text"] = interpret_corrected_result(correction)
+    study_results["trial_factor_correction"] = correction
+
+    prereg_meta = _build_preregistration_metadata(
+        preregistration_plan, preregistration_plan_path
+    )
+
+    study_rm = study_results.setdefault("run_metadata", {})
+    study_rm["trial_factor_correction"] = {
+        "method": mtc_method,
+        "n_tests": correction.get("n_tests"),
+        "summary_verdict": correction.get("summary_verdict"),
+        "exclusion_threshold": exclusion_threshold,
+        "discovery_threshold": discovery_threshold,
+    }
+    study_rm["preregistration"] = prereg_meta
+    study_rm["stage"] = "stage8_first_results"
+
     # --- Write Stage 7 study artifacts ---
     study_manifest = write_public_study_artifacts(
         results=study_results,
@@ -324,11 +386,16 @@ def run_stage8_first_results(
             "plots":        plots,
             "save_normalized": save_normalized,
             "null_mode":    null_mode,
+            "trial_factor_correction": {
+                "method": mtc_method,
+                "n_tests": correction.get("n_tests"),
+                "summary_verdict": correction.get("summary_verdict"),
+                "exclusion_threshold": exclusion_threshold,
+                "discovery_threshold": discovery_threshold,
+            },
             "timestamp":    datetime.datetime.utcnow().isoformat() + "Z",
             "stage":        "stage8_first_results",
-            "preregistration": _build_preregistration_metadata(
-                preregistration_plan, preregistration_plan_path
-            ),
+            "preregistration": prereg_meta,
         },
     }
 
@@ -356,6 +423,8 @@ def build_stage8_status_summary(result_bundle: Dict[str, Any]) -> Dict[str, Any]
     pa  = sr.get("preferred_axis", {})
     ani = sr.get("anisotropy", {})
     cov = result_bundle.get("coverage", {})
+    rm  = result_bundle.get("run_metadata", {})
+    tfc = sr.get("trial_factor_correction", {})
 
     hemi_score  = ani.get("hemisphere_imbalance", None)
     axis_score  = pa.get("score", None)
@@ -389,9 +458,23 @@ def build_stage8_status_summary(result_bundle: Dict[str, Any]) -> Dict[str, Any]
             "All metrics within the bulk of the isotropic null distribution."
         )
 
+    if rm.get("null_mode") == "exposure_corrected":
+        null_caveat = "Exposure-corrected null is empirical and still approximates true instrument response."
+    else:
+        null_caveat = "Single-catalog analysis with a simple isotropic null; no exposure-map correction."
+
+    tfc_method = tfc.get("method")
+    if tfc_method:
+        tfc_caveat = (
+            f"Trial-factor correction applied ({tfc_method}) across "
+            f"{tfc.get('n_tests', 0)} metrics; interpret corrected verdict as primary."
+        )
+    else:
+        tfc_caveat = "No trial-factor adjustment across the tested metrics."
+
     caveats = [
-        "Single-catalog analysis with a simple isotropic null; no exposure-map correction.",
-        "No trial-factor adjustment across the four tested metrics.",
+        null_caveat,
+        tfc_caveat,
         "Selection biases and instrument systematics not characterised.",
         "This run is an internal first-results package, not a publishable result.",
     ]
@@ -437,6 +520,7 @@ def write_stage8_first_results_memo(
     sr     = result_bundle.get("study_results", {})
     nc     = sr.get("null_comparison", {})
     sig    = sr.get("signal_evaluation", {})
+    tfc    = sr.get("trial_factor_correction", {})
     rm     = result_bundle.get("run_metadata", {})
     cov    = result_bundle.get("coverage", {})
     ts     = rm.get("timestamp", datetime.datetime.utcnow().isoformat() + "Z")
@@ -554,15 +638,43 @@ def write_stage8_first_results_memo(
     lines.append(f"**Signal tier:** `{tier}`  ")
     lines.append(f"**Maximum percentile:** {_fmt(sig.get('max_percentile'))}")
     lines.append(f"")
+    lines.append(f"## 4. Trial-Factor Correction")
+    lines.append(f"")
+    if tfc:
+        lines.append(
+            f"Method: **{tfc.get('method', 'unknown')}** over "
+            f"**{tfc.get('n_tests', 0)}** tested metrics."
+        )
+        lines.append(
+            f"Corrected verdict: **{tfc.get('summary_verdict', 'unknown')}**"
+        )
+        lines.append(f"")
+        lines.append(f"| Metric | Corrected percentile | Flag |")
+        lines.append(f"|--------|----------------------|------|")
+        corrected_pct = tfc.get("corrected_percentiles", {})
+        flags = tfc.get("flags", {})
+        for metric in [
+            "hemisphere_imbalance",
+            "preferred_axis_score",
+            "energy_time_pearson_r",
+            "clustering_score",
+        ]:
+            c_pct = corrected_pct.get(metric)
+            flag = flags.get(metric, "insufficient_data")
+            lines.append(f"| {metric} | {_fmt(c_pct)} | {flag} |")
+        lines.append(f"")
+    else:
+        lines.append("No trial-factor correction metadata present for this run.")
+        lines.append("")
     lines.append(f"---")
     lines.append(f"")
-    lines.append(f"## 4. Interpretation")
+    lines.append(f"## 5. Interpretation")
     lines.append(f"")
     lines.append(sig_summary)
     lines.append(f"")
     lines.append(f"---")
     lines.append(f"")
-    lines.append(f"## 5. What This Result Does NOT Prove")
+    lines.append(f"## 6. What This Result Does NOT Prove")
     lines.append(f"")
     lines.append(
         "A deviation from an isotropic null model — even a statistically "
@@ -587,14 +699,14 @@ def write_stage8_first_results_memo(
     lines.append(f"")
     lines.append(f"---")
     lines.append(f"")
-    lines.append(f"## 6. Current Limitations")
+    lines.append(f"## 7. Current Limitations")
     lines.append(f"")
     for c in status.get("caveats", []):
         lines.append(f"- {c}")
     lines.append(f"")
     lines.append(f"---")
     lines.append(f"")
-    lines.append(f"## 7. Recommended Next Upgrades")
+    lines.append(f"## 8. Recommended Next Upgrades")
     lines.append(f"")
     for a in status.get("next_recommended_actions", []):
         lines.append(f"- {a}")

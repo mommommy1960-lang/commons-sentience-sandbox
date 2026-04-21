@@ -1,0 +1,230 @@
+{
+  "experiment": "stage11_icecube_trialcorr",
+  "catalog": "icecube_hese_events",
+  "written_at": "2026-04-21T18:11:16.448060Z",
+  "results": {
+    "event_count": 37,
+    "events_with_energy": 37,
+    "events_with_position": 37,
+    "events_with_time": 0,
+    "energy_stats": {
+      "count": 37,
+      "min": 28.4,
+      "max": 1040.7,
+      "mean": 128.6918918918919,
+      "median": 71.5,
+      "std": 178.39216650232632
+    },
+    "anisotropy": {
+      "hemisphere_imbalance": -0.4594594594594595,
+      "interpretation": "Fraction of events in north minus south hemisphere. 0 = balanced, \u00b11 = all in one hemisphere."
+    },
+    "preferred_axis": {
+      "score": 0.16680974527685805,
+      "best_axis_xyz": [
+        -0.3908679799852857,
+        0.3908679799852858,
+        -0.8333333333333334
+      ],
+      "num_axes_scanned": 48,
+      "interpretation": "Max |mean cos-projection| across trial axes. Isotropic \u2248 0; perfect alignment \u2248 1."
+    },
+    "axis_scan": {
+      "best_score": 0.16680974527685805,
+      "best_axis_index": 3,
+      "best_axis_xyz": [
+        -0.3908679799852857,
+        0.3908679799852858,
+        -0.8333333333333334
+      ],
+      "all_scores": [
+        0.10496186442298897,
+        0.1274362487270872,
+        0.15305447978079503,
+        0.16680974527685805,
+        0.1606443972417252,
+        0.13817001293762696,
+        0.11255178188391911,
+        0.0987965163878561,
+        0.03606299694098607,
+        0.07127359018933058,
+        0.11140964469337897,
+        0.1329600040648054,
+        0.12330076005784245,
+        0.08809016680949792,
+        0.047954112305449555,
+        0.026403752934023094,
+        0.023101655144132684,
+        0.01698736879542462,
+        0.06268427706685294,
+        0.0872204405632688,
+        0.0762229074770755,
+        0.03613388353751821,
+        0.009563024733910113,
+        0.034099188230326004,
+        0.07622290747707551,
+        0.036133883537518216,
+        0.009563024733910092,
+        0.034099188230325976,
+        0.023101655144132666,
+        0.01698736879542464,
+        0.06268427706685294,
+        0.08722044056326883,
+        0.12330076005784246,
+        0.08809016680949792,
+        0.047954112305449555,
+        0.026403752934023084,
+        0.03606299694098606,
+        0.07127359018933058,
+        0.11140964469337897,
+        0.13296000406480543,
+        0.16064439724172516,
+        0.13817001293762696,
+        0.1125517818839191,
+        0.09879651638785608,
+        0.10496186442298892,
+        0.12743624872708717,
+        0.15305447978079503,
+        0.16680974527685805
+      ],
+      "num_axes": 48
+    },
+    "energy_time_correlation": {
+      "pearson_r": null,
+      "interpretation": "Pearson r between energy and arrival_time. Non-zero may indicate energy-dependent propagation effects."
+    },
+    "cluster_score": {
+      "value": 1.0,
+      "interpretation": "Mean window count / expected-random. \u22481.0 = uniform; >1.0 = clustered."
+    },
+    "null_comparison": {
+      "null_mode": "isotropic",
+      "null_repeats": 100,
+      "hemi_percentile": 0.99,
+      "axis_percentile": 0.67,
+      "et_r_percentile": 0.5,
+      "clust_percentile": 0.0,
+      "null_axis_mean": 0.14800553943775557,
+      "null_axis_std": 0.06535685942362945,
+      "null_hemi_mean": 0.11945945945945947
+    },
+    "signal_evaluation": {
+      "tier": "strong_anomaly_like_deviation",
+      "max_percentile": 0.99,
+      "per_metric_percentiles": {
+        "hemisphere_imbalance": 0.99,
+        "preferred_axis": 0.67,
+        "energy_time_r": 0.5,
+        "clustering": 0.0
+      },
+      "summary": "One or more metrics fall in the top 3% of the isotropic null distribution. This is a strong anomaly-like deviation; its cause requires further investigation.",
+      "caveat": "Anomaly-like deviations from an isotropic null are hypothesis-generating results, not proof of any specific physical or cosmological cause. Systematic effects, selection biases, and incomplete modeling should be ruled out before drawing any scientific conclusion."
+    },
+    "run_metadata": {
+      "seed": 42,
+      "null_repeats": 100,
+      "num_axes": 48,
+      "null_mode": "isotropic",
+      "exposure_map_desc": null,
+      "timestamp": "2026-04-21T18:11:16.447778Z",
+      "trial_factor_correction": {
+        "method": "holm",
+        "n_tests": 2,
+        "summary_verdict": "corrected_notable",
+        "exclusion_threshold": 0.95,
+        "discovery_threshold": 0.999
+      },
+      "preregistration": {
+        "plan_path": "configs/preregistered_anisotropy_plan.json",
+        "hypothesis_name": "catalog_independent_sky_anisotropy",
+        "primary_statistics": [
+          "hemisphere_imbalance",
+          "preferred_axis_score"
+        ],
+        "null_model": "exposure_corrected",
+        "null_repeats": 500,
+        "axis_count": 192,
+        "n_target_catalogs": 3,
+        "mtc_method": "holm",
+        "discovery_pct": 0.999,
+        "plan_hash_sha256": "67cef5cdcd40ff5cf91484525ac73c261aed12144101bf5cfe861cd6e05641e5",
+        "locked": false
+      },
+      "stage": "stage8_first_results"
+    },
+    "trial_factor_correction": {
+      "method": "holm",
+      "n_tests": 2,
+      "uncorrected_percentiles": {
+        "hemisphere_imbalance": 0.99,
+        "preferred_axis_score": 0.67
+      },
+      "uncorrected_pvalues": {
+        "hemisphere_imbalance": 0.010000000000000009,
+        "preferred_axis_score": 0.32999999999999996
+      },
+      "corrected_pvalues": {
+        "hemisphere_imbalance": 0.020000000000000018,
+        "preferred_axis_score": 0.32999999999999996
+      },
+      "corrected_percentiles": {
+        "hemisphere_imbalance": 0.98,
+        "preferred_axis_score": 0.67
+      },
+      "flags": {
+        "hemisphere_imbalance": "notable",
+        "preferred_axis_score": "null",
+        "energy_time_pearson_r": "insufficient_data",
+        "clustering_score": "insufficient_data"
+      },
+      "any_corrected_notable": true,
+      "any_corrected_discovery": false,
+      "summary_verdict": "corrected_notable",
+      "caveats": [
+        "Correction method: holm over 2 metrics.",
+        "Empirical percentile resolution floor = 1/null_repeats; with 100 repeats the floor is 0.01.",
+        "Secondary statistics (energy_time_pearson_r, clustering_score) are exploratory; correction was applied but threshold for discovery claims applies only to primary statistics (hemisphere_imbalance, preferred_axis_score)."
+      ],
+      "interpretation_text": "Multiple-testing correction (holm over 2 metrics):\n\n  clustering_score                [INSUFFICIENT DATA]\n  energy_time_pearson_r           [INSUFFICIENT DATA]\n  hemisphere_imbalance            uncorr_pct=0.9900  corr_pct=0.9800  [NOTABLE]\n  preferred_axis_score            uncorr_pct=0.6700  corr_pct=0.6700  [NULL]\n\nVERDICT: CORRECTED NOTABLE deviation (\u2265 exclusion_threshold after correction)\n\nCaveats:\n  - Correction method: holm over 2 metrics.\n  - Empirical percentile resolution floor = 1/null_repeats; with 100 repeats the floor is 0.01.\n  - Secondary statistics (energy_time_pearson_r, clustering_score) are exploratory; correction was applied but threshold for discovery claims applies only to primary statistics (hemisphere_imbalance, preferred_axis_score)."
+    }
+  },
+  "coverage": {
+    "event_count": 37,
+    "available_fields": [
+      "event_id",
+      "energy",
+      "ra",
+      "dec",
+      "instrument",
+      "epoch"
+    ],
+    "missingness": {
+      "event_id": 0.0,
+      "energy": 0.0,
+      "arrival_time": 1.0,
+      "ra": 0.0,
+      "dec": 0.0,
+      "instrument": 0.0,
+      "epoch": 0.0
+    },
+    "ra_dec_coverage": {
+      "ra_min": 1.24,
+      "ra_max": 349.21,
+      "dec_min": -72.09,
+      "dec_max": 33.56,
+      "n_with_position": 37
+    },
+    "time_span_mjd": {
+      "n_with_time": 0
+    },
+    "instrument_labels": [
+      "IceCube"
+    ]
+  },
+  "config": {
+    "null_repeats": 100,
+    "num_axes": 48,
+    "seed": 42,
+    "null_mode": "isotropic"
+  }
+}

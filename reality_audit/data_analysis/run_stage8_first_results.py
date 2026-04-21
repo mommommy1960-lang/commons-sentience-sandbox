@@ -241,7 +241,11 @@ def main(argv=None) -> int:
     )
     print(f"  Signal tier      : {sig.get('tier', 'unknown')}")
     print(f"  Max percentile   : {sig.get('max_percentile', 0.0):.4f}")
-    print(f"  Null model       : {args.null_mode}")
+    resolved_null_mode = (
+        bundle.get("run_metadata", {})
+        .get("null_mode", args.null_mode)
+    )
+    print(f"  Null model       : {resolved_null_mode}")
     print()
     print(f"  Output dir       : {output_dir}")
     print(f"  Memo             : {bundle.get('memo_path')}")

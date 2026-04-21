@@ -1,0 +1,51 @@
+{
+  "stage": "stage8_first_results",
+  "run_name": "stage11_icecube_trialcorr",
+  "written_at": "2026-04-21T18:11:16.449548Z",
+  "input_path": "data/real/icecube_hese_events.csv",
+  "output_dir": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_trialcorr",
+  "catalog_label": "icecube_hese_events",
+  "event_count": 37,
+  "run_metadata": {
+    "null_repeats": 100,
+    "axis_count": 48,
+    "seed": 42,
+    "plots": false,
+    "save_normalized": false,
+    "null_mode": "isotropic",
+    "trial_factor_correction": {
+      "method": "holm",
+      "n_tests": 2,
+      "summary_verdict": "corrected_notable",
+      "exclusion_threshold": 0.95,
+      "discovery_threshold": 0.999
+    },
+    "timestamp": "2026-04-21T18:11:16.449293Z",
+    "stage": "stage8_first_results",
+    "preregistration": {
+      "plan_path": "configs/preregistered_anisotropy_plan.json",
+      "hypothesis_name": "catalog_independent_sky_anisotropy",
+      "primary_statistics": [
+        "hemisphere_imbalance",
+        "preferred_axis_score"
+      ],
+      "null_model": "exposure_corrected",
+      "null_repeats": 500,
+      "axis_count": 192,
+      "n_target_catalogs": 3,
+      "mtc_method": "holm",
+      "discovery_pct": 0.999,
+      "plan_hash_sha256": "67cef5cdcd40ff5cf91484525ac73c261aed12144101bf5cfe861cd6e05641e5",
+      "locked": false
+    }
+  },
+  "artifacts": {
+    "json_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_trialcorr/stage11_icecube_trialcorr_summary.json",
+    "csv_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_trialcorr/stage11_icecube_trialcorr_results.csv",
+    "md_summary": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_trialcorr/stage11_icecube_trialcorr_summary.md",
+    "manifest": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_trialcorr/stage11_icecube_trialcorr_manifest.json",
+    "stage8_memo": "/workspaces/commons-sentience-sandbox/outputs/stage8_first_results/stage11_icecube_trialcorr/stage11_icecube_trialcorr_memo.md"
+  },
+  "signal_tier": "strong_anomaly_like_deviation",
+  "max_percentile": 0.99
+}
