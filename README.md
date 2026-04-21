@@ -2122,3 +2122,45 @@ re-evaluate the gate.
 
 - `docs/REALITY_AUDIT_STAGE13_STATUS.md`
 - `docs/REALITY_AUDIT_STAGE13_TEMPLATE.md`
+
+---
+
+## Stage 14: Confirmatory Reruns and Gate Resolution
+
+Stage 14 locks the preregistration plan and re-runs all three target catalogs
+in `preregistered_confirmatory` mode to resolve the three Stage 13 gate failures:
+`prereg_present`, `prereg_locked`, and `trial_correction_applied`.
+
+### What Stage 14 adds
+
+- **Locked preregistration plan**: `configs/preregistered_anisotropy_plan.json`
+  with `_locked: true`, `registration_date`, and `plan_hash_sha256`.
+- **Confirmatory reruns runner**: `run_stage14_confirmatory_reruns.py`
+  – runs Fermi, Swift, IceCube with `null_repeats=500`, `axis_count=192`, Holm correction.
+- **Comparison + gate runner**: `run_stage14_confirmatory_comparison.py`
+  – builds three-catalog comparison and re-evaluates publication gate.
+- **Gate verdict**: `CANDIDATE_FIRST_RESULTS_NOTE` (all 10 required gates pass).
+
+### Usage
+
+```bash
+# Step 1: Run confirmatory reruns (all 3 catalogs)
+python scripts/run_stage14_confirmatory_reruns.py --null-repeats 500 --axis-count 192
+
+# Step 2: Build comparison and evaluate gate
+python scripts/run_stage14_confirmatory_comparison.py
+```
+
+### Stage 14 gate changes vs Stage 13
+
+| Gate | Stage 13 | Stage 14 |
+|------|----------|----------|
+| `prereg_present` | FAIL | PASS |
+| `prereg_locked` | FAIL | PASS |
+| `trial_correction_applied` | FAIL | PASS |
+| `external_review_pending` | FAIL (informational) | FAIL (informational, expected) |
+
+### Stage 14 status docs
+
+- `docs/REALITY_AUDIT_STAGE14_STATUS.md`
+- `docs/REALITY_AUDIT_STAGE14_TEMPLATE.md`

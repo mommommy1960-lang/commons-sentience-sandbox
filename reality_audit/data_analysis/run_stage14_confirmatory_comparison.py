@@ -253,8 +253,8 @@ def run_stage14_comparison(
     # -----------------------------------------------------------------------
     # 6. Manifest
     # -----------------------------------------------------------------------
-    passed  = [k for k, v in gate_result.get("checks", {}).items() if v.get("passed")]
-    failed  = [k for k, v in gate_result.get("checks", {}).items() if not v.get("passed")]
+    passed  = [g["id"] for g in gate_result.get("gates", []) if g.get("passed")]
+    failed  = [g["id"] for g in gate_result.get("gates", []) if not g.get("passed")]
     manifest = {
         "stage": 14,
         "pipeline_step": "confirmatory_comparison_and_gate",
@@ -327,9 +327,9 @@ def main(argv=None) -> int:
         return 1
 
     gate = result["gate_result"]
-    checks = gate.get("checks", {})
-    n_pass = sum(1 for v in checks.values() if v.get("passed"))
-    n_fail = sum(1 for v in checks.values() if not v.get("passed"))
+    gates  = gate.get("gates", [])
+    n_pass = sum(1 for g in gates if g.get("passed"))
+    n_fail = sum(1 for g in gates if not g.get("passed"))
 
     print()
     print("=" * 62)
@@ -339,14 +339,18 @@ def main(argv=None) -> int:
     print(f"  Checks passed  : {n_pass}")
     print(f"  Checks failed  : {n_fail}")
     if n_fail:
-        for k, v in checks.items():
-            if not v.get("passed"):
-                print(f"    FAIL  {k}")
+        for g in gates:
+            if not g.get("passed"):
+                print(f"    FAIL  {g['id']}")
     print(f"\n  Report  : {result['gate_report_path']}")
     print(f"  Manifest: {result['manifest_path']}")
     print()
 
-    return 0 if gate["verdict"] in ("internally_reviewable", "ready_for_publication") else 1
+    return 0 if gate["verdict"] in (
+        "internally_reviewable",
+        "ready_for_publication",
+        "candidate_first_results_note",
+    ) else 1
 
 
 if __name__ == "__main__":

@@ -1,0 +1,28 @@
+{
+  "stage": 14,
+  "pipeline_step": "confirmatory_comparison_and_gate",
+  "fermi_summary_path": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/fermi/stage14_confirmatory_fermi_summary.json",
+  "swift_summary_path": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/swift/stage14_confirmatory_swift_summary.json",
+  "icecube_summary_path": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/icecube/stage14_confirmatory_icecube_summary.json",
+  "comparison_json_path": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/gate/stage14_confirmatory_gate_comparison.json",
+  "gate_json_path": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/gate/stage14_confirmatory_gate_publication_gate.json",
+  "gate_report_path": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/gate/stage14_confirmatory_gate_publication_gate_report.md",
+  "brief_path": "/workspaces/commons-sentience-sandbox/outputs/stage14_confirmatory/gate/stage14_confirmatory_gate_first_results_brief.md",
+  "gate_verdict": "candidate_first_results_note",
+  "gate_checks_passed": [
+    "prereg_present",
+    "prereg_locked",
+    "null_model_appropriate",
+    "trial_correction_applied",
+    "at_least_two_catalogs",
+    "replication_status_labeled",
+    "systematics_documented",
+    "output_artifacts_complete",
+    "comparison_memo_present",
+    "no_metaphysical_language",
+    "icecube_small_n_acknowledged"
+  ],
+  "gate_checks_failed": [
+    "external_review_pending"
+  ]
+}
