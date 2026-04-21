@@ -1,0 +1,25 @@
+{
+  "stage": "stage12_icecube_diagnostics",
+  "generated_at": "2026-04-21T20:45:15.956688Z",
+  "input": "/workspaces/commons-sentience-sandbox/data/real/icecube_hese_events.csv",
+  "output_dir": "/workspaces/commons-sentience-sandbox/outputs/stage12_icecube_diagnostics/stage12_icecube_confirmatory",
+  "run_mode": "preregistered_confirmatory",
+  "seed": 42,
+  "axis_modes": [
+    48,
+    96,
+    192
+  ],
+  "leave_k_out": 1,
+  "repeats": 150,
+  "diagnostics_summary_json": "/workspaces/commons-sentience-sandbox/outputs/stage12_icecube_diagnostics/stage12_icecube_confirmatory/stage12_icecube_diagnostics_summary.json",
+  "diagnostics_memo_md": "/workspaces/commons-sentience-sandbox/outputs/stage12_icecube_diagnostics/stage12_icecube_confirmatory/stage12_icecube_diagnostics_memo.md",
+  "metric_stability_table_csv": "/workspaces/commons-sentience-sandbox/outputs/stage12_icecube_diagnostics/stage12_icecube_confirmatory/stage12_metric_stability_table.csv",
+  "plots": {
+    "axis_sensitivity_plot": "/workspaces/commons-sentience-sandbox/outputs/stage12_icecube_diagnostics/stage12_icecube_confirmatory/stage12_axis_count_sensitivity.png",
+    "leave_k_out_plot": "/workspaces/commons-sentience-sandbox/outputs/stage12_icecube_diagnostics/stage12_icecube_confirmatory/stage12_leave_k_out_stability.png",
+    "epoch_split_plot": null
+  },
+  "preregistration_plan": "/workspaces/commons-sentience-sandbox/configs/preregistered_anisotropy_plan.json",
+  "confirmatory_rerun_summary": null
+}

@@ -1,0 +1,2 @@
+name,catalog,written_at,event_count,hemisphere_imbalance,preferred_axis_score,energy_time_r,cluster_score,hemi_percentile,axis_percentile,et_r_percentile,clust_percentile,signal_tier,max_percentile
+stage12_icecube_confirmatory_rerun,icecube_hese_events,2026-04-21T20:45:15.954422Z,37,-0.4594594594594595,0.17057534247718853,,1.0,0.986,0.656,0.5,0.0,strong_anomaly_like_deviation,0.986

@@ -1,0 +1,9 @@
+analysis,axis_count,metric,value
+small_n_full_sample,48,fraction_ge_0.90,1.0
+small_n_full_sample,48,fraction_ge_0.97,1.0
+small_n_full_sample,96,fraction_ge_0.90,1.0
+small_n_full_sample,96,fraction_ge_0.97,0.6933333333333334
+small_n_full_sample,192,fraction_ge_0.90,1.0
+small_n_full_sample,192,fraction_ge_0.97,1.0
+leave_k_out,192,fraction_tier_drops,0.0
+epoch_split,192,tier_agreement,

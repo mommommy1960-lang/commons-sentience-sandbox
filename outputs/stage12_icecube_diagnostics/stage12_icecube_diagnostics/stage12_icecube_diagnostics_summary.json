@@ -1,0 +1,733 @@
+{
+  "generated_at": "2026-04-21T20:43:14.623757Z",
+  "catalog_summary": {
+    "event_count": 37,
+    "position_coverage": {
+      "with_ra": 37,
+      "with_dec": 37,
+      "ra_missing": 0,
+      "dec_missing": 0,
+      "ra_min": 1.24,
+      "ra_max": 349.21,
+      "dec_min": -72.09,
+      "dec_max": 33.56
+    },
+    "time_coverage": {
+      "with_time": 0,
+      "time_missing": 37,
+      "time_min": null,
+      "time_max": null,
+      "time_span": null
+    },
+    "energy_coverage": {
+      "with_energy": 37,
+      "energy_missing": 0,
+      "energy_min": 28.4,
+      "energy_max": 1040.7,
+      "energy_median": 71.5,
+      "energy_p90": 234.3
+    },
+    "spatial_structure": {
+      "grid_ra_bins": 12,
+      "grid_dec_bins": 6,
+      "nonempty_cells": 24,
+      "total_cells": 72,
+      "max_cell_count": 5,
+      "occupancy_fraction": 0.3333333333333333
+    },
+    "flags": [
+      "small_sample_catalog",
+      "spatial_concentration",
+      "time_missingness_high"
+    ],
+    "notes": [
+      "Small-N catalogs are sensitive to influential events and scan choices.",
+      "Grid occupancy is a descriptive proxy, not a formal spatial model."
+    ]
+  },
+  "small_n_sensitivity": {
+    "event_count": 37,
+    "seed": 42,
+    "repeats": 150,
+    "axis_modes": [
+      48,
+      96,
+      192
+    ],
+    "sample_sizes": [
+      18,
+      28,
+      37
+    ],
+    "by_axis": {
+      "48": {
+        "sample_sizes": {
+          "18": {
+            "repeats": 150,
+            "max_percentile_mean": 0.8235555555555556,
+            "max_percentile_median": 0.9,
+            "max_percentile_p90": 1.0,
+            "axis_percentile_mean": 0.5126666666666667,
+            "fraction_ge_0_90": 0.5133333333333333,
+            "fraction_ge_0_97": 0.12,
+            "tier_counts": {
+              "moderate_anomaly_like_deviation": 59,
+              "weak_anomaly_like_deviation": 33,
+              "strong_anomaly_like_deviation": 18,
+              "no_anomaly_detected": 40
+            }
+          },
+          "28": {
+            "repeats": 150,
+            "max_percentile_mean": 0.9884444444444446,
+            "max_percentile_median": 1.0,
+            "max_percentile_p90": 1.0,
+            "axis_percentile_mean": 0.6011111111111112,
+            "fraction_ge_0_90": 0.9733333333333334,
+            "fraction_ge_0_97": 0.8533333333333334,
+            "tier_counts": {
+              "strong_anomaly_like_deviation": 128,
+              "moderate_anomaly_like_deviation": 18,
+              "weak_anomaly_like_deviation": 4
+            }
+          },
+          "37": {
+            "repeats": 150,
+            "max_percentile_mean": 1.0,
+            "max_percentile_median": 1.0,
+            "max_percentile_p90": 1.0,
+            "axis_percentile_mean": 0.602,
+            "fraction_ge_0_90": 1.0,
+            "fraction_ge_0_97": 1.0,
+            "tier_counts": {
+              "strong_anomaly_like_deviation": 150
+            }
+          }
+        },
+        "axis_count": 48
+      },
+      "96": {
+        "sample_sizes": {
+          "18": {
+            "repeats": 150,
+            "max_percentile_mean": 0.8768888888888888,
+            "max_percentile_median": 0.9666666666666667,
+            "max_percentile_p90": 1.0,
+            "axis_percentile_mean": 0.5822222222222222,
+            "fraction_ge_0_90": 0.6733333333333333,
+            "fraction_ge_0_97": 0.2866666666666667,
+            "tier_counts": {
+              "strong_anomaly_like_deviation": 43,
+              "moderate_anomaly_like_deviation": 58,
+              "weak_anomaly_like_deviation": 19,
+              "no_anomaly_detected": 30
+            }
+          },
+          "28": {
+            "repeats": 150,
+            "max_percentile_mean": 0.9731111111111111,
+            "max_percentile_median": 1.0,
+            "max_percentile_p90": 1.0,
+            "axis_percentile_mean": 0.6673333333333333,
+            "fraction_ge_0_90": 0.9733333333333334,
+            "fraction_ge_0_97": 0.5866666666666667,
+            "tier_counts": {
+              "strong_anomaly_like_deviation": 88,
+              "no_anomaly_detected": 1,
+              "weak_anomaly_like_deviation": 3,
+              "moderate_anomaly_like_deviation": 58
+            }
+          },
+          "37": {
+            "repeats": 150,
+            "max_percentile_mean": 0.9897777777777778,
+            "max_percentile_median": 1.0,
+            "max_percentile_p90": 1.0,
+            "axis_percentile_mean": 0.6246666666666667,
+            "fraction_ge_0_90": 1.0,
+            "fraction_ge_0_97": 0.6933333333333334,
+            "tier_counts": {
+              "moderate_anomaly_like_deviation": 46,
+              "strong_anomaly_like_deviation": 104
+            }
+          }
+        },
+        "axis_count": 96
+      },
+      "192": {
+        "sample_sizes": {
+          "18": {
+            "repeats": 150,
+            "max_percentile_mean": 0.8682222222222223,
+            "max_percentile_median": 0.9333333333333333,
+            "max_percentile_p90": 1.0,
+            "axis_percentile_mean": 0.5702222222222222,
+            "fraction_ge_0_90": 0.6133333333333333,
+            "fraction_ge_0_97": 0.16,
+            "tier_counts": {
+              "weak_anomaly_like_deviation": 33,
+              "moderate_anomaly_like_deviation": 68,
+              "no_anomaly_detected": 25,
+              "strong_anomaly_like_deviation": 24
+            }
+          },
+          "28": {
+            "repeats": 150,
+            "max_percentile_mean": 0.9604444444444444,
+            "max_percentile_median": 0.9666666666666667,
+            "max_percentile_p90": 1.0,
+            "axis_percentile_mean": 0.5982222222222222,
+            "fraction_ge_0_90": 0.9133333333333333,
+            "fraction_ge_0_97": 0.42,
+            "tier_counts": {
+              "weak_anomaly_like_deviation": 13,
+              "strong_anomaly_like_deviation": 63,
+              "moderate_anomaly_like_deviation": 74
+            }
+          },
+          "37": {
+            "repeats": 150,
+            "max_percentile_mean": 1.0,
+            "max_percentile_median": 1.0,
+            "max_percentile_p90": 1.0,
+            "axis_percentile_mean": 0.6211111111111111,
+            "fraction_ge_0_90": 1.0,
+            "fraction_ge_0_97": 1.0,
+            "tier_counts": {
+              "strong_anomaly_like_deviation": 150
+            }
+          }
+        },
+        "axis_count": 192
+      }
+    },
+    "trend_rows": [
+      {
+        "axis_count": 48,
+        "fraction_ge_0_90": 1.0,
+        "fraction_ge_0_97": 1.0,
+        "max_percentile_mean": 1.0
+      },
+      {
+        "axis_count": 96,
+        "fraction_ge_0_90": 1.0,
+        "fraction_ge_0_97": 0.6933333333333334,
+        "max_percentile_mean": 0.9897777777777778
+      },
+      {
+        "axis_count": 192,
+        "fraction_ge_0_90": 1.0,
+        "fraction_ge_0_97": 1.0,
+        "max_percentile_mean": 1.0
+      }
+    ],
+    "notes": [
+      "Each repeat uses isotropic null_mode with null_repeats=30 for tractability.",
+      "This analysis probes stability directionally; it is not a formal p-value calibration."
+    ]
+  },
+  "leave_k_out": {
+    "k": 1,
+    "event_count": 37,
+    "baseline": {
+      "tier": "strong_anomaly_like_deviation",
+      "max_percentile": 0.99,
+      "hemi_percentile": 0.99,
+      "axis_percentile": 0.67,
+      "axis_score": 0.17057534247718853,
+      "hemisphere_imbalance": -0.4594594594594595
+    },
+    "n_combinations_evaluated": 37,
+    "fraction_tier_drops": 0.0,
+    "max_percentile_median": 0.9833333333333333,
+    "max_percentile_p10": 0.9833333333333333,
+    "max_percentile_p90": 1.0,
+    "worst_case": {
+      "dropped_indices": [
+        0
+      ],
+      "dropped_event_ids": [
+        "HESE_001"
+      ],
+      "tier": "strong_anomaly_like_deviation",
+      "max_percentile": 0.9833333333333333,
+      "axis_percentile": 0.75,
+      "hemi_percentile": 0.9833333333333333
+    },
+    "best_case": {
+      "dropped_indices": [
+        5
+      ],
+      "dropped_event_ids": [
+        "HESE_006"
+      ],
+      "tier": "strong_anomaly_like_deviation",
+      "max_percentile": 1.0,
+      "axis_percentile": 0.8666666666666667,
+      "hemi_percentile": 1.0
+    },
+    "rows": [
+      {
+        "dropped_indices": [
+          0
+        ],
+        "dropped_event_ids": [
+          "HESE_001"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.75,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          1
+        ],
+        "dropped_event_ids": [
+          "HESE_002"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.75,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          2
+        ],
+        "dropped_event_ids": [
+          "HESE_003"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.6,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          3
+        ],
+        "dropped_event_ids": [
+          "HESE_004"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.6333333333333333,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          4
+        ],
+        "dropped_event_ids": [
+          "HESE_005"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.6666666666666666,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          5
+        ],
+        "dropped_event_ids": [
+          "HESE_006"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 1.0,
+        "axis_percentile": 0.8666666666666667,
+        "hemi_percentile": 1.0
+      },
+      {
+        "dropped_indices": [
+          6
+        ],
+        "dropped_event_ids": [
+          "HESE_007"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 1.0,
+        "axis_percentile": 0.7,
+        "hemi_percentile": 1.0
+      },
+      {
+        "dropped_indices": [
+          7
+        ],
+        "dropped_event_ids": [
+          "HESE_008"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.65,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          8
+        ],
+        "dropped_event_ids": [
+          "HESE_009"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.75,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          9
+        ],
+        "dropped_event_ids": [
+          "HESE_010"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.6666666666666666,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          10
+        ],
+        "dropped_event_ids": [
+          "HESE_011"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.6833333333333333,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          11
+        ],
+        "dropped_event_ids": [
+          "HESE_012"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.6333333333333333,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          12
+        ],
+        "dropped_event_ids": [
+          "HESE_013"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 1.0,
+        "axis_percentile": 0.7333333333333333,
+        "hemi_percentile": 1.0
+      },
+      {
+        "dropped_indices": [
+          13
+        ],
+        "dropped_event_ids": [
+          "HESE_014"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.6833333333333333,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          14
+        ],
+        "dropped_event_ids": [
+          "HESE_015"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.6166666666666667,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          15
+        ],
+        "dropped_event_ids": [
+          "HESE_016"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 1.0,
+        "axis_percentile": 0.85,
+        "hemi_percentile": 1.0
+      },
+      {
+        "dropped_indices": [
+          16
+        ],
+        "dropped_event_ids": [
+          "HESE_017"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.5666666666666667,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          17
+        ],
+        "dropped_event_ids": [
+          "HESE_018"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.65,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          18
+        ],
+        "dropped_event_ids": [
+          "HESE_019"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.65,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          19
+        ],
+        "dropped_event_ids": [
+          "HESE_020"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 1.0,
+        "axis_percentile": 0.8333333333333334,
+        "hemi_percentile": 1.0
+      },
+      {
+        "dropped_indices": [
+          20
+        ],
+        "dropped_event_ids": [
+          "HESE_021"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 1.0,
+        "axis_percentile": 0.8333333333333334,
+        "hemi_percentile": 1.0
+      },
+      {
+        "dropped_indices": [
+          21
+        ],
+        "dropped_event_ids": [
+          "HESE_022"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 1.0,
+        "axis_percentile": 0.8,
+        "hemi_percentile": 1.0
+      },
+      {
+        "dropped_indices": [
+          22
+        ],
+        "dropped_event_ids": [
+          "HESE_023"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.7333333333333333,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          23
+        ],
+        "dropped_event_ids": [
+          "HESE_024"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.55,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          24
+        ],
+        "dropped_event_ids": [
+          "HESE_025"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.5666666666666667,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          25
+        ],
+        "dropped_event_ids": [
+          "HESE_026"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 1.0,
+        "axis_percentile": 0.6,
+        "hemi_percentile": 1.0
+      },
+      {
+        "dropped_indices": [
+          26
+        ],
+        "dropped_event_ids": [
+          "HESE_027"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.6833333333333333,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          27
+        ],
+        "dropped_event_ids": [
+          "HESE_028"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.55,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          28
+        ],
+        "dropped_event_ids": [
+          "HESE_029"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.55,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          29
+        ],
+        "dropped_event_ids": [
+          "HESE_030"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.6333333333333333,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          30
+        ],
+        "dropped_event_ids": [
+          "HESE_031"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.6666666666666666,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          31
+        ],
+        "dropped_event_ids": [
+          "HESE_032"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.8,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          32
+        ],
+        "dropped_event_ids": [
+          "HESE_033"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 1.0,
+        "axis_percentile": 0.65,
+        "hemi_percentile": 1.0
+      },
+      {
+        "dropped_indices": [
+          33
+        ],
+        "dropped_event_ids": [
+          "HESE_034"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.65,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          34
+        ],
+        "dropped_event_ids": [
+          "HESE_035"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.5,
+        "hemi_percentile": 0.9833333333333333
+      },
+      {
+        "dropped_indices": [
+          35
+        ],
+        "dropped_event_ids": [
+          "HESE_036"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 1.0,
+        "axis_percentile": 0.8166666666666667,
+        "hemi_percentile": 1.0
+      },
+      {
+        "dropped_indices": [
+          36
+        ],
+        "dropped_event_ids": [
+          "HESE_037"
+        ],
+        "tier": "strong_anomaly_like_deviation",
+        "max_percentile": 0.9833333333333333,
+        "axis_percentile": 0.5,
+        "hemi_percentile": 0.9833333333333333
+      }
+    ]
+  },
+  "epoch_split": {
+    "usable": false,
+    "reason": "Insufficient valid times for stable epoch split",
+    "n_with_time": 0
+  },
+  "robustness_assessment": {
+    "label": "relatively_stable",
+    "fragile_signals": [],
+    "robust_signals": [
+      "axis_density_stable",
+      "leave_k_out_stable"
+    ],
+    "summary": {
+      "fragile_count": 0,
+      "robust_count": 2
+    }
+  }
+}

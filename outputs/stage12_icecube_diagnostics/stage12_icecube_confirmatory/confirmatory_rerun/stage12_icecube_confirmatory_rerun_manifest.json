@@ -1,0 +1,11 @@
+{
+  "experiment": "stage12_icecube_confirmatory_rerun",
+  "catalog": "icecube_hese_events",
+  "written_at": "2026-04-21T20:45:15.954422Z",
+  "artifacts": {
+    "json_summary": "/workspaces/commons-sentience-sandbox/outputs/stage12_icecube_diagnostics/stage12_icecube_confirmatory/confirmatory_rerun/stage12_icecube_confirmatory_rerun_summary.json",
+    "csv_summary": "/workspaces/commons-sentience-sandbox/outputs/stage12_icecube_diagnostics/stage12_icecube_confirmatory/confirmatory_rerun/stage12_icecube_confirmatory_rerun_results.csv",
+    "md_summary": "/workspaces/commons-sentience-sandbox/outputs/stage12_icecube_diagnostics/stage12_icecube_confirmatory/confirmatory_rerun/stage12_icecube_confirmatory_rerun_summary.md",
+    "manifest": "/workspaces/commons-sentience-sandbox/outputs/stage12_icecube_diagnostics/stage12_icecube_confirmatory/confirmatory_rerun/stage12_icecube_confirmatory_rerun_manifest.json"
+  }
+}
