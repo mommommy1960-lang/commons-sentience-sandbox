@@ -1615,3 +1615,100 @@ Each run creates an output directory containing:
 ```bash
 python -m pytest tests/test_simulation_signature_analysis.py -v
 ```
+
+---
+
+## Stage 7: Public Anisotropy Study
+
+### What this milestone is
+
+Stage 7 introduces the first **real public-data anisotropy analysis track**.  It extends the synthetic-event pipeline from Stage 6 to ingest and analyze actual public astrophysical event catalogs, test for directional anisotropy and preferred-axis structure, and compare results against realistic isotropic null ensembles.
+
+This is a hypothesis-generation milestone: any detected deviation from isotropy is a starting point for further investigation, not a conclusion.
+
+### How it fits into the Reality Audit roadmap
+
+```
+Stage 6  → First blinded real-data Fermi-LAT run (timing-delay)
+Stage 6.x → Simulation Signature Analysis (synthetic validation)
+Stage 7  → Public-data anisotropy study (preferred-axis / hemisphere imbalance)
+Stage 8+ → Multi-catalog cross-match, exposure-corrected nulls, blinded pre-registration
+```
+
+### Supported catalog sources (manual placement required)
+
+| Catalog | Filename in data/real/ | Source |
+|---------|----------------------|--------|
+| Fermi-LAT GRB | `fermi_lat_grb_catalog.csv` | NASA HEASARC |
+| Swift BAT3 GRB | `swift_bat3_grb_catalog.csv` | Swift mission archive |
+| IceCube HESE | `icecube_hese_events.csv` | IceCube public release |
+| Any CSV/TSV with ra/dec | any filename | manual |
+
+See [data/real/README_public_catalog_ingest.md](data/real/README_public_catalog_ingest.md) for download URLs and column-mapping details.
+
+### How to run
+
+#### Synthetic isotropic baseline (no real data required)
+
+```bash
+python reality_audit/data_analysis/run_public_anisotropy_study.py \
+  --catalog synthetic_isotropic \
+  --name stage7_synth_baseline \
+  --output-dir outputs/public_anisotropy/synth_baseline \
+  --null-repeats 50 --axis-count 48 --seed 42 --plots
+```
+
+#### Synthetic preferred-axis recovery
+
+```bash
+python reality_audit/data_analysis/run_public_anisotropy_study.py \
+  --catalog synthetic_preferred_axis \
+  --name stage7_synth_preferred_axis \
+  --output-dir outputs/public_anisotropy/synth_preferred_axis \
+  --null-repeats 50 --axis-count 48 --seed 42 --plots
+```
+
+#### Real catalog (after placing file in data/real/)
+
+```bash
+python reality_audit/data_analysis/run_public_anisotropy_study.py \
+  --input data/real/<catalog_file> \
+  --name stage7_real_catalog \
+  --output-dir outputs/public_anisotropy/real_catalog \
+  --config configs/public_anisotropy_manual_ingest.json \
+  --null-repeats 100 --axis-count 48 --seed 42 --plots --save-normalized
+```
+
+#### Benchmark (all three scenarios)
+
+```bash
+python reality_audit/data_analysis/public_anisotropy_benchmark.py
+```
+
+#### Convenience runner (synthetic + real if available)
+
+```bash
+python scripts/run_public_anisotropy_examples.py
+```
+
+### Output files generated
+
+| File | Description |
+|------|-------------|
+| `<name>_summary.json` | Full structured results + signal evaluation |
+| `<name>_results.csv` | One-row CSV summary |
+| `<name>_summary.md` | Markdown report |
+| `<name>_sky_plot.png` | RA/Dec sky scatter |
+| `<name>_null_comparison.png` | Metric percentile bar chart vs null |
+| `<name>_axis_scan.png` | Axis-scan score across all 48 trial axes |
+| `<name>_manifest.json` | Artifact file manifest |
+
+### Tests
+
+```bash
+python -m pytest tests/test_public_anisotropy_study.py -v
+```
+
+### ⚠️ Statistical caveat
+
+Any anomaly-like deviation reported by this pipeline is a **hypothesis-generating result only**.  Detection of a statistically unusual pattern does not constitute proof of any specific physical model, and in particular does not confirm any simulation-ontology hypothesis.  Results are subject to instrument systematics, selection effects, and the exploratory nature of the analysis protocol.  All scientific claims require independent replication, control of systematic uncertainties, and peer review.

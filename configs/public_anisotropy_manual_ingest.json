@@ -1,0 +1,32 @@
+{
+  "null_mode": "isotropic",
+  "null_repeats": 100,
+  "num_axes": 48,
+  "seed": null,
+  "plots": true,
+  "save_normalized": false,
+
+  "_notes": {
+    "null_mode": "isotropic generates uniform RA/Dec null events of the same size as the input.",
+    "null_repeats": "Number of independent null draws used to compute empirical percentile ranks.",
+    "num_axes": "Number of trial axes in the preferred-axis scan. 48 gives better coverage than the earlier 12-axis version.",
+    "seed": "Set to an integer for reproducible results. null means unseeded.",
+    "plots": "Generate PNG plots (sky plot, null comparison bar chart, axis scan line plot).",
+    "save_normalized": "Write a normalized event CSV alongside the analysis artifacts.",
+    "manual_ingest_columns": {
+      "required": ["ra", "dec"],
+      "recommended": ["event_id", "energy", "arrival_time", "instrument", "epoch"],
+      "known_aliases": {
+        "ra_deg": "ra",
+        "dej2000": "dec",
+        "raj2000": "ra",
+        "trigger_mjd": "arrival_time",
+        "mjd": "arrival_time",
+        "name": "event_id",
+        "grb_name": "event_id",
+        "fluence": "energy",
+        "detector": "instrument"
+      }
+    }
+  }
+}
