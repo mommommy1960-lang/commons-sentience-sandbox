@@ -1,0 +1,87 @@
+{
+  "_schema_version": "1.0",
+  "_purpose": "Publication-readiness gate checklist for the Reality Audit public anisotropy program.",
+  "_note": "Each gate item defines a required condition, severity (required / recommended), and a short description. The gate evaluator checks run metadata and comparison summaries against these criteria.",
+
+  "gates": [
+    {
+      "id": "prereg_present",
+      "severity": "required",
+      "description": "A preregistration plan is recorded in run metadata for any result labeled confirmatory.",
+      "detail": "Exploratory runs may proceed without a preregistration plan, but results cannot be called confirmatory without one."
+    },
+    {
+      "id": "prereg_locked",
+      "severity": "required",
+      "description": "The preregistration plan must have _locked: true for a confirmatory result.",
+      "detail": "An unlocked plan is not a binding commitment and cannot prevent post-hoc specification."
+    },
+    {
+      "id": "null_model_appropriate",
+      "severity": "required",
+      "description": "Each catalog must use a null model appropriate for its instrument.",
+      "detail": "Wide-field gamma-ray detectors (Fermi, Swift) use exposure_corrected null. Neutrino detectors (IceCube) use isotropic null."
+    },
+    {
+      "id": "trial_correction_applied",
+      "severity": "required",
+      "description": "Multiple-testing correction is applied and is recorded in run metadata.",
+      "detail": "Acceptable methods: holm, bonferroni. Method 'none' is flagged as insufficient."
+    },
+    {
+      "id": "at_least_two_catalogs",
+      "severity": "required",
+      "description": "At least two independent catalogs are present in the comparison.",
+      "detail": "A single-catalog result is hypothesis-generating only. Replication across instruments is required."
+    },
+    {
+      "id": "replication_status_labeled",
+      "severity": "required",
+      "description": "The comparison output must include an explicit replication verdict.",
+      "detail": "Acceptable verdicts: both_anomaly, partial_replication, inconsistent, neither_anomaly."
+    },
+    {
+      "id": "systematics_documented",
+      "severity": "required",
+      "description": "Known systematics and caveats must be documented in the comparison memo.",
+      "detail": "At minimum: instrument acceptance correction is an approximation; small-N catalogs are underpowered."
+    },
+    {
+      "id": "output_artifacts_complete",
+      "severity": "required",
+      "description": "All required output artifacts (summary JSON, memo markdown, comparison JSON) must be present.",
+      "detail": "Missing artifacts mean the run was not fully completed or outputs were deleted."
+    },
+    {
+      "id": "comparison_memo_present",
+      "severity": "required",
+      "description": "A cross-catalog comparison memo is present in the output directory.",
+      "detail": "The memo is the primary internal scientific record of the cross-catalog comparison."
+    },
+    {
+      "id": "no_metaphysical_language",
+      "severity": "required",
+      "description": "Run memos must not make unsupported metaphysical claims.",
+      "detail": "Statistical anisotropy is not evidence for consciousness, intentionality, or non-physical mechanisms. Any such language is a disqualifying error."
+    },
+    {
+      "id": "external_review_pending",
+      "severity": "informational",
+      "description": "External scientific review has not yet been completed.",
+      "detail": "This is a status flag, not a gate blocker. Tracks whether external review has been filed."
+    },
+    {
+      "id": "icecube_small_n_acknowledged",
+      "severity": "recommended",
+      "description": "IceCube HESE small-N limitation is acknowledged in any result using that catalog.",
+      "detail": "IceCube HESE has ~37 events; the result is exploratory regardless of percentile."
+    }
+  ],
+
+  "readiness_levels": {
+    "not_ready": "Required gates are failing. Do not circulate this result.",
+    "internally_reviewable": "All required gates pass. Suitable for internal team review only.",
+    "candidate_first_results_note": "All required and recommended gates pass. Suitable for a candidate internal first-results note.",
+    "ready_for_external_review": "All gates pass and external review has been initiated."
+  }
+}
