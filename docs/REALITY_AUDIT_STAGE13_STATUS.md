@@ -121,5 +121,6 @@ Stage 14 (planned):
 ## Final Validation
 
 - `python -m pytest tests/test_stage13_publication_gate.py -v`: 15 passed
-- `python reality_audit/data_analysis/run_stage13_publication_gate.py`: OK, verdict NOT_READY
+- `python -m pytest tests/test_catalog_comparison.py tests/test_stage8_first_results.py tests/test_stage12_icecube_diagnostics.py tests/test_stage13_publication_gate.py -v`: **73 passed**
+- `python reality_audit/data_analysis/run_stage13_publication_gate.py`: OK, verdict NOT_READY (correct)
 - `python scripts/run_stage13_publication_gate.py`: OK, same verdict
