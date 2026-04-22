@@ -167,6 +167,27 @@ def _generate_trial_axes(
 _AXES_48: List[Tuple[float, float, float]] = _build_48_axes()
 
 
+def _null_model_metadata(
+    null_mode: str,
+    exposure_map: Optional[Dict[str, Any]] = None,
+) -> Dict[str, Any]:
+    """Return machine-readable null-model metadata for manifests/reports."""
+    if null_mode == "exposure_corrected":
+        em = (exposure_map or {}).get("exposure_model", {})
+        return {
+            "name": em.get("name", "empirical_proxy_histogram"),
+            "version": em.get("version", "v1"),
+            "mode": "exposure_corrected",
+            "calibration": em.get("calibration"),
+        }
+    return {
+        "name": "isotropic_uniform",
+        "version": "v1",
+        "mode": "isotropic",
+        "calibration": None,
+    }
+
+
 def scan_trial_axes(
     events: List[Dict[str, Any]],
     num_axes: int = 48,
@@ -468,6 +489,7 @@ def run_public_anisotropy_study(
             "healpix_nside":     healpix_nside,
             "axis_plan":         axis_scan_obs.get("axis_plan"),
             "null_mode":         null_mode,
+            "exposure_model":    _null_model_metadata(null_mode, exposure_map),
             "exposure_map_desc": exposure_map_desc,
             "timestamp":         datetime.datetime.utcnow().isoformat() + "Z",
         },

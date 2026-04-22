@@ -54,6 +54,8 @@ def build_empirical_exposure_map(
     events: List[Dict[str, Any]],
     ra_bins: int = 24,
     dec_bins: int = 12,
+    floor_value: Optional[float] = None,
+    calibration_name: str = "empirical_floor_v1",
 ) -> Dict[str, Any]:
     """Build a coarse empirical sky-acceptance proxy map from the observed events.
 
@@ -89,6 +91,14 @@ def build_empirical_exposure_map(
     """
     if ra_bins < 2 or dec_bins < 2:
         raise ValueError("ra_bins and dec_bins must each be ≥ 2.")
+    if floor_value is None:
+        floor_value = 0.5
+    try:
+        floor_value = float(floor_value)
+    except (TypeError, ValueError):
+        raise ValueError("floor_value must be numeric.")
+    if floor_value < 0.0:
+        raise ValueError("floor_value must be >= 0.")
 
     ra_edges  = [360.0 * i / ra_bins  for i in range(ra_bins + 1)]
     dec_edges = [-90.0 + 180.0 * i / dec_bins for i in range(dec_bins + 1)]
@@ -129,10 +139,16 @@ def build_empirical_exposure_map(
             "dec_edges":     dec_edges,
             "description":   "Fallback uniform weights (no events with RA/Dec).",
             "limitations":   _LIMITATIONS,
+            "exposure_model": {
+                "name": "empirical_proxy_histogram",
+                "version": "v1",
+                "calibration": {
+                    "name": calibration_name,
+                    "floor_value": floor_value,
+                    "notes": "Uniform fallback due to no valid RA/Dec.",
+                },
+            },
         }
-
-    # Floor weight: 0.5 event equivalent per cell, to avoid zero-probability cells
-    floor_value = 0.5
 
     flat_counts: List[float] = []
     for di in range(dec_bins):
@@ -158,6 +174,14 @@ def build_empirical_exposure_map(
             f"(floor_value={floor_value} per cell)."
         ),
         "limitations": _LIMITATIONS,
+        "exposure_model": {
+            "name": "empirical_proxy_histogram",
+            "version": "v1",
+            "calibration": {
+                "name": calibration_name,
+                "floor_value": floor_value,
+            },
+        },
     }
 
 
@@ -283,10 +307,18 @@ def generate_exposure_corrected_null_ensemble(
     cfg       = config or {}
     ra_bins   = int(cfg.get("ra_bins",  24))
     dec_bins  = int(cfg.get("dec_bins", 12))
+    floor_value = cfg.get("exposure_floor_value", cfg.get("floor_value", None))
+    calibration_name = str(cfg.get("exposure_calibration", "empirical_floor_v1"))
     if "null_repeats" in cfg:
         repeats = int(cfg["null_repeats"])
 
-    exposure_map = build_empirical_exposure_map(events, ra_bins=ra_bins, dec_bins=dec_bins)
+    exposure_map = build_empirical_exposure_map(
+        events,
+        ra_bins=ra_bins,
+        dec_bins=dec_bins,
+        floor_value=floor_value,
+        calibration_name=calibration_name,
+    )
 
     ensemble: List[List[Dict[str, Any]]] = []
     for rep in range(repeats):
@@ -327,4 +359,5 @@ def describe_exposure_map(exposure_map: Dict[str, Any]) -> Dict[str, Any]:
         "min_cell_weight":  min(weights) if weights else None,
         "description":      exposure_map.get("description", ""),
         "limitations":      exposure_map.get("limitations", []),
+        "exposure_model":   exposure_map.get("exposure_model"),
     }
