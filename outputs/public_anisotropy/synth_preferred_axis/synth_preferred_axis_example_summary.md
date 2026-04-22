@@ -1,7 +1,7 @@
 # Public Anisotropy Study: synth_preferred_axis_example
 
 **Catalog:** synthetic_preferred_axis  
-**Generated:** 2026-04-21T16:38:58.381844Z  
+**Generated:** 2026-04-22T19:04:48.791014Z  
 **Events:** 300  
 **Signal tier:** `strong_anomaly_like_deviation`  
 **Max percentile:** 1.0000

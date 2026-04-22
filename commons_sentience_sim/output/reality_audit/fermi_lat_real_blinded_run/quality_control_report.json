@@ -1,5 +1,5 @@
 {
-  "source_file": "/tmp/pytest-of-codespace/pytest-0/test_complete_message_mentions0/real/grb_real.csv",
+  "source_file": "/tmp/pytest-of-runner/pytest-0/test_complete_message_mentions0/real/grb_real.csv",
   "registration_experiment": "fermi_lat_grb_timing_delay_real_v1",
   "n_events": 40,
   "n_sources": 6,

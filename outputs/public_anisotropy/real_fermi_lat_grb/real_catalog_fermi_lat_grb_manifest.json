@@ -1,7 +1,7 @@
 {
   "experiment": "real_catalog_fermi_lat_grb",
-  "catalog": "/workspaces/commons-sentience-sandbox/data/real/fermi_lat_grb_catalog.csv",
-  "written_at": "2026-04-21T16:39:26.687270Z",
+  "catalog": "/home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/data/real/fermi_lat_grb_catalog.csv",
+  "written_at": "2026-04-22T19:05:09.426253Z",
   "artifacts": {
     "json_summary": "outputs/public_anisotropy/real_fermi_lat_grb/real_catalog_fermi_lat_grb_summary.json",
     "csv_summary": "outputs/public_anisotropy/real_fermi_lat_grb/real_catalog_fermi_lat_grb_results.csv",
