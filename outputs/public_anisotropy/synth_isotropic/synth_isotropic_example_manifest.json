@@ -1,7 +1,7 @@
 {
   "experiment": "synth_isotropic_example",
   "catalog": "synthetic_isotropic",
-  "written_at": "2026-04-22T18:33:38.983861Z",
+  "written_at": "2026-04-21T16:38:57.529653Z",
   "artifacts": {
     "json_summary": "outputs/public_anisotropy/synth_isotropic/synth_isotropic_example_summary.json",
     "csv_summary": "outputs/public_anisotropy/synth_isotropic/synth_isotropic_example_results.csv",

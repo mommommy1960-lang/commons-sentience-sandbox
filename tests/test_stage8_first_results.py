@@ -265,6 +265,27 @@ class TestRunStage8FirstResults(unittest.TestCase):
             self.assertIn("exposure_model", rm)
             self.assertIn("time_coverage_refinement", rm)
             self.assertIn("mission_grade_promotion_blockers", rm)
+            self.assertIn("confirmatory_readiness", rm)
+
+    def test_confirmatory_readiness_flags_prereg_mismatch(self):
+        with tempfile.TemporaryDirectory() as catalog_dir, \
+             tempfile.TemporaryDirectory() as out_dir:
+            cat_path = self._make_catalog(catalog_dir, n=40)
+            bundle = run_stage8_first_results(
+                input_path=cat_path,
+                output_dir=out_dir,
+                name="test_confirmatory_readiness",
+                null_repeats=5,
+                axis_count=12,
+                seed=7,
+                plots=False,
+                save_normalized=False,
+                null_mode="exposure_corrected",
+                run_mode="preregistered_confirmatory",
+            )
+            readiness = bundle.get("run_metadata", {}).get("confirmatory_readiness", {})
+            self.assertFalse(readiness.get("ready_for_confirmatory_promotion"))
+            self.assertEqual(readiness.get("reason"), "preregistration_mismatch")
 
 
 # ===========================================================================

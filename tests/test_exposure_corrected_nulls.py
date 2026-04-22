@@ -368,6 +368,10 @@ class TestPublicAnisotropyStudyNullMode(unittest.TestCase):
         self.assertIn("exposure_model", rm)
         self.assertIn("time_coverage_refinement", rm)
         self.assertIn("mission_grade_promotion_blockers", rm)
+        tcr = rm.get("time_coverage_refinement", {})
+        self.assertIn("thresholds", tcr)
+        self.assertIn("threshold_pass", tcr)
+        self.assertIn("confirmatory_readiness", tcr)
 
     def test_isotropic_mode_still_works(self):
         from reality_audit.data_analysis.public_anisotropy_study import (

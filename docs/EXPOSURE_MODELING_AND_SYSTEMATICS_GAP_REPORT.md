@@ -25,7 +25,7 @@ improve before publication-grade claims.
    missing.
 6. Exposure-model calibration metadata and time-coverage refinement diagnostics
    are now emitted in run metadata to make mission-grade promotion blockers
-   explicit and machine-readable.
+   explicit and machine-readable, including confirmatory readiness thresholds.
 
 ## What Is Still Simplistic
 

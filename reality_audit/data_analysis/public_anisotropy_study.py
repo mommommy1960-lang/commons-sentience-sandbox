@@ -178,18 +178,30 @@ def _null_model_metadata(
             "name": em.get("name", "empirical_proxy_histogram"),
             "version": em.get("version", "v1"),
             "mode": "exposure_corrected",
+            "quality_tier": "proxy_only",
+            "mission_grade_ready": False,
             "calibration": em.get("calibration"),
         }
     return {
         "name": "isotropic_uniform",
         "version": "v1",
         "mode": "isotropic",
+        "quality_tier": "unmodeled_acceptance",
+        "mission_grade_ready": False,
         "calibration": None,
     }
 
 
 def _time_coverage_refinement(events: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Summarize time coverage quality for Stage 16 promotion-readiness checks."""
+    thresholds = {
+        "min_events_with_time": 20,
+        "min_time_span_mjd": 30.0,
+        "min_occupancy_fraction": 0.50,
+        "target_confirmatory_span_mjd": 365.0,
+        "target_confirmatory_occupancy_fraction": 0.75,
+        "max_missing_time_fraction": 0.20,
+    }
     times = []
     for e in events:
         t = e.get("arrival_time")
@@ -213,6 +225,14 @@ def _time_coverage_refinement(events: List[Dict[str, Any]]) -> Dict[str, Any]:
             "occupancy_fraction": 0.0,
             "uniformity_cv": None,
             "quality_tier": "insufficient",
+            "thresholds": thresholds,
+            "threshold_pass": {
+                "events_with_time": False,
+                "time_span": False,
+                "occupancy_fraction": False,
+                "missing_time_fraction": n_events == 0,
+            },
+            "confirmatory_readiness": "not_ready",
         }
 
     t_min = min(times)
@@ -235,12 +255,23 @@ def _time_coverage_refinement(events: List[Dict[str, Any]]) -> Dict[str, Any]:
 
     missing_frac = 1.0 - (n_with_time / n_events) if n_events else 0.0
     occupancy_fraction = occupied_bins / bin_count if bin_count else 0.0
-    if n_with_time < 20 or span < 30.0 or occupancy_fraction < 0.5:
+    threshold_pass = {
+        "events_with_time": n_with_time >= thresholds["min_events_with_time"],
+        "time_span": span >= thresholds["min_time_span_mjd"],
+        "occupancy_fraction": occupancy_fraction >= thresholds["min_occupancy_fraction"],
+        "missing_time_fraction": missing_frac <= thresholds["max_missing_time_fraction"],
+    }
+    if not all(threshold_pass.values()):
         tier = "insufficient"
     elif uniformity_cv is not None and uniformity_cv > 1.25:
         tier = "limited"
     else:
         tier = "acceptable"
+    confirmatory_ready = (
+        span >= thresholds["target_confirmatory_span_mjd"]
+        and occupancy_fraction >= thresholds["target_confirmatory_occupancy_fraction"]
+        and missing_frac <= thresholds["max_missing_time_fraction"]
+    )
 
     return {
         "n_events": n_events,
@@ -252,6 +283,9 @@ def _time_coverage_refinement(events: List[Dict[str, Any]]) -> Dict[str, Any]:
         "occupancy_fraction": occupancy_fraction,
         "uniformity_cv": uniformity_cv,
         "quality_tier": tier,
+        "thresholds": thresholds,
+        "threshold_pass": threshold_pass,
+        "confirmatory_readiness": "ready" if confirmatory_ready else "not_ready",
     }
 
 
@@ -280,6 +314,15 @@ def _mission_grade_promotion_blockers(
             "detail": (
                 "Time coverage quality is not yet mission-grade for confirmatory "
                 "promotion; improve span/occupancy uniformity documentation or model."
+            ),
+        })
+    if time_coverage.get("confirmatory_readiness") != "ready":
+        blockers.append({
+            "id": "confirmatory_time_readiness_not_met",
+            "severity": "medium",
+            "detail": (
+                "Time-coverage confirmatory thresholds are not met "
+                "(span/occupancy/missingness)."
             ),
         })
 
