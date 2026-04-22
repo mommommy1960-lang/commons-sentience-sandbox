@@ -1,0 +1,26 @@
+{
+  "catalog_label": "fermi",
+  "version": "v1",
+  "source_type": "empirical_proxy",
+  "creation_date": "2026-04-22",
+  "notes": "Empirical proxy histogram from Fermi-LAT GRB catalog spatial distribution. Not instrument-response-corrected.",
+  "is_synthetic": false,
+  "non_synthetic_source": true,
+  "minimum_event_count_present": true,
+  "sufficient_observation_window": false,
+  "explicit_provenance_documented": true,
+  "bounded_caveats_documented": true,
+  "instrument_response_modeled": false,
+  "livetime_validated": false,
+  "sky_coverage_assessed": false,
+  "missing_requirements_for_analysis_candidate": [
+    "sufficient_observation_window"
+  ],
+  "missing_requirements_for_analysis_grade": [
+    "sufficient_observation_window",
+    "instrument_response_modeled",
+    "livetime_validated",
+    "sky_coverage_assessed"
+  ],
+  "derived_quality_tier": "partial_data_derived"
+}

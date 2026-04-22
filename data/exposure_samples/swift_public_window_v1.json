@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "label": "swift",
+    "version": "v1",
+    "quality_tier": "partial_data_derived",
+    "source": "synthetic proxy derived from Swift BAT3 catalog temporal distribution",
+    "created": "2026-04-22",
+    "warning": "Not real Swift BAT livetime data; proxy only"
+  },
+  "windows": [
+    {"window_id": "SW0001", "start_mjd": 53000.0, "stop_mjd": 53060.0, "coverage_fraction": 0.85, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0002", "start_mjd": 53060.0, "stop_mjd": 53120.0, "coverage_fraction": 0.88, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0003", "start_mjd": 53120.0, "stop_mjd": 53180.0, "coverage_fraction": 0.83, "gap_flag": 1, "notes": "proxy"},
+    {"window_id": "SW0004", "start_mjd": 53180.0, "stop_mjd": 53240.0, "coverage_fraction": 0.90, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0005", "start_mjd": 53240.0, "stop_mjd": 53300.0, "coverage_fraction": 0.87, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0006", "start_mjd": 53300.0, "stop_mjd": 53360.0, "coverage_fraction": 0.84, "gap_flag": 1, "notes": "proxy"},
+    {"window_id": "SW0007", "start_mjd": 53360.0, "stop_mjd": 53420.0, "coverage_fraction": 0.91, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0008", "start_mjd": 53420.0, "stop_mjd": 53480.0, "coverage_fraction": 0.86, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0009", "start_mjd": 53480.0, "stop_mjd": 53540.0, "coverage_fraction": 0.89, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0010", "start_mjd": 53540.0, "stop_mjd": 53600.0, "coverage_fraction": 0.82, "gap_flag": 1, "notes": "proxy"},
+    {"window_id": "SW0011", "start_mjd": 53600.0, "stop_mjd": 53660.0, "coverage_fraction": 0.92, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0012", "start_mjd": 53660.0, "stop_mjd": 53720.0, "coverage_fraction": 0.87, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0013", "start_mjd": 53720.0, "stop_mjd": 53780.0, "coverage_fraction": 0.85, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0014", "start_mjd": 53780.0, "stop_mjd": 53840.0, "coverage_fraction": 0.88, "gap_flag": 1, "notes": "proxy"},
+    {"window_id": "SW0015", "start_mjd": 53840.0, "stop_mjd": 53900.0, "coverage_fraction": 0.91, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0016", "start_mjd": 53900.0, "stop_mjd": 53960.0, "coverage_fraction": 0.84, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0017", "start_mjd": 53960.0, "stop_mjd": 54020.0, "coverage_fraction": 0.90, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0018", "start_mjd": 54020.0, "stop_mjd": 54080.0, "coverage_fraction": 0.86, "gap_flag": 1, "notes": "proxy"},
+    {"window_id": "SW0019", "start_mjd": 54080.0, "stop_mjd": 54140.0, "coverage_fraction": 0.93, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0020", "start_mjd": 54140.0, "stop_mjd": 54200.0, "coverage_fraction": 0.87, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0021", "start_mjd": 54200.0, "stop_mjd": 54260.0, "coverage_fraction": 0.83, "gap_flag": 1, "notes": "proxy"},
+    {"window_id": "SW0022", "start_mjd": 54260.0, "stop_mjd": 54320.0, "coverage_fraction": 0.89, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0023", "start_mjd": 54320.0, "stop_mjd": 54380.0, "coverage_fraction": 0.92, "gap_flag": 0, "notes": "proxy"},
+    {"window_id": "SW0024", "start_mjd": 54380.0, "stop_mjd": 54440.0, "coverage_fraction": 0.85, "gap_flag": 0, "notes": "proxy"}
+  ]
+}

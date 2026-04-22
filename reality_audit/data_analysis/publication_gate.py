@@ -44,6 +44,14 @@ import json
 import os
 from typing import Any, Dict, List, Optional
 
+from reality_audit.data_analysis.exposure_quality_tiers import (
+    TIER_NONE,
+    TIER_CANDIDATE,
+    TIER_ORDER,
+    worst_tier as _worst_tier,
+    best_tier as _best_tier,
+)
+
 _HERE      = os.path.dirname(os.path.abspath(__file__))
 _REPO_ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
 
@@ -102,6 +110,73 @@ def load_publication_gate(path: Optional[str] = None) -> Dict[str, Any]:
 # ===========================================================================
 # 2. Evaluate
 # ===========================================================================
+
+def evaluate_exposure_quality_for_gate(
+    catalogs: List[Dict[str, Any]],
+) -> Dict[str, Any]:
+    """Assess exposure quality tier for each catalog and return a summary dict.
+
+    Parameters
+    ----------
+    catalogs : list[dict]
+        Catalog metadata dicts (each entry from the run_metadata "catalogs" list).
+
+    Returns
+    -------
+    dict with keys:
+      - worst_exposure_quality_tier        : str
+      - any_catalog_at_analysis_candidate  : bool
+      - tier_by_catalog                    : dict[str, str]
+      - notes                              : list[str]
+    """
+    tier_by_catalog: Dict[str, str] = {}
+
+    for cat in catalogs:
+        label = (cat.get("catalog") or cat.get("label") or "unknown").lower()
+        tier = cat.get("exposure_quality_tier")
+        if not tier:
+            try:
+                from reality_audit.data_analysis.mission_calibration_loader import (
+                    load_calibration_product,
+                )
+                result = load_calibration_product(label)
+                tier = result.get("exposure_quality_tier", TIER_NONE)
+            except Exception:
+                tier = TIER_NONE
+        tier_by_catalog[label] = tier or TIER_NONE
+
+    all_tiers = list(tier_by_catalog.values()) or [TIER_NONE]
+    _worst = _worst_tier(all_tiers)
+    _cand_idx = TIER_ORDER.index(TIER_CANDIDATE)
+    any_at_candidate = any(
+        TIER_ORDER.index(t) >= _cand_idx for t in all_tiers
+    )
+
+    notes: List[str] = []
+    synthetic = [l for l, t in tier_by_catalog.items() if t == "synthetic_sample"]
+    partial   = [l for l, t in tier_by_catalog.items() if t == "partial_data_derived"]
+    candidate = [l for l, t in tier_by_catalog.items() if t == "analysis_candidate"]
+    grade     = [l for l, t in tier_by_catalog.items() if t == "analysis_grade"]
+    none_cat  = [l for l, t in tier_by_catalog.items() if t == TIER_NONE]
+
+    if synthetic:
+        notes.append(f"synthetic sample only: {synthetic}")
+    if partial:
+        notes.append(f"partial derived exposure: {partial}")
+    if candidate:
+        notes.append(f"analysis-candidate exposure: {candidate}")
+    if grade:
+        notes.append(f"analysis-grade exposure: {grade}")
+    if none_cat:
+        notes.append(f"no exposure data (tier=none): {none_cat}")
+
+    return {
+        "worst_exposure_quality_tier":       _worst,
+        "any_catalog_at_analysis_candidate": any_at_candidate,
+        "tier_by_catalog":                   tier_by_catalog,
+        "notes":                             notes,
+    }
+
 
 def evaluate_publication_gate(
     run_metadata: Dict[str, Any],
@@ -275,6 +350,25 @@ def evaluate_publication_gate(
           else "IceCube catalog present but no small-N caveat found.")
 
     # -----------------------------------------------------------------------
+    # Gate: exposure_quality_documented (recommended)
+    # -----------------------------------------------------------------------
+    eq_summary = evaluate_exposure_quality_for_gate(catalogs)
+    # A tier is considered undocumented only if the value is literally None
+    # (which evaluate_exposure_quality_for_gate never emits — it defaults to
+    # TIER_NONE = "none" — but we guard defensively against future changes).
+    undocumented = [
+        label for label, tier in eq_summary["tier_by_catalog"].items()
+        if tier is None or tier == ""
+    ]
+    _gate(
+        "exposure_quality_documented",
+        not undocumented,
+        "All catalogs have an explicit exposure quality tier (even if 'none')."
+        if not undocumented
+        else f"Catalogs with undocumented exposure quality: {undocumented}",
+    )
+
+    # -----------------------------------------------------------------------
     # Derive readiness verdict
     # -----------------------------------------------------------------------
     required_fails = [g["id"] for g in gate_results
@@ -307,6 +401,12 @@ def evaluate_publication_gate(
         "failing_recommended": recommended_fails,
         "notes": notes,
         "generated_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "exposure_quality_summary": {
+            "worst_exposure_quality_tier":       eq_summary["worst_exposure_quality_tier"],
+            "any_catalog_at_analysis_candidate": eq_summary["any_catalog_at_analysis_candidate"],
+            "tier_by_catalog":                   eq_summary["tier_by_catalog"],
+            "notes":                             eq_summary["notes"],
+        },
     }
 
 

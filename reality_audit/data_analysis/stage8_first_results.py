@@ -152,6 +152,55 @@ def _evaluate_preregistration_match(
         "plan_locked": bool(plan.get("_locked", False)),
     }
 
+
+def _confirmatory_readiness_assessment(
+    run_mode: str,
+    prereg_match: Dict[str, Any],
+    mission_blockers: Optional[Dict[str, Any]],
+    time_coverage: Optional[Dict[str, Any]],
+) -> Dict[str, Any]:
+    """Combine Stage 16 blockers + prereg status into a confirmatory readiness label."""
+    if run_mode != "preregistered_confirmatory":
+        return {
+            "requested_mode": run_mode,
+            "status": "exploratory_mode",
+            "ready_for_confirmatory_promotion": False,
+            "reason": "run_mode_is_not_confirmatory",
+        }
+
+    if not prereg_match.get("matches_locked_plan"):
+        return {
+            "requested_mode": run_mode,
+            "status": "not_ready",
+            "ready_for_confirmatory_promotion": False,
+            "reason": "preregistration_mismatch",
+        }
+
+    blockers = (mission_blockers or {}).get("blockers", [])
+    if blockers:
+        return {
+            "requested_mode": run_mode,
+            "status": "not_ready",
+            "ready_for_confirmatory_promotion": False,
+            "reason": "mission_grade_blockers_present",
+            "blocker_ids": [b.get("id") for b in blockers if isinstance(b, dict)],
+        }
+
+    if (time_coverage or {}).get("confirmatory_readiness") != "ready":
+        return {
+            "requested_mode": run_mode,
+            "status": "not_ready",
+            "ready_for_confirmatory_promotion": False,
+            "reason": "time_coverage_thresholds_not_met",
+        }
+
+    return {
+        "requested_mode": run_mode,
+        "status": "ready",
+        "ready_for_confirmatory_promotion": True,
+        "reason": "all_confirmatory_checks_passed",
+    }
+
 # ---------------------------------------------------------------------------
 # Known real catalog filenames (in priority order)
 # ---------------------------------------------------------------------------
@@ -461,6 +510,12 @@ def run_stage8_first_results(
     study_rm["preregistration_match"] = prereg_match
     study_rm["run_mode"] = run_label
     study_rm["stage"] = "stage8_first_results"
+    study_rm["confirmatory_readiness"] = _confirmatory_readiness_assessment(
+        run_mode=run_mode,
+        prereg_match=prereg_match,
+        mission_blockers=study_rm.get("mission_grade_promotion_blockers"),
+        time_coverage=study_rm.get("time_coverage_refinement"),
+    )
 
     # --- Write Stage 7 study artifacts ---
     study_manifest = write_public_study_artifacts(
@@ -493,6 +548,10 @@ def run_stage8_first_results(
             "plots":        plots,
             "save_normalized": save_normalized,
             "null_mode":    null_mode,
+            "exposure_model": study_rm.get("exposure_model"),
+            "time_coverage_refinement": study_rm.get("time_coverage_refinement"),
+            "mission_grade_promotion_blockers": study_rm.get("mission_grade_promotion_blockers"),
+            "confirmatory_readiness": study_rm.get("confirmatory_readiness"),
             "trial_factor_correction": {
                 "method": mtc_method,
                 "n_tests": correction.get("n_tests"),

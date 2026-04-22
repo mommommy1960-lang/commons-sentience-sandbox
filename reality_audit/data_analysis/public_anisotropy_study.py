@@ -167,6 +167,182 @@ def _generate_trial_axes(
 _AXES_48: List[Tuple[float, float, float]] = _build_48_axes()
 
 
+def _null_model_metadata(
+    null_mode: str,
+    exposure_map: Optional[Dict[str, Any]] = None,
+) -> Dict[str, Any]:
+    """Return machine-readable null-model metadata for manifests/reports."""
+    if null_mode == "exposure_corrected":
+        em = (exposure_map or {}).get("exposure_model", {})
+        return {
+            "name": em.get("name", "empirical_proxy_histogram"),
+            "version": em.get("version", "v1"),
+            "mode": "exposure_corrected",
+            "quality_tier": "proxy_only",
+            "mission_grade_ready": False,
+            "calibration": em.get("calibration"),
+        }
+    return {
+        "name": "isotropic_uniform",
+        "version": "v1",
+        "mode": "isotropic",
+        "quality_tier": "unmodeled_acceptance",
+        "mission_grade_ready": False,
+        "calibration": None,
+    }
+
+
+def _time_coverage_refinement(events: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Summarize time coverage quality for Stage 16 promotion-readiness checks."""
+    thresholds = {
+        "min_events_with_time": 20,
+        "min_time_span_mjd": 30.0,
+        "min_occupancy_fraction": 0.50,
+        "target_confirmatory_span_mjd": 365.0,
+        "target_confirmatory_occupancy_fraction": 0.75,
+        "max_missing_time_fraction": 0.20,
+    }
+    times = []
+    for e in events:
+        t = e.get("arrival_time")
+        if t is None:
+            continue
+        try:
+            times.append(float(t))
+        except (TypeError, ValueError):
+            continue
+
+    n_events = len(events)
+    n_with_time = len(times)
+    if not times:
+        return {
+            "n_events": n_events,
+            "n_with_time": 0,
+            "missing_time_fraction": 1.0 if n_events else 0.0,
+            "time_span_mjd": None,
+            "bin_count": 0,
+            "occupied_bins": 0,
+            "occupancy_fraction": 0.0,
+            "uniformity_cv": None,
+            "quality_tier": "insufficient",
+            "thresholds": thresholds,
+            "threshold_pass": {
+                "events_with_time": False,
+                "time_span": False,
+                "occupancy_fraction": False,
+                "missing_time_fraction": n_events == 0,
+            },
+            "confirmatory_readiness": "not_ready",
+        }
+
+    t_min = min(times)
+    t_max = max(times)
+    span = max(0.0, t_max - t_min)
+    bin_count = 12
+    if span <= 0.0:
+        occupied_bins = 1
+        uniformity_cv = None
+    else:
+        bins = [0] * bin_count
+        for t in times:
+            idx = int((t - t_min) / span * bin_count)
+            idx = max(0, min(bin_count - 1, idx))
+            bins[idx] += 1
+        occupied_bins = sum(1 for b in bins if b > 0)
+        mean = sum(bins) / len(bins)
+        var = sum((b - mean) ** 2 for b in bins) / len(bins)
+        uniformity_cv = (math.sqrt(var) / mean) if mean > 0 else None
+
+    missing_frac = 1.0 - (n_with_time / n_events) if n_events else 0.0
+    occupancy_fraction = occupied_bins / bin_count if bin_count else 0.0
+    threshold_pass = {
+        "events_with_time": n_with_time >= thresholds["min_events_with_time"],
+        "time_span": span >= thresholds["min_time_span_mjd"],
+        "occupancy_fraction": occupancy_fraction >= thresholds["min_occupancy_fraction"],
+        "missing_time_fraction": missing_frac <= thresholds["max_missing_time_fraction"],
+    }
+    if not all(threshold_pass.values()):
+        tier = "insufficient"
+    elif uniformity_cv is not None and uniformity_cv > 1.25:
+        tier = "limited"
+    else:
+        tier = "acceptable"
+    confirmatory_ready = (
+        span >= thresholds["target_confirmatory_span_mjd"]
+        and occupancy_fraction >= thresholds["target_confirmatory_occupancy_fraction"]
+        and missing_frac <= thresholds["max_missing_time_fraction"]
+    )
+
+    return {
+        "n_events": n_events,
+        "n_with_time": n_with_time,
+        "missing_time_fraction": missing_frac,
+        "time_span_mjd": span,
+        "bin_count": bin_count,
+        "occupied_bins": occupied_bins,
+        "occupancy_fraction": occupancy_fraction,
+        "uniformity_cv": uniformity_cv,
+        "quality_tier": tier,
+        "thresholds": thresholds,
+        "threshold_pass": threshold_pass,
+        "confirmatory_readiness": "ready" if confirmatory_ready else "not_ready",
+    }
+
+
+def _mission_grade_promotion_blockers(
+    null_mode: str,
+    exposure_model: Dict[str, Any],
+    time_coverage: Dict[str, Any],
+) -> Dict[str, Any]:
+    """Return structured blocker list for Stage 16 mission-grade promotion."""
+    blockers: List[Dict[str, str]] = []
+
+    if null_mode == "exposure_corrected":
+        blockers.append({
+            "id": "exposure_empirical_proxy",
+            "severity": "high",
+            "detail": (
+                "Exposure null is still empirical proxy-derived; promote only after "
+                "response-informed exposure model integration."
+            ),
+        })
+
+    if time_coverage.get("quality_tier") in ("insufficient", "limited"):
+        blockers.append({
+            "id": "time_coverage_refinement_required",
+            "severity": "medium",
+            "detail": (
+                "Time coverage quality is not yet mission-grade for confirmatory "
+                "promotion; improve span/occupancy uniformity documentation or model."
+            ),
+        })
+    if time_coverage.get("confirmatory_readiness") != "ready":
+        blockers.append({
+            "id": "confirmatory_time_readiness_not_met",
+            "severity": "medium",
+            "detail": (
+                "Time-coverage confirmatory thresholds are not met "
+                "(span/occupancy/missingness)."
+            ),
+        })
+
+    if exposure_model.get("mode") == "isotropic":
+        blockers.append({
+            "id": "instrument_acceptance_not_modeled",
+            "severity": "high",
+            "detail": (
+                "Isotropic null does not include instrument acceptance geometry; "
+                "limit claims to exploratory scope unless justified."
+            ),
+        })
+
+    return {
+        "status": "blocked" if blockers else "eligible_for_review",
+        "blocker_count": len(blockers),
+        "blockers": blockers,
+    }
+
+
 def scan_trial_axes(
     events: List[Dict[str, Any]],
     num_axes: int = 48,
@@ -420,6 +596,13 @@ def run_public_anisotropy_study(
     }
 
     signal_eval = _evaluate_signal_strength(null_comparison)
+    exposure_model_meta = _null_model_metadata(null_mode, exposure_map)
+    time_coverage = _time_coverage_refinement(events)
+    promotion_blockers = _mission_grade_promotion_blockers(
+        null_mode=null_mode,
+        exposure_model=exposure_model_meta,
+        time_coverage=time_coverage,
+    )
 
     return {
         "event_count":           len(events),
@@ -468,6 +651,9 @@ def run_public_anisotropy_study(
             "healpix_nside":     healpix_nside,
             "axis_plan":         axis_scan_obs.get("axis_plan"),
             "null_mode":         null_mode,
+            "exposure_model":    exposure_model_meta,
+            "time_coverage_refinement": time_coverage,
+            "mission_grade_promotion_blockers": promotion_blockers,
             "exposure_map_desc": exposure_map_desc,
             "timestamp":         datetime.datetime.utcnow().isoformat() + "Z",
         },

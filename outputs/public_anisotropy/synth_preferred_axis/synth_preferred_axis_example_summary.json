@@ -1,7 +1,7 @@
 {
   "experiment": "synth_preferred_axis_example",
   "catalog": "synthetic_preferred_axis",
-  "written_at": "2026-04-21T16:38:58.381844Z",
+  "written_at": "2026-04-22T19:31:46.560367Z",
   "results": {
     "event_count": 300,
     "events_with_energy": 300,
@@ -87,7 +87,15 @@
         0.027277465651922177,
         0.0306785911100491
       ],
-      "num_axes": 48
+      "num_axes": 48,
+      "axis_plan": {
+        "mode": "coarse",
+        "implemented": true,
+        "message": "Legacy 48-axis grid (deterministic).",
+        "planned_healpix_nside": null,
+        "planned_healpix_npix": null,
+        "seed": 42
+      }
     },
     "energy_time_correlation": {
       "pearson_r": -0.051854222207814465,
@@ -124,9 +132,64 @@
       "seed": 42,
       "null_repeats": 50,
       "num_axes": 48,
+      "axis_mode": "auto",
+      "healpix_nside": null,
+      "axis_plan": {
+        "mode": "coarse",
+        "implemented": true,
+        "message": "Legacy 48-axis grid (deterministic).",
+        "planned_healpix_nside": null,
+        "planned_healpix_npix": null,
+        "seed": 42
+      },
       "null_mode": "isotropic",
+      "exposure_model": {
+        "name": "isotropic_uniform",
+        "version": "v1",
+        "mode": "isotropic",
+        "quality_tier": "unmodeled_acceptance",
+        "mission_grade_ready": false,
+        "calibration": null
+      },
+      "time_coverage_refinement": {
+        "n_events": 300,
+        "n_with_time": 300,
+        "missing_time_fraction": 0.0,
+        "time_span_mjd": 993.357514999996,
+        "bin_count": 12,
+        "occupied_bins": 12,
+        "occupancy_fraction": 1.0,
+        "uniformity_cv": 0.1423610433604175,
+        "quality_tier": "acceptable",
+        "thresholds": {
+          "min_events_with_time": 20,
+          "min_time_span_mjd": 30.0,
+          "min_occupancy_fraction": 0.5,
+          "target_confirmatory_span_mjd": 365.0,
+          "target_confirmatory_occupancy_fraction": 0.75,
+          "max_missing_time_fraction": 0.2
+        },
+        "threshold_pass": {
+          "events_with_time": true,
+          "time_span": true,
+          "occupancy_fraction": true,
+          "missing_time_fraction": true
+        },
+        "confirmatory_readiness": "ready"
+      },
+      "mission_grade_promotion_blockers": {
+        "status": "blocked",
+        "blocker_count": 1,
+        "blockers": [
+          {
+            "id": "instrument_acceptance_not_modeled",
+            "severity": "high",
+            "detail": "Isotropic null does not include instrument acceptance geometry; limit claims to exploratory scope unless justified."
+          }
+        ]
+      },
       "exposure_map_desc": null,
-      "timestamp": "2026-04-21T16:38:58.381640Z"
+      "timestamp": "2026-04-22T19:31:46.560249Z"
     }
   },
   "coverage": {

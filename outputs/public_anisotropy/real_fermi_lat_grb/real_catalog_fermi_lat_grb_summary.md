@@ -1,7 +1,7 @@
 # Public Anisotropy Study: real_catalog_fermi_lat_grb
 
-**Catalog:** /workspaces/commons-sentience-sandbox/data/real/fermi_lat_grb_catalog.csv  
-**Generated:** 2026-04-21T16:39:26.687270Z  
+**Catalog:** /home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/data/real/fermi_lat_grb_catalog.csv  
+**Generated:** 2026-04-22T19:32:05.054781Z  
 **Events:** 3000  
 **Signal tier:** `strong_anomaly_like_deviation`  
 **Max percentile:** 1.0000

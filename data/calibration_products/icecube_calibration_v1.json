@@ -1,0 +1,39 @@
+{
+  "catalog_label": "icecube",
+  "version": "v1",
+  "source_type": "synthetic",
+  "creation_date": "2026-04-22",
+  "notes": "IceCube HESE does not have public livetime or instrument-response data available to this pipeline. Exposure correction is not applicable. Analysis uses isotropic null.",
+  "is_synthetic": false,
+  "non_synthetic_source": false,
+  "minimum_event_count_present": false,
+  "sufficient_observation_window": false,
+  "explicit_provenance_documented": false,
+  "bounded_caveats_documented": false,
+  "instrument_response_modeled": false,
+  "livetime_validated": false,
+  "sky_coverage_assessed": false,
+  "missing_requirements_for_analysis_candidate": [
+    "non_synthetic_source",
+    "minimum_event_count_present",
+    "sufficient_observation_window",
+    "explicit_provenance_documented",
+    "bounded_caveats_documented"
+  ],
+  "missing_requirements_for_analysis_grade": [
+    "non_synthetic_source",
+    "minimum_event_count_present",
+    "sufficient_observation_window",
+    "explicit_provenance_documented",
+    "bounded_caveats_documented",
+    "instrument_response_modeled",
+    "livetime_validated",
+    "sky_coverage_assessed"
+  ],
+  "derived_quality_tier": "none",
+  "blockers": [
+    "no_public_livetime_data",
+    "isotropic_null_required",
+    "no_instrument_response_available"
+  ]
+}

@@ -75,6 +75,12 @@
       "severity": "recommended",
       "description": "IceCube HESE small-N limitation is acknowledged in any result using that catalog.",
       "detail": "IceCube HESE has ~37 events; the result is exploratory regardless of percentile."
+    },
+    {
+      "id": "exposure_quality_documented",
+      "severity": "recommended",
+      "description": "Each catalog has an explicit exposure quality tier recorded (even if 'none').",
+      "detail": "Exposure quality tier documents the provenance and limitations of the exposure model used. Any tier — including 'none' — is acceptable as long as it is explicitly documented."
     }
   ],
 
