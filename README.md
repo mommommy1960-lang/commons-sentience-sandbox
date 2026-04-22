@@ -2164,3 +2164,54 @@ python scripts/run_stage14_confirmatory_comparison.py
 
 - `docs/REALITY_AUDIT_STAGE14_STATUS.md`
 - `docs/REALITY_AUDIT_STAGE14_TEMPLATE.md`
+
+---
+
+## Stage 15: Plain-English Diagnosis and Collaborator Reporting
+
+Stage 15 adds a communication and repository-diagnosis layer on top of the
+completed Stage 7-14 analysis stack. It does not replace scientific modules or
+re-run confirmatory analysis by default; it summarizes the current repository
+state in plain language for collaborators.
+
+### What Stage 15 adds
+
+- **Plain-English report**: `docs/REALITY_AUDIT_PLAIN_ENGLISH_REPORT.md`
+- **Capability map**: `docs/REALITY_AUDIT_CAPABILITY_MAP.md`
+- **One-page handout**: `docs/REALITY_AUDIT_ONE_PAGE_HANDOUT.md`
+- **Double-slit validation report**: `docs/DOUBLE_SLIT_VALIDATION_REPORT.md`
+- **Repository diagnosis runner**: `reality_audit/data_analysis/run_stage15_repo_diagnosis.py`
+- **Convenience wrapper**: `scripts/run_stage15_repo_diagnosis.py`
+- **Double-slit diagnostics runner**: `reality_audit/data_analysis/run_double_slit_diagnostics.py`
+- **Stage 15 tests**: `tests/test_stage15_repo_diagnosis.py`
+- **Double-slit diagnostics tests**: `tests/test_double_slit_validation.py`
+
+### Run Stage 15 diagnosis
+
+```bash
+python reality_audit/data_analysis/run_stage15_repo_diagnosis.py
+# or
+python scripts/run_stage15_repo_diagnosis.py
+
+# Double-slit validation diagnostics
+python reality_audit/data_analysis/run_double_slit_diagnostics.py
+```
+
+### Stage 15 outputs
+
+Default output layout:
+
+- `outputs/stage15_repo_diagnosis/stage15_main/stage15_repo_diagnosis.json`
+- `outputs/stage15_repo_diagnosis/stage15_main/stage15_repo_diagnosis.md`
+- `outputs/stage15_repo_diagnosis/stage15_main/stage15_repo_diagnosis_manifest.json`
+
+### Stage 15 status docs
+
+- `docs/REALITY_AUDIT_STAGE15_STATUS.md`
+- `docs/REALITY_AUDIT_STAGE15_TEMPLATE.md`
+
+### Stage 15 caveat
+
+Stage 15 is an internal diagnosis/reporting layer. It is not a discovery claim,
+does not prove metaphysical conclusions, and does not override publication-gate
+or external-review requirements.
