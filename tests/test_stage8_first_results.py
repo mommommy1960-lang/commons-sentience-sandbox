@@ -246,6 +246,26 @@ class TestRunStage8FirstResults(unittest.TestCase):
             )
             self.assertIsNone(bundle.get("normalised_path"))
 
+    def test_stage16_refinement_metadata_surfaces_in_run_metadata(self):
+        with tempfile.TemporaryDirectory() as catalog_dir, \
+             tempfile.TemporaryDirectory() as out_dir:
+            cat_path = self._make_catalog(catalog_dir, n=40)
+            bundle = run_stage8_first_results(
+                input_path=cat_path,
+                output_dir=out_dir,
+                name="test_stage16_meta",
+                null_repeats=5,
+                axis_count=12,
+                seed=7,
+                plots=False,
+                save_normalized=False,
+                null_mode="exposure_corrected",
+            )
+            rm = bundle.get("run_metadata", {})
+            self.assertIn("exposure_model", rm)
+            self.assertIn("time_coverage_refinement", rm)
+            self.assertIn("mission_grade_promotion_blockers", rm)
+
 
 # ===========================================================================
 # 3. Memo creation

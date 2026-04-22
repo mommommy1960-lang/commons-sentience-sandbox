@@ -1,7 +1,7 @@
 {
   "experiment": "synth_preferred_axis_example",
   "catalog": "synthetic_preferred_axis",
-  "written_at": "2026-04-22T18:30:24.356719Z",
+  "written_at": "2026-04-22T18:33:39.572166Z",
   "results": {
     "event_count": 300,
     "events_with_energy": 300,
@@ -143,8 +143,36 @@
         "seed": 42
       },
       "null_mode": "isotropic",
+      "exposure_model": {
+        "name": "isotropic_uniform",
+        "version": "v1",
+        "mode": "isotropic",
+        "calibration": null
+      },
+      "time_coverage_refinement": {
+        "n_events": 300,
+        "n_with_time": 300,
+        "missing_time_fraction": 0.0,
+        "time_span_mjd": 993.357514999996,
+        "bin_count": 12,
+        "occupied_bins": 12,
+        "occupancy_fraction": 1.0,
+        "uniformity_cv": 0.1423610433604175,
+        "quality_tier": "acceptable"
+      },
+      "mission_grade_promotion_blockers": {
+        "status": "blocked",
+        "blocker_count": 1,
+        "blockers": [
+          {
+            "id": "instrument_acceptance_not_modeled",
+            "severity": "high",
+            "detail": "Isotropic null does not include instrument acceptance geometry; limit claims to exploratory scope unless justified."
+          }
+        ]
+      },
       "exposure_map_desc": null,
-      "timestamp": "2026-04-22T18:30:24.356613Z"
+      "timestamp": "2026-04-22T18:33:39.572047Z"
     }
   },
   "coverage": {

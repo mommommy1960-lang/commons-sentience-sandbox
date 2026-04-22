@@ -1,7 +1,7 @@
 {
   "experiment": "synth_preferred_axis_example",
   "catalog": "synthetic_preferred_axis",
-  "written_at": "2026-04-22T18:30:24.356719Z",
+  "written_at": "2026-04-22T18:33:39.572166Z",
   "artifacts": {
     "json_summary": "outputs/public_anisotropy/synth_preferred_axis/synth_preferred_axis_example_summary.json",
     "csv_summary": "outputs/public_anisotropy/synth_preferred_axis/synth_preferred_axis_example_results.csv",

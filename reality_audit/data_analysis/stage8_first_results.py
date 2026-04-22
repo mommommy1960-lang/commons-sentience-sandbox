@@ -493,6 +493,9 @@ def run_stage8_first_results(
             "plots":        plots,
             "save_normalized": save_normalized,
             "null_mode":    null_mode,
+            "exposure_model": study_rm.get("exposure_model"),
+            "time_coverage_refinement": study_rm.get("time_coverage_refinement"),
+            "mission_grade_promotion_blockers": study_rm.get("mission_grade_promotion_blockers"),
             "trial_factor_correction": {
                 "method": mtc_method,
                 "n_tests": correction.get("n_tests"),

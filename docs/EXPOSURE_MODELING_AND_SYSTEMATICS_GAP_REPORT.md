@@ -23,6 +23,9 @@ improve before publication-grade claims.
 4. Confirmatory-mode metadata records preregistration match/mismatch context.
 5. Publication-gate structure prevents over-claiming when required controls are
    missing.
+6. Exposure-model calibration metadata and time-coverage refinement diagnostics
+   are now emitted in run metadata to make mission-grade promotion blockers
+   explicit and machine-readable.
 
 ## What Is Still Simplistic
 

@@ -1,7 +1,7 @@
 {
   "experiment": "real_catalog_fermi_lat_grb",
   "catalog": "/home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/data/real/fermi_lat_grb_catalog.csv",
-  "written_at": "2026-04-22T18:30:44.637378Z",
+  "written_at": "2026-04-22T18:34:00.364419Z",
   "results": {
     "event_count": 3000,
     "events_with_energy": 2999,
@@ -143,8 +143,36 @@
         "seed": 42
       },
       "null_mode": "isotropic",
+      "exposure_model": {
+        "name": "isotropic_uniform",
+        "version": "v1",
+        "mode": "isotropic",
+        "calibration": null
+      },
+      "time_coverage_refinement": {
+        "n_events": 3000,
+        "n_with_time": 3000,
+        "missing_time_fraction": 0.0,
+        "time_span_mjd": 6488.212099999997,
+        "bin_count": 12,
+        "occupied_bins": 12,
+        "occupancy_fraction": 1.0,
+        "uniformity_cv": 0.0732120208708925,
+        "quality_tier": "acceptable"
+      },
+      "mission_grade_promotion_blockers": {
+        "status": "blocked",
+        "blocker_count": 1,
+        "blockers": [
+          {
+            "id": "instrument_acceptance_not_modeled",
+            "severity": "high",
+            "detail": "Isotropic null does not include instrument acceptance geometry; limit claims to exploratory scope unless justified."
+          }
+        ]
+      },
       "exposure_map_desc": null,
-      "timestamp": "2026-04-22T18:30:44.636542Z"
+      "timestamp": "2026-04-22T18:34:00.363612Z"
     }
   },
   "coverage": {

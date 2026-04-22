@@ -134,6 +134,11 @@ class TestBuildExposureMap(unittest.TestCase):
         self.assertAlmostEqual(self.emap["dec_edges"][0],   -90.0)
         self.assertAlmostEqual(self.emap["dec_edges"][-1],   90.0)
 
+    def test_exposure_model_metadata_present(self):
+        model = self.emap.get("exposure_model", {})
+        self.assertEqual(model.get("name"), "empirical_proxy_histogram")
+        self.assertIn("calibration", model)
+
 
 # ===========================================================================
 # 2. Weights sum to 1 and all positive
@@ -281,6 +286,18 @@ class TestGenerateEnsemble(unittest.TestCase):
         self.assertIn("weights", emap)
         self.assertIn("ra_bins", emap)
 
+    def test_configured_floor_value_propagates(self):
+        events = _make_events(40, seed=19)
+        _, emap = generate_exposure_corrected_null_ensemble(
+            events,
+            repeats=2,
+            seed=3,
+            config={"exposure_floor_value": 0.25, "exposure_calibration": "stage16_refine_v1"},
+        )
+        calib = emap.get("exposure_model", {}).get("calibration", {})
+        self.assertEqual(calib.get("floor_value"), 0.25)
+        self.assertEqual(calib.get("name"), "stage16_refine_v1")
+
 
 # ===========================================================================
 # 8. describe_exposure_map — required keys
@@ -347,6 +364,10 @@ class TestPublicAnisotropyStudyNullMode(unittest.TestCase):
         )
         self.assertIn("null_comparison", result)
         self.assertEqual(result["null_comparison"]["null_mode"], "exposure_corrected")
+        rm = result.get("run_metadata", {})
+        self.assertIn("exposure_model", rm)
+        self.assertIn("time_coverage_refinement", rm)
+        self.assertIn("mission_grade_promotion_blockers", rm)
 
     def test_isotropic_mode_still_works(self):
         from reality_audit.data_analysis.public_anisotropy_study import (

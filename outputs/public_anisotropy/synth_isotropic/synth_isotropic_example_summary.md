@@ -1,7 +1,7 @@
 # Public Anisotropy Study: synth_isotropic_example
 
 **Catalog:** synthetic_isotropic  
-**Generated:** 2026-04-22T18:30:23.775464Z  
+**Generated:** 2026-04-22T18:33:38.983861Z  
 **Events:** 300  
 **Signal tier:** `no_anomaly_detected`  
 **Max percentile:** 0.6400

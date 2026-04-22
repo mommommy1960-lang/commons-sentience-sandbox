@@ -155,6 +155,12 @@ def run_stage14_comparison(
             result["trial_correction_method"] = tfc["method"]
         if rm.get("run_mode") and "run_mode" not in result:
             result["run_mode"] = rm["run_mode"]
+        if rm.get("exposure_model") and "exposure_model" not in result:
+            result["exposure_model"] = rm["exposure_model"]
+        if rm.get("time_coverage_refinement") and "time_coverage_refinement" not in result:
+            result["time_coverage_refinement"] = rm["time_coverage_refinement"]
+        if rm.get("mission_grade_promotion_blockers") and "mission_grade_promotion_blockers" not in result:
+            result["mission_grade_promotion_blockers"] = rm["mission_grade_promotion_blockers"]
         return result
 
     fermi    = _load(fermi_path,   "Fermi confirmatory summary")
