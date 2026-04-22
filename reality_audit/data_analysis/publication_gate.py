@@ -353,9 +353,12 @@ def evaluate_publication_gate(
     # Gate: exposure_quality_documented (recommended)
     # -----------------------------------------------------------------------
     eq_summary = evaluate_exposure_quality_for_gate(catalogs)
+    # A tier is considered undocumented only if the value is literally None
+    # (which evaluate_exposure_quality_for_gate never emits — it defaults to
+    # TIER_NONE = "none" — but we guard defensively against future changes).
     undocumented = [
         label for label, tier in eq_summary["tier_by_catalog"].items()
-        if tier is None
+        if tier is None or tier == ""
     ]
     _gate(
         "exposure_quality_documented",
