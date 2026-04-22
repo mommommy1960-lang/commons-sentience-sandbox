@@ -1,5 +1,5 @@
 {
-  "ingest_timestamp": "2026-04-22T19:05:09.699719Z",
+  "ingest_timestamp": "2026-04-22T19:28:45.878814Z",
   "experiment_name": "fermi_lat_grb_timing_delay_real_v1",
   "source_file": "/tmp/pytest-of-runner/pytest-0/test_complete_message_mentions0/real/grb_real.csv",
   "dry_run": false,

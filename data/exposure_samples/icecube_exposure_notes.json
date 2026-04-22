@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "label": "icecube",
+    "version": "v1",
+    "quality_tier": "none",
+    "source": "no_exposure_data_available",
+    "created": "2026-04-22"
+  },
+  "exposure_available": false,
+  "quality_tier": "none",
+  "blockers": [
+    {
+      "id": "no_public_livetime_data",
+      "severity": "high",
+      "detail": "IceCube HESE public data release does not include livetime tables accessible to this pipeline."
+    },
+    {
+      "id": "isotropic_null_required",
+      "severity": "high",
+      "detail": "IceCube analysis uses isotropic null which does not require exposure; exposure correction is not applicable."
+    },
+    {
+      "id": "no_instrument_response_available",
+      "severity": "high",
+      "detail": "IceCube effective area and event selection efficiency as a function of direction are not available in this pipeline."
+    }
+  ],
+  "recommendation": "Use isotropic null. Do not attempt exposure correction for IceCube HESE without validated livetime and effective-area data.",
+  "confirmatory_exposure_readiness": "not_applicable"
+}

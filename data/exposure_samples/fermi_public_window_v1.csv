@@ -1,0 +1,30 @@
+# Fermi-LAT public GRB observation window sample (v1)
+# Source: synthetic proxy derived from public catalog temporal distribution
+# Quality: partial_data_derived (synthetic temporal sampling, no real livetime)
+# Created: 2026-04-22
+# WARNING: These are not real Fermi-LAT livetime records
+window_id,start_mjd,stop_mjd,coverage_fraction,gap_flag,notes
+W0001,54832.0,54862.0,0.92,0,proxy
+W0002,54862.0,54892.0,0.88,0,proxy
+W0003,54892.0,54922.0,0.91,0,proxy
+W0004,54922.0,54952.0,0.87,1,proxy
+W0005,54952.0,54982.0,0.93,0,proxy
+W0006,54982.0,55012.0,0.90,0,proxy
+W0007,55012.0,55042.0,0.85,1,proxy
+W0008,55042.0,55072.0,0.89,0,proxy
+W0009,55072.0,55102.0,0.94,0,proxy
+W0010,55102.0,55132.0,0.86,0,proxy
+W0011,55132.0,55162.0,0.91,0,proxy
+W0012,55162.0,55192.0,0.88,1,proxy
+W0013,55192.0,55222.0,0.90,0,proxy
+W0014,55222.0,55252.0,0.87,0,proxy
+W0015,55252.0,55282.0,0.92,0,proxy
+W0016,55282.0,55312.0,0.85,1,proxy
+W0017,55312.0,55342.0,0.89,0,proxy
+W0018,55342.0,55372.0,0.93,0,proxy
+W0019,55372.0,55402.0,0.86,0,proxy
+W0020,55402.0,55432.0,0.91,0,proxy
+W0021,55432.0,55462.0,0.88,1,proxy
+W0022,55462.0,55492.0,0.90,0,proxy
+W0023,55492.0,55522.0,0.87,0,proxy
+W0024,55522.0,55562.0,0.92,0,proxy

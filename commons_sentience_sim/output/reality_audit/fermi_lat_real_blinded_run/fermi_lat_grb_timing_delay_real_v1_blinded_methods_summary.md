@@ -1,6 +1,6 @@
 # fermi_lat_grb_timing_delay_real_v1 — Methods Summary
 
-**Generated:** 2026-04-22T19:05:09.701985Z
+**Generated:** 2026-04-22T19:28:45.880946Z
 **Blinding status:** blinded
 
 ## Results

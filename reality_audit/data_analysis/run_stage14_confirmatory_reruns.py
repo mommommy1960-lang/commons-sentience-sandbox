@@ -206,6 +206,16 @@ def run_all_confirmatory(
         "catalogs": results,
         "all_succeeded": all(r["rc"] == 0 for r in results),
     }
+
+    # Add exposure quality summary
+    try:
+        from reality_audit.data_analysis.mission_calibration_loader import (
+            build_exposure_quality_summary_for_manifest,
+        )
+        manifest["exposure_quality"] = build_exposure_quality_summary_for_manifest()
+    except Exception as exc:
+        manifest["exposure_quality"] = {"error": str(exc), "load_status": "error"}
+
     manifest_path = os.path.join(output_base, "stage14_confirmatory_reruns_manifest.json")
     with open(manifest_path, "w") as fh:
         json.dump(manifest, fh, indent=2)
