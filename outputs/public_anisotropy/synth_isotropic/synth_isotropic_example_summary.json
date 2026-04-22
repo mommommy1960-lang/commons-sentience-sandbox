@@ -1,7 +1,7 @@
 {
   "experiment": "synth_isotropic_example",
   "catalog": "synthetic_isotropic",
-  "written_at": "2026-04-21T16:38:57.529653Z",
+  "written_at": "2026-04-22T19:01:08.385993Z",
   "results": {
     "event_count": 300,
     "events_with_energy": 300,
@@ -87,7 +87,15 @@
         0.01443426587397828,
         0.005294077395830279
       ],
-      "num_axes": 48
+      "num_axes": 48,
+      "axis_plan": {
+        "mode": "coarse",
+        "implemented": true,
+        "message": "Legacy 48-axis grid (deterministic).",
+        "planned_healpix_nside": null,
+        "planned_healpix_npix": null,
+        "seed": 42
+      }
     },
     "energy_time_correlation": {
       "pearson_r": -0.051854222207814465,
@@ -124,9 +132,19 @@
       "seed": 42,
       "null_repeats": 50,
       "num_axes": 48,
+      "axis_mode": "auto",
+      "healpix_nside": null,
+      "axis_plan": {
+        "mode": "coarse",
+        "implemented": true,
+        "message": "Legacy 48-axis grid (deterministic).",
+        "planned_healpix_nside": null,
+        "planned_healpix_npix": null,
+        "seed": 42
+      },
       "null_mode": "isotropic",
       "exposure_map_desc": null,
-      "timestamp": "2026-04-21T16:38:57.529417Z"
+      "timestamp": "2026-04-22T19:01:08.385874Z"
     }
   },
   "coverage": {
