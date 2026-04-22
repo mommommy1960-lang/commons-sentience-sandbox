@@ -10,6 +10,13 @@ Commons Sentience Sandbox is a research codebase with two connected parts:
 
 The central idea is disciplined testing, not dramatic interpretation.
 
+## Mission hierarchy (important)
+
+1. Primary mission: defensible real-data anomaly-analysis infrastructure.
+2. Secondary support: simulation/benchmark tools that validate methods.
+3. Future expansion: owned-lab precision experiments only after software and
+  analysis maturity.
+
 ## What the Reality Audit is
 
 The Reality Audit is a narrow, method-first analysis program. It asks whether
@@ -53,6 +60,9 @@ data.
 Important boundary: this is still a model benchmark, not a laboratory proof.
 It does not prove observer-caused collapse and does not prove reality is a
 simulation.
+
+Role in this project: this benchmark is supporting infrastructure for method
+validation. It does not define the repository's main scientific mission.
 
 ## What the simulation sandbox is
 
@@ -118,10 +128,11 @@ It does not prove:
 
 Near-term upgrades should prioritize:
 
-1. stronger instrument-response systematics controls,
-2. higher-power independent replication,
-3. continued locked-plan confirmatory discipline,
-4. external methodological review before wider circulation.
+1. stronger exposure and instrument-response systematics controls,
+2. HEALPix-grade spatial analysis infrastructure,
+3. larger independent datasets and replication power,
+4. continued locked-plan confirmatory discipline,
+5. external methodological review before wider circulation.
 
 ## Bottom line
 

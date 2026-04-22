@@ -2193,12 +2193,26 @@ It is used to validate analysis behavior under encoded coherence/decoherence
 assumptions. It is **not** framed as spontaneous discovery, does **not** prove
 observer-caused collapse, and does **not** prove that reality is a simulation.
 
+Mission hierarchy is explicit:
+
+1. **Primary**: real-data anomaly-analysis infrastructure and scientific discipline.
+2. **Secondary**: benchmark/simulation validation infrastructure.
+3. **Future**: owned-lab precision experiments only after software-analysis maturity.
+
 Primary mission focus remains the defensible analysis stack:
 
 1. stronger exposure/systematics modeling,
 2. higher-power independent datasets,
 3. confirmatory reruns under locked preregistration,
 4. external scientific review before escalation.
+
+### Stage 16 real-data readiness docs
+
+- `docs/STAGE16_REAL_DATA_PRIORITY_ROADMAP.md`
+- `docs/HEALPIX_AND_SPATIAL_ANALYSIS_READINESS.md`
+- `docs/EXPOSURE_MODELING_AND_SYSTEMATICS_GAP_REPORT.md`
+- `docs/CONFIRMATORY_RERUN_DISCIPLINE_PLAN.md`
+- `docs/EXTERNAL_REVIEW_READINESS_CHECKLIST.md`
 
 ### Run Stage 15 diagnosis
 
