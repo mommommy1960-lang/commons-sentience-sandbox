@@ -1,7 +1,7 @@
 {
   "experiment": "real_catalog_fermi_lat_grb",
-  "catalog": "/workspaces/commons-sentience-sandbox/data/real/fermi_lat_grb_catalog.csv",
-  "written_at": "2026-04-21T16:39:26.687270Z",
+  "catalog": "/home/runner/work/commons-sentience-sandbox/commons-sentience-sandbox/data/real/fermi_lat_grb_catalog.csv",
+  "written_at": "2026-04-22T18:30:44.637378Z",
   "results": {
     "event_count": 3000,
     "events_with_energy": 2999,
@@ -87,7 +87,15 @@
         0.23816268114263653,
         0.23807131022600156
       ],
-      "num_axes": 48
+      "num_axes": 48,
+      "axis_plan": {
+        "mode": "coarse",
+        "implemented": true,
+        "message": "Legacy 48-axis grid (deterministic).",
+        "planned_healpix_nside": null,
+        "planned_healpix_npix": null,
+        "seed": 42
+      }
     },
     "energy_time_correlation": {
       "pearson_r": 0.02010987986963195,
@@ -124,9 +132,19 @@
       "seed": 42,
       "null_repeats": 50,
       "num_axes": 48,
+      "axis_mode": "auto",
+      "healpix_nside": null,
+      "axis_plan": {
+        "mode": "coarse",
+        "implemented": true,
+        "message": "Legacy 48-axis grid (deterministic).",
+        "planned_healpix_nside": null,
+        "planned_healpix_npix": null,
+        "seed": 42
+      },
       "null_mode": "isotropic",
       "exposure_map_desc": null,
-      "timestamp": "2026-04-21T16:39:26.685649Z"
+      "timestamp": "2026-04-22T18:30:44.636542Z"
     }
   },
   "coverage": {
