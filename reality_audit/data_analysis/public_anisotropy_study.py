@@ -58,6 +58,9 @@ from reality_audit.data_analysis.simulation_signature_analysis import (
     TIER_MODERATE,
     TIER_STRONG,
 )
+from reality_audit.data_analysis.exposure_model_metadata import (
+    build_exposure_model_metadata,
+)
 
 # Exposure-corrected null (lazy import to avoid circular deps)
 def _get_exposure_null_module():
@@ -317,6 +320,11 @@ def run_public_anisotropy_study(
         )
         exposure_map_desc = ecn.describe_exposure_map(exposure_map)
 
+    exposure_model = build_exposure_model_metadata(
+        null_mode=null_mode,
+        exposure_map_desc=exposure_map_desc,
+    )
+
     rng_seed = seed if seed is not None else cfg.get("seed", None)
 
     # Collect field vectors
@@ -469,6 +477,7 @@ def run_public_anisotropy_study(
             "axis_plan":         axis_scan_obs.get("axis_plan"),
             "null_mode":         null_mode,
             "exposure_map_desc": exposure_map_desc,
+            "exposure_model":    exposure_model,
             "timestamp":         datetime.datetime.utcnow().isoformat() + "Z",
         },
     }

@@ -493,6 +493,8 @@ def run_stage8_first_results(
             "plots":        plots,
             "save_normalized": save_normalized,
             "null_mode":    null_mode,
+            "exposure_map_desc": study_rm.get("exposure_map_desc"),
+            "exposure_model": study_rm.get("exposure_model"),
             "trial_factor_correction": {
                 "method": mtc_method,
                 "n_tests": correction.get("n_tests"),

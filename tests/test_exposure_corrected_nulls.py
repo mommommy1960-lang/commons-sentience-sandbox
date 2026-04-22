@@ -347,6 +347,9 @@ class TestPublicAnisotropyStudyNullMode(unittest.TestCase):
         )
         self.assertIn("null_comparison", result)
         self.assertEqual(result["null_comparison"]["null_mode"], "exposure_corrected")
+        model = result.get("run_metadata", {}).get("exposure_model", {})
+        self.assertEqual(model.get("model_family"), "empirical_exposure_proxy")
+        self.assertEqual(model.get("stage16_calibration_status"), "empirical_proxy_baseline")
 
     def test_isotropic_mode_still_works(self):
         from reality_audit.data_analysis.public_anisotropy_study import (
@@ -359,6 +362,8 @@ class TestPublicAnisotropyStudyNullMode(unittest.TestCase):
             null_mode="isotropic",
         )
         self.assertEqual(result["null_comparison"]["null_mode"], "isotropic")
+        model = result.get("run_metadata", {}).get("exposure_model", {})
+        self.assertEqual(model.get("model_family"), "isotropic_baseline")
 
     def test_invalid_null_mode_raises(self):
         from reality_audit.data_analysis.public_anisotropy_study import (

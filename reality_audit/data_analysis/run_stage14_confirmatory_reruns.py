@@ -135,6 +135,7 @@ def run_confirmatory_catalog(
         "label":       spec["label"],
         "output_dir":  output_dir,
         "summary_path": summary_path,
+        "exposure":    _extract_exposure_metadata(summary_path),
         "rc":          rc,
         "elapsed_s":   round(elapsed, 1),
     }
@@ -148,6 +149,34 @@ def _find_summary_json(output_dir: str, name: str) -> Optional[str]:
         if fname.endswith("_summary.json"):
             return os.path.join(output_dir, fname)
     return None
+
+
+def _extract_exposure_metadata(summary_path: Optional[str]) -> Dict[str, Any]:
+    """Extract null/exposure metadata from a Stage 8 summary JSON."""
+    if not summary_path or not os.path.isfile(summary_path):
+        return {
+            "null_mode": None,
+            "exposure_model": None,
+            "exposure_map_desc": None,
+        }
+    try:
+        with open(summary_path) as fh:
+            payload = json.load(fh)
+    except (OSError, json.JSONDecodeError):
+        return {
+            "null_mode": None,
+            "exposure_model": None,
+            "exposure_map_desc": None,
+        }
+
+    results = payload.get("results", {})
+    rm = results.get("run_metadata", {})
+    nc = results.get("null_comparison", {})
+    return {
+        "null_mode": nc.get("null_mode", rm.get("null_mode")),
+        "exposure_model": rm.get("exposure_model"),
+        "exposure_map_desc": rm.get("exposure_map_desc"),
+    }
 
 
 def run_all_confirmatory(

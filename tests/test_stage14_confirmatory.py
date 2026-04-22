@@ -232,6 +232,26 @@ class TestConfirmatoryRerunRunner(unittest.TestCase):
             result = _find_summary_json(td, "myrun")
             self.assertEqual(result, fname)
 
+    def test_extract_exposure_metadata_from_summary(self):
+        from reality_audit.data_analysis.run_stage14_confirmatory_reruns import _extract_exposure_metadata
+        with tempfile.TemporaryDirectory() as td:
+            summary_path = os.path.join(td, "sample_summary.json")
+            payload = {
+                "results": {
+                    "null_comparison": {"null_mode": "exposure_corrected"},
+                    "run_metadata": {
+                        "exposure_model": {"model_family": "empirical_exposure_proxy"},
+                        "exposure_map_desc": {"ra_bins": 24, "dec_bins": 12},
+                    },
+                }
+            }
+            with open(summary_path, "w") as fh:
+                json.dump(payload, fh)
+            meta = _extract_exposure_metadata(summary_path)
+            self.assertEqual(meta["null_mode"], "exposure_corrected")
+            self.assertEqual(meta["exposure_model"]["model_family"], "empirical_exposure_proxy")
+            self.assertEqual(meta["exposure_map_desc"]["ra_bins"], 24)
+
     def test_locked_plan_validation_passes(self):
         """run_all_confirmatory checks that plan is locked; a locked plan passes."""
         from reality_audit.data_analysis.preregistration import load_preregistration_plan, validate_preregistration_plan
