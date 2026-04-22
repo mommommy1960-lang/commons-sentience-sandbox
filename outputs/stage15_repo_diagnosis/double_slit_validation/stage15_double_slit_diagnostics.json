@@ -1,0 +1,96 @@
+{
+  "stage": 15,
+  "generated_at": "2026-04-22T02:45:43.366857Z",
+  "name": "stage15_double_slit_diagnostics",
+  "scientific_framing": "Controlled computational benchmark reproducing expected behavior under encoded physical assumptions; not a standalone discovery claim.",
+  "parameters": {
+    "wavelength": 5e-07,
+    "slit_separation": 0.0001,
+    "slit_width": 2e-05,
+    "screen_distance": 1.0,
+    "num_particles": 5000,
+    "screen_points": 500,
+    "noise_level": 0.0,
+    "seed": 42
+  },
+  "modes": {
+    "coherent": {
+      "mode": "coherent",
+      "visibility": 0.912216,
+      "coherence_score": 0.912216,
+      "interference_detected": true,
+      "regime": "coherent",
+      "alpha_effective": 0.0,
+      "max_intensity": 1.0,
+      "min_intensity": 9.77214548781538e-08,
+      "intensity_range": 0.9999999022785451,
+      "peak_count": 10,
+      "trough_count": 10,
+      "artifact_paths": {
+        "json": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/coherent/double_slit_coherent_report.json",
+        "csv": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/coherent/double_slit_coherent_intensity.csv",
+        "markdown": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/coherent/double_slit_coherent_summary.md",
+        "plot": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/coherent/double_slit_coherent_plot.png"
+      }
+    },
+    "decohered": {
+      "mode": "decohered",
+      "visibility": 0.407209,
+      "coherence_score": 0.407209,
+      "interference_detected": true,
+      "regime": "classicalized",
+      "alpha_effective": 0.7,
+      "max_intensity": 1.0,
+      "min_intensity": 9.767057284115962e-08,
+      "intensity_range": 0.9999999023294271,
+      "peak_count": 8,
+      "trough_count": 8,
+      "artifact_paths": {
+        "json": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/decohered/double_slit_decohered_report.json",
+        "csv": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/decohered/double_slit_decohered_intensity.csv",
+        "markdown": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/decohered/double_slit_decohered_summary.md",
+        "plot": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/decohered/double_slit_decohered_plot.png"
+      }
+    },
+    "measurement": {
+      "mode": "measurement",
+      "visibility": 0.011033,
+      "coherence_score": 0.011033,
+      "interference_detected": false,
+      "regime": "classicalized",
+      "alpha_effective": 1.0,
+      "max_intensity": 1.0,
+      "min_intensity": 9.762700286949378e-08,
+      "intensity_range": 0.9999999023729972,
+      "peak_count": 0,
+      "trough_count": 0,
+      "artifact_paths": {
+        "json": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/measurement/double_slit_measurement_report.json",
+        "csv": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/measurement/double_slit_measurement_intensity.csv",
+        "markdown": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/measurement/double_slit_measurement_summary.md",
+        "plot": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/measurement/double_slit_measurement_plot.png"
+      }
+    }
+  },
+  "comparisons": {
+    "visibility_drop_coherent_to_decohered": 0.505007,
+    "visibility_drop_coherent_to_measurement": 0.9011830000000001,
+    "l1_distance_coherent_vs_decohered": 0.22270448184794941,
+    "l1_distance_coherent_vs_measurement": 0.3181519338935938,
+    "js_divergence_coherent_vs_decohered": 0.07589244177176242,
+    "js_divergence_coherent_vs_measurement": 0.12808256637218435
+  },
+  "expectations": {
+    "coherent_interference_present": true,
+    "decohered_visibility_reduced": true,
+    "measurement_visibility_strongly_suppressed": true,
+    "measurement_below_coherent": true
+  },
+  "expectations_pass": true,
+  "limitations": [
+    "This is a 1-D benchmark with encoded decoherence/measurement assumptions.",
+    "It does not model full laboratory detector dynamics or full quantum measurement theory.",
+    "It does not prove observer-caused collapse or that reality is a simulation."
+  ],
+  "benchmark_readiness": "ready"
+}

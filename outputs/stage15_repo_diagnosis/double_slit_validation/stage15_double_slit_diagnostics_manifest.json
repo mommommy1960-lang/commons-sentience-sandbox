@@ -1,0 +1,10 @@
+{
+  "stage": 15,
+  "name": "stage15_double_slit_diagnostics",
+  "generated_at": "2026-04-22T02:45:43.366857Z",
+  "summary_json": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/stage15_double_slit_diagnostics.json",
+  "summary_md": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation/stage15_double_slit_diagnostics.md",
+  "output_dir": "/workspaces/commons-sentience-sandbox/outputs/stage15_repo_diagnosis/double_slit_validation",
+  "benchmark_readiness": "ready",
+  "expectations_pass": true
+}

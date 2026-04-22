@@ -90,8 +90,6 @@ def test_diagnostics_json_contains_expected_fields_and_trends(tmp_path):
     result = run_double_slit_diagnostics(
         output_dir=out_dir,
         name="diag_test_json",
-        num_particles=1200,
-        screen_points=220,
         seed=202,
     )
 

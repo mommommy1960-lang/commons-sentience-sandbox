@@ -1,0 +1,33 @@
+{
+  "run_id": "35086155-6f0e-4566-9181-fb5f49051e37",
+  "timestamp": "2026-04-22T02:45:43.012198Z",
+  "parameters": {
+    "wavelength_m": 5e-07,
+    "slit_separation_m": 0.0001,
+    "slit_width_m": 2e-05,
+    "screen_distance_m": 1.0,
+    "num_particles": 5000,
+    "screen_points": 500,
+    "coherence": 1.0,
+    "decoherence_strength": 0.0,
+    "measurement_on": true,
+    "noise_level": 0.0,
+    "seed": 44
+  },
+  "visibility": 0.011033,
+  "coherence_score": 0.011033,
+  "interference_detected": false,
+  "regime": "classicalized",
+  "measurement_on": true,
+  "decoherence_strength": 0.0,
+  "notes": "Fringe pattern suppressed. Alpha=1.00: strongly decohered or measurement active. Result classified as CLASSICALIZED (particle-like). measurement_on=True: which-path information extracted.",
+  "summary_stats": {
+    "num_hits": 5000,
+    "mean_hit_position_m": 2.6532e-05,
+    "hit_spread_std_m": 0.008354865,
+    "alpha_effective": 1.0,
+    "max_intensity": 1.0,
+    "min_intensity": 0.0
+  },
+  "WARNING": "This is a computational simulation. It does not by itself constitute evidence that reality is a simulation."
+}

@@ -1,0 +1,33 @@
+{
+  "run_id": "6a255fd7-6f01-4dcc-afaf-f1c1c5e9a038",
+  "timestamp": "2026-04-22T02:45:41.780605Z",
+  "parameters": {
+    "wavelength_m": 5e-07,
+    "slit_separation_m": 0.0001,
+    "slit_width_m": 2e-05,
+    "screen_distance_m": 1.0,
+    "num_particles": 5000,
+    "screen_points": 500,
+    "coherence": 1.0,
+    "decoherence_strength": 0.0,
+    "measurement_on": false,
+    "noise_level": 0.0,
+    "seed": 42
+  },
+  "visibility": 0.912216,
+  "coherence_score": 0.912216,
+  "interference_detected": true,
+  "regime": "coherent",
+  "measurement_on": false,
+  "decoherence_strength": 0.0,
+  "notes": "Strong interference fringe pattern. Alpha < 0.2: wave-like regime. Result classified as COHERENT.",
+  "summary_stats": {
+    "num_hits": 5000,
+    "mean_hit_position_m": 4.7753e-05,
+    "hit_spread_std_m": 0.008379338,
+    "alpha_effective": 0.0,
+    "max_intensity": 1.0,
+    "min_intensity": 0.0
+  },
+  "WARNING": "This is a computational simulation. It does not by itself constitute evidence that reality is a simulation."
+}
