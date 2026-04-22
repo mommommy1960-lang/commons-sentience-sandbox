@@ -147,9 +147,62 @@ as:
 Stage 15 extension adds a dedicated diagnostics runner and validation tests to
 make these checks easier to reproduce and share.
 
+## Validated Benchmark Behavior
+
+For this module, "validated" means the implementation reliably reproduces the
+expected trend under encoded assumptions:
+
+- coherent mode has high fringe visibility,
+- decohered mode has lower visibility than coherent mode,
+- measurement mode strongly suppresses visibility and is typically below the
+  interference threshold.
+
+This is validation of software behavior against known model expectations. It is
+not validation of a new physical law.
+
+## Emergent Behavior (What Could Count, and What Does Not)
+
+Within this repository, emergent behavior would mean a pattern not directly
+forced by the benchmark equations, appearing robustly across independent models
+or real datasets after controls. The double-slit benchmark does not do that by
+itself; it is intentionally constrained to known qualitative transitions.
+
+Therefore, any apparent "surprise" in a single benchmark run should be treated
+as a debugging or parameter-sensitivity signal, not a discovery claim.
+
+## Why This Is Still Useful
+
+Even with these limits, the module is valuable because it provides a controlled
+testbed for analysis discipline:
+
+- It checks that diagnostics respond correctly to known coherence transitions.
+- It gives stable reference cases for regression testing and CI.
+- It helps calibrate reporting language so simulation outputs are not
+  over-interpreted.
+- It supports reviewer communication by separating benchmark validation from
+  discovery inference.
+
+In short: this benchmark strengthens the reliability of the broader Reality
+Audit analysis stack.
+
 ## Practical Use in the Reality Audit Program
 
 Use this module as a calibration benchmark for analysis/reporting logic, not as
 a source of external scientific claims. It is useful for proving that the
 pipeline can discriminate high-contrast, reduced-contrast, and suppressed
 interference regimes in a controlled setting.
+
+## Public-Facing Scientific Framing
+
+Recommended wording in reports and presentations:
+
+"This module is a controlled computational benchmark that reproduces expected
+interference-to-classical transitions under encoded physical assumptions. It is
+used to validate analysis behavior, not to claim independent physical
+discovery."
+
+Avoid wording that implies:
+
+- consciousness-driven collapse,
+- spontaneous discovery from this simulation alone,
+- proof that reality is a simulation.
