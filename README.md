@@ -2186,6 +2186,20 @@ state in plain language for collaborators.
 - **Stage 15 tests**: `tests/test_stage15_repo_diagnosis.py`
 - **Double-slit diagnostics tests**: `tests/test_double_slit_validation.py`
 
+### Scientific Scope Note (Stage 15 / Stage 16 readiness)
+
+The double-slit module is treated as a **controlled computational benchmark**.
+It is used to validate analysis behavior under encoded coherence/decoherence
+assumptions. It is **not** framed as spontaneous discovery, does **not** prove
+observer-caused collapse, and does **not** prove that reality is a simulation.
+
+Primary mission focus remains the defensible analysis stack:
+
+1. stronger exposure/systematics modeling,
+2. higher-power independent datasets,
+3. confirmatory reruns under locked preregistration,
+4. external scientific review before escalation.
+
 ### Run Stage 15 diagnosis
 
 ```bash

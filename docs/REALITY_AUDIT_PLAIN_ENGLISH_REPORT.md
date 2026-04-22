@@ -37,6 +37,14 @@ In plain terms, the code blends a wave-like pattern with a classical pattern
 using an internal "decoherence" control. Turning measurement on pushes that
 blend toward the classical side.
 
+What this confirms: the implementation reproduces the expected transition from
+high-contrast interference to reduced contrast to strong suppression under the
+encoded decoherence/measurement assumptions.
+
+What this does not confirm: an independent physical discovery. The benchmark
+does not prove observer-caused collapse and does not prove that reality is a
+simulation.
+
 Why this matters: it gives the team a known, testable environment where the
 pipeline should react in predictable ways. If the analysis cannot separate
 these three modes in simulation, it should not be trusted on public-catalog
