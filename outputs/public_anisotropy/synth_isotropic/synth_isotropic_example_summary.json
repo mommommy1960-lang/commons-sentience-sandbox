@@ -1,7 +1,7 @@
 {
   "experiment": "synth_isotropic_example",
   "catalog": "synthetic_isotropic",
-  "written_at": "2026-04-22T19:28:26.624196Z",
+  "written_at": "2026-04-22T19:31:46.068299Z",
   "results": {
     "event_count": 300,
     "events_with_energy": 300,
@@ -189,7 +189,7 @@
         ]
       },
       "exposure_map_desc": null,
-      "timestamp": "2026-04-22T19:28:26.624088Z"
+      "timestamp": "2026-04-22T19:31:46.068176Z"
     }
   },
   "coverage": {

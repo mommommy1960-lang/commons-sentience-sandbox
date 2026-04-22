@@ -1,6 +1,6 @@
 # fermi_lat_grb_timing_delay_real_v1 — Methods Summary
 
-**Generated:** 2026-04-22T19:28:45.880946Z
+**Generated:** 2026-04-22T19:32:05.344158Z
 **Blinding status:** blinded
 
 ## Results
@@ -8,7 +8,7 @@
 _Signal result channels are blinded. This summary is safe to share before unblinding._
 
 - **experiment:** fermi_lat_grb_timing_delay_real_v1
-- **data_source:** /tmp/pytest-of-runner/pytest-0/test_complete_message_mentions0/real/grb_real.csv
+- **data_source:** /tmp/pytest-of-runner/pytest-1/test_complete_message_mentions0/real/grb_real.csv
 - **n_events:** 40
 - **n_sources:** 6
 - **has_distance:** True
@@ -36,7 +36,7 @@ _Signal result channels are blinded. This summary is safe to share before unblin
   - energy_unit_in: GeV
   - time_unit_in: s
   - has_distance: True
-  - source_file: /tmp/pytest-of-runner/pytest-0/test_complete_message_mentions0/real/grb_real.csv
+  - source_file: /tmp/pytest-of-runner/pytest-1/test_complete_message_mentions0/real/grb_real.csv
   - schema_version: 1.0
 - **_blinding_status:** blinded
 - **_blind_keys:** ['p_value', 'z_score', 'detection_claimed', 'null_retained', 'observed_slope']
