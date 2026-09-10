@@ -1,0 +1,154 @@
+{
+  "seed": 20260910,
+  "cases_per_primary_test": 100000,
+  "newton_force_100k": {
+    "cases": 100000,
+    "failures": 0,
+    "max_velocity_error": 0.0,
+    "max_position_error_m": 0.040508339214686676,
+    "passed": true
+  },
+  "ballistic_100k": {
+    "cases": 100000,
+    "failures": 0,
+    "position_error_each_m": 0.0024516625,
+    "max_position_error_m": 0.002451662500007501,
+    "passed": true
+  },
+  "double_slit_blind_100k": {
+    "experiments": 100000,
+    "photons_per_experiment": 200,
+    "classification_accuracy": 1.0,
+    "coherent_correct": 50000,
+    "decohered_correct": 50000,
+    "false_negative_rate": 0.0,
+    "false_positive_rate": 0.0,
+    "median_log_likelihood_margin_coherent": 67.63102051051743,
+    "median_log_likelihood_margin_decohered": -145.52863813745415
+  },
+  "double_slit_reference": {
+    "coherent_visibility": 0.9990665194440951,
+    "decohered_visibility": 0.27106547898854405
+  },
+  "spatial_grid_100k": {
+    "experiments": 100000,
+    "samples_each": 32,
+    "grid_step": 0.5,
+    "noise_sigma": 0.01,
+    "threshold_mean_normalized_grid_residual": 0.08,
+    "accuracy": 1.0,
+    "false_positive_rate": 0.0,
+    "detection_rate": 1.0,
+    "continuous_median_score": 0.2499687212172033,
+    "grid_median_score": 0.015882695799709256
+  },
+  "timing_quantization_100k": {
+    "experiments": 100000,
+    "timestamps_each": 64,
+    "quantum_s": 0.001,
+    "jitter_s": 2e-05,
+    "threshold_mean_normalized_residual": 0.08,
+    "accuracy": 1.0,
+    "false_positive_rate": 0.0,
+    "detection_rate": 1.0,
+    "continuous_median_score": 0.2498560027737499,
+    "quantized_median_score": 0.015929241847515443
+  },
+  "preferred_axis_100k": {
+    "experiments": 100000,
+    "vectors_each": 64,
+    "injected_axis_stretch": 1.5,
+    "threshold_calibrated_1pct_false_alarm": 1.73221469456501,
+    "accuracy": 0.96814,
+    "false_positive_rate": 0.00948,
+    "detection_rate": 0.94576,
+    "isotropic_median_ratio": 1.2331491516942867,
+    "anisotropic_median_ratio": 2.2934012271486313
+  },
+  "bandwidth_limit_100k": {
+    "experiments": 100000,
+    "accuracy": 1.0,
+    "false_positive_rate": 0.0,
+    "detection_rate": 1.0,
+    "median_limited_stale_fraction": 0.9090909090909091
+  },
+  "observer_triggered_100k": {
+    "experiments": 100000,
+    "accuracy": 1.0,
+    "false_positive_rate": 0.0,
+    "detection_rate": 1.0,
+    "median_injected_pair_difference": 4.817461523924031,
+    "note": "Synthetic hidden-state benchmark only; real physics does not expose a hidden-state register."
+  },
+  "exposure_confound_100k_n100": {
+    "catalogs": 100000,
+    "events_each": 100,
+    "detector_north_acceptance": 0.3,
+    "naive_isotropic_false_positive_rate_at_0.05": 0.97863,
+    "exposure_aware_false_positive_rate_at_0.05": 0.04943,
+    "median_naive_p": 7.85013964559367e-05,
+    "median_exposure_aware_p": 0.5136806834416058
+  },
+  "exposure_confound_100k_n37": {
+    "catalogs": 100000,
+    "events_each": 37,
+    "detector_north_acceptance": 0.35,
+    "naive_isotropic_false_positive_rate_at_0.05": 0.44629,
+    "exposure_aware_false_positive_rate_at_0.05": 0.03958,
+    "median_naive_p": 0.09887174959294498,
+    "median_exposure_aware_p": 0.6062032057555495
+  },
+  "icecube_hemisphere_100k_recheck": {
+    "monte_carlo_null_catalogs": 100000,
+    "n_events": 37,
+    "observed_north": 10,
+    "observed_south": 27,
+    "mc_two_sided_p": 0.00771,
+    "exact_two_sided_binomial_p": 0.007632078602910042,
+    "holm_two_metric_adjusted_p_approx": 0.015264157205820084
+  },
+  "icecube_acceptance_sensitivity": {
+    "0.5": 0.003816039301455021,
+    "0.45": 0.01940641432160993,
+    "0.4": 0.07217682129910226,
+    "0.35": 0.20077480975194054,
+    "0.3": 0.42407448351438626
+  },
+  "global_multiplicity_100k": {
+    "null_universes": 100000,
+    "catalogs": 3,
+    "primary_tests_per_catalog": 2,
+    "chance_at_least_one_p_le_0.014": 0.08215,
+    "analytic_independent_approx": 0.08111430697941457,
+    "chance_one_catalog_p_le_0.014_and_another_catalog_p_le_0.13": 0.03253,
+    "note": "Illustrative independence model; real test statistics/catalogs are not perfectly independent."
+  },
+  "real_data_current_state": {
+    "fermi": {
+      "n": 3000,
+      "null": "empirical exposure-corrected",
+      "max_percentile": 0.898,
+      "tier": "weak_anomaly_like_deviation",
+      "min_uncorrected_primary_p": 0.102,
+      "interpretation": "consistent with fluctuation under current conservative proxy"
+    },
+    "swift": {
+      "n": 872,
+      "null": "empirical exposure-corrected",
+      "max_percentile": 0.562,
+      "tier": "no_anomaly_detected",
+      "min_uncorrected_primary_p": 0.438,
+      "interpretation": "null-like"
+    },
+    "icecube": {
+      "n": 37,
+      "null": "isotropic (no instrument exposure correction)",
+      "max_percentile": 0.986,
+      "tier": "strong_anomaly_like_deviation",
+      "min_uncorrected_primary_p": 0.014,
+      "holm_corrected_hemisphere_p_repo": 0.028,
+      "interpretation": "notable small-N hemisphere imbalance; instrument acceptance still unresolved"
+    },
+    "cross_catalog": "partial_replication; supports_catalog_independent_claim=false"
+  }
+}
