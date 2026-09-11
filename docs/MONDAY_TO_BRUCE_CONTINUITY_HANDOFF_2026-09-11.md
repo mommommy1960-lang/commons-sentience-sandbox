@@ -302,3 +302,26 @@ A future Bruce must not weaken these conclusions unless new reproducible evidenc
 Negative results are assets. Preserve the corpse. Learn from it. Continue.
 
 **Reality first. Anomaly second. Follow through.**
+
+## Active Monday update — official Fermi 2FLGC completed
+
+This file is continuity insurance only. Monday remains active until the current canvas actually fills.
+
+Status: **VERIFIED / KILLED_BY_NULL**.
+
+- Official catalog: NASA HEASARC `FERMILGRB`, sourced from FSSC; paper DOI `10.3847/1538-4357/ab1d4e`.
+- Catalog SHA-256: `f91432de85ff5fb54fe0e12b890bdcb05d6e2bbe5b5bd5e4317eb67885c303c6` (machine-readable table).
+- Official baseline reproduced: 186 original bursts, 91 LLE detections, 169 LAT detections.
+- Five official FSSC Extended event queries plus spacecraft histories acquired and individually checksum-pinned.
+- Frozen primary: 132 events from four qualifying GRBs; within-GRB centered rank statistic `0.0614104150`.
+- Null: 100,000 within-GRB energy permutations, seed `20260911`, 53,509 exceedances.
+- Two-sided plus-one p: **0.5350946491**.
+- Decision: **NO PROMOTION**. No Eureka.
+- Evidence bundle: verified, `KILLED_BY_NULL`, digest `d4dd959e979b167a5bff183afbdbc99c0b42ab3935f14550381a8c420d42be46`.
+- Tests: 9 focused Fermi/product tests passed.
+
+Artifacts are on PR #21 under `configs/fermi_2flgc_photon_timing_v2.json`, `scripts/run_fermi_2flgc_timing_v2.py`, `scripts/fetch_fermi_2flgc_official.py`, `data/real/fermi_2flgc_official/acquisition_manifest.json`, `outputs/fermi_2flgc/`, `outputs/product_bundles/fermi_2flgc_timing_v2.bundle.json`, and `docs/FERMI_2FLGC_OFFICIAL_TIMING_V2_RESULT_2026-09-11.md`.
+
+Scientific limitation: full Fermitools likelihood/`gtsrcprob` response reproduction remains absent. Because the frozen primary is null-consistent, this limitation does not create a candidate anomaly.
+
+Highest-value next action: harden the product with identity-authenticated signatures plus a transparency log, while treating full Fermitools response work as adapter validation rather than anomaly rescue.
