@@ -1,0 +1,51 @@
+{
+  "claim_id": "fermi-2flgc-timing-v2-20260911",
+  "claim_text": "High-energy Fermi-LAT GRB photon arrival ranks show a shared energy-dependent timing residual.",
+  "owner": "Reality Audit",
+  "run_mode": "preregistered_confirmatory",
+  "artifacts": [
+    {
+      "role": "frozen_configuration",
+      "path": "../../configs/fermi_2flgc_photon_timing_v2.json",
+      "sha256": "d5daec72c6c48022b8670d933dccc01346cf1c461462b8aab34cc23d9c1fae6e"
+    },
+    {
+      "role": "analysis_code",
+      "path": "../../scripts/run_fermi_2flgc_timing_v2.py",
+      "sha256": "df60b6eb2a3aa9cc8512e3caf148bae78f7fe8dcff77578d0af3a44904aa864a"
+    },
+    {
+      "role": "result",
+      "path": "../../outputs/fermi_2flgc/fermi_2flgc_timing_v2_100k.json",
+      "sha256": "be6734df56471b02cacefb8ef36b5a9cbf4cefb2a5d07fe591d317fa848e15c9"
+    },
+    {
+      "role": "decision_memo",
+      "path": "../../docs/FERMI_2FLGC_OFFICIAL_TIMING_V2_RESULT_2026-09-11.md",
+      "sha256": "4affc0144c18e8d8da5e796e976ed7becb54d9f024bc52c8837906a40289d7ae"
+    }
+  ],
+  "gates": {
+    "provenance": {"status": "PASS", "evidence": "Official HEASARC catalog and FSSC event/spacecraft files; per-file SHA-256 preserved in result."},
+    "preregistration": {"status": "PASS", "evidence": "v2 configuration frozen before selected counts or statistic inspection."},
+    "ordinary_baseline": {"status": "PASS", "evidence": "Published catalog counts 186, 91, and 169 reproduced."},
+    "synthetic_calibration": {"status": "FAIL", "evidence": "Dedicated injection recovery not yet executed for v2."},
+    "response_model": {"status": "FAIL", "evidence": "Tight aperture used; full Fermitools likelihood and gtsrcprob response not reproduced."},
+    "systematics": {"status": "FAIL", "evidence": "Frozen systematic grid remains pending because primary result is null-consistent."},
+    "multiple_testing": {"status": "PASS", "evidence": "Exactly one frozen primary statistic evaluated."},
+    "ordinary_alternatives": {"status": "FAIL", "evidence": "Source-intrinsic spectral evolution remains an ordinary alternative."},
+    "independent_dataset": {"status": "FAIL", "evidence": "No independent instrument evaluated for this statistic."},
+    "independent_replication": {"status": "FAIL", "evidence": "No independent replication."}
+  },
+  "scientific_result": {
+    "outcome": "NULL_CONSISTENT",
+    "statistic": 0.06141041502643122,
+    "p_value": 0.5350946490535095,
+    "null_catalogs": 100000,
+    "seed": 20260911
+  },
+  "limitations": [
+    "No full likelihood association probability was computed.",
+    "The result is a kill, not evidence that all possible timing models are absent."
+  ]
+}

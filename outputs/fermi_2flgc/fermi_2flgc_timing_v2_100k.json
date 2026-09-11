@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "experiment_name": "fermi_2flgc_photon_timing_v2",
+  "status": "NO_PROMOTION",
+  "config_sha256": "d5daec72c6c48022b8670d933dccc01346cf1c461462b8aab34cc23d9c1fae6e",
+  "analysis_script_sha256": "df60b6eb2a3aa9cc8512e3caf148bae78f7fe8dcff77578d0af3a44904aa864a",
+  "code_revision": "2f3e15f7628e09a66012b95c8d6a37429598e19d",
+  "catalog_original_rows": 186,
+  "catalog_total_rows": 231,
+  "published_fact_reproduction": {
+    "original_rows_expected_186": true,
+    "original_lle_detected": 91,
+    "original_lat_detected_su_tsinput_positive": 169
+  },
+  "sources": [
+    {
+      "source": "GRB080916009",
+      "redshift": 4.35,
+      "query_rows": 414,
+      "selected_rows": 13,
+      "included": true
+    },
+    {
+      "source": "GRB090510016",
+      "redshift": 0.903,
+      "query_rows": 298,
+      "selected_rows": 30,
+      "included": true
+    },
+    {
+      "source": "GRB090902462",
+      "redshift": 1.822,
+      "query_rows": 550,
+      "selected_rows": 50,
+      "included": true
+    },
+    {
+      "source": "GRB130427324",
+      "redshift": 0.34,
+      "query_rows": 764,
+      "selected_rows": 39,
+      "included": true
+    },
+    {
+      "source": "GRB160509374",
+      "redshift": 1.17,
+      "query_rows": 231,
+      "selected_rows": 2,
+      "included": false
+    }
+  ],
+  "included_sources": 4,
+  "selected_events": 132,
+  "observed_statistic": 0.06141041502643122,
+  "null_catalogs": 100000,
+  "seed": 20260911,
+  "null_exceedances": 53509,
+  "plus_one_two_sided_p": 0.5350946490535095,
+  "input_sha256": {
+    "data/real/fermi_2flgc_official/fermilgrb_heasarc_2022.tbl": "f91432de85ff5fb54fe0e12b890bdcb05d6e2bbe5b5bd5e4317eb67885c303c6",
+    "data/real/fermi_2flgc_official/fermilgrb_heasarc_2022.fits": "a7ea4db3623d828ea7f2c7f180c3780c19412a483ddfd69523831af50a80e536",
+    "data/real/fermi_2flgc_official/target_queries/GRB080916009_L260910205610F357373F28_EV00.fits": "563b0402b8908542f16d876b19095424ab9532258255ebff4ac0e6099f822d58",
+    "data/real/fermi_2flgc_official/target_queries/GRB080916009_L260910205610F357373F28_SC00.fits": "7b47d0135db0964f62bb448cfa408434d0321883bf633b825c0c7c2659b4c5e3",
+    "data/real/fermi_2flgc_official/target_queries/GRB090510016_L260910205616F357373F75_EV00.fits": "72978f953ca5d9ef992bb7b24d51b32d576aea01685411d9a4096ff538d4ce26",
+    "data/real/fermi_2flgc_official/target_queries/GRB090510016_L260910205616F357373F75_SC00.fits": "31b129c8a92fc89de34e36348e7c0685ece33e29dedb1d92eff5e9bc59754539",
+    "data/real/fermi_2flgc_official/target_queries/GRB090902462_L260910205621F357373F22_EV00.fits": "94a6d6040fb7e868ba560fe344900ea000abc2b68f77a532c22d1ef6b0ab2d4c",
+    "data/real/fermi_2flgc_official/target_queries/GRB090902462_L260910205621F357373F22_SC00.fits": "5aa697efc374497c95fa7586e44fc385088d60232f4ec240d676956d5432e35e",
+    "data/real/fermi_2flgc_official/target_queries/GRB130427324_L260910205627F357373F61_EV00.fits": "b9df1696d7438d209b1fd636321a642e71c78ba8bdd87f62417a03a799498f53",
+    "data/real/fermi_2flgc_official/target_queries/GRB130427324_L260910205627F357373F61_SC00.fits": "2bbe7577a6a2127ed90a68c8a5468c3b6eba598d77587bb7dce6bc49a8afb083",
+    "data/real/fermi_2flgc_official/target_queries/GRB160509374_L260910205632F357373F47_EV00.fits": "abebb2cb4e9d3c9a9a0884c66e1ccf467cdd883caf30703760b0bcf7508dda39",
+    "data/real/fermi_2flgc_official/target_queries/GRB160509374_L260910205632F357373F47_SC00.fits": "192bd25666102c417fb3b580c93e24245018ce47b972cf3f7a9deac2aed1d4a4"
+  },
+  "interpretation": "This result is not evidence for simulation ontology. Promotion is forbidden without the response, systematic, trial-control, and independent-replication gates in the frozen configuration."
+}
