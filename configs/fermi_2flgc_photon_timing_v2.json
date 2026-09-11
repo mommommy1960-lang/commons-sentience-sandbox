@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "experiment_name": "fermi_2flgc_photon_timing_v2",
+  "frozen_utc": "2026-09-11T00:00:00Z",
+  "status": "FROZEN_BEFORE_EVENT_CONTENT_INSPECTION",
+  "catalog": {
+    "name": "FERMILGRB - Fermi LAT Second Gamma-Ray Burst Catalog",
+    "official_url": "https://heasarc.gsfc.nasa.gov/W3Browse/fermi/fermilgrb.html",
+    "paper_doi": "10.3847/1538-4357/ab1d4e",
+    "original_sample_end_utc_exclusive": "2018-08-04T00:00:00Z"
+  },
+  "targets": [
+    "GRB080916009",
+    "GRB090510016",
+    "GRB090902462",
+    "GRB130427324",
+    "GRB160509374"
+  ],
+  "acquisition": {
+    "service": "FSSC LAT Data Server",
+    "coordinate_system": "J2000",
+    "radius_deg": 12.0,
+    "time_start_trigger_relative_s": -600.0,
+    "time_stop_trigger_relative_s": 600.0,
+    "energy_min_mev": 100.0,
+    "energy_max_mev": 300000.0,
+    "lat_data_type": "Extended",
+    "include_spacecraft": true
+  },
+  "event_selection": {
+    "analysis_time_start_trigger_relative_s": 0.0,
+    "analysis_time_stop_trigger_relative_s": 100.0,
+    "energy_min_mev": 1000.0,
+    "angular_separation_max_deg": 1.0,
+    "zenith_max_deg": 100.0,
+    "require_catalog_redshift": true,
+    "minimum_events_per_grb": 5,
+    "minimum_grbs": 3,
+    "minimum_total_events": 20
+  },
+  "primary_statistic": {
+    "name": "within_source_centered_energy_time_spearman",
+    "definition": "Spearman correlation between trigger-relative arrival time and log10 energy after centering both ranks within each GRB; pool centered ranks across GRBs.",
+    "direction": "two_sided"
+  },
+  "null": {
+    "method": "permute_energy_within_each_grb",
+    "catalogs": 100000,
+    "seed": 20260911,
+    "p_value": "plus_one_two_sided_absolute_statistic"
+  },
+  "trial_control": {
+    "primary_tests": 1,
+    "secondary_tests": [
+      "energy_min_100_mev",
+      "analysis_stop_10_s",
+      "analysis_stop_300_s",
+      "leave_one_grb_out"
+    ],
+    "secondary_policy": "diagnostic_only; maximum absolute statistic calibrated jointly with the same within-GRB permutations"
+  },
+  "systematics": [
+    "event_class_subsets where encoded",
+    "zenith_max_deg in [90, 100, 105]",
+    "angular_separation_max_deg in [0.5, 1.0, 2.0]",
+    "spacecraft good-time and rocking-angle cuts",
+    "per-GRB leave-one-out"
+  ],
+  "promotion_gate": "No anomaly claim from this run. Any residual must survive response/exposure modeling, synthetic injection calibration, trial correction, and an independent frozen replication.",
+  "notes": [
+    "The HEASARC summary table is catalog-level and is not substituted for photon-level data.",
+    "No event-level candidate statistic or selected-event count was inspected before this configuration was written; the 1 degree analysis aperture was fixed before selection.",
+    "The older v1 registration is preserved but is not reused because its 500-permutation resolution cannot evaluate stringent tails and its distance approximation is not publication quality."
+  ]
+}
