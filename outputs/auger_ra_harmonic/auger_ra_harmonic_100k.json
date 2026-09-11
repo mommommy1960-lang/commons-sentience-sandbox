@@ -1,0 +1,88 @@
+{
+  "decision": "NO_PROMOTION",
+  "claim_boundary": "RA first-harmonic calibration; not simulation ontology and not unrestricted preferred-axis scan",
+  "source": {
+    "doi": "10.5281/zenodo.10488964",
+    "archive_sha256": "0499fb34d4d2bd968b1704ebc4cccace361b4841482994d2b4701816de18d8bd",
+    "csv_sha256": "b5abfe82e8a280c1ce571e5d38c85ebc8393e2ba76054e4734e39ebe9d451e1b"
+  },
+  "execution": {
+    "revision": "c44d33fe8e00f9907eed5d05525a26da3300b72a",
+    "seed": 20260911,
+    "null_catalogs": 100000,
+    "random_generator": "numpy.random.MT19937",
+    "python": "3.12.14"
+  },
+  "selection": {
+    "array": "SD1500 vertical",
+    "zenith_max_deg": 60.0,
+    "thresholds_eev": [
+      2.5,
+      4.0,
+      8.0,
+      16.0,
+      32.0
+    ],
+    "deduplicate": "first row per sdid"
+  },
+  "synthetic_calibration": {
+    "uniform": {
+      "n": 360,
+      "amplitude": 1.970267508016322e-17,
+      "phase_deg": 199.06249429269465
+    },
+    "injected_ra0": {
+      "n": 450,
+      "amplitude": 0.2,
+      "phase_deg": 360.0
+    }
+  },
+  "observed_tests": [
+    {
+      "n": 21571,
+      "amplitude": 0.00980665205843059,
+      "phase_deg": 79.24143962501766,
+      "threshold_eev": 2.5,
+      "local_p": 0.12593874061259389,
+      "bonferroni_p": 0.6296937030629695
+    },
+    {
+      "n": 8319,
+      "amplitude": 0.017900139817039792,
+      "phase_deg": 136.37934282631116,
+      "threshold_eev": 4.0,
+      "local_p": 0.06879931200687993,
+      "bonferroni_p": 0.34399656003439966
+    },
+    {
+      "n": 2454,
+      "amplitude": 0.02882061611659508,
+      "phase_deg": 144.37210519022915,
+      "threshold_eev": 8.0,
+      "local_p": 0.12991870081299187,
+      "bonferroni_p": 0.6495935040649593
+    },
+    {
+      "n": 606,
+      "amplitude": 0.06191482419566442,
+      "phase_deg": 181.52528704959704,
+      "threshold_eev": 16.0,
+      "local_p": 0.0968190318096819,
+      "bonferroni_p": 0.4840951590484095
+    },
+    {
+      "n": 114,
+      "amplitude": 0.1539531542073322,
+      "phase_deg": 183.31295601962287,
+      "threshold_eev": 32.0,
+      "local_p": 0.06686933130668693,
+      "bonferroni_p": 0.33434665653343465
+    }
+  ],
+  "global_family_p": 0.25751742482575174,
+  "limitations": [
+    "Public 10% sample, not the full Auger dataset.",
+    "RA scrambling assumes uniform sidereal exposure and preserves observed declination and energy structure.",
+    "Previously published Auger anisotropy means a positive result may reproduce established science."
+  ]
+}
