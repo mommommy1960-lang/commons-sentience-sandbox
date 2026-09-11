@@ -1,0 +1,27 @@
+{
+  "claim_id": "icecube-hese-hemisphere-2026-09-11",
+  "claim_text": "The selected official IceCube HESE sample contains a north/south residual inconsistent with the official public-MC response.",
+  "owner": "Mya P. Brown, ORCID 0009-0009-6346-405X",
+  "run_mode": "preregistered_confirmatory",
+  "artifacts": [
+    {
+      "path": "../../outputs/icecube_response_audit/official_mc_response_100k.json",
+      "sha256": "0b00bd27040278f987a4fa21085bbb67ee62f65989723815cd4d134f8084e572",
+      "role": "machine-readable scientific result"
+    }
+  ],
+  "gates": {
+    "provenance": {"status": "PASS", "evidence": "All four official IceCube Git blob identities match the pinned manifest."},
+    "preregistration": {"status": "PASS", "evidence": "Frozen energy/event cut and hemisphere diagnostic."},
+    "ordinary_baseline": {"status": "PASS", "evidence": "Official MC response replaces the rejected 50/50 baseline."},
+    "synthetic_calibration": {"status": "PASS", "evidence": "Repository calibration and null machinery passed focused tests."},
+    "response_model": {"status": "FAIL", "evidence": "Official public MC weights used; PHOTOSPLINE detector corrections unavailable."},
+    "systematics": {"status": "PASS", "evidence": "Thirteen nominal/one-at-a-time flux-background scenarios tested; detector splines remain a limitation."},
+    "multiple_testing": {"status": "PASS", "evidence": "One primary mixture diagnostic; exploratory component family Holm-adjusted."},
+    "ordinary_alternatives": {"status": "PASS", "evidence": "Detector acceptance explains the legacy apparent imbalance."},
+    "independent_dataset": {"status": "PASS", "evidence": "Separate Pierre Auger directional track executed, addressing a different instrument and statistic."},
+    "independent_replication": {"status": "FAIL", "evidence": "No independent team reproduction of this exact computation."}
+  },
+  "scientific_result": {"outcome": "NULL_CONSISTENT", "primary_two_sided_p": 0.3622676631104186},
+  "limitations": ["Intermediate official-MC response, not the full IceCube likelihood or detector-spline model."]
+}

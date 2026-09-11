@@ -1,0 +1,27 @@
+{
+  "claim_id": "auger-ra-harmonic-2026-09-11",
+  "claim_text": "The public Pierre Auger SD1500 vertical sample contains a first-harmonic right-ascension residual across the frozen energy-threshold family.",
+  "owner": "Mya P. Brown, ORCID 0009-0009-6346-405X",
+  "run_mode": "preregistered_confirmatory",
+  "artifacts": [
+    {
+      "path": "../../outputs/auger_ra_harmonic/auger_ra_harmonic_100k.json",
+      "sha256": "11ef4fb863bba4cce32035889ccea5c5410f2e1b116004bdc45e94b7e2a9903d",
+      "role": "machine-readable scientific result"
+    }
+  ],
+  "gates": {
+    "provenance": {"status": "PASS", "evidence": "Official release archive and extracted CSV SHA-256 digests pinned."},
+    "preregistration": {"status": "PASS", "evidence": "Population, five thresholds, statistic, seed, null and decision rule frozen before aggregate inspection."},
+    "ordinary_baseline": {"status": "PASS", "evidence": "Uniform-RA null with observed event counts and threshold nesting."},
+    "synthetic_calibration": {"status": "PASS", "evidence": "Uniform control returned zero and injected RA=0 direction was recovered."},
+    "response_model": {"status": "PASS", "evidence": "RA scrambling preserves observed declination/energy acceptance structure for the scoped harmonic."},
+    "systematics": {"status": "FAIL", "evidence": "Dedicated sidereal-time, weather and exposure-stability attacks not yet executed."},
+    "multiple_testing": {"status": "PASS", "evidence": "Five-threshold family corrected with global nested-null probability and Bonferroni check."},
+    "ordinary_alternatives": {"status": "PASS", "evidence": "Known statistical variation and established cosmic-ray anisotropy context retained."},
+    "independent_dataset": {"status": "PASS", "evidence": "Separate official IceCube track produced a compatible null under another instrument."},
+    "independent_replication": {"status": "FAIL", "evidence": "No independent team reproduction of this exact computation."}
+  },
+  "scientific_result": {"outcome": "NULL_CONSISTENT", "global_family_p": 0.25751742482575174},
+  "limitations": ["Public 10 percent sample and first harmonic in RA only."]
+}
