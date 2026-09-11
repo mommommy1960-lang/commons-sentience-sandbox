@@ -1,0 +1,35 @@
+{
+  "dataset": "IceCube HESE 7.5-year data release",
+  "dataset_doi": "10.21234/4EQJ-BB17",
+  "analysis_doi": "10.1103/PhysRevD.104.022002",
+  "official_release_page": "https://icecube.wisc.edu/data-releases/2021/12/hese-7-5-year-data/",
+  "public_repository": "https://github.com/icecube/HESE-7-year-data-release",
+  "repository_ref": "main",
+  "required_files": [
+    {
+      "path": "HESE-7-year-data-release/resources/data/HESE_data.json",
+      "git_blob_sha1": "4835cccd8529b41e3d7b5958c8b54dc13e0f09a8",
+      "role": "observed data"
+    },
+    {
+      "path": "HESE-7-year-data-release/resources/data/HESE_mc_observable.json",
+      "git_blob_sha1": "fce310bcf2ccebe3167697a8a701ed1ea32ec33b",
+      "role": "MC reconstructed observables"
+    },
+    {
+      "path": "HESE-7-year-data-release/resources/data/HESE_mc_flux.json",
+      "git_blob_sha1": "d022b54ad8a450a8c02bbf1d5bc0580ee35741b3",
+      "role": "MC flux and weight terms"
+    },
+    {
+      "path": "HESE-7-year-data-release/resources/data/HESE_mc_truth.json",
+      "git_blob_sha1": "393999df0609b556972a09ea93746f89756108e6",
+      "role": "MC truth quantities"
+    }
+  ],
+  "notes": [
+    "Git blob SHA-1 identifiers pin the public repository objects; they are not ordinary file-content SHA-1 values.",
+    "Detector-systematics splines and the collaboration's supplied weighting code are required for full response/systematics reproduction.",
+    "Do not promote observed-sample north/south fractions to detector acceptance estimates."
+  ]
+}
