@@ -1,0 +1,93 @@
+{
+  "artifacts": [
+    {
+      "actual_sha256": "11ef4fb863bba4cce32035889ccea5c5410f2e1b116004bdc45e94b7e2a9903d",
+      "bytes": 2487,
+      "expected_sha256": "11ef4fb863bba4cce32035889ccea5c5410f2e1b116004bdc45e94b7e2a9903d",
+      "path": "../auger_ra_harmonic/auger_ra_harmonic_100k.json",
+      "role": "machine-readable scientific result",
+      "status": "VERIFIED"
+    }
+  ],
+  "bundle_sha256": "3db0183d40c6c4927bcfc7eb5a591552ea0d0a4a92f24f18aa3918a611702855",
+  "bundle_version": "1.0",
+  "chain": {
+    "previous_bundle_sha256": null
+  },
+  "claim": {
+    "id": "auger-ra-harmonic-2026-09-11",
+    "owner": "Mya P. Brown, ORCID 0009-0009-6346-405X",
+    "run_mode": "preregistered_confirmatory",
+    "text": "The public Pierre Auger SD1500 vertical sample contains a first-harmonic right-ascension residual across the frozen energy-threshold family."
+  },
+  "decision": {
+    "claim_survived_available_tests": false,
+    "discovery_claim_authorized": false,
+    "external_review_required": false,
+    "failed_gates": [
+      "systematics",
+      "independent_replication"
+    ],
+    "state": "KILLED_BY_NULL"
+  },
+  "gates": [
+    {
+      "evidence": "Official release archive and extracted CSV SHA-256 digests pinned.",
+      "id": "provenance",
+      "passed": true
+    },
+    {
+      "evidence": "Population, five thresholds, statistic, seed, null and decision rule frozen before aggregate inspection.",
+      "id": "preregistration",
+      "passed": true
+    },
+    {
+      "evidence": "Uniform-RA null with observed event counts and threshold nesting.",
+      "id": "ordinary_baseline",
+      "passed": true
+    },
+    {
+      "evidence": "Uniform control returned zero and injected RA=0 direction was recovered.",
+      "id": "synthetic_calibration",
+      "passed": true
+    },
+    {
+      "evidence": "RA scrambling preserves observed declination/energy acceptance structure for the scoped harmonic.",
+      "id": "response_model",
+      "passed": true
+    },
+    {
+      "evidence": "Dedicated sidereal-time, weather and exposure-stability attacks not yet executed.",
+      "id": "systematics",
+      "passed": false
+    },
+    {
+      "evidence": "Five-threshold family corrected with global nested-null probability and Bonferroni check.",
+      "id": "multiple_testing",
+      "passed": true
+    },
+    {
+      "evidence": "Known statistical variation and established cosmic-ray anisotropy context retained.",
+      "id": "ordinary_alternatives",
+      "passed": true
+    },
+    {
+      "evidence": "Separate official IceCube track produced a compatible null under another instrument.",
+      "id": "independent_dataset",
+      "passed": true
+    },
+    {
+      "evidence": "No independent team reproduction of this exact computation.",
+      "id": "independent_replication",
+      "passed": false
+    }
+  ],
+  "integrity_boundary": "SHA-256 integrity only; creator identity is not cryptographically signed",
+  "limitations": [
+    "Public 10 percent sample and first harmonic in RA only."
+  ],
+  "scientific_result": {
+    "global_family_p": 0.25751742482575174,
+    "outcome": "NULL_CONSISTENT"
+  }
+}

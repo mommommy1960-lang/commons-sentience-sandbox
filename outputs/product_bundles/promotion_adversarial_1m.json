@@ -1,0 +1,21 @@
+{
+  "cases": 1000000,
+  "code_revision": "3e9259f773c10bb6666f8448d890e7056e7211fd",
+  "decision": "PASS",
+  "invariants": [
+    "provenance failure or input failure always rejects",
+    "null-consistent result never promotes",
+    "candidate with any failed gate remains blocked",
+    "only candidate with every gate passed reaches external-review state",
+    "engine never authorizes a discovery claim autonomously"
+  ],
+  "seed": 20260911,
+  "state_counts": {
+    "KILLED_BY_NULL": 166378,
+    "PROMOTABLE_FOR_EXTERNAL_REVIEW": 294,
+    "PROVISIONAL_BLOCKED": 167081,
+    "REJECTED_PROVENANCE": 666247
+  },
+  "violation_examples": [],
+  "violations": 0
+}

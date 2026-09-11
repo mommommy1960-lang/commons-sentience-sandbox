@@ -1,0 +1,25 @@
+{
+  "path": "data/real/fermi_lat_grb_catalog.csv",
+  "file_found": true,
+  "n_events": 3000,
+  "n_sources": 1,
+  "n_sources_with_redshift": 0,
+  "n_missing_redshift": 3000,
+  "duplicate_fraction": 0.0,
+  "schema_valid": false,
+  "missing_columns": [
+    "grb_t90_s",
+    "redshift",
+    "grb_name",
+    "energy_gev"
+  ],
+  "warnings": [
+    "ENERGY_OUT_OF_RANGE: 2998 events have energy outside [0.01, 1000.0] GeV"
+  ],
+  "hard_failures": [
+    "MISSING_REQUIRED_COLUMNS: ['grb_t90_s', 'redshift', 'grb_name', 'energy_gev']",
+    "INSUFFICIENT_REDSHIFT_COVERAGE: 0 sources with z < 5"
+  ],
+  "recommendation": "REJECT",
+  "output_path": "outputs/fermi_provenance_recheck.json"
+}
