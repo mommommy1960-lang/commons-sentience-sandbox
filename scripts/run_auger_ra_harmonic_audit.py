@@ -9,7 +9,6 @@ import hashlib
 import json
 import math
 import platform
-import random
 import subprocess
 from pathlib import Path
 
@@ -74,18 +73,21 @@ def harmonic(ra_degrees: list[float]) -> dict:
 
 def simulate_null_amplitudes(counts: list[int], repeats: int, seed: int) -> list[list[float]]:
     """Nested threshold nulls using one uniform-RA sequence per catalog."""
-    rng = random.Random(seed)
+    import numpy as np
+
+    rng = np.random.Generator(np.random.MT19937(seed))
     result = [[] for _ in counts]
     max_count = max(counts)
-    for _ in range(repeats):
-        cs = ss = 0.0
-        at_count = {count: i for i, count in enumerate(counts)}
-        for j in range(1, max_count + 1):
-            angle = rng.random() * 2.0 * math.pi
-            cs += math.cos(angle)
-            ss += math.sin(angle)
-            if j in at_count:
-                result[at_count[j]].append(math.hypot(cs / j, ss / j))
+    # Bound peak memory while moving billions of trigonometric operations into
+    # compiled NumPy loops. Every row remains one complete nested null catalog.
+    for start in range(0, repeats, 256):
+        size = min(256, repeats - start)
+        angles = rng.random((size, max_count)) * (2.0 * math.pi)
+        cs = np.cumsum(np.cos(angles), axis=1)
+        ss = np.cumsum(np.sin(angles), axis=1)
+        for i, count in enumerate(counts):
+            amplitudes = np.hypot(cs[:, count - 1], ss[:, count - 1]) / count
+            result[i].extend(amplitudes.tolist())
     return result
 
 
@@ -157,7 +159,7 @@ def main() -> int:
         "decision": "NO_PROMOTION" if global_p > 0.01 else "PROVISIONAL_RESIDUAL_SYSTEMATICS_REQUIRED",
         "claim_boundary": "RA first-harmonic calibration; not simulation ontology and not unrestricted preferred-axis scan",
         "source": {"doi": "10.5281/zenodo.10488964", "archive_sha256": archive_hash, "csv_sha256": sha256(Path(args.csv))},
-        "execution": {"revision": revision(), "seed": args.seed, "null_catalogs": args.repeats, "python": platform.python_version()},
+        "execution": {"revision": revision(), "seed": args.seed, "null_catalogs": args.repeats, "random_generator": "numpy.random.MT19937", "python": platform.python_version()},
         "selection": {"array": "SD1500 vertical", "zenith_max_deg": 60.0, "thresholds_eev": list(THRESHOLDS_EEV), "deduplicate": "first row per sdid"},
         "synthetic_calibration": synthetic_calibration(),
         "observed_tests": observed,
