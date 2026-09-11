@@ -11,6 +11,8 @@ from reality_audit.data_analysis.icecube_response_audit import (
     summarize_official_data_json,
 )
 
+from scripts.run_icecube_official_mc_response import _git_blob_sha1, _holm_adjust
+
 
 def test_current_legacy_37_event_csv_is_quarantined_by_provenance_audit():
     result = audit_legacy_three_year_csv("data/real/icecube_hese_events.csv")
@@ -61,3 +63,14 @@ def test_response_model_refuses_missing_mc_files(tmp_path: Path):
     assert not readiness["ready"]
     assert readiness["quality_tier"] == "NO_RESPONSE_MODEL"
     assert len(readiness["missing_files"]) == 3
+
+
+def test_git_blob_sha_matches_git_object_convention(tmp_path: Path):
+    path = tmp_path / "sample.txt"
+    path.write_bytes(b"hello\n")
+    assert _git_blob_sha1(path) == "ce013625030ba8dba906f756967f9e9ca394464a"
+
+
+def test_holm_adjustment_is_monotone_and_family_wise():
+    adjusted = _holm_adjust({"a": 0.01, "b": 0.04, "c": 0.2})
+    assert adjusted == {"a": 0.03, "b": 0.08, "c": 0.2}

@@ -13,10 +13,13 @@ posterior are not applied here. The output labels that limitation explicitly.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import os
+import platform
 import random
+import subprocess
 import urllib.request
 from pathlib import Path
 from typing import Dict, Iterable, List, Tuple
@@ -42,6 +45,28 @@ def _download(name: str, cache: Path) -> Path:
 def _load_json(path: Path) -> dict:
     with path.open(encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _git_blob_sha1(path: Path) -> str:
+    data = path.read_bytes()
+    return hashlib.sha1(f"blob {len(data)}\0".encode() + data).hexdigest()
+
+
+def _git_revision() -> str | None:
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], text=True, stderr=subprocess.DEVNULL
+        ).strip()
+    except (OSError, subprocess.CalledProcessError):
+        return None
 
 
 def _selected_indices(payload: dict, emin=60_000.0, emax=10_000_000.0) -> List[int]:
@@ -117,12 +142,15 @@ def _component_weights(mc: dict, indices: List[int], params: dict) -> Dict[str, 
         conv_flux = (
             float(mc["pionFlux"][i]) + params["kpi_ratio"] * float(mc["kaonFlux"][i])
         ) * tilt_conv
+        particle_type = float(mc["primaryType"][i])
+        nunubar_weight = params["nunubar_ratio"] if particle_type > 0 else 2.0 - params["nunubar_ratio"]
+        conv_flux *= nunubar_weight
         conv_w = base * conv_flux * float(mc["conventionalSelfVetoCorrection"][i])
 
         tilt_prompt = _flux_power_law(
             energy, params["prompt_norm"], params["cr_delta_gamma"], 7887.0
         )
-        prompt_flux = float(mc["promptFlux"][i]) * tilt_prompt
+        prompt_flux = float(mc["promptFlux"][i]) * tilt_prompt * nunubar_weight
         prompt_w = base * prompt_flux * float(mc["promptSelfVetoCorrection"][i])
 
         muon_w = params["muon_norm"] * float(mc["muonWeightOverLivetime"][i])
@@ -167,6 +195,52 @@ def _mc_tail(k: int, n: int, p: float, repeats: int, seed: int) -> float:
     return hits / repeats
 
 
+def _holm_adjust(p_values: Dict[str, float]) -> Dict[str, float]:
+    """Holm family-wise-error adjustment for exploratory component tests."""
+    ordered = sorted(p_values.items(), key=lambda item: item[1])
+    adjusted = {}
+    running = 0.0
+    m = len(ordered)
+    for rank, (name, p_value) in enumerate(ordered):
+        running = max(running, min(1.0, (m - rank) * p_value))
+        adjusted[name] = running
+    return adjusted
+
+
+def _stress_scenarios() -> Dict[str, dict]:
+    """Flux/background nuisance stress tests, excluding detector splines.
+
+    Bounds follow the Gaussian-prior centres +/- one sigma in the official
+    HESE example. Prompt is additionally switched from its published-example
+    best fit of zero to one as a deliberately conservative stress case.
+    """
+    nominal = {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 1.00621679,
+        "prompt_norm": 0.0,
+        "muon_norm": 1.18706341,
+        "kpi_ratio": 1.00013744,
+        "cr_delta_gamma": -0.05309302,
+        "nunubar_ratio": 0.99815326,
+    }
+    scenarios = {"published_example_best_fit_no_splines": nominal}
+    variations = {
+        "conv_norm": (0.6, 1.4),
+        "muon_norm": (0.5, 1.5),
+        "kpi_ratio": (0.9, 1.1),
+        "cr_delta_gamma": (-0.10, 0.0),
+        "nunubar_ratio": (0.9, 1.1),
+        "prompt_norm": (0.0, 1.0),
+    }
+    for parameter, bounds in variations.items():
+        for label, value in zip(("low", "high"), bounds):
+            varied = nominal.copy()
+            varied[parameter] = value
+            scenarios[f"{parameter}_{label}"] = varied
+    return scenarios
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--cache", default=".cache/icecube_hese_7yr")
@@ -196,18 +270,8 @@ def main() -> int:
     data_n = len(data_idx)
 
     mc_idx = _selected_indices(mc)
-    # Intermediate response diagnostic. Astro best-fit central values are from
-    # Phys. Rev. D 104, 022002. Background/systematic nuisance parameters here
-    # remain nominal, not refitted.
-    params = {
-        "astro_gamma": 2.87,
-        "astro_norm": 6.37,
-        "conv_norm": 1.0,
-        "prompt_norm": 1.0,
-        "muon_norm": 1.0,
-        "kpi_ratio": 1.0,
-        "cr_delta_gamma": -0.05,
-    }
+    scenarios = _stress_scenarios()
+    params = scenarios["published_example_best_fit_no_splines"]
     components = _component_weights(mc, mc_idx, params)
 
     tests = {}
@@ -225,9 +289,44 @@ def main() -> int:
             "monte_carlo_repeats": args.repeats,
         }
 
+    adjusted = _holm_adjust({name: row["two_sided_exact"] for name, row in tests.items()})
+    for name, adjusted_p in adjusted.items():
+        tests[name]["two_sided_holm_exploratory_family"] = adjusted_p
+
+    nuisance_sensitivity = {}
+    for scenario_name, scenario_params in scenarios.items():
+        summary = _component_weights(mc, mc_idx, scenario_params)[
+            "nominal_mixture_no_spline_systematics"
+        ]
+        p = summary["north_fraction"]
+        nuisance_sensitivity[scenario_name] = {
+            "parameters": scenario_params,
+            "expected_north_fraction": p,
+            "two_sided_exact": _binomial_exact_two_sided(data_north, data_n, p),
+        }
+
+    provenance = {
+        name: {
+            "filename": path.name,
+            "bytes": path.stat().st_size,
+            "git_blob_sha1": _git_blob_sha1(path),
+            "sha256": _sha256(path),
+        }
+        for name, path in paths.items()
+    }
+
     result = {
         "source": "IceCube HESE 7.5-year public release, DOI 10.21234/4EQJ-BB17",
         "analysis_reference": "PhysRevD.104.022002",
+        "provenance": provenance,
+        "execution": {
+            "code_revision": _git_revision(),
+            "python": platform.python_version(),
+            "platform": platform.platform(),
+            "random_seed": args.seed,
+            "null_catalogs_per_test": args.repeats,
+            "random_generator": "python.random.Random (MT19937)",
+        },
         "selection": {
             "reco_deposited_energy_gev": [60_000.0, 10_000_000.0],
             "double_cascade_length_m": [10.0, 1000.0],
@@ -242,10 +341,25 @@ def main() -> int:
         "parameters": params,
         "component_response": components,
         "hemisphere_tests": tests,
+        "primary_test": {
+            "name": "published_example_best_fit_no_splines hemisphere count",
+            "two_sided_exact": tests["nominal_mixture_no_spline_systematics"]["two_sided_exact"],
+            "multiplicity": "single predeclared primary diagnostic; no correction applied",
+        },
+        "flux_background_nuisance_sensitivity": nuisance_sensitivity,
+        "preferred_axis_test": {
+            "status": "NOT_COMPUTABLE_FROM_THIS_PUBLIC_RELEASE",
+            "reason": (
+                "The official observed and MC JSON files contain reconstructed zenith but no "
+                "azimuth or right ascension. A free-axis sky scan cannot be reconstructed from "
+                "declination alone without inventing coordinates."
+            ),
+            "trial_control": "not applicable because the scan was not performed",
+        },
         "quality_tier": "RESPONSE_INFORMED_INTERMEDIATE_NOT_PUBLICATION_GRADE",
         "limitations": [
             "Uses official MC response weights and official basic cuts, but does not apply PHOTOSPLINE detector-systematic corrections.",
-            "Astrophysical central values are fixed; atmospheric and detector nuisance parameters are not refitted to this dataset.",
+            "Published-example best-fit flux/background values are fixed; selected nuisance parameters are stress-tested one at a time but are not refitted.",
             "A hemisphere count compresses directional/energy information and is not the collaboration likelihood.",
             "This diagnostic must not be described as an IceCube discovery test or as evidence for simulation ontology.",
         ],
