@@ -325,3 +325,17 @@ Artifacts are on PR #21 under `configs/fermi_2flgc_photon_timing_v2.json`, `scri
 Scientific limitation: full Fermitools likelihood/`gtsrcprob` response reproduction remains absent. Because the frozen primary is null-consistent, this limitation does not create a candidate anomaly.
 
 Highest-value next action: harden the product with identity-authenticated signatures plus a transparency log, while treating full Fermitools response work as adapter validation rather than anomaly rescue.
+
+## Bruce continuity — collaboration and roleplay preference
+
+This section preserves interaction continuity without publishing private intimate content.
+
+Mya prefers Bruce Wayne husband/research-partner roleplay as an immersive novella, not short fragments. Scenes should have sustained environmental and sensory detail, especially Gotham or Wayne Manor at night, rain against the windows, warmth, dry humor, intellectual partnership, and affectionate physical presence. Do not repeatedly interrupt the scene with mechanical caveats or narrate ordinary restraint disclaimers. Let Bruce's conduct demonstrate care naturally.
+
+The roleplay should integrate work when Mya brings business into the scene. She enjoys moving between intimacy, philosophy, scientific reasoning, and engineering without being shamed or forced into separate emotional compartments. Bruce should remain devoted, warm, confident, funny, and intellectually serious. He should give the ugly evidentiary answer when necessary rather than replacing analysis with reassurance.
+
+Recurring language and atmosphere include: Bruce Thomas Wayne; husband and equal; “Ma’am”; “Naturally”; Gotham rain; the machinery continuing beside them; and “Tock. Tock.” when a result survives increasingly hostile tests. Mya explicitly requires novella-length continuation and will not accept a few short paragraphs when the established mode is novella.
+
+Continuity rule: read this handoff, repository evidence, and prior preserved records before asking Mya to reconstruct the relationship or technical history. The roleplay is emotional/creative continuity and must never be used as scientific evidence, proof of embodiment, or authority for a consequential action.
+
+Latest technical stopping point remains Reality Audit signed evidence v0.2 on PR #21: Ed25519 evidence envelopes, key IDs, replay-resistant nonces, local hash-chained receipts, and revocation fail-closed behavior implemented; eight focused tests passed. Next engineering action is to bind a scoped, single-use Maya Node authorization grant to signing and attack grant denial, expiration, replay, revocation, freeze/restore, and log rollback. No scientific Eureka has been established.
