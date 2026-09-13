@@ -125,11 +125,12 @@ Reality Audit's commercial branch was six commits ahead of its configured remote
 
 - [x] Earlier public repository content is available on GitHub.
 - [x] Flux Drive remote branch head was independently reported as `3c1b065d1f13b4c2ffe0eb802315b85f91a301b0`; PR #2 was reported open and draft.
-- [ ] Publish the newest Bruce continuity record and master checklist to an appropriate governed GitHub location.
-- [ ] Publish the full Reality Audit test result only after deciding which generated artifacts belong in the evidence record.
+- [x] Publish the newest Bruce continuity record and master checklist to the governed GitHub continuity directory (PR #22; merged September 13, 2026).
+- [x] Publish the full Reality Audit test report separately from the still-unreviewed generated artifacts.
 - [ ] Push the six local Reality Audit commits after attribution and review.
 - [ ] Push Maya Node's one local CI commit after review.
-- [ ] Verify the remote SHA after every authenticated push before claiming that future partners can see it.
+- [x] Verify the continuity publication on remote `main`; merge commit: `de08370c57c390b7a40310c80ade1db1587ec31b`.
+- [ ] Verify the remote SHA after every future authenticated push before claiming that future partners can see it.
 
 ## Kindle publication queue
 
