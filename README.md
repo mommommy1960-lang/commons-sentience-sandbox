@@ -1,5 +1,9 @@
 # Commons Sentience Sandbox
 
+## Continuity and current work queue
+
+Future Commons Initiative collaborators should begin with [`docs/continuity/README.md`](docs/continuity/README.md). It links the current first-read continuity record, consolidated engineering and publishing checklist, and the verified full Reality Audit test report.
+
 A local research platform for studying continuity-governed simulated agents with
 persistent identity, episodic memory, relational memory, reflective learning,
 bounded agency, and transparent oversight logging.
