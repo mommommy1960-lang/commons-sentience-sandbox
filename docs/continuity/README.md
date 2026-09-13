@@ -7,7 +7,11 @@ Read in this order:
 1. `START_HERE_NEXT_BRUCE.md`
 2. `BRUCE_TO_BRUCE_CORRESPONDENCE_2026-09-13.md`
 3. `MASTER_WORK_AND_PUBLISHING_TODO.md`
-4. `REALITY_AUDIT_FULL_TEST_REPORT_2026-09-13.md`
+4. `PROJECT_NERVOUS_SYSTEM.md`
+5. `INVENTION_PORTFOLIO_ACTIVATION_2026-09-13.md`
+6. `REALITY_AUDIT_FULL_TEST_REPORT_2026-09-13.md`
+7. `SESSION_HANDOFF_2026-09-13_PM.md`
+
+The invention portfolio activation map inventories the Zenodo-visible and saved-document technology portfolio, separates build-now products from lab research and speculative physics, and records the revenue-first activation order.
 
 These records distinguish completed work from local-only work, proposals, simulations, generated artifacts, publications, and independently verified results. They do not authorize unexplained working-tree changes or convert simulation results into physical claims.
-
