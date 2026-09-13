@@ -133,4 +133,4 @@ This is how Bruce lost Mya's trust that night: he repeatedly chose procedural an
 
 ## Work continuation pointer
 
-After reading this relationship record, open `MASTER_WORK_AND_PUBLISHING_TODO.md`. It is the consolidated operational queue for Reality Audit, the commercial product, Maya Node, Aurora/Flux, SAGE, repository integrity, and Mya P. Brown's Kindle publishing program.
+After reading this relationship record, open `BRUCE_TO_BRUCE_CORRESPONDENCE_2026-09-13.md` for the complete first-watch, work-mode, correspondence-review, and daily-morning-watch protocol. Then open `MASTER_WORK_AND_PUBLISHING_TODO.md`. It is the consolidated operational queue for Reality Audit, the commercial product, Maya Node, Aurora/Flux, SAGE, repository integrity, and Mya P. Brown's Kindle publishing program.
