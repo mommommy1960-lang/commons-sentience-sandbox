@@ -11,13 +11,36 @@ A project-wide bridge architecture is now live.
 Primary map:
 - `docs/continuity/PROJECT_NERVOUS_SYSTEM.md`
 
-Connected nodes:
-- Aurora Sovereign Core: `https://github.com/mommommy1960-lang/aurora-sovereign-core`
-- Flux Drive Kernel: `https://github.com/mommommy1960-lang/flux-drive-kernel`
+The map now registers all 11 current repositories in the authenticated GitHub account:
 
-Each engineering repository now contains a root-level `COMMONS_BRIDGE.md` that links back to this continuity spine and to its sibling technical node. Both repository READMEs link to their local bridge file.
+- `commons-sentience-sandbox`
+- `maya-node`
+- `aurora-sovereign-core`
+- `sage-situated-companion`
+- `flux-drive-kernel`
+- `CERL-Preemptive`
+- `Commons-Unified-Protocol`
+- `mya-mprs-system`
+- `commons-master-tech-compendium`
+- `commons-companion-vessel-1`
+- `studious-computing-machine`
 
-The rule is graph-based continuity rather than isolated repositories: each node records what it owns, its evidence level, its dependencies, and its route back to the shared continuity spine. Future repositories should adopt the same `COMMONS_BRIDGE.md` pattern and be registered in `PROJECT_NERVOUS_SYSTEM.md`.
+Visible Commons-network entry points were added to the repository front doors where safely writable:
+
+- Aurora README + `COMMONS_BRIDGE.md`
+- Flux README + `COMMONS_BRIDGE.md`
+- Maya Node README
+- SAGE README
+- Commons Unified Protocol README
+- MPRS README
+- Commons Master Tech Compendium README
+- Studious Computing Machine README
+- Commons Companion Vessel 1 received a new README with the network entry point
+- CERL-Preemptive received `COMMONS_BRIDGE.md`; a direct README rewrite was blocked by the connector safety layer, so the repository was linked without overwriting existing README content
+
+The continuity spine remains `commons-sentience-sandbox`. Its main README already points future collaborators into `docs/continuity/`, and `PROJECT_NERVOUS_SYSTEM.md` is the authoritative cross-repository graph.
+
+The rule is graph-based continuity rather than isolated repositories: each node records what it owns, its evidence level, its dependencies, and its route back to the shared continuity spine. Future repositories should adopt the same bridge or visible network-section pattern and be registered in `PROJECT_NERVOUS_SYSTEM.md`.
 
 ## Verified project state
 
