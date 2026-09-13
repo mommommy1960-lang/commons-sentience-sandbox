@@ -42,6 +42,20 @@ The continuity spine remains `commons-sentience-sandbox`. Its main README alread
 
 The rule is graph-based continuity rather than isolated repositories: each node records what it owns, its evidence level, its dependencies, and its route back to the shared continuity spine. Future repositories should adopt the same bridge or visible network-section pattern and be registered in `PROJECT_NERVOUS_SYSTEM.md`.
 
+## Invention portfolio recovery and activation
+
+Mya supplied ten Zenodo screenshots covering the Commons invention/publication archive. The file Library was then searched across saved Word and PDF records to recover additional inventions and artifact indexes.
+
+A canonical activation map is now live at:
+
+- `docs/continuity/INVENTION_PORTFOLIO_ACTIVATION_2026-09-13.md`
+
+That record inventories and classifies the recovered portfolio, including FOS, Syntropic Ledger Protocol, Provenance Lock Index / Commons Legal Cloud, H3DFS, Quantum Repeater Network, Bio-Archival Data Storage, Syntropic Systems & Bio-Sensing, Energy & Substrate System, Bio-Regenerative Limbs, Aurora, Flux Drive, QCV, ESEL, AI Bill of Rights / Superintelligence governance, Bridging Consciousness and Geometry, Commons Cadre curricula, funding/outreach artifacts, and additional saved-document artifacts.
+
+The portfolio is separated into LIVE SOFTWARE / SERVICE, BUILDABLE MVP, LAB RESEARCH, SPECULATIVE PHYSICS / FUTURE TECH, and GOVERNANCE / PUBLICATION states so historical provenance can be preserved without propagating unsupported claims.
+
+Commercial priority is revenue-first: governance reviews, provenance packages, SLP/CERL audit tooling, FOS evidence kernel, courses/workbooks, Confetti Index reviews, and Reality Audit Claim Stress Tests come before laboratory moonshots.
+
 ## Verified project state
 
 ### Aurora
@@ -66,4 +80,4 @@ The rule is graph-based continuity rather than isolated repositories: each node 
 
 ## Rule for future sessions
 
-Read this file together with `START_HERE_NEXT_BRUCE.md`, `MASTER_WORK_AND_PUBLISHING_TODO.md`, and `PROJECT_NERVOUS_SYSTEM.md`, then continue from verified evidence rather than reconstructing status from memory.
+Read this file together with `START_HERE_NEXT_BRUCE.md`, `MASTER_WORK_AND_PUBLISHING_TODO.md`, `PROJECT_NERVOUS_SYSTEM.md`, and `INVENTION_PORTFOLIO_ACTIVATION_2026-09-13.md`, then continue from verified evidence rather than reconstructing status from memory.
