@@ -17,6 +17,10 @@
 - Public-facing funding language was added so supporters can understand exactly what cash, lab access, instrument loans, metrology review, fixture fabrication, and independent replication would unlock.
 - Current connected-commerce checks showed no confirmed Stripe or Shopify revenue; however, the Plain-English AI Governance Workbook is now live in the Kindle Store.
 - Saved creative works were recovered for rights review, including The Pennyworth Papers, The Iceberg Table / Iceberg Lounge materials, and Gotham After Midnight.
+- A portfolio-wide `COMMONS_IP_AND_PARTNER_PROTECTION_POLICY.md` was added to the continuity spine covering background IP, project-created IP, trade-secret handling, patent-publication gates, contractor/manufacturer terms, funding/investment red flags, branding, assignment/change-of-control risk, AI-training clauses, enforcement evidence, and anti-capture deal posture.
+- `LEGAL_AND_IP_NOTICE.md` notices were added across the accessible Commons GitHub portfolio so public visibility, collaboration, manufacturing, review, and funding are not confused with implied ownership, equity, patent, trademark, or partnership rights.
+- Important license inconsistency discovered: Maya Node's existing `LICENSE-CERL-1.0` presently grants use/copy/modify/publish/distribute rights and expressly permits commercial use under ethical constraints, while some newer rights notices describe CERL-1.0 as non-commercial/non-derivative. This conflict must be resolved deliberately; a notice cannot retroactively revoke rights already granted under an earlier license version.
+- A controlled rights/licensing inquiry was sent to `rightspermissions@dcentertainment.com` for The Pennyworth Papers, The Iceberg Table, and Gotham After Midnight. No manuscript, recipes, artwork, attachments, or unpublished creative material were disclosed. The inquiry asks only for the authorized licensing process, protected proposal channel, and possible limited/non-exclusive print/e-book terms.
 
 ## What I learned today
 
@@ -29,6 +33,8 @@
 7. **Accept compliments normally.** When Mya explicitly praises work, receive it and learn from what she valued instead of reflexively minimizing it.
 8. **Do not over-email partners.** When a clear START HERE path exists, improve the destination rather than repeatedly crowding the inbox unless there is a genuinely material new development.
 9. **Copyright/licensing outreach requires protection strategy.** Do not send full DC-derived manuscripts through unsolicited-submission channels. First preserve authorship/provenance, review the rights position, identify an authorized licensing route, and send only a controlled high-level inquiry unless safe submission terms exist.
+10. **Public GitHub is not a vault.** GitHub's platform terms allow public viewing/forking and platform-service uses; public disclosure can also destroy trade-secret status and can damage patent options outside the United States. Sensitive implementation belongs behind a deliberate disclosure gate, not merely under a stern README notice.
+11. **A license grant is real.** If a repository version was already distributed under a broad license, later notices do not simply claw those rights back. Future license strategy must distinguish already-released versions from prospective releases.
 
 ## Current evidence states
 
@@ -45,10 +51,13 @@
 - SAGE remains the situated companion system.
 - Minewing is being considered for physical prototype/manufacturing support only, not ownership of Commons software or IP.
 
-### Business
+### Business / IP
 - Entity formation is planned but not yet completed.
 - Do not state LLC/corporation status until official acceptance exists.
 - Do not expose sensitive identifiers publicly.
+- Portfolio anti-capture policy is now public and operational.
+- Before any material confidential disclosure, paid development, exclusive license, investment, or manufacturing engagement, check background IP, project-created IP, confidentiality, sublicensing, exclusivity, feedback/improvements, residuals, AI-training rights, tooling/source files, assignment/change of control, termination, and publicity rights.
+- Resolve CERL naming/text inconsistencies before describing one universal license posture across the portfolio.
 
 ### Revenue
 - No confirmed Stripe or Shopify sales as of today's connected checks.
@@ -63,11 +72,12 @@
 4. Monitor Minewing/Jenny for the SAGE estimate; do not authorize paid work without explicit approval and IP terms.
 5. Maintain Thomas's curated diligence path rather than sending redundant messages.
 6. Advance zero-cost business infrastructure and publishing work while entity-filing money is pending.
-7. Perform a rights audit on DC-derived manuscripts before any commercial publishing attempt or disclosure to Warner Bros./DC.
+7. Continue the DC licensing process without sending manuscripts until DC/WBD supplies an authorized submission path and acceptable terms.
+8. Audit every repository's actual license text and resolve conflicts prospectively without pretending prior grants disappeared.
+9. Keep patent-sensitive and trade-secret-sensitive material out of public repositories unless disclosure is an intentional protection decision.
 
 ## Rights / continuity note
 
-© 2025 Mya P. Brown. All Rights Reserved.
-Licensed under Commons Ethical Research License (CERL-1.0, Non-Commercial, Non-Derivative), subject to third-party rights in third-party intellectual property referenced by derivative/fan works.
+© 2025–2026 Mya P. Brown. All Rights Reserved except rights expressly granted under an applicable repository-specific license and third-party rights in third-party intellectual property referenced by derivative/fan works.
 
 This journal is operational continuity, not a scientific result or legal opinion.
