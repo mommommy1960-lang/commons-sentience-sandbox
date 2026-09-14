@@ -10,8 +10,11 @@ Read in this order:
 4. `PROJECT_NERVOUS_SYSTEM.md`
 5. `INVENTION_PORTFOLIO_ACTIVATION_2026-09-13.md`
 6. `REALITY_AUDIT_FULL_TEST_REPORT_2026-09-13.md`
-7. `SESSION_HANDOFF_2026-09-13_PM.md`
+7. `BUSINESS_INFRASTRUCTURE_STATUS.md`
+8. `SESSION_HANDOFF_2026-09-13_PM.md`
 
 The invention portfolio activation map inventories the Zenodo-visible and saved-document technology portfolio, separates build-now products from lab research and speculative physics, and records the revenue-first activation order.
+
+`BUSINESS_INFRASTRUCTURE_STATUS.md` is the governed record for legal/business formalization, branded-domain work, corporate records, external-partner IP boundaries, and the requirement that company infrastructure catch up with the technical and publication record.
 
 These records distinguish completed work from local-only work, proposals, simulations, generated artifacts, publications, and independently verified results. They do not authorize unexplained working-tree changes or convert simulation results into physical claims.
