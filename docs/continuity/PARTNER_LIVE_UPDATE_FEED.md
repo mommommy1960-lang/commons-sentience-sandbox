@@ -34,9 +34,13 @@ Aurora repository: https://github.com/mommommy1960-lang/aurora-sovereign-core
 
 Current evidence boundary: Flux is a software/metrology and falsification framework; physical propulsion remains unproven. Aurora remains prototype/simulation architecture rather than a flight-ready city-ship.
 
-**2026-09-14 research update:** Draft PR #9 adds a million-trial synthetic null-world reality audit and Aurora/Flux validation manual. It remains draft/unmerged pending review. The run is evidence about the audit pipeline and false-positive behavior, not evidence of reactionless propulsion.
+**2026-09-14 research update — merged:** PR #9 completed CI successfully and was merged to `main`. It adds the reproducible one-million-trial synthetic null-world reality audit and Aurora/Flux validation manual. The audit quantifies false-positive behavior under modeled ordinary artifact channels; it does not demonstrate propulsion.
 
-PR: https://github.com/mommommy1960-lang/flux-drive-kernel/pull/9
+PR #9: https://github.com/mommommy1960-lang/flux-drive-kernel/pull/9
+
+**2026-09-14 physical-readiness update — merged:** PR #10 completed CI successfully and was merged to `main`. It adds a physical bench readiness matrix, calibration/uncertainty plan, blind-control protocol, low-energy procurement tiers, CAL-00 / Experiment Zero exit criteria, and a recursive next-action ladder. The next meaningful program transition now requires real calibrated hardware access, physical measurements, funding/procurement authorization, and eventually independent replication rather than additional same-model simulation alone.
+
+PR #10: https://github.com/mommommy1960-lang/flux-drive-kernel/pull/10
 
 ### Business infrastructure
 
