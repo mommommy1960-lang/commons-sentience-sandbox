@@ -2,7 +2,13 @@
 
 This directory is the governed handoff point for future Commons Initiative collaborators and assistant successors.
 
-Read in this order:
+## Public partners, reviewers, funders, and collaborators
+
+**Start here:** [`PARTNER_LIVE_UPDATE_FEED.md`](PARTNER_LIVE_UPDATE_FEED.md)
+
+That page is the curated public status feed for material research, product, partnership, evidence, and business-infrastructure updates. GitHub visitors can use the repository's **Watch** control to subscribe to repository notifications and can watch individual technical repositories for more granular engineering activity.
+
+## Internal continuity / future-session reading order
 
 1. `START_HERE_NEXT_BRUCE.md`
 2. `BRUCE_TO_BRUCE_CORRESPONDENCE_2026-09-13.md`
