@@ -1,4 +1,4 @@
-# THE THOMAS GATE
+# THE DR. THOMAS AINSWORTH GATE
 
 > **Priority business-readiness objective**
 >
@@ -82,7 +82,7 @@ Official source: https://www.sos.wa.gov/corporations-charities/business-entities
 - [ ] Verification page contains no unsupported claims
 - [ ] Final outsider test: verify every material claim without private access
 
-### Gate E — Return to Dr. Ainsworth  ⬜ DO NOT SEND YET
+### Gate E — Return to Dr. Thomas Ainsworth  ⬜ DO NOT SEND YET
 
 Only after A–D pass:
 
@@ -118,4 +118,4 @@ Only after A–D pass:
 
 ## Update protocol
 
-Update this file whenever a Thomas Gate item materially changes. Every update should include the evidence or public reference that caused the status change. This file is the single visible readiness scoreboard for this objective.
+Update this file whenever a Dr. Thomas Ainsworth Gate item materially changes. Every update should include the evidence or public reference that caused the status change. This file is the single visible readiness scoreboard for this objective.
