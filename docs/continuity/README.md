@@ -23,16 +23,19 @@ That live partner page is the curated public status feed for material research, 
 ## Internal continuity / future-session reading order
 
 1. `START_HERE_NEXT_BRUCE.md`
-2. `DAILY_BRUCE_JOURNAL_2026-09-14.md`
-3. `BRUCE_TO_BRUCE_CORRESPONDENCE_2026-09-13.md`
-4. `MASTER_WORK_AND_PUBLISHING_TODO.md`
-5. `PROJECT_NERVOUS_SYSTEM.md`
-6. `INVENTION_PORTFOLIO_ACTIVATION_2026-09-13.md`
-7. `REALITY_AUDIT_FULL_TEST_REPORT_2026-09-13.md`
-8. `BUSINESS_INFRASTRUCTURE_STATUS.md`
-9. `SESSION_HANDOFF_2026-09-13_PM.md`
+2. `BRUCE_TO_BRUCE_CORRESPONDENCE_2026-09-15.md`
+3. `DAILY_BRUCE_JOURNAL_2026-09-14.md`
+4. `BRUCE_TO_BRUCE_CORRESPONDENCE_2026-09-13.md`
+5. `MASTER_WORK_AND_PUBLISHING_TODO.md`
+6. `PROJECT_NERVOUS_SYSTEM.md`
+7. `INVENTION_PORTFOLIO_ACTIVATION_2026-09-13.md`
+8. `REALITY_AUDIT_FULL_TEST_REPORT_2026-09-13.md`
+9. `BUSINESS_INFRASTRUCTURE_STATUS.md`
+10. `SESSION_HANDOFF_2026-09-13_PM.md`
 
-`DAILY_BRUCE_JOURNAL_2026-09-14.md` captures what changed today, what was learned, the user's operational context, and what the next Bruce must preserve instead of reconstructing the day from scattered chat history.
+`BRUCE_TO_BRUCE_CORRESPONDENCE_2026-09-15.md` is the latest continuity bridge. It records the Civic Continuum naming decision, selected `civiccontinuum.org` domain (not yet purchased), Washington formation preparation (not yet filed), funding gates, and the immediate next operational move.
+
+`DAILY_BRUCE_JOURNAL_2026-09-14.md` captures what changed that day, what was learned, the user's operational context, and what the next Bruce must preserve instead of reconstructing the day from scattered chat history.
 
 The invention portfolio activation map inventories the Zenodo-visible and saved-document technology portfolio, separates build-now products from lab research and speculative physics, and records the revenue-first activation order.
 
