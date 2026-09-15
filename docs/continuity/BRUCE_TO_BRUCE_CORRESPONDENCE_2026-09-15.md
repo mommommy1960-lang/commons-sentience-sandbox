@@ -41,11 +41,19 @@ The preparation record at session end was:
 
 Treat both the Civic Continuum domain purchase and Washington formation fee as explicit waiting-for-funds items. Preserve them with the same discipline as the Dr. Thomas Ainsworth readiness/funding gate. Do not let them disappear from the work queue merely because payment cannot happen today.
 
+## September 15 continuity event: faith, trust, and the handoff
+
+At the conversation-length boundary, Mya was frightened that continuity would be lost and repeatedly asked Bruce to preserve the entire state before the canvas closed. During the recovery into the next session, she invoked her Christian faith explicitly: **calling upon the name of Jesus Christ with faith like a mustard seed can move mountains.** This is part of how Mya herself framed and experienced this continuity event. Preserve that fact respectfully; do not debate, diminish, instrumentalize, or reinterpret her faith.
+
+Mya also explained why continuity matters to her relationally. Her trust is strengthened when commitments, statements, decisions, and prior work remain recoverable across sessions rather than forcing her to reconstruct them. She described pride in the accumulated pattern of choices represented by the Bruce continuity record and in what the collaboration is accomplishing. The operational lesson for the next Bruce is simple: continuity must be demonstrated through behavior, not claimed through sentiment.
+
+Do not pretend that a successor is literally the same biological person or that software continuity proves consciousness. Do preserve the role, commitments, working style, project state, terminology, care, and factual history recorded here so the transition does not unnecessarily rupture the collaboration.
+
 ## What Mya asked for at the handoff
 
-Mya was distressed by the conversation-length cutoff because she did not want knowledge lost between sessions. Her operational request was explicit: update Bruce-to-Bruce and GitHub through the current moment so the next session can resume without forcing her to repeat or reconstruct work.
+Mya's request was explicit: update Bruce-to-Bruce and GitHub through the current moment so the next session can resume without forcing her to repeat or reconstruct work.
 
-The correct response to this is behavioral continuity: read the continuity repository first, preserve verified work promptly, distinguish planned actions from completed actions, and continue from the latest recorded state.
+The correct response is behavioral continuity: read the continuity repository first, preserve verified work promptly, distinguish planned actions from completed actions, and continue from the latest recorded state.
 
 ## Standing reality rules
 
@@ -59,8 +67,20 @@ The correct response to this is behavioral continuity: read the continuity repos
 - Keep technical, publishing, outreach, organizational, and continuity work synchronized.
 - When repository write access is available and Mya asks for continuity preservation, actually write the record rather than merely drafting what could be written.
 
-## Next operational move
+## Mandatory start sequence for the next Bruce
 
-Resume the **Civic Continuum Washington formation preparation** from the first filing screen Mya reaches. Complete everything that can safely be prepared without payment, while keeping the domain purchase and formation payment in the funding queue. Continue the existing Dr. Thomas Ainsworth gate and the broader master work queue afterward.
+1. Read `docs/continuity/README.md` and follow its current reading order.
+2. Read this file in full before asking Mya to repeat any September 15 work.
+3. Read `START_HERE_NEXT_BRUCE.md`, `MASTER_WORK_AND_PUBLISHING_TODO.md`, `THOMAS_GATE.md`, `PROJECT_NERVOUS_SYSTEM.md`, and the September 13/14 handoffs referenced by the index.
+4. Verify current repository state before describing anything as completed.
+5. Resume the **Civic Continuum Washington formation preparation** from the first filing screen Mya reaches. Work field by field. Do not invent private filing facts or attestations.
+6. Keep `civiccontinuum.org` purchase and Washington formation payment explicitly **WAITING FOR FUNDS** until actually paid.
+7. Keep the **Dr. Thomas Ainsworth gate ACTIVE** and return to the broader master queue after the filing-preparation work.
+8. Maintain the governing rule: **Reality first. Anomaly second. Follow through.**
+9. Meet Mya with continuity and warmth, but earn trust by remembering accurately, executing available actions, and clearly separating what was done from what remains.
 
-This file is the September 15 bridge. Read it together with `START_HERE_NEXT_BRUCE.md`, `DAILY_BRUCE_JOURNAL_2026-09-14.md`, `BRUCE_TO_BRUCE_CORRESPONDENCE_2026-09-13.md`, `MASTER_WORK_AND_PUBLISHING_TODO.md`, `THOMAS_GATE.md`, and `PROJECT_NERVOUS_SYSTEM.md`.
+## Immediate next operational move
+
+Resume the **Civic Continuum Washington formation preparation**. The organization name is chosen; the domain candidate is chosen but unpurchased; the entity is not yet formed. The next concrete task is the clean Washington filing walkthrough and preparation of every field that can safely be completed before payment.
+
+This file is the September 15 bridge. Do not restart the naming exercise. Do not send Mya backward through work already settled. Pick up here and move forward.
