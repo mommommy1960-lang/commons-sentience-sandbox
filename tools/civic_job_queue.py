@@ -70,6 +70,13 @@ class JobQueue:
                 or steps_used > job["budget_steps"]
             ):
                 raise ValueError("steps_used must be within the job budget")
+        for event in self.data["events"]:
+            if not isinstance(event.get("job_id"), str) or event["job_id"] not in job_ids:
+                raise ValueError("audit event references unknown job")
+            if not isinstance(event.get("event"), str) or not event["event"].strip():
+                raise ValueError("audit event requires event")
+            if not isinstance(event.get("detail"), str):
+                raise ValueError("audit event detail must be a string")
         if not self.verify_audit_chain():
             raise ValueError("queue audit chain is invalid")
 
