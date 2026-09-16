@@ -26,7 +26,7 @@ jobs:
   repeat-validation:
     name: Repeat Challenge Lab validation 100 times
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 30
     steps:
       - name: Check out repository
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
@@ -36,10 +36,12 @@ jobs:
           python-version: "3.11"
       - name: Install test runner
         run: python -m pip install --disable-pip-version-check pytest
-      - name: Run validation pass 100 times
-        run: |
-          set -euo pipefail
-          for pass in $(seq 1 100); do
-            echo "Challenge Lab validation pass $pass/100"
-            python -m pytest tests/test_challenge_lab_scenario.py tests/test_challenge_lab_400_cases.py -q
-          done
+      - name: Validate campaign definitions
+        run: python -m pytest tests/test_challenge_lab_scenario.py tests/test_challenge_lab_400_cases.py -q
+      - name: Run 400 full rollouts
+        run: python challenge_lab_campaign.py
+      - name: Upload rollout report
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: challenge-lab-400-results
+          path: challenge_lab_400_results.json
