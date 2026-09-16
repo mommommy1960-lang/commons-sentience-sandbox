@@ -275,3 +275,16 @@ Verified GitHub evidence:
 - Overall conclusion: **success**
 
 PR #30 remains open, draft, and unmerged. This verifies the bounded Civic Continuum workflow and its selected tests; it does not verify the full repository, unresolved governance defects, physical hardware, production safety, or independent replication.
+
+
+## Repair checkpoint — reflection honesty — September 16, 2026
+
+Verified on draft PR #30, feature branch `feature/civic-continuum-job-queue`:
+
+- Reflection no longer claims pending contradictions were resolved without evidence.
+- Pending contradictions remain preserved until a verified resolver clears them.
+- Added regression coverage for preservation of unresolved contradictions.
+- Commit: `7e5ddf7ba12e029144c6d541a84f6b4b6d55ada9`.
+- Civic Continuum workflow run: `35141524866`, run #39, conclusion **success**.
+
+Next repair target: evidence-gated identity-tension and continuity-rupture resolution. PR #30 remains draft and unmerged.
