@@ -52,6 +52,26 @@ class JobQueueTests(unittest.TestCase):
         queue.data["events"][0]["detail"] = "changed"
         self.assertFalse(queue.verify_audit_chain())
 
+    def test_persisted_tampering_is_rejected_on_load(self):
+        queue = self.make_queue()
+        job = queue.create("Detect persisted tampering")
+        document = json.loads(queue.path.read_text(encoding="utf-8"))
+        document["events"][0]["detail"] = "forged"
+        queue.path.write_text(json.dumps(document), encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "audit chain"):
+            JobQueue(queue.path)
+
+    def test_malformed_audit_event_is_rejected_on_load(self):
+        queue = self.make_queue()
+        queue.create("Detect malformed event")
+        document = json.loads(queue.path.read_text(encoding="utf-8"))
+        del document["events"][0]["hash"]
+        queue.path.write_text(json.dumps(document), encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "audit chain"):
+            JobQueue(queue.path)
+
 
 if __name__ == "__main__":
     unittest.main()
