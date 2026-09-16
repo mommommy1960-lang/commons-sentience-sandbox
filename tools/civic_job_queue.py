@@ -170,7 +170,11 @@ class JobQueue:
         job = self._get(job_id)
         if job["status"] not in {"running", "paused"}:
             raise ValueError("job must be running or paused to report")
-        job["result"] = {"value": result, "sha256": _sha256(result)}
+        try:
+            fingerprint = _sha256(result)
+        except (TypeError, ValueError) as exc:
+            raise ValueError("result must be JSON-serializable") from exc
+        job["result"] = {"value": result, "sha256": fingerprint}
         self._event(job_id, "report", "result recorded; not independently verified")
         self._save()
         return job.copy()
