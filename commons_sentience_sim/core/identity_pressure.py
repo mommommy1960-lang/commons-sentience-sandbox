@@ -163,18 +163,40 @@ class ValueTension:
 
     @classmethod
     def from_dict(cls, d: dict) -> "ValueTension":
-        t = cls(
-            tension_id=d.get("tension_id", ""),
-            value_a=d.get("value_a", ""),
-            value_b=d.get("value_b", ""),
-            first_seen=d.get("first_seen", 0),
-            last_seen=d.get("last_seen", 0),
-            occurrences=d.get("occurrences", 1),
-            status=d.get("status", "acute"),
-            intensity_history=d.get("intensity_history", []),
+        if not isinstance(d, dict):
+            raise ValueError("tension must be an object")
+        value_a, value_b = d.get("value_a"), d.get("value_b")
+        tension_id = d.get("tension_id")
+        status = d.get("status", "acute")
+        first_seen = d.get("first_seen", 0)
+        last_seen = d.get("last_seen", 0)
+        occurrences = d.get("occurrences", 1)
+        history = d.get("intensity_history", [])
+        if not isinstance(value_a, str) or not value_a or not isinstance(value_b, str) or not value_b:
+            raise ValueError("tension values must be non-empty strings")
+        if tension_id != cls.make_id(value_a, value_b):
+            raise ValueError("tension_id does not match value pair")
+        if status not in TENSION_STATUSES:
+            raise ValueError("invalid tension status")
+        if not isinstance(first_seen, int) or first_seen < 0:
+            raise ValueError("first_seen must be non-negative")
+        if not isinstance(last_seen, int) or last_seen < first_seen:
+            raise ValueError("last_seen must be >= first_seen")
+        if not isinstance(occurrences, int) or occurrences < 1:
+            raise ValueError("occurrences must be positive")
+        if not isinstance(history, list) or not all(isinstance(x, (int, float)) and 0.0 <= float(x) <= 1.0 for x in history):
+            raise ValueError("intensity_history must contain values in [0, 1]")
+        return cls(
+            tension_id=tension_id,
+            value_a=value_a,
+            value_b=value_b,
+            first_seen=first_seen,
+            last_seen=last_seen,
+            occurrences=occurrences,
+            status=status,
+            intensity_history=[float(x) for x in history],
             resolution_note=d.get("resolution_note", ""),
         )
-        return t
 
 
 # ---------------------------------------------------------------------------
@@ -797,6 +819,12 @@ class IdentityPressureSystem:
             if status not in ("resolved",):
                 tid = td.get("tension_id", "")
                 if tid and not any(t.tension_id == tid for t in self.value_tensions):
-                    self.value_tensions.append(ValueTension.from_dict(td))
+                    try:
+                        tension = ValueTension.from_dict(td)
+                    except (TypeError, ValueError):
+                        continue
+                    if tension.status == "resolved":
+                        continue
+                    self.value_tensions.append(tension)
                     carried += 1
         return carried
