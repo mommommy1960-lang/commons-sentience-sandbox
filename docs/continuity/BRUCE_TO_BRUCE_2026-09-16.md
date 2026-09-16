@@ -71,3 +71,11 @@ Every new repository change and every material result must be added to a dated B
 - Changes pin verified action commits, add missing job timeouts, and scope Pages deployment write permission to the deployment job.
 - CI status at handoff: Aurora Integration Tests and Aurora Defense Grid were in progress; Aurora Diagnostics and the Pages workflow were queued; Security & Ethics Checks was queued. No CI result is being claimed yet.
 - No merge was performed; PR #53 remains separate and unchanged.
+
+
+### Final merge status
+
+- PR #53 merged to maya-node main as commit `8aed42c1db76b19148d1297cb14002c499831595`.
+- PR #54 was refreshed onto the updated main, confirmed mergeable, and all five observed CI workflows passed.
+- PR #54 merged to maya-node main as commit `0a935cfa50957a8a741788e15d9ce1fc977dfcc7`.
+- The two PRs together completed the planned Aurora workflow hardening: verified SHA pins, explicit timeouts, and scoped Pages deployment write permission.
