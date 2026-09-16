@@ -14,6 +14,10 @@ bounded agency, and transparent oversight logging.
 
 **Current version: v1.9.0** · [Cite this project](./CITATION.cff)
 
+## For Skeptical Reviewers and Universities
+
+For an independent, evidence-first review, start with the [review guide](./docs/review/SKEPTICAL_REVIEWERS_AND_UNIVERSITIES.md). It links the core research documents, explains what this sandbox does and does not claim, and provides a reproducible path for technical or university review.
+
 ---
 
 ## For New Visitors
