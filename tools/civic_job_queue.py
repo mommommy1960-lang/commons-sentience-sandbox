@@ -61,7 +61,7 @@ class JobQueue:
             job_ids.add(job_id)
             if job.get("status") not in STATUSES:
                 raise ValueError("invalid job status")
-            if not job.get("id") or not job.get("question"):
+            if not isinstance(job.get("question"), str) or not job["question"].strip():
                 raise ValueError("job requires id and question")
             if type(job.get("budget_steps")) is not int or job["budget_steps"] < 1:
                 raise ValueError("budget_steps must be a positive integer")
