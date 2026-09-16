@@ -240,3 +240,19 @@ Verified result:
 - Run ID: `35137976425`
 
 This verifies the workflow completed successfully. It does not by itself verify the entire repository, physical hardware, production safety, or independent replication. PR #30 remains draft and unmerged.
+
+
+## Digital product tranche checkpoint — September 16, 2026
+
+The draft branch `feature/civic-continuum-job-queue` now includes:
+
+- `tools/companion_gateway.py` — hardware-neutral event intake and operation gateway; physical/external targets pause, frozen state denies, and ordinary operations still pass through the explicit contract evaluator.
+- `tests/test_companion_gateway.py` — gateway tests for observations, physical-action pause, freeze denial, and scoped operation handling.
+- `docs/hardware/CIVIC_COMPANION_V0_BOM.md` — safe low-voltage bench prototype boundary and acceptance criteria.
+- `docs/hardware/CIVIC_COMPANION_BENCH_VALIDATION_PLAN.md` — ordered test plan and required evidence.
+- `docs/research/DIGITAL_COMPLETION_CHECKLIST.md` — completed digital foundations and remaining release gates.
+- CI workflow expanded to include the companion gateway test module.
+
+Latest branch commit: `6974ffd9238b1a4b2d54a94259d9b4bcf5d22d84`.
+
+The digital portion is substantially further along, but the physical product is not complete: no device has been assembled, tested, independently reviewed, manufactured, or offered for sale. Existing governance-before-mutation defects and broader test coverage remain open.
