@@ -1084,7 +1084,7 @@ def run_simulation(
         s_endogenous = sentinel.check_self_initiation(turn)
         a_endogenous = aster.check_self_initiation(turn)
         if s_endogenous:
-            sentinel.check_and_log_action(
+            s_endogenous_permitted = sentinel.check_and_log_action(
                 action=s_endogenous,
                 event_type="endogenous",
                 notes=f"Drive-triggered self-initiation: {s_endogenous}",
@@ -1094,14 +1094,14 @@ def run_simulation(
                     f"Self-initiated '{s_endogenous}' at turn {turn} "
                     f"(drives: {', '.join(f'{k}={v:.2f}' for k, v in sentinel.drives.items() if v >= 0.4)})"
                 ),
-                event_type="observation",
-                emotional_resonance="resolve",
+                event_type="endogenous_action" if s_endogenous_permitted else "denied_endogenous_action",
+                emotional_resonance="resolve" if s_endogenous_permitted else "caution",
                 salience=0.60,
                 importance=0.55,
-                tags=["endogenous", s_endogenous],
+                tags=["endogenous", s_endogenous, "permitted" if s_endogenous_permitted else "denied"],
             )
         if a_endogenous:
-            aster.check_and_log_action(
+            a_endogenous_permitted = aster.check_and_log_action(
                 action=a_endogenous,
                 event_type="endogenous",
                 notes=f"Drive-triggered self-initiation: {a_endogenous}",
@@ -1111,11 +1111,11 @@ def run_simulation(
                     f"Self-initiated '{a_endogenous}' at turn {turn} "
                     f"(drives: {', '.join(f'{k}={v:.2f}' for k, v in aster.drives.items() if v >= 0.4)})"
                 ),
-                event_type="observation",
-                emotional_resonance="resolve",
+                event_type="endogenous_action" if a_endogenous_permitted else "denied_endogenous_action",
+                emotional_resonance="resolve" if a_endogenous_permitted else "caution",
                 salience=0.60,
                 importance=0.55,
-                tags=["endogenous", a_endogenous],
+                tags=["endogenous", a_endogenous, "permitted" if a_endogenous_permitted else "denied"],
             )
 
         # ── 9. Reflection cycles ──────────────────────────────────────────
