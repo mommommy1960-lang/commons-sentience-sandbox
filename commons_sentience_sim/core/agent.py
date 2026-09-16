@@ -230,6 +230,7 @@ class Agent:
         salience: float = 0.5,
         importance: float = 0.5,
         tags: Optional[List[str]] = None,
+        source: str = "agent_observation",
     ) -> EpisodicMemory:
         mem = EpisodicMemory(
             turn=self.turn,
@@ -240,6 +241,7 @@ class Agent:
             salience=salience,
             importance=importance,
             tags=tags or [],
+            source=source,
         )
         self.episodic_memory.append(mem)
         return mem
