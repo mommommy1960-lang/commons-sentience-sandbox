@@ -43,6 +43,8 @@ class JobQueue:
             self._validate_document()
 
     def _validate_document(self) -> None:
+        if not isinstance(self.data, dict):
+            raise ValueError("queue document must be an object")
         if self.data.get("schema_version") != 1:
             raise ValueError("unsupported queue schema_version")
         if not isinstance(self.data.get("jobs"), list) or not isinstance(self.data.get("events"), list):
