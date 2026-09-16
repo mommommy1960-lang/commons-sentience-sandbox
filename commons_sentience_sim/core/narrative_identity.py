@@ -828,28 +828,25 @@ class NarrativeIdentitySystem:
     # Rupture repair
     # ------------------------------------------------------------------
 
-    def repair_rupture(self, rupture_id: str, turn: int, description: str) -> bool:
-        """Mark a ContinuityRuptureEvent as repaired.
-
-        Parameters
-        ----------
-        rupture_id : str
-            The 8-char identifier of the rupture to repair.
-        turn : int
-            Turn on which the repair is confirmed.
-        description : str
-            Narrative description of how the rupture was resolved.
-
-        Returns
-        -------
-        bool
-            True if the rupture was found and marked repaired; False otherwise.
-        """
+    def repair_rupture(
+        self,
+        rupture_id: str,
+        turn: int,
+        description: str,
+        verification: str = "",
+    ) -> bool:
+        """Mark a rupture repaired only with a verification reference."""
+        if not isinstance(verification, str) or not verification.strip():
+            return False
+        if not isinstance(turn, int) or turn < 0:
+            return False
         for rupture in self.continuity_rupture_events:
-            if rupture.rupture_id == rupture_id:
+            if rupture.rupture_id == rupture_id and not rupture.repaired:
                 rupture.repaired = True
                 rupture.repair_turn = turn
-                rupture.repair_description = description
+                rupture.repair_description = (
+                    f"{description} [verified:{verification.strip()}]"
+                )
                 self.record_identity_milestone(
                     turn=turn,
                     run_label=rupture.run_label,
