@@ -62,6 +62,19 @@ class JobQueueTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "audit chain"):
             JobQueue(queue.path)
 
+    def test_duplicate_job_ids_are_rejected_on_load(self):
+        queue = self.make_queue()
+        queue.create("Original job")
+        document = json.loads(queue.path.read_text(encoding="utf-8"))
+        duplicate = dict(document["jobs"][0])
+        duplicate["question"] = "Forged duplicate"
+        document["jobs"].append(duplicate)
+        queue.path.write_text(json.dumps(document), encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "duplicate job id"):
+            JobQueue(queue.path)
+
+
     def test_malformed_job_record_is_rejected_on_load(self):
         queue = self.make_queue()
         queue.create("Detect malformed job")
