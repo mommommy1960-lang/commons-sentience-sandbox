@@ -301,11 +301,15 @@ class Agent:
                 or m.event_type == seed_memory.event_type
             )
         ]
-        return sorted(
+        results = sorted(
             related,
             key=lambda m: m.weighted_score(self.turn, seed_memory.tags),
             reverse=True,
         )[:n]
+        # Associative recall follows the same auditable recall semantics as weighted recall.
+        for mem in results:
+            mem.record_recall(context="generic")
+        return results
 
     def compress_old_memories(self, age_threshold: int = 15) -> None:
         """Compress summaries of memories older than age_threshold turns.
