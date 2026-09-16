@@ -219,3 +219,10 @@ Added `.github/workflows/civic-continuum-tests.yml` to draft PR #30. It is narro
 Remote commit: `ef95b261f81e7137924e1cc9a6ea4fb573524f0f`.
 
 Verification result for that commit: GitHub reported `workflow_runs: []` and `statuses: []`. Therefore no CI execution or test pass is claimed. This is the current unmovable blocker. Likely causes include Actions/workflow discovery or repository configuration, but the exact cause requires GitHub Settings/Actions inspection or a manual workflow dispatch.
+
+
+## CI recovery attempt — September 16, 2026
+
+To remove the workflow-discovery hypothesis, the same read-only Civic Continuum test workflow was registered on `main` in commit `9798fa001eae0739f9cadf4dfee47e3b4c2dbb32`. A fresh meaningful synchronization commit was then pushed to `feature/civic-continuum-job-queue`: `699a0a6c30d357f7e84419a620ba4783dba05e59`.
+
+GitHub still returned `workflow_runs: []` and `statuses: []` for the fresh branch commit. The workflow-discovery fix did not resolve the blocker. Remaining likely causes are repository/org Actions settings, required approval, or connector limitations. Manual GitHub Actions inspection/dispatch is now required; no test pass is claimed.
