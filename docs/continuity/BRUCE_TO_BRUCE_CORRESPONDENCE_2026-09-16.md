@@ -174,3 +174,16 @@ Evidence boundary remains strict:
 - The unified demo is deterministic simulation code, not a production companion and not proof of consciousness.
 
 Next work should connect the demo to Aurora's actual permission/memory core, then add governance-before-mutation repairs and execute the tests in a real runner.
+
+
+## Sage–Aurora contract checkpoint — September 16, 2026
+
+The draft branch `feature/civic-continuum-job-queue` now includes the next integration layer:
+
+- `docs/research/SAGE_AURORA_INTEGRATION_CONTRACT.md` — defines responsibilities, operation envelopes, memory lifecycle, privacy boundaries, and the external-world safety boundary.
+- `tools/continuum_contract.py` — pure side-effect-free evaluator returning allow, pause, or deny from explicit scope, complete evidence, and freeze state.
+- `tests/test_continuum_contract.py` — covers explicit allow, missing consent, active freeze, and excessive requested scope.
+
+Latest branch head: `188ac8e280538df4df6cbfd1c7c03552484c78c2`
+
+Status: remotely committed on draft PR #30; not merged; tests and CI remain unexecuted/unverified in this session. This is the beginning of the Sage/Aurora integration, not a completed companion, autonomous worker, or proof of sentience.
