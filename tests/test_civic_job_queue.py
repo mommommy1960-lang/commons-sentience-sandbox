@@ -39,6 +39,13 @@ class JobQueueTests(unittest.TestCase):
         queue.transition(job["id"], "running")
         self.assertEqual(queue.list_jobs()[0]["status"], "running")
 
+    def test_invalid_job_lifecycle_transition_is_rejected(self):
+        queue = self.make_queue()
+        job = queue.create("Require explicit lifecycle")
+        with self.assertRaisesRegex(ValueError, "invalid transition"):
+            queue.transition(job["id"], "completed")
+
+
     def test_terminal_jobs_cannot_be_reopened(self):
         queue = self.make_queue()
         job = queue.create("Finished task")
