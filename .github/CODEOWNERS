@@ -1,0 +1,8 @@
+# Require review for every tracked change.
+* @mommommy1960-lang
+
+# Require explicit owner review for safety and continuity surfaces.
+/tools/ @mommommy1960-lang
+/tests/ @mommommy1960-lang
+/docs/research/ @mommommy1960-lang
+docs/continuity/ @mommommy1960-lang
