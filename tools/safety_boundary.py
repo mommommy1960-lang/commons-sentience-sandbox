@@ -49,13 +49,19 @@ def _normalize_operation(operation: str) -> str:
 def evaluate_safety(operation: str, *, explicit_human_approval: bool = False,
                     emergency_stop: bool = False) -> SafetyResult:
     """Return a conservative decision before any external side effect."""
-    normalized = _normalize_operation(operation)
     if emergency_stop:
         return SafetyResult(
             SafetyDecision.DENY,
             "emergency stop is active",
             "human operator must inspect and explicitly release the stop",
         )
+    if not isinstance(operation, str) or not operation.strip():
+        return SafetyResult(
+            SafetyDecision.PAUSE,
+            "operation identifier is missing or malformed",
+            "collect a valid, auditable operation identifier",
+        )
+    normalized = _normalize_operation(operation)
     if normalized in DENY_OPERATIONS:
         return SafetyResult(
             SafetyDecision.DENY,
