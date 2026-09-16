@@ -147,6 +147,13 @@ class JobQueue:
         return job.copy()
 
     def record_step(self, job_id: str, phase: str, output: Any, evidence: list[str] | None = None) -> dict:
+        if not isinstance(phase, str) or not phase.strip():
+            raise ValueError("phase must be a non-empty string")
+        if evidence is not None and (
+            not isinstance(evidence, list)
+            or any(not isinstance(item, str) or not item.strip() for item in evidence)
+        ):
+            raise ValueError("evidence must be a list of non-empty strings")
         job = self._get(job_id)
         if job["status"] != "running":
             raise ValueError("job must be running to record a step")
