@@ -22,6 +22,16 @@ class JobQueueTests(unittest.TestCase):
         self.assertEqual(reported["result"]["value"]["status"], "needs-review")
         self.assertTrue(queue.verify_audit_chain())
 
+    def test_report_rejects_non_json_serializable_result(self):
+        queue = self.make_queue()
+        job = queue.create("Reject unsafe result payload")
+        queue.transition(job["id"], "running")
+
+        with self.assertRaisesRegex(ValueError, "JSON-serializable"):
+            queue.report(job["id"], {"bad": {1, 2}})
+
+        self.assertIsNone(queue.list_jobs()[0]["result"])
+
     def test_create_rejects_malformed_inputs(self):
         queue = self.make_queue()
         for question in (None, 123, "   "):
