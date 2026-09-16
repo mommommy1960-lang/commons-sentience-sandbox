@@ -22,7 +22,10 @@ jobs:
           git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
           git -c http.extraheader="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)" fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
-      - name: Run bounded safety and continuity tests
+      - name: Compile repository Python sources
         run: |
           python --version
+          python -m compileall -q commons_sentience_sim tools tests run_sim.py
+      - name: Run bounded safety and continuity tests
+        run: |
           python -m unittest discover -s tests -p 'test_civic_*.py' -v
