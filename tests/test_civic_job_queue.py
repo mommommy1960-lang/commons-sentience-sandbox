@@ -82,6 +82,19 @@ class JobQueueTests(unittest.TestCase):
             JobQueue(queue.path)
 
 
+    def test_invalid_restored_step_counters_are_rejected(self):
+        invalid_values = (-1, 2, "one", True)
+        for value in invalid_values:
+            with self.subTest(steps_used=value):
+                queue = self.make_queue()
+                queue.create("Detect forged step counter", budget_steps=1)
+                document = json.loads(queue.path.read_text(encoding="utf-8"))
+                document["jobs"][0]["steps_used"] = value
+                queue.path.write_text(json.dumps(document), encoding="utf-8")
+
+                with self.assertRaisesRegex(ValueError, "steps_used"):
+                    JobQueue(queue.path)
+
     def test_malformed_job_record_is_rejected_on_load(self):
         queue = self.make_queue()
         queue.create("Detect malformed job")
