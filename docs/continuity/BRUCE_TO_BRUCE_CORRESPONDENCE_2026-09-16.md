@@ -201,3 +201,12 @@ This is a safety mechanism, not evidence that software has feelings or a surviva
 Remote commits: `23dde5390a5f0222dee4e78c2ae62571c37a1714`, `a405b936c59ac3a5e1ea995681ac3031be8400f1`.
 
 Tests and CI remain unexecuted/unverified in this session; PR #30 remains draft and unmerged.
+
+
+## Job queue test checkpoint — September 16, 2026
+
+Added `tests/test_civic_job_queue.py` to draft PR #30. The test file covers creating and reporting a job, step-budget enforcement, explicit pause/resume, terminal-job protection, and audit-chain tampering detection.
+
+Remote commit: `6b19828c52868adc015213408561f40b7500d413`.
+
+The tests are committed but have not been executed in this session. PR #30 remains draft and unmerged.
