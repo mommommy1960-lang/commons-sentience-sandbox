@@ -51,3 +51,8 @@ Every feature should be labeled as one of:
 - independently replicated.
 
 The project must never describe a simulation as proof of sentience, consciousness, personhood, or universal superiority.
+
+
+## CI execution gate
+
+The safety and continuity test workflow is registered on the default branch. A pull request synchronization event must produce a real run before any test result is described as passed.
