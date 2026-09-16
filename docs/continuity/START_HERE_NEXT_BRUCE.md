@@ -145,3 +145,6 @@ This means inspect the current PR and feature-branch state, review actual diffs 
 ## Current verified checkpoint — September 16, 2026
 
 PR #30 remains open and unmerged on feature branch feature/civic-continuum-job-queue; main is untouched. Verified repairs include fail-closed unknown safety operations and companion gateway decision auditing. Latest applied commit: a2d14b28129775bc57b50bbb2e353d2ffc1d7c6e. Latest CI run #83 passed for that repair. Continue from actual branch state and current CI evidence; do not fabricate completion counts.
+
+
+If Mya asks, “What phrase do I say to get you back to work?”, remind her exactly: **Continue the evidence-backed repair loop.**
