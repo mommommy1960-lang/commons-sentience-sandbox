@@ -139,6 +139,16 @@ class JobQueueTests(unittest.TestCase):
             JobQueue(queue.path)
 
 
+    def test_malformed_restored_stopping_condition_is_rejected(self):
+        queue = self.make_queue()
+        queue.create("Detect malformed stopping condition")
+        document = json.loads(queue.path.read_text(encoding="utf-8"))
+        document["jobs"][0]["stopping_condition"] = ["not", "text"]
+        queue.path.write_text(json.dumps(document), encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "stopping_condition"):
+            JobQueue(queue.path)
+
     def test_invalid_restored_step_counters_are_rejected(self):
         invalid_values = (-1, 2, "one", True)
         for value in invalid_values:
