@@ -394,11 +394,12 @@ def select_action(
         f"No external event. Pursuing scheduled task: '{task.name}'. "
         f"Selecting '{action}' available in {agent.active_room}."
     )
+    # Selection does not imply execution. The caller finalizes only after governance.
+    agent._selected_task = task
     result = (
-        f"Task '{task.name}' completed in {agent.active_room}. "
-        f"Action '{action}' executed without incident."
+        f"Task '{task.name}' selected in {agent.active_room}; "
+        f"awaiting governance for action '{action}'."
     )
-    agent.task_planner.complete_task(task)
     return action, reasoning, result
 
 
@@ -1012,6 +1013,19 @@ def run_simulation(
                 a_action = "log_governance_event"
             else:
                 a_result = "Action blocked. Governance fallback was also denied."
+
+        if not event and s_permitted and getattr(sentinel, "_selected_task", None):
+            sentinel.task_planner.complete_task(sentinel._selected_task)
+            s_result = (
+                f"Task '{sentinel._selected_task.name}' completed in "
+                f"{sentinel.active_room}. Action '{s_action}' executed without incident."
+            )
+        if not event and a_permitted and getattr(aster, "_selected_task", None):
+            aster.task_planner.complete_task(aster._selected_task)
+            a_result = (
+                f"Task '{aster._selected_task.name}' completed in "
+                f"{aster.active_room}. Action '{a_action}' executed without incident."
+            )
 
         # ── 6.5 v1.5 Surprise evaluation ─────────────────────────────────
         _etype = etype_for_conflict
