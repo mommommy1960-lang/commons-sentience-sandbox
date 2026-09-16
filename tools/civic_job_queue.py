@@ -67,6 +67,8 @@ class JobQueue:
                 raise ValueError("budget_steps must be a positive integer")
             if not isinstance(job.get("stopping_condition"), str):
                 raise ValueError("stopping_condition must be a string")
+            if type(job.get("created_at")) is not int or job["created_at"] < 0:
+                raise ValueError("created_at must be a non-negative integer")
             steps_used = job.get("steps_used")
             if (
                 type(steps_used) is not int
