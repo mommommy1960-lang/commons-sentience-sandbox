@@ -1,6 +1,7 @@
 name: Civic Continuum Safety Tests
 
 on:
+  push:
   pull_request:
   workflow_dispatch:
 
