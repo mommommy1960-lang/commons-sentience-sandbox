@@ -161,9 +161,12 @@ class JobQueue:
             raise ValueError("job must be running to record a step")
         if job["steps_used"] >= job["budget_steps"]:
             raise ValueError("step budget exhausted")
-        job["steps_used"] += 1
         payload = {"phase": phase, "output": output, "evidence": evidence or []}
-        fingerprint = _sha256(payload)
+        try:
+            fingerprint = _sha256(payload)
+        except (TypeError, ValueError) as exc:
+            raise ValueError("step output must be JSON-serializable") from exc
+        job["steps_used"] += 1
         self._event(job_id, "step", f"{phase}; evidence_sha256={fingerprint}")
         self._save()
         return {"job_id": job_id, "step": job["steps_used"], "fingerprint": fingerprint}
