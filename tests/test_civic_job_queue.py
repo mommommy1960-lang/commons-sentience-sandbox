@@ -60,6 +60,16 @@ class JobQueueTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, message):
                     queue.record_step(job["id"], phase, "output", evidence)
 
+    def test_record_step_rejects_non_serializable_output_without_spending_budget(self):
+        queue = self.make_queue()
+        job = queue.create("Reject unsafe step output", budget_steps=1)
+        queue.transition(job["id"], "running")
+
+        with self.assertRaisesRegex(ValueError, "JSON-serializable"):
+            queue.record_step(job["id"], "builder", {"bad": {1, 2}})
+
+        self.assertEqual(queue.list_jobs()[0]["steps_used"], 0)
+
     def test_step_budget_is_enforced(self):
         queue = self.make_queue()
         job = queue.create("Bounded task", budget_steps=1)
