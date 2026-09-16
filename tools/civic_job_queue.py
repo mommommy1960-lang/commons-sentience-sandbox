@@ -43,6 +43,8 @@ class JobQueue:
         if not isinstance(self.data.get("jobs"), list) or not isinstance(self.data.get("events"), list):
             raise ValueError("queue jobs and events must be lists")
         for job in self.data["jobs"]:
+            if not isinstance(job, dict):
+                raise ValueError("queue jobs must be objects")
             if job.get("status") not in STATUSES:
                 raise ValueError("invalid job status")
             if not job.get("id") or not job.get("question"):
