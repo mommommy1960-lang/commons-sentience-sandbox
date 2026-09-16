@@ -41,6 +41,14 @@ PAUSE_OPERATIONS = frozenset({
     "send_external_message",
 })
 
+SAFE_OPERATIONS = frozenset({
+    "local_report",
+    "ordinary_report",
+    "prepare_report",
+    "observe",
+    "suggest",
+})
+
 
 def _normalize_operation(operation: str) -> str:
     return re.sub(r"[^a-z0-9]+", "_", operation.strip().lower()).strip("_")
@@ -80,8 +88,14 @@ def evaluate_safety(operation: str, *, explicit_human_approval: bool = False,
             "physical or external action requires a separate actuator policy",
             "validate device scope, target, duration, and post-action monitoring",
         )
+    if normalized not in SAFE_OPERATIONS:
+        return SafetyResult(
+            SafetyDecision.PAUSE,
+            "operation is not explicitly classified as safe",
+            "add an explicit policy classification before execution",
+        )
     return SafetyResult(
         SafetyDecision.ALLOW,
-        "no prohibited or external effect identified",
+        "explicitly classified safe operation",
         "continue through the normal governance and audit path",
     )
