@@ -82,6 +82,8 @@ class JobQueue:
                 ):
                     raise ValueError("job result fingerprint is invalid")
         for event in self.data["events"]:
+            if not isinstance(event, dict):
+                raise ValueError("queue events must be objects")
             if not isinstance(event.get("job_id"), str) or event["job_id"] not in job_ids:
                 raise ValueError("audit event references unknown job")
             if not isinstance(event.get("event"), str) or not event["event"].strip():
