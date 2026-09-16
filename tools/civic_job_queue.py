@@ -17,6 +17,11 @@ from typing import Any
 
 STATUSES = {"queued", "running", "paused", "completed", "failed", "cancelled"}
 TERMINAL = {"completed", "failed", "cancelled"}
+ALLOWED_TRANSITIONS = {
+    "queued": {"running", "paused", "cancelled"},
+    "running": {"paused", "completed", "failed", "cancelled"},
+    "paused": {"running", "cancelled"},
+}
 
 
 def _canonical(value: Any) -> str:
@@ -103,6 +108,10 @@ class JobQueue:
         job = self._get(job_id)
         if job["status"] in TERMINAL:
             raise ValueError("terminal jobs cannot be changed")
+        if status not in ALLOWED_TRANSITIONS.get(job["status"], set()):
+            raise ValueError(
+                f"invalid transition: {job['status']} -> {status}"
+            )
         if status == "running" and job["steps_used"] >= job["budget_steps"]:
             raise ValueError("step budget exhausted")
         job["status"] = status
