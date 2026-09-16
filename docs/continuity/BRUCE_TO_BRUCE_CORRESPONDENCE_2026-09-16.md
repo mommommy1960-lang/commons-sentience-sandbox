@@ -210,3 +210,12 @@ Added `tests/test_civic_job_queue.py` to draft PR #30. The test file covers crea
 Remote commit: `6b19828c52868adc015213408561f40b7500d413`.
 
 The tests are committed but have not been executed in this session. PR #30 remains draft and unmerged.
+
+
+## CI blocker checkpoint — September 16, 2026
+
+Added `.github/workflows/civic-continuum-tests.yml` to draft PR #30. It is narrowly scoped to the new Civic Continuum demo, contract, safety-boundary, and job-queue tests; it uses read-only contents permission, a 10-minute timeout, and a pinned checkout action.
+
+Remote commit: `ef95b261f81e7137924e1cc9a6ea4fb573524f0f`.
+
+Verification result for that commit: GitHub reported `workflow_runs: []` and `statuses: []`. Therefore no CI execution or test pass is claimed. This is the current unmovable blocker. Likely causes include Actions/workflow discovery or repository configuration, but the exact cause requires GitHub Settings/Actions inspection or a manual workflow dispatch.
