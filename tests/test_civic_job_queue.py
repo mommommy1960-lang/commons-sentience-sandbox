@@ -77,6 +77,15 @@ class JobQueueTests(unittest.TestCase):
         queue.transition(job["id"], "running")
         self.assertEqual(queue.list_jobs()[0]["status"], "running")
 
+    def test_transition_rejects_non_string_detail(self):
+        queue = self.make_queue()
+        job = queue.create("Validate transition detail")
+
+        with self.assertRaisesRegex(ValueError, "detail must be a string"):
+            queue.transition(job["id"], "running", detail={"unsafe": True})
+
+        self.assertEqual(queue.list_jobs()[0]["status"], "queued")
+
     def test_invalid_job_lifecycle_transition_is_rejected(self):
         queue = self.make_queue()
         job = queue.create("Require explicit lifecycle")
