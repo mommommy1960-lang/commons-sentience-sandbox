@@ -139,6 +139,8 @@ class JobQueue:
             raise ValueError(
                 f"invalid transition: {job['status']} -> {status}"
             )
+        if not isinstance(detail, str):
+            raise ValueError("detail must be a string")
         if status == "running" and job["steps_used"] >= job["budget_steps"]:
             raise ValueError("step budget exhausted")
         job["status"] = status
