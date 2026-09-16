@@ -32,6 +32,10 @@ class SafetyBoundaryTests(unittest.TestCase):
                     SafetyDecision.PAUSE,
                 )
 
+    def test_unknown_operation_is_paused(self):
+        result = evaluate_safety("unclassified_external_operation")
+        self.assertEqual(result.decision, SafetyDecision.PAUSE)
+
     def test_physical_action_pauses_without_approval(self):
         result = evaluate_safety("physical_actuation")
         self.assertEqual(result.decision, SafetyDecision.PAUSE)
