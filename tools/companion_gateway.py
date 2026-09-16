@@ -32,6 +32,7 @@ class CompanionGateway:
         self.granted_level = granted_level
         self.frozen = False
         self.events: list[DeviceEvent] = []
+        self.audit_log: list[OperationDecision] = []
 
     def ingest(self, event: DeviceEvent) -> None:
         self.events.append(event)
@@ -39,6 +40,12 @@ class CompanionGateway:
     def request(self, operation: OperationRequest) -> OperationDecision:
         safety = evaluate_safety(operation.target, emergency_stop=self.frozen)
         if safety.decision is not SafetyDecision.ALLOW:
-            return OperationDecision(safety.decision.value, safety.reason,
-                                     safety.required_next_step)
-        return evaluate(operation, self.granted_level, frozen=self.frozen)
+            decision = OperationDecision(
+                safety.decision.value,
+                safety.reason,
+                safety.required_next_step,
+            )
+        else:
+            decision = evaluate(operation, self.granted_level, frozen=self.frozen)
+        self.audit_log.append(decision)
+        return decision
