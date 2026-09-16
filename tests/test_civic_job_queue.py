@@ -211,6 +211,16 @@ class JobQueueTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "unknown job"):
             JobQueue(queue.path)
 
+    def test_non_object_audit_event_is_rejected_on_load(self):
+        queue = self.make_queue()
+        queue.create("Detect non-object event")
+        document = json.loads(queue.path.read_text(encoding="utf-8"))
+        document["events"][0] = ["not", "an", "event"]
+        queue.path.write_text(json.dumps(document), encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "events must be objects"):
+            JobQueue(queue.path)
+
     def test_malformed_audit_event_is_rejected_on_load(self):
         queue = self.make_queue()
         queue.create("Detect malformed event")
