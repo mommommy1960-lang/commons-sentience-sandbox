@@ -884,7 +884,24 @@ def run_simulation(
             ro = ROOM_OBJECT_INTERACTIONS.get(room_name)
             if ro:
                 obj_name, interaction = ro
-                ok, msg = world.interact_with_object(room_name, obj_name, interaction)
+                # Govern the mutation before advancing object state.
+                interaction_action = "interact_with_object"
+                permitted = agent_ref.check_and_log_action(
+                    action=interaction_action,
+                    event_type="world_interaction",
+                    notes=_truncate_note(
+                        f"{room_name}/{obj_name}/{interaction}"
+                    ),
+                )
+                if permitted:
+                    ok, msg = world.interact_with_object(
+                        room_name, obj_name, interaction
+                    )
+                else:
+                    ok, msg = False, (
+                        f"Governance denied {interaction_action} for "
+                        f"{room_name}/{obj_name}."
+                    )
                 if ok:
                     if out_var == "s":
                         s_obj_str = msg
