@@ -42,9 +42,16 @@ class JobQueue:
             raise ValueError("unsupported queue schema_version")
         if not isinstance(self.data.get("jobs"), list) or not isinstance(self.data.get("events"), list):
             raise ValueError("queue jobs and events must be lists")
+        job_ids: set[str] = set()
         for job in self.data["jobs"]:
             if not isinstance(job, dict):
                 raise ValueError("queue jobs must be objects")
+            job_id = job.get("id")
+            if not isinstance(job_id, str) or not job_id.strip():
+                raise ValueError("job requires id and question")
+            if job_id in job_ids:
+                raise ValueError("duplicate job id")
+            job_ids.add(job_id)
             if job.get("status") not in STATUSES:
                 raise ValueError("invalid job status")
             if not job.get("id") or not job.get("question"):
