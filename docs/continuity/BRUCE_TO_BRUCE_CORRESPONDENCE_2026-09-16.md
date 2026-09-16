@@ -187,3 +187,17 @@ The draft branch `feature/civic-continuum-job-queue` now includes the next integ
 Latest branch head: `188ac8e280538df4df6cbfd1c7c03552484c78c2`
 
 Status: remotely committed on draft PR #30; not merged; tests and CI remain unexecuted/unverified in this session. This is the beginning of the Sage/Aurora integration, not a completed companion, autonomous worker, or proof of sentience.
+
+
+## Fail-safe safety boundary checkpoint — September 16, 2026
+
+The draft branch `feature/civic-continuum-job-queue` now includes:
+
+- `tools/safety_boundary.py` — conservative policy that permanently denies self-destruction, disabling safety, harm to humans/living beings/other agents, and weaponization; pauses physical or external operations; and honors emergency stop first.
+- `tests/test_safety_boundary.py` — regression coverage for self-destruction, harm prevention, physical-action pause, and emergency-stop precedence.
+
+This is a safety mechanism, not evidence that software has feelings or a survival instinct. It protects people, other living beings, and the system's integrity by refusing dangerous requests and requiring explicit review for external effects.
+
+Remote commits: `23dde5390a5f0222dee4e78c2ae62571c37a1714`, `a405b936c59ac3a5e1ea995681ac3031be8400f1`.
+
+Tests and CI remain unexecuted/unverified in this session; PR #30 remains draft and unmerged.
