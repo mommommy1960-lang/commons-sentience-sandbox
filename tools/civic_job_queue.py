@@ -17,6 +17,7 @@ from typing import Any
 
 STATUSES = {"queued", "running", "paused", "completed", "failed", "cancelled"}
 TERMINAL = {"completed", "failed", "cancelled"}
+AUDIT_EVENTS = {"created", "running", "paused", "completed", "failed", "cancelled", "step", "report"}
 ALLOWED_TRANSITIONS = {
     "queued": {"running", "paused", "cancelled"},
     "running": {"paused", "completed", "failed", "cancelled"},
@@ -90,8 +91,8 @@ class JobQueue:
                 raise ValueError("queue events must be objects")
             if not isinstance(event.get("job_id"), str) or event["job_id"] not in job_ids:
                 raise ValueError("audit event references unknown job")
-            if not isinstance(event.get("event"), str) or not event["event"].strip():
-                raise ValueError("audit event requires event")
+            if event.get("event") not in AUDIT_EVENTS:
+                raise ValueError("invalid audit event")
             if not isinstance(event.get("detail"), str):
                 raise ValueError("audit event detail must be a string")
         if not self.verify_audit_chain():
