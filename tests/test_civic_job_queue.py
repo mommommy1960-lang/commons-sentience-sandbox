@@ -106,6 +106,18 @@ class JobQueueTests(unittest.TestCase):
             JobQueue(queue.path)
 
 
+    def test_forged_restored_result_fingerprint_is_rejected(self):
+        queue = self.make_queue()
+        job = queue.create("Detect forged result")
+        queue.transition(job["id"], "running")
+        queue.report(job["id"], {"status": "reviewed"})
+        document = json.loads(queue.path.read_text(encoding="utf-8"))
+        document["jobs"][0]["result"]["value"] = {"status": "forged"}
+        queue.path.write_text(json.dumps(document), encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "result fingerprint"):
+            JobQueue(queue.path)
+
     def test_audit_event_for_unknown_job_is_rejected_on_load(self):
         queue = self.make_queue()
         queue.create("Detect unknown audit subject")
