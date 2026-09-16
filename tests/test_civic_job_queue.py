@@ -139,6 +139,18 @@ class JobQueueTests(unittest.TestCase):
             JobQueue(queue.path)
 
 
+    def test_invalid_restored_creation_timestamps_are_rejected(self):
+        for value in (-1, "yesterday", True):
+            with self.subTest(created_at=value):
+                queue = self.make_queue()
+                queue.create("Detect forged creation timestamp")
+                document = json.loads(queue.path.read_text(encoding="utf-8"))
+                document["jobs"][0]["created_at"] = value
+                queue.path.write_text(json.dumps(document), encoding="utf-8")
+
+                with self.assertRaisesRegex(ValueError, "created_at"):
+                    JobQueue(queue.path)
+
     def test_malformed_restored_stopping_condition_is_rejected(self):
         queue = self.make_queue()
         queue.create("Detect malformed stopping condition")
