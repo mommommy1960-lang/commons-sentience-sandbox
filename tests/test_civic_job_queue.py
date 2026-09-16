@@ -22,6 +22,19 @@ class JobQueueTests(unittest.TestCase):
         self.assertEqual(reported["result"]["value"]["status"], "needs-review")
         self.assertTrue(queue.verify_audit_chain())
 
+    def test_create_rejects_malformed_inputs(self):
+        queue = self.make_queue()
+        for question in (None, 123, "   "):
+            with self.subTest(question=question):
+                with self.assertRaisesRegex(ValueError, "question"):
+                    queue.create(question)
+        for budget in (None, 0, -1, "5", True):
+            with self.subTest(budget=budget):
+                with self.assertRaisesRegex(ValueError, "budget_steps"):
+                    queue.create("Valid question", budget_steps=budget)
+        with self.assertRaisesRegex(ValueError, "stopping_condition"):
+            queue.create("Valid question", stopping_condition=None)
+
     def test_step_budget_is_enforced(self):
         queue = self.make_queue()
         job = queue.create("Bounded task", budget_steps=1)
