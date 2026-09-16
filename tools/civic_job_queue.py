@@ -65,6 +65,8 @@ class JobQueue:
                 raise ValueError("job requires id and question")
             if type(job.get("budget_steps")) is not int or job["budget_steps"] < 1:
                 raise ValueError("budget_steps must be a positive integer")
+            if not isinstance(job.get("stopping_condition"), str):
+                raise ValueError("stopping_condition must be a string")
             steps_used = job.get("steps_used")
             if (
                 type(steps_used) is not int
