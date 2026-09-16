@@ -233,6 +233,19 @@ class JobQueueTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "unknown job"):
             JobQueue(queue.path)
 
+    def test_unknown_restored_audit_event_is_rejected(self):
+        queue = self.make_queue()
+        queue.create("Detect unknown audit event")
+        document = json.loads(queue.path.read_text(encoding="utf-8"))
+        event = document["events"][0]
+        event["event"] = "teleport"
+        body = {key: event[key] for key in ("job_id", "event", "detail", "previous_hash")}
+        event["hash"] = _sha256(body)
+        queue.path.write_text(json.dumps(document), encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "invalid audit event"):
+            JobQueue(queue.path)
+
     def test_non_object_audit_event_is_rejected_on_load(self):
         queue = self.make_queue()
         queue.create("Detect non-object event")
