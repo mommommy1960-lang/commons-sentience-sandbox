@@ -151,3 +151,26 @@ Important evidence boundary:
 - Maintain the governing rule: **Reality first. Anomaly second. Follow through.**
 
 This document is a continuity record, not a claim that the repair branch, repairs, tests, or CI already exist.
+
+
+## Unified companion milestone — September 16, 2026
+
+The draft branch `feature/civic-continuum-job-queue` was expanded to connect the product vision to a demonstrable research artifact.
+
+Applied remotely on draft PR #30 (not merged):
+
+- `tools/civic_continuum_demo.py` — deterministic Sentinel/Aster same-crisis comparison with refusal explanations, safe alternative behavior, explicit invariants, and replay hash.
+- `tests/test_civic_continuum_demo.py` — three regression tests covering refusal, policy differentiation without authority drift, and replay fingerprint presence.
+- `docs/research/CIVIC_CONTINUUM_PRODUCT_SPEC.md` — unified Sage/Aurora/Lab product shape, evidence levels, privacy requirements, and 10/10 readiness criteria.
+- `docs/research/FICTION_INFORMED_ANDROID_DESIGN_NOTES.md` — high-level design questions inspired by android identity-and-choice fiction; explicitly not evidence of sentience.
+
+Latest branch head: `e37eb07bc8edf37e240e23ca9b45096f410253e2`
+
+Evidence boundary remains strict:
+
+- The files are committed remotely and PR #30 is draft.
+- Tests and CI were not executed or independently verified in this session.
+- Existing governance-before-mutation defects remain open follow-up work.
+- The unified demo is deterministic simulation code, not a production companion and not proof of consciousness.
+
+Next work should connect the demo to Aurora's actual permission/memory core, then add governance-before-mutation repairs and execute the tests in a real runner.
