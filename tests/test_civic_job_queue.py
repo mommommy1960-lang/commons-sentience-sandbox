@@ -35,6 +35,21 @@ class JobQueueTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "stopping_condition"):
             queue.create("Valid question", stopping_condition=None)
 
+    def test_record_step_rejects_malformed_metadata(self):
+        queue = self.make_queue()
+        job = queue.create("Validate step metadata")
+        queue.transition(job["id"], "running")
+        for phase, evidence, message in (
+            ("", [], "phase"),
+            (None, [], "phase"),
+            ("builder", "not-a-list", "evidence"),
+            ("builder", [1], "evidence"),
+            ("builder", [""], "evidence"),
+        ):
+            with self.subTest(phase=phase, evidence=evidence):
+                with self.assertRaisesRegex(ValueError, message):
+                    queue.record_step(job["id"], phase, "output", evidence)
+
     def test_step_budget_is_enforced(self):
         queue = self.make_queue()
         job = queue.create("Bounded task", budget_steps=1)
