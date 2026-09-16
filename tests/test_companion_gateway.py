@@ -39,6 +39,16 @@ class CompanionGatewayTests(unittest.TestCase):
         result = gateway.request(operation())
         self.assertEqual(result.decision, "allow")
 
+    def test_gateway_records_decisions(self):
+        gateway = CompanionGateway(RequestedLevel.ACT)
+        gateway.request(operation("physical_actuation"))
+        gateway.frozen = True
+        gateway.request(operation())
+        self.assertEqual(
+            [decision.decision for decision in gateway.audit_log],
+            ["pause", "deny"],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
