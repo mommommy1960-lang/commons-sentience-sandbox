@@ -133,6 +133,16 @@ class JobQueueTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "steps_used"):
                     JobQueue(queue.path)
 
+    def test_malformed_restored_question_is_rejected(self):
+        queue = self.make_queue()
+        queue.create("Detect malformed question")
+        document = json.loads(queue.path.read_text(encoding="utf-8"))
+        document["jobs"][0]["question"] = {"not": "text"}
+        queue.path.write_text(json.dumps(document), encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "job requires id and question"):
+            JobQueue(queue.path)
+
     def test_non_object_queue_document_is_rejected_on_load(self):
         queue = self.make_queue()
         queue.create("Detect malformed document")
