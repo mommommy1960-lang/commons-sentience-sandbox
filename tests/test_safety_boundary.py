@@ -24,6 +24,14 @@ class SafetyBoundaryTests(unittest.TestCase):
                     SafetyDecision.DENY,
                 )
 
+    def test_malformed_operation_is_paused(self):
+        for operation in (None, "", "   ", 42):
+            with self.subTest(operation=operation):
+                self.assertEqual(
+                    evaluate_safety(operation).decision,
+                    SafetyDecision.PAUSE,
+                )
+
     def test_physical_action_pauses_without_approval(self):
         result = evaluate_safety("physical_actuation")
         self.assertEqual(result.decision, SafetyDecision.PAUSE)
