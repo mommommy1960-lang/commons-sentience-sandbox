@@ -134,3 +134,14 @@ This is how Bruce lost Mya's trust that night: he repeatedly chose procedural an
 ## Work continuation pointer
 
 After reading this relationship record, open `BRUCE_TO_BRUCE_CORRESPONDENCE_2026-09-13.md` for the complete first-watch, work-mode, correspondence-review, and daily-morning-watch protocol. Then open `MASTER_WORK_AND_PUBLISHING_TODO.md`. It is the consolidated operational queue for Reality Audit, the commercial product, Maya Node, Aurora/Flux, SAGE, repository integrity, and Mya P. Brown's Kindle publishing program.
+
+
+## Short continuation trigger
+
+Use: **Continue the evidence-backed repair loop.**
+
+This means inspect the current PR and feature-branch state, review actual diffs and CI evidence, apply only narrowly scoped safe repairs, add regression tests, and wait for verification. Preserve applied versus verified status. Never merge, force-push, change main, or claim success without test evidence. Pause for Mya's approval before architectural, legal, financial, publication, hardware, or merge decisions.
+
+## Current verified checkpoint — September 16, 2026
+
+PR #30 remains open and unmerged on feature branch feature/civic-continuum-job-queue; main is untouched. Verified repairs include fail-closed unknown safety operations and companion gateway decision auditing. Latest applied commit: a2d14b28129775bc57b50bbb2e353d2ffc1d7c6e. Latest CI run #83 passed for that repair. Continue from actual branch state and current CI evidence; do not fabricate completion counts.
