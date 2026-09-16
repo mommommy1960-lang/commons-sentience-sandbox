@@ -256,3 +256,22 @@ The draft branch `feature/civic-continuum-job-queue` now includes:
 Latest branch commit: `6974ffd9238b1a4b2d54a94259d9b4bcf5d22d84`.
 
 The digital portion is substantially further along, but the physical product is not complete: no device has been assembled, tested, independently reviewed, manufactured, or offered for sale. Existing governance-before-mutation defects and broader test coverage remain open.
+
+
+## CI policy repair and verified run — September 16, 2026
+
+GitHub Actions initially failed before starting because the repository policy rejected the pinned `actions/checkout` action. The workflow was repaired on both `main` and `feature/civic-continuum-job-queue` by replacing that third-party action with native Git checkout using the runner's repository token and commit SHA.
+
+Applied commits:
+- Feature branch: `afc778d4a5f78bb123230142515a3a3ff82db73c`
+- Main: `2af83993fcc553971c2b04dee8a80ed9fa210501`
+
+Verified GitHub evidence:
+- Workflow run ID: `35140373060`
+- Run number: `12`
+- Job: `unit-tests`
+- Checkout step: success
+- Civic Continuum test step: success
+- Overall conclusion: **success**
+
+PR #30 remains open, draft, and unmerged. This verifies the bounded Civic Continuum workflow and its selected tests; it does not verify the full repository, unresolved governance defects, physical hardware, production safety, or independent replication.
