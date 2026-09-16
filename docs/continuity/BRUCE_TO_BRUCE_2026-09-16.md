@@ -79,3 +79,14 @@ Every new repository change and every material result must be added to a dated B
 - PR #54 was refreshed onto the updated main, confirmed mergeable, and all five observed CI workflows passed.
 - PR #54 merged to maya-node main as commit `0a935cfa50957a8a741788e15d9ce1fc977dfcc7`.
 - The two PRs together completed the planned Aurora workflow hardening: verified SHA pins, explicit timeouts, and scoped Pages deployment write permission.
+
+
+### CERL repair and public review materials
+
+- On CERL-Preemptive PR #5, reviewed the actual diff instead of relying on a summary.
+- Found and corrected two literal \\n writes that would have broken JSONL record separation in consent_ledger.py and consent_token_manager.py.
+- New head: c5efd1563eaad77bc904d6516656c6bf41ff72c3.
+- Fresh CI runs passed: CERL-Preemptive CI Security (run 48) and Validate Test Workflow (run 36).
+- PR #5 remains open and draft; no merge claimed or performed.
+- Added public README entry point and docs/review/SKEPTICAL_REVIEWERS_AND_UNIVERSITIES.md with a falsification-first review path, explicit non-claims, and links to the research documents.
+- Read-only workflow inventory checked across maya-node, CERL-Preemptive, aurora-sovereign-core, flux-drive-kernel, sage-situated-companion, and mya-mprs-system. The connector can inspect workflow files, but account-level branch-protection settings still require owner/admin access.
