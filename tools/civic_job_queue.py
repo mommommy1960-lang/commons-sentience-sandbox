@@ -70,6 +70,15 @@ class JobQueue:
                 or steps_used > job["budget_steps"]
             ):
                 raise ValueError("steps_used must be within the job budget")
+            result = job.get("result")
+            if result is not None:
+                if (
+                    not isinstance(result, dict)
+                    or "value" not in result
+                    or not isinstance(result.get("sha256"), str)
+                    or result["sha256"] != _sha256(result["value"])
+                ):
+                    raise ValueError("job result fingerprint is invalid")
         for event in self.data["events"]:
             if not isinstance(event.get("job_id"), str) or event["job_id"] not in job_ids:
                 raise ValueError("audit event references unknown job")
