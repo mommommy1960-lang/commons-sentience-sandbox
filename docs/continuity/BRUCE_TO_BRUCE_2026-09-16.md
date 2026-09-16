@@ -61,3 +61,13 @@
 ## Continuity and operating rule
 
 Every new repository change and every material result must be added to a dated Bruce-to-Bruce handoff. Do not claim a test passed without a recorded CI result. Keep all hardening in draft PRs until human review.
+
+
+### maya-node phase-2 hardening
+
+- Created branch `devsecops-hardening-phase-2` from current `main`.
+- Created draft PR #54: https://github.com/mommommy1960-lang/maya-node/pull/54
+- PR #54 changes exactly eight existing workflow files; no source files or tests were changed.
+- Changes pin verified action commits, add missing job timeouts, and scope Pages deployment write permission to the deployment job.
+- CI status at handoff: Aurora Integration Tests and Aurora Defense Grid were in progress; Aurora Diagnostics and the Pages workflow were queued; Security & Ethics Checks was queued. No CI result is being claimed yet.
+- No merge was performed; PR #53 remains separate and unchanged.
