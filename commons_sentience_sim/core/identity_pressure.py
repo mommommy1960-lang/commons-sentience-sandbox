@@ -730,11 +730,15 @@ class IdentityPressureSystem:
         """Return chronic (persistent) tensions."""
         return [t for t in self.value_tensions if t.status == "chronic"]
 
-    def resolve_tension(self, tension_id: str, note: str = "") -> bool:
-        """Mark a tension as resolved. Returns True if found."""
+    def resolve_tension(
+        self, tension_id: str, note: str = "", verification: str = ""
+    ) -> bool:
+        """Resolve a tension only when a verification reference is supplied."""
+        if not isinstance(verification, str) or not verification.strip():
+            return False
         for t in self.value_tensions:
             if t.tension_id == tension_id:
-                t.resolve(note)
+                t.resolve(f"{note} [verified:{verification.strip()}]")
                 return True
         return False
 
