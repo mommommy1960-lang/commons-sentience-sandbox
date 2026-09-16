@@ -26,6 +26,6 @@ jobs:
         run: |
           python --version
           python -m compileall -q commons_sentience_sim tools tests run_sim.py
-      - name: Run bounded safety and continuity tests
+      - name: Run full repository test suite
         run: |
-          python -m unittest discover -s tests -p 'test_civic_*.py' -v
+          python -m unittest discover -s tests -p 'test_*.py' -v
