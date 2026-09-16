@@ -62,6 +62,17 @@ class JobQueueTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "audit chain"):
             JobQueue(queue.path)
 
+    def test_malformed_job_record_is_rejected_on_load(self):
+        queue = self.make_queue()
+        queue.create("Detect malformed job")
+        document = json.loads(queue.path.read_text(encoding="utf-8"))
+        document["jobs"][0] = ["not", "a", "job"]
+        queue.path.write_text(json.dumps(document), encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "jobs must be objects"):
+            JobQueue(queue.path)
+
+
     def test_malformed_audit_event_is_rejected_on_load(self):
         queue = self.make_queue()
         queue.create("Detect malformed event")
