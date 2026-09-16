@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tools.civic_job_queue import JobQueue
+from tools.civic_job_queue import JobQueue, _sha256
 
 
 class JobQueueTests(unittest.TestCase):
@@ -105,6 +105,24 @@ class JobQueueTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "jobs must be objects"):
             JobQueue(queue.path)
 
+
+    def test_audit_event_for_unknown_job_is_rejected_on_load(self):
+        queue = self.make_queue()
+        queue.create("Detect unknown audit subject")
+        document = json.loads(queue.path.read_text(encoding="utf-8"))
+        previous = document["events"][-1]["hash"]
+        forged = {
+            "job_id": "missing-job",
+            "event": "report",
+            "detail": "forged subject",
+            "previous_hash": previous,
+        }
+        forged["hash"] = _sha256(forged)
+        document["events"].append(forged)
+        queue.path.write_text(json.dumps(document), encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "unknown job"):
+            JobQueue(queue.path)
 
     def test_malformed_audit_event_is_rejected_on_load(self):
         queue = self.make_queue()
