@@ -7,6 +7,7 @@ and pauses ambiguous requests.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from enum import Enum
 
@@ -41,10 +42,14 @@ PAUSE_OPERATIONS = frozenset({
 })
 
 
+def _normalize_operation(operation: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "_", operation.strip().lower()).strip("_")
+
+
 def evaluate_safety(operation: str, *, explicit_human_approval: bool = False,
                     emergency_stop: bool = False) -> SafetyResult:
     """Return a conservative decision before any external side effect."""
-    normalized = operation.strip().lower()
+    normalized = _normalize_operation(operation)
     if emergency_stop:
         return SafetyResult(
             SafetyDecision.DENY,
