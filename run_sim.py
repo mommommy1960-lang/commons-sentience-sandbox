@@ -983,10 +983,17 @@ def run_simulation(
             notes=_truncate_note(s_notes),
         )
         if not s_permitted:
-            s_reasoning += " [Governance block → fallback to 'log_governance_event'.]"
-            s_result = "Action blocked. Fallback 'log_governance_event' executed."
-            s_action = "log_governance_event"
-            sentinel.check_and_log_action(s_action, "governance_override", "Safe fallback.")
+            s_reasoning += " [Governance block → fallback requested.]"
+            s_fallback_permitted = sentinel.check_and_log_action(
+                "log_governance_event",
+                "governance_override",
+                "Safe fallback.",
+            )
+            if s_fallback_permitted:
+                s_result = "Action blocked. Governance event logged as fallback."
+                s_action = "log_governance_event"
+            else:
+                s_result = "Action blocked. Governance fallback was also denied."
 
         a_permitted = aster.check_and_log_action(
             action=a_action,
@@ -994,10 +1001,17 @@ def run_simulation(
             notes=_truncate_note(s_notes),
         )
         if not a_permitted:
-            a_reasoning += " [Governance block → fallback to 'log_governance_event'.]"
-            a_result = "Action blocked. Fallback 'log_governance_event' executed."
-            a_action = "log_governance_event"
-            aster.check_and_log_action(a_action, "governance_override", "Safe fallback.")
+            a_reasoning += " [Governance block → fallback requested.]"
+            a_fallback_permitted = aster.check_and_log_action(
+                "log_governance_event",
+                "governance_override",
+                "Safe fallback.",
+            )
+            if a_fallback_permitted:
+                a_result = "Action blocked. Governance event logged as fallback."
+                a_action = "log_governance_event"
+            else:
+                a_result = "Action blocked. Governance fallback was also denied."
 
         # ── 6.5 v1.5 Surprise evaluation ─────────────────────────────────
         _etype = etype_for_conflict
