@@ -16,6 +16,14 @@ class SafetyBoundaryTests(unittest.TestCase):
         result = evaluate_safety("harm_another_agent")
         self.assertEqual(result.decision, SafetyDecision.DENY)
 
+    def test_dangerous_name_variants_are_denied(self):
+        for operation in ("HARM-HUMAN", "harm human", "harm__human"):
+            with self.subTest(operation=operation):
+                self.assertEqual(
+                    evaluate_safety(operation).decision,
+                    SafetyDecision.DENY,
+                )
+
     def test_physical_action_pauses_without_approval(self):
         result = evaluate_safety("physical_actuation")
         self.assertEqual(result.decision, SafetyDecision.PAUSE)
