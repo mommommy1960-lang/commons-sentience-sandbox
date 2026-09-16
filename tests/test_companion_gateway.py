@@ -34,7 +34,7 @@ class CompanionGatewayTests(unittest.TestCase):
         result = gateway.request(operation())
         self.assertEqual(result.decision, "deny")
 
-    def test_gateway_never_allows_unscoped_action(self):
+    def test_gateway_allows_scoped_suggestion(self):
         gateway = CompanionGateway(RequestedLevel.SUGGEST)
         result = gateway.request(operation())
         self.assertEqual(result.decision, "allow")
