@@ -226,3 +226,17 @@ Verification result for that commit: GitHub reported `workflow_runs: []` and `st
 To remove the workflow-discovery hypothesis, the same read-only Civic Continuum test workflow was registered on `main` in commit `9798fa001eae0739f9cadf4dfee47e3b4c2dbb32`. A fresh meaningful synchronization commit was then pushed to `feature/civic-continuum-job-queue`: `699a0a6c30d357f7e84419a620ba4783dba05e59`.
 
 GitHub still returned `workflow_runs: []` and `statuses: []` for the fresh branch commit. The workflow-discovery fix did not resolve the blocker. Remaining likely causes are repository/org Actions settings, required approval, or connector limitations. Manual GitHub Actions inspection/dispatch is now required; no test pass is claimed.
+
+
+## CI unlocked checkpoint — September 16, 2026
+
+After the repository Actions settings were corrected, the Civic Continuum workflow executed successfully for feature commit `699a0a6c30d357f7e84419a620ba4783dba05e59`.
+
+Verified result:
+- Workflow: `Civic Continuum Safety Tests`
+- Run number: `2`
+- Status: completed
+- Conclusion: success
+- Run ID: `35137976425`
+
+This verifies the workflow completed successfully. It does not by itself verify the entire repository, physical hardware, production safety, or independent replication. PR #30 remains draft and unmerged.
