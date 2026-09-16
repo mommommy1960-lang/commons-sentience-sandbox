@@ -61,8 +61,15 @@ class JobQueue:
                 raise ValueError("invalid job status")
             if not job.get("id") or not job.get("question"):
                 raise ValueError("job requires id and question")
-            if not isinstance(job.get("budget_steps"), int) or job["budget_steps"] < 1:
+            if type(job.get("budget_steps")) is not int or job["budget_steps"] < 1:
                 raise ValueError("budget_steps must be a positive integer")
+            steps_used = job.get("steps_used")
+            if (
+                type(steps_used) is not int
+                or steps_used < 0
+                or steps_used > job["budget_steps"]
+            ):
+                raise ValueError("steps_used must be within the job budget")
         if not self.verify_audit_chain():
             raise ValueError("queue audit chain is invalid")
 
