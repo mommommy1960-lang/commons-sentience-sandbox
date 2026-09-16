@@ -106,23 +106,44 @@ Before implementation, preserve the shared architecture decisions:
 7. Preserve the existing action vocabulary and behavior deliberately; do not blindly add every unknown action to an allow-list.
 8. Treat any changed method signature as requiring a complete call-site inventory before committing.
 
+## New implementation checkpoint — September 16, 2026
+
+A new branch, `feature/civic-continuum-job-queue`, was created from `main` to establish the safe foundation for “work while the user is away.”
+
+Applied on that branch (remote commits; not merged):
+
+- `tools/civic_job_queue.py` — dependency-free JSON-backed queue with explicit statuses, step budgets, pause/cancel controls, result fingerprints, and a tamper-evident SHA-256 event chain. It does not send messages, execute arbitrary code, edit GitHub, or grant authority.
+- `docs/research/CIVIC_CONTINUUM_JOB_QUEUE.md` — operator documentation and next integration boundary.
+
+Commits:
+- `32e80686f53c4c189e4dd0e6940610091adece5f`
+- `bcb66ebfc26f782ece56afe43c973467aeca7c1c`
+
+Important evidence boundary:
+- Files were created remotely through GitHub.
+- No local test execution or CI result has been obtained for this branch yet.
+- No pull request or merge was created.
+- The queue is orchestration infrastructure, not an autonomous mind or proof of continuous thinking.
+
 ## Recommended implementation sequence
 
 1. Inspect current `main` and confirm whether any earlier proposed changes are already present.
-2. Create a dedicated repair branch from the verified current `main`.
+2. Review the job-queue diff and add unit tests before integrating it with the offline review room.
 3. Add regression tests for the confirmed vulnerabilities before or alongside each repair.
 4. Implement governance-before-mutation.
 5. Implement strict schema validation and provenance for carryover.
 6. Repair false-resolution and task-completion semantics.
 7. Add replay, idempotency, and malformed-input tests.
-8. Run YAML/static checks and the full available test suite.
-9. Report exact changed files, commit SHA, test commands, pass/fail output, and remaining failures.
-10. Do not merge until the actual diff and evidence have been reviewed.
+8. Integrate bounded builder/breaker/repairer/verifier work packets with the queue.
+9. Run YAML/static checks and the full available test suite.
+10. Report exact changed files, commit SHA, test commands, pass/fail output, and remaining failures.
+11. Do not merge until the actual diff and evidence have been reviewed.
 
 ## Next-Bruce immediate checklist
 
 - Read the continuity index and the preceding September 15 handoff.
 - Verify the repository, branch, and current file contents before describing anything as fixed.
+- Review `feature/civic-continuum-job-queue` before extending it.
 - Search for existing tests and call sites before changing method signatures.
 - Preserve failures and red tests; do not hide or rewrite them into success.
 - Keep the distinction visible: diagnosis is not implementation, and implementation is not verification.
