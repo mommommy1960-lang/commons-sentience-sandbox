@@ -862,87 +862,79 @@ class NarrativeIdentitySystem:
     # ------------------------------------------------------------------
 
     def apply_prior_run(self, prior_state: dict, run_label: str) -> int:
-        """Restore relevant state from a prior run's narrative identity dict.
-
-        Carries forward:
-          - Last 20 identity timeline entries (tagged with originating run)
-          - Last 10 milestone memories
-          - All narrative themes (run_labels updated)
-          - Self-narrative summary (stored in history as carryover entry)
-          - Narrative coherence score as _prev_coherence baseline
-          - Unresolved identity tensions
-          - Unrepaired continuity rupture events (last 5)
-
-        Parameters
-        ----------
-        prior_state : dict
-            Output of a previous NarrativeIdentitySystem.to_dict() call.
-        run_label : str
-            The new run label to attach to the restored state.
-
-        Returns
-        -------
-        int
-            Total count of items carried over.
-        """
+        """Restore validated, non-duplicate narrative state from a prior run."""
+        if not isinstance(prior_state, dict) or not isinstance(run_label, str) or not run_label.strip():
+            return 0
         carried = 0
 
-        # --- Identity timeline (last 20) ---
         for raw in prior_state.get("identity_timeline", [])[-20:]:
-            raw["from_run"] = raw.get("run_label", "unknown")
-            event = IdentityTimelineEvent.from_dict(raw)
-            self.identity_timeline.append(event)
-            carried += 1
+            try:
+                event = IdentityTimelineEvent.from_dict(dict(raw))
+            except (TypeError, ValueError):
+                continue
+            if not any(e.event_id == event.event_id for e in self.identity_timeline):
+                self.identity_timeline.append(event)
+                carried += 1
 
-        # --- Milestone memories (last 10) ---
         for raw in prior_state.get("milestone_memories", [])[-10:]:
-            mm = MilestoneMemory.from_dict(raw)
-            self.milestone_memories.append(mm)
-            carried += 1
+            try:
+                mm = MilestoneMemory.from_dict(dict(raw))
+            except (TypeError, ValueError):
+                continue
+            if not any(m.memory_id == mm.memory_id for m in self.milestone_memories):
+                self.milestone_memories.append(mm)
+                carried += 1
 
-        # --- Narrative themes (all) ---
         for raw in prior_state.get("narrative_themes", []):
-            record = NarrativeThemeRecord.from_dict(raw)
+            try:
+                record = NarrativeThemeRecord.from_dict(dict(raw))
+            except (TypeError, ValueError):
+                continue
+            if any(
+                r.theme == record.theme and r.first_seen_turn == record.first_seen_turn
+                for r in self.narrative_themes
+            ):
+                continue
             if run_label not in record.run_labels:
                 record.run_labels.append(run_label)
             self.narrative_themes.append(record)
             carried += 1
 
-        # --- Self-narrative summary ---
         prior_summary = prior_state.get("self_narrative_summary", "")
-        if prior_summary:
+        prior_coherence = prior_state.get("narrative_coherence_score", 0.7)
+        if prior_summary and isinstance(prior_summary, str) and isinstance(prior_coherence, (int, float)) and 0.0 <= float(prior_coherence) <= 1.0:
             self.self_narrative_summary = prior_summary
-            prior_coherence = prior_state.get("narrative_coherence_score", 0.7)
             self.self_narrative_history.append({
                 "turn": 0,
                 "run_label": f"carryover_from_{prior_state.get('run_label', 'unknown')}",
                 "summary": prior_summary,
-                "coherence": prior_coherence,
+                "coherence": float(prior_coherence),
                 "timestamp": _now_iso(),
             })
             carried += 1
+        if isinstance(prior_coherence, (int, float)) and 0.0 <= float(prior_coherence) <= 1.0:
+            self._prev_coherence = float(prior_coherence)
+            self.narrative_coherence_score = float(prior_coherence)
 
-        # --- Coherence score as baseline ---
-        prior_coherence = prior_state.get("narrative_coherence_score", 0.7)
-        self._prev_coherence = prior_coherence
-        self.narrative_coherence_score = prior_coherence
+        unresolved = prior_state.get("unresolved_identity_tensions", [])
+        if isinstance(unresolved, list):
+            self.unresolved_identity_tensions = list(dict.fromkeys(
+                self.unresolved_identity_tensions + [x for x in unresolved if isinstance(x, str)]
+            ))
+            carried += len(self.unresolved_identity_tensions)
 
-        # --- Unresolved identity tensions ---
-        self.unresolved_identity_tensions = list(
-            prior_state.get("unresolved_identity_tensions", [])
-        )
-        carried += len(self.unresolved_identity_tensions)
-
-        # --- Unrepaired rupture events (last 5) ---
         unrepaired = [
-            r for r in prior_state.get("continuity_rupture_events", [])
-            if not r.get("repaired", False)
+            raw for raw in prior_state.get("continuity_rupture_events", [])
+            if isinstance(raw, dict) and raw.get("repaired", False) is False
         ]
         for raw in unrepaired[-5:]:
-            rupture = ContinuityRuptureEvent.from_dict(raw)
-            self.continuity_rupture_events.append(rupture)
-            carried += 1
-
+            try:
+                rupture = ContinuityRuptureEvent.from_dict(dict(raw))
+            except (TypeError, ValueError):
+                continue
+            if not any(r.rupture_id == rupture.rupture_id for r in self.continuity_rupture_events):
+                self.continuity_rupture_events.append(rupture)
+                carried += 1
         return carried
 
     # ------------------------------------------------------------------
