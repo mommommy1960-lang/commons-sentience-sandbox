@@ -49,6 +49,8 @@ class JobQueue:
                 raise ValueError("job requires id and question")
             if not isinstance(job.get("budget_steps"), int) or job["budget_steps"] < 1:
                 raise ValueError("budget_steps must be a positive integer")
+        if not self.verify_audit_chain():
+            raise ValueError("queue audit chain is invalid")
 
     def _save(self) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
@@ -126,8 +128,11 @@ class JobQueue:
 
     def verify_audit_chain(self) -> bool:
         previous = "GENESIS"
+        required = ("job_id", "event", "detail", "previous_hash", "hash")
         for event in self.data["events"]:
-            original = {k: event[k] for k in ("job_id", "event", "detail", "previous_hash")}
+            if not isinstance(event, dict) or any(key not in event for key in required):
+                return False
+            original = {key: event[key] for key in required[:-1]}
             if event["previous_hash"] != previous or event["hash"] != _sha256(original):
                 return False
             previous = event["hash"]
