@@ -100,10 +100,12 @@ class JobQueue:
         self.data["events"].append(body)
 
     def create(self, question: str, budget_steps: int = 5, stopping_condition: str = "") -> dict:
-        if not question.strip():
-            raise ValueError("question must not be empty")
-        if budget_steps < 1:
-            raise ValueError("budget_steps must be positive")
+        if not isinstance(question, str) or not question.strip():
+            raise ValueError("question must be a non-empty string")
+        if type(budget_steps) is not int or budget_steps < 1:
+            raise ValueError("budget_steps must be a positive integer")
+        if not isinstance(stopping_condition, str):
+            raise ValueError("stopping_condition must be a string")
         job = {
             "id": str(uuid.uuid4()),
             "question": question.strip(),
