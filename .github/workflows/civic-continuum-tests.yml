@@ -36,3 +36,8 @@ jobs:
         run: |
           python --version
           python -m unittest discover -s tests -p 'test_civic_*.py' -v
+      - name: Run deterministic browser demonstrator
+        run: |
+          set -euo pipefail
+          python tools/civic_continuum_demo.py --output civic-continuum-demo.json
+          cat civic-continuum-demo.json
