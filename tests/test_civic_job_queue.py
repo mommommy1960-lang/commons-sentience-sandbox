@@ -37,6 +37,16 @@ class JobQueueTests(unittest.TestCase):
         restored = JobQueue(queue.path).list_jobs()[0]
         self.assertEqual(restored["result"]["value"]["details"]["status"], "reviewed")
 
+    def test_report_rejects_non_finite_result(self):
+        queue = self.make_queue()
+        job = queue.create("Reject non-finite result")
+        queue.transition(job["id"], "running")
+
+        with self.assertRaisesRegex(ValueError, "JSON-serializable"):
+            queue.report(job["id"], {"score": float("nan")})
+
+        self.assertIsNone(queue.list_jobs()[0]["result"])
+
     def test_report_rejects_non_json_serializable_result(self):
         queue = self.make_queue()
         job = queue.create("Reject unsafe result payload")
@@ -74,6 +84,16 @@ class JobQueueTests(unittest.TestCase):
             with self.subTest(phase=phase, evidence=evidence):
                 with self.assertRaisesRegex(ValueError, message):
                     queue.record_step(job["id"], phase, "output", evidence)
+
+    def test_record_step_rejects_non_finite_output_without_spending_budget(self):
+        queue = self.make_queue()
+        job = queue.create("Reject non-finite step", budget_steps=1)
+        queue.transition(job["id"], "running")
+
+        with self.assertRaisesRegex(ValueError, "JSON-serializable"):
+            queue.record_step(job["id"], "builder", {"score": float("inf")})
+
+        self.assertEqual(queue.list_jobs()[0]["steps_used"], 0)
 
     def test_record_step_rejects_non_serializable_output_without_spending_budget(self):
         queue = self.make_queue()
