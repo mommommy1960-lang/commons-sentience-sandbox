@@ -20,7 +20,7 @@ jobs:
           set -euo pipefail
           git init .
           git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
-          git -c http.extraheader="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)" fetch --depth=1 origin "$GITHUB_SHA"
+          git -c http.extraheader="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)" fetch --depth=1 origin "${GITHUB_SHA}"
           git checkout --detach FETCH_HEAD
       - name: Install test dependencies
         run: |
@@ -32,3 +32,7 @@ jobs:
       - name: Run full repository test suite
         run: |
           python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Run bounded safety and continuity tests
+        run: |
+          python --version
+          python -m unittest discover -s tests -p 'test_civic_*.py' -v
