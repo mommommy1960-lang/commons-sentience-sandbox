@@ -61,7 +61,8 @@ class JobQueue:
             if job_id in job_ids:
                 raise ValueError("duplicate job id")
             job_ids.add(job_id)
-            if job.get("status") not in STATUSES:
+            status = job.get("status")
+            if not isinstance(status, str) or status not in STATUSES:
                 raise ValueError("invalid job status")
             if not isinstance(job.get("question"), str) or not job["question"].strip():
                 raise ValueError("job requires id and question")
@@ -92,7 +93,8 @@ class JobQueue:
                 raise ValueError("queue events must be objects")
             if not isinstance(event.get("job_id"), str) or event["job_id"] not in job_ids:
                 raise ValueError("audit event references unknown job")
-            if event.get("event") not in AUDIT_EVENTS:
+            event_name = event.get("event")
+            if not isinstance(event_name, str) or event_name not in AUDIT_EVENTS:
                 raise ValueError("invalid audit event")
             if not isinstance(event.get("detail"), str):
                 raise ValueError("audit event detail must be a string")
