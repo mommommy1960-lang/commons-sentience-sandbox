@@ -35,6 +35,11 @@ class ContractTests(unittest.TestCase):
         result = evaluate(request(), RequestedLevel.ACT, frozen=True)
         self.assertEqual(result.decision, "deny")
 
+    def test_malformed_permission_level_pauses(self):
+        result = evaluate(request(requested_level="ACT"), RequestedLevel.SUGGEST)
+        self.assertEqual(result.decision, "pause")
+        self.assertIn("malformed", result.reason)
+
     def test_excess_scope_pauses(self):
         result = evaluate(request(requested_level=RequestedLevel.ACT),
                             RequestedLevel.SUGGEST)
