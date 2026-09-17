@@ -7,7 +7,6 @@ The workbook reports 50 concepts, 9 in the build-next lane, 3 earn-now, and 16 h
 
 | ID | Concept | Lane | Evidence / current truth | Immediate strengthening action |
 |---:|---|---|---|---|
-| ID | Project / concept | Lane | Current truth | Next action |
 | 1 | Maya Node Founding Review | EARN NOW | A real $25 service offer—not a finished autonomous AI product. | Drive all traffic to the single $25 checkout; fulfill the first three reviews and collect permission-based testimonials. |
 | 2 | SAGE Situated Companion | BUILD NEXT | Functional prototype architecture; not production-ready autonomous software. | Build a zero-paid-API private demo with memory inspection, correction, deletion, and permission controls. |
 | 3 | MAYA–SAGE Sovereign Continuity | BUILD NEXT | Promising integration milestone, not a finished consumer product. | Connect SAGE memory/runtime through SovereignBridge and add user-facing permissions. |
