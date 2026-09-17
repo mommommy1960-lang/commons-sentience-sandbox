@@ -22,6 +22,21 @@ class JobQueueTests(unittest.TestCase):
         self.assertEqual(reported["result"]["value"]["status"], "needs-review")
         self.assertTrue(queue.verify_audit_chain())
 
+    def test_returned_jobs_are_deeply_isolated_from_stored_state(self):
+        queue = self.make_queue()
+        job = queue.create("Protect nested result state")
+        queue.transition(job["id"], "running")
+        reported = queue.report(job["id"], {"details": {"status": "reviewed"}})
+
+        reported["result"]["value"]["details"]["status"] = "forged"
+        listed = queue.list_jobs()
+        listed[0]["result"]["value"]["details"]["status"] = "also-forged"
+
+        stored = queue.list_jobs()[0]
+        self.assertEqual(stored["result"]["value"]["details"]["status"], "reviewed")
+        restored = JobQueue(queue.path).list_jobs()[0]
+        self.assertEqual(restored["result"]["value"]["details"]["status"], "reviewed")
+
     def test_report_rejects_non_json_serializable_result(self):
         queue = self.make_queue()
         job = queue.create("Reject unsafe result payload")
