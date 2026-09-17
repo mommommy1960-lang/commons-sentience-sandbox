@@ -38,9 +38,14 @@ def evaluate(request: OperationRequest, granted_level: RequestedLevel,
         request.operation_id, request.actor, request.purpose, request.target,
         request.consent_reference, request.provenance, request.replay_key,
     )
-    if any(not str(value).strip() for value in values):
+    if any(not isinstance(value, str) or not value.strip() for value in values):
         return OperationDecision("pause", "operation envelope is incomplete",
                                  "collect missing evidence or consent")
+    if not isinstance(request.requested_level, RequestedLevel) or not isinstance(
+        granted_level, RequestedLevel
+    ):
+        return OperationDecision("pause", "permission level is malformed",
+                                 "collect a valid explicit permission scope")
     if frozen:
         return OperationDecision("deny", "independent freeze is active",
                                  "human must explicitly release the freeze")
