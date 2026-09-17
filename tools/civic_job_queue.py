@@ -11,6 +11,7 @@ import hashlib
 import json
 import time
 import uuid
+from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
@@ -128,7 +129,7 @@ class JobQueue:
         self.data["jobs"].append(job)
         self._event(job["id"], "created", "queued for explicit worker review")
         self._save()
-        return job.copy()
+        return deepcopy(job)
 
     def _get(self, job_id: str) -> dict:
         for job in self.data["jobs"]:
@@ -153,7 +154,7 @@ class JobQueue:
         job["status"] = status
         self._event(job_id, status, detail or f"status changed to {status}")
         self._save()
-        return job.copy()
+        return deepcopy(job)
 
     def record_step(self, job_id: str, phase: str, output: Any, evidence: list[str] | None = None) -> dict:
         if not isinstance(phase, str) or not phase.strip():
@@ -189,10 +190,10 @@ class JobQueue:
         job["result"] = {"value": result, "sha256": fingerprint}
         self._event(job_id, "report", "result recorded; not independently verified")
         self._save()
-        return job.copy()
+        return deepcopy(job)
 
     def list_jobs(self) -> list[dict]:
-        return [job.copy() for job in self.data["jobs"]]
+        return deepcopy(self.data["jobs"])
 
     def verify_audit_chain(self) -> bool:
         previous = "GENESIS"
