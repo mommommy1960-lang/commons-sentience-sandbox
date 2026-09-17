@@ -251,7 +251,7 @@ class SelfAuthoredProjectThread:
 
         Returns True if the project just completed, False otherwise.
         """
-        if self.stage_index >= len(self.stages):
+        if not self.stages or self.stage_index < 0 or self.stage_index >= len(self.stages):
             return False
 
         self.stage_index += 1
@@ -331,23 +331,52 @@ class SelfAuthoredProjectThread:
 
     @classmethod
     def from_dict(cls, data: dict) -> "SelfAuthoredProjectThread":
+        if not isinstance(data, dict):
+            raise ValueError("project thread must be an object")
+        project_id = data.get("project_id", "")
+        status = data.get("status", "active")
+        stages = data.get("stages", [])
+        stage_index = data.get("stage_index", 0)
+        progress_score = data.get("progress_score", 0.0)
+        created_at_turn = data.get("created_at_turn", 0)
+        last_updated_turn = data.get("last_updated_turn", 0)
+        horizon = data.get("horizon", 6)
+        revision_log = data.get("revision_log", [])
+        if not isinstance(project_id, str) or not project_id.strip():
+            raise ValueError("project_id must be non-empty")
+        if status not in {"active", "paused", "completed", "abandoned"}:
+            raise ValueError("invalid project thread status")
+        if not isinstance(stages, list) or not all(isinstance(s, str) and s for s in stages):
+            raise ValueError("stages must be a list of non-empty strings")
+        if not isinstance(stage_index, int) or not 0 <= stage_index <= len(stages):
+            raise ValueError("stage_index is out of bounds")
+        if not isinstance(progress_score, (int, float)) or not 0.0 <= float(progress_score) <= 1.0:
+            raise ValueError("progress_score must be within [0, 1]")
+        if not isinstance(created_at_turn, int) or created_at_turn < 0:
+            raise ValueError("created_at_turn must be non-negative")
+        if not isinstance(last_updated_turn, int) or last_updated_turn < created_at_turn:
+            raise ValueError("last_updated_turn must be >= created_at_turn")
+        if not isinstance(horizon, int) or horizon <= 0:
+            raise ValueError("horizon must be positive")
+        if not isinstance(revision_log, list) or not all(isinstance(entry, dict) for entry in revision_log):
+            raise ValueError("revision_log must be a list of objects")
         return cls(
-            project_id=data.get("project_id", str(uuid.uuid4())[:8]),
+            project_id=project_id,
             title=data.get("title", ""),
             origin_reason=data.get("origin_reason", ""),
             origin_category=data.get("origin_category", ""),
             linked_identity_theme=data.get("linked_identity_theme", ""),
             linked_uncertainty_domain=data.get("linked_uncertainty_domain", ""),
-            status=data.get("status", "active"),
-            stages=data.get("stages", []),
-            stage_index=data.get("stage_index", 0),
-            progress_score=data.get("progress_score", 0.0),
+            status=status,
+            stages=stages,
+            stage_index=stage_index,
+            progress_score=float(progress_score),
             success_criteria=data.get("success_criteria", ""),
             abandonment_reason=data.get("abandonment_reason", ""),
-            revision_log=data.get("revision_log", []),
-            created_at_turn=data.get("created_at_turn", 0),
-            last_updated_turn=data.get("last_updated_turn", 0),
-            horizon=data.get("horizon", 6),
+            revision_log=revision_log,
+            created_at_turn=created_at_turn,
+            last_updated_turn=last_updated_turn,
+            horizon=horizon,
             template_id=data.get("template_id", ""),
         )
 
@@ -617,14 +646,21 @@ class ProjectThreadManager:
             Number of threads carried forward.
         """
         carried = 0
+        active_slots = self.MAX_ACTIVE - len(self._active_threads())
+        if active_slots <= 0:
+            return 0
         for td in prior_threads:
-            status = td.get("status", "active")
-            if status in ("completed", "abandoned"):
+            if carried >= active_slots:
+                break
+            try:
+                thread = SelfAuthoredProjectThread.from_dict(td)
+            except (TypeError, ValueError):
                 continue
-            pid = td.get("project_id", "")
-            if pid and any(t.project_id == pid for t in self.threads):
+            if thread.status in ("completed", "abandoned"):
                 continue
-            self.threads.append(SelfAuthoredProjectThread.from_dict(td))
+            if any(t.project_id == thread.project_id for t in self.threads):
+                continue
+            self.threads.append(thread)
             carried += 1
         return carried
 
