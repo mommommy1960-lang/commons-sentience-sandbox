@@ -146,7 +146,7 @@ class JobQueue:
         raise KeyError(job_id)
 
     def transition(self, job_id: str, status: str, detail: str = "") -> dict:
-        if status not in STATUSES:
+        if not isinstance(status, str) or status not in STATUSES:
             raise ValueError("invalid status")
         job = self._get(job_id)
         if job["status"] in TERMINAL:
