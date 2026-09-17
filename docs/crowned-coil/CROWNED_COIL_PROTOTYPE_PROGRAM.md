@@ -17,6 +17,26 @@ This document turns the Crowned Coil brand package and manufacturer communicatio
 
 These records document outreach and design intent. They do not establish that a prototype has been manufactured, delivered, or safety-tested.
 
+## First commercial product
+
+The launch documents identify one hero product to develop first: the Fairy Godmother Starter Kit.
+
+Planned contents:
+
+- 24-inch pink training hook
+- Soft silicone moon target
+- Protective sleeve
+- Quick-start and safety card
+
+The Dragon Keeper Pro Kit remains a later product for larger snake keepers:
+
+- Reinforced 36–40-inch hook
+- Larger soft silicone target
+- Handling and feeding separation guide
+- Storage tube
+
+The product line should not expand into many variations until the first hero kit exists physically and passes the required safety gates.
+
 ## Prototype A Snake hook
 
 ### Intended purpose
@@ -32,6 +52,18 @@ A branded reptile-handling hook for supervised keeper use.
 - Crowned Coil visual identity
 - Optional interchangeable grip sleeve or decorative accent
 
+### Current dimensional targets
+
+- Starter Kit hook length: 24 inches
+- Dragon Keeper Pro hook length: 36–40 inches
+- Exact shaft diameter, handle diameter, finished weight, load rating, and hook radius: not yet specified or independently verified
+
+The listed lengths are design targets from the Crowned Coil planning documents, not tested engineering limits.
+
+### Recommended prototype pathway
+
+Begin by customizing or private-labeling an established professional reptile hook. Do not manufacture the metal hook body from zero until a proven base design, supplier, material specification, and safety review exist.
+
 ### Required manufacturer deliverables
 
 1. Written quotation
@@ -43,6 +75,7 @@ A branded reptile-handling hook for supervised keeper use.
 7. Finish and color options
 8. Packaging options
 9. Statement of intended use and limitations
+10. Structural strength or load information appropriate to the intended snake size
 
 ### Safety verification before release
 
@@ -52,6 +85,7 @@ A branded reptile-handling hook for supervised keeper use.
 - Hook geometry does not create an avoidable pinch or entanglement hazard
 - Cleaning and inspection instructions are documented
 - Use is supervised and consistent with qualified reptile-handling guidance
+- Structural strength is reviewed for the intended size range
 
 ## Prototype B Silicone training target
 
@@ -67,6 +101,12 @@ A soft, washable target object for controlled reptile-training and enrichment de
 - Smooth, cleanable surface
 - No detachable decorative parts
 - Size and weight documented before testing
+
+### Current dimensional targets
+
+- Starter Kit target: soft silicone moon target
+- Dragon Keeper Pro target: larger soft silicone target
+- Exact target diameter, thickness, mass, hardness, and swallow-safety dimensions: not yet specified or independently verified
 
 ### Required manufacturer deliverables
 
@@ -88,6 +128,21 @@ A soft, washable target object for controlled reptile-training and enrichment de
 - No unsafe odor or visible material degradation
 - Cleaning process does not damage the material
 - Supervised use only until independent handling review is complete
+- Target dimensions are reviewed against foreseeable swallow hazards
+
+## Separate prototype tracks
+
+The planning documents specify two coordinated but separate manufacturing tracks:
+
+### Track A Hook body
+
+Find a proven professional snake-hook supplier or custom metal fabricator for the structural hook.
+
+### Track B Soft components
+
+Find a silicone or TPU manufacturer for the target, grip components, and protective or decorative sleeves.
+
+The tracks should be evaluated separately before being combined into a complete kit.
 
 ## Packaging concept
 
@@ -101,6 +156,18 @@ The initial package may include:
 - No claim of veterinary endorsement unless independently obtained
 
 Luxury packaging is a presentation concept. It must not obscure safety instructions or replace product testing.
+
+## Budget and pricing planning
+
+The planning documents provide preliminary, non-binding estimates:
+
+- Early handmade or custom prototype stage: approximately $500–$1,500
+- Refined sample and packaging stage: approximately $2,000–$5,000
+- Basic hook kit planning range: approximately $79–$99
+- Deluxe kit planning range: approximately $129–$149
+- Collector edition planning range: approximately $179 and above
+
+These figures are planning estimates, not quotations, costs, margins, or approved prices.
 
 ## Stage gates
 
@@ -136,9 +203,12 @@ Complete only after the product claims, warnings, packaging, pricing, and fulfil
 
 - Brand concept: documented
 - Product concepts: documented
+- Starter Kit direction: documented
+- Preliminary product lengths: documented
 - Manufacturer outreach: documented
 - Prototype quotation process: underway
 - Physical prototypes: not yet verified as received
+- Exact engineering dimensions: incomplete
 - Safety testing: not yet completed
 - Independent review: not yet completed
 - Sales release: not authorized
