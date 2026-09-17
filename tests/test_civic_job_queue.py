@@ -122,6 +122,15 @@ class JobQueueTests(unittest.TestCase):
         queue.transition(job["id"], "running")
         self.assertEqual(queue.list_jobs()[0]["status"], "running")
 
+    def test_transition_rejects_malformed_status_cleanly(self):
+        queue = self.make_queue()
+        job = queue.create("Validate transition status")
+
+        with self.assertRaisesRegex(ValueError, "invalid status"):
+            queue.transition(job["id"], ["running"])
+
+        self.assertEqual(queue.list_jobs()[0]["status"], "queued")
+
     def test_transition_rejects_non_string_detail(self):
         queue = self.make_queue()
         job = queue.create("Validate transition detail")
