@@ -22,7 +22,9 @@ jobs:
           git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
           git -c http.extraheader="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)" fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
-      - name: Run bounded safety and continuity tests
+      - name: Run named safety and continuity suite
         run: |
+          set -euo pipefail
           python --version
+          test -f tests/test_world_modes.py
           python -m unittest tests.test_world_modes -v
