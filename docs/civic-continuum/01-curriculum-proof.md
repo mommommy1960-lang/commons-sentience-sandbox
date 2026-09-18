@@ -18,11 +18,15 @@ The curriculum is for the Socio-Technical Systems Accountability Engineer. It te
 
 ## Source records
 
-- [STARFLEET ACADEMY Governance, Systems Integrity and Accountability](https://zenodo.org/records/18311455)
+The following are publicly archived source records. Their presence establishes provenance, not permission to reuse third-party names, settings, characters, branding, or other protected expression:
+
+- [Governance, Systems Integrity and Accountability source record](https://zenodo.org/records/18311455)
 - [ACCT 240 and SOC 260 course structure](https://zenodo.org/records/18287807)
 - [Training Modules for Others](https://zenodo.org/records/18287462)
 - [Harm Without Awareness](https://zenodo.org/records/18287398)
 - [Harm Without Awareness artifact manual](https://zenodo.org/records/18273974)
+
+Any public or commercial teaching package must use original, rights-cleared names and settings unless written permission or a qualified legal review establishes another lawful basis.
 
 ## First deliverable
 
