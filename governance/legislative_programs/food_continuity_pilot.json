@@ -1,0 +1,80 @@
+{
+  "id": "CC-WA-FOOD-001",
+  "title": "Washington Essential Food Continuity and Surplus Recovery Pilot",
+  "jurisdiction": "Washington State",
+  "status": "discussion_draft",
+  "sponsor": null,
+  "counsel_review": false,
+  "rights": [
+    "dignified access to essential food",
+    "privacy and data minimization",
+    "nondiscrimination and reasonable accessibility",
+    "reasons, appeal, and correction"
+  ],
+  "evidence": {
+    "baseline_complete": false,
+    "claims_register": "docs/civic_continuum/legislative/EVIDENCE_REGISTER.md",
+    "independent_evaluation": true,
+    "measurement_plan_before_launch": true
+  },
+  "fiscal": {
+    "official_fiscal_note": false,
+    "funded_duties_required": true,
+    "uncompensated_core_labor_prohibited": true
+  },
+  "transition": {
+    "stable_essentials_first": true,
+    "immediate_interlocks": ["unsafe food exclusion", "nonretaliation", "data-use limits"],
+    "phased_by_capacity": true,
+    "existing_support_removed_before_replacement": false
+  },
+  "accountability": {
+    "public_reporting": true,
+    "privacy_protection": true,
+    "appeal": true,
+    "correction_timeline": true,
+    "whistleblower_protection": true,
+    "independent_audit_or_evaluation": true
+  },
+  "anti_capture": {
+    "open_procurement": true,
+    "conflict_disclosure": true,
+    "exclusive_vendor_control": false,
+    "separated_enforcement_and_appeal": true,
+    "portable_data_and_exit": true
+  },
+  "emergency_powers": [
+    {
+      "name": "unsafe activity pause",
+      "trigger": "documented imminent food-safety or data-safety risk",
+      "owner": "designated public official",
+      "public_log": true,
+      "review": "independent administrative review",
+      "expiry_days": 30
+    }
+  ],
+  "metrics": [
+    "eligible food safely distributed",
+    "recipient access and coverage",
+    "safety incidents",
+    "net public and participant cost",
+    "burden on small organizations",
+    "complaint resolution time",
+    "displacement of existing services",
+    "privacy incidents"
+  ],
+  "stop_conditions": [
+    "serious repeated safety failure without timely correction",
+    "unremediated privacy misuse",
+    "systematic discrimination or denial of appeal",
+    "unfunded burden materially destabilizes recovery partners",
+    "required evaluation cannot be completed credibly"
+  ],
+  "sunset": {
+    "required": true,
+    "operational_years": 3,
+    "affirmative_legislative_renewal": true,
+    "public_hearing": true,
+    "harm_response_required": true
+  }
+}
