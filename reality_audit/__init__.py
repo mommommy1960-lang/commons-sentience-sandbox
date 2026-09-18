@@ -2,6 +2,14 @@ from .controller import CONTROLLER_TYPES, ControllerInterface, FutureController,
 from .experiment import ExperimentConfig, ExperimentRunner
 from .logger import ExperimentLogger
 from .measurement import MeasurementSuite, MetricResult
+from .physical_world import (
+    AppleThrowResult,
+    PhysicalBody,
+    PhysicalWorld,
+    PhysicalWorldConfig,
+    PhysicsSnapshot,
+    run_apple_throw_baseline,
+)
 from .world import RealityWorld, WorldConfig, WorldMode, WorldState
 
 __all__ = [
@@ -9,6 +17,12 @@ __all__ = [
     "WorldConfig",
     "WorldMode",
     "WorldState",
+    "PhysicalWorld",
+    "PhysicalWorldConfig",
+    "PhysicalBody",
+    "PhysicsSnapshot",
+    "AppleThrowResult",
+    "run_apple_throw_baseline",
     "ControllerInterface",
     "ProportionalController",
     "PIDController",
