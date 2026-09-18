@@ -1,4 +1,3 @@
-/bin/bash: line 15: warning: here-document at line 1 delimited by end-of-file (wanted `PY')
 # Civic Continuum — Complete Invention Portfolio Inventory
 
 Source of truth: `Commons_Invention_Portfolio_and_Revenue_Plan.xlsx`, snapshot 2026-09-08. This inventory preserves the source workbook’s current truth, lane, and next action. It is a planning record, not proof that every concept is a functioning product.
