@@ -16,7 +16,7 @@ bounded agency, and transparent oversight logging.
 
 ## For Skeptical Reviewers and Universities
 
-For an independent, evidence-first review, start with the [review guide](./docs/review/SKEPTICAL_REVIEWERS_AND_UNIVERSITIES.md). It links the core research documents, explains what this sandbox does and does not claim, and provides a reproducible path for technical or university review.
+For an independent, evidence-first review, start with the [review guide](./docs/review/SKEPTICAL_REVIEWERS_AND_UNIVERSITIES.md). It links the core research documents, explains what this sandbox does and does not claim, and provides a reproducible path for technical or university review.\n\nTry the [Sentinel vs. Aster Challenge Lab](./docs/challenge-lab/SENTINEL_VS_ASTER_CHALLENGE_LAB.md) for a five-minute, side-by-side demonstration and the shared scenario file.\n\nFor partnership, teaching, or independent replication, see the [partner-ready question set](./docs/partnership/PARTNER_READY_QUESTIONS.md).
 
 ---
 
