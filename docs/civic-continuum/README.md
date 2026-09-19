@@ -7,6 +7,7 @@ This page is designed as the first stop for reviewers, collaborators, educators,
 ## Start here
 
 - [Reviewer dashboard](./DR_THOMAS_REVIEW_DASHBOARD.md)
+- [Execution queue: software to laboratory](./EXECUTION_QUEUE.md)
 - [Build-readiness program](./BUILD_READINESS_PROGRAM.md)
 - [Evidence and activity log](./evidence/evidence-log.md)
 - [Public portfolio index](./blue-books/civic-continuum-public-portfolio-index.md)
