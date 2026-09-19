@@ -42,9 +42,9 @@ The first coupon does not need high-resolution video. It needs independently add
 
 For one illuminated segment, a first-order guided-power model is
 
-[
-P_{mathrm{out}}(L)=eta_c P_{mathrm{LED}}e^{-alpha L},
-]
+$
+P_{\mathrm{out}}(L)=\eta_c P_{\mathrm{LED}}e^{-\alpha L},
+$
 
 where:
 
@@ -55,41 +55,41 @@ where:
 
 A deliberately side-emitting fiber distributes part of the guided light over length. If the effective extraction coefficient is (eta), the emitted power per unit length is approximated by
 
-[
+$
 q(x)=etaeta_cP_{mathrm{LED}}e^{-(alpha+eta)x}.
-]
+$
 
 Uniform appearance cannot be assumed. It must be designed by controlling source injection, fiber spacing, extraction treatment, reflectors, diffusers, and segment length. Coupon acceptance therefore uses measured luminance uniformity:
 
-[
+$
 U_L=rac{L_{min}}{L_{mathrm{avg}}},
-]
+$
 
-reported with the full luminance map. The initial engineering target is (U_Lge 0.70) within each intended uniform zone; this is a design target, not a claimed measured value.
+reported with the full luminance map. The initial engineering target is $U_L \ge 0.70$ within each intended uniform zone; this is a design target, not a claimed measured value.
 
-Color error is measured rather than judged by eye. For commanded and measured color coordinates, the report records a standard color difference such as (Delta E_{00}). The exact acceptance threshold is frozen before testing.
+Color error is measured rather than judged by eye. For commanded and measured color coordinates, the report records a standard color difference such as $\Delta E_{00}$. The exact acceptance threshold is frozen before testing.
 
 ## 5. Electrical and energy model
 
 For (N) independently driven channels,
 
-[
-P_{mathrm{elec}}=sum_{i=1}^{N}V_iI_i+P_{mathrm{controller}}+P_{mathrm{conversion}}.
-]
+$
+P_{\mathrm{elec}}=\sum_{i=1}^{N}V_i I_i+P_{\mathrm{controller}}+P_{\mathrm{conversion}}.
+$
 
 The optical-wall-plug efficiency is
 
-[
+$
 eta_{mathrm{wall}}=rac{P_{mathrm{visible,out}}}{P_{mathrm{elec}}}.
-]
+$
 
 The coupon power budget must include drivers, conversion losses, controller consumption, sensors, and wiring—not LEDs alone.
 
 For a battery or vehicle supply, energy over a duty cycle is
 
-[
-E=int_0^T P_{mathrm{elec}}(t),dt.
-]
+$
+E=\int_0^T P_{\mathrm{elec}}(t)\,dt.
+$
 
 Road-vehicle integration is excluded until the load can be evaluated against the vehicle electrical architecture, electromagnetic compatibility, protected circuit routing, and fail-safe power isolation.
 
@@ -97,21 +97,21 @@ Road-vehicle integration is excluded until the load can be evaluated against the
 
 Nearly all electrical power not emitted as useful external light eventually becomes heat. A conservative steady-state balance is
 
-[
-P_{mathrm{heat}}=P_{mathrm{elec}}-P_{mathrm{visible,out}},
-]
+$
+P_{\mathrm{heat}}=P_{\mathrm{elec}}-P_{\mathrm{visible,out}},
+$
 
 and a first thermal estimate is
 
-[
+$
 Delta T approx P_{mathrm{heat}}R_{	heta,mathrm{system}}.
-]
+$
 
 Because solar loading can dominate electronics heat, the coupon test also uses
 
-[
-P_{mathrm{solar,abs}}=alpha_sGA,
-]
+$
+P_{\mathrm{solar,abs}}=\alpha_s G A,
+$
 
 where (alpha_s) is solar absorptance, (G) is incident solar irradiance, and (A) is exposed area.
 
@@ -123,17 +123,17 @@ The display layer is non-structural and must not be credited with crash strength
 
 For a layer at distance (y) from a neutral bending axis with bend radius (R), the approximate bending strain is
 
-[
+$
 arepsilon_b approx rac{y}{R}.
-]
+$
 
 The maximum permitted curvature must be set from the weakest layer's allowable cyclic strain with a safety factor. Optical loss, delamination, conductor resistance, and visible uniformity are measured before and after bend cycling.
 
 Thermal mismatch stress is screened using
 
-[
-arepsilon_{Delta T}=(alpha_1-alpha_2)Delta T,
-]
+$
+\varepsilon_{\Delta T}=(\alpha_1-\alpha_2)\Delta T,
+$
 
 where (alpha_1) and (alpha_2) are coefficients of thermal expansion for bonded layers. The coupon must demonstrate that its attachment and relief features prevent repeated temperature changes from concentrating strain at fibers, solder joints, and sealed penetrations.
 
@@ -141,9 +141,9 @@ where (alpha_1) and (alpha_2) are coefficients of thermal expansion for bonded l
 
 For zone pitch (p) viewed at distance (d), the angular pitch is approximately
 
-[
+$
 	heta_papproxrac{p}{d}.
-]
+$
 
 The design is not advertised as a conventional high-resolution display unless measured modulation, contrast, viewing angle, and pixel/zone crosstalk support that claim.
 
@@ -304,3 +304,37 @@ Stop if the design requires structural-body credit, obscures regulated lighting,
 - The Aerospace Corporation Mission Assurance Baseline provides a useful general systems-assurance structure for requirements, validation, safety, reliability, interfaces, and transition planning: https://mab.aerospace.org/
 
 These references support the engineering method and prior-art boundary. They do not establish novelty, patentability, certification, or tested performance.
+
+
+## 18. Prior-art boundary and development thesis
+
+A preliminary search found earlier work on flexible fiber-optic light panels for vehicles, including U.S. Patent No. 9,927,087. That reference describes optical fibers arranged as flexible light-emitting panels, reflective and aesthetic layers, solid-state sources, curved or serpentine fiber paths, and automotive lighting applications. The broad proposition “put a flexible fiber-optic illuminated panel on a vehicle” therefore must **not** be represented as newly established here.
+
+The development opportunity must instead be tested at the system level. Candidate differentiators for counsel and engineering review—not patent claims—include:
+
+- a removable wrap-scale, non-structural surface divided into independently replaceable optical zones;
+- reversible attachment and strain-relief architecture for compound vehicle curvature;
+- service access that replaces a failed zone without replacing the entire skin;
+- measured compensation for attenuation, bend loss, aging, and thermal nonuniformity;
+- a controller whose content policy, road-state lockout, dark-state fallback, and audit record are part of the safety architecture;
+- a staged product path from stationary coupon to parked demonstrator, with moving-road operation absent until separately approved.
+
+For a surface divided into (M) zones of area (A_j), the first system-sizing relationships are
+
+$$
+A_{\mathrm{total}}=\sum_{j=1}^{M}A_j,
+$$
+
+$$
+P_{\mathrm{total}}=\sum_{j=1}^{M}P_j+P_{\mathrm{control}}+P_{\mathrm{conversion}},
+$$
+
+and
+
+$$
+m_{\mathrm{surface}}=\sum_k \rho_k A_{\mathrm{total}} t_k+m_{\mathrm{sources}}+m_{\mathrm{harness}}+m_{\mathrm{mounts}},
+$$
+
+where (\rho_k) and (t_k) are the density and thickness of laminate layer (k). These equations are bookkeeping identities, not proof of acceptable vehicle performance. Their value is that every prototype must disclose the area, power, mass, and thermal cost it actually carries.
+
+The next novelty review must be claim-by-claim and must search patents, published applications, products, papers, and public demonstrations before any assertion of patentability or exclusivity.
