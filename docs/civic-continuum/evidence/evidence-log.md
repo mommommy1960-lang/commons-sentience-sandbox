@@ -103,3 +103,22 @@ Next evidence:
 2. Deliver one bounded Maya Node review.
 3. Complete one governance decision record.
 4. Record one paid or donated pilot and update the ledger.
+
+
+## 2026-09-19 — Consent Token hardening verified
+
+Status: Completed on Maya Node `main`; evidence recorded here.
+
+Verified:
+- Consent Token freeze state blocks normal use while frozen.
+- Restoration requires fresh, operation-specific authorization.
+- Replay of single-use authorization is rejected.
+- Expired authorization is rejected.
+- Revoked authorization is rejected.
+- Append-only audit ledger integrity is checked, and tampering is detected.
+- GitHub Actions completed successfully for the hardening commits, including the final test commit `869333f954917924aa9a18bff7e53adadb9d282b`.
+
+Boundary:
+- This is software-level verification in the repository.
+- It is not independent certification, a completed customer pilot, or physical validation.
+- The next implementation gate is the repeatable Maya Node fulfillment packet and supervised demonstration.
