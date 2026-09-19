@@ -4,6 +4,35 @@
 
 This dashboard gives a reviewer a fast, honest view of what exists, what is being built, and what still requires independent work. It is a progress map, not a claim that every concept is a functioning product.
 
+## Review entry points
+
+| Start with | Evidence available now | Honest status |
+|---|---|---|
+| [Maya Node](https://github.com/mommommy1960-lang/maya-node) | Consent-token architecture, scoped authority, expiry, revocation, runtime checks, and audit evidence | Implemented/tested software components; not certification |
+| [SAGE Situated Companion](https://github.com/mommommy1960-lang/sage-situated-companion) | Situated runtime, owner identity, bounded capability grants, sovereignty bridge, and recovery controls | Controlled software demonstrator; not a production autonomous companion |
+| [Reality Audit](./README.md) | Evidence stages, calibration discipline, failure preservation, and review gates | Research-assurance workbench |
+| [Flux Drive formal-review draft](https://github.com/mommommy1960-lang/flux-drive-kernel/pull/4) | Closure equations, uncertainty, nuisance models, controls, and bench plan | Paper/software package; no validated propulsion |
+| [Programmable vehicle-surface draft](https://github.com/mommommy1960-lang/commons-sentience-sandbox/pull/41) | Optical, electrical, thermal, curvature, safe-state, and coupon-test specification | Paper feasibility; no tested coupon or road approval |
+
+## What changed on September 19, 2026
+
+- Reconciled the Flux Drive outreach record against Sent mail and added a deduplication registry so laboratories are not repeatedly cold-contacted.
+- Preserved the *Aerospace Systems* rejection as a publication outcome with no reviewer comments; it is neither validation nor experimental falsification.
+- Added an Aurora / Flux revision gate with explicit impulse closure, covariance-aware uncertainty, nuisance models, reversal controls, energy accounting, control families, and resubmission stop conditions.
+- Added and corrected the programmable fiber-optic vehicle-surface Blue Book, including prior-art boundaries and a stationary 600 mm × 600 mm coupon gate.
+- Located close fiber-optic automotive-panel prior art. The broad idea of a flexible fiber-optic vehicle panel is not represented as newly established; any protectable improvement requires claim-specific review.
+- Kept protected geometry, supplier terms, fabrication drawings, credentials, patent-sensitive variants, and security-sensitive implementation outside the public repository.
+
+## Organizational verification gate
+
+Dr. Thomas Ainsworth asked that substantive collaboration wait until three items can be independently verified:
+
+1. formal business registration;
+2. business-domain infrastructure; and
+3. accountable organizational structure.
+
+Technical documentation may continue improving while those gates are open. No later email should imply that the organization is registered, domain-complete, independently verified, or ready for a formal relationship until the corresponding evidence exists.
+
 ## Evidence meter
 
 - `[1/6] Concept` — defined idea or source record
