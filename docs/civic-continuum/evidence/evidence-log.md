@@ -122,3 +122,16 @@ Boundary:
 - This is software-level verification in the repository.
 - It is not independent certification, a completed customer pilot, or physical validation.
 - The next implementation gate is the repeatable Maya Node fulfillment packet and supervised demonstration.
+
+
+## 2026-09-19 — Maya Node fulfillment package prepared
+
+Completed:
+- Added the repeatable Maya Node Founding Review fulfillment packet.
+- Added the supervised Consent Token demonstration protocol with ten explicit scenarios.
+- Updated the public launch materials from three founding places to 50 places at $25 each.
+- Preserved the scope boundary: human-delivered design review, not certification, legal advice, penetration testing, or production approval.
+
+Next gate:
+- A real supervised participant is still required before recording a customer pilot.
+- Checkout, intake, delivery, and outcome evidence must be recorded for each completed review.
