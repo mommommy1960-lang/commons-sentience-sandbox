@@ -1,5 +1,29 @@
 # Civic Continuum Evidence Log
 
+## 2026-09-19 — Workflow repair verified
+
+Status: Civic Continuum safety workflow passed on GitHub.
+
+Observed:
+- Workflow: Civic Continuum Safety Tests.
+- Run: 260.
+- Conclusion: success.
+- The corrected workflow executed the bounded safety and continuity test command successfully.
+- The public workbench, build-readiness program, reviewer dashboard, and activity log are now linked from the Civic Continuum README.
+
+Interpretation:
+- The repository's current Civic Continuum documentation/test path is operational.
+- This verifies the software workflow run; it does not validate physical inventions or establish propulsion.
+
+Remaining gates:
+- Offline Consent Token behavior still needs the full local transition, replay, tamper, freeze, restore, and rollback suite.
+- Maya Node needs a completed supervised customer review.
+- The curriculum needs a real learner session and revision record.
+- SAGE needs a private controlled demonstration and security/privacy review.
+- The measurement bench needs conventional parts, calibration, controls, and uncertainty accounting.
+- Crowned Coil needs appropriate NDA/supplier terms before protected design disclosure.
+- Aurora and Flux Drive need physical measurement and independent review before any flight or propulsion claim.
+
 ## 2026-09-19 — Build-readiness and public activity update
 
 Status: Recorded on `main`; public documentation updated.
@@ -33,22 +57,18 @@ Next evidence:
 
 ## 2026-09-17 — Proof package branch
 
-Status: Draft, review required.
+Status: Historical failure preserved; correction subsequently verified.
 
 Observed:
 - Separate branch created: civic-continuum-proof-artifacts-2026-09-17.
 - Draft PR #33 opened.
-- PR #32 and main were not modified.
 - Seven proof-package files were added.
-- The branch contains a bounded curriculum, product workflow, governance protocol, revenue ledger, transparency rules, and operational action pack.
+- The branch contained a bounded curriculum, product workflow, governance protocol, revenue ledger, transparency rules, and operational action pack.
 
-Failure preserved:
-- GitHub Actions run 203 failed.
-- Job: unit-tests.
-- Failed step: Run bounded safety and continuity tests.
-- Cause identified: workflow searched for test_civic_*.py, but the repository's existing tests use names such as test_world_modes.py.
-- Correction committed on the proof branch: workflow now runs python -m unittest tests.test_world_modes -v.
-- Recheck required: wait for the next Actions result before calling the branch green.
+Failure preserved and resolved:
+- GitHub Actions run 203 failed in the unit-tests job because the workflow searched for test_civic_*.py while the repository's existing tests used names such as test_world_modes.py.
+- The workflow was corrected to run python -m unittest tests.test_world_modes -v.
+- Later Civic Continuum Safety Tests run 260 completed successfully.
 
 Not yet proven:
 - The curriculum has not yet been delivered to learners.
@@ -58,8 +78,7 @@ Not yet proven:
 - The Civic Continuum paradigm has not been validated at civilization scale.
 
 Next evidence:
-1. Confirm the corrected CI run.
-2. Run Module 01 with a small supervised group.
-3. Deliver one bounded Maya Node review.
-4. Complete one governance decision record.
-5. Record one paid or donated pilot and update the ledger.
+1. Run Module 01 with a small supervised group.
+2. Deliver one bounded Maya Node review.
+3. Complete one governance decision record.
+4. Record one paid or donated pilot and update the ledger.
