@@ -23,6 +23,10 @@ This dashboard gives a reviewer a fast, honest view of what exists, what is bein
 - Located close fiber-optic automotive-panel prior art. The broad idea of a flexible fiber-optic vehicle panel is not represented as newly established; any protectable improvement requires claim-specific review.
 - Kept protected geometry, supplier terms, fabrication drawings, credentials, patent-sensitive variants, and security-sensitive implementation outside the public repository.
 
+## Dr. Thomas readiness meter
+
+The three organizational conditions are tracked in a separate, evidence-scored checklist: [Dr. Thomas Organizational Readiness Meter](./DR_THOMAS_ORGANIZATIONAL_READINESS_METER.md). The current score is **8 of 18 verified checks (44%)**. All three gates remain open; the score must not be represented as approval or independent verification.
+
 ## Organizational verification gate
 
 Dr. Thomas Ainsworth asked that substantive collaboration wait until three items can be independently verified:
