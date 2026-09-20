@@ -54,6 +54,30 @@ A paper-stage, ordinary-physics product concept for a removable programmable ill
 - Replies, refusals, bounces, redirects, and null results must be preserved.
 - Interest is not scientific validation.
 
+## Verified CHROMASKIN commercialization outreach
+
+### Washington SBDC
+
+- Date: 2026-09-20
+- Route: `washington@wsbdc.org`
+- Subject: `Request for no-cost commercialization advising: CHROMASKIN optical-surface coupon`
+- Gmail message ID: `1a0bc5b64f98ae14`
+- Status: sent
+- Request: confidential advising on entity/IP sequence, prototype budget, manufacturing partners, funding routes, and stationary-coupon commercialization.
+- Boundary: SBDC was not described as a grant provider; no protected construction information was disclosed.
+
+### Washington Clean Energy Testbeds
+
+- Date: 2026-09-20
+- Route: `wcet@uw.edu`
+- Subject: `CHROMASKIN stationary optical-surface coupon: prototyping and program-routing request`
+- Gmail message ID: `1a0bc5b8c352d949`
+- Status: sent
+- Request: capability fit, scope/cost route, future CHIP evidence requirements, and referral if another facility is more appropriate.
+- Boundary: the current CHIP window was acknowledged as closed; no exception or endorsement was requested; no protected construction information was disclosed.
+
+Do not resend either message without checking the correspondence record first. Preserve acknowledgments, referrals, refusals, bounces, and nonresponses.
+
 ## CHROMASKIN money path
 
 CHROMASKIN is the nearest of these four tracks to an ordinary prototype and revenue path.
@@ -72,15 +96,18 @@ The staged commercial sequence is:
 Washington SBDC offers confidential, no-cost advising to eligible Washington for-profit small businesses but does not itself provide grants or loans:
 https://wsbdc.org/contact-an-advisor/
 
+The Washington Clean Energy Testbeds' CHIP page states that selected applicants can receive facility access valued at roughly $10,000–$25,000 plus a materials budget up to $5,000 over six months. The current application period is closed:
+https://www.wcet.washington.edu/about-wcet/cleantech-hardware-innovation-prototyping/
+
 ## Evidence boundary
 
 A GitHub timestamp, Zenodo DOI, or notarized signature may help document chronology, but none alone proves patent ownership, novelty, scientific correctness, product safety, or market readiness. Public disclosure can affect patent rights. Enabling CHROMASKIN details therefore remain private pending an IP decision.
 
 ## Next gates
 
-- Diagnose and document any post-merge workflow failures without deleting the history.
+- Monitor the two CHROMASKIN routing requests without duplicating them.
 - Prepare the private CHROMASKIN coupon bill of materials and cost bands.
-- Request confidential business advising through the official Washington SBDC intake.
-- Identify a qualified optical/electronics prototype partner.
+- Complete the official SBDC intake if email routing directs Mya there.
+- Convert Testbeds guidance into a facility/equipment/cost matrix.
 - Continue CAL-00 preparation separately from CHROMASKIN commercialization.
 - Obtain independent technical review for the mathematical work.
