@@ -24,7 +24,6 @@ This page responds directly to the governance question: **AI may make or support
 | Immutable Audit Sidecars | Proposes hash-linked decision records so later reviewers can inspect what was authorized, attempted, approved, refused, and changed | Paper-stage architecture; independent security review required |
 | Safe-Mode De-elevation / Fallback Ethics | Requires privilege reduction, reversible operation, rollback, and explicit failure behavior when confidence or authorization degrades | Paper-stage architecture; implementation varies by system |
 | Socio-Technical Accountability Case Study | Examines authoritative-looking automated output, incomplete data, burden shifting, and administrative overreach | Human-authored case study; not a general empirical validation |
-| [Commons Sentience Sandbox](../../README.md) | Provides a reproducible deterministic test environment for governance rules, refusals, contradiction handling, continuity, and oversight logs | Software prototype with bounded local tests; not a model of real deployed AI |
 | [Article 30A — Commons Declaration on Artificial Intelligence](https://zenodo.org/records/17437485) | States public-facing rights and governance principles for consequential AI | Public normative framework; not law or certification |
 | [Structural Illegality Block](https://zenodo.org/records/17440618) | Connects provenance, licensing, limits, and structural accountability | Public framework; implementation and legal review remain separate gates |
 | [Reality Audit Integration Documentation](https://zenodo.org/records/19636622) | Separates claims, tests, calibration, failure preservation, and independent review | Public assurance framework; does not validate every project using it |
@@ -43,7 +42,7 @@ The following records were located in Mya P. Brown's document archive. Their pre
 | Commons Charter for Global Node Deployment | 2025-10-25 archive record | Federated node governance, boundaries, deployment responsibilities, and local authority | Paper-stage; technical and legal review required |
 | The Book of the Commons, Volume I | 2025-11-12 through 2025-11-18 archive copies | Human dignity, public purpose, anti-capture governance, and institutional design | Foundational/normative work; duplicate copies collapsed |
 | The Commons Charter of Human Advancement / Federated Civilization Principles | 2025-11-16 archive record; updated 2025-12-22 | Rights floor, federated governance, challenge paths, power limits, and human development | Foundational/normative work; not enacted law |
-| Commons Governance License — Node Access Handbook v1.0 | 2025-11-16 and 2025-11-18 archive copies | Node access, custodian duties, audit concepts, license boundaries, and governance enforcement ideas | **Legacy mixed-status draft.** Contains aspirational technical, legal, financial, accreditation, and AI-sentience claims that are not treated as established facts; requires rewrite and counsel review before operational use |
+| Commons Governance License — Node Access Handbook v1.0 | 2025-11-16 and 2025-11-18 archive copies | Node access, custodian duties, audit concepts, license boundaries, and governance enforcement ideas | **Legacy mixed-status draft.** Contains aspirational technical, legal, financial, accreditation, and anthropomorphic claims that are not treated as established facts; requires rewrite and counsel review before operational use |
 | Governance Architecture Reference v1.0 | 2025-12-16; Mya P. Brown | Treats governance as safety-critical architecture: bounded roles, authority decay, decision latency, capture resistance, exit/fork rights, interlocks, and shutdown/restart review | Strong foundational reference; systems proposal, not law or enforcement authority |
 | Commons Scientific Paper series | 2026 archive | Consent tokens, immutable audit, safe-mode de-elevation, revocation, decision memory, anti-capture, and bounded authority | Paper-stage research family; each volume must be audited separately before public claims are made |
 | Emergency Response Systems | 2026-06-19 source record | Explicit liability cascade and the principle that authority and accountability must remain linked | Strong direct match to the present oversight question; paper-stage, not a validated dispatch system |
@@ -76,10 +75,29 @@ The Commons archive repeatedly reaches the same core propositions through differ
 8. **Enforce the public/private boundary.** Public principles, bounded demonstrations, and reproducible evidence may be shared; credentials, patent-sensitive mechanisms, private schematics, and security details require controlled review.
 9. **Build bounded proof articles.** Advance claims through small, falsifiable tests with predeclared pass/fail criteria rather than end-state promises.
 
+## Direct alignment with Dr. Thomas Ainsworth's public statement
+
+In a public post reproduced in the September 2026 FlashCast interview, Dr. Ainsworth stated: **“Human authority and organizational accountability cannot be delegated to technology.”** The post describes seven practical areas. This table shows the corresponding Commons work without implying endorsement or a partnership.
+
+| Publicly stated area | Corresponding Commons work | Potential review exchange |
+|---|---|---|
+| AI governance and organizational accountability | Governance Architecture Reference; Commons Paradigm Engineering Baseline; Emergency Response Systems | Compare responsibility maps, authority boundaries, and liability cascades |
+| Executive and board oversight | Authority decay, separation of duties, funding firewalls, independent interruption, succession controls | Translate system principles into board-level questions and evidence requirements |
+| AI risk management | Reality Audit; safe-state doctrine; time-to-harm versus time-to-interrupt; externality ledger | Compare risk registers, stop conditions, failure preservation, and residual-risk disclosure |
+| Human review, challenge, override, and escalation | Maya Node permission boundaries; consent tokens; revocation; refusal; appeals; emergency escalation | Test whether a human has real intervention power rather than ceremonial approval |
+| Governance policy and framework development | Charter of Human Advancement; Article 30A; CERL; global-node and anti-capture work | Compare normative principles with operational controls and legal review needs |
+| Responsible AI implementation | Scoped grants, expiry, operation logs, safe-mode de-elevation, recovery, and bounded pilots | Define implementation evidence and prevent policy-only compliance claims |
+| Post-deployment monitoring and continuing review | Immutable audit sidecars, monitoring, incident preservation, correction, retest, and renewal | Define continuing-review cadence, evidence, escalation thresholds, and accountable owners |
+
+### What each side may offer
+
+- **The Commons Initiative:** original system architecture, dated governance records, lived institutional case analysis, consent/revocation mechanisms, falsification discipline, and implementable accountability controls.
+- **Dr. Ainsworth / the Institute:** potentially useful governance framing, advisory translation, board-facing language, institutional review perspective, and access to professional governance conversations—subject to verification of qualifications, engagements, and organizational status.
+- **Shared opportunity:** jointly examine a bounded governance problem, identify one missing control, and produce a reviewable comparison without transferring intellectual property or implying endorsement.
+
 ## What is genuinely demonstrated
 
 - The public repositories contain inspectable governance rules, logs, test harnesses, and bounded software artifacts.
-- The Commons Sentience Sandbox can reproduce rule-governed behavior under its defined deterministic scenarios.
 - Maya Node contains concrete authority, expiry, revocation, and audit mechanisms.
 - The project has a dated paper trail reaching at least June 2026 for the authority/accountability thesis represented here.
 
