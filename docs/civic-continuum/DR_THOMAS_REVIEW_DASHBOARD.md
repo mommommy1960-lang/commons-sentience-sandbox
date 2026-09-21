@@ -6,6 +6,8 @@ This dashboard gives a reviewer a fast, honest view of what exists, what is bein
 
 ## Review entry points
 
+**New governance/accountability route:** [AI Governance and Accountability — Public Evidence Map](./AI_GOVERNANCE_ACCOUNTABILITY_EVIDENCE_MAP_2026-09-21.md). It connects the project's dated authority/accountability thesis to the original Commons archive, the Charter of Human Advancement, the Governance Architecture Reference, consent, revocation, refusal, immutable audit, safe-mode recovery, Maya Node, and the reproducible governance sandbox. It is a curated evidence map, not a claim of endorsement by Dr. Ainsworth or any other reviewer.
+
 | Start with | Evidence available now | Honest status |
 |---|---|---|
 | [Maya Node](https://github.com/mommommy1960-lang/maya-node) | Consent-token architecture, scoped authority, expiry, revocation, runtime checks, and audit evidence | Implemented/tested software components; not certification |
@@ -13,11 +15,10 @@ This dashboard gives a reviewer a fast, honest view of what exists, what is bein
 | [Reality Audit](./README.md) | Evidence stages, calibration discipline, failure preservation, and review gates | Research-assurance workbench |
 | [Flux Drive formal-review draft](https://github.com/mommommy1960-lang/flux-drive-kernel/pull/4) | Closure equations, uncertainty, nuisance models, controls, and bench plan | Paper/software package; no validated propulsion |
 | [Programmable vehicle-surface draft](https://github.com/mommommy1960-lang/commons-sentience-sandbox/pull/41) | Optical, electrical, thermal, curvature, safe-state, and coupon-test specification | Paper feasibility; no tested coupon or road approval |
-| [Commons AI Future Program](./ai-future/README.md) | Canonical source audit, claim-evidence ledger, corrected engineering edition, speculative boundary, executable consent/audit reference core | Tested reference software plus bounded research agenda; not certification or evidence of consciousness |
 
-## Review path for Dr. Thomas Ainsworth
+## Governance and accountability thesis
 
-The [Commons AI Future Program](./ai-future/README.md) is organized around the diligence priorities Dr. Ainsworth identified: authority, revocation, auditability, meaningful human control, and accountable organizational structure. This named review path is an invitation to inspect evidence, not a claim of his endorsement, participation, or approval. The organizational gate below remains controlling.
+The project's central governance position is that **capability does not create authority** and **responsibility without meaningful authority is not accountability**. A responsible human or institution must be able to inspect, refuse, pause, correct, and reverse consequential automated action, while affected people need a visible challenge path. The [public evidence map](./AI_GOVERNANCE_ACCOUNTABILITY_EVIDENCE_MAP_2026-09-21.md) distinguishes dated source records, paper architectures, implemented software, local tests, and remaining independent-review gates.
 
 ## What changed on September 19, 2026
 
