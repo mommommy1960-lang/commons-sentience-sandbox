@@ -13,6 +13,11 @@ This dashboard gives a reviewer a fast, honest view of what exists, what is bein
 | [Reality Audit](./README.md) | Evidence stages, calibration discipline, failure preservation, and review gates | Research-assurance workbench |
 | [Flux Drive formal-review draft](https://github.com/mommommy1960-lang/flux-drive-kernel/pull/4) | Closure equations, uncertainty, nuisance models, controls, and bench plan | Paper/software package; no validated propulsion |
 | [Programmable vehicle-surface draft](https://github.com/mommommy1960-lang/commons-sentience-sandbox/pull/41) | Optical, electrical, thermal, curvature, safe-state, and coupon-test specification | Paper feasibility; no tested coupon or road approval |
+| [Commons AI Future Program](./ai-future/README.md) | Canonical source audit, claim-evidence ledger, corrected engineering edition, speculative boundary, executable consent/audit reference core | Tested reference software plus bounded research agenda; not certification or evidence of consciousness |
+
+## Review path for Dr. Thomas Ainsworth
+
+The [Commons AI Future Program](./ai-future/README.md) is organized around the diligence priorities Dr. Ainsworth identified: authority, revocation, auditability, meaningful human control, and accountable organizational structure. This named review path is an invitation to inspect evidence, not a claim of his endorsement, participation, or approval. The organizational gate below remains controlling.
 
 ## What changed on September 19, 2026
 
