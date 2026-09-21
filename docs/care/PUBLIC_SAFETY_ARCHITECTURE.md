@@ -1,58 +1,89 @@
-# CARE public-safety architecture v0.1
+# CARE public-safety architecture v0.2
 
-## Intended flow
+## Purpose
 
-1. Receive voice, real-time text, text, image, video, location, or authorized
-   device alert through an NG911-compatible interface.
-2. Preserve the original evidence unchanged.
-3. Transcribe/translate while retaining confidence and alternatives.
-4. Extract candidate facts: location, event, hazards, people, medical state,
-   weapons/fire indicators, and callback path.
-5. Ask only the highest-value missing questions; never require emotional calm.
-6. Show evidence, uncertainty, and contradictions to a telecommunicator.
-7. Permit a nonbinding resource pre-alert when agency policy allows it.
-8. Require accountable confirmation for dispatch and preserve an audit record.
-9. Fall back to ordinary call handling when any component is unavailable.
+CARE is an AI-assisted emergency-intake and decision-support overlay for 911/NG911. It is designed to understand people in distress without requiring them to speak calmly, organize the available evidence quickly, and help an accountable human telecommunicator make a faster, better-informed decision.
 
-Satellite links are treated as communications transport and location sources,
-not independent dispatch authorities.
+It is not an autonomous police-dispatch system and it does not replace the 911 workforce.
+
+## Operating model: AI first, human authorized
+
+1. **Answer immediately.** Accept voice, real-time text, text, image, video, location, or an authorized device alert through an NG911-compatible interface.
+2. **Preserve the source.** Retain original audio, text, media, timestamps, and provenance unchanged.
+3. **Work concurrently.** While the caller speaks, CARE:
+   - transcribes and, when needed, translates;
+   - estimates a dispatchable location using authorized network/device sources;
+   - extracts candidate facts and competing interpretations;
+   - detects critical hazards and unanswered questions;
+   - queries CAD/AVL for eligible response resources;
+   - builds a proposed response and agency-policy escalation path.
+4. **Do not demand calmness.** The system must tolerate distress, screaming, fragmentary speech, open-line calls, silence, background noise, and disconnection.
+5. **Show an incident card.** A human receives the address/location and confidence, incident type, injuries, hazards, people and clothing descriptions, callback path, source-linked evidence, contradictions, unanswered critical fields, and several eligible resource options.
+6. **Rank appropriate resources.** “Closest” means closest appropriate, available, jurisdictionally authorized unit with the required capability—not merely the smallest straight-line distance.
+7. **Human confirm/correct/authorize.** The telecommunicator can replay evidence, edit extracted facts, ask one high-value question, take over instantly, select resources, pause, escalate under agency policy, and authorize dispatch.
+8. **Preserve accountability.** Log what the caller supplied, what the model inferred, what the human changed, the policy used, timestamps, confidence, and the final authority.
+9. **Fail safely.** If AI, location, network, CAD, or sensor services fail, ordinary emergency call handling continues.
+
+Agency-approved pre-alerts may occur before final confirmation when policy permits. Final dispatch authority remains human by default.
+
+Satellite links are communications transport and possible location sources, not independent dispatch authorities. Maya Node/SAGE may supply bounded decision-support services but may not silently dispatch, cancel help, or assign criminality.
+
+## Resource-ranking rule
+
+A unit is eligible only if it is:
+
+- available;
+- within the responsible jurisdiction or covered by an approved mutual-aid rule;
+- equipped and trained for the incident;
+- reachable given traffic, closures, hazards, and travel conditions;
+- permitted by agency policy.
+
+Only eligible units are ranked by estimated arrival time and response fit. The interface must show several candidates and the reason for the ranking. Protected traits, neighborhood stereotypes, caller emotion, and predicted “deservedness” are forbidden inputs.
 
 ## Stable requirements
 
 | ID | Requirement | Verification |
 |---|---|---|
-| CR-001 | Original caller audio/text/media must remain available to the human operator. | Replay test |
-| CR-002 | Distress, accent, dialect, disability, language, or background noise must not be treated as reduced human worth or credibility. | Stratified performance audit |
-| CR-003 | Every extracted fact must link to source evidence or be labeled caller-reported/inferred/unknown. | Traceability test |
-| CR-004 | The system must expose uncertainty and competing interpretations. | Scenario test |
+| CR-001 | Original caller audio/text/media remains available to the operator. | Replay test |
+| CR-002 | Distress, accent, dialect, disability, language, or noise does not reduce credibility or priority by itself. | Stratified performance audit |
+| CR-003 | Every extracted fact links to source evidence or is labeled reported/inferred/unknown. | Traceability test |
+| CR-004 | Uncertainty, alternatives, and contradictions are visible. | Scenario test |
 | CR-005 | Final dispatch authority remains human by default. | Access-control test |
-| CR-006 | A failed AI component must not prevent ordinary emergency call handling. | Failover test |
-| CR-007 | Data collection and retention must be minimized and policy-controlled. | Privacy review |
-| CR-008 | Performance must be reported separately across language, accent, disability, sex/gender where lawful, age band, and acoustic conditions. | Bias audit |
-| CR-009 | False dispatch, missed dispatch, delay, and inappropriate responder mix must be separately measured. | Outcome analysis |
-| CR-010 | The system must resist spoofing, prompt injection in media, replay, and location manipulation. | Adversarial test |
-| CR-011 | No model may infer criminality, dangerousness, or deservedness from protected traits or emotional presentation. | Model and policy audit |
-| CR-012 | Agencies must publish accountability, appeal, incident-reporting, and shutdown procedures before live use. | Governance review |
+| CR-006 | Any failed AI component permits ordinary call handling. | Failover test |
+| CR-007 | Location displays source, timestamp, uncertainty, and spoof/conflict warnings. | Location test |
+| CR-008 | Unit recommendations enforce availability, capability, jurisdiction, travel time, and policy. | CAD/AVL simulation |
+| CR-009 | Only agency-approved pre-arrival instructions may be presented; no improvisation. | Protocol-conformance test |
+| CR-010 | The operator has one-action takeover, correction, confirmation, and dispatch controls. | Human-factors test |
+| CR-011 | Silent/open-line, disconnected, multilingual, and media-rich calls have tested paths. | Scenario suite |
+| CR-012 | False dispatch, missed dispatch, delay, and inappropriate response mix are measured separately. | Outcome analysis |
+| CR-013 | The system resists spoofing, replay, malicious media instructions, and location manipulation. | Adversarial test |
+| CR-014 | No model infers criminality, dangerousness, or deservedness from protected traits or emotional presentation. | Model/policy audit |
+| CR-015 | Data collection, access, sharing, and retention are minimized and policy-controlled. | Privacy review |
+| CR-016 | Suspected terrorism or major-incident escalation follows predefined policy; the model does not casually label an event. | Escalation test |
+| CR-017 | Duplicate calls can be linked without suppressing distinct victims or evidence. | Multi-call test |
+| CR-018 | Human edits never erase the original model output or source evidence. | Audit test |
+| CR-019 | Performance is reported by language, accent, disability, sex/gender where lawful, age band, and acoustic condition. | Bias audit |
+| CR-020 | Agencies publish accountability, appeal, incident-reporting, workforce, and shutdown procedures before live use. | Governance review |
 
-## Maya Node/SAGE role
+## Workforce rule
 
-The proposed integration is a bounded service with five outputs:
+CARE must be tested as a tool that strengthens telecommunicators, not justified by an assumed head-count reduction. Early pilots require trained people for supervision, takeover, quality assurance, cybersecurity, model monitoring, and difficult calls. Staffing changes may be considered only after independent workload, safety, labor, and human-factors evidence.
 
-- verbatim transcript plus alternatives;
-- structured incident card;
+## Maya Node/SAGE bounded outputs
+
+- verbatim transcript and alternatives;
+- structured, source-linked incident card;
+- location candidates with confidence and provenance;
 - unanswered critical fields;
 - suggested next question with rationale;
-- proposed resource pre-alert with confidence and evidence links.
+- eligible unit list and proposed response;
+- policy-based escalation prompt.
 
-It may not silently edit the record, suppress a caller, autonomously cancel
-help, predict criminality, or optimize primarily for call-center throughput.
+It may not silently alter evidence, suppress a caller, autonomously cancel help, invent instructions, predict criminality, or optimize primarily for throughput.
 
 ## Standards alignment target
 
-CARE is a research overlay, not a replacement for emergency infrastructure. It
-must align with the National 911 Program's NG911 system-of-systems direction,
-NENA i3 interfaces and data conventions, agency standard operating procedures,
-accessibility law, records law, and cybersecurity requirements.
+CARE is a research overlay, not a replacement for emergency infrastructure. It must align with the National 911 Program’s NG911 system-of-systems direction, NENA i3 interfaces and data conventions, agency procedures, accessibility law, records law, labor obligations, privacy requirements, and cybersecurity controls.
 
 Primary references:
 
@@ -63,4 +94,3 @@ Primary references:
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
 - [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework)
 - [NIST Privacy Framework](https://www.nist.gov/privacy-framework)
-
