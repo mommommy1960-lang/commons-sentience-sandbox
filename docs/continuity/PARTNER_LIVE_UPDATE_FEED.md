@@ -2,7 +2,7 @@
 
 **Public status page for collaborators, reviewers, funders, manufacturers, and future partners.**
 
-Last curated update: **2026-09-14**
+Last curated update: **2026-09-21**
 
 ## Start here if you can help
 
@@ -31,6 +31,12 @@ This page is the shortest public route to the current state of The Commons Initi
 GitHub visitors can use the repository's **Watch** control and choose the notification level they prefer. Partners interested in engineering changes can also watch the specific repositories listed below. This page itself will be updated when a development materially changes partner diligence, commercialization readiness, evidence status, or business infrastructure.
 
 ## Current highlights
+
+### AI governance and accountability — curated reviewer route
+
+Public evidence map: https://github.com/mommommy1960-lang/commons-sentience-sandbox/blob/main/docs/civic-continuum/AI_GOVERNANCE_ACCOUNTABILITY_EVIDENCE_MAP_2026-09-21.md
+
+The map connects Mya P. Brown's dated work on authority and accountability to the original Commons record, the Charter of Human Advancement, bounded permission, revocation, refusal, immutable audit, safe-mode recovery, Maya Node, and the Commons Sentience Sandbox. It separates human-authored source records, published principles, paper-stage mechanisms, tested software components, legacy drafts, and unverified claims. It does not disclose private schematics or patent-sensitive mechanisms and does not imply endorsement by any named reviewer.
 
 ### Flux Drive / Aurora — falsification-first propulsion research
 
