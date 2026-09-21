@@ -36,7 +36,7 @@ GitHub visitors can use the repository's **Watch** control and choose the notifi
 
 Public evidence map: https://github.com/mommommy1960-lang/commons-sentience-sandbox/blob/main/docs/civic-continuum/AI_GOVERNANCE_ACCOUNTABILITY_EVIDENCE_MAP_2026-09-21.md
 
-The map connects Mya P. Brown's dated work on authority and accountability to the original Commons record, the Charter of Human Advancement, bounded permission, revocation, refusal, immutable audit, safe-mode recovery, Maya Node, and the Commons Sentience Sandbox. It separates human-authored source records, published principles, paper-stage mechanisms, tested software components, legacy drafts, and unverified claims. It does not disclose private schematics or patent-sensitive mechanisms and does not imply endorsement by any named reviewer.
+The map connects Mya P. Brown's dated work on authority and accountability to the original Commons record, the Charter of Human Advancement, bounded permission, revocation, refusal, immutable audit, safe-mode recovery, and Maya Node. It also maps the Commons record against seven governance areas publicly identified by Dr. Thomas Ainsworth. It separates human-authored source records, published principles, paper-stage mechanisms, tested software components, legacy drafts, and unverified claims. It does not disclose private schematics or patent-sensitive mechanisms and does not imply endorsement or partnership.
 
 ### Flux Drive / Aurora — falsification-first propulsion research
 
