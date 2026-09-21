@@ -6,7 +6,7 @@ This dashboard gives a reviewer a fast, honest view of what exists, what is bein
 
 ## Review entry points
 
-**New governance/accountability route:** [AI Governance and Accountability — Public Evidence Map](./AI_GOVERNANCE_ACCOUNTABILITY_EVIDENCE_MAP_2026-09-21.md). It connects the project's dated authority/accountability thesis to the original Commons archive, the Charter of Human Advancement, the Governance Architecture Reference, consent, revocation, refusal, immutable audit, safe-mode recovery, Maya Node, and the reproducible governance sandbox. It is a curated evidence map, not a claim of endorsement by Dr. Ainsworth or any other reviewer.
+**New governance/accountability route:** [AI Governance and Accountability — Public Evidence Map](./AI_GOVERNANCE_ACCOUNTABILITY_EVIDENCE_MAP_2026-09-21.md). It connects the project's dated authority/accountability thesis to the original Commons archive, the Charter of Human Advancement, the Governance Architecture Reference, consent, revocation, refusal, immutable audit, safe-mode recovery, and Maya Node. It also compares these materials with Dr. Ainsworth's publicly stated governance areas. It is a curated evidence map, not a claim of endorsement or partnership.
 
 | Start with | Evidence available now | Honest status |
 |---|---|---|
@@ -77,7 +77,6 @@ A project may move backward when testing exposes a flaw. That is recorded as pro
 | 5 | CERL 1.0 Governance Framework | [2/6] Paper | Counsel review |
 | 6 | Commons Unified Protocol | [2/6] Paper | Two-node demo |
 | 7 | Consent Token | [3/6] Test | Software pilot |
-| 8 | Commons Sentience Sandbox | [4/6] Prototype | Research walkthrough |
 | 9 | Reality Audit Sandbox | [4/6] Prototype | Methods review |
 | 10 | Lantern Protocols | [2/6] Paper | Education pilot |
 | 11 | Foundational Operating System | [2/6] Paper | Narrow policy-engine proof |
