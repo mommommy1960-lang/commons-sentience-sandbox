@@ -150,3 +150,28 @@ Interpretation:
 - The launch/outreach plan should be treated as an active experiment with evidence already accumulating.
 - Outreach does not equal a sale, pilot, referral, or independent validation. Those outcomes still require explicit confirmation.
 - Protected drawings and paid supplier work remain gated until terms and written estimates are reviewed.
+
+
+## 2026-09-21 — Commons AI Future source audit and reference core
+
+Status: Source record classified and first independent repository-level reference core tested.
+
+Completed:
+- Classified 21 uploaded Word files into 16 unique document bodies.
+- Preserved exact duplicates, overlapping series, missing Volume XVI, and unresolved Volume IV placement instead of silently renumbering the archive.
+- Added a canonical index, archive audit, claim-evidence ledger, corrected engineering edition, speculative research edition, and six-gate implementation program.
+- Added a Dr. Thomas review path organized around authority, revocation, auditability, meaningful human control, and accountable organizational structure.
+- Implemented a dependency-free reference core for scoped grants, expiry, revocation, freeze, reviewed restoration, hash-chained auditing, and bounded moral memory.
+- Ran eight automated tests: 8 passed, 0 failed.
+
+Corrections and boundaries:
+- Corrected the storage estimate for `10^11` 96-byte events from 1.2 TB to 9.6 TB decimal before overhead.
+- Rejected faster-than-light information transfer through entanglement as a supported formulation.
+- Reclassified unsupported pilot, volunteer, quantum-governance, temporal-control, and planetary-consciousness results as unverified source claims or speculative research questions.
+- The reference core is software evidence, not security certification, production authorization infrastructure, proof of consciousness, or independent validation.
+
+Next gate:
+1. Add canonical signed serialization and public conformance vectors.
+2. Add transactional persistence, concurrency tests, and crash recovery.
+3. Obtain an independent implementation and security review.
+4. Integrate only with a harmless Maya Node or SAGE demonstration before any consequential pilot.

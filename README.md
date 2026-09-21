@@ -1,17 +1,10 @@
 # Commons Sentience Sandbox
 
-## New public invention architecture baselines
-
-- [AquaShield closed-water spacecraft subsystem](docs/aquashield/README.md)
-- [CARE human-centered emergency routing architecture](docs/care/README.md)
-
-Both are early, falsification-first research packages. Neither is certified,
-deployed, medically validated, flight-qualified, or authorized for emergency
-operations.
-
 ## Continuity and current work queue
 
 Future Commons Initiative collaborators should begin with [`docs/continuity/README.md`](docs/continuity/README.md). It links the current first-read continuity record, consolidated engineering and publishing checklist, and the verified full Reality Audit test report.
+
+External reviewers focused on human-centered AI governance can use the [Commons AI Future Program](docs/civic-continuum/ai-future/README.md). It separates buildable consent, revocation, audit, fallback, and moral-memory controls from speculative quantum and consciousness research, and includes an executable reference core with falsifiable tests.
 
 A local research platform for studying continuity-governed simulated agents with
 persistent identity, episodic memory, relational memory, reflective learning,
