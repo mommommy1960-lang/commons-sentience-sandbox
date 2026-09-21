@@ -16,7 +16,11 @@ class GovernanceCoreTests(unittest.TestCase):
     def setUp(self):
         self.start = datetime(2026, 9, 21, 12, 0, tzinfo=timezone.utc)
         self.clock = Clock(self.start)
-        self.core = GovernanceCore(self.clock)
+        self.core = GovernanceCore(
+            self.clock,
+            authorized_reviewers={"independent-reviewer"},
+            authorized_revokers={"safety-officer"},
+        )
         self.grant = ConsentGrant(
             grant_id="grant-1",
             issuer="human-reviewer",
@@ -40,12 +44,23 @@ class GovernanceCoreTests(unittest.TestCase):
         self.core.revoke("grant-1", "human-reviewer", "permission withdrawn")
         self.assertEqual(self.core.authorize("grant-1", "maya-node", "read:weather"), (False, "revoked"))
 
+    def test_unauthorized_actor_cannot_revoke(self):
+        with self.assertRaises(PermissionError):
+            self.core.revoke("grant-1", "stranger", "attempted takeover")
+        self.assertEqual(self.core.authorize("grant-1", "maya-node", "read:weather"), (True, "allowed"))
+
     def test_freeze_blocks_and_restore_does_not_revive_revoked_grant(self):
         self.core.freeze("operator", "integrity uncertainty")
         self.assertEqual(self.core.authorize("grant-1", "maya-node", "read:weather"), (False, "system_frozen"))
         self.core.revoke("grant-1", "human-reviewer", "permission withdrawn")
         self.core.restore("independent-reviewer", "integrity review complete")
         self.assertEqual(self.core.authorize("grant-1", "maya-node", "read:weather"), (False, "revoked"))
+
+    def test_unauthorized_reviewer_cannot_restore(self):
+        self.core.freeze("operator", "integrity uncertainty")
+        with self.assertRaises(PermissionError):
+            self.core.restore("stranger", "trust me")
+        self.assertTrue(self.core.frozen)
 
     def test_unknown_grant_is_denied_and_logged(self):
         self.assertEqual(self.core.authorize("missing", "maya-node", "read:weather"), (False, "unknown_grant"))
@@ -80,4 +95,3 @@ class GovernanceCoreTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
