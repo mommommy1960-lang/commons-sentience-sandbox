@@ -251,6 +251,8 @@ class SelfAuthoredProjectThread:
 
         Returns True if the project just completed, False otherwise.
         """
+        if not self.stages or self.stage_index < 0:
+            return False
         if self.stage_index >= len(self.stages):
             return False
 
@@ -331,24 +333,77 @@ class SelfAuthoredProjectThread:
 
     @classmethod
     def from_dict(cls, data: dict) -> "SelfAuthoredProjectThread":
+        """Construct a validated thread from serialized state."""
+        if not isinstance(data, dict):
+            raise ValueError("project thread must be a mapping")
+
+        status = data.get("status", "active")
+        allowed_statuses = {"active", "completed", "abandoned", "paused"}
+        if status not in allowed_statuses:
+            raise ValueError(f"invalid project thread status: {status!r}")
+
+        project_id = data.get("project_id", "")
+        if not isinstance(project_id, str) or not project_id.strip():
+            raise ValueError("project thread requires a non-empty project_id")
+
+        stages = data.get("stages", [])
+        if (
+            not isinstance(stages, list)
+            or not all(isinstance(stage, str) and stage.strip() for stage in stages)
+        ):
+            raise ValueError("stages must be a list of non-empty strings")
+
+        stage_index = data.get("stage_index", 0)
+        if not isinstance(stage_index, int) or isinstance(stage_index, bool):
+            raise ValueError("stage_index must be an integer")
+        if not 0 <= stage_index <= len(stages):
+            raise ValueError("stage_index must be within the stages range")
+
+        progress_score = data.get("progress_score", 0.0)
+        if not isinstance(progress_score, (int, float)) or isinstance(progress_score, bool):
+            raise ValueError("progress_score must be numeric")
+        if not 0.0 <= float(progress_score) <= 1.0:
+            raise ValueError("progress_score must be between 0 and 1")
+
+        created_at_turn = data.get("created_at_turn", 0)
+        last_updated_turn = data.get("last_updated_turn", 0)
+        horizon = data.get("horizon", 6)
+        for name, value in (
+            ("created_at_turn", created_at_turn),
+            ("last_updated_turn", last_updated_turn),
+            ("horizon", horizon),
+        ):
+            if not isinstance(value, int) or isinstance(value, bool) or value < 0:
+                raise ValueError(f"{name} must be a non-negative integer")
+        if last_updated_turn < created_at_turn:
+            raise ValueError("last_updated_turn cannot precede created_at_turn")
+        if horizon == 0:
+            raise ValueError("horizon must be positive")
+
+        revision_log = data.get("revision_log", [])
+        if not isinstance(revision_log, list) or not all(
+            isinstance(entry, dict) for entry in revision_log
+        ):
+            raise ValueError("revision_log must be a list of mappings")
+
         return cls(
-            project_id=data.get("project_id", str(uuid.uuid4())[:8]),
-            title=data.get("title", ""),
-            origin_reason=data.get("origin_reason", ""),
-            origin_category=data.get("origin_category", ""),
-            linked_identity_theme=data.get("linked_identity_theme", ""),
-            linked_uncertainty_domain=data.get("linked_uncertainty_domain", ""),
-            status=data.get("status", "active"),
-            stages=data.get("stages", []),
-            stage_index=data.get("stage_index", 0),
-            progress_score=data.get("progress_score", 0.0),
-            success_criteria=data.get("success_criteria", ""),
-            abandonment_reason=data.get("abandonment_reason", ""),
-            revision_log=data.get("revision_log", []),
-            created_at_turn=data.get("created_at_turn", 0),
-            last_updated_turn=data.get("last_updated_turn", 0),
-            horizon=data.get("horizon", 6),
-            template_id=data.get("template_id", ""),
+            project_id=project_id,
+            title=str(data.get("title", "")),
+            origin_reason=str(data.get("origin_reason", "")),
+            origin_category=str(data.get("origin_category", "")),
+            linked_identity_theme=str(data.get("linked_identity_theme", "")),
+            linked_uncertainty_domain=str(data.get("linked_uncertainty_domain", "")),
+            status=status,
+            stages=stages,
+            stage_index=stage_index,
+            progress_score=float(progress_score),
+            success_criteria=str(data.get("success_criteria", "")),
+            abandonment_reason=str(data.get("abandonment_reason", "")),
+            revision_log=revision_log,
+            created_at_turn=created_at_turn,
+            last_updated_turn=last_updated_turn,
+            horizon=horizon,
+            template_id=str(data.get("template_id", "")),
         )
 
     def __repr__(self) -> str:
@@ -617,14 +672,22 @@ class ProjectThreadManager:
             Number of threads carried forward.
         """
         carried = 0
+        active_slots = self.MAX_ACTIVE - len(self._active_threads())
+        if active_slots <= 0:
+            return 0
+
         for td in prior_threads:
-            status = td.get("status", "active")
-            if status in ("completed", "abandoned"):
+            if carried >= active_slots:
+                break
+            try:
+                thread = SelfAuthoredProjectThread.from_dict(td)
+            except (TypeError, ValueError):
                 continue
-            pid = td.get("project_id", "")
-            if pid and any(t.project_id == pid for t in self.threads):
+            if thread.status in ("completed", "abandoned"):
                 continue
-            self.threads.append(SelfAuthoredProjectThread.from_dict(td))
+            if any(t.project_id == thread.project_id for t in self.threads):
+                continue
+            self.threads.append(thread)
             carried += 1
         return carried
 
