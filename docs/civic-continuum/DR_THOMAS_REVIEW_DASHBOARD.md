@@ -16,6 +16,15 @@ This dashboard gives a reviewer a fast, honest view of what exists, what is bein
 | [Flux Drive formal-review draft](https://github.com/mommommy1960-lang/flux-drive-kernel/pull/4) | Closure equations, uncertainty, nuisance models, controls, and bench plan | Paper/software package; no validated propulsion |
 | [Programmable vehicle-surface draft](https://github.com/mommommy1960-lang/commons-sentience-sandbox/pull/41) | Optical, electrical, thermal, curvature, safe-state, and coupon-test specification | Paper feasibility; no tested coupon or road approval |
 
+
+## Verified updates — September 25, 2026
+
+- Added the public [Institutional Enclosure Act](https://github.com/mommommy1960-lang/institutional-enclosure-act) and [Socio-Technical Incentive Alignment](https://github.com/mommommy1960-lang/socio-technical-incentive-alignment) repositories to the reviewer route.
+- Published the [Civic Continuum Credibility and Human Dignity Standard](./CIVIC_CONTINUUM_CREDIBILITY_AND_HUMAN_DIGNITY_STANDARD.md), preserving evidence boundaries, correction trails, attribution, and bounded confidentiality.
+- Mya P. Brown completed USPTO Basic Patent Training on September 24, 2026.
+- A Washington State/TILE Patent Pro Bono Hub intake package concerning the SAGE Situated Companion was sent on September 25, 2026 and is awaiting screening. This is an intake submission only—not attorney placement, patent filing, patentability review, endorsement, or validation.
+- Private identity, income, signature, claim-strategy, and patent-sensitive implementation materials remain outside the public repository.
+
 ## Governance and accountability thesis
 
 The project's central governance position is that **capability does not create authority** and **responsibility without meaningful authority is not accountability**. A responsible human or institution must be able to inspect, refuse, pause, correct, and reverse consequential automated action, while affected people need a visible challenge path. The [public evidence map](./AI_GOVERNANCE_ACCOUNTABILITY_EVIDENCE_MAP_2026-09-21.md) distinguishes dated source records, paper architectures, implemented software, local tests, and remaining independent-review gates.
