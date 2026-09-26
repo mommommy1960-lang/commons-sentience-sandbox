@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="assets/branding/exec-defca51f-0403-4a5f-9a28-f960009adb75.png" alt="Civic Continuum emblem" width="220">
+</p>
+
+# Civic Continuum
+
 # Commons Sentience Sandbox
 
 ## New public invention architecture baselines
