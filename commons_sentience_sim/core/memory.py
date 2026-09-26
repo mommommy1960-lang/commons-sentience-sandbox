@@ -62,6 +62,7 @@ class EpisodicMemory:
     # v1.2 long-horizon fields
     memory_tier: str = MEMORY_TIER_SHORT_TERM
     recall_count: int = 0
+    source: str = "agent_observation"
 
     def weighted_score(self, current_turn: int, query_tags: Optional[List[str]] = None) -> float:
         """Composite retrieval score combining relevance, importance, recency, and relational significance.

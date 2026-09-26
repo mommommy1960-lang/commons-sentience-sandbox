@@ -1,4 +1,5 @@
 {
+  "default_policy": "fail_closed",
   "rules": [
     {
       "id": "R001",

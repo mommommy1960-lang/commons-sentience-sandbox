@@ -52,19 +52,22 @@ class ReflectionEngine:
             Determines which additional synthesis fields are populated.
         """
         patterns = self._identify_patterns(agent, recent_memories)
-        contradictions = self._resolve_contradictions(agent)
-        updated_goals = self._revise_goals(agent, contradictions)
+        # Relabeling text is not proof of resolution. Keep the pending
+        # contradictions visible until an external verification step exists.
+        contradictions = []
+        unresolved_contradictions = list(agent.pending_contradictions)
+        updated_goals = self._revise_goals(agent, unresolved_contradictions)
         affective_shift = self._compute_affective_shift(agent, contradictions)
 
         # five-section narrative (always populated)
         what_happened = self._what_happened(agent, recent_memories, trigger)
         what_mattered = self._what_mattered(agent, recent_memories)
-        what_conflicted = self._what_conflicted(agent, contradictions)
+        what_conflicted = self._what_conflicted(agent, unresolved_contradictions)
         what_changed = self._what_changed(affective_shift, updated_goals, agent)
-        future_adjustment = self._future_adjustment(agent, updated_goals, contradictions)
+        future_adjustment = self._future_adjustment(agent, updated_goals, unresolved_contradictions)
 
         narrative = self._compose_narrative(
-            trigger, patterns, contradictions, updated_goals, affective_shift,
+            trigger, patterns, unresolved_contradictions, updated_goals, affective_shift,
             reflection_type=reflection_type,
         )
 
@@ -103,8 +106,7 @@ class ReflectionEngine:
                     0.0, min(1.0, agent.affective_state[key] + delta)
                 )
 
-        # Clear pending contradictions
-        agent.pending_contradictions.clear()
+        # Preserve unresolved contradictions; only a verified resolver may clear them.
 
         return entry
 

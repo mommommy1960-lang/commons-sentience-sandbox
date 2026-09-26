@@ -230,6 +230,7 @@ class Agent:
         salience: float = 0.5,
         importance: float = 0.5,
         tags: Optional[List[str]] = None,
+        source: str = "agent_observation",
     ) -> EpisodicMemory:
         mem = EpisodicMemory(
             turn=self.turn,
@@ -240,6 +241,7 @@ class Agent:
             salience=salience,
             importance=importance,
             tags=tags or [],
+            source=source,
         )
         self.episodic_memory.append(mem)
         return mem
@@ -299,11 +301,15 @@ class Agent:
                 or m.event_type == seed_memory.event_type
             )
         ]
-        return sorted(
+        results = sorted(
             related,
             key=lambda m: m.weighted_score(self.turn, seed_memory.tags),
             reverse=True,
         )[:n]
+        # Associative recall follows the same auditable recall semantics as weighted recall.
+        for mem in results:
+            mem.record_recall(context="generic")
+        return results
 
     def compress_old_memories(self, age_threshold: int = 15) -> None:
         """Compress summaries of memories older than age_threshold turns.

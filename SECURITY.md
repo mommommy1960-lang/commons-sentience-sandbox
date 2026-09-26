@@ -2,33 +2,40 @@
 
 ## Scope
 
-This policy covers the public Commons Sentience Sandbox repository and its demonstration, evaluation, and documentation code.
+This repository contains simulation, research, and safety-orchestration code. It is not a production autonomous-agent or physical-device control system.
 
-The project is a local research platform. It is not an authorization to access third-party systems, secrets, accounts, or infrastructure.
+## Report a vulnerability
 
-## Reporting a vulnerability
-
-Please report suspected security issues privately to the repository owner through the contact method listed in the GitHub profile. Do not open a public issue containing credentials, private data, exploit details, or unpublished research.
+Do not publish credentials, private memories, exploit details, or personal data in a public issue. Use GitHub's private security advisory/reporting flow when available. If that channel is unavailable, contact the repository owner privately through a verified account channel.
 
 Include:
 
-- affected file, workflow, or component;
+- affected path and commit;
 - reproducible steps;
 - expected and observed behavior;
-- possible impact;
-- a safe contact method for follow-up.
+- impact;
+- a safe mitigation, if known.
 
-We will acknowledge reports when possible, verify them in a controlled environment, and document the remediation without exposing sensitive details.
+## Non-negotiable safety boundaries
 
-## Repository safeguards
+- Unknown operations must not gain authority by default.
+- Trust, affection, familiarity, urgency, memory, or identity never expand permissions.
+- Physical effects, external messages, account actions, purchases, doors, vehicles, microphones, and cameras require a separate explicit scope.
+- Self-destruction, disabling safety, harm to living beings, and weaponization are prohibited.
+- Emergency freeze must take precedence over normal work.
+- Audit records must preserve denials and failures honestly.
+- No secret, token, API key, private memory, or personal data belongs in source control.
 
-Contributors and reviewers must:
+## Release gate
 
-- never commit secrets, tokens, private keys, or personal data;
-- use pull requests for changes;
-- preserve author attribution and provenance;
-- avoid changing governance, permission, or audit behavior without tests;
-- keep simulations and security tests local and non-destructive;
-- disclose limitations and failed tests.
+Before merging security-sensitive changes, require:
 
-The Commons Initiative retains ownership of its original code, documentation, research artifacts, and inventions. Review access does not transfer ownership or grant a license beyond the written terms of a specific agreement.
+1. review of the exact diff;
+2. unit and integration tests;
+3. static/YAML validation;
+4. audit of changed permissions and external effects;
+5. confirmation that secrets are not present;
+6. documented remaining failures;
+7. human approval.
+
+This policy describes required controls. It does not claim that repository settings, branch protection, CI, or production deployment are currently compliant.
