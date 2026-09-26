@@ -8,14 +8,14 @@
 
 Each gate has six equally visible checks. A check scores only when a reviewer can inspect documentary evidence. “In progress” earns no completion credit. The total is therefore reproducible rather than subjective.
 
-## Current result: 9 of 18 checks (50%)
+## Current result: 11 of 18 checks (61%)
 
 | Gate | Verified checks | Meter | Status |
 |---|---:|---:|---|
 | 1. Formal business registration | 2 / 6 | 33% | Open |
-| 2. Business-domain infrastructure | 3 / 6 | 50% | Open |
-| 3. Accountable organizational structure | 4 / 6 | 67% | Open |
-| **Overall** | **9 / 18** | **50%** | **Not yet complete** |
+| 2. Business-domain infrastructure | 4 / 6 | 67% | Open |
+| 3. Accountable organizational structure | 5 / 6 | 83% | Open |
+| **Overall** | **11 / 18** | **61%** | **Not yet complete** |
 
 ## Gate 1 — Formal business registration: 2 / 6
 
@@ -30,7 +30,7 @@ Each gate has six equally visible checks. A check scores only when a reviewer ca
 
 **Next decisive action:** file the Washington entity formation when authorized and affordable, then preserve the acceptance document and identifier privately; publish only a safe verification reference.
 
-## Gate 2 — Business-domain infrastructure: 3 / 6
+## Gate 2 — Business-domain infrastructure: 4 / 6
 
 | Check | Status | Evidence or missing proof |
 |---|---|---|
@@ -38,12 +38,12 @@ Each gate has six equally visible checks. A check scores only when a reviewer ca
 | Intended domain selected | Verified | `civiccontinuum.org` is the selected domain. |
 | Domain registration paid and controlled | Verified | `civiccontinuum.org` was registered on September 26, 2026 and is controlled through the Civic Continuum registrar account; the public-safe record shows expiration on September 26, 2027. Payment data, account credentials, and recovery secrets remain private. |
 | DNS points to the official site | Open | Domain ownership is established; official-site DNS routing has not yet been verified. |
-| Domain-based email works | Open | A domain forwarding address or mailbox has not yet been demonstrated. |
+| Domain-based email works | Verified | `contact@civiccontinuum.org` was tested successfully on September 26, 2026. The private destination inbox is intentionally not published. |
 | HTTPS, renewal, and recovery controls documented | Open | Renewal status is visible in the private registrar record, but the complete HTTPS and recovery-control evidence set is not yet independently inspectable. |
 
-**Next decisive action:** connect the domain to the official public site through HTTPS, create and test a domain-based contact address, and preserve a sanitized control record. Registrar credentials, payment details, MFA seeds, and recovery codes must remain private.
+**Next decisive action:** connect the domain to the official public site through HTTPS and preserve a sanitized record of HTTPS, renewal, and recovery controls. Registrar credentials, payment details, MFA seeds, and recovery codes must remain private.
 
-## Gate 3 — Accountable organizational structure: 4 / 6
+## Gate 3 — Accountable organizational structure: 5 / 6
 
 | Check | Status | Evidence or missing proof |
 |---|---|---|
@@ -52,9 +52,9 @@ Each gate has six equally visible checks. A check scores only when a reviewer ca
 | Change accountability exists | Verified | Repository history, pull requests, review gates, and ownership controls create attributable change records. |
 | Confidentiality/IP boundary published | Verified | Public/private disclosure limits and partner boundaries are documented. |
 | Dated legal adoption and named role roster | Open | Needs a formally adopted roster identifying decision rights, responsible owner, delegates, and succession. |
-| Public correction/contact procedure demonstrated | Open | Needs one stable domain contact and a documented intake, response, correction, and escalation log. |
+| Public correction/contact procedure demonstrated | Verified | The [public contact, correction, and escalation procedure](./CIVIC_CONTINUUM_PUBLIC_CORRECTION_PROCEDURE.md) identifies the tested domain contact route, intake, review levels, correction record, and escalation path. |
 
-**Next decisive action:** adopt a short organizational resolution and role roster after entity formation, then publish a non-sensitive version with a stable correction channel.
+**Next decisive action:** after entity formation, adopt the [interim accountable organizational structure](./CIVIC_CONTINUUM_ACCOUNTABLE_ORGANIZATIONAL_STRUCTURE.md) through a dated legal resolution and publish a non-sensitive final role roster.
 
 ## Supporting professional-development milestone
 
@@ -71,6 +71,8 @@ Interest, a reply, a store account, a manuscript, a certificate, or a working so
 ## Supporting public evidence
 
 - [Civic Continuum reviewer dashboard](./DR_THOMAS_REVIEW_DASHBOARD.md)
+- [Accountable organizational structure](./CIVIC_CONTINUUM_ACCOUNTABLE_ORGANIZATIONAL_STRUCTURE.md)
+- [Public contact, correction, and escalation procedure](./CIVIC_CONTINUUM_PUBLIC_CORRECTION_PROCEDURE.md)
 - [Maya Node](https://github.com/mommommy1960-lang/maya-node)
 - [Aurora governance invariants](https://github.com/mommommy1960-lang/aurora-sovereign-core/blob/main/GOVERNANCE.md)
 - [Public portfolio index](./blue-books/civic-continuum-public-portfolio-index.md)
