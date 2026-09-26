@@ -6,6 +6,9 @@ This page is designed as the first stop for reviewers, collaborators, educators,
 
 ## Start here
 
+- [Public organizational verification](./ORGANIZATIONAL_VERIFICATION.md)
+- [Accountable organizational structure](./governance/ACCOUNTABLE_ORGANIZATIONAL_STRUCTURE.md)
+- [Public contact, correction, and escalation procedure](./governance/PUBLIC_CORRECTION_AND_CONTACT_PROCEDURE.md)
 - [Reviewer dashboard](./DR_THOMAS_REVIEW_DASHBOARD.md)
 - [Execution queue: software to laboratory](./EXECUTION_QUEUE.md)
 - [Build-readiness program](./BUILD_READINESS_PROGRAM.md)
@@ -60,4 +63,3 @@ Private materials remain private: credentials, keys, personal information, suppl
 ## Claim boundary
 
 The public repository does not claim sentience, autonomous authority, validated propulsion, an operational interstellar vessel, medical readiness, or production readiness where those claims have not been independently demonstrated.
-

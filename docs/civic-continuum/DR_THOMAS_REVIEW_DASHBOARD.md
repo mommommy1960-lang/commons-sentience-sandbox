@@ -1,23 +1,10 @@
 # Civic Continuum Reviewer Dashboard
 
-## Verified update — September 26, 2026
-
-- `civiccontinuum.org` was registered and placed under Civic Continuum control on September 26, 2026; the public-safe registrar record shows expiration on September 26, 2027.
-- The organizational readiness meter now records 11 of 18 verified checks (61%). Domain-based email and the public correction route are verified; domain-to-site routing, legal formation, and final organizational adoption remain open.
-- `contact@civiccontinuum.org` was tested successfully as the public contact route. The private destination inbox remains unpublished.
-- An IRS Employer Identification Number was assigned to Mya P. Brown doing business as Civic Continuum on September 26, 2026. The confirmation letter and number are retained privately. This tax identifier does not represent LLC formation, nonprofit status, or completion of Washington business registration.
-- Published the [Accountable Organizational Structure](./CIVIC_CONTINUUM_ACCOUNTABLE_ORGANIZATIONAL_STRUCTURE.md) and [Public Contact, Correction, and Escalation Procedure](./CIVIC_CONTINUUM_PUBLIC_CORRECTION_PROCEDURE.md).
-- No outreach to Dr. Thomas Ainsworth is authorized until all required organizational gates are complete and independently verifiable.
-- Registrar credentials, payment data, personal addresses, MFA secrets, and recovery codes remain private.
-
-
 ## Purpose
 
 This dashboard gives a reviewer a fast, honest view of what exists, what is being built, and what still requires independent work. It is a progress map, not a claim that every concept is a functioning product.
 
 ## Review entry points
-
-**New governance/accountability route:** [AI Governance and Accountability — Public Evidence Map](./AI_GOVERNANCE_ACCOUNTABILITY_EVIDENCE_MAP_2026-09-21.md). It connects the project's dated authority/accountability thesis to the original Commons archive, the Charter of Human Advancement, the Governance Architecture Reference, consent, revocation, refusal, immutable audit, safe-mode recovery, and Maya Node. It also compares these materials with Dr. Ainsworth's publicly stated governance areas. It is a curated evidence map, not a claim of endorsement or partnership.
 
 | Start with | Evidence available now | Honest status |
 |---|---|---|
@@ -26,19 +13,6 @@ This dashboard gives a reviewer a fast, honest view of what exists, what is bein
 | [Reality Audit](./README.md) | Evidence stages, calibration discipline, failure preservation, and review gates | Research-assurance workbench |
 | [Flux Drive formal-review draft](https://github.com/mommommy1960-lang/flux-drive-kernel/pull/4) | Closure equations, uncertainty, nuisance models, controls, and bench plan | Paper/software package; no validated propulsion |
 | [Programmable vehicle-surface draft](https://github.com/mommommy1960-lang/commons-sentience-sandbox/pull/41) | Optical, electrical, thermal, curvature, safe-state, and coupon-test specification | Paper feasibility; no tested coupon or road approval |
-
-
-## Verified updates — September 25, 2026
-
-- Added the public [Institutional Enclosure Act](https://github.com/mommommy1960-lang/institutional-enclosure-act) and [Socio-Technical Incentive Alignment](https://github.com/mommommy1960-lang/socio-technical-incentive-alignment) repositories to the reviewer route.
-- Published the [Civic Continuum Credibility and Human Dignity Standard](./CIVIC_CONTINUUM_CREDIBILITY_AND_HUMAN_DIGNITY_STANDARD.md), preserving evidence boundaries, correction trails, attribution, and bounded confidentiality.
-- Mya P. Brown completed USPTO Basic Patent Training on September 24, 2026.
-- A Washington State/TILE Patent Pro Bono Hub intake package concerning the SAGE Situated Companion was sent on September 25, 2026 and is awaiting screening. This is an intake submission only—not attorney placement, patent filing, patentability review, endorsement, or validation.
-- Private identity, income, signature, claim-strategy, and patent-sensitive implementation materials remain outside the public repository.
-
-## Governance and accountability thesis
-
-The project's central governance position is that **capability does not create authority** and **responsibility without meaningful authority is not accountability**. A responsible human or institution must be able to inspect, refuse, pause, correct, and reverse consequential automated action, while affected people need a visible challenge path. The [public evidence map](./AI_GOVERNANCE_ACCOUNTABILITY_EVIDENCE_MAP_2026-09-21.md) distinguishes dated source records, paper architectures, implemented software, local tests, and remaining independent-review gates.
 
 ## What changed on September 19, 2026
 
@@ -51,7 +25,7 @@ The project's central governance position is that **capability does not create a
 
 ## Dr. Thomas readiness meter
 
-The three organizational conditions are tracked in a separate, evidence-scored checklist: [Dr. Thomas Organizational Readiness Meter](./DR_THOMAS_ORGANIZATIONAL_READINESS_METER.md). The current score is **11 of 18 verified checks (61%)**. All three gates remain open; the score must not be represented as approval or independent verification.
+The three organizational conditions are tracked in a separate, evidence-scored checklist: [Dr. Thomas Organizational Readiness Meter](./DR_THOMAS_ORGANIZATIONAL_READINESS_METER.md). The current score is **15 of 18 verified checks (83%)**. Domain infrastructure is documented and the accountable structure is published. Formal Washington formation, UBI, and business licensing remain open, so the overall gate is not complete and must not be represented as approval or independent verification.
 
 ## Organizational verification gate
 
@@ -61,7 +35,7 @@ Dr. Thomas Ainsworth asked that substantive collaboration wait until three items
 2. business-domain infrastructure; and
 3. accountable organizational structure.
 
-Technical documentation may continue improving while those gates are open. No later email should imply that the organization is registered, domain-complete, independently verified, or ready for a formal relationship until the corresponding evidence exists.
+Technical documentation may continue improving while the registration gate is open. The domain is now live at `https://civiccontinuum.org/`, the role-based contact is `contact@civiccontinuum.org`, and the public accountability package is available through the [organizational verification page](./ORGANIZATIONAL_VERIFICATION.md). No later email should imply that the Washington organization is registered, licensed, independently verified, or ready for a formal relationship until the missing public records and outsider-verification steps exist.
 
 ## Evidence meter
 
@@ -97,6 +71,7 @@ A project may move backward when testing exposes a flaw. That is recorded as pro
 | 5 | CERL 1.0 Governance Framework | [2/6] Paper | Counsel review |
 | 6 | Commons Unified Protocol | [2/6] Paper | Two-node demo |
 | 7 | Consent Token | [3/6] Test | Software pilot |
+| 8 | Commons Sentience Sandbox | [4/6] Prototype | Research walkthrough |
 | 9 | Reality Audit Sandbox | [4/6] Prototype | Methods review |
 | 10 | Lantern Protocols | [2/6] Paper | Education pilot |
 | 11 | Foundational Operating System | [2/6] Paper | Narrow policy-engine proof |
