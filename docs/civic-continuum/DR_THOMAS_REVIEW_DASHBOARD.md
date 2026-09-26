@@ -3,7 +3,9 @@
 ## Verified update — September 26, 2026
 
 - `civiccontinuum.org` was registered and placed under Civic Continuum control on September 26, 2026; the public-safe registrar record shows expiration on September 26, 2027.
-- The organizational readiness meter now records 9 of 18 verified checks (50%). Domain-to-site routing, domain-based email, legal formation, and final organizational adoption remain open.
+- The organizational readiness meter now records 11 of 18 verified checks (61%). Domain-based email and the public correction route are verified; domain-to-site routing, legal formation, and final organizational adoption remain open.
+- `contact@civiccontinuum.org` was tested successfully as the public contact route. The private destination inbox remains unpublished.
+- Published the [Accountable Organizational Structure](./CIVIC_CONTINUUM_ACCOUNTABLE_ORGANIZATIONAL_STRUCTURE.md) and [Public Contact, Correction, and Escalation Procedure](./CIVIC_CONTINUUM_PUBLIC_CORRECTION_PROCEDURE.md).
 - No outreach to Dr. Thomas Ainsworth is authorized until all required organizational gates are complete and independently verifiable.
 - Registrar credentials, payment data, personal addresses, MFA secrets, and recovery codes remain private.
 
@@ -48,7 +50,7 @@ The project's central governance position is that **capability does not create a
 
 ## Dr. Thomas readiness meter
 
-The three organizational conditions are tracked in a separate, evidence-scored checklist: [Dr. Thomas Organizational Readiness Meter](./DR_THOMAS_ORGANIZATIONAL_READINESS_METER.md). The current score is **8 of 18 verified checks (44%)**. All three gates remain open; the score must not be represented as approval or independent verification.
+The three organizational conditions are tracked in a separate, evidence-scored checklist: [Dr. Thomas Organizational Readiness Meter](./DR_THOMAS_ORGANIZATIONAL_READINESS_METER.md). The current score is **11 of 18 verified checks (61%)**. All three gates remain open; the score must not be represented as approval or independent verification.
 
 ## Organizational verification gate
 
