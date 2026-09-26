@@ -5,6 +5,7 @@
 - `civiccontinuum.org` was registered and placed under Civic Continuum control on September 26, 2026; the public-safe registrar record shows expiration on September 26, 2027.
 - The organizational readiness meter now records 11 of 18 verified checks (61%). Domain-based email and the public correction route are verified; domain-to-site routing, legal formation, and final organizational adoption remain open.
 - `contact@civiccontinuum.org` was tested successfully as the public contact route. The private destination inbox remains unpublished.
+- An IRS Employer Identification Number was assigned to Mya P. Brown doing business as Civic Continuum on September 26, 2026. The confirmation letter and number are retained privately. This tax identifier does not represent LLC formation, nonprofit status, or completion of Washington business registration.
 - Published the [Accountable Organizational Structure](./CIVIC_CONTINUUM_ACCOUNTABLE_ORGANIZATIONAL_STRUCTURE.md) and [Public Contact, Correction, and Escalation Procedure](./CIVIC_CONTINUUM_PUBLIC_CORRECTION_PROCEDURE.md).
 - No outreach to Dr. Thomas Ainsworth is authorized until all required organizational gates are complete and independently verifiable.
 - Registrar credentials, payment data, personal addresses, MFA secrets, and recovery codes remain private.
