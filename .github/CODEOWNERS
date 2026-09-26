@@ -1,8 +1,9 @@
-# Require review for every tracked change.
-* @mommommy1960-lang
+# CODEOWNERS
+# Human owner review is required for changes to core code, governance,
+# security controls, workflows, and public research claims.
 
-# Require explicit owner review for safety and continuity surfaces.
-/tools/ @mommommy1960-lang
-/tests/ @mommommy1960-lang
-/docs/research/ @mommommy1960-lang
-docs/continuity/ @mommommy1960-lang
+* @mommommy1960-lang
+.github/ @mommommy1960-lang
+docs/ @mommommy1960-lang
+scenarios/ @mommommy1960-lang
+tests/ @mommommy1960-lang

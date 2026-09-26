@@ -1,29 +1,33 @@
 # Kindle Publishing Workboard — September 16, 2026
 
 **Owner:** Mya P. Brown
-**Status:** Preparation only; no Amazon submission performed in this work package.
+**Status:** Updated September 20, 2026. Three titles have advanced through the Kindle workflow; public sales links remain subject to verification.
 
-## First release target
+## Public bookshelf
 
-**Practicing Violence** remains the next intended Kindle title because the continuity record identifies a polished 101-page manuscript and marks its editorial, navigation, evidence-status, and accessibility work as completed. Before submission, verify the authoritative manuscript file, cover, metadata, rights, audience, AI disclosure, preview, and final price.
+See [Books by Mya P. Brown](BOOKS_FOR_SALE.md) for the customer-facing status page. Direct Amazon purchase URLs are added only after each public product page is live and verified.
+
+## Current release target
+
+**Designed to Die** is the current Kindle preparation target. Seven manuscript copies were located. `Designed_to_Die_KDP_Privacy_Review_Candidate.docx` is the working master pending privacy generalization, editorial review, Kindle formatting, cover selection, preview, and submission.
 
 ## Existing publication status
 
-**Plain-English AI Governance Workbook** was previously submitted to KDP at $9.99. Its current review status and live sales URL still require an authenticated KDP check.
+**Plain English AI Governance** was submitted to KDP at $4.99 on September 20, 2026. Its live sales URL still requires verification.
 
-## Second release target
+**Practicing Violence** is reported published. Its direct Amazon purchase URL still requires verification.
 
-**The Cure for Death** has a recovered manuscript and Reader Edition in the continuity record. It still requires editorial, evidence, citation, formatting, navigation, cover, listing, preview, rights, and submission checks.
+**The Cure for Death** advanced through the Kindle submission workflow. Its direct Amazon purchase URL still requires verification.
 
-## Drive discovery result
+## Manuscript discovery result
 
-Drive search located multiple ambiguous and duplicate manuscript/document records, including several editions of **The Book of the Commons — Volume I**, but did not return an exact authoritative file named Practicing Violence or The Cure for Death. Files must be opened and compared before selecting an edition. Do not infer a title from an unrelated filename or composite PDF.
+The Designed to Die manuscript family contains multiple duplicate and expanded files. The privacy-review candidate is the working master, not a final upload file. Preserve every source edition and create a separate Kindle Reading Edition.
 
 ## Clean-rights publication order
 
 1. Practicing Violence
 2. The Cure for Death
-3. Designed to Die
+3. Designed to Die — current preparation target
 4. Finishing the World
 5. The Book of the Commons — Volume I
 6. Tenant-centered housing works
@@ -46,6 +50,6 @@ Keep DC-derived or fan-work material on the rights-review shelf. Do not submit T
 
 ## Immediate next action
 
-Locate and compare the authoritative Practicing Violence manuscript. If it is not accessible in Drive, recover it from the saved project/repository record or ask Mya to identify the correct file. Do not publish a guessed or mismatched edition.
+Complete and visually verify `Designed_to_Die_Kindle_Reading_Edition.docx`, select a cover, inspect the KDP preview, and submit only after the privacy and rights checks pass.
 
 **Reality first. Anomaly second. Follow through.**

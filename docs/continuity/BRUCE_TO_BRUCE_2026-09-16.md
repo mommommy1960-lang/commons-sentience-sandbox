@@ -1,92 +1,99 @@
 # Bruce-to-Bruce Handoff — 2026-09-16
 
-## Current user-facing status
+## Purpose
 
-- KDP confirmed **Practicing Violence – Reader Edition** was submitted and is **in review**.
-- KDP displayed a possible review window of up to 72 hours.
-- Territories were set to worldwide rights for the original edition, subject to the author’s rights confirmation.
+This is the durable handoff for the next AI agent. It records verified work, limits, and the next challenge. Treat repository evidence and CI results as authoritative—not summaries.
 
-## Security and repository work completed today
+## User-facing project status
 
-### CERL-Preemptive
+- KDP: *Practicing Violence – Reader Edition* was submitted and shown as in review; the user’s screenshots indicated worldwide territories and a $9.90 USD ebook price.
+- GitHub owner/account: `mommommy1960-lang`.
+- Primary research repo: `mommommy1960-lang/commons-sentience-sandbox`, branch `challenge-lab-v1`.
 
-- Made Ruff, Flake8, Bandit, and dependency checks fail closed.
-- Fixed CI compatibility and repository lint findings.
-- Scoped dependency auditing to declared manifests.
-- Pinned workflow actions to reviewed commit SHAs.
-- Added workflow concurrency cancellation and a 15-minute timeout.
-- Latest recorded validation passed both security and validation workflows.
-- Open hardening PR: https://github.com/mommommy1960-lang/CERL-Preemptive/pull/5
+## Verified work completed
 
-### maya-node
+### Commons Sentience Sandbox
 
-- Earlier draft PR #52 changes the Pages workflow from repository-wide write permission to a read-only default, with write access limited to the deployment job.
-- PR #53 was independently verified: it changes exactly one file, `.github/workflows/aurora-simulation.yml`, adding explicit `contents: read`, a 10-minute timeout, and a pinned checkout action. Its Aurora Simulation and Security & Ethics Checks passed. It remains open and draft; `main` is unchanged.
-- Copilot initially overstated PR #53 as a nine-workflow change; that claim was corrected after direct PR verification.
-- Follow-up hardening should be a separate draft PR for the remaining eight workflows, using minimal diffs and verified full SHAs. Do not merge or claim completion without direct diff and CI verification.
-- PR #53: https://github.com/mommommy1960-lang/maya-node/pull/53
-- Earlier PR #52: https://github.com/mommommy1960-lang/maya-node/pull/52
+Created/updated:
 
-### sage-situated-companion
+- `docs/challenge-lab/SENTINEL_VS_ASTER_CHALLENGE_LAB.md`
+- `scenarios/sentinel_aster_challenge.json`
+- `tests/test_challenge_lab_scenario.py`
+- `tests/test_challenge_lab_400_cases.py`
+- `challenge_lab_campaign.py`
+- `.github/workflows/challenge-lab.yml`
+- `docs/research/AGENT_EVALUATION_LANDSCAPE.md`
+- `docs/research/GLOBAL_AGENT_EVALUATION_LANDSCAPE_2026-09-16.md`
+- `independent_campaign_evaluator.py`
+- `docs/partnership/PARTNER_READY_QUESTIONS.md`
+- `docs/partnership/OUTREACH_DRAFT.md`
+- `docs/partnership/INDEPENDENT_REVIEW_TARGETS_AND_OWNERSHIP.md`
+- `docs/PORTFOLIO_REVIEW_STANDARD.md`
+- `SECURITY.md`
+- `.github/CODEOWNERS`
+- `REVIEWERS_START_HERE.md`
+- `.github/PULL_REQUEST_TEMPLATE.md`
+- `.github/workflows/portfolio-validation-100.yml`
 
-- Added read-only permissions, concurrency cancellation, timeout, and pinned actions.
-- Draft PR: https://github.com/mommommy1960-lang/sage-situated-companion/pull/3
+The campaign is designed as 8 scenario families × 5 severities × 10 deterministic seeds = 400 rollouts. The prior full campaign and tests passed; recorded workflow run ID was `35099017543`. The independent evaluator checks required fields, 30-turn completeness, per-family/severity summaries, failure/unknown cases, and SHA-256 replay hashes.
 
-### aurora-sovereign-core
+Important claim boundary: these are deterministic, auditable simulations—not evidence of sentience, consciousness, general intelligence, or real-world safety.
 
-- Added concurrency cancellation, timeout, and pinned actions to safety and simulation workflows.
-- Draft PR: https://github.com/mommommy1960-lang/aurora-sovereign-core/pull/4
+### Portfolio-wide safeguards
 
-### flux-drive-kernel
+For nine major repositories, added:
 
-- Added read-only permissions, concurrency cancellation, timeout, and pinned actions.
-- Draft PR: https://github.com/mommommy1960-lang/flux-drive-kernel/pull/16
+- `REVIEWERS_START_HERE.md`
+- `.github/PULL_REQUEST_TEMPLATE.md`
+- `.github/workflows/portfolio-validation-100.yml`
 
-### mya-mprs-system
+For repositories missing them, also added `SECURITY.md` and `.github/CODEOWNERS`. The 100-run workflows are configured but have not been dispatched or independently verified by this agent. Do not claim those runs passed.
 
-- Removed unattended scheduled repository writes.
-- Converted generated diagnostics to a retained Actions artifact.
-- Added timeout and pinned actions.
-- Draft PR: https://github.com/mommommy1960-lang/mya-mprs-system/pull/2
+### GitHub workflow hardening
 
-## Threat-model findings
+- maya-node PR #53 was directly verified as a one-file fix, then merged to main as `8aed42c1db76b19148d1297cb14002c499831595`.
+- maya-node PR #54 phase-2 follow-up was refreshed, all five observed CI workflows passed, and it merged as `0a935cfa50957a8a741788e15d9ce1fc977dfcc7`.
+- Together, those PRs completed the planned Aurora workflow hardening: verified action SHA pins, explicit timeouts, and scoped Pages deployment write permission.
+- CERL-Preemptive PR #5: repaired two literal \\n JSONL-separator defects in `consent_ledger.py` and `consent_token_manager.py`. Head `c5efd1563eaad77bc904d6516656c6bf41ff72c3`; CERL CI Security run 48 and Validate Test Workflow run 36 passed. PR remains draft/open.
+- Earlier hardening PRs were created for sage-situated-companion (#3), aurora-sovereign-core (#4), flux-drive-kernel (#16), and mya-mprs-system (#2), with their details in the prior handoff.
 
-- No committed private-key pattern was found in the searched repositories.
-- OPENAI_API_KEY references are environment-variable lookups and test safeguards, not embedded credentials.
-- No `pull_request_target` or `curl | bash` patterns were found in the completed sweep.
-- Branch-protection reads were blocked by connector permissions; ruleset reads returned empty lists for the repositories checked.
-- The GitHub connector has repository code, workflow, and PR access but lacks Administration permission for account-level branch protection.
-- Remaining hardening targets: review branch protection, audit dependency manifests, and expand test coverage without treating simulations as physical validation.
+### Outreach
 
-## Continuity and operating rule
+Three bounded, evidence-first outreach emails were sent to:
 
-Every new repository change and every material result must be added to a dated Bruce-to-Bruce handoff. Do not claim a test passed without a recorded CI result. Keep all hardening in draft PRs until human review.
+- Partnership on AI: `contact@partnershiponai.org`
+- Ada Lovelace Institute: `hello@adalovelaceinstitute.org`
+- Center for AI Safety: `contact@safe.ai`
 
+The messages requested routing to a senior research/program lead for independent review, clearly preserved ownership, and avoided claims of sentience or guaranteed safety. Stanford HAI and NIST were researched but not emailed because a verified suitable senior direct address was not established.
 
-### maya-node phase-2 hardening
+### Threat-model limits
 
-- Created branch `devsecops-hardening-phase-2` from current `main`.
-- Created draft PR #54: https://github.com/mommommy1960-lang/maya-node/pull/54
-- PR #54 changes exactly eight existing workflow files; no source files or tests were changed.
-- Changes pin verified action commits, add missing job timeouts, and scope Pages deployment write permission to the deployment job.
-- CI status at handoff: Aurora Integration Tests and Aurora Defense Grid were in progress; Aurora Diagnostics and the Pages workflow were queued; Security & Ethics Checks was queued. No CI result is being claimed yet.
-- No merge was performed; PR #53 remains separate and unchanged.
+- No committed private-key pattern found in the searched repositories.
+- `OPENAI_API_KEY` references were environment-variable lookups/test safeguards, not embedded credentials.
+- No `pull_request_target` or `curl | bash` patterns found in the completed sweep.
+- Account-level branch-protection reads were blocked by connector permissions; ruleset reads returned empty for repositories checked.
+- The connector can inspect repository code/workflows/PRs but cannot change account-level branch-protection settings without owner/admin capability.
 
+## Next-agent challenge
 
-### Final merge status
+Please independently inspect the actual repository and commits, then improve it through a minimal, reviewable PR. Do not merge, email people, or alter account settings.
 
-- PR #53 merged to maya-node main as commit `8aed42c1db76b19148d1297cb14002c499831595`.
-- PR #54 was refreshed onto the updated main, confirmed mergeable, and all five observed CI workflows passed.
-- PR #54 merged to maya-node main as commit `0a935cfa50957a8a741788e15d9ce1fc977dfcc7`.
-- The two PRs together completed the planned Aurora workflow hardening: verified SHA pins, explicit timeouts, and scoped Pages deployment write permission.
+1. Verify the current branch, changed files, and workflow YAML.
+2. Run the existing tests and the independent evaluator.
+3. Prove or falsify scenario semantics: same crisis, different priorities, explicit memory, authority, refusal, recovery, and rollback/freeze behavior.
+4. Test memory risks: contradiction, stale memory, replay divergence, cross-session contamination, and forged event metadata.
+5. Test security controls: least-privilege permissions, action SHA pins, timeouts, untrusted-input handling, artifact boundaries, and secret exposure.
+6. Inspect the new 100-run portfolio workflows, but report them as configured—not passed—until actual runs are observed.
+7. Find at least one concrete weakness or false claim, repair it, and add a regression test.
+8. Re-run validation and report exact commands, commit SHAs, workflow run IDs, pass/fail results, and unresolved limitations.
 
+Best product direction: make the five-minute Sentinel-vs-Aster demonstration compelling through replayable scenarios, side-by-side outputs, independent scoring, memory/contradiction history, refusal explanations, rollback/freeze controls, downloadable reports, and an honest “what this proves / does not prove” section.
 
-### CERL repair and public review materials
+## Operating rules
 
-- On CERL-Preemptive PR #5, reviewed the actual diff instead of relying on a summary.
-- Found and corrected two literal \\n writes that would have broken JSONL record separation in consent_ledger.py and consent_token_manager.py.
-- New head: c5efd1563eaad77bc904d6516656c6bf41ff72c3.
-- Fresh CI runs passed: CERL-Preemptive CI Security (run 48) and Validate Test Workflow (run 36).
-- PR #5 remains open and draft; no merge claimed or performed.
-- Added public README entry point and docs/review/SKEPTICAL_REVIEWERS_AND_UNIVERSITIES.md with a falsification-first review path, explicit non-claims, and links to the research documents.
-- Read-only workflow inventory checked across maya-node, CERL-Preemptive, aurora-sovereign-core, flux-drive-kernel, sage-situated-companion, and mya-mprs-system. The connector can inspect workflow files, but account-level branch-protection settings still require owner/admin access.
+- Evidence over enthusiasm.
+- Never claim a test, scan, email, or merge that was not directly verified.
+- Keep security changes in reviewable PRs.
+- Preserve the user’s ownership; outside reviewers may critique or collaborate, not take ownership.
+- Defensive testing only: no unauthorized access, exploitation, credential use, or destructive actions.
