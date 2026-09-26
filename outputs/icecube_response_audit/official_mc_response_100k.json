@@ -1,0 +1,340 @@
+{
+  "source": "IceCube HESE 7.5-year public release, DOI 10.21234/4EQJ-BB17",
+  "analysis_reference": "PhysRevD.104.022002",
+  "provenance": {
+    "data": {
+      "filename": "HESE_data.json",
+      "bytes": 4455,
+      "git_blob_sha1": "4835cccd8529b41e3d7b5958c8b54dc13e0f09a8",
+      "sha256": "e8c66b960f3c54d74d45d4f7c4090c04f5e0b64187ab5bb8d930c84c62e36583"
+    },
+    "observable": {
+      "filename": "HESE_mc_observable.json",
+      "bytes": 34621386,
+      "git_blob_sha1": "fce310bcf2ccebe3167697a8a701ed1ea32ec33b",
+      "sha256": "ca90a2fc6db81357375e4cd3680f1575c50cca441d4cabe7aaf06d43203cac6d"
+    },
+    "flux": {
+      "filename": "HESE_mc_flux.json",
+      "bytes": 84097210,
+      "git_blob_sha1": "d022b54ad8a450a8c02bbf1d5bc0580ee35741b3",
+      "sha256": "06e732ef179b1b5af86deaff3f5a55bdd713df5c3de988deb62220be9c767e4b"
+    },
+    "truth": {
+      "filename": "HESE_mc_truth.json",
+      "bytes": 54155632,
+      "git_blob_sha1": "393999df0609b556972a09ea93746f89756108e6",
+      "sha256": "ac72d3b6aba73d1524e5103a54eadb7244b8529833710f4c53471b59e97bf131"
+    }
+  },
+  "execution": {
+    "code_revision": "cefa988fdfda0570951d993dbeba2a8d978d896e",
+    "python": "3.12.14",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+    "random_seed": 20260910,
+    "null_catalogs_per_test": 100000,
+    "random_generator": "python.random.Random (MT19937)"
+  },
+  "selection": {
+    "reco_deposited_energy_gev": [
+      60000.0,
+      10000000.0
+    ],
+    "double_cascade_length_m": [
+      10.0,
+      1000.0
+    ]
+  },
+  "observed_selected": {
+    "n": 60,
+    "north": 21,
+    "south": 39,
+    "north_fraction": 0.35
+  },
+  "mc_selected_count": 736814,
+  "parameters": {
+    "astro_gamma": 2.87375956,
+    "astro_norm": 6.36488608,
+    "conv_norm": 1.00621679,
+    "prompt_norm": 0.0,
+    "muon_norm": 1.18706341,
+    "kpi_ratio": 1.00013744,
+    "cr_delta_gamma": -0.05309302,
+    "nunubar_ratio": 0.99815326
+  },
+  "component_response": {
+    "astrophysical": {
+      "north_weight": 8.261697141351774e-08,
+      "south_weight": 1.3698974624744706e-07,
+      "north_fraction": 0.3762042085664438,
+      "total_weight": 2.196067176609648e-07
+    },
+    "conventional_atmospheric_nu": {
+      "north_weight": 2.7120539698810983e-08,
+      "south_weight": 1.712801354119991e-08,
+      "north_fraction": 0.6129135918118055,
+      "total_weight": 4.4248553240010896e-08
+    },
+    "prompt_atmospheric_nu": {
+      "north_weight": 0.0,
+      "south_weight": 0.0,
+      "north_fraction": null,
+      "total_weight": 0.0
+    },
+    "atmospheric_muon": {
+      "north_weight": 0.0,
+      "south_weight": 4.15925121627085e-09,
+      "north_fraction": 0.0,
+      "total_weight": 4.15925121627085e-09
+    },
+    "nominal_mixture_no_spline_systematics": {
+      "north_weight": 1.0973751111232818e-07,
+      "south_weight": 1.5827701100491575e-07,
+      "north_fraction": 0.4094461383861995,
+      "total_weight": 2.6801452211724394e-07
+    }
+  },
+  "hemisphere_tests": {
+    "astrophysical": {
+      "expected_north_fraction": 0.3762042085664438,
+      "observed_north": 21,
+      "observed_total": 60,
+      "lower_tail_exact": 0.39159784012197274,
+      "two_sided_exact": 0.7900721791337707,
+      "lower_tail_monte_carlo": 0.3918,
+      "monte_carlo_repeats": 100000,
+      "two_sided_holm_exploratory_family": 0.7900721791337707
+    },
+    "conventional_atmospheric_nu": {
+      "expected_north_fraction": 0.6129135918118055,
+      "observed_north": 21,
+      "observed_total": 60,
+      "lower_tail_exact": 3.391159348118392e-05,
+      "two_sided_exact": 4.865046300883859e-05,
+      "lower_tail_monte_carlo": 5e-05,
+      "monte_carlo_repeats": 100000,
+      "two_sided_holm_exploratory_family": 0.00014595138902651577
+    },
+    "atmospheric_muon": {
+      "expected_north_fraction": 0.0,
+      "observed_north": 21,
+      "observed_total": 60,
+      "lower_tail_exact": 1.0,
+      "two_sided_exact": 0.0,
+      "lower_tail_monte_carlo": 1.0,
+      "monte_carlo_repeats": 100000,
+      "two_sided_holm_exploratory_family": 0.0
+    },
+    "nominal_mixture_no_spline_systematics": {
+      "expected_north_fraction": 0.4094461383861995,
+      "observed_north": 21,
+      "observed_total": 60,
+      "lower_tail_exact": 0.21130114945897815,
+      "two_sided_exact": 0.3622676631104186,
+      "lower_tail_monte_carlo": 0.21114,
+      "monte_carlo_repeats": 100000,
+      "two_sided_holm_exploratory_family": 0.7245353262208372
+    }
+  },
+  "primary_test": {
+    "name": "published_example_best_fit_no_splines hemisphere count",
+    "two_sided_exact": 0.3622676631104186,
+    "multiplicity": "single predeclared primary diagnostic; no correction applied"
+  },
+  "flux_background_nuisance_sensitivity": {
+    "published_example_best_fit_no_splines": {
+      "parameters": {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 1.00621679,
+        "prompt_norm": 0.0,
+        "muon_norm": 1.18706341,
+        "kpi_ratio": 1.00013744,
+        "cr_delta_gamma": -0.05309302,
+        "nunubar_ratio": 0.99815326
+      },
+      "expected_north_fraction": 0.4094461383861995,
+      "two_sided_exact": 0.3622676631104186
+    },
+    "conv_norm_low": {
+      "parameters": {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 0.6,
+        "prompt_norm": 0.0,
+        "muon_norm": 1.18706341,
+        "kpi_ratio": 1.00013744,
+        "cr_delta_gamma": -0.05309302,
+        "nunubar_ratio": 0.99815326
+      },
+      "expected_north_fraction": 0.394916394136606,
+      "two_sided_exact": 0.5116200858350106
+    },
+    "conv_norm_high": {
+      "parameters": {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 1.4,
+        "prompt_norm": 0.0,
+        "muon_norm": 1.18706341,
+        "kpi_ratio": 1.00013744,
+        "cr_delta_gamma": -0.05309302,
+        "nunubar_ratio": 0.99815326
+      },
+      "expected_north_fraction": 0.42179452985996496,
+      "two_sided_exact": 0.2965584614302526
+    },
+    "muon_norm_low": {
+      "parameters": {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 1.00621679,
+        "prompt_norm": 0.0,
+        "muon_norm": 0.5,
+        "kpi_ratio": 1.00013744,
+        "cr_delta_gamma": -0.05309302,
+        "nunubar_ratio": 0.99815326
+      },
+      "expected_north_fraction": 0.4131571731704802,
+      "two_sided_exact": 0.36006591741542987
+    },
+    "muon_norm_high": {
+      "parameters": {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 1.00621679,
+        "prompt_norm": 0.0,
+        "muon_norm": 1.5,
+        "kpi_ratio": 1.00013744,
+        "cr_delta_gamma": -0.05309302,
+        "nunubar_ratio": 0.99815326
+      },
+      "expected_north_fraction": 0.4077778815299011,
+      "two_sided_exact": 0.4309689787334676
+    },
+    "kpi_ratio_low": {
+      "parameters": {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 1.00621679,
+        "prompt_norm": 0.0,
+        "muon_norm": 1.18706341,
+        "kpi_ratio": 0.9,
+        "cr_delta_gamma": -0.05309302,
+        "nunubar_ratio": 0.99815326
+      },
+      "expected_north_fraction": 0.4066571118837115,
+      "two_sided_exact": 0.43107292611774806
+    },
+    "kpi_ratio_high": {
+      "parameters": {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 1.00621679,
+        "prompt_norm": 0.0,
+        "muon_norm": 1.18706341,
+        "kpi_ratio": 1.1,
+        "cr_delta_gamma": -0.05309302,
+        "nunubar_ratio": 0.99815326
+      },
+      "expected_north_fraction": 0.4121524129824646,
+      "two_sided_exact": 0.3605002401105363
+    },
+    "cr_delta_gamma_low": {
+      "parameters": {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 1.00621679,
+        "prompt_norm": 0.0,
+        "muon_norm": 1.18706341,
+        "kpi_ratio": 1.00013744,
+        "cr_delta_gamma": -0.1,
+        "nunubar_ratio": 0.99815326
+      },
+      "expected_north_fraction": 0.4166042299345259,
+      "two_sided_exact": 0.3594902519291293
+    },
+    "cr_delta_gamma_high": {
+      "parameters": {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 1.00621679,
+        "prompt_norm": 0.0,
+        "muon_norm": 1.18706341,
+        "kpi_ratio": 1.00013744,
+        "cr_delta_gamma": 0.0,
+        "nunubar_ratio": 0.99815326
+      },
+      "expected_north_fraction": 0.4024469239370355,
+      "two_sided_exact": 0.4327547905043978
+    },
+    "nunubar_ratio_low": {
+      "parameters": {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 1.00621679,
+        "prompt_norm": 0.0,
+        "muon_norm": 1.18706341,
+        "kpi_ratio": 1.00013744,
+        "cr_delta_gamma": -0.05309302,
+        "nunubar_ratio": 0.9
+      },
+      "expected_north_fraction": 0.4083455283883683,
+      "two_sided_exact": 0.43097143424469425
+    },
+    "nunubar_ratio_high": {
+      "parameters": {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 1.00621679,
+        "prompt_norm": 0.0,
+        "muon_norm": 1.18706341,
+        "kpi_ratio": 1.00013744,
+        "cr_delta_gamma": -0.05309302,
+        "nunubar_ratio": 1.1
+      },
+      "expected_north_fraction": 0.4105748405154235,
+      "two_sided_exact": 0.36142469816484873
+    },
+    "prompt_norm_low": {
+      "parameters": {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 1.00621679,
+        "prompt_norm": 0.0,
+        "muon_norm": 1.18706341,
+        "kpi_ratio": 1.00013744,
+        "cr_delta_gamma": -0.05309302,
+        "nunubar_ratio": 0.99815326
+      },
+      "expected_north_fraction": 0.4094461383861995,
+      "two_sided_exact": 0.3622676631104186
+    },
+    "prompt_norm_high": {
+      "parameters": {
+        "astro_gamma": 2.87375956,
+        "astro_norm": 6.36488608,
+        "conv_norm": 1.00621679,
+        "prompt_norm": 1.0,
+        "muon_norm": 1.18706341,
+        "kpi_ratio": 1.00013744,
+        "cr_delta_gamma": -0.05309302,
+        "nunubar_ratio": 0.99815326
+      },
+      "expected_north_fraction": 0.4175460026326201,
+      "two_sided_exact": 0.35957905242137794
+    }
+  },
+  "preferred_axis_test": {
+    "status": "NOT_COMPUTABLE_FROM_THIS_PUBLIC_RELEASE",
+    "reason": "The official observed and MC JSON files contain reconstructed zenith but no azimuth or right ascension. A free-axis sky scan cannot be reconstructed from declination alone without inventing coordinates.",
+    "trial_control": "not applicable because the scan was not performed"
+  },
+  "quality_tier": "RESPONSE_INFORMED_INTERMEDIATE_NOT_PUBLICATION_GRADE",
+  "limitations": [
+    "Uses official MC response weights and official basic cuts, but does not apply PHOTOSPLINE detector-systematic corrections.",
+    "Published-example best-fit flux/background values are fixed; selected nuisance parameters are stress-tested one at a time but are not refitted.",
+    "A hemisphere count compresses directional/energy information and is not the collaboration likelihood.",
+    "This diagnostic must not be described as an IceCube discovery test or as evidence for simulation ontology."
+  ]
+}
