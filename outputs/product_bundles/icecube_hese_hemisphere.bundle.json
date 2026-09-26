@@ -1,0 +1,93 @@
+{
+  "artifacts": [
+    {
+      "actual_sha256": "0b00bd27040278f987a4fa21085bbb67ee62f65989723815cd4d134f8084e572",
+      "bytes": 11274,
+      "expected_sha256": "0b00bd27040278f987a4fa21085bbb67ee62f65989723815cd4d134f8084e572",
+      "path": "../icecube_response_audit/official_mc_response_100k.json",
+      "role": "machine-readable scientific result",
+      "status": "VERIFIED"
+    }
+  ],
+  "bundle_sha256": "512655cd96d6bfccbd97e153b8692cbb5a12e89368e1af417afa25d6201529bf",
+  "bundle_version": "1.0",
+  "chain": {
+    "previous_bundle_sha256": null
+  },
+  "claim": {
+    "id": "icecube-hese-hemisphere-2026-09-11",
+    "owner": "Mya P. Brown, ORCID 0009-0009-6346-405X",
+    "run_mode": "preregistered_confirmatory",
+    "text": "The selected official IceCube HESE sample contains a north/south residual inconsistent with the official public-MC response."
+  },
+  "decision": {
+    "claim_survived_available_tests": false,
+    "discovery_claim_authorized": false,
+    "external_review_required": false,
+    "failed_gates": [
+      "response_model",
+      "independent_replication"
+    ],
+    "state": "KILLED_BY_NULL"
+  },
+  "gates": [
+    {
+      "evidence": "All four official IceCube Git blob identities match the pinned manifest.",
+      "id": "provenance",
+      "passed": true
+    },
+    {
+      "evidence": "Frozen energy/event cut and hemisphere diagnostic.",
+      "id": "preregistration",
+      "passed": true
+    },
+    {
+      "evidence": "Official MC response replaces the rejected 50/50 baseline.",
+      "id": "ordinary_baseline",
+      "passed": true
+    },
+    {
+      "evidence": "Repository calibration and null machinery passed focused tests.",
+      "id": "synthetic_calibration",
+      "passed": true
+    },
+    {
+      "evidence": "Official public MC weights used; PHOTOSPLINE detector corrections unavailable.",
+      "id": "response_model",
+      "passed": false
+    },
+    {
+      "evidence": "Thirteen nominal/one-at-a-time flux-background scenarios tested; detector splines remain a limitation.",
+      "id": "systematics",
+      "passed": true
+    },
+    {
+      "evidence": "One primary mixture diagnostic; exploratory component family Holm-adjusted.",
+      "id": "multiple_testing",
+      "passed": true
+    },
+    {
+      "evidence": "Detector acceptance explains the legacy apparent imbalance.",
+      "id": "ordinary_alternatives",
+      "passed": true
+    },
+    {
+      "evidence": "Separate Pierre Auger directional track executed, addressing a different instrument and statistic.",
+      "id": "independent_dataset",
+      "passed": true
+    },
+    {
+      "evidence": "No independent team reproduction of this exact computation.",
+      "id": "independent_replication",
+      "passed": false
+    }
+  ],
+  "integrity_boundary": "SHA-256 integrity only; creator identity is not cryptographically signed",
+  "limitations": [
+    "Intermediate official-MC response, not the full IceCube likelihood or detector-spline model."
+  ],
+  "scientific_result": {
+    "outcome": "NULL_CONSISTENT",
+    "primary_two_sided_p": 0.3622676631104186
+  }
+}

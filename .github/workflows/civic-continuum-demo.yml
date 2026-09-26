@@ -1,0 +1,30 @@
+name: Civic Continuum Demonstrator
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run-demo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository without third-party actions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git init .
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git -c http.extraheader="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)" fetch --depth=1 origin "${GITHUB_SHA}"
+          git checkout --detach FETCH_HEAD
+      - name: Run deterministic demonstrator
+        run: |
+          set -euo pipefail
+          python tools/civic_continuum_demo.py --output civic-continuum-demo.json
+          cat civic-continuum-demo.json
+      - name: Run bounded safety tests
+        run: |
+          python -m unittest discover -s tests -p 'test_civic_*.py' -v

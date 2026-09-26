@@ -6,3 +6,5 @@
 matplotlib>=3.7
 # Dashboard (dashboard.py): requires streamlit.
 streamlit>=1.32
+# Ed25519 identity authentication for signed Reality Audit evidence envelopes.
+cryptography>=44

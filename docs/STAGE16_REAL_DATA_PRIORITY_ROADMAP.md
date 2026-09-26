@@ -57,6 +57,8 @@ secondary. They validate methods; they do not define discovery claims.
 - Publish Stage 16 gap reports (exposure/systematics, HEALPix readiness,
   confirmatory discipline plan, external review checklist).
 - Freeze wording discipline: benchmark != discovery.
+- Add the machine-readable reproducibility contract to confirmatory gate
+  manifests while preserving legacy artifact names and readers.
 
 ### Phase 16B
 - Implement map abstraction + HEALPix optional backend.
@@ -115,3 +117,4 @@ Minimum conditions before publication-grade claims:
 
 Treat Stage 16 as infrastructure-hardening stage. Do not escalate claim strength
 faster than exposure/systematics and cross-catalog robustness maturity.
+

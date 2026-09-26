@@ -96,6 +96,13 @@ class AgentRelationship:
         trust_delta: float = 0.0,
         reliability_delta: float = 0.0,
     ) -> None:
+        if interaction_type not in INTERACTION_TYPES:
+            raise ValueError(f"Unknown interaction type: {interaction_type!r}")
+        if not isinstance(turn, int) or turn < 0:
+            raise ValueError("turn must be a non-negative integer")
+        # Caller overrides are bounded so trust cannot jump to authority.
+        trust_delta = max(-0.10, min(0.10, float(trust_delta)))
+        reliability_delta = max(-0.10, min(0.10, float(reliability_delta)))
         self.last_interaction_turn = turn
         self.trust = max(0.0, min(1.0, self.trust + trust_delta))
         self.perceived_reliability = max(
@@ -122,7 +129,7 @@ class AgentRelationship:
     def record_repair_attempt(self, turn: int, note: str) -> None:
         """Log a social-repair attempt made after a conflict."""
         self.repair_attempted += 1
-        # Modest trust recovery for attempting repair
+        # Repair attempts are recorded but do not grant unbounded trust.
         self.trust = min(1.0, self.trust + 0.03)
         self.social_impression_notes.append(
             f"T{turn:02d} [repair_attempt]: {note}"

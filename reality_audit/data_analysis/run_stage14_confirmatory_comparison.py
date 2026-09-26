@@ -59,6 +59,9 @@ from reality_audit.data_analysis.output_hygiene import (
     classify_output_paths,
     write_output_hygiene_report,
 )
+from reality_audit.data_analysis.reproducibility_contract import (
+    build_reproducibility_contract,
+)
 
 # ---------------------------------------------------------------------------
 # Default paths
@@ -272,6 +275,23 @@ def run_stage14_comparison(
     # -----------------------------------------------------------------------
     passed  = [g["id"] for g in gate_result.get("gates", []) if g.get("passed")]
     failed  = [g["id"] for g in gate_result.get("gates", []) if not g.get("passed")]
+    reproducibility = build_reproducibility_contract(
+        stage=14,
+        run_mode="confirmatory",
+        catalog="multi",
+        run_id=name,
+        input_files=[p for p in (fermi_path, swift_path, icecube_path) if p],
+        seed=42,
+        null_model={
+            "fermi": (fermi or {}).get("config", {}).get("null_mode"),
+            "swift": (swift or {}).get("config", {}).get("null_mode"),
+            "icecube": (icecube or {}).get("config", {}).get("null_mode"),
+        },
+        axis_count=192,
+        trial_correction_method="holm",
+        preregistration_locked=True,
+        extra={"gate_verdict": gate_result["verdict"]},
+    )
     manifest = {
         "stage": 14,
         "pipeline_step": "confirmatory_comparison_and_gate",
@@ -285,6 +305,7 @@ def run_stage14_comparison(
         "gate_verdict":          gate_result["verdict"],
         "gate_checks_passed":    passed,
         "gate_checks_failed":    failed,
+        "reproducibility_contract": reproducibility,
     }
     manifest_path = os.path.join(output_dir, f"{name}_manifest.json")
     with open(manifest_path, "w") as fh:
@@ -372,3 +393,4 @@ def main(argv=None) -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+

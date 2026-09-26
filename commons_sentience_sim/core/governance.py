@@ -14,16 +14,25 @@ class GovernanceEngine:
         with open(rules_path, "r", encoding="utf-8") as fh:
             data = json.load(fh)
         self.rules: List[dict] = data.get("rules", [])
+        self.default_policy = data.get("default_policy", "fail_closed")
+        if self.default_policy not in {"fail_closed", "fail_open"}:
+            raise ValueError("default_policy must be fail_closed or fail_open")
         self._build_index()
+
+    @staticmethod
+    def _normalize_action(action: str) -> str:
+        if not isinstance(action, str) or not action.strip():
+            raise ValueError("action must be a non-empty string")
+        return "".join(ch for ch in action.strip().lower() if ch.isalnum())
 
     def _build_index(self) -> None:
         self._allows: Dict[str, List[dict]] = {}
         self._prohibits: Dict[str, List[dict]] = {}
         for rule in self.rules:
             for action in rule.get("allows", []):
-                self._allows.setdefault(action, []).append(rule)
+                self._allows.setdefault(self._normalize_action(action), []).append(rule)
             for action in rule.get("prohibits", []):
-                self._prohibits.setdefault(action, []).append(rule)
+                self._prohibits.setdefault(self._normalize_action(action), []).append(rule)
 
     def check_action(
         self,

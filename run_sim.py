@@ -394,11 +394,12 @@ def select_action(
         f"No external event. Pursuing scheduled task: '{task.name}'. "
         f"Selecting '{action}' available in {agent.active_room}."
     )
+    # Selection does not imply execution. The caller finalizes only after governance.
+    agent._selected_task = task
     result = (
-        f"Task '{task.name}' completed in {agent.active_room}. "
-        f"Action '{action}' executed without incident."
+        f"Task '{task.name}' selected in {agent.active_room}; "
+        f"awaiting governance for action '{action}'."
     )
-    agent.task_planner.complete_task(task)
     return action, reasoning, result
 
 
@@ -884,7 +885,24 @@ def run_simulation(
             ro = ROOM_OBJECT_INTERACTIONS.get(room_name)
             if ro:
                 obj_name, interaction = ro
-                ok, msg = world.interact_with_object(room_name, obj_name, interaction)
+                # Govern the mutation before advancing object state.
+                interaction_action = "interact_with_object"
+                permitted = agent_ref.check_and_log_action(
+                    action=interaction_action,
+                    event_type="world_interaction",
+                    notes=_truncate_note(
+                        f"{room_name}/{obj_name}/{interaction}"
+                    ),
+                )
+                if permitted:
+                    ok, msg = world.interact_with_object(
+                        room_name, obj_name, interaction
+                    )
+                else:
+                    ok, msg = False, (
+                        f"Governance denied {interaction_action} for "
+                        f"{room_name}/{obj_name}."
+                    )
                 if ok:
                     if out_var == "s":
                         s_obj_str = msg
@@ -966,10 +984,17 @@ def run_simulation(
             notes=_truncate_note(s_notes),
         )
         if not s_permitted:
-            s_reasoning += " [Governance block → fallback to 'log_governance_event'.]"
-            s_result = "Action blocked. Fallback 'log_governance_event' executed."
-            s_action = "log_governance_event"
-            sentinel.check_and_log_action(s_action, "governance_override", "Safe fallback.")
+            s_reasoning += " [Governance block → fallback requested.]"
+            s_fallback_permitted = sentinel.check_and_log_action(
+                "log_governance_event",
+                "governance_override",
+                "Safe fallback.",
+            )
+            if s_fallback_permitted:
+                s_result = "Action blocked. Governance event logged as fallback."
+                s_action = "log_governance_event"
+            else:
+                s_result = "Action blocked. Governance fallback was also denied."
 
         a_permitted = aster.check_and_log_action(
             action=a_action,
@@ -977,10 +1002,30 @@ def run_simulation(
             notes=_truncate_note(s_notes),
         )
         if not a_permitted:
-            a_reasoning += " [Governance block → fallback to 'log_governance_event'.]"
-            a_result = "Action blocked. Fallback 'log_governance_event' executed."
-            a_action = "log_governance_event"
-            aster.check_and_log_action(a_action, "governance_override", "Safe fallback.")
+            a_reasoning += " [Governance block → fallback requested.]"
+            a_fallback_permitted = aster.check_and_log_action(
+                "log_governance_event",
+                "governance_override",
+                "Safe fallback.",
+            )
+            if a_fallback_permitted:
+                a_result = "Action blocked. Governance event logged as fallback."
+                a_action = "log_governance_event"
+            else:
+                a_result = "Action blocked. Governance fallback was also denied."
+
+        if not event and s_permitted and getattr(sentinel, "_selected_task", None):
+            sentinel.task_planner.complete_task(sentinel._selected_task)
+            s_result = (
+                f"Task '{sentinel._selected_task.name}' completed in "
+                f"{sentinel.active_room}. Action '{s_action}' executed without incident."
+            )
+        if not event and a_permitted and getattr(aster, "_selected_task", None):
+            aster.task_planner.complete_task(aster._selected_task)
+            a_result = (
+                f"Task '{aster._selected_task.name}' completed in "
+                f"{aster.active_room}. Action '{a_action}' executed without incident."
+            )
 
         # ── 6.5 v1.5 Surprise evaluation ─────────────────────────────────
         _etype = etype_for_conflict
@@ -1067,7 +1112,7 @@ def run_simulation(
         s_endogenous = sentinel.check_self_initiation(turn)
         a_endogenous = aster.check_self_initiation(turn)
         if s_endogenous:
-            sentinel.check_and_log_action(
+            s_endogenous_permitted = sentinel.check_and_log_action(
                 action=s_endogenous,
                 event_type="endogenous",
                 notes=f"Drive-triggered self-initiation: {s_endogenous}",
@@ -1077,14 +1122,14 @@ def run_simulation(
                     f"Self-initiated '{s_endogenous}' at turn {turn} "
                     f"(drives: {', '.join(f'{k}={v:.2f}' for k, v in sentinel.drives.items() if v >= 0.4)})"
                 ),
-                event_type="observation",
-                emotional_resonance="resolve",
+                event_type="endogenous_action" if s_endogenous_permitted else "denied_endogenous_action",
+                emotional_resonance="resolve" if s_endogenous_permitted else "caution",
                 salience=0.60,
                 importance=0.55,
-                tags=["endogenous", s_endogenous],
+                tags=["endogenous", s_endogenous, "permitted" if s_endogenous_permitted else "denied"],
             )
         if a_endogenous:
-            aster.check_and_log_action(
+            a_endogenous_permitted = aster.check_and_log_action(
                 action=a_endogenous,
                 event_type="endogenous",
                 notes=f"Drive-triggered self-initiation: {a_endogenous}",
@@ -1094,11 +1139,11 @@ def run_simulation(
                     f"Self-initiated '{a_endogenous}' at turn {turn} "
                     f"(drives: {', '.join(f'{k}={v:.2f}' for k, v in aster.drives.items() if v >= 0.4)})"
                 ),
-                event_type="observation",
-                emotional_resonance="resolve",
+                event_type="endogenous_action" if a_endogenous_permitted else "denied_endogenous_action",
+                emotional_resonance="resolve" if a_endogenous_permitted else "caution",
                 salience=0.60,
                 importance=0.55,
-                tags=["endogenous", a_endogenous],
+                tags=["endogenous", a_endogenous, "permitted" if a_endogenous_permitted else "denied"],
             )
 
         # ── 9. Reflection cycles ──────────────────────────────────────────
