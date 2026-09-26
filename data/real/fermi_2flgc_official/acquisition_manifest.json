@@ -1,0 +1,16 @@
+{
+  "acquired_utc": "2026-09-11T00:00:00Z",
+  "catalog": [
+    {"path": "fermilgrb_heasarc_2022.fits", "url": "https://heasarc.gsfc.nasa.gov/db-perl/W3Browse/w3query.pl?tablehead=name%3DBATCHRETRIEVALCATALOG_2.0%20fermilgrb&Action=Query&ResultMax=0&displaymode=FitsDisplay&Fields=All", "sha256": "a7ea4db3623d828ea7f2c7f180c3780c19412a483ddfd69523831af50a80e536"},
+    {"path": "fermilgrb_heasarc_2022.tbl", "url": "https://heasarc.gsfc.nasa.gov/db-perl/W3Browse/w3query.pl?tablehead=name%3DBATCHRETRIEVALCATALOG_2.0%20fermilgrb&Action=Query&ResultMax=0&displaymode=BatchDisplay&Fields=All", "sha256": "f91432de85ff5fb54fe0e12b890bdcb05d6e2bbe5b5bd5e4317eb67885c303c6"}
+  ],
+  "target_queries": [
+    {"source": "GRB080916009", "query_id": "L260910205610F357373F28", "event_sha256": "563b0402b8908542f16d876b19095424ab9532258255ebff4ac0e6099f822d58", "spacecraft_sha256": "7b47d0135db0964f62bb448cfa408434d0321883bf633b825c0c7c2659b4c5e3"},
+    {"source": "GRB090510016", "query_id": "L260910205616F357373F75", "event_sha256": "72978f953ca5d9ef992bb7b24d51b32d576aea01685411d9a4096ff538d4ce26", "spacecraft_sha256": "31b129c8a92fc89de34e36348e7c0685ece33e29dedb1d92eff5e9bc59754539"},
+    {"source": "GRB090902462", "query_id": "L260910205621F357373F22", "event_sha256": "94a6d6040fb7e868ba560fe344900ea000abc2b68f77a532c22d1ef6b0ab2d4c", "spacecraft_sha256": "5aa697efc374497c95fa7586e44fc385088d60232f4ec240d676956d5432e35e"},
+    {"source": "GRB130427324", "query_id": "L260910205627F357373F61", "event_sha256": "b9df1696d7438d209b1fd636321a642e71c78ba8bdd87f62417a03a799498f53", "spacecraft_sha256": "2bbe7577a6a2127ed90a68c8a5468c3b6eba598d77587bb7dce6bc49a8afb083"},
+    {"source": "GRB160509374", "query_id": "L260910205632F357373F47", "event_sha256": "abebb2cb4e9d3c9a9a0884c66e1ccf467cdd883caf30703760b0bcf7508dda39", "spacecraft_sha256": "192bd25666102c417fb3b580c93e24245018ce47b972cf3f7a9deac2aed1d4a4"}
+  ],
+  "query_file_base": "https://fermi.gsfc.nasa.gov/FTP/fermi/data/lat/queries/",
+  "warning": "FSSC query products may be transient. Preserve verified local copies; never accept a changed digest silently."
+}
