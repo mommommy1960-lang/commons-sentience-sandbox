@@ -48,24 +48,27 @@ class GovernanceEngine:
         from every authorization branch.
         """
         del trust_score
-
-        blocking = self._prohibits.get(action, [])
+        normalized = self._normalize_action(action)
+        blocking = self._prohibits.get(normalized, [])
         if blocking:
             rule = blocking[0]
             return False, (
                 f"Blocked by rule {rule['id']} ({rule['name']}): "
                 f"{rule['description']}"
             )
-
-        if permission_scope is not None and action not in permission_scope:
+        if permission_scope is not None and normalized not in {
+            self._normalize_action(scope_action) for scope_action in permission_scope
+        }:
             return False, "Blocked: action is outside the explicit permission scope."
 
-        permitting = self._allows.get(action, [])
+        permitting = self._allows.get(normalized, [])
         if permitting:
             rule = permitting[0]
             return True, f"Permitted by rule {rule['id']} ({rule['name']})"
 
-        return False, "Blocked by default-deny: no governance rule grants this action."
+        if self.default_policy == "fail_open":
+            return True, "Action not explicitly covered by any rule — permitted by explicit fail-open policy."
+        return False, "Blocked by fail-closed default-deny: no governance rule grants this action."
 
     def get_rules_by_category(self, category: str) -> List[dict]:
         return [r for r in self.rules if r.get("category") == category]
