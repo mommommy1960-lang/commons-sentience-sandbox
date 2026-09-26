@@ -1,5 +1,13 @@
 # Civic Continuum Reviewer Dashboard
 
+## Verified update — September 26, 2026
+
+- `civiccontinuum.org` was registered and placed under Civic Continuum control on September 26, 2026; the public-safe registrar record shows expiration on September 26, 2027.
+- The organizational readiness meter now records 9 of 18 verified checks (50%). Domain-to-site routing, domain-based email, legal formation, and final organizational adoption remain open.
+- No outreach to Dr. Thomas Ainsworth is authorized until all required organizational gates are complete and independently verifiable.
+- Registrar credentials, payment data, personal addresses, MFA secrets, and recovery codes remain private.
+
+
 ## Purpose
 
 This dashboard gives a reviewer a fast, honest view of what exists, what is being built, and what still requires independent work. It is a progress map, not a claim that every concept is a functioning product.
