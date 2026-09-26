@@ -129,8 +129,12 @@ class AuditChain:
 
 
 class GovernanceCore:
-    def __init__(self, clock: Callable[[], datetime] = _utc_now) -> None:
+    def __init__(self, clock: Callable[[], datetime] = _utc_now,
+                 authorized_reviewers: Iterable[str] = (),
+                 authorized_revokers: Iterable[str] = ()) -> None:
         self._clock = clock
+        self._authorized_reviewers = frozenset(authorized_reviewers)
+        self._authorized_revokers = frozenset(authorized_revokers)
         self.audit = AuditChain(clock)
         self._grants: dict[str, ConsentGrant] = {}
         self._memory: list[MoralMemoryRecord] = []
@@ -161,6 +165,11 @@ class GovernanceCore:
         if not actor or not reason:
             raise ValueError("actor and reason are required")
         grant = self._grants[grant_id]
+        if actor != grant.issuer and actor not in self._authorized_revokers:
+            self.audit.append("revocation_denied", {
+                "grant_id": grant_id, "actor": actor, "reason": "unauthorized_actor",
+            })
+            raise PermissionError("actor is not authorized to revoke this grant")
         if grant.revoked_at is None:
             grant.revoked_at = self._clock()
             grant.revocation_reason = reason
@@ -177,6 +186,11 @@ class GovernanceCore:
     def restore(self, reviewer: str, reason: str) -> None:
         if not reviewer or not reason:
             raise ValueError("reviewer and reason are required")
+        if reviewer not in self._authorized_reviewers:
+            self.audit.append("restoration_denied", {
+                "reviewer": reviewer, "reason": "unauthorized_reviewer",
+            })
+            raise PermissionError("reviewer is not authorized to restore the system")
         self._frozen = False
         self.audit.append("system_restored", {"reviewer": reviewer, "reason": reason})
 
@@ -202,4 +216,3 @@ class GovernanceCore:
             "evidence_refs": list(record.evidence_refs),
             "retain_until": record.retain_until.isoformat(),
         })
-
