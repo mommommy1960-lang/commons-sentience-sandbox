@@ -1,3 +1,16 @@
+# Civic Continuum
+
+## Public workbench and current updates
+
+This repository is the public workbench for the Civic Continuum / Commons Initiative. For the current status, active work, evidence, limitations, and next actions, start with:
+
+- [Civic Continuum continuity index](docs/continuity/README.md)
+- [Current public-safe business and formation status](docs/civic-continuum/business/CIVIC_CONTINUUM_LLC_ADDRESS_PRIVACY_PLAN_2026-09-27.md)
+- [Skeptical reviewer guide](docs/review/SKEPTICAL_REVIEWERS_AND_UNIVERSITIES.md)
+- [Flux Drive research repository](https://github.com/mommommy1960-lang/flux-drive-kernel)
+
+This index is intentionally evidence-first: it distinguishes implemented software, paper designs, hypotheses, open failures, and work that still requires independent review or physical testing.
+
 <p align="center">
   <img src="assets/branding/exec-defca51f-0403-4a5f-9a28-f960009adb75.png" alt="Civic Continuum emblem" width="220">
 </p>
