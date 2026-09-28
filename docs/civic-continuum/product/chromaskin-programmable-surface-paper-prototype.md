@@ -29,7 +29,9 @@ These names are working product names only. Trademark review is required before 
 
 | Use case | Example | Why it matters |
 |---|---|---|
-| Device personalization | Phone case, laptop skin, remote control, game controller | Small first product; easy to understand; lower material area and lower cost. |
+| Device personalization | Phone case, tablet case, laptop skin, remote control, game controller | Small first product; easy to understand; lower material area and lower cost. |
+| Interactive desk and mouse surfaces | Mousepad with animated water, fish, ripples, touch response, or ambient scenes | Strong demo product because the user can touch the surface and immediately understand it. |
+| Console and gaming hardware skins | PlayStation-style console shell, controller dock, gaming desk panel | Strong gamer/creator market, but must be treated as a heat, airflow, and warranty-review lane before physical use. |
 | Room and furniture themes | Desk, shelf, table, wall tile, gaming room, studio, salon | Lets a user change a room's style without replacing furniture. |
 | Retail and event displays | Counter sign, kiosk panel, booth wall, menu surface, product display | Business customers already understand digital signage and visual refresh value. |
 | Vehicle customization | Door panel, hood section, motorcycle fairing, helmet, show-car panel | Strong brand identity and visual impact; later-stage durability challenge. |
@@ -42,10 +44,20 @@ The first version should not be pitched as a whole-room system or whole-vehicle 
 A realistic first kit could include:
 
 1. One phone-case-sized sample.
-2. One flat desk tile or nameplate sample.
-3. One small wall or furniture coupon panel.
-4. A controller or app mockup that changes color, image, pattern, brightness, and theme.
-5. A test checklist showing what has and has not been validated.
+2. One tablet-case-sized sample.
+3. One interactive mousepad or desk-tile sample.
+4. One flat nameplate or small wall/furniture coupon panel.
+5. A controller or app mockup that changes color, image, animation, pattern, brightness, and theme.
+6. A test checklist showing what has and has not been validated.
+
+## Signature Demo Ideas
+
+| Demo | Plain-English description | Main engineering question |
+|---|---|---|
+| Live fish tank phone case | A phone case surface shows animated water and fish moving across the back of the case. | Can the display layer stay thin, cool, durable, and low-power? |
+| Live fish tank tablet case | A larger case surface creates a stronger visual effect for school, art, gaming, or creator use. | Can a larger surface avoid heat, weight, and battery problems? |
+| Interactive aquarium mousepad | A desk/mousepad surface shows water, fish, ripples, or light trails that react to touch or pointer movement. | Is the surface touch-sensitive, cleanable, and comfortable for daily use? |
+| Gaming setup skin | Matching skins for controller dock, desk tile, console-adjacent panel, or room accents. | Can the product avoid blocking vents or trapping heat around consoles and electronics? |
 
 ## System Architecture
 
@@ -89,8 +101,9 @@ This is a starting architecture for review, not a final bill of materials.
 | 1 | Non-electronic visual mockup | Show size, layers, mounting, and product feel | People understand the product in hand. |
 | 2 | Flat illuminated coupon | Show basic color/pattern change on a small panel | Surface changes reliably under controlled conditions. |
 | 3 | Phone-case-sized demo | Prove a small consumer object path | Fits a small object and survives normal handling tests. |
-| 4 | Furniture/decor tile | Prove room-decor lane | Multiple panels can coordinate themes. |
-| 5 | Vehicle coupon panel | Begin heat, UV, vibration, moisture, and cleaning tests | Survives controlled environmental tests. |
+| 4 | Tablet-case or interactive mousepad demo | Prove a larger consumer surface with animation or touch response | Runs without unsafe heat, uncomfortable weight, or poor battery life. |
+| 5 | Furniture/decor tile | Prove room-decor lane | Multiple panels can coordinate themes. |
+| 6 | Vehicle coupon panel | Begin heat, UV, vibration, moisture, and cleaning tests | Survives controlled environmental tests. |
 
 ## Evidence Checklist
 
@@ -100,6 +113,9 @@ Before any product claim escalates, the project should document:
 - Viewing distance and brightness.
 - Power draw and battery life.
 - Heat under continuous use.
+- Heat trapping around phones, tablets, game consoles, and other electronics.
+- Vent clearance and airflow if used near gaming systems or computer hardware.
+- Touch response and latency for interactive surfaces such as mousepads.
 - Scratch resistance.
 - Bend radius and flex-cycle limits.
 - Adhesive strength and removability.
@@ -114,7 +130,7 @@ Before any product claim escalates, the project should document:
 
 ChromaSkin is potentially marketable because it sits at the overlap of several familiar buyer behaviors:
 
-- People personalize phones, cases, laptops, controllers, rooms, and vehicles.
+- People personalize phones, tablet cases, laptops, controllers, desks, rooms, and vehicles.
 - Businesses already pay for digital signage and changeable displays.
 - Creators, streamers, salons, studios, and gaming-room customers value visual identity.
 - Retailers and event teams need fast theme changes without rebuilding sets.
