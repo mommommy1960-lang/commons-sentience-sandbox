@@ -49,7 +49,7 @@ The fifth layer is community and institutional work: reviewers, advisors, profes
 
 ## Current Technical Review Links
 
-For Michael Pomfret and Washington Clean Energy Testbeds review, the related energy-system concept discussed after the ChromaSkin meeting is the [Bicycle Energy Pod engineering concept](docs/civic-continuum/blue-books/bicycle-energy-pod-engineering-concept-v0.1.md). It describes a retrofit bicycle energy-management system intended to recover, store, measure, and reuse energy from braking, downhill travel, stationary pedaling, or deliberate rider input. It is a concept design only; it has not yet been physically built or validated.
+For Michael Pomfret and Washington Clean Energy Testbeds review, the related energy-system concept discussed after the ChromaSkin meeting is the [Bicycle Energy Pod engineering concept](blue-books/bicycle-energy-pod-engineering-concept-v0.1.md). It describes a retrofit bicycle energy-management system intended to recover, store, measure, and reuse energy from braking, downhill travel, stationary pedaling, or deliberate rider input. It is a concept design only; it has not yet been physically built or validated.
 
 ## Evidence-First Rule
 
