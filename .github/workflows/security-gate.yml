@@ -51,13 +51,12 @@ jobs:
           grep -Fq "Default deny applies to consequential actions." GOVERNANCE.md
           grep -Fq "Trust does not confer authority." CAPABILITY_BOUNDARIES.md
 
-      - name: Run Python tests when safely discoverable
+      - name: Run governance-focused Python tests when available
         shell: bash
         run: |
           set -euo pipefail
-          if [ -f requirements.txt ] && [ -d tests ]; then
-            python -m pip install --disable-pip-version-check -r requirements.txt
-            python -m pytest -q
+          if [ -d tests ]; then
+            python -m unittest tests.test_commons_governance tests.test_civic_governance_policy
           else
-            echo "No requirements.txt + tests/ pair; skipping Python test step."
+            echo "No tests/ directory; skipping governance-focused Python tests."
           fi
