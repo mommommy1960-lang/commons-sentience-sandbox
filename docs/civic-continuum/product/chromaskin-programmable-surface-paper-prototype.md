@@ -33,6 +33,7 @@ These names are working product names only. Trademark review is required before 
 | Interactive desk and mouse surfaces | Mousepad with animated water, fish, ripples, touch response, or ambient scenes | Strong demo product because the user can touch the surface and immediately understand it. |
 | Console and gaming hardware skins | PlayStation-style console shell, controller dock, gaming desk panel | Strong gamer/creator market, but must be treated as a heat, airflow, and warranty-review lane before physical use. |
 | Room and furniture themes | Desk, shelf, table, wall tile, gaming room, studio, salon | Lets a user change a room's style without replacing furniture. |
+| Mapped furniture skins | Chair covers, table surfaces, cabinet faces, headboards, shelves | Uses object measurements so artwork wraps correctly and looks painted or custom-made for the object. |
 | Retail and event displays | Counter sign, kiosk panel, booth wall, menu surface, product display | Business customers already understand digital signage and visual refresh value. |
 | Vehicle customization | Door panel, hood section, motorcycle fairing, helmet, show-car panel | Strong brand identity and visual impact; later-stage durability challenge. |
 | Education and prototyping | Maker kits, classroom demos, design-school surface experiments | Useful first reviewer lane before full manufacturing. |
@@ -58,6 +59,29 @@ A realistic first kit could include:
 | Live fish tank tablet case | A larger case surface creates a stronger visual effect for school, art, gaming, or creator use. | Can a larger surface avoid heat, weight, and battery problems? |
 | Interactive aquarium mousepad | A desk/mousepad surface shows water, fish, ripples, or light trails that react to touch or pointer movement. | Is the surface touch-sensitive, cleanable, and comfortable for daily use? |
 | Gaming setup skin | Matching skins for controller dock, desk tile, console-adjacent panel, or room accents. | Can the product avoid blocking vents or trapping heat around consoles and electronics? |
+| Painted-chair illusion | A plain wooden chair is measured, then ChromaSkin maps color, pattern, or artwork onto the seat, back, legs, and edges so it appears artist-painted. | Can the system align images across bends, seams, curves, and separate chair parts? |
+
+## Object Measurement and Image Mapping
+
+A stronger version of ChromaSkin is not just a flat picture on a sheet. It is an object-aware skin. The user or installer measures the object, chooses the object type, and the software maps the image to the correct surfaces.
+
+Example: a plain wooden chair could be scanned or measured, then covered with ChromaSkin panels or a fitted ChromaMask cover. The software would know where the seat, back, legs, front edge, side edge, and visible seams are. The artwork could then be placed so the chair looks like it was painted by an artist, even though the visible design is coming from the programmable skin.
+
+```mermaid
+flowchart TD
+    A[Measure object] --> B[Create surface map]
+    B --> C[Place artwork]
+    C --> D[Send mapped design]
+    D --> E[ChromaSkin panels]
+```
+
+Engineering questions for mapped furniture:
+
+- How does the installer capture dimensions: manual entry, template, phone scan, marker grid, or camera calibration?
+- How are seams, corners, curves, and chair legs handled?
+- Can the artwork stay aligned after people sit, move, clean, or bump the furniture?
+- Should the first version use flat furniture panels before complex chair covers?
+- Can removable covers avoid damaging wood, upholstery, or rented furniture?
 
 ## System Architecture
 
@@ -103,7 +127,8 @@ This is a starting architecture for review, not a final bill of materials.
 | 3 | Phone-case-sized demo | Prove a small consumer object path | Fits a small object and survives normal handling tests. |
 | 4 | Tablet-case or interactive mousepad demo | Prove a larger consumer surface with animation or touch response | Runs without unsafe heat, uncomfortable weight, or poor battery life. |
 | 5 | Furniture/decor tile | Prove room-decor lane | Multiple panels can coordinate themes. |
-| 6 | Vehicle coupon panel | Begin heat, UV, vibration, moisture, and cleaning tests | Survives controlled environmental tests. |
+| 6 | Mapped chair or furniture cover mockup | Prove object-aware image mapping | Artwork aligns to measured surfaces, edges, and seams in a visual mockup. |
+| 7 | Vehicle coupon panel | Begin heat, UV, vibration, moisture, and cleaning tests | Survives controlled environmental tests. |
 
 ## Evidence Checklist
 
@@ -116,6 +141,8 @@ Before any product claim escalates, the project should document:
 - Heat trapping around phones, tablets, game consoles, and other electronics.
 - Vent clearance and airflow if used near gaming systems or computer hardware.
 - Touch response and latency for interactive surfaces such as mousepads.
+- Measurement accuracy for object-aware skins.
+- Image alignment across seams, corners, bends, legs, and furniture edges.
 - Scratch resistance.
 - Bend radius and flex-cycle limits.
 - Adhesive strength and removability.
