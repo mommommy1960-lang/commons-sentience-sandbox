@@ -5,6 +5,10 @@
 **Evidence level:** ordinary-physics architecture; no tested coupon, vehicle installation, certification, or road approval  
 **Public disclosure:** sanitized engineering brief; protected geometry, fabrication drawings, supplier terms, and patent-sensitive implementation details excluded
 
+## Related WCET Review Note
+
+This ChromaSkin document was shared for Washington Clean Energy Testbeds / Michael Pomfret review. A related energy-system concept discussed in the same conversation is the [Bicycle Energy Pod engineering concept](bicycle-energy-pod-engineering-concept-v0.1.md), which covers a bicycle-scale energy recovery, storage, safety, and validation plan.
+
 ## 1. Claim boundary
 
 This project proposes a removable, programmable illuminated surface made from flexible optical or light-distribution elements mounted over a stationary curved panel. It does not presently establish a road-legal vehicle body display, optical camouflage, structural body replacement, autonomous signaling system, or certified lighting device.
