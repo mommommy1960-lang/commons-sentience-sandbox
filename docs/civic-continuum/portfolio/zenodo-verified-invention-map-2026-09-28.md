@@ -1,0 +1,46 @@
+# Zenodo-verified invention map — 2026-09-28
+
+Source: signed-in Mya Brown / Commons Initiative Zenodo uploads dashboard, inspected 2026-09-28. The dashboard showed 280 uploads: 279 published record links and one untitled draft. Its access filters showed 267 open, 12 restricted, and one metadata-only result. These counts describe deposits, not distinct inventions, working devices, or verified results. Earlier [portfolio inventory](complete-invention-portfolio-inventory.md) and the preserved Zenodo master catalog supply additional context. This page indexes representative **public** records; restricted record contents and unpublished claims are not reproduced here.
+
+The status below is a development assignment based on titles and visible summaries, not a technical audit of every deposited file. A Zenodo DOI establishes a citable deposit, not a patent grant or physical validation. Multiple records in a row may be editions or components of one program.
+
+| Invention family | Representative public Zenodo records | Next checkable gate |
+|---|---|---|
+| Maya Node consent and design review | [Consent-and-control design](https://zenodo.org/records/22726147), [Maya Node](https://zenodo.org/records/22658235) | Run one permission-boundary review on a consented sample design; record the adversarial case and correction. |
+| Commons Sentience Sandbox and Reality Audit | [Technical monograph](https://zenodo.org/records/19101369), [Reality Audit Stage 9](https://zenodo.org/records/19688763) | Reproduce one deterministic scenario and publish inputs, outputs, null controls, and limitations. No sentience or new-physics claim. |
+| CERL consent tokens, CUP / ATN and SIB | [Consent-token paper](https://zenodo.org/records/17498427), [CUP / ATN](https://zenodo.org/records/17518465), [SIB](https://zenodo.org/records/17431667) | Show grant, denial, expiry, revocation, replay rejection, and audit integrity between two local software nodes. |
+| SAGE situated companion | [Integration lessons](https://zenodo.org/records/22644871) | Demonstrate consent, memory inspection and deletion, interruption, rollback, and explicit human approval in a private software pilot. |
+| Aurora AI / embodied companion | [Miguel vessel engineering manual](https://zenodo.org/records/17477378), [investor edition](https://zenodo.org/records/17477298) | Separate ordinary telepresence and low-voltage robotics from claims of autonomy or consciousness; test stop and human override first. |
+| Aurora ship and mini-vessel | [Mini-vessel blue book](https://zenodo.org/records/17580006), [ship dossier](https://zenodo.org/records/17510088) | Decompose into conventional thermal, power, telemetry, and habitat models; review each subsystem independently. No flight-readiness claim. |
+| Flux Drive and propulsion metrology | [Metrology dossier](https://zenodo.org/records/22850488), [systems assessment](https://zenodo.org/records/17382325) | Check equations, units, momentum and power accounting, then preregister blinded force/null controls. No demonstrated propulsion. |
+| OSH-1 orbital stewardship | [OSH-1 architecture](https://zenodo.org/records/22850976), [earlier station paper](https://zenodo.org/records/22682315) | Simulate authorization, conjunction, collision avoidance, and abort cases before hardware or orbital claims. |
+| ORBICYCLE debris servicer | [Rendezvous and capture architecture](https://zenodo.org/records/22682197) | Model relative motion, delta-v, capture envelope, and failed-capture abort under independent review. |
+| MPRS rover | [Mobile Phase Robotics System](https://zenodo.org/records/17499193) | Test a conventional ground rover's stop, low-speed mobility, and recovery states; keep matter phasing separate. |
+| Flexible tether deployment | [GFTD](https://zenodo.org/records/17452054), [Tether Stiffness Index](https://zenodo.org/records/17449948) | Guarded tabletop protocol with tension, shape, speed, repeatability, and failure-envelope measurements. |
+| CARE emergency routing and cave rescue | [Seven CARE prototypes](https://zenodo.org/records/17831416), [emergency response system](https://zenodo.org/records/20822024) | Separate dispatch-support software from rescue hardware; simulate human override, route errors, and inaccessible conditions. No emergency deployment claim. |
+| Expandable air-tunnel sleeve | [Build blueprint](https://zenodo.org/records/17831701), [Blue Book 1](https://zenodo.org/records/17833633) | Define ventilation, structural and entrapment hazards; seek qualified rescue engineering review before a rig. |
+| Reverse-hoist micro-motor harness | [Prototype 2](https://zenodo.org/records/17834585), [Blue Book 2](https://zenodo.org/records/17833824) | Bench-test a non-human load with guarded mechanics, overload cutoff, and a failure capture plan. |
+| Pressure-relief exoshell | [Exoshell](https://zenodo.org/records/17831932), [Blue Book 3](https://zenodo.org/records/17833946) | Define forces and safe load paths; mock up geometry without a person inside. |
+| Rapid-foam stabilizer | [Stabilizer](https://zenodo.org/records/17832040), [Blue Book 4](https://zenodo.org/records/17833983) | Material hazard and reversibility review; no confined-space or human application until qualified tests. |
+| Rock-bonding rescue gel | [Stonehold gel](https://zenodo.org/records/17832611), [Blue Book 5](https://zenodo.org/records/17834016) | Specify substrates, removal, toxicity, curing, and water effects; qualified materials review before mixing or use. |
+| Self-shrinking harness and cave survival envelope | [Blue Book 6](https://zenodo.org/records/17834042), [Blue Book 7](https://zenodo.org/records/17834094) | Analyze pinch, compression, breathing, and escape failure modes; no human test at this stage. |
+| ECG waveform extractor | [Extractor record](https://zenodo.org/records/17449684) | Compare digitized traces with de-identified reference waveforms and report extraction error; no diagnostic claim. |
+| Bio-regenerative limbs and bio-archival systems | [BRL protocol](https://zenodo.org/records/17527411), [bio-archival monograph](https://zenodo.org/records/17372759) | Literature/evidence matrix and qualified biomedical, ethics, and regulatory partners before biological or human work. |
+| CRTS distributed fabrication | [CRTS](https://zenodo.org/records/17542363) | Demonstrate ordinary CAD/CAM permissions, provenance, bill of materials, and prohibited-use controls; no matter-replication claim. |
+| FOS, HRF/SFI, SLP and H3DFS | [FOS](https://zenodo.org/records/17382479), [HRF/SFI](https://zenodo.org/records/17440679), [SLP](https://zenodo.org/records/17372526), [H3DFS](https://zenodo.org/records/17374028) | Define one bounded input/output rule for each, measure against ordinary baselines, and test failure and recovery. |
+| Commons Completion Engine and governance tools | [CCE](https://zenodo.org/records/18136196), [anti-capture framework](https://zenodo.org/records/22682229) | Test a decision record for missing evidence, authority expansion, correction, and rollback. |
+| Housing ledger accountability tools | [Ledger training module](https://zenodo.org/records/18435003), [case study](https://zenodo.org/records/18434812) | Build a synthetic, privacy-safe reconciliation fixture with missing-month and reallocation cases; obtain legal review before case-specific claims. |
+| LQIDA and quantum engineering | [LQIDA](https://zenodo.org/records/17431233) | Narrow to instrumented noise suppression with calibrated controls and independent replication. No inertia-dampening claim. |
+| Energy & substrate systems | [ESS manual](https://zenodo.org/records/17372615) | Extract conventional low-voltage power management and measure input, storage losses, and output; reject zero-loss claims. |
+| Crowned Coil reptile tools | [Product specification](https://zenodo.org/records/20275354), [ecosystem](https://zenodo.org/records/20261323) | Validate dimensions, material, cleaning, and animal handling constraints with qualified reviewers and a non-animal prototype. |
+
+Other active concepts in the GitHub [50-concept inventory](complete-invention-portfolio-inventory.md), such as the Bicycle Energy Pod and ChromaSkin, were not identified by those names among the 279 published Zenodo titles inspected. Their GitHub design pages remain the current public starting points: [Bicycle Energy Pod](../blue-books/bicycle-energy-pod-engineering-concept-v0.1.md) and [ChromaSkin paper prototype and runnable mapping sketch](../product/chromaskin-programmable-surface-paper-prototype.md).
+
+## Execution order
+
+1. Run reproducible software gates for consent, governance, SAGE, and the sandbox.
+2. Review ChromaSkin panel mapping and bicycle energy budgets as software/paper models; then price bounded components.
+3. Specify guarded, non-human bench protocols for tether and mechanical rescue concepts with qualified reviewers.
+4. Keep propulsion, biomedical, orbital, and high-consequence rescue claims at simulation or evidence-review gates until their discipline-specific prerequisites are met.
+
+Record-level audit of every uploaded file, duplicate/version resolution, and detailed claim validation remain open. Preserve negative results and superseded designs alongside positive tests.
