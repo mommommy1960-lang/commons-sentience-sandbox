@@ -1,5 +1,7 @@
 # Civic Continuum — Complete Invention Portfolio Inventory
 
+For the current signed-in Zenodo upload sweep and representative source links, see the [Zenodo-verified invention map (2026-09-28)](zenodo-verified-invention-map-2026-09-28.md). The 50 concepts below come from an older workbook snapshot; the Zenodo map adds later CARE rescue and other deposits.
+
 Source of truth: `Commons_Invention_Portfolio_and_Revenue_Plan.xlsx`, snapshot 2026-09-08. This inventory preserves the source workbook’s current truth, lane, and next action. It is a planning record, not proof that every concept is a functioning product.
 
 The workbook reports 50 concepts, 9 in the build-next lane, 3 earn-now, and 16 hold/speculative. The immediate strategy remains: earn from a real service, strengthen software, then fund carefully validated physical prototypes.
@@ -68,4 +70,3 @@ The workbook reports 50 concepts, 9 in the build-next lane, 3 earn-now, and 16 h
 ## Portfolio rule
 
 Every concept now gets four separate labels: source document, implementation status, evidence level, and public claim boundary. A design document or Zenodo timestamp establishes provenance—not technical validation, patent rights, legal enforceability, or product-market fit.
-
