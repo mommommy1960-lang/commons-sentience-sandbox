@@ -63,6 +63,18 @@ A realistic first kit could include:
 
 ## Object Measurement and Image Mapping
 
+### Executable mapping sketch
+
+The repository includes a standard-library-only SVG demonstrator for rectangular panels. From the repository root, run:
+
+```bash
+python -m chromaskin.demo --theme snow-window --output chromaskin-demo.svg
+python -m chromaskin.demo --theme fireplace --output fireplace-demo.svg
+python -m unittest discover -s tests -p test_chromaskin_demo.py
+```
+
+Open the resulting SVG in a browser. Two adjacent measured panels clip the same scene in global coordinates, so the picture continues across their seam. The script rejects overlapping or invalid dimensions. This is software image placement only: it does not drive a display, map curved furniture, make a wall transparent, or validate a physical sheet.
+
 A stronger version of ChromaSkin is not just a flat picture on a sheet. It is an object-aware skin. The user or installer measures the object, chooses the object type, and the software maps the image to the correct surfaces.
 
 Example: a plain wooden chair could be scanned or measured, then covered with ChromaSkin panels or a fitted ChromaMask cover. The software would know where the seat, back, legs, front edge, side edge, and visible seams are. The artwork could then be placed so the chair looks like it was painted by an artist, even though the visible design is coming from the programmable skin.
