@@ -5,6 +5,7 @@
 This repository is the public workbench for the Civic Continuum / Commons Initiative. For the current status, active work, evidence, limitations, and next actions, start with:
 
 - [Civic Continuum continuity index](docs/continuity/README.md)
+- [What Civic Continuum is](docs/civic-continuum/WHAT_CIVIC_CONTINUUM_IS.md)
 - [Current public-safe business and formation status](docs/civic-continuum/business/CIVIC_CONTINUUM_LLC_ADDRESS_PRIVACY_PLAN_2026-09-27.md)
 - [Current business readiness and launch gates](docs/civic-continuum/business/CIVIC_CONTINUUM_BUSINESS_READINESS_STATUS_2026-09-27.md)
 - [Skeptical reviewer guide](docs/review/SKEPTICAL_REVIEWERS_AND_UNIVERSITIES.md)
