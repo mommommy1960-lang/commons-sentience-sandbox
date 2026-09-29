@@ -17,4 +17,4 @@ Status: **no performance claim**. This is a research harness, not satellite flig
 4. Report recall, false-alarm rate, precision, actual lead time, runtime, and any scheduled observation time lost. Describe the data gaps. Never use test-time position as a claimed advance prediction.
 5. Require independent mission-operations review before deploying alerts or selling a safety claim. Until then, market only the research prototype and its limitations.
 
-Run `python -m unittest -v test_saa_benchmark.py`. When a genuine labeled CSV is available, run `python saa_benchmark.py intervals.csv`; its header and semantics are specified in the script docstring.
+From this directory, run `python -m unittest -v test_saa_benchmark.py`. When a genuine labeled CSV is available, run `python saa_benchmark.py intervals.csv`; its header and semantics are specified in the script docstring.
