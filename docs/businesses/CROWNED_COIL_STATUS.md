@@ -1,8 +1,8 @@
 # Crowned Coil — public project record
 
-**Status:** Founder-stage concept and documentation  
-**Last reviewed:** 2026-09-17  
-**Repository branch:** `feature/civic-continuum-job-queue`
+**Status:** In development; free Founding Keepers waitlist open  
+**Last reviewed:** 2026-10-03  
+**Repository branch:** `main`
 
 ## What it is
 
@@ -19,6 +19,14 @@ The intended category is premium reptile handling and behavioral-enrichment equi
 ## Current evidence
 
 The source materials describe the brand, product concepts, design language, keeper experience, and intended safety principles. They do **not** by themselves establish that a physical prototype has passed independent animal-safety testing, materials testing, mechanical testing, or regulatory review.
+
+## Free Founding Keepers waitlist
+
+[Join the free Founding Keepers waitlist](https://crowned-coil-founding-keepers.myqueen1960.chatgpt.site/)
+
+Keepers can join for development updates and opportunities to share feedback on the first starter kit for serpent handling and training. Joining is not a preorder. No payment, launch date, or delivery promise is made. Product details may change as prototypes are evaluated.
+
+The waitlist opening does not establish physical product validation. The prototype and review gates below remain outstanding.
 
 ## Next gates
 
