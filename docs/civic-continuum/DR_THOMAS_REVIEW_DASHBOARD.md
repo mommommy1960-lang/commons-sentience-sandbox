@@ -4,6 +4,15 @@
 
 This dashboard gives a reviewer a fast, honest view of what exists, what is being built, and what still requires independent work. It is a progress map, not a claim that every concept is a functioning product.
 
+## Latest development and outreach — October 9, 2026
+
+The current [15-project software/engineering overview and review invitation](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/CIVIC_CONTINUUM_15_PROJECT_REVIEW_INVITATION_2026-10-09.md) describes each direction's bounded prototype scope, intended use and expertise sought. It is distinct from the wider historical portfolio below.
+
+Four existing prospective-customer threads have received non-confidential walkthrough invitations. An adviser conversation and referral for a focused software/security review have been requested. The first defined technical-review question concerns the Maya Node Ingestion Guard's structured-input contract; identified source/test evidence and written findings would be exchanged under an agreed review scope. Invitations are not confirmed meetings, sales, completed independent reviews or verified hardware performance.
+
+The [existing START HERE reviewer doorway](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/PUBLIC_DUE_DILIGENCE_START_HERE.md) also leads to this current overview. Public summaries exclude detailed implementation and private evidence. Earlier records and dates below remain preserved; the organizational registration gate remains open.
+
+
 ## Review entry points
 
 | Start with | Evidence available now | Honest status |
