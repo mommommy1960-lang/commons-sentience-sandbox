@@ -71,3 +71,19 @@ Earn a leading position through a focused useful offer, repeatable delivery, tra
 - Service page: https://maya-node-founding-review.myqueen1960.chatgpt.site
 
 Private financial assumptions, correspondence, supplier files, unpublished CAD and personal records are excluded. Juan's reported interest is encouraging; no purchase, engagement or endorsement is established.
+## AI responsibility — Maya Node as the concrete example
+Maya Node's documented principle is that technical capability does not confer authority. Its public architecture separates identity, requested operation, authorization scope, expiry, revocation, execution, post-action evidence and human challenge/override.
+
+The customer review therefore maps:
+- Who configured the workflow and its rules?
+- Who approved deployment and granted permission for this action?
+- What action and data access were actually authorized, and for how long?
+- Who was responsible for monitoring, intervention and correcting failures?
+- What records show the request, permission decision and resulting action?
+- How can an affected person obtain an explanation, challenge a decision, withdraw applicable consent or reach human review?
+
+“The AI did it” describes a mechanism; it does not complete the organizational accountability inquiry. Trace the human and organizational decisions without presuming that the programmer alone bears every responsibility. A permission/audit record supports investigation; it does not by itself establish legal liability.
+
+Draft core positioning: **Civic Continuum makes AI responsibility visible: who authorized what, which boundaries applied, what happened, and who must review and correct it.** For school-system and banking customers, pair the technical authority map with a plain-language explanation of relevant notices, rights, responsibilities and escalation paths. Applicable legal rights depend on the actual use case and jurisdiction and require qualified review.
+
+Source inspected October 13: https://github.com/mommommy1960-lang/maya-node/blob/main/README.md and the public due-diligence guide. This section describes documented architecture and review questions, not verified coverage of every deployed AI system.
