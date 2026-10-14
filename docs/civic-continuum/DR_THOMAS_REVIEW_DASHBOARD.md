@@ -162,3 +162,9 @@ Flux Drive is not independently validated propulsion. Aurora is not a validated 
 These are their professional affiliations. Civic Continuum's materials for review do not imply organizational endorsement, partnership or technical approval.
 
 [Current contact and digital business card](https://civic-continuum-contact.freshcoin8.chatgpt.site) · [School and banking demos](https://civic-continuum-contact.freshcoin8.chatgpt.site/demo.html)
+
+## Founder achievements and complete public portfolio — October 14, 2026
+
+[**Open Mya's training, badges, achievements and test evidence**](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/FOUNDER_ACHIEVEMENTS_2026-10-14.md) · [**Browse all 13 public repositories**](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/PUBLIC_REPOSITORY_INDEX_2026-10-14.md).
+
+PRs60 and61 are merged. PR60's corrected head passed all111 hosted checks, with1,129 tests passing in its integration job. Course completions, community badges, software tests and research publications are identified separately. Certificate summaries link to inspected source notes; original individual certificate PDFs remain to be recovered. No endorsement or completed registration is implied.
