@@ -4,6 +4,12 @@
 
 This dashboard gives a reviewer a fast, honest view of what exists, what is being built, and what still requires independent work. It is a progress map, not a claim that every concept is a functioning product.
 
+## October 14, 2026 — related progress for Dr. Thomas Ainsworth
+
+Today's completed customer-focus, pitch, demonstration and evidence work prepared for **Juan Antonio Garcia** is documented in the existing public [Juan Antonio Garcia business-review tracker](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/JUAN_ANTONIO_GARCIA_BUSINESS_REVIEW.md) and [dated customer-demo update](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/CUSTOMER_DEMOS_AND_ASSIGNMENT_UPDATE_2026-10-14.md).
+
+These links make the broader progress available from Dr. Thomas Ainsworth's review area. This work was prepared for Juan's assignment, not requested or approved by Dr. Ainsworth. The organizational verification gate remains open.
+
 ## Latest development and outreach — October 9, 2026
 
 The current [15-project software/engineering overview and review invitation](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/CIVIC_CONTINUUM_15_PROJECT_REVIEW_INVITATION_2026-10-09.md) describes each direction's bounded prototype scope, intended use and expertise sought. It is distinct from the wider historical portfolio below.
