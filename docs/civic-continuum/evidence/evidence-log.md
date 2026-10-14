@@ -175,3 +175,16 @@ Next gate:
 2. Add transactional persistence, concurrency tests, and crash recovery.
 3. Obtain an independent implementation and security review.
 4. Integrate only with a harmless Maya Node or SAGE demonstration before any consequential pilot.
+
+
+## 2026-10-14 — SAGE non-confidential feasibility intake and correspondence
+
+Evidence level: implemented documentation; proposed hardware evaluation.
+
+Completed: prepared a six-page preliminary intake covering 21 PRD sections, checked every rendered page, and sent the intake and reply in the existing Minewing correspondence. Ricky Yuan is the SAGE feasibility contact. The sent record and supplier template remain private; [public requirements and open gates](https://github.com/mommommy1960-lang/sage-situated-companion/blob/main/docs/PHASE1_FEASIBILITY_BRIEF_2026-10-14.md) are available for review.
+
+Unresolved: dimensions/weight, exterior/mechanical design, PCB and battery allocation, power/thermal budget, performance and reliability targets, intended compliance markets, schedule and cost.
+
+Boundary: SAGE is early-stage and is not production-ready, safety-certified or authorized for manufacturing. No hardware test, completed external assessment, endorsement, paid work or fabrication is claimed. The five-unit request is planning only.
+
+Next evidence: Minewing review of minimum inputs and a separately scoped feasibility/design proposal. Earlier evidence entries, failures and corrections remain preserved.

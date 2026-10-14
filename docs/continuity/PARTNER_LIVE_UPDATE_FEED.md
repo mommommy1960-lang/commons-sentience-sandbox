@@ -2,7 +2,19 @@
 
 **Public status page for collaborators, reviewers, funders, manufacturers, and future partners.**
 
-Last curated update: **2026-10-10**
+Last curated update: **2026-10-14**
+
+## October 14, 2026 — SAGE Phase 1 feasibility intake sent
+
+Civic Continuum completed and visually checked a six-page preliminary intake covering 21 PRD sections, then sent it in the existing Minewing feasibility exchange. Unresolved dimensions, exterior design, component choices, power/thermal budgets, performance, reliability and compliance inputs remain explicitly TBD.
+
+**Ricky Yuan / Minewing:** electronics solutions and integrated manufacturing contact; current role is SAGE preliminary hardware-feasibility correspondence. A formal managerial title is unconfirmed. Correspondence does not establish endorsement, contracted development or completed assessment.
+
+[Public non-confidential SAGE feasibility brief](https://github.com/mommommy1960-lang/sage-situated-companion/blob/main/docs/PHASE1_FEASIBILITY_BRIEF_2026-10-14.md) · [Professional roles and affiliations](../civic-continuum/DR_THOMAS_REVIEW_DASHBOARD.md#professional-titles-roles-and-organizations--checked-october-14-2026)
+
+Evidence level: completed documentation and correspondence; proposed hardware/prototype plan. SAGE is early-stage, not production-ready, safety-certified or authorized for manufacturing. The five-unit prototype is a planning request only. No paid work, procurement, tooling or fabrication was authorized. Supplier documents, raw correspondence, commercial terms and protected implementation remain private.
+
+Next: Minewing review of the minimum inputs needed for a separately quoted feasibility/design stage. Earlier dated entries and corrections below are preserved.
 
 ## October 10, 2026 — Civic Continuum portfolio, training and research reconciliation
 
