@@ -151,3 +151,14 @@ Flux Drive is not independently validated propulsion. Aurora is not a validated 
 - [Complete Blue Book registry](./blue-books/civic-continuum-complete-invention-blue-book-registry.md)
 - [Aurora / Flux proof addendum](./blue-books/aurora-flux-updated-paper-proof-addendum.md)
 - [Evidence log](./evidence/evidence-log.md)
+
+## Professional titles and organizations — verified October 14, 2026
+
+| Name | Professional title | Organization | Official website |
+|---|---|---|---|
+| Juan Antonio Garcia (listed publicly as Juan Garcia) | Certified Business Advisor | Washington Small Business Development Center (Washington SBDC), hosted by Washington State University | [Official adviser profile](https://wsbdc.org/advisors/juan-garcia/) · [Washington SBDC](https://wsbdc.org/) |
+| Dr. Thomas Edward Ainsworth | Founder and Principal Consultant | Human-Centered AI Governance Institute LLC | [Institute](https://hcaigovernance.org/) · [Official leadership profile](https://hcaigovernance.org/about/) |
+
+These are their professional affiliations. Civic Continuum's materials for review do not imply organizational endorsement, partnership or technical approval.
+
+[Current contact and digital business card](https://civic-continuum-contact.freshcoin8.chatgpt.site) · [School and banking demos](https://civic-continuum-contact.freshcoin8.chatgpt.site/demo.html)
