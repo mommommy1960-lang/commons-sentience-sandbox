@@ -1,5 +1,8 @@
 # The Commons Initiative — Accountable Organizational Structure
 
+> **Canonical-source correction — October 14, 2026:** This September 15 pre-formation framework is historical. Use the [current adopted Civic Continuum framework](../civic-continuum/governance/ACCOUNTABLE_ORGANIZATIONAL_STRUCTURE.md), [correction/contact procedure](../civic-continuum/governance/PUBLIC_CORRECTION_AND_CONTACT_PROCEDURE.md), and [organizational verification page](../civic-continuum/ORGANIZATIONAL_VERIFICATION.md). This cross-reference does not amend decision rights, claim state formation, or grant authority. Earlier content is preserved below.
+
+
 **Status:** Pre-formation governance framework  
 **Founder / accountable authority:** Mya P. Brown  
 **Jurisdiction intended:** Washington State, USA  

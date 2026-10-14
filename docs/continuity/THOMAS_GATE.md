@@ -1,5 +1,8 @@
 # THE DR. THOMAS AINSWORTH GATE
 
+> **Status reconciliation — October 14, 2026:** The September 15 scoreboard below is historical and superseded for current status by the [evidence-scored readiness meter](../civic-continuum/DR_THOMAS_ORGANIZATIONAL_READINESS_METER.md) and [organizational verification page](../civic-continuum/ORGANIZATIONAL_VERIFICATION.md). Their documented score is **15/18**, not the older 60% indicator. This session inspected those records; it did not independently re-test registrar control, email delivery or official registration. Domain/contact and governance documentation exist. State acceptance, UBI and required business licensing remain open. Do not interpret 83% documentation completion as legal formation or adviser approval. Dr. Thomas's next email remains held. Historical fees and funding estimates below must be rechecked before any transaction. The earlier checklist remains preserved below; do not use it as the current execution queue.
+
+
 > **Priority business-readiness objective**
 >
 > Dr. Thomas Ainsworth wrote that he would be pleased to revisit discussion after The Commons Initiative's **formal business registration, domain infrastructure, and accountable organizational structure** are completed and independently verifiable.

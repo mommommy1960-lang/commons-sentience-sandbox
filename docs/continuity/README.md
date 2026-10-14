@@ -1,5 +1,16 @@
 # Commons First Watch Continuity Index
 
+> **Correction and current reading order — October 14, 2026:** This index's September status and personal-handoff reading order below are historical. Personal continuity records were relocated privately; they are intentionally absent from public main. Do not recreate public copies. Current working identity is **Civic Continuum**. Use these current public entry points:
+>
+> 1. [Reviewer dashboard](../civic-continuum/DR_THOMAS_REVIEW_DASHBOARD.md)
+> 2. [Organizational verification](../civic-continuum/ORGANIZATIONAL_VERIFICATION.md)
+> 3. [Evidence-scored organizational readiness](../civic-continuum/DR_THOMAS_ORGANIZATIONAL_READINESS_METER.md)
+> 4. [Accountable organizational structure](../civic-continuum/governance/ACCOUNTABLE_ORGANIZATIONAL_STRUCTURE.md)
+> 5. [Partner progress feed](./PARTNER_LIVE_UPDATE_FEED.md)
+>
+> The domain/contact infrastructure is documented; Washington formation, UBI and licensing remain open in the current record. Earlier statements that the domain was unpurchased or the SAGE repository missing are superseded. Earlier numerical test counts and priority lists are dated observations, not current verification. Personal archives remain restricted to their authorized audience. The historical text below is retained for the correction trail.
+
+
 ## Current public priority: help move the work into physical validation
 
 The Commons Initiative has reached a concrete transition point: the next Flux/Aurora milestone requires calibrated physical instrumentation, low-energy bench/lab access, fixture fabrication, and independent experimental review. The software, falsification framework, one-million-trial synthetic reality audit, physical-bench readiness package, and CAL-00 measurement requirements are public and traceable.

@@ -1,5 +1,8 @@
 # The Commons Initiative — Organizational Verification
 
+> **Canonical-source correction — October 14, 2026:** Use the [current Civic Continuum organizational verification page](../civic-continuum/ORGANIZATIONAL_VERIFICATION.md), [readiness meter](../civic-continuum/DR_THOMAS_ORGANIZATIONAL_READINESS_METER.md), and [current governance framework](../civic-continuum/governance/ACCOUNTABLE_ORGANIZATIONAL_STRUCTURE.md). This September snapshot is retained as history. Its pending-domain fields are superseded; its state-formation gate remains open. Personal continuity material is private and must not be restored publicly to satisfy an obsolete link. Current public records are documentation, not a fresh official-registry or contact-delivery check.
+
+
 **Verification status:** PRE-FORMATION / PARTIALLY VERIFIABLE  
 **Last updated:** 2026-09-15
 

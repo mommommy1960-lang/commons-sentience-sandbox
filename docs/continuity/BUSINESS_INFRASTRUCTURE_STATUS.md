@@ -1,5 +1,8 @@
 # Business Infrastructure Status — The Commons Initiative
 
+> **Correction — October 14, 2026:** This September 14 preparation record is historical. The working organization is **Civic Continuum**, and current [organizational verification](../civic-continuum/ORGANIZATIONAL_VERIFICATION.md) documents civiccontinuum.org and contact@civiccontinuum.org; the earlier domain-pending description is superseded. Washington formation, UBI and business licensing remain open in the current evidence set. Use the [current readiness meter](../civic-continuum/DR_THOMAS_ORGANIZATIONAL_READINESS_METER.md) for status. The proposed name, fees, funding and legal steps below are not fresh registry or legal verification. CERL descriptions must be reconciled against each applicable license text; this historical notice does not revoke earlier grants. No filing, payment, tax election or IP assignment was performed by this correction.
+
+
 **Date:** 2026-09-14  
 **Owner:** Mya P. Brown  
 **Purpose:** keep business/legal infrastructure synchronized with the research, software, product, and publication record.
