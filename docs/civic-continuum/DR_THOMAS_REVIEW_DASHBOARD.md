@@ -168,3 +168,9 @@ These are their professional affiliations. Civic Continuum's materials for revie
 [**Open Mya's training, badges, achievements and test evidence**](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/FOUNDER_ACHIEVEMENTS_2026-10-14.md) · [**Browse all 13 public repositories**](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/PUBLIC_REPOSITORY_INDEX_2026-10-14.md).
 
 PRs60 and61 are merged. PR60's corrected head passed all111 hosted checks, with1,129 tests passing in its integration job. Course completions, community badges, software tests and research publications are identified separately. Certificate summaries link to inspected source notes; original individual certificate PDFs remain to be recovered. No endorsement or completed registration is implied.
+
+## Four customer groups, real data and competitors — October 14, 2026
+
+[Four customer pitches and real IRS/CFPB comparison](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/FOUR_CUSTOMER_GROUPS_AND_REAL_DATA_2026-10-14.md) · [Competitive comparison](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/COMPETITIVE_COMPARISON_2026-10-14.md).
+
+Added nonprofit donor/member operations and customer-support teams as buyer hypotheses alongside schools and banking. Twenty four-sector illustration assertions passed. Real public-source comparison used 100 IRS organizations and 100 CFPB complaints; all six defined summary/permission assertions passed. Real records and injected test permissions are labeled separately. No live partner workflow or competitor benchmark is claimed. The comparison identifies our bounded $25 human review and public evidence strengths, with broader enterprise integration gaps still open. [Live customer hub](https://civic-continuum-contact.freshcoin8.chatgpt.site).
