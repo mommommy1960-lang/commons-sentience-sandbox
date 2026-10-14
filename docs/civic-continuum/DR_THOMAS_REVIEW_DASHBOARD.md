@@ -67,7 +67,7 @@ A project may move backward when testing exposes a flaw. That is recorded as pro
 
 | Workstream | Current evidence target | Current priority |
 |---|---|---|
-| Maya Node Founding Review | Repeatable human-delivered review workflow | Highest |
+| Maya Node software access | Proposed 30-day software service; funded inference and verified fulfillment remain open | Highest |
 | Consent Token / CERL demonstrator | Grant, deny, expire, revoke, freeze, restore, audit verification | Highest |
 | Systems Accountability curriculum | One genuinely teachable module with exercises and assessment | Highest |
 | SAGE situated companion | Private controlled demo with permission and recovery boundaries | High |
@@ -173,4 +173,5 @@ PRs60 and61 are merged. PR60's corrected head passed all111 hosted checks, with1
 
 [Four customer pitches and real IRS/CFPB comparison](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/FOUR_CUSTOMER_GROUPS_AND_REAL_DATA_2026-10-14.md) · [Competitive comparison](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/COMPETITIVE_COMPARISON_2026-10-14.md).
 
-Added nonprofit donor/member operations and customer-support teams as buyer hypotheses alongside schools and banking. Twenty four-sector illustration assertions passed. Real public-source comparison used 100 IRS organizations and 100 CFPB complaints; all six defined summary/permission assertions passed. Real records and injected test permissions are labeled separately. No live partner workflow or competitor benchmark is claimed. The comparison identifies our bounded $25 human review and public evidence strengths, with broader enterprise integration gaps still open. [Live customer hub](https://civic-continuum-contact.freshcoin8.chatgpt.site).
+Added nonprofit donor/member operations and customer-support teams as buyer hypotheses alongside schools and banking. Twenty four-sector illustration assertions passed. Real public-source comparison used 100 IRS organizations and 100 CFPB complaints; all six defined summary/permission assertions passed. Real records and injected test permissions are labeled separately. No live partner workflow or competitor benchmark is claimed. The earlier comparison described a human review; the current offer is Maya Node software, still prelaunch, alongside public evidence, with broader enterprise integration gaps still open. [Live customer hub](https://civic-continuum-contact.freshcoin8.chatgpt.site).
+\n## Software launch stopping point — October 14, 2026\n\n[Current Maya software launch handoff](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/MAYA_SOFTWARE_LAUNCH_PAUSE_2026-10-14.md) records the server deployment, 26 local tests and unfinished API/Stripe/live-test gates. Maya Node is intended to perform the software analysis; Mya P. Brown is the founder. Trial and checkout remain disabled. Earlier human-review portfolio entries above are historical and are superseded for this offer. No independent validation or organizational approval is implied.\n
