@@ -188,3 +188,9 @@ This entry records work performed today; it does not imply a release or independ
 
 Public updates deliberately omit private Bruce-to-Bruce correspondence, personal archive contents, supplier correspondence and credentials. The private continuity record is maintained separately.
 
+## October 15, 2026 — simplified contact experience
+
+- Added a clean, mobile-responsive [Civic Continuum contact-page source](../civic-continuum/contact.html) centered on one action: **Email Civic Continuum**. The only address displayed is `contact@civiccontinuum.org`; no personal Gmail or personal address is included.
+- Updated the [public contact/correction procedure](../civic-continuum/governance/PUBLIC_CORRECTION_AND_CONTACT_PROCEDURE.md) to explain the single-action route in plain language.
+- **Deployment boundary:** these are committed public repository changes. I could not access the hosted `civic-continuum-contact.freshcoin8.chatgpt.site` or `civiccontinuum.org` through the available browser inspection, and this repository is not confirmed as the live site’s deployment source. Therefore the hosted contact page has not yet been changed or verified. The source must be connected to the actual site deployment before we claim the live page is fixed.
+
