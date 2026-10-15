@@ -2,7 +2,7 @@
 
 **Public status page for collaborators, reviewers, funders, manufacturers, and future partners.**
 
-Last curated update: **2026-10-14**
+Last curated update: **2026-10-15**
 
 ## October 14, 2026 — SAGE Phase 1 feasibility intake sent
 
@@ -217,3 +217,8 @@ The user confirmed the website was created through ChatGPT and can open the acco
 
 ### Maya Node no-cost recheck
 Draft PR #63 remains open, draft and unmerged. GitHub reports Security & Ethics Checks success for commit `5345e7ab174802d4fd771e636c36d034dd9f1dc8`; it is not a full runtime/checkout validation. Repository records still state that API billing is inactive, so no successful inference or end-to-end paid flow is claimed. Keep launch disabled pending server identity/runtime, database, secrets, quota-failure handling, and sandbox purchase-to-reply tests.
+
+
+## October 15, 2026 — Civic Continuum contact-button check
+
+The site owner reports that the primary contact button on the hosted Civic Continuum contact site opens an email addressed to `contact@civiccontinuum.org`. This is a user-confirmed functional check of the email handoff. The rendered site, page metadata, mobile/keyboard accessibility, and removal of personal contact details have not yet been independently inspected; deployment issue [#56](https://github.com/mommommy1960-lang/commons-sentience-sandbox/issues/56) remains open until those checks are evidenced.
