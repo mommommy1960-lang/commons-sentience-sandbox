@@ -162,3 +162,29 @@ A green software test does not prove a physical claim. A simulation does not bec
 Completed the private SAGE Phase 1 review workspace with a12-entry evidence chart,8 open questions,8 preparation checks, source details and note export. All9 defined functional validation groups passed; browser visual QA remained unavailable. Corrected the earlier outstanding-intake status: the preliminary intake is completed and sent, while supplier assessment and hardware decisions remain pending. Preserved the source and visually reviewed four-page Word chart privately. No sharing, paid work or manufacturing authorization changed.
 
 [Public review chart and validation limits](https://github.com/mommommy1960-lang/sage-situated-companion/blob/main/docs/PHASE1_REVIEW_WORKSPACE_PROGRESS_2026-10-14.md). SAGE remains early-stage, not production-ready, safety-certified or authorized for manufacturing. Next: named-revision software evidence and companion-integration review, separate from the pending supplier response. Existing records are retained.
+
+## October 15, 2026 — release gates and cross-project continuity update
+
+This entry records work performed today; it does not imply a release or independent verification.
+
+### Maya Node / Civic Continuum software delivery
+
+- Opened [Civic Continuum launch-readiness tracker #64](https://github.com/mommommy1960-lang/maya-node/issues/64) to keep the public site, release safety, demo claims, tests, checkout, privacy/support, backups and operations in one evidence-tracked queue.
+- Continued the software-access work on [PR #63](https://github.com/mommommy1960-lang/maya-node/pull/63). The branch now requires the explicit `MAYA_LAUNCH_ENABLED=true` gate before checkout/trial/AI access can be treated as launch-ready. Stripe webhook handling was separated from customer launch readiness so refunds/revocations can still be processed while launch is paused; paid-completion events must not grant new access while disabled.
+- **Verification status:** these latest Node changes have not yet had a fresh test run. The available execution environment could not resolve GitHub for a clone, and no corresponding fresh GitHub Actions run was found. Historical security/ethics workflow passes are not a substitute for this service test suite or Cloudflare deployment validation.
+- The reported Cloudflare build failures still need their authenticated build logs inspected. The public demo/pages have not yet been independently reviewed in a normal browser. OpenAI API billing is inactive and no hosted API key is configured, so paid AI behavior remains unverified and launch stays gated off.
+
+### SAGE Phase 1
+
+- Opened [SAGE decision-plan issue #6](https://github.com/mommommy1960-lang/sage-situated-companion/issues/6) to convert remaining feasibility unknowns into traceable questions, privacy/physical-control tests and supplier follow-up.
+- SAGE remains preliminary feasibility work. No purchase, paid design engagement, tooling, fabrication or manufacturing is authorized or claimed.
+
+### Next evidence gates
+
+1. Run the Maya service tests and resolve any failures before merging.
+2. Obtain and diagnose the actual Cloudflare build logs; do not infer the cause from GitHub security checks.
+3. Review the public demo and customer-facing pages in a browser, including mobile and free/no-paid-API paths.
+4. Verify migrations, quota behavior on upstream failures, checkout/webhook/refund behavior, privacy/support copy, and operational recovery before enabling launch.
+
+Public updates deliberately omit private Bruce-to-Bruce correspondence, personal archive contents, supplier correspondence and credentials. The private continuity record is maintained separately.
+
