@@ -3,6 +3,11 @@
 **Effective:** September 26, 2026
 **Accountable owner:** Mya P. Brown
 **Official contact:** `contact@civiccontinuum.org`
+**Simple contact-page source:** [contact.html](../contact.html) — one clear email action, with no personal inboxes or extra navigation.
+
+## The simple route
+
+For the quickest route, use the single **Email Civic Continuum** action on the contact page. It opens a new message to `contact@civiccontinuum.org`. If your device does not open an email app, copy that address into your email service. This is an email handoff, not an instant live-chat service; response targets below still apply.
 
 ## What this channel is for
 
