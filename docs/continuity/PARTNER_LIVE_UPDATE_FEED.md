@@ -204,3 +204,16 @@ The user asked to retry setup and establish the business launch path again. The 
 - **SAGE:** still an early feasibility project; no production readiness, safety certification, purchase, or manufacturing authorization is implied.
 - **Help needed to proceed:** the user may need to open the hosting/site editor while signed in and share the non-secret editor/deployment URL or describe which service owns the live page. Never request or accept passwords, one-time codes, API keys, Stripe secrets, or recovery codes in chat. If authentication is needed, the user should complete it directly in the official service.
 - **No-cost boundary:** continue documentation, code review, and available checks without paid API usage. No live charges, business filings, customer outreach, or production activation were made.
+
+## October 15, 2026 — ChatGPT Sites access path identified
+
+The user confirmed the website was created through ChatGPT and can open the account on their tablet. Official OpenAI guidance says to open the chat where the Site was created, or open Sites from the sidebar, select the Site's edit icon, describe the changes, review the preview, and publish only after review. Published-site editing may also offer an “Edit site” control. Reference: https://help.openai.com/en/articles/20001339-creating-and-using-chatgpt-sites
+
+### Immediate user-assisted next step
+1. In ChatGPT on the web if possible, open Sites (or the original site-creation chat) and locate the Site whose URL is `civic-continuum-contact.freshcoin8.chatgpt.site`.
+2. Open Edit, ask for a single clear “Email Civic Continuum” action addressed to `contact@civiccontinuum.org`, and remove personal Gmail/address from visible content and metadata.
+3. Review preview, links, privacy, and mobile layout. Because deployment URLs are production URLs, publish only after the preview is correct.
+4. Send the non-secret Site URL or a screenshot of the editor/preview (hide personal details) if assistance is needed; never share credentials or secret values.
+
+### Maya Node no-cost recheck
+Draft PR #63 remains open, draft and unmerged. GitHub reports Security & Ethics Checks success for commit `5345e7ab174802d4fd771e636c36d034dd9f1dc8`; it is not a full runtime/checkout validation. Repository records still state that API billing is inactive, so no successful inference or end-to-end paid flow is claimed. Keep launch disabled pending server identity/runtime, database, secrets, quota-failure handling, and sandbox purchase-to-reply tests.
