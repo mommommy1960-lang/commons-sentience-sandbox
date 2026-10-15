@@ -194,3 +194,13 @@ Public updates deliberately omit private Bruce-to-Bruce correspondence, personal
 - Updated the [public contact/correction procedure](../civic-continuum/governance/PUBLIC_CORRECTION_AND_CONTACT_PROCEDURE.md) to explain the single-action route in plain language.
 - **Deployment boundary:** these are committed public repository changes. I could not access the hosted `civic-continuum-contact.freshcoin8.chatgpt.site` or `civiccontinuum.org` through the available browser inspection, and this repository is not confirmed as the live site’s deployment source. Therefore the hosted contact page has not yet been changed or verified. The source must be connected to the actual site deployment before we claim the live page is fixed.
 
+
+## October 15, 2026 — fresh launch recheck
+
+The user asked to retry setup and establish the business launch path again. The current GitHub records were re-opened and the remaining blockers rechecked.
+
+- **Civic Continuum contact:** simplified source remains committed; deployment issue [#56](https://github.com/mommommy1960-lang/commons-sentience-sandbox/issues/56) remains open because the canonical website editor/deployment source is not yet identified. Do not claim the hosted page is fixed.
+- **Maya Node:** draft [PR #63](https://github.com/mommommy1960-lang/maya-node/pull/63) remains unmerged. GitHub reports the “Security & Ethics Checks” workflow completed successfully for commit `5345e7ab174802d4fd771e636c36d034dd9f1dc8`; this is not proof of a full service test, deployed runtime, funded model inference, or end-to-end checkout. Latest launch tracker is [issue #64](https://github.com/mommommy1960-lang/maya-node/issues/64). Launch stays disabled until the listed checks pass.
+- **SAGE:** still an early feasibility project; no production readiness, safety certification, purchase, or manufacturing authorization is implied.
+- **Help needed to proceed:** the user may need to open the hosting/site editor while signed in and share the non-secret editor/deployment URL or describe which service owns the live page. Never request or accept passwords, one-time codes, API keys, Stripe secrets, or recovery codes in chat. If authentication is needed, the user should complete it directly in the official service.
+- **No-cost boundary:** continue documentation, code review, and available checks without paid API usage. No live charges, business filings, customer outreach, or production activation were made.
