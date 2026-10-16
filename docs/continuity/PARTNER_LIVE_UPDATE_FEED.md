@@ -2,7 +2,7 @@
 
 **Public status page for collaborators, reviewers, funders, manufacturers, and future partners.**
 
-Last curated update: **2026-10-15**
+Last curated update: **2026-10-16**
 
 ## October 14, 2026 — SAGE Phase 1 feasibility intake sent
 
@@ -229,3 +229,14 @@ The site owner reports that the primary contact button on the hosted Civic Conti
 Reviewed the committed contact-page source at `docs/civic-continuum/contact.html`. Source-level findings: organization-only title/description metadata, official contact inbox only, viewport meta, fluid responsive CSS, and visible keyboard focus styling. The site owner independently confirmed the published email button works. The live ChatGPT-hosted page could not be retrieved for independent DOM/metadata inspection or rendered mobile QA; no claim of full live-site privacy/accessibility verification is made.
 
 The public [Juan Antonio Garcia business-review tracker](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/JUAN_ANTONIO_GARCIA_BUSINESS_REVIEW.md) and [October 14 assignment update](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/CUSTOMER_DEMOS_AND_ASSIGNMENT_UPDATE_2026-10-14.md) consolidate the October 13 advising notes and current completion evidence. Completed preparation includes sector-specific school/banking hypotheses and pitches, fictional-data demonstrations, survey/privacy and discovery materials, selected local test/evaluation evidence, and private office/legal/insurance research. Remaining gates include customer discovery/feedback, live walkthrough and field evidence, buyer acceptance, registration/licensing/UBI, insurance, office selection, and a working paid software path; no sale is enabled.
+
+## October 16, 2026 — public portfolio and professional presence
+
+Civic Continuum refreshed the founder's LinkedIn headline, About and experience descriptions; published and pinned a portfolio introduction; added three project entries spanning the public repository portfolio, Maya Node accountability prototypes and housing/public-systems research; and added three course-completion entries plus technical-writing skill context.
+
+- [Featured public portfolio](https://www.linkedin.com/in/mya-p-brown-486463172/details/featured/)
+- [Public portfolio introduction](https://www.linkedin.com/feed/update/urn:li:activity:7516931526400466944/)
+- [13-repository evidence index](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/PUBLIC_REPOSITORY_INDEX_2026-10-14.md)
+- [Achievements and training evidence](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/FOUNDER_ACHIEVEMENTS_2026-10-14.md)
+
+Evidence level: completed public profile/documentation updates, not software deployment, certification, customer validation or partnership. Maya Node remains in development; software delivery and live integration gates are separate. Course completion and community badges are not professional exam certifications. Public availability does not imply reviewer endorsement. Private correspondence, prospect tracking and employment applications remain outside this public feed.
