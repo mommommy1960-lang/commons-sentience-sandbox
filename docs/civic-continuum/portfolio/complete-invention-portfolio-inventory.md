@@ -1,5 +1,10 @@
 # Civic Continuum — Complete Invention Portfolio Inventory
 
+
+## October 16 2026 continuity correction
+
+The table below remains the September 8 workbook snapshot. Its older Maya human-review offer and traffic instructions are historical, not current launch instructions. Consult the [Maya software launch pause](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/MAYA_SOFTWARE_LAUNCH_PAUSE_2026-10-14.md) and [current advising tracker](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/JUAN_ANTONIO_GARCIA_BUSINESS_REVIEW.md). The proposed software trial, replies and checkout remain disabled until actual delivery gates pass. The later Zenodo family map remains linked below. Reuse these established records before creating new catalogs; do not count deposits, repositories or concepts as interchangeable totals.
+
 For the current signed-in Zenodo upload sweep and representative source links, see the [Zenodo-verified invention map (2026-09-28)](zenodo-verified-invention-map-2026-09-28.md). The 50 concepts below come from an older workbook snapshot; the Zenodo map adds later CARE rescue and other deposits.
 
 Source of truth: `Commons_Invention_Portfolio_and_Revenue_Plan.xlsx`, snapshot 2026-09-08. This inventory preserves the source workbook’s current truth, lane, and next action. It is a planning record, not proof that every concept is a functioning product.
