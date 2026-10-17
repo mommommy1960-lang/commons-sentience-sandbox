@@ -2,7 +2,15 @@
 
 **Public status page for collaborators, reviewers, funders, manufacturers, and future partners.**
 
-Last curated update: **2026-10-16**
+Last curated update: **2026-10-17**
+
+## October 17, 2026 — usable private software workshop
+
+Civic Continuum published an owner-private workshop with fifteen working bounded tool pages. Web release 0.2 passed 40 hosted acceptance checks, and the combined source/web suites passed 324 local tests. Archive now verifies multi-file bundles and produces readable evidence reports; permission withdrawal remains available at capacity. These are working software capabilities, not completion of fifteen inventions or activation of paid AI services.
+
+[Full non-confidential progress, all fifteen service links and open gates](PORTFOLIO_WEB_SERVICES_2026-10-17.md). The workshop links require authorized signed-in access. Private implementation, correspondence, credentials and commercial planning remain private. Original hosting recovery, live AI/payment integration and independent participant acceptance remain open. This update does not restart paused Flux research.
+
+The older October 10 engineering-direction inventory and business-priority statement below are historical; the October 17 software release does not replace the wider portfolio or prove commercial readiness.
 
 ## October 14, 2026 — SAGE Phase 1 feasibility intake sent
 
