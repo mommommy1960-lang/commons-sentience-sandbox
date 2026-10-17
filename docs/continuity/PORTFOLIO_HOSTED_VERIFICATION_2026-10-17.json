@@ -1,0 +1,41 @@
+{
+  "run_id": 39070612103,
+  "url": "https://github.com/mommommy1960-lang/commons-sentience-sandbox/actions/runs/39070612103",
+  "conclusion": "success",
+  "public_source_tests": 262,
+  "suites": [
+    {
+      "repository": "sage-situated-companion",
+      "tests": 136,
+      "passed": true
+    },
+    {
+      "repository": "CERL-Preemptive",
+      "tests": 23,
+      "passed": true
+    },
+    {
+      "repository": "Commons-Unified-Protocol",
+      "tests": 11,
+      "passed": true
+    },
+    {
+      "repository": "aurora-sovereign-core",
+      "tests": 47,
+      "passed": true
+    },
+    {
+      "repository": "commons-sentience-sandbox",
+      "tests": 32,
+      "passed": true
+    },
+    {
+      "repository": "maya-node",
+      "tests": 13,
+      "passed": true
+    }
+  ],
+  "artifact_id": 12114503118,
+  "artifact_sha256": "89da22647715e8d8559078e449a4acd89dafd137ef6627a5d65b4b4c219a6a0d",
+  "scope": "Six pinned public source repositories only; excludes the private web/workbench code, live AI, payments and independent customer acceptance."
+}

@@ -4,6 +4,10 @@
 
 Last curated update: **2026-10-17**
 
+## October 17, 2026 — public hosted verification completed
+
+The six-repository public verification run completed successfully: **262 source tests passed on GitHub**. [Permanent result, exact scope and downloadable evidence](PORTFOLIO_HOSTED_VERIFICATION_2026-10-17.md). This is separate from the 324-test local total and 40 hosted web checks; the counts overlap and must not be added together. The private runner/access block remains unresolved. No new paid-product or independent-user validation is implied.
+
 ## October 17, 2026 — usable private software workshop
 
 Civic Continuum published an owner-private workshop with fifteen working bounded tool pages. Web release 0.2 passed 40 hosted acceptance checks, and the combined source/web suites passed 324 local tests. Archive now verifies multi-file bundles and produces readable evidence reports; permission withdrawal remains available at capacity. These are working software capabilities, not completion of fifteen inventions or activation of paid AI services.
