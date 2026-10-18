@@ -2,6 +2,8 @@
 
 ## Public workbench and current updates
 
+- [Collaboration and evaluation boundaries](docs/continuity/PUBLIC_COLLABORATION_BOUNDARIES.md): scope, ownership, confidentiality and existing-license protections.
+
 This repository is the public workbench for the Civic Continuum / Commons Initiative. For the current status, active work, evidence, limitations, and next actions, start with:
 
 - [Civic Continuum continuity index](docs/continuity/README.md)
