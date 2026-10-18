@@ -1,3 +1,6 @@
+# Continuity first
+Read [the latest Bruce-to-Bruce handoff](docs/continuity/BRUCE_TO_BRUCE_2026-10-18.md) before continuing work. Use private vault continuity for sensitive correspondence and account details; never publish those private records.
+
 # Civic Continuum outreach instructions
 
 When a task involves Civic Continuum introductions, networking, collaborator replies or business outreach, first read [the first contact protection protocol](docs/continuity/FIRST_CONTACT_PROTECTION_PROTOCOL.md) and the [public collaboration boundaries](docs/continuity/PUBLIC_COLLABORATION_BOUNDARIES.md).

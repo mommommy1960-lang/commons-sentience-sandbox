@@ -1,5 +1,7 @@
 # Civic Continuum
 
+[Latest Bruce-to-Bruce continuity: October 18, 2026](docs/continuity/BRUCE_TO_BRUCE_2026-10-18.md) — completed work, evidence, links and continuation rules.
+
 ## Public workbench and current updates
 
 - [IP, security and marketing practices](docs/continuity/IP_SECURITY_AND_MARKETING_PRACTICES.md): asset records, disclosure review, release checks and evidence-based marketing.
