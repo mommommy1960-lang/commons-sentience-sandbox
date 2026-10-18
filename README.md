@@ -2289,3 +2289,8 @@ Default output layout:
 Stage 15 is an internal diagnosis/reporting layer. It is not a discovery claim,
 does not prove metaphysical conclusions, and does not override publication-gate
 or external-review requirements.
+
+
+## Launch costs and readiness
+
+[Itemized registration, insurance and launch budget — October 18, 2026](docs/continuity/CIVIC_CONTINUUM_STARTUP_COSTS_2026-10-18.md). Distinguishes official fees, free programs, conditional obligations and unquoted operating allowances. Includes an editable workbook. This is a budget, not a paid receipt or a claim of complete compliance.
