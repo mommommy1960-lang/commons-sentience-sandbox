@@ -2294,3 +2294,5 @@ or external-review requirements.
 ## Launch costs and readiness
 
 [Itemized registration, insurance and launch budget — October 18, 2026](docs/continuity/CIVIC_CONTINUUM_STARTUP_COSTS_2026-10-18.md). Distinguishes official fees, free programs, conditional obligations and unquoted operating allowances. Includes an editable workbook. This is a budget, not a paid receipt or a claim of complete compliance.
+
+Updated with existing paid domain/contact/web infrastructure, a blank **Pay today** planner and cost-specific **Help with costs** options. Pending grants/referrals are not money available. Do not publish populated cash plans.

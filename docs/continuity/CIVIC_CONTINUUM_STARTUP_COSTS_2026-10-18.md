@@ -2,7 +2,19 @@
 
 [Download the editable budget workbook](Civic_Continuum_Startup_Budget_2026-10-18.xlsx).
 
-Checked October 18, 2026. USD. This is a planning budget, not a bill, paid receipt, registration certificate or statement that the business is fully cleared for every activity.
+Checked October 18, 2026; existing-asset reconciliation added at 11:20 AM Pacific. USD. This is a planning budget, not a bill, paid receipt, registration certificate or statement that the business is fully cleared for every activity.
+
+## Existing assets: do not buy them again
+
+- **civiccontinuum.org:** registrar purchase receipt checked; $7.98 already paid through **September 26, 2027**. No duplicate domain purchase. The receipt's $11.84 renewal estimate is historical and must be refreshed before renewal.
+- **Professional contact forwarding:** contact@civiccontinuum.org already exists; incoming business/support correspondence demonstrates mail has been routed to the owner. This does not prove a separately paid outbound mailbox or every sender-authentication path is configured.
+- **Websites and repositories:** existing Civic Continuum front door, Maya early-access Site and GitHub project records already exist. Do not buy replacement hosting simply because an old Site management issue remains unresolved.
+- **Cloudflare:** an existing free-plan welcome record was found. This is not a full current billing audit and does not establish all Workers/D1/add-on usage is free.
+- **EIN:** existing assignment recorded. No second EIN application or fee for the current sole proprietor. Any future entity change needs its own tax review.
+- **Coaching and policy material:** SBDC/BINW relationships and existing public collaboration policies are established. Do not pay for duplicate registration/advising merely to repeat existing work.
+- **Still unverified:** Washington business-license/UBI/trade-name completion, Seattle license, LLC/nonprofit status, actual insurance coverage and a settled paid-service/payment flow. Mailbox/source searches did not establish these; absence of a result is not proof that no record exists.
+
+The $60–$300 generic new-infrastructure allowance was removed from the remaining budget. Future renewal/usage costs are **unpriced**, not assumed permanently zero. The .org domain is an owned internet address; it does not itself establish a nonprofit or tax-exempt legal entity.
 
 ## The useful totals
 
@@ -13,9 +25,9 @@ Checked October 18, 2026. USD. This is a planning budget, not a bill, paid recei
 | Government opening-fee subtotal, current sole-proprietor path | **$91.50–$128.00** | Excludes payment/postage, prior years, penalties and any activity-specific endorsements |
 | Optional online LLC formation | **+$200.00** | $180 filing + $20 online processing; initial report filed together; no expedited service |
 | Government subtotal if a new LLC is chosen at the outset | **$291.50–$328.00** | Alternative legal structure, retaining one separately registered trade name; not required for a sole proprietor |
-| Internal initial-work and 12-month operating allowances | $2,860.00–$9,800.00 | Unquoted budget targets for insurance, scoped professional review, hosting and optional printing |
-| Defined sole-proprietor budget with those allowances | **$2,951.50–$9,928.00** | Roughly $3,000–$10,000; not market quotes or a full-compliance price |
-| Same defined budget with optional online LLC | $3,151.50–$10,128.00 | Annual LLC report and other excluded costs still separate |
+| Internal initial-work and 12-month operating allowances | $2,800.00–$9,500.00 | Unquoted budget targets for insurance, scoped professional review and optional printing |
+| Defined sole-proprietor budget with those allowances | **$2,891.50–$9,628.00** | Remaining defined budget; future infrastructure usage/renewals unpriced; not market quotes or a full-compliance price |
+| Same defined budget with optional online LLC | $3,091.50–$9,828.00 | Annual LLC report and other excluded costs still separate |
 | Actual debt owed / complete cost to be ready for every buyer | **Not determined** | Requires actual account records, dates, applicable scope and written quotes |
 
 The current planning basis is one Washington sole proprietor using Civic Continuum, one Seattle place of business, and no covered workers. Do not infer any registration, insurance, certification or payment is complete. A business based outside Seattle may have different city obligations; a small nonresident exemption must not be assumed for a Seattle-based business. Confirm actual start date and prior records before applying.
@@ -47,7 +59,7 @@ These are research and planning entries, not 33 confirmed fees quoted by an advi
 | 17 | Contract, privacy and license legal review | $500.00–$2000.00 | Reserve; Initial scoped work | Internal paid fallback allowance. Eligible Communities Rise service may be free, but eligibility/availability not confirmed. Patent matters excluded. Scope and quote before engagement. |
 | 18 | Accountant / bookkeeping and tax setup | $300.00–$900.00 | Reserve; Initial support | Internal scoped setup/review allowance, not ongoing monthly bookkeeping or all tax returns. Taxes themselves are separate. |
 | 19 | Independent security and accessibility review | $500.00–$2000.00 | Reserve; Initial limited review | Internal limited-review allowance. Not a comprehensive penetration test, certification or approval for school/bank production data. Broader work needs separate quote. |
-| 20 | Domain, email and hosting | $60.00–$300.00 | Reserve; 12 months | Internal allowance for ongoing business infrastructure. Existing paid subscriptions and actual bills not reconciled. Do not buy duplicate hosting. AI API usage, personal ChatGPT plan, internet and equipment excluded. |
+| 20 | Domain, email and hosting | Quote / calculation needed | Reserve; 12 months | civiccontinuum.org receipt confirms $7.98 paid through 2027-09-26. No replacement domain needed. $11.84 was a historical renewal estimate, not a current invoice. Existing contact forwarding, Sites and Cloudflare free-plan record established; current paid usage/add-ons and future renewal costs still unpriced. |
 | 21 | Business bank account | Quote / calculation needed | Conditional; Opening / monthly | No universal government fee. Choose account after legal identity/licensing facts are ready. Minimum deposit is cash retained as an asset, not a fee; bank charges unconfirmed. |
 | 22 | Basic business cards / flyer | $0.00–$100.00 | Reserve; Initial | Digital outreach can be $0. Internal maximum allowance for small print run, not required registration or a vendor quote. |
 | 23 | SAM.gov registration and UEI | $0.00 | Free; Federal awards | Direct government registration/renewal and UEI free. Not a general business license and not a promise of an award. No paid registration intermediary needed. |
@@ -72,9 +84,9 @@ These are research and planning entries, not 33 confirmed fees quoted by an advi
 | Initial scoped legal review | $500 | $2,000 |
 | Initial accounting/tax setup | $300 | $900 |
 | Limited independent security/accessibility review | $500 | $2,000 |
-| Domain/email/hosting, 12 months | $60 | $300 |
+| New domain/email/hosting purchase | Excluded: already established | Renewal/usage unpriced |
 | Optional basic printing | $0 | $100 |
-| **Total allowances** | **$2,860** | **$9,800** |
+| **Remaining allowances** | **$2,800** | **$9,500** |
 
 These amounts are internal funding envelopes only. No insurer, lawyer, accountant, assessor or host has quoted these amounts for Civic Continuum. Prices and required scope can exceed the upper allowance. They are not a requirement to spend on every line. Pursue free legal assistance first. If a policy bundles E&O and cyber, replace the two allowances with the actual combined premium to avoid double counting. Coverage is subject to exclusions and customer-required limits. An annual premium is budgeted even if payments can be monthly. Existing subscriptions need reconciliation to avoid duplicate purchases.
 
@@ -89,6 +101,36 @@ These amounts are internal funding envelopes only. No insurer, lawyer, accountan
 - Employer costs: L&I workers compensation, unemployment insurance, Paid Family and Medical Leave, WA Cares, payroll taxes, wages, paid leave and employment compliance require a separate workforce calculation if covered workers are engaged. Labeling someone a contractor does not itself remove coverage duties.
 - School/bank deployments: request the buyer's real procurement, insurance, security, accessibility, data and contract requirements before buying audits. SOC 2 is a CPA examination/report; ISO certification is by external certification bodies. Neither is a universal government license. HIPAA has no HHS-recognized private certification shortcut. Applicability and implementation still matter.
 - Hardware/manufacturing, regulated professional practice, food, devices, construction, child-facing products, multistate activity, product testing, laboratory work, equipment, rent, personal internet/ChatGPT subscriptions, tax arrears and dispute/litigation costs are outside this initial software/service budget. Run the official licensing wizard for actual activities. There is no fixed fee that makes every invention ready for sale.
+
+## When business funds become available
+
+Use the workbook's **Pay today** tab as a blank planning template. Enter only the amount designated for business after protected obligations. The example reserves one $55 state/name application bundle first, then $73 Seattle conservatively; reduce the city amount only after actual half-year eligibility is established. Both registration-verification flags start at zero. The sheet distinguishes money reserved from payment readiness and is not authority to spend.
+
+Existing domain/EIN/contact/web infrastructure must be reused. Refresh fees, check actual issued records and subtract already-paid costs before any recommendation. Actual cash amounts and populated allocation copies remain private. Unknown prices, taxes and transaction charges remain outside any apparent spendable balance until resolved.
+
+## Help that may pay for or reduce these costs
+
+Checked October 18, 2026. **Free professional services reduce an expense if accepted; grants are competitive money, not an award we already have.** No pending support is deducted from the budget.
+
+| Route | Costs it may help with | What is available | Important prerequisite / limit |
+| --- | --- | --- | --- |
+| [Seattle OED legal assistance](https://seattle.gov/economic-development/grow-a-business/consulting-services/legal-assistance) | Entity/contract/IP questions | Free individual counseling and workshops | Seattle-based business; confirm actual intake and scope. Not a promise that filing fees are paid. |
+| [Communities Rise direct services](https://communities-rise.org/microenterprise-services/small-business-legal-services/) | Formation, contract drafting, licenses/privacy | Free legal assistance if accepted | Registration, financial eligibility and capacity require confirmation. Patents excluded. This overlaps City legal referral routes; do not add duplicate savings. |
+| [Seattle ABC consulting](https://www.seattle.gov/economic-development/grow-a-business/consulting-services/accounting-and-business-consulting-program) | Accounting/bookkeeping, operations, financial planning, marketing/branding | Up to 10 hours per category, up to 40 hours total, free | Requires active Seattle license, Seattle location, no more than two locations, 50 or fewer staff and revenue under $5m; application approval needed. Not a cash grant. |
+| [Seattle Public Library legal consults](https://www.spl.org/programs-and-services/business-and-nonprofit/make-a-business-appointment/business-appointment-legal-consults) | Initial business-law/IP questions | Free volunteer-attorney appointment | **Does not review or comment on legal documents.** Useful triage, not a substitute for contract drafting/review. |
+| [Washington TILE Patent Pro Bono](https://law.seattleu.edu/academics/degree-programs/jd/curriculum/tile/wa-tile-patent-pro-bono-hub/) | Patent attorney services | Free professional assistance if eligible and matched | Inventor still pays USPTO and other out-of-pocket costs. Matching not guaranteed; up to three months. Existing intake should be followed rather than duplicated. |
+| [Verizon Digital Ready / LISC](https://digitalready.verizonwireless.com/funding/details) | Potential business funding | Competitive **$10,000** grants; free platform/application route | Two eligible courses/events during 2026 through December 7 unlock application. US/territory for-profit business, adult owner and finalist documentation required. Approved uses and current account/application status need checking; no award claimed. |
+| [Awesome Foundation Seattle](https://www.awesomefoundation.org/chapters/seattle) | A defined local public-benefit project | Typically **$1,000**, not a loan or equity purchase | Competitive chapter selection. No application charge shown on official form. Do not assume general business overhead or personal bills will be funded; project fit/use needs confirmation. |
+| [Washington SBDC](https://wsbdc.org/sbdc-services/) / [Business Impact NW](https://businessimpactnw.org/grow-your-business/coaching/) | Licensing sequence, budgeting and resource referrals | Existing no-cost advising/free coaching | Coaching is not cash, tax representation or an insurance premium payment. Use established adviser relationships. |
+
+### What this changes in the budget
+
+- Pursue eligible free legal help before spending the $500–$2,000 internal legal allowance. A brief consultation may not cover substantive document work; obtain a clear accepted scope first.
+- Seattle ABC could cover some planned accounting/marketing work after the active-city-license requirement is satisfied. Keep the $300–$900 accounting allowance until approved services actually cover it.
+- TILE could avoid patent attorney fees if matched, but does **not** eliminate the inventor's filing costs. Do not set USPTO fees to zero.
+- No general waiver of our WA/Seattle opening fees or insurance-premium subsidy was verified. Ask the existing advisers about local fee sponsorship without treating a referral or possibility as a commitment.
+- Loans, principal-paydown programs and reimbursement-only storefront grants are not counted as startup cash for this software/service plan. No application-fee, paid-membership or matching-contribution program is selected.
+- Grant money is not automatically tax-free. Some finalist checks require sensitive identity and banking documents; review requirements and obtain appropriate authorization through secure channels before proceeding. No grant application, new enrollment, agreement, payment or sensitive submission was made in this research task.
 
 ## Public transparency and support
 
