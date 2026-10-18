@@ -1,5 +1,11 @@
 # Commons First Watch Continuity Index
 
+## Standing first-contact rule — October 18, 2026
+
+Before Civic Continuum business outreach, read [FIRST_CONTACT_PROTECTION_PROTOCOL.md](FIRST_CONTACT_PROTECTION_PROTOCOL.md) and [PUBLIC_COLLABORATION_BOUNDARIES.md](PUBLIC_COLLABORATION_BOUNDARIES.md). Use the standard welcome, ask for an explicit public/synthetic starting-scope reply, and record actual acknowledgment privately. A click or silence is not a signature. Apply the same protection to both sides; check existing receipts before sending another notice.
+
+The [public homepage](https://civic-continuum.myqueen1960.chatgpt.site/) now presents a first-visit welcome notice and links to the full introduction. LinkedIn's Featured section points to the policy. These are visible notices, not automatic contracts.
+
 > **Correction and current reading order — October 14, 2026:** This index's September status and personal-handoff reading order below are historical. Personal continuity records were relocated privately; they are intentionally absent from public main. Do not recreate public copies. Current working identity is **Civic Continuum**. Use these current public entry points:
 >
 > 1. [Reviewer dashboard](../civic-continuum/DR_THOMAS_REVIEW_DASHBOARD.md)

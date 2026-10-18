@@ -39,3 +39,11 @@ Implementation begins with the verified public notices and a private unsigned ev
 [WIPO's technology transfer agreement guidance](https://www.wipo.int/en/web/technology-transfer/agreements) distinguishes confidentiality arrangements from agreements governing collaborative work and IP rights. [UK Intellectual Property Office NDA guidance](https://www.gov.uk/government/publications/non-disclosure-agreements/non-disclosure-agreements) describes mutual confidentiality where both parties disclose. These are drafting resources; UK guidance is not a substitute for advice on the applicable US jurisdiction.
 
 Updated October 18, 2026. This policy does not allege misconduct by a collaborator, competitor or other organization.
+
+## First business contact
+
+From October 18, 2026, our standard introduction includes this policy before a substantive collaboration discussion. Please confirm in writing that the initial exchange will use public information, harmless synthetic examples and separate accounts. The boundary is mutual: we will not ask for your secrets or use your protected work beyond agreed rights either.
+
+A greeting, profile view, policy link, page visit, silence or dismissal of a notice is not treated as an executed NDA, IP assignment or completed collaboration agreement. Public browsing and existing license rights are unaffected. Before protected or commercial work, both parties must settle the appropriate activity-specific terms and any required signatures.
+
+[Our first-contact greeting and process](FIRST_CONTACT_PROTECTION_PROTOCOL.md) · [Public welcome page](https://civic-continuum.myqueen1960.chatgpt.site/collaborate.html).

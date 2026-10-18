@@ -2,6 +2,9 @@
 
 ## Public workbench and current updates
 
+- [Before we collaborate: welcome notice and standard greeting](https://civic-continuum.myqueen1960.chatgpt.site/): public starting scope and mutual boundaries.
+- [Standing first-contact protocol](docs/continuity/FIRST_CONTACT_PROTECTION_PROTOCOL.md): include the policy before each new substantive business exchange.
+
 - [Collaboration and evaluation boundaries](docs/continuity/PUBLIC_COLLABORATION_BOUNDARIES.md): scope, ownership, confidentiality and existing-license protections.
 
 This repository is the public workbench for the Civic Continuum / Commons Initiative. For the current status, active work, evidence, limitations, and next actions, start with:
