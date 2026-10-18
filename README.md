@@ -2,6 +2,9 @@
 
 ## Public workbench and current updates
 
+- [IP, security and marketing practices](docs/continuity/IP_SECURITY_AND_MARKETING_PRACTICES.md): asset records, disclosure review, release checks and evidence-based marketing.
+- [Two Verizon course completion milestones](docs/continuity/VERIZON_TWO_COURSES_COMPLETED_2026-10-18.md).
+
 - [Before we collaborate: welcome notice and standard greeting](https://civic-continuum.myqueen1960.chatgpt.site/): public starting scope and mutual boundaries.
 - [Standing first-contact protocol](docs/continuity/FIRST_CONTACT_PROTECTION_PROTOCOL.md): include the policy before each new substantive business exchange.
 
