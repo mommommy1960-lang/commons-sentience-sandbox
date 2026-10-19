@@ -1,3 +1,16 @@
+# Latest closure update
+
+## Follow-through at17:15Pacific — supersedes earlier dependency and source-recovery status
+- Closed both esbuild advisory findings by pinning0.28.1 across the three toolchains. All131 regression tests, three Drizzle migration checks and three framework builds passed. Published Workshop7, Maya11, Crown6; all native deployment statuses succeeded.
+- Broader audits now retain only the braces advisory family: pnpm1 high advisory per project; npm8 affected dependency entries cascading from braces. Latest braces registry release observed3.0.3, which remains affected. Do not call full audit clean. No blind downgrade or unreviewed library rewrite installed.
+- Limited textual scans of133 built server JavaScript files found no selected braces markers. This is limited reachability evidence, not proof that no path exists. Treat lint/build inputs as trusted; no public build/dev servers or untrusted project/glob processing.
+- Actual committed source snapshots restored from Git bundles into separate temporary directories: Workshop138, Maya138, Crown123 tracked files compared; same source commits and zero byte differences. Source recovery check passed. This does not verify production database recovery, and temporary test bundles are not a new off-provider backup service.
+- Runtime environment inventories inspected: no custom entries for these three Sites (revision0). Recent3-hour error logs: Maya0 events, Crown0; Workshop2 GET /api/workshop401 responses, outcome ok. This is a bounded log check, not an all-history or alert-delivery clearance.
+- Cloudflare plugin search returned no matching available connection. Cloudflare dashboard directly checked and shows sign-in; database backup/restore and account settings cannot be reviewed through an unauthenticated dashboard. Secure sign-in is the next access step.
+- Provider/physical-device/legal and monitoring gates still require their own evidence; no whole-business clearance or attorney review claimed.
+
+---
+
 # Civic Continuum security review — October 18, 2026 (Pacific)
 Updated after publication at October 19 UTC. Status: scoped internal review and remediation completed for the checks below; whole-business security assurance remains open.
 
