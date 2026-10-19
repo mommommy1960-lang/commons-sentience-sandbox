@@ -19,3 +19,6 @@ Service Workshop and Reality Audit retain their existing restricted audiences; t
 Use the private vault's same-date Bruce-to-Bruce record for correspondence, identity, money, access inspection and exact receipts. Do not publish that private record.
 Course completion and a policy are not legal/security certification. The original missing Maya Site remains a separate recovery issue. Do not replace it with the working demo or claim restoration.
 No global cross-chat memory setting was changed. Future sessions should read repository AGENTS and this handoff; the owner can paste this link in another chat.
+
+## Later security follow-through
+[Security review, fixes and remaining verification](SECURITY_REVIEW_2026-10-18.md) records the full scope. Three applications patched, rebuilt and published;131 regression tests passed again and production dependency scans report zero known findings. Broader build-chain findings and provider/recovery checks remain explicitly open. This is an internal scoped review, not security certification.
