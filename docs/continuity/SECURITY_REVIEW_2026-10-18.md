@@ -1,3 +1,13 @@
+# Current evening publication
+
+## Evening closure at approximately18:15 Pacific
+- Additional request-boundary fixes published successfully: Workshop8 source7b87735e72f81879bc3a577aca702d0b8bdd5115 deployment appgdep_6ad56e6725e08191808e2bc9414899a4; Maya12 source8c816b2b50a76c537955d834d6b30e12bf463894 deployment appgdep_6ad56e8c72d48191ba7e306d3f5467a4; Crown7 source31aa69ae850abb07d2d6ef7d8da1138ef2b0bd65 deployment appgdep_6ad56f0953848191acad90361567021e. Existing audiences preserved.
+- Workshop validates origin/body before storage, caps streamed JSON, rejects MIME lookalikes, guards acceptance by platform identity and suppresses infrastructure details while preserving known validation errors. Maya rejects nonobject or missing-action requests without writes. Crown uses atomic persistent ten-minute quotas with hashed platform IP buckets, expiry cleanup and fail-closed storage behavior; live DB overview confirms keepers and signup_limits tables.
+-144 tests passed (Workshop78, Maya53, Crown13), all3 TypeScript checks/framework builds passed. Production audits zero known advisories: pnpm --prod Workshop/Crown, npm --omit=dev Maya. Broader braces advisory remains unresolved; esbuild already closed. No certification or all-business clearance.
+- Source restore was demonstrated earlier; production DB restore, provider account coverage, device recognition, alert exercise and private branch enforcement remain open. Cloudflare currently requires secure sign-in. Original Maya support recovery remains separate.
+
+Earlier sections below preserve historical evidence; current publication and counts above supersede them.
+
 # Latest closure update
 
 ## Follow-through at17:15Pacific — supersedes earlier dependency and source-recovery status
@@ -42,7 +52,7 @@ Routine technical checks can be performed internally. Specific legal interpretat
 ## Remaining findings and verification gates
 | Area | Evidence / limitation | Required closure |
 | --- | --- | --- |
-| Build dependencies | Broader pnpm audits retain3 advisory entries: esbuild moderate development-server issue, esbuild low Windows development-server issue, braces high recursive-pattern DoS. npm reports14 affected dependency/package entries cascading from these families; counts are not comparable. | Keep development servers private and process only trusted build/lint inputs. Validate a compatible esbuild/toolchain upgrade rather than a blind breaking override; monitor braces upstream fix/replacement. No public user-controlled glob endpoint was found in the focused Maya app/server search; this is not proof of universal nonreachability. |
+| Build dependencies | esbuild findings closed with0.28.1. Broader audits retain the braces advisory family (pnpm1 high advisory per project; npm8 affected package entries). | Restrict build/lint inputs to trusted content and monitor a compatible upstream fix/replacement. Production-only audits have zero known findings; full audit is not clean. |
 | Recovery | Source history and deployment versions exist; production database restore has not been demonstrated. | Verify provider backup retention/export and restore to an isolated target; record measured recovery. |
 | Provider accounts | GitHub review is partial account evidence, not Cloudflare, Google/Gmail, Stripe, domain registrar or LinkedIn security clearance. | Authenticated settings, role/token, recovery, billing/webhook and log checks at each provider; do not repeat known authentication loops. |
 | Devices and sessions | Visible GitHub session inventory reviewed; browser geography alone cannot identify an intruder. Owner's Android mobile authentication preserved. | Owner recognition of devices; device OS/update/screen-lock and recovery checks require the actual devices. |
