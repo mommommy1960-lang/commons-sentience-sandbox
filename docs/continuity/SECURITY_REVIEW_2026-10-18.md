@@ -1,3 +1,7 @@
+
+## Current build-tool mitigation and publication
+Local locked-parser depth guard now rejects AST nesting above100 before recursive walkers; SHA256 verification rejects unrecognized parser contents. Guard runs through framework build/dev and lint. Five hostile/normal-pattern regression checks perproject plus full application regressions passed:159 total. All3 framework builds and native deployments succeeded: Workshop9, Maya13, Crown8. This is a local compensating control; the upstream braces advisory remains reported and directly running tools outside approved scripts bypasses the guard. Formal certification readiness started internally; no certificate, paid audit engagement or whole-business clearance claimed. Provider backup/restore, physical devices, operational alert exercise, enforceable private branch rules and independent assessment remain open.
+
 # Current evening publication
 
 ## Evening closure at approximately18:15 Pacific
