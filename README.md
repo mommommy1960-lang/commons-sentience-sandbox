@@ -1,5 +1,17 @@
 # Civic Continuum
 
+## Civic Continuum: business, evidence and operating policy
+
+Keep people in control. Solve the problem—not preserve dependence on the organization.
+
+- [Start here: Civic Continuum](https://civic-continuum.myqueen1960.chatgpt.site)
+- [Business structure and partner packet](https://civic-continuum.myqueen1960.chatgpt.site/partner-packet.html)
+- [Maya test evidence and limits](https://civic-continuum.myqueen1960.chatgpt.site/maya-evidence.html)
+- [Completion and independence policy](docs/civic-continuum/business/COMPLETION_AND_INDEPENDENCE_POLICY_2026-10-20.md)
+
+We require measurable lasting benefit, accountable ownership and conditions for changing, shrinking or closing programs. Deliberately weakening useful solutions or manufacturing dependence to preserve revenue is prohibited. Individual program reviews remain open. Our business packet applies selected Kawasaki and Ries principles; customer demand, pricing and broader integrations remain under validation.
+
+
 [Latest Bruce-to-Bruce continuity: October 18, 2026](docs/continuity/BRUCE_TO_BRUCE_2026-10-18.md) — completed work, evidence, links and continuation rules.
 
 ## Public workbench and current updates
