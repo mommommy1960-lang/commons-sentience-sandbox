@@ -5,6 +5,7 @@
 Keep people in control. Solve the problem—not preserve dependence on the organization.
 
 - [Start here: Civic Continuum](https://civic-continuum.myqueen1960.chatgpt.site)
+- [Open Member Commons — free public project hub](https://civic-continuum-members.myqueen1960.chatgpt.site/) · [Project, free access model and test scope](docs/civic-continuum/MEMBER_COMMONS_2026-10-24.md)
 - [Business structure and partner packet](https://civic-continuum.myqueen1960.chatgpt.site/partner-packet.html)
 - [Maya test evidence and limits](https://civic-continuum.myqueen1960.chatgpt.site/maya-evidence.html)
 - [Completion and independence policy](docs/civic-continuum/business/COMPLETION_AND_INDEPENDENCE_POLICY_2026-10-20.md)
