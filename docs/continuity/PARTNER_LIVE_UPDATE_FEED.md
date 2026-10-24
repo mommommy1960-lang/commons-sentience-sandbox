@@ -1,3 +1,11 @@
+## October 24, 2026 - Sage public demonstration and partnership brief
+
+[**Read the public Sage developer and funder dossier**](https://github.com/mommommy1960-lang/sage-situated-companion/blob/main/docs/SAGE_PUBLIC_PARTNERSHIP_DOSSIER_2026-10-24.md) · [Open the public device demo](https://sage-companion-device-lab.myqueen1960.chatgpt.site/) · [Inspect PR10 and tests](https://github.com/mommommy1960-lang/sage-situated-companion/pull/10).
+
+The briefing explains current capabilities, evidence, separate browser/Python paths, proposed integration and measurable pilot gates. Founder-reported tablet observations cover camera preview, location display and speech-to-text. Audible replies remain unconfirmed. Camera preview is not scene understanding; browser/OS background suspension and runtime integration remain open. Ordinary tab-session and speech diagnostics changes are merged, with automated checks recorded. No production readiness, completed independent review or endorsement is implied.
+
+---
+
 # The Commons Initiative — Partner Live Update Feed
 
 **Public status page for collaborators, reviewers, funders, manufacturers, and future partners.**
