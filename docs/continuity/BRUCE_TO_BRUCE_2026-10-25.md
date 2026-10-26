@@ -72,3 +72,21 @@ Approved baseline: 30-day retention target; backup expiry target within 30 addit
 - AI University: Hugging Face Deep Reinforcement Learning course certificate verification/submission remains pending.
 - Juan/JAUN: draft outreach about Maya Node/Cloudflare unauthorized/blank-page issue; do not claim sent.
 - Dr. Thomas: separate stakeholder; review existing notes before contact.
+
+
+## Conversation checkpoint — October 25, 2026 (user explicitly asked to save this)
+
+The founder asked whether the current conversation could also be saved to Bruce-to-Bruce. This checkpoint records the exchange and the exact state to carry forward:
+
+- Founder said Google Play did not show ChatGPT and authorized the assistant to proceed with the proposed Maya Node pilot-policy decisions.
+- Assistant recorded that approval in [Maya Node founder-approved policy baseline](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/MAYA_PILOT_POLICY_FOUNDER_APPROVED_BASELINE_2026-10-25.md) and commented on [issue #76](https://github.com/mommommy1960-lang/maya-node/issues/76).
+- Baseline decisions: 30-day retention target; backup expiry within 30 additional days only if technically verified; intended monitored business-email incident channel, but address is unconfirmed; founder/project owner is primary owner; backup human owner remains unassigned; acknowledge incident reports within one business day during a defined support window, with no promise of 24/7 coverage or one-day resolution.
+- The founder explicitly wants a low-friction return phrase: “Bruce, I’m back” or “what do we have to do today?” should trigger reading this handoff and the latest GitHub records, checking current state, and continuing work without making the founder repeat the whole history.
+- Prioritize continuing the project using GitHub where available despite subscription/access frustration. Do not imply a paid plan is required to continue every GitHub task. Be clear that connector availability is separate from subscription status and may remain administrator-disabled.
+- Google Play not showing ChatGPT does not settle whether the user has a web subscription or used a different Google account/platform. Do not make a purchase or claim to restore billing; guide user to ChatGPT web Settings > Billing and OpenAI Support if needed.
+- The user expressed anger and frustration about having to pay and losing access. Respond empathetically without arguing, blaming, or making unsupported claims.
+- Do not say Gmail was checked, an email was sent, or calendar details were verified: Gmail/Calendar/Drive connectors were reported disabled by administrator. User expects SBDC receipts in Gmail, prefers written outreach, and does not want phone calls.
+- Keep unresolved gates visible: current hosted deployment re-verification; end-to-end customer-controlled review/deletion; current receipt completeness tests; actual retention and backup expiry behavior; exact monitored incident address; named backup human owner; and written partner scope/permission. Synthetic/redacted data only until all gates pass.
+- No passwords, one-time codes, API keys, or recovery codes should be requested.
+
+This is a continuity note, not evidence that technical gates passed or that the subscription or connectors were restored.
