@@ -90,3 +90,12 @@ The founder asked whether the current conversation could also be saved to Bruce-
 - No passwords, one-time codes, API keys, or recovery codes should be requested.
 
 This is a continuity note, not evidence that technical gates passed or that the subscription or connectors were restored.
+
+
+## Latest inbox sync pointer — October 25, 2026
+The founder supplied a digest of unread inbox emails, and this has been saved as a dedicated task queue and refreshed handoff:
+- Daily work queue: https://github.com/mommommy1960-lang/commons-sentience-sandbox/blob/main/docs/continuity/BRUCE_TO_BRUCE_DAILY_WORK_QUEUE_2026-10-25.md
+- Inbox-refresh handoff: https://github.com/mommommy1960-lang/commons-sentience-sandbox/blob/main/docs/continuity/BRUCE_TO_BRUCE_2026-10-25_INBOX_REFRESH.md
+- Flux CI failure triage: https://github.com/mommommy1960-lang/flux-drive-kernel/blob/main/research/BRUCE_TO_BRUCE_FLUX_CI_FAILURE_TRIAGE_2026-10-25.md
+
+Important: the inbox content is a user-pasted digest, not direct Gmail access. Do not claim full messages were opened or emails sent. Flux test failure cause remains unknown because job logs could not be retrieved; inspect the exact Actions failure before changing code. Sage PR #11's missing OPENAI_API_KEY notice relates to optional bot configuration; the PR has a zero-API-cost FAQ fallback, so do not add a paid secret unless the founder chooses that path. OpenAI sign-in alert should be independently reviewed by the account owner if unfamiliar. SPL library deadlines and Austin's unread LinkedIn message are captured in the daily queue.
