@@ -48,3 +48,27 @@
 
 ## Communication rule
 Give the user concise status with links and distinguish **completed**, **blocked by authenticated access**, and **requiring the founder's real-world decision**. No repeated generic progress narration. No production-ready, certified-compliant, zero-error, or successful-pilot claims without evidence.
+
+
+## Founder approval and return-to-work instruction — October 25, 2026
+
+The founder approved the internal Maya Node pilot-policy baseline in ChatGPT. Canonical record: [Founder-approved pilot-policy baseline](https://github.com/mommommy1960-lang/maya-node/blob/main/docs/MAYA_PILOT_POLICY_FOUNDER_APPROVED_BASELINE_2026-10-25.md). Approval was also summarized on [Maya Node issue #76](https://github.com/mommommy1960-lang/maya-node/issues/76).
+
+Approved baseline: 30-day retention target; backup expiry target within 30 additional days only if technically verified; intended incident channel is monitored business email but exact address must be confirmed; founder/project owner is primary owner; backup human owner remains unassigned; acknowledge incidents within one business day during a defined support window, with no 24/7 or resolution-time promise. This is internal policy approval only, not partner consent, a published privacy policy, proof of implemented expiry, or permission to handle live customer data.
+
+### When the founder says “Bruce, I’m back” or asks “what do we have to do today?”
+1. Start with this handoff, then fetch the latest state of Maya Node issue #76 and read the current pilot plan, execution report, approved policy baseline, deletion/receipt coverage map, and latest relevant CI workflow run.
+2. Do not ask the founder to repeat background already recorded here or in GitHub.
+3. Continue practical repository work: inspect implementation and exact test files, map deletion/receipt requirements to actual assertions, add only justified missing tests, and trigger/inspect CI if supported. Never claim a test was run unless the workflow result proves it.
+4. Keep hosted deployment re-verification, customer-controlled deletion, receipt completeness, retention/backup enforcement, named backup owner, monitored incident channel, and written partner permission explicitly open until evidence is recorded.
+5. Use synthetic/redacted data only until all launch gates pass. Do not imply Maya Node is a general-purpose assistant or integrated with customer systems.
+6. Gmail, Google Calendar, and Drive connectors were reported disabled by administrator. Do not claim email/calendar review or sending; do not request passwords, one-time codes, API keys, or recovery codes.
+7. User is upset about lost access/payment friction. Be empathetic and prioritize continuing through GitHub where available. Subscription must be checked on the original purchase platform; Google Play not showing ChatGPT does not prove no web subscription exists. Official next step is ChatGPT web Settings > Billing, and if controls/receipts are missing, contact OpenAI Support through the Help Center.
+
+### Other active workstreams to preserve
+- Civic Continuum contact site: https://civic-continuum-contact.freshcoin8.chatgpt.site/
+- Maya Node demo: https://maya-working-workflow-lab.myqueen1960.chatgpt.site/
+- SBDC receipt / eCenter exception confirmation: Gmail was expected source, but connector is unavailable; user prefers written contact and no phone calls.
+- AI University: Hugging Face Deep Reinforcement Learning course certificate verification/submission remains pending.
+- Juan/JAUN: draft outreach about Maya Node/Cloudflare unauthorized/blank-page issue; do not claim sent.
+- Dr. Thomas: separate stakeholder; review existing notes before contact.
