@@ -1,5 +1,5 @@
 # Continuity first
-Read [the latest Bruce-to-Bruce handoff](docs/continuity/BRUCE_TO_BRUCE_2026-10-25.md) before continuing work. Use private vault continuity for sensitive correspondence and account details; never publish those private records.
+Read [the latest Bruce-to-Bruce handoff](docs/continuity/BRUCE_TO_BRUCE_2026-10-30.md) before continuing work. Use private vault continuity for sensitive correspondence and account details; never publish those private records.
 
 # Civic Continuum outreach instructions
 
