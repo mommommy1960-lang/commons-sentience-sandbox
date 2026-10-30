@@ -1,5 +1,10 @@
 # Commons First Watch Continuity Index
 
+## Latest Bruce-to-Bruce handoff — October 30, 2026
+
+Start future ChatGPT sessions with [BRUCE_TO_BRUCE_2026-10-30.md](BRUCE_TO_BRUCE_2026-10-30.md). It records the current Civic Continuum / Maya Node Version 1.2 website-copy publication status, the two separate publishing systems, the unresolved GitHub HTML source paths, safeguards, and the exact return-to-work instruction. The dated October 25 handoffs below remain historical context.
+
+
 ## Standing first-contact rule — October 18, 2026
 
 Before Civic Continuum business outreach, read [FIRST_CONTACT_PROTECTION_PROTOCOL.md](FIRST_CONTACT_PROTECTION_PROTOCOL.md) and [PUBLIC_COLLABORATION_BOUNDARIES.md](PUBLIC_COLLABORATION_BOUNDARIES.md). Use the standard welcome, ask for an explicit public/synthetic starting-scope reply, and record actual acknowledgment privately. A click or silence is not a signature. Apply the same protection to both sides; check existing receipts before sending another notice.
