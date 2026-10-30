@@ -86,3 +86,13 @@ When the founder returns, say in plain language:
 - ChatGPT Sites builder: not edited or published by Bruce.
 - Cloudflare production / DB / DNS / payments: untouched in this website-copy task.
 - Founder: tired; pause work until she returns.
+
+
+## October 30 follow-through — website copy recovery
+
+- Located the actual Markdown source paths after the earlier guessed HTML paths returned 404: `docs/civic-continuum/WHAT_CIVIC_CONTINUUM_IS.md`, `docs/continuity/PORTFOLIO_WEB_SERVICES_2026-10-17.md`, and `docs/civic-continuum/business/CIVIC_CONTINUUM_PARTNER_PACKET_AND_MAYA_PILOT_2026-10-25.md`.
+- Read the existing `docs/civic-continuum/business/PUBLIC_SITE_COPY_CORRECTIONS_2026-10-30.md` in full.
+- The original Gemini V1.2 artifact was not found in accessible conversation/library files or repository search. Do not claim the reconstruction is Gemini's original package.
+- Created a grounded five-page copy reconstruction at `docs/civic-continuum/business/WEBSITE_COPY_V1_2_REVIEW_DRAFT_2026-10-30.md` on branch `review/website-copy-v1-2-2026-10-30` and opened draft PR #59: https://github.com/mommommy1960-lang/commons-sentience-sandbox/pull/59 .
+- PR #59 is documentation-only, open and unmerged. It does not edit or deploy the separate managed ChatGPT Sites. It must be reviewed before merging; publishing still requires the owner-controlled Site editor and post-publish verification.
+- Gmail remains blocked by administrator restriction from the previous connector attempt. No mailbox data was read and no permission bypass was attempted. Owner/admin must authorize the official Gmail connection, or owner may export Mail with Google Takeout and upload the archive.
