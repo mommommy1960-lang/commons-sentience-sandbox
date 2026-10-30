@@ -8,6 +8,9 @@ Keep people in control. Solve the problem—not preserve dependence on the organ
 - [Open Member Commons — free public project hub](https://civic-continuum-members.myqueen1960.chatgpt.site/) · [Project, free access model and test scope](docs/civic-continuum/MEMBER_COMMONS_2026-10-24.md)
 - [Business structure and partner packet](https://civic-continuum.myqueen1960.chatgpt.site/partner-packet.html)
 - [Updated partner packet: services, partner contributions, and Maya Node pilot](docs/civic-continuum/business/CIVIC_CONTINUUM_PARTNER_PACKET_AND_MAYA_PILOT_2026-10-25.md)
+- [Maya Node partner introduction](docs/civic-continuum/business/MAYA_NODE_PARTNER_INTRODUCTION_2026-10-30.md)
+- [Preliminary founding-partner workflow review](docs/civic-continuum/business/MAYA_NODE_FOUNDING_PARTNER_WORKFLOW_REVIEW_2026-10-30.md)
+- [Public website copy correction plan](docs/civic-continuum/business/PUBLIC_SITE_COPY_CORRECTIONS_2026-10-30.md)
 - [Maya test evidence and limits](https://civic-continuum.myqueen1960.chatgpt.site/maya-evidence.html)
 - [Completion and independence policy](docs/civic-continuum/business/COMPLETION_AND_INDEPENDENCE_POLICY_2026-10-20.md)
 

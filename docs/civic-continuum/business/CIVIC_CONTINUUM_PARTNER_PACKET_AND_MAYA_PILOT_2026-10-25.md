@@ -1,4 +1,6 @@
 # Civic Continuum — Partner & Business Introduction Packet
+
+> **October 30, 2026 review status:** This packet is a discussion resource, not an active paid offer or production-service promise. The current Maya Node public demonstration is a bounded, synthetic-data permission/action-record prototype. No checkout, customer billing, live customer deployment, external application automation, or live email dispatch is being offered. The proposed $25 price is an internal future hypothesis only; no payment is requested. The two current partner-facing drafts are [the short introduction](MAYA_NODE_PARTNER_INTRODUCTION_2026-10-30.md) and [the preliminary workflow review discussion document](MAYA_NODE_FOUNDING_PARTNER_WORKFLOW_REVIEW_2026-10-30.md). These October 30 documents supersede any older wording in this packet that could be read as a current paid pilot, guaranteed delivery window, immediate refund promise, or live customer deployment.
 **Updated:** October 25, 2026  
 **Purpose:** A reusable first-contact packet for prospective customers, reviewers, educators, funders, technical collaborators, and community partners.
 
@@ -24,7 +26,7 @@ Public browsing and access to the Member Commons do not require payment. An opti
 We design and evaluate ways to make automated and human-assisted workflows more transparent and contestable: explicit permission, bounded authority, revocation, action records, human escalation, failure handling, and correction pathways. We avoid claiming that a policy document alone guarantees safety or compliance.
 
 ### 2. Maya Node — permission and action receipts
-**Proposed first business offer:** *Maya Node Permission & Action Receipt*, a narrowly scoped pilot for one small service business.
+**Current status:** exploratory discovery and founder-guided synthetic demonstration only. A future *Maya Node Permission & Action Receipt* evaluation may be considered after operational readiness gates are passed and a separate written scope is agreed.
 
 The design goal is simple: before a supported administrative action occurs, verify its explicit authorization; afterward, create a readable record of what was requested, what was authorized, what happened, what failed, and where a person must intervene.
 
@@ -36,7 +38,7 @@ Civic Continuum maintains research and invention work including Flux Drive, Auro
 ### 4. Public education and practical documentation
 We create plain-language project pages, reviewer packets, evidence summaries, test plans, and governance materials intended to help people understand both what is known and what remains unresolved.
 
-## The new first-pilot proposal
+## Exploratory first-partner discussion (not a current paid pilot)
 
 ### Why this is the first commercial experiment
 A general chatbot is easy to compare with countless others. A narrow workflow that makes authorization and action evidence visible may be more differentiated and more closely aligned with Maya Node's existing demonstrations. This is a hypothesis to test, not established customer demand.
@@ -63,7 +65,7 @@ One small service business that handles repetitive, low-risk administrative requ
 
 A pilot is not successful if speed improves but authorization or evidence controls fail.
 
-**Current status:** service definition and protocol drafted. No pilot business has been confirmed, the current hosted end-to-end workflow has not been reverified in this session, Check 5 remains open, and no business outcome data exists. No certification, guaranteed savings, regulatory compliance, or zero-error operation is claimed.
+**Current status as of October 30, 2026:** discovery discussion and synthetic demonstration only. No pilot business has been confirmed, no live customer deployment is offered, checkout/payment/refund handling is not ready, hosting recovery and operational coverage gates remain open, and no business outcome data exists. No certification, guaranteed savings, regulatory compliance, zero-error operation, five-day delivery promise, or 24-hour response SLA is claimed. See the dated Maya readiness and customer-discovery records in the Maya Node repository for environment-specific evidence.
 
 ## How Civic Continuum can help a partner
 
