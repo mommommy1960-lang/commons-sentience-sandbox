@@ -1,9 +1,10 @@
 # Commons First Watch Continuity Index
 
-## Latest Bruce-to-Bruce handoff — October 30, 2026
+## Latest Bruce-to-Bruce handoff — October 31, 2026
 
-Start future ChatGPT sessions with [BRUCE_TO_BRUCE_2026-10-30.md](BRUCE_TO_BRUCE_2026-10-30.md). It records the current Civic Continuum / Maya Node Version 1.2 website-copy publication status, the two separate publishing systems, the unresolved GitHub HTML source paths, safeguards, and the exact return-to-work instruction. The dated October 25 handoffs below remain historical context.
+Start future ChatGPT sessions with [BRUCE_TO_BRUCE_2026-10-31.md](BRUCE_TO_BRUCE_2026-10-31.md). It records the reported Maya Node synthetic walkthrough, the conditional evidence-review decision, environment distinctions, remaining verification gates, safety boundaries, and the next safe action. For the broader October 30 Civic Continuum / Maya Node website-copy and publishing history, see [BRUCE_TO_BRUCE_2026-10-30.md](BRUCE_TO_BRUCE_2026-10-30.md).
 
+The sanitized partner-facing progress update is [MAYA_NODE_SYNTHETIC_WALKTHROUGH_PROGRESS_2026-10-31.md](../civic-continuum/MAYA_NODE_SYNTHETIC_WALKTHROUGH_PROGRESS_2026-10-31.md), also linked from the [Partner Live Update Feed](PARTNER_LIVE_UPDATE_FEED.md). It describes the milestone as reported staging progress—not an independent audit or production-readiness claim. Backup, restoration, and deletion non-resurrection remain NOT TESTED.
 
 ## Standing first-contact rule — October 18, 2026
 
