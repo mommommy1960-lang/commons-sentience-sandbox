@@ -1,6 +1,6 @@
 # Deliverable 3 — Phase 3 Disaster-Recovery Plan
 
-<badge>PLAN ONLY — NOT AUTHORIZED FOR EXECUTION</badge>
+**PLAN ONLY — NOT AUTHORIZED FOR EXECUTION**
 
 **Purpose:** propose a controlled way to evaluate Cloudflare D1 recovery and deletion/non-resurrection behavior without touching the existing Recovery Staging database, other Maya Node environments, or Production.
 
@@ -94,7 +94,7 @@ For each test retain:
 - Redacted operation logs and exact observed results.
 - A chronological evidence index and reviewer sign-off.
 
-**Test A passes** only if the selected native backup is proven to predate no marker creation and the isolated restore contains the marker.
+**Test A passes** only if the selected native backup is proven to have been taken after the marker was created and the isolated restore contains the marker.
 
 **Test B passes** only if deletion is confirmed before the selected native backup's point-in-time and the isolated restore does not contain the marker.
 
