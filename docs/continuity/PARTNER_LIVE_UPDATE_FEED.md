@@ -1,3 +1,13 @@
+## October 31, 2026 — Maya Node synthetic walkthrough milestone
+
+A founder-guided synthetic walkthrough of the Maya Node recovery-staging demonstration has been reported complete. The reported sequence covers interface loading, a synthetic workflow request, authorization, execution and readback, receipt/event generation, and rejection of a formerly valid session after revocation.
+
+This is a **reported staging demonstration**, not an independent security audit or production-readiness claim. Supporting evidence is still under review. Backup retention, point-in-time recovery, restoration, and deletion non-resurrection remain **NOT TESTED**. The next milestone is review of sanitized request/response and execution evidence, followed by a controlled synthetic recovery drill. Billing and live dispatch remain disabled; no real pantry/customer data or production changes are authorized.
+
+[Read the public Maya Node walkthrough progress and remaining gates](../civic-continuum/MAYA_NODE_SYNTHETIC_WALKTHROUGH_PROGRESS_2026-10-31.md).
+
+---
+
 ## October 24, 2026 - Sage public demonstration and partnership brief
 
 [**Read the public Sage developer and funder dossier**](https://github.com/mommommy1960-lang/sage-situated-companion/blob/main/docs/SAGE_PUBLIC_PARTNERSHIP_DOSSIER_2026-10-24.md) · [Open the public device demo](https://sage-companion-device-lab.myqueen1960.chatgpt.site/) · [Inspect PR10 and tests](https://github.com/mommommy1960-lang/sage-situated-companion/pull/10).
