@@ -17,7 +17,11 @@ Each gate has six equally visible checks. A check scores only when a reviewer ca
 | 3. Accountable organizational structure | 6 / 6 | 100% | Published; outside review still invited |
 | **Overall** | **15 / 18** | **83%** | **Not yet complete** |
 
-## Newly reported milestone — November 18, 2026\n\nThe founder reports that the Washington business-license application was recently submitted. This records the application step as completed by the founder; the confirmation/receipt and license issuance remain unverified. The evidence score stays at **15 of 18** until the required documentary record is inspectable.\n\n## Gate 1 — Formal business registration: 3 / 6
+## Newly reported milestone — November 18, 2026
+
+The founder reports that the Washington business-license application was recently submitted. This records the application step as completed by the founder; the confirmation/receipt and license issuance remain unverified. The evidence score stays at **15 of 18** until the required documentary record is inspectable.
+
+## Gate 1 — Formal business registration: 3 / 6
 
 | Check | Status | Evidence or missing proof |
 |---|---|---|
