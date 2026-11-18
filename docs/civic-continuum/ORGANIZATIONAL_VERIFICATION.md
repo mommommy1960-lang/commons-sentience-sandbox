@@ -12,7 +12,7 @@ This page is the public starting point for organizational diligence. Pending fie
 - **Intended jurisdiction:** Washington State, USA
 - **Formal Washington entity:** `PENDING STATE FORMATION`
 - **Washington UBI:** `PENDING STATE FORMATION`
-- **Washington business licensing:** `PENDING`
+- **Washington business licensing:** `APPLICATION SUBMITTED (FOUNDER-REPORTED); CONFIRMATION AND ISSUANCE PENDING`
 - **EIN:** Issued by the IRS; the number and confirmation letter are private records
 - **Official domain:** [https://civiccontinuum.org/](https://civiccontinuum.org/)
 - **Official role-based contact:** `contact@civiccontinuum.org`
@@ -40,4 +40,4 @@ Repository history may establish provenance, implementation, and defined test re
 
 ## Independent-verification boundary
 
-An outsider can independently reach the domain, inspect HTTPS, use the official contact channel, and review the published governance and repository history. Formal Washington registration, UBI, and business-license records cannot be independently verified because those steps remain incomplete. Civic Continuum will not tell Dr. Thomas Ainsworth or any other reviewer that all three requested gates are complete until those public records exist and the outsider-verification test passes.
+An outsider can independently reach the domain, inspect HTTPS, use the official contact channel, and review the published governance and repository history. Formal Washington registration and UBI remain incomplete. The founder reports that the business-license application was recently submitted, but its confirmation/receipt and any issued license are not yet independently verifiable. Civic Continuum will not tell Dr. Thomas Ainsworth or any other reviewer that all three requested gates are complete until those public records exist and the outsider-verification test passes.
