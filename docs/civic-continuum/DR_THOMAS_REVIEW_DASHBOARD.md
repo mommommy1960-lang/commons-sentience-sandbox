@@ -50,7 +50,7 @@ The [existing START HERE reviewer doorway](https://github.com/mommommy1960-lang/
 
 ## Dr. Thomas readiness meter
 
-The three organizational conditions are tracked in a separate, evidence-scored checklist: [Dr. Thomas Organizational Readiness Meter](./DR_THOMAS_ORGANIZATIONAL_READINESS_METER.md). The current score is **15 of 18 verified checks (83%)**. Domain infrastructure is documented and the accountable structure is published. Formal Washington formation, UBI, and business licensing remain open, so the overall gate is not complete and must not be represented as approval or independent verification.
+The three organizational conditions are tracked in a separate, evidence-scored checklist: [Dr. Thomas Organizational Readiness Meter](./DR_THOMAS_ORGANIZATIONAL_READINESS_METER.md). The current score remains **15 of 18 verified checks (83%)**. On November 18, 2026, the founder reported that the Washington business-license application had recently been submitted; its confirmation/receipt and issuance are not independently verified. Formal Washington formation and UBI remain open, and the issued-license evidence check remains open. The overall gate is not complete and must not be represented as approval or independent verification.
 
 ## Organizational verification gate
 
