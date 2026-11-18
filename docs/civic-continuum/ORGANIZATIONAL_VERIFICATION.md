@@ -1,7 +1,7 @@
 # Civic Continuum — Public Organizational Verification
 
 **Status:** Pre-formation / partially independently verifiable
-**Last updated:** September 26, 2026
+**Last updated:** November 18, 2026
 
 This page is the public starting point for organizational diligence. Pending fields remain visible instead of being filled with assumptions.
 
